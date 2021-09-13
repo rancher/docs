@@ -150,7 +150,7 @@ You will provision three nodes:
 | Node 2 | Linux (Ubuntu Server 18.04 recommended)                      |
 | Node 3 | Windows (Windows Server core version 1809 or above required) |
 
-If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers)
+If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers)
 
 # 2. Create the Cluster on Existing Nodes
 

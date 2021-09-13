@@ -108,13 +108,13 @@ The address range assigned to the services in the cluster. Must be a valid CIDR 
 
 _Mutable: no_
 
-> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/private-clusters/).
+> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/).
 
 Assign nodes only internal IP addresses. Private cluster nodes cannot access the public internet unless additional networking steps are taken in GCP.
 
 ### Enable Private Endpoint
 
-> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/#private-clusters).
+> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/).
 
 _Mutable: no_
 

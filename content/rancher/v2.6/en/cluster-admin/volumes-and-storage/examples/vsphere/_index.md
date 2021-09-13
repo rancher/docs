@@ -3,7 +3,7 @@ title: vSphere Storage
 weight: 3055
 ---
 
-To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume StorageClass. This practice dynamically provisions vSphere storage when workloads request volumes through a [persistent volume claim]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/).
+To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume StorageClass. This practice dynamically provisions vSphere storage when workloads request volumes through a PersistentVolumeClaim.
 
 In order to dynamically provision storage in vSphere, the vSphere provider must be [enabled.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)
 

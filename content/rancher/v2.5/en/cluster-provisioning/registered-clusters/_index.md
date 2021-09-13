@@ -101,7 +101,7 @@ After registering a cluster, the cluster owner can:
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
 - Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/)
 - Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/)
-- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/)
+- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)
 - Manage projects and workloads
 
@@ -142,7 +142,7 @@ After registering a cluster, the cluster owner can:
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
 - Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/)
 - Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/)
-- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/)
+- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)
 - Manage projects and workloads
 

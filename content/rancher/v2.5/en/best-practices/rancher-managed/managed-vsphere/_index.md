@@ -15,7 +15,7 @@ This guide outlines a reference architecture for provisioning downstream Rancher
 
 <figcaption>Solution Overview</figcaption>
 
-![Solution Overview](/img/rancher/solution_overview.drawio.svg)
+![Solution Overview]({{<baseurl>}}/img/rancher/solution_overview.drawio.svg)
 
 # 1. VM Considerations
 

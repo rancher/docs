@@ -69,6 +69,6 @@ match_re:
 
 {{% /tab %}}
 {{% tab "Rancher v2.5.0-2.5.3" %}}
-The Alertmanager must be configured in YAML, as shown in this [example.](./examples/#alertmanager-config)
+The Alertmanager must be configured in YAML, as shown in this [example.](../examples/#alertmanager-config)
 {{% /tab %}}
 {{% /tabs %}}

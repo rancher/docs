@@ -15,15 +15,15 @@ To see the default dashboards for time series data visualization, go to the Graf
 
 ### Customizing Grafana
 
-To view and customize the PromQL queries powering the Grafana dashboard, see [this page.](./customize-grafana)
+To view and customize the PromQL queries powering the Grafana dashboard, see [this page.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/guides/customize-grafana)
 
 ### Persistent Grafana Dashboards
 
-To create a persistent Grafana dashboard, see [this page.](./persist-grafana)
+To create a persistent Grafana dashboard, see [this page.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/guides/persist-grafana)
 
 ### Access to Grafana
 
-For information about role-based access control for Grafana, see [this section.](./rbac/#role-based-access-control-for-grafana)
+For information about role-based access control for Grafana, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/rbac/#role-based-access-control-for-grafana)
 
 
 # Alertmanager UI
@@ -43,15 +43,13 @@ To see the Alertmanager UI, go to the **Cluster Explorer.** In the top left corn
 
 **Result:** The Alertmanager UI opens in a new tab. For help with configuration, refer to the [official Alertmanager documentation.](https://prometheus.io/docs/alerting/latest/alertmanager/)
 
-For more information on configuring Alertmanager in Rancher, see [this page.](./configuration/alertmanager)
-
 <figcaption>The Alertmanager UI</figcaption>
 ![Alertmanager UI]({{<baseurl>}}/img/rancher/alertmanager-ui.png)
 
 
 ### Viewing Default Alerts
 
-To see alerts that are fired by default, go to the [Alertmanager UI](./alertmanager-ui) and click **Expand all groups.**
+To see alerts that are fired by default, go to the Alertmanager UI and click **Expand all groups.**
 
 
 # Prometheus UI
@@ -82,5 +80,3 @@ You can also see the rules in the Prometheus UI:
 
 <figcaption>Rules in the Prometheus UI</figcaption>
 ![PrometheusRules UI]({{<baseurl>}}/img/rancher/prometheus-rules-ui.png)
-
-For more information on configuring PrometheusRules in Rancher, see [this page.](./configuration/prometheusrules)
