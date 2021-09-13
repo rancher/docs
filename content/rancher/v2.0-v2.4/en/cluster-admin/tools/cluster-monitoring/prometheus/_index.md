@@ -6,11 +6,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/monitoring/prometheus/
   - /rancher/v2.0-v2.4/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/prometheus
   - /rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/prometheus
-<<<<<<< HEAD
   - /rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/prometheus/
-=======
- - /rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/prometheus/
->>>>>>> Delete 2.x docs and add redirects for all deleted pages
 ---
 
 _Available as of v2.2.0_
