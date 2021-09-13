@@ -1,6 +1,8 @@
 ---
 title: "4. Configure Health Checks"
 weight: 400
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/monitor-apps/
 ---
 
 Rancher v1.6 provided TCP and HTTP health checks on your nodes and services using its own health check microservice. These health checks monitored your containers to confirm they're operating as intended. If a container failed a health check, Rancher would destroy the unhealthy container and then replicates a healthy one to replace it.

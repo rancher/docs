@@ -4,6 +4,7 @@ weight: 100
 aliases:
   - /rancher/v2.0-v2.4/en/best-practices/deployment-strategies
   - /rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/deployment-strategies
+  - /rancher/v2.x/en/best-practices/v2.0-v2.4/deployment-strategies/
 ---
 
 There are two recommended deployment strategies. Each one has its own pros and cons. Read more about which one would fit best for your use case:

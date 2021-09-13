@@ -1,6 +1,8 @@
 ---
 title: CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5
 weight: 201
+aliases:
+  - /rancher/v2.x/en/security/rancher-2.5/1.5-benchmark-2.5/
 ---
 
 ### CIS v1.5 Kubernetes Benchmark - Rancher v2.5 with Kubernetes v1.15

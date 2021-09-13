@@ -2,6 +2,8 @@
 title: Configuring Keycloak (SAML)
 description: Create a Keycloak SAML client and configure Rancher to work with Keycloak. By the end your users will be able to sign into Rancher using their Keycloak logins
 weight: 1200
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/keycloak/
 ---
 
 If your organization uses Keycloak Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.

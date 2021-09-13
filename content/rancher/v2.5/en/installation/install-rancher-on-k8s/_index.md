@@ -8,6 +8,7 @@ aliases:
   - /rancher/v2.5/en/installation/k8s-install/kubernetes-rke
   - /rancher/v2.5/en/installation/ha-server-install 
   - /rancher/v2.5/en/installation/install-rancher-on-k8s/install
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/
 ---
 
 In this section, you'll learn how to deploy Rancher on a Kubernetes cluster using the Helm CLI.

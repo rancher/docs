@@ -3,6 +3,8 @@ title: Configuration
 weight: 5
 aliases:
   - /rancher/v2.5/en/monitoring-alerting/configuration
+  - /rancher/v2.x/en/monitoring-alerting/v2.5/configuration/
+  - /rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/
 ---
 
 This page captures some of the most important options for configuring Monitoring V2 in the Rancher UI.

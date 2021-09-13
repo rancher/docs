@@ -2,6 +2,8 @@
 title: Installing Rancher on Amazon EKS
 shortTitle: Amazon EKS
 weight: 4
+aliases:
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/amazon-eks/
 ---
 
 This page covers two ways to install Rancher on EKS.

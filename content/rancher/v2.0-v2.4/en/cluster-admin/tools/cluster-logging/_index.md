@@ -9,6 +9,8 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/logging
   - /rancher/v2.0-v2.4/en/logging/legacy/cluster-logging
   - /rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/
+  - /rancher/v2.x/en/logging/v2.0.x-v2.4.x/
+  - /rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/
 ---
 
 Logging is helpful because it allows you to:

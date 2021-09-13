@@ -5,6 +5,7 @@ weight: 2105
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-gke/
   - /rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke
+  - /rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/gke/
 ---
 
 {{% tabs %}}

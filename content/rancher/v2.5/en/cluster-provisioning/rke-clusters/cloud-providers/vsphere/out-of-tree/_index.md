@@ -2,6 +2,8 @@
 title: How to Configure Out-of-tree vSphere Cloud Provider
 shortTitle: Out-of-tree Cloud Provider
 weight: 10
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/
 ---
 _Available as of v2.5+_
 

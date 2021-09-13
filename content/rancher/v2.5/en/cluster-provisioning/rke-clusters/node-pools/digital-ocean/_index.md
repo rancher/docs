@@ -4,6 +4,7 @@ shortTitle: DigitalOcean
 weight: 2215
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-digital-ocean/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/
 ---
 In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in DigitalOcean.
 

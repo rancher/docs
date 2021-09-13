@@ -1,6 +1,8 @@
 ---
 title: Troubleshooting etcd Nodes
 weight: 1
+aliases:
+  - /rancher/v2.x/en/troubleshooting/kubernetes-components/etcd/
 ---
 
 This section contains commands and tips for troubleshooting nodes with the `etcd` role.

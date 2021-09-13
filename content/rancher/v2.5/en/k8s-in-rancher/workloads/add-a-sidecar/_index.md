@@ -4,6 +4,7 @@ weight: 3029
 aliases:
   - /rancher/v2.5/en/tasks/workloads/add-a-sidecar/
   - /rancher/v2.5/en/k8s-in-rancher/workloads/add-a-sidecar
+  - /rancher/v2.x/en/k8s-in-rancher/workloads/add-a-sidecar/
 ---
 A _sidecar_ is a container that extends or enhances the main container in a pod. The main container and the sidecar share a pod, and therefore share the same network space and storage. You can add sidecars to existing workloads by using the **Add a Sidecar** option.
 

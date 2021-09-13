@@ -3,6 +3,7 @@ title: Launching Kubernetes on New Nodes in an Infrastructure Provider
 weight: 2205
 aliases:
   - /rancher/v2.5/en/concepts/global-configuration/node-templates/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
 ---
 
 Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.

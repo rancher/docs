@@ -3,7 +3,8 @@ title: Adding Users to Projects
 weight: 2505
 aliases:
   - /rancher/v2.5/en/tasks/projects/add-project-members/
-  - /rancher/v2.5/en/cluster-admin/projects-and-namespaces/project-members/
+  - /rancher/v2.5/en/cluster-admin/projects-and-namespaces/project-members
+  - /rancher/v2.x/en/project-admin/project-members/
 ---
 
 If you want to provide a user with access and permissions to _specific_ projects and resources within a cluster, assign the user a project membership.

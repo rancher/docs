@@ -1,6 +1,8 @@
 ---
 title: Workload with Ingress Quick Start
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/
 ---
 
 ### Prerequisite

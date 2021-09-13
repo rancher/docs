@@ -1,6 +1,8 @@
 ---
 title: Azure Node Template Configuration
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/
 ---
 
 For more information about Azure, refer to the official [Azure documentation.](https://docs.microsoft.com/en-us/azure/?product=featured)

@@ -1,6 +1,8 @@
 ---
 title: 2. Migrate Your Services
 weight: 100
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/run-migration-tool/
 ---
 
 Although your services from v1.6 won't work in Rancher v2.x by default, that doesn't mean you have to start again from square one, manually rebuilding your applications in v2.x. To help with migration from v1.6 to v2.x, Rancher has developed a migration tool. The migration-tools CLI is a utility that helps you recreate your applications in Rancher v2.x. This tool exports your Rancher v1.6 services as Compose files and converts them to a Kubernetes manifest that Rancher v2.x can consume.

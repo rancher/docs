@@ -2,6 +2,8 @@
 title: vSphere Node Template Configuration in Rancher v2.0.4
 shortTitle: v2.0.4
 weight: 4
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/v2.0.4/
 ---
 - [Account access](#account-access)
 - [Scheduling](#scheduling)

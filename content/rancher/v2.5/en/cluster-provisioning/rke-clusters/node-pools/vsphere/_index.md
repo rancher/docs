@@ -6,6 +6,7 @@ metaDescription: Use Rancher to create a vSphere cluster. It may consist of grou
 weight: 2225
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-vsphere/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/
 ---
 
 By using Rancher with vSphere, you can bring cloud operations on-premises.

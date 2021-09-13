@@ -4,6 +4,7 @@ weight: 2
 aliases:
   - /rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/node-template-reference
   - /rancher/v2.5/en/cluster-provisionin/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/enabling-uuids
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/
 ---
 
 The following node template configuration reference applies to Rancher v2.3.3+.

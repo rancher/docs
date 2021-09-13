@@ -1,6 +1,8 @@
 ---
 title: How Resource Quotas Work in Rancher Projects
 weight: 1
+aliases:
+  - /rancher/v2.x/en/project-admin/resource-quotas/quotas-for-projects/
 ---
 
 Resource quotas in Rancher include the same functionality as the [native version of Kubernetes](https://kubernetes.io/docs/concepts/policy/resource-quotas/). However, in Rancher, resource quotas have been extended so that you can apply them to projects.

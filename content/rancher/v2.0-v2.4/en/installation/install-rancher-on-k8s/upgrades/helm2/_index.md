@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/helm2
   - /rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/ha/helm2
   - /rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/helm2
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/helm2/
 ---
 
 > Helm 3 has been released.  If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.

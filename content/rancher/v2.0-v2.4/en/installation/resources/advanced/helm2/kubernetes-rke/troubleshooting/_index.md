@@ -3,6 +3,7 @@ title: Troubleshooting
 weight: 276
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/kubernetes-rke/troubleshooting
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/kubernetes-rke/troubleshooting/
 ---
 
 ### canal Pods show READY 2/3

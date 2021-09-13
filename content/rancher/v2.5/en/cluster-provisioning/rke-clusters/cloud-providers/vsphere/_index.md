@@ -1,6 +1,8 @@
 ---
 title: Setting up the vSphere Cloud Provider
 weight: 4
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/
 ---
 
 In this section, you'll learn how to set up a vSphere cloud provider for a Rancher managed RKE Kubernetes cluster in vSphere.

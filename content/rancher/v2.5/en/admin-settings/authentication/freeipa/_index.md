@@ -2,7 +2,8 @@
 title: Configuring FreeIPA
 weight: 1114
 aliases:
-    - /rancher/v2.5/en/tasks/global-configuration/authentication/freeipa/
+  - /rancher/v2.5/en/tasks/global-configuration/authentication/freeipa/
+  - /rancher/v2.x/en/admin-settings/authentication/freeipa/
 ---
 
 If your organization uses FreeIPA for user authentication, you can configure Rancher to allow your users to login using their FreeIPA credentials.

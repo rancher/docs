@@ -3,6 +3,7 @@ title: Chart Options
 weight: 276
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/helm-rancher/chart-options
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/helm-rancher/chart-options/
 ---
 
 ### Common Options

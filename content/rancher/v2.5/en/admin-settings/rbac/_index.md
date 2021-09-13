@@ -2,7 +2,8 @@
 title: Role-Based Access Control (RBAC)
 weight: 1120
 aliases:
-    - /rancher/v2.5/en/concepts/global-configuration/users-permissions-roles/
+  - /rancher/v2.5/en/concepts/global-configuration/users-permissions-roles/
+  - /rancher/v2.x/en/admin-settings/rbac/
 ---
 
 Within Rancher, each person authenticates as a _user_, which is a login that grants you access to Rancher. As mentioned in [Authentication]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/), users can either be local or external.

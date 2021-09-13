@@ -1,6 +1,8 @@
 ---
 title: Adding a Pod Security Policy
 weight: 80
+aliases:
+  - /rancher/v2.x/en/cluster-admin/pod-security-policy/
 ---
 
 > **Prerequisite:** The options below are available only for clusters that are [launched using RKE.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) 

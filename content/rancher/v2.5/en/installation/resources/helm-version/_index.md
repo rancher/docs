@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/installation/options/helm2
   - /rancher/v2.5/en/installation/options/helm2/helm-init
   - /rancher/v2.5/en/installation/options/helm2/helm-rancher
+  - /rancher/v2.x/en/installation/resources/helm-version/
 ---
 
 This section contains the requirements for Helm, which is the tool used to install Rancher on a high-availability Kubernetes cluster.

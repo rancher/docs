@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/after-installation/single-node-backup-and-restoration/
   - /rancher/v2.0-v2.4/en/backups/restorations/single-node-restoration
   - /rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/restore/docker-restores
+  - /rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/docker-restores/
 ---
 
 If you encounter a disaster scenario, you can restore your Rancher Server to your most recent backup.

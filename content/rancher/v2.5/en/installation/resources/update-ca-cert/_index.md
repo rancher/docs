@@ -1,6 +1,8 @@
 ---
 title: Updating a Private CA Certificate
 weight: 10
+aliases:
+  - /rancher/v2.x/en/installation/resources/update-ca-cert/
 ---
 
 Follow these steps to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/) or to switch from the default self-signed certificate to a custom certificate.

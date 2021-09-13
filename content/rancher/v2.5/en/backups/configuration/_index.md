@@ -4,6 +4,7 @@ shortTitle: Configuration
 weight: 4
 aliases:
   - /rancher/v2.5/en/backups/v2.5/configuration
+  - /rancher/v2.x/en/backups/v2.5/configuration/
 ---
 
 - [Backup configuration](./backup-config)

@@ -1,6 +1,8 @@
 ---
 title: Deploying Rancher Server
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/deployment/
 ---
 
 Use one of the following guides to deploy and provision Rancher and a Kubernetes cluster in the provider of your choice.

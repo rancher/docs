@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.5/en/installation/options/tls-settings/ 
   - /rancher/v2.5/en/admin-settings/tls-settings
   - /rancher/v2.5/en/installation/resources/encryption/tls-settings
+  - /rancher/v2.x/en/installation/resources/tls-settings/
 ---
 
 The default TLS configuration only accepts TLS 1.2 and secure TLS cipher suites. TLS 1.3 and TLS 1.3 exclusive cipher suites are not supported.

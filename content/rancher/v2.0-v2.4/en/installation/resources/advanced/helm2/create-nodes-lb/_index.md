@@ -3,6 +3,7 @@ title: "1. Create Nodes and Load Balancer"
 weight: 185
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/create-nodes-lb
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/create-nodes-lb/
 ---
 
 Use your provider of choice to provision 3 nodes and a Load Balancer endpoint for your RKE install.

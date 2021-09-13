@@ -4,6 +4,7 @@ weight: 300
 aliases:
   - /rke/latest/en/config-options/add-ons/api-auditing/
   - /rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/api-auditing
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/api-auditing/
 ---
 
 >**Important: RKE add-on install is only supported up to Rancher v2.0.8**

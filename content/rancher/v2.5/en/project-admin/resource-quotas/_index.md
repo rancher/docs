@@ -3,6 +3,7 @@ title: Project Resource Quotas
 weight: 2515
 aliases:
   - /rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas 
+  - /rancher/v2.x/en/project-admin/resource-quotas/
 ---
 
 In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a _resource quota_, which is a Rancher feature that limits the resources available to a project or namespace.

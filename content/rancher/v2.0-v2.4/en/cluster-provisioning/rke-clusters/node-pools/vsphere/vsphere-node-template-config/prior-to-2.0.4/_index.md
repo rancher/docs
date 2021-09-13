@@ -2,6 +2,8 @@
 title: vSphere Node Template Configuration in Rancher before v2.0.4
 shortTitle: Before v2.0.4
 weight: 5
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/prior-to-2.0.4/
 ---
 
 - [Account access](#account-access)

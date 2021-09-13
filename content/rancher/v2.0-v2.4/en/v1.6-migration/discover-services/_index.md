@@ -1,6 +1,8 @@
 ---
 title: "6. Service Discovery"
 weight: 600
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/discover-services/
 ---
 
 Service discovery is one of the core functionalities of any container-based environment. Once you have packaged and launched your application, the next step is making it discoverable to other containers in your environment or the external world. This document will describe how to use the service discovery support provided by Rancher v2.x so that you can find them by name.

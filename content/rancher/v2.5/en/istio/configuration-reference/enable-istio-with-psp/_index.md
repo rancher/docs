@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/istio/legacy/setup/enable-istio-in-cluster/enable-istio-with-psp
   - /rancher/v2.5/en/istio/v2.5/setup/enable-istio-in-cluster/enable-istio-with-psp
   - /rancher/v2.5/en/istio/v2.5/configuration-reference/enable-istio-with-psp
+  - /rancher/v2.x/en/istio/v2.5/configuration-reference/enable-istio-with-psp/
 ---
 
 If you have restrictive Pod Security Policies enabled, then Istio may not be able to function correctly, because it needs certain permissions in order to install itself and manage pod infrastructure. In this section, we will configure a cluster with PSPs enabled for an Istio install, and also set up the Istio CNI plugin. 

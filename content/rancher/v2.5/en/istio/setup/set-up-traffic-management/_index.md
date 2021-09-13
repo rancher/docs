@@ -4,6 +4,7 @@ weight: 6
 aliases:
   - /rancher/v2.5/en/istio/setup/set-up-traffic-management
   - /rancher/v2.5/en/istio/v2.5/setup/set-up-traffic-management
+  - /rancher/v2.x/en/istio/v2.5/setup/set-up-traffic-management/
 ---
 
 A central advantage of traffic management in Istio is that it allows dynamic request routing. Some common applications for dynamic request routing include canary deployments and blue/green deployments. The two key resources in Istio traffic management are *virtual services* and *destination rules*.

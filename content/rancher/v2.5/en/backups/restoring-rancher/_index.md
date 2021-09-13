@@ -4,6 +4,7 @@ weight: 2
 aliases:
   - /rancher/v2.x/en/installation/backups/restores
   - /rancher/v2.x/en/backups/restoring-rancher
+  - /rancher/v2.x/en/backups/v2.5/restoring-rancher/
 ---
 
 A restore is performed by creating a Restore custom resource. 

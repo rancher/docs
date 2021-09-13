@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/project-admin/tools/pipelines/docs-for-v2.0.x
   - /rancher/v2.0-v2.4/en/project-admin/pipelines/docs-for-v2.0.x
   - /rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines/docs-for-v2.0.x
+  - /rancher/v2.x/en/pipelines/docs-for-v2.0.x/
 ---
 
 >**Note:** This section describes the pipeline feature as implemented in Rancher v2.0.x. If you are using Rancher v2.1 or later, where pipelines have been significantly improved, please refer to the new documentation for [v2.1 or later]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines/).

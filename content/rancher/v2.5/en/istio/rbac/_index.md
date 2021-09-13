@@ -4,6 +4,7 @@ weight: 3
 aliases:
   - /rancher/v2.5/en/istio/rbac
   - /rancher/v2.5/en/istio/v2.5/rbac
+  - /rancher/v2.x/en/istio/v2.5/rbac/
 ---
 
 This section describes the permissions required to access Istio features.

@@ -8,6 +8,8 @@ aliases:
   - /rancher/v2.5/en/dashboard/logging
   - /rancher/v2.5/en/logging/v2.5
   - /rancher/v2.5/en/cluster-admin/tools/logging 
+  - /rancher/v2.x/en/logging/
+  - /rancher/v2.x/en/logging/v2.5/
 ---
 
 The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.

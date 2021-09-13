@@ -1,6 +1,8 @@
 ---
 title: Checklist for Production-Ready Clusters
 weight: 2
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/production/
 ---
 
 In this section, we recommend best practices for creating the production-ready Kubernetes clusters that will run your apps and services.

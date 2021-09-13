@@ -8,6 +8,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks
   - /rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks/ha-server-rollbacks
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/rollbacks
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/rollbacks/
 ---
 
 - [Rolling Back to Rancher v2.5.0+](#rolling-back-to-rancher-v2-5-0)

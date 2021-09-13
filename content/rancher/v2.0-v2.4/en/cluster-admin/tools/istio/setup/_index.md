@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup
   - /rancher/v2.0-v2.4/en/istio/legacy/setup
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/
 ---
 
 This section describes how to enable Istio and start using it in your projects.

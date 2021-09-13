@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.5/en/upgrades/upgrades/single-node
   - /rancher/v2.5/en/upgrades/upgrades/single-node-upgrade/
   - /rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/
+  - /rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/
 ---
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.

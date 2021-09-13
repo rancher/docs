@@ -1,6 +1,8 @@
 ---
 title: Telemetry
 weight: 8008
+aliases:
+  - /rancher/v2.x/en/faq/telemetry/
 ---
 
 ### What is Telemetry?

@@ -1,6 +1,8 @@
 ---
 title: Cluster Access
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-admin/cluster-access/
 ---
 
 This section is about what tools can be used to access clusters managed by Rancher.
