@@ -91,7 +91,7 @@ Option to set environment variables for [Rancher agents](https://rancher.com/doc
 
 #### Automatic Snapshots
 
-Option to enable or disable recurring etcd snapshots. If enabled, users have the option to configure the frequency of snapshots. For details, refer to the [RKE2 documentation](https://docs.rke2.io/backup_restore/#creating-snapshots).
+Option to enable or disable recurring etcd snapshots. If enabled, users have the option to configure the frequency of snapshots. For details, refer to the [RKE2 documentation](https://docs.rke2.io/backup_restore/#creating-snapshots). Note that in RKE2, snapshots are stored on each etcd node.
 
 #### Metrics
 
