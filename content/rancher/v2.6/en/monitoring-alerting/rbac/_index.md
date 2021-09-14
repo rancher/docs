@@ -11,7 +11,6 @@ This section describes the expectations for RBAC for Rancher Monitoring.
   - [Users with Kubernetes View Permissions](#users-with-kubernetes-view-permissions)
   - [Additional Monitoring Roles](#additional-monitoring-roles)
   - [Additional Monitoring ClusterRoles](#additional-monitoring-clusterroles)
-- [Additional Monitoring Roles](#additional-monitoring-roles)
 - [Users with Rancher Based Permissions](#users-with-rancher-based-permissions)
   - [Differences in 2.5.x](#differences-in-2-5-x)
   - [Assigning Additional Access](#assigning-additional-access)
@@ -77,7 +76,95 @@ Admins should use these roles to provide more fine-grained access to users:
 | monitoring-dashboard-admin | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-edit | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-view | Allow admins to assign roles to users to be able to view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
+<br>
+**Below are some examples to help you configure the `Role` in Kubernetes to attach to a user:**
 
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: monitoring-grafana-view
+  namespace: cattle-monitoring-system
+rules:
+- apiGroups: [""]
+  resources: ["services/proxy"]
+  resourceNames: ["http:rancher-monitoring-grafana:80", "https:rancher-monitoring-grafana:80"]
+  verbs: ['get']
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: monitoring-prometheus-view
+  namespace: cattle-monitoring-system
+rules:
+- apiGroups: [""]
+  resources: ["services/proxy"]
+  resourceNames: ["http:rancher-monitoring-prometheus:9090", "https:rancher-monitoring-prometheus:9090"]
+  verbs: ['get']
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: monitoring-alertmanager-view
+  namespace: cattle-monitoring-system
+rules:
+- apiGroups: [""]
+  resources: ["services/proxy"]
+  resourceNames: ["http:rancher-monitoring-alertmanager:9093", "https:rancher-monitoring-alertmanager:9093"]
+  verbs: ['get']
+```
+<br>
+**Below are some examples to help you configure the `RoleBindings` in Kubernetes to attach to a user:**
+
+* **Note**: You will need to fill in the subjects.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: monitoring-grafana-view
+  namespace: cattle-monitoring-system
+roleRef:
+  kind: Role
+  name: monitoring-grafana-view
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: User
+  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
+  apiGroup: rbac.authorization.k8s.io
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: monitoring-prometheus-view
+  namespace: cattle-monitoring-system
+roleRef:
+  kind: Role
+  name: monitoring-prometheus-view
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: User
+  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
+  apiGroup: rbac.authorization.k8s.io
+```
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: monitoring-alertmanager-view
+  namespace: cattle-monitoring-system
+roleRef:
+  kind: Role
+  name: monitoring-alertmanager-view
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: User
+  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
+  apiGroup: rbac.authorization.k8s.io
+  ``` 
 ### Additional Monitoring ClusterRoles
 
 Monitoring also creates additional `ClusterRoles` that are not assigned to users by default but are created within the cluster.  They are not aggregated by default but can be bound to a namespace by deploying a RoleBinding that references it.
