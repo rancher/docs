@@ -30,13 +30,13 @@ In this section, you'll learn how to create backups of the K3s cluster data and 
 
 Snapshots are enabled by default.
 
-The snapshot directory defaults to `/server/db/snapshots`.
+The snapshot directory defaults to `/var/lib/rancher/k3s/server/db/snapshots`.
 
 To configure the snapshot interval or the number of retained snapshots, refer to the [options.](#options)
 
 ### Restoring a Cluster from a Snapshot
 
-When K3s is restored from backup, the old data directory will be moved to `/server/db/etcd-old/`. Then K3s will attempt to restore the snapshot by creating a new data directory, then starting etcd with a new K3s cluster with one etcd member.
+When K3s is restored from backup, the old data directory will be moved to `/var/lib/rancher/k3s/server/db/etcd-old/`. Then K3s will attempt to restore the snapshot by creating a new data directory, then starting etcd with a new K3s cluster with one etcd member.
 
 To restore the cluster from backup, run K3s with the `--cluster-reset` option, with the `--cluster-reset-restore-path` also given:
 
