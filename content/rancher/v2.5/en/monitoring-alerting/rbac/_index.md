@@ -16,7 +16,6 @@ This section describes the expectations for RBAC for Rancher Monitoring.
   - [Users with Kubernetes View Permissions](#users-with-kubernetes-view-permissions)
   - [Additional Monitoring Roles](#additional-monitoring-roles)
   - [Additional Monitoring ClusterRoles](#additional-monitoring-clusterroles)
-- [Additional Monitoring Roles](#additional-monitoring-roles)
 - [Users with Rancher Cluster Manager Based Permissions](#users-with-rancher-cluster-manager-based-permissions)
   - [Differences in 2.5.x](#differences-in-2-5-x)
   - [Assigning Additional Access](#assigning-additional-access)
@@ -82,7 +81,7 @@ Admins should use these roles to provide more fine-grained access to users:
 | monitoring-dashboard-admin | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-edit | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-view | Allow admins to assign roles to users to be able to view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
-
+<br>
 **Below are some examples to help you configure the `Role` in Kubernetes to attach to a user:**
 
 ```
@@ -121,7 +120,7 @@ rules:
   resourceNames: ["http:rancher-monitoring-alertmanager:9093", "https:rancher-monitoring-alertmanager:9093"]
   verbs: ['get']
 ``` 
-
+<br>
 **Below are some examples to help you configure the `RoleBindings` in Kubernetes to attach to a user:**
 
 * **Note**: You will need to fill in the subjects.
