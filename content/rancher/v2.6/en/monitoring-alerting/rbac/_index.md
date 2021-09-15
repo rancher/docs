@@ -64,7 +64,7 @@ Only those with who have some Kubernetes `ClusterRole` should be able to:
 
 ### Additional Monitoring Roles
 
-Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a RoleBinding that references it.
+Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a RoleBinding that references it. To define a RoleBinding with `kubectl` instead of through Rancher, click [here]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/rbac/#assigning-roles-and-clusterroles-to-users-with-kubectl).
 
 Admins should use these roles to provide more fine-grained access to users:
 
@@ -76,102 +76,60 @@ Admins should use these roles to provide more fine-grained access to users:
 | monitoring-dashboard-admin | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-edit | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-view | Allow admins to assign roles to users to be able to view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
-<br>
-**Below are some examples to help you configure the `Role` in Kubernetes to attach to a user:**
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: monitoring-grafana-view
-  namespace: cattle-monitoring-system
-rules:
-- apiGroups: [""]
-  resources: ["services/proxy"]
-  resourceNames: ["http:rancher-monitoring-grafana:80", "https:rancher-monitoring-grafana:80"]
-  verbs: ['get']
-```
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: monitoring-prometheus-view
-  namespace: cattle-monitoring-system
-rules:
-- apiGroups: [""]
-  resources: ["services/proxy"]
-  resourceNames: ["http:rancher-monitoring-prometheus:9090", "https:rancher-monitoring-prometheus:9090"]
-  verbs: ['get']
-```
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: monitoring-alertmanager-view
-  namespace: cattle-monitoring-system
-rules:
-- apiGroups: [""]
-  resources: ["services/proxy"]
-  resourceNames: ["http:rancher-monitoring-alertmanager:9093", "https:rancher-monitoring-alertmanager:9093"]
-  verbs: ['get']
-```
-<br>
-**Below are some examples to help you configure the `RoleBindings` in Kubernetes to attach to a user:**
-
-* **Note**: You will need to fill in the subjects.
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: monitoring-grafana-view
-  namespace: cattle-monitoring-system
-roleRef:
-  kind: Role
-  name: monitoring-grafana-view
-  apiGroup: rbac.authorization.k8s.io
-subjects:
-- kind: User
-  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
-  apiGroup: rbac.authorization.k8s.io
-```
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: monitoring-prometheus-view
-  namespace: cattle-monitoring-system
-roleRef:
-  kind: Role
-  name: monitoring-prometheus-view
-  apiGroup: rbac.authorization.k8s.io
-subjects:
-- kind: User
-  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
-  apiGroup: rbac.authorization.k8s.io
-```
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-  name: monitoring-alertmanager-view
-  namespace: cattle-monitoring-system
-roleRef:
-  kind: Role
-  name: monitoring-alertmanager-view
-  apiGroup: rbac.authorization.k8s.io
-subjects:
-- kind: User
-  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
-  apiGroup: rbac.authorization.k8s.io
-  ``` 
 ### Additional Monitoring ClusterRoles
 
-Monitoring also creates additional `ClusterRoles` that are not assigned to users by default but are created within the cluster.  They are not aggregated by default but can be bound to a namespace by deploying a RoleBinding that references it.
+Monitoring also creates additional `ClusterRoles` that are not assigned to users by default but are created within the cluster.  They are not aggregated by default but can be bound to a namespace by deploying a RoleBinding that references it. To define a ClusterRoleBinding with `kubectl` instead of through Rancher, click [here]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/rbac/#assigning-roles-and-clusterroles-to-users-with-kubectl).
 
 | Role | Purpose  |
 | ------------------------------| ---------------------------|
 | monitoring-ui-view | <a id="monitoring-ui-view"></a>_Available as of Monitoring v2 14.5.100+_ Provides read-only access to external Monitoring UIs by giving a user permission to list the Prometheus, Alertmanager, and Grafana endpoints and make GET requests to Prometheus, Grafana, and Alertmanager UIs through the Rancher proxy. |
+
+### Assigning Roles and ClusterRoles to Users with kubectl
+
+An alternative method to using Rancher to attach a Role to a user is by defining them in YAML files that you create. You must first configure the `RoleBinding` or `ClusterRoleBinding` with the YAML file that defines the User and Role. Then to apply the changes, you must run the `kubectl` command `kubectl apply`.
+<br>
+
+* **Roles**: Below is an example of a YAML file to help you configure `RoleBindings` in Kubernetes to attach to a user. Note that you will need to fill in the subject below.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: monitoring-config-view
+  namespace: cattle-monitoring-system
+roleRef:
+  kind: Role
+  name: monitoring-config-view
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: User
+  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
+  apiGroup: rbac.authorization.k8s.io
+```
+
+* **ClusterRoles**: Below is an example of a YAML file to help you configure `ClusterRoleBindings` in Kubernetes to attach to a user. Note that you will need to fill in the subject below.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: monitoring-admin
+  namespace: cattle-monitoring-system
+roleRef:
+  kind: Role
+  name: monitoring-admin
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: User
+  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
+  apiGroup: rbac.authorization.k8s.io
+```
+
+* **kubectl**: Below are examples of `kubectl` commands used to apply the changes you've created in the YAML     files. Note that you will need to fill in your YAML filename accordingly.
+
+  * **Roles:** `kubectl apply -f monitoring-config-view-role-binding.yaml`
+  * **ClusterRoles:** `kubectl apply -f monitoring-admin-cluster-role-binding.yaml`
 
 # Users with Rancher Based Permissions
 
