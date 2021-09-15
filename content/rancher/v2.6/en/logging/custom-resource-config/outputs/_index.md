@@ -145,13 +145,13 @@ With `coolapp` running, we will follow a similar path as when we created a `Clus
 apiVersion: logging.banzaicloud.io/v1beta1
 kind: Output
 metadata:
-    name: "devteam-splunk"
-    namespace: "devteam"
+  name: "devteam-splunk"
+  namespace: "devteam"
 spec:
-    SplunkHec:
-        host: splunk.example.com
-        port: 8088
-        protocol: http
+  splunkHec:
+    hec_host: splunk.example.com
+    hec_port: 8088
+    protocol: http
 ```
 
 Once again, let's feed our `Output` some logs:
@@ -160,8 +160,8 @@ Once again, let's feed our `Output` some logs:
 apiVersion: logging.banzaicloud.io/v1beta1
 kind: Flow
 metadata:
-    name: "devteam-logs"
-    namespace: "devteam"
+  name: "devteam-logs"
+  namespace: "devteam"
 spec:
   localOutputRefs:
     - "devteam-splunk"
@@ -174,37 +174,37 @@ Let's say you wanted to send all logs in your cluster to an `syslog` server. Fir
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
-    kind: ClusterOutput
-    metadata:
-      name: "example-syslog"
-      namespace: "cattle-logging-system"
-    spec:
-      syslog:
-        buffer:
-          timekey: 30s
-          timekey_use_utc: true
-          timekey_wait: 10s
-          flush_interval: 5s
-        format:
-          type: json
-          app_name_field: test
-        host: syslog.example.com
-        insecure: true
-        port: 514
-        transport: tcp
+kind: ClusterOutput
+metadata:
+  name: "example-syslog"
+  namespace: "cattle-logging-system"
+spec:
+  syslog:
+    buffer:
+      timekey: 30s
+      timekey_use_utc: true
+      timekey_wait: 10s
+      flush_interval: 5s
+    format:
+      type: json
+      app_name_field: test
+    host: syslog.example.com
+    insecure: true
+    port: 514
+    transport: tcp
 ```
 
 Now that we have configured where we want the logs to go, let's configure all logs to go to that `Output`.
 
 ```yaml
 apiVersion: logging.banzaicloud.io/v1beta1
-    kind: ClusterFlow
-    metadata:
-      name: "all-logs"
-      namespace: cattle-logging-system
-    spec:
-      globalOutputRefs:
-        - "example-syslog"
+kind: ClusterFlow
+metadata:
+  name: "all-logs"
+  namespace: cattle-logging-system
+spec:
+  globalOutputRefs:
+    - "example-syslog"
 ```
 
 ### Unsupported Outputs
