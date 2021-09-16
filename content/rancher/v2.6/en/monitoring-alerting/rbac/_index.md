@@ -64,7 +64,7 @@ Only those with who have some Kubernetes `ClusterRole` should be able to:
 
 ### Additional Monitoring Roles
 
-Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a RoleBinding that references it. To define a RoleBinding with `kubectl` instead of through Rancher, click [here]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/rbac/#assigning-roles-and-clusterroles-to-users-with-kubectl).
+Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a RoleBinding that references it. To define a RoleBinding with `kubectl` instead of through Rancher, click [here](#assigning-roles-and-clusterroles-with-kubectl).
 
 Admins should use these roles to provide more fine-grained access to users:
 
@@ -79,18 +79,18 @@ Admins should use these roles to provide more fine-grained access to users:
 
 ### Additional Monitoring ClusterRoles
 
-Monitoring also creates additional `ClusterRoles` that are not assigned to users by default but are created within the cluster.  They are not aggregated by default but can be bound to a namespace by deploying a RoleBinding that references it. To define a ClusterRoleBinding with `kubectl` instead of through Rancher, click [here]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/rbac/#assigning-roles-and-clusterroles-to-users-with-kubectl).
+Monitoring also creates additional `ClusterRoles` that are not assigned to users by default but are created within the cluster.  They are not aggregated by default but can be bound to a namespace by deploying a RoleBinding that references it. To define a ClusterRoleBinding with `kubectl` instead of through Rancher, click [here](#assigning-roles-and-clusterroles-with-kubectl).
 
 | Role | Purpose  |
 | ------------------------------| ---------------------------|
 | monitoring-ui-view | <a id="monitoring-ui-view"></a>_Available as of Monitoring v2 14.5.100+_ Provides read-only access to external Monitoring UIs by giving a user permission to list the Prometheus, Alertmanager, and Grafana endpoints and make GET requests to Prometheus, Grafana, and Alertmanager UIs through the Rancher proxy. |
 
-### Assigning Roles and ClusterRoles to Users with kubectl
+### Assigning Roles and ClusterRoles with kubectl
 
-An alternative method to using Rancher to attach a Role to a user is by defining them in YAML files that you create. You must first configure the `RoleBinding` or `ClusterRoleBinding` with the YAML file that defines the User and Role. Then to apply the changes, you must run the `kubectl` command `kubectl apply`.
+An alternative method to using Rancher to attach a Role or ClusterRole to a user or group is by defining bindings in YAML files that you create. You must first configure the `RoleBinding` or `ClusterRoleBinding` with the YAML file that defines the User and Role. Then to apply the changes, you must run the `kubectl apply` command.
 <br>
 
-* **Roles**: Below is an example of a YAML file to help you configure `RoleBindings` in Kubernetes to attach to a user. Note that you will need to fill in the subject below.
+* **Roles**: Below is an example of a YAML file to help you configure `RoleBindings` in Kubernetes to attach to a user. You will need to fill in the name below, and name is case-sensitive. Note that the example files shown in the `kubectl apply` commands below are named using the filenames from these example commands.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -104,11 +104,11 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: User
-  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
+  name: Manager
   apiGroup: rbac.authorization.k8s.io
 ```
 
-* **ClusterRoles**: Below is an example of a YAML file to help you configure `ClusterRoleBindings` in Kubernetes to attach to a user. Note that you will need to fill in the subject below.
+* **ClusterRoles**: Below is an example of a YAML file to help you configure ClusterRoleBindings in Kubernetes to attach to a user. You will need to fill in the name below, and name is case-sensitive. Note that the example files shown in the `kubectl apply` commands below are named using the filenames from these example commands.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -122,11 +122,11 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: User
-  name: "" # user's name, e.g. u-<random-string>. This can be found via kubectl get users -A
+  name: Manager
   apiGroup: rbac.authorization.k8s.io
 ```
 
-* **kubectl**: Below are examples of `kubectl` commands used to apply the changes you've created in the YAML     files. Note that you will need to fill in your YAML filename accordingly.
+* **kubectl**: Below are examples of `kubectl` commands used to apply the bindings you've created in the YAML     files. As noted, you will need to fill in your YAML filename accordingly.
 
   * **Roles:** `kubectl apply -f monitoring-config-view-role-binding.yaml`
   * **ClusterRoles:** `kubectl apply -f monitoring-admin-cluster-role-binding.yaml`
