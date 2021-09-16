@@ -54,7 +54,7 @@ Log into your Linux host, and then run the minimum installation command below.
 Privileged access is [required.](#privileged-access-for-rancher)
 
 ```bash
-docker run -d --restart=unless-stopped \
+docker run -d --restart unless-stopped \
   -p 80:80 -p 443:443 \
   --privileged \
   rancher/rancher:latest
@@ -81,7 +81,7 @@ After creating your certificate, run the Docker command below to install Rancher
 Privileged access is [required.](#privileged-access-for-rancher)
 
 ```bash
-docker run -d --restart=unless-stopped \
+docker run -d --restart unless-stopped \
   -p 80:80 -p 443:443 \
   -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
   -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
@@ -113,7 +113,7 @@ After obtaining your certificate, run the Docker command below.
 Privileged access is [required.](#privileged-access-for-rancher)
 
 ```bash
-docker run -d --restart=unless-stopped \
+docker run -d --restart unless-stopped \
   -p 80:80 -p 443:443 \
   -v /<CERT_DIRECTORY>/<FULL_CHAIN.pem>:/etc/rancher/ssl/cert.pem \
   -v /<CERT_DIRECTORY>/<PRIVATE_KEY.pem>:/etc/rancher/ssl/key.pem \
@@ -143,7 +143,7 @@ After you fulfill the prerequisites, you can install Rancher using a Let's Encry
 Privileged access is [required.](#privileged-access-for-rancher)
 
 ```
-docker run -d --restart=unless-stopped \
+docker run -d --restart unless-stopped \
   -p 80:80 -p 443:443 \
   --privileged \
   rancher/rancher:latest \
