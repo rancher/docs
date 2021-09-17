@@ -88,11 +88,12 @@ Monitoring also creates additional `ClusterRoles` that are not assigned to users
 ### Assigning Roles and ClusterRoles with kubectl
 
 An alternative method to using Rancher to attach a Role or ClusterRole to a user or group is by defining bindings in YAML files that you create. You must first configure the `RoleBinding` or `ClusterRoleBinding` with the YAML file that defines the User and Role. Then to apply the changes, you must run the `kubectl apply` command.
-<br>
 
-* **Roles**: Below is an example of a YAML file to help you configure `RoleBindings` in Kubernetes to attach to a user. You will need to fill in the name below, and name is case-sensitive. Note that the example files shown in the `kubectl apply` commands below are named using the filenames from these example commands.
+
+* **Roles**: Below is an example of a YAML file to help you configure `RoleBindings` in Kubernetes to attach to a user. You will need to fill in the name below, and name is case-sensitive. 
 
 ```
+# monitoring-config-view-role-binding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -104,13 +105,14 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: User
-  name: Manager
+  name: u-b4qkhsnliz (this can be found via `kubectl get users -A`)
   apiGroup: rbac.authorization.k8s.io
 ```
 
-* **ClusterRoles**: Below is an example of a YAML file to help you configure ClusterRoleBindings in Kubernetes to attach to a user. You will need to fill in the name below, and name is case-sensitive. Note that the example files shown in the `kubectl apply` commands below are named using the filenames from these example commands.
+* **ClusterRoles**: Below is an example of a YAML file to help you configure ClusterRoleBindings in Kubernetes to attach to a user. You will need to fill in the name below, and name is case-sensitive. 
 
 ```
+# monitoring-admin-cluster-role-binding.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -122,11 +124,11 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: User
-  name: Manager
+  name: u-b4qkhsnliz (this can be found via `kubectl get users -A`)
   apiGroup: rbac.authorization.k8s.io
 ```
 
-* **kubectl**: Below are examples of `kubectl` commands used to apply the bindings you've created in the YAML     files. As noted, you will need to fill in your YAML filename accordingly.
+* **kubectl**: Below are examples of `kubectl` commands used to apply the bindings you've created in the YAML files. As noted, you will need to fill in your YAML filename accordingly.
 
   * **Roles:** `kubectl apply -f monitoring-config-view-role-binding.yaml`
   * **ClusterRoles:** `kubectl apply -f monitoring-admin-cluster-role-binding.yaml`
