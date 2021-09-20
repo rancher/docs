@@ -64,7 +64,7 @@ Only those with who have some Kubernetes `ClusterRole` should be able to:
 
 ### Additional Monitoring Roles
 
-Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a `RoleBinding` or `ClusterRoleBinding` that references it. To define a `RoleBinding` with `kubectl` instead of through Rancher, click [here](#assigning-roles-and-clusterroles-with-kubectl).
+Monitoring also creates additional `Roles` that are not assigned to users by default but are created within the cluster. They can be bound to a namespace by deploying a `RoleBinding` that references it. To define a `RoleBinding` with `kubectl` instead of through Rancher, click [here](#assigning-roles-and-clusterroles-with-kubectl).
 
 Admins should use these roles to provide more fine-grained access to users:
 
