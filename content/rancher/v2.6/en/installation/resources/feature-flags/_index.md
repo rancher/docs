@@ -25,7 +25,7 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 
 The following is a list of the feature flags available in Rancher:
 
-- `harvester`: This feature flag is available in v2.6.1. It is used to manage access to the Harvester list page where users can navigate directly to Harvester host clusters and have the ability to import them. This feature flag will be enabled by default and will appear in the Feature Flags page in Global Settings on Rancher.
+- `harvester`: This feature flag is available starting in v2.6.1. It is used to manage access to the Harvester list page where users can navigate directly to Harvester host clusters and have the ability to import them. This feature flag will be enabled by default and will appear in the Feature Flags page in Global Settings on Rancher.
 - `token-hashing`: This feature enables one-way [hashing of tokens]({{<baseurl>}}/rancher/v2.6/en/api/api-tokens) and cannot be disabled once enabled.
 - `fleet`: Rancher comes with [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) preinstalled in v2.5+. Rancher v2.6's new provisioning system leverages Fleet's bundle deployment capabilities in order to manage clusters at scale. Therefore, in Rancher v2.6, Fleet can no longer be disabled. If Fleet was disabled in Rancher v2.5.x, it will become enabled if Rancher is upgraded to v2.6.x.
 - `continuous-delivery`: In Rancher v2.5.x, Fleet came with a GitOps feature that could not be disabled separately from Fleet. In Rancher v2.6, the `continuous-delivery` feature flag was introduced to allow the GitOps feature of Fleet to be disabled. For more information, see [this page.](./continuous-delivery)
