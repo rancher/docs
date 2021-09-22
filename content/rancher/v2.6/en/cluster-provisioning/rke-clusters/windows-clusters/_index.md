@@ -57,6 +57,8 @@ For the support lifecycle dates for Windows Server, see the [Microsoft Documenta
 
 Kubernetes v1.15+ is required.
 
+If you are using Kubernetes v1.21 with Windows Server 20H2 Standard Core, the patch "2019-08 Servicing Stack Update for Windows Server" must be installed on the node.
+
 ### Node Requirements
 
 The hosts in the cluster need to have at least:
