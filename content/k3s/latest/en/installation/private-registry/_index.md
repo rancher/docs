@@ -25,7 +25,7 @@ Mirrors is a directive that defines the names and endpoints of the private regis
 
 ```
 mirrors:
-  mycustomreg.com:
+  "mycustomreg.com:5000":
     endpoint:
       - "https://mycustomreg.com:5000"
 ```
