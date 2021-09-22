@@ -37,6 +37,7 @@ Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters 
 The RKE2 provisioning tech preview also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
 
 - Windows Containers with RKE2 powered by containerd
+- Windows Containers are now supported on Windows Server Standard Edition by installing the following  patch: 2019-08 Servicing Stack Update for Windows Server.  
 - Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
 - Calico CNI for Windows RKE2 custom clusters
 - SAC releases of Windows Server (2004 and 20H2) are included in the technical preview
@@ -56,6 +57,8 @@ For the support lifecycle dates for Windows Server, see the [Microsoft Documenta
 ### Kubernetes Version
 
 Kubernetes v1.15+ is required.
+
+> **Note:** Kubernetes v1.21 will now work with Windows 20H2 Standard by installing the patch "2019-08 Servicing Stack Update for Windows Server."
 
 ### Node Requirements
 
