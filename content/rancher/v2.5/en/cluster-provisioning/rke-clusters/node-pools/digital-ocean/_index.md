@@ -19,11 +19,10 @@ Then you will create a DigitalOcean cluster in Rancher, and when configuring the
 
 ### 1. Create your cloud credentials
 
-1. In the upper left corner, click **≡ > Cluster Management.**
-1. In the left navigation menu, click **Cloud Credentials.**
-1. Click **Create.**
-1. Click **Digital Ocean.**
+1. In the Rancher UI, click the user profile button in the upper right corner, and click **Cloud Credentials.**
+1. Click **Add Cloud Credential.**
 1. Enter a name for the cloud credential.
+1. In the **Cloud Credential Type** field, select **DigitalOcean**.
 1. Enter your Digital Ocean credentials.
 1. Click **Create.**
 
@@ -33,16 +32,15 @@ Then you will create a DigitalOcean cluster in Rancher, and when configuring the
 
 Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/#node-templates) for DigitalOcean will allow Rancher to provision new nodes in DigitalOcean. Node templates can be reused for other clusters.
 
-1. In the upper left corner, click **≡ > Cluster Management.**
-1. In the left navigation menu, click **Node Templates.**
+1. In the Rancher UI, click the user profile button in the upper right corner, and click **Node Templates.**
+1. Click **Add Template.**
 1. Fill out a node template for DigitalOcean. For help filling out the form, refer to [DigitalOcean Node Template Configuration.](./do-node-template-config)
 
 ### 3. Create a cluster with node pools using the node template
 
 Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
 
-1. In the upper left corner, click **≡ > Cluster Management**.
-1. Click **Create**.
+1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **DigitalOcean**.
 1. Enter a **Cluster Name**.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
