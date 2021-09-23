@@ -38,9 +38,8 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 
 # Registering a Cluster
 
-1. In the upper left corner, click **≡ > Cluster Management.**
-1. From the **Clusters** page, click **Import Existing**.
-2. Click the type of Kubernetes cluster you want to import.
+1. From the **Clusters** page, click **Add Cluster**.
+2. Under **Register an existing Kubernetes cluster**, click the type of Kubernetes cluster you want to register.
 3. Enter a **Cluster Name**.
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 5. For Rancher v2.5.6+, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
