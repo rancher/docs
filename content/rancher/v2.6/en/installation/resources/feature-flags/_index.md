@@ -25,7 +25,7 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 
 The following is a list of the feature flags available in Rancher:
 
-- `rke2`: This feature is available starting in v2.6.1. It features a new registration command that allows the user to select "Windows", then presents the appropriate options to allow users to configure the custom Windows cluster. Only Windows worker nodes may be registered. This feature flag will be enabled by default and will appear in the Feature Flags page in Global Settings on Rancher.
+- `rke2`: We have introduced the ability to provision RKE2 clusters as tech preview. By default, this feature flag is enabled, which allows users to attempt to provision these type of clusters. Additionally, users can now select "Windows" in the Cluster Management page, then choose the appropriate options to configure the custom Windows cluster. Only Windows worker nodes may be registered. 
 - `token-hashing`: This feature enables one-way [hashing of tokens]({{<baseurl>}}/rancher/v2.6/en/api/api-tokens) and cannot be disabled once enabled.
 - `fleet`: Rancher comes with [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) preinstalled in v2.5+. Rancher v2.6's new provisioning system leverages Fleet's bundle deployment capabilities in order to manage clusters at scale. Therefore, in Rancher v2.6, Fleet can no longer be disabled. If Fleet was disabled in Rancher v2.5.x, it will become enabled if Rancher is upgraded to v2.6.x.
 - `continuous-delivery`: In Rancher v2.5.x, Fleet came with a GitOps feature that could not be disabled separately from Fleet. In Rancher v2.6, the `continuous-delivery` feature flag was introduced to allow the GitOps feature of Fleet to be disabled. For more information, see [this page.](./continuous-delivery)
@@ -47,7 +47,7 @@ The below table shows the availability and default value for feature flags in Ra
 | `fleet`  | `true` | Can no longer be disabled | v2.6.0 | N/A  |
 | `continuous-delivery` | `true` | GA* | v2.6.0 | |
 | `token-hashing` | `false` | GA* | v2.6.0 | |
-| `rke2` | `true` | Experimental | v2.6.1 | |
+| `rke2` | `true` | Experimental | v2.6.0 | |
 
 \* Generally Available. This feature is included in Rancher and it is not experimental.
 
