@@ -28,6 +28,12 @@ This guide covers the following topics:
 - [Configuration for Storage Classes in Azure](#configuration-for-storage-classes-in-azure)
   <!-- /TOC -->
 
+  # Changes in Rancher v2.6.1
+
+RKE2 Windows Implementation
+
+When provisioning a new Windows cluster, there is a new registration command that allows the user to select "Windows", and then presents the user with the appropriate options to configure the custom cluster. Only Windows worker nodes may be registered. 
+
   # Changes in Rancher v2.6
 
 _Tech Preview_
@@ -38,8 +44,6 @@ The RKE2 provisioning tech preview also includes installing RKE2 on Windows clus
 
 - Windows Containers with RKE2 powered by containerd
 - Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
-- New registration command allowing "Windows" to be selected 
-- New options to configure Windows RKE2 custom cluster (only for Windows worker nodes)
 - Calico CNI for Windows RKE2 custom clusters
 - SAC releases of Windows Server (2004 and 20H2) are included in the technical preview
 
