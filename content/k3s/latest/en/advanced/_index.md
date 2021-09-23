@@ -11,6 +11,7 @@ This section contains advanced information describing the different ways you can
 - [Certificate rotation](#certificate-rotation)
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
+- [Using etcdctl](#using-etcdctl)
 - [Configuring containerd](#configuring-containerd)
 - [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
 - [Running K3s with Rootless mode (Experimental)](#running-k3s-with-rootless-mode-experimental)
@@ -115,6 +116,24 @@ rancher/library-traefik          1.7.19              aa764f7db3051       85.7MB
 rancher/local-path-provisioner   v0.0.11             9d12f9848b99f       36.2MB
 rancher/metrics-server           v0.3.6              9dd718864ce61       39.9MB
 rancher/pause                    3.1                 da86e6ba6ca19       742kB
+```
+
+# Using etcdctl
+
+etcdctl provides a CLI for etcd.
+
+If you would like to use etcdctl after install K3s with embedded etcd, install etcdctl using the [official documentation:](https://etcd.io/docs/latest/install/) 
+
+```
+$ VERSION="v3.5.0"
+$ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VERSION}-linux-amd64.tar.gz --output etcdctl-${VERSION}-linux-amd64.tar.gz
+$ sudo tar -zxvf etcdctl-${VERSION}-linux-amd64.tar.gz -C /usr/local/bin
+```
+
+Then start using etcdctl commands with the appropiate k3s flags:
+
+```
+$ sudo etcdctl --cacert=/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt --cert=/var/lib/rancher/k3s/server/tls/etcd/client.crt --key=/var/lib/rancher/k3s/server/tls/etcd/client.key version
 ```
 
 # Configuring containerd
