@@ -60,8 +60,7 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
 
 ```
-helm install rancher-latest/rancher \
-  --name rancher \
+helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set 'extraEnv[0].name=CATTLE_FEATURES'
@@ -76,25 +75,11 @@ For an air gap installation of Rancher, you need to add a Helm chart repository 
 
 Here is an example of a command for passing in the feature flag names when rendering the Helm template. In the below example, two features are enabled by passing the feature flag names in a comma separated list.
 
-The Helm 3 command is as follows:
+The Helm command is as follows:
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --no-hooks \ # prevent files for Helm hooks from being generated
-  --namespace cattle-system \
-  --set hostname=<RANCHER.YOURDOMAIN.COM> \
-  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-  --set ingress.tls.source=secret \
-  --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-  --set useBundledSystemChart=true # Use the packaged Rancher system charts
-  --set 'extraEnv[0].name=CATTLE_FEATURES'
-  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
-```
-
-The Helm 2 command is as follows:
-
-```
-helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --namespace cattle-system \
   --set hostname=<RANCHER.YOURDOMAIN.COM> \
   --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
