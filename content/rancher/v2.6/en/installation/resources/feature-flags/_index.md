@@ -45,7 +45,7 @@ The below table shows the availability and default value for feature flags in Ra
 | `continuous-delivery` | `true` | GA* | v2.6.0 | |
 | `token-hashing` | `false` for new installs, `true` for upgrades | GA* | v2.6.0 | |
 | `legacy` | `false` for new installs, `true` for upgrades | GA* | v2.6.0 | |
-| `multi-cluster-management` | `false` | GA* | v2.x | |
+| `multi-cluster-management` | `false` | GA* | v2.5.0 | |
 
 \* Generally Available. This feature is included in Rancher and it is not experimental.
 
