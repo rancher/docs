@@ -130,7 +130,7 @@ $ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VE
 $ sudo tar -zxvf etcdctl-${VERSION}-linux-amd64.tar.gz -C /usr/local/bin
 ```
 
-Then start using etcdctl commands with the appropiate k3s flags:
+Then start using etcdctl commands with the appropriate k3s flags:
 
 ```
 $ sudo etcdctl --cacert=/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt --cert=/var/lib/rancher/k3s/server/tls/etcd/client.crt --key=/var/lib/rancher/k3s/server/tls/etcd/client.key version
