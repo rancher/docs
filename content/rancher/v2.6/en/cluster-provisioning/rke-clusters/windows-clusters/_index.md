@@ -43,7 +43,6 @@ Windows features for RKE2 include:
 - Calico CNI for Windows RKE2 custom clusters
 - SAC releases of Windows Server (2004 and 20H2) are included in the technical preview
 
-
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
 # Requirements for Windows Clusters
