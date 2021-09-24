@@ -122,7 +122,7 @@ rancher/pause                    3.1                 da86e6ba6ca19       742kB
 
 etcdctl provides a CLI for etcd.
 
-If you would like to use etcdctl after install K3s with embedded etcd, install etcdctl using the [official documentation:](https://etcd.io/docs/latest/install/) 
+If you would like to use etcdctl after installing K3s with embedded etcd, install etcdctl using the [official documentation:](https://etcd.io/docs/latest/install/) 
 
 ```
 $ VERSION="v3.5.0"
