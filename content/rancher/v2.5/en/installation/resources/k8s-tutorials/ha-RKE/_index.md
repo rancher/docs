@@ -12,8 +12,6 @@ This section describes how to install a Kubernetes cluster. This cluster should 
 
 > As of Rancher v2.5, Rancher can run on any Kubernetes cluster, included hosted Kubernetes solutions such as Amazon EKS. The below instructions represent only one possible way to install Kubernetes.
 
-The Rancher management server can only be run on Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported.
-
 For systems without direct internet access, refer to [Air Gap: Kubernetes install.]({{<baseurl>}}/rancher/v2.5/en/installation/air-gap-high-availability/)
 
 > **Single-node Installation Tip:**
