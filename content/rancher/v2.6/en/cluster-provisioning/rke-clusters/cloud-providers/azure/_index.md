@@ -16,7 +16,7 @@ The following account types are not supported for Azure Subscriptions:
 - Single tenant accounts (i.e. accounts with no subscriptions).
 - Multi-subscription accounts.
 
-To set up the Azure cloud provider, the following credentials need to be configured:
+To set up the Azure cloud provider following credentials need to be configured:
 
 1. [Set up the Azure Tenant ID](#1-set-up-the-azure-tenant-id)
 2. [Set up the Azure Client ID and Azure Client Secret](#2-set-up-the-azure-client-id-and-azure-client-secret)
