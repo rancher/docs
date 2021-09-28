@@ -3,6 +3,7 @@ title: NGINX
 weight: 270
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/create-nodes-lb/nginx
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/create-nodes-lb/nginx/
 ---
 NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.
 

@@ -1,6 +1,8 @@
 ---
 title: Configuration for Storage Classes in Azure
 weight: 3
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/azure-storageclass/
 ---
 
 If you are using Azure VMs for your nodes, you can use [Azure files](https://docs.microsoft.com/en-us/azure/aks/azure-files-dynamic-pv) as a StorageClass for the cluster.

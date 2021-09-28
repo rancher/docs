@@ -4,6 +4,7 @@ shortTitle: Rancher Managed Clusters
 weight: 2
 aliases:
   - /rancher/v2.5/en/best-practices/v2.5/rancher-managed
+  - /rancher/v2.x/en/best-practices/v2.5/rancher-managed/
 ---
 
 ### Logging

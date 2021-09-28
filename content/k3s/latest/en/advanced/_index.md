@@ -11,9 +11,10 @@ This section contains advanced information describing the different ways you can
 - [Certificate rotation](#certificate-rotation)
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
+- [Using etcdctl](#using-etcdctl)
 - [Configuring containerd](#configuring-containerd)
 - [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
-- [Running K3s with RootlessKit (Experimental)](#running-k3s-with-rootlesskit-experimental)
+- [Running K3s with Rootless mode (Experimental)](#running-k3s-with-rootless-mode-experimental)
 - [Node labels and taints](#node-labels-and-taints)
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
@@ -22,6 +23,7 @@ This section contains advanced information describing the different ways you can
 - [Enabling cgroups for Raspbian Buster](#enabling-cgroups-for-raspbian-buster)
 - [SELinux Support](#selinux-support)
 - [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
+- [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
 
 # Certificate Rotation
 
@@ -31,7 +33,7 @@ If the certificates are expired or have fewer than 90 days remaining before they
 
 # Auto-Deploying Manifests
 
-Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
+Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`, both on startup and when the file is changed on disk. Deleting files out of this directory will not delete the corresponding resources from the cluster.
 
 For information about deploying Helm charts, refer to the section about [Helm.](../helm)
 
@@ -116,6 +118,24 @@ rancher/metrics-server           v0.3.6              9dd718864ce61       39.9MB
 rancher/pause                    3.1                 da86e6ba6ca19       742kB
 ```
 
+# Using etcdctl
+
+etcdctl provides a CLI for etcd.
+
+If you would like to use etcdctl after installing K3s with embedded etcd, install etcdctl using the [official documentation.](https://etcd.io/docs/latest/install/) 
+
+```
+$ VERSION="v3.5.0"
+$ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VERSION}-linux-amd64.tar.gz --output etcdctl-${VERSION}-linux-amd64.tar.gz
+$ sudo tar -zxvf etcdctl-${VERSION}-linux-amd64.tar.gz -C /usr/local/bin
+```
+
+Then start using etcdctl commands with the appropriate K3s flags:
+
+```
+$ sudo etcdctl --cacert=/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt --cert=/var/lib/rancher/k3s/server/tls/etcd/client.crt --key=/var/lib/rancher/k3s/server/tls/etcd/client.key version
+```
+
 # Configuring containerd
 
 K3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/containerd/config.toml`.
@@ -163,18 +183,15 @@ As of v1.17.4+k3s1, K3s added the experimental feature of enabling secrets encry
 
 Once enabled any created secret will be encrypted with this key. Note that if you disable encryption then any encrypted secrets will not be readable until you enable encryption again.
 
-# Running K3s with RootlessKit (Experimental)
+# Running K3s with Rootless mode (Experimental)
 
 > **Warning:** This feature is experimental.
 
-RootlessKit is a kind of Linux-native "fake root" utility, made for mainly [running Docker and Kubernetes as an unprivileged user,](https://github.com/rootless-containers/usernetes) so as to protect the real root on the host from potential container-breakout attacks.
+Rootless mode allows running the entire k3s an unprivileged user, so as to protect the real root on the host from potential container-breakout attacks.
 
-Initial rootless support has been added but there are a series of significant usability issues surrounding it.
+See also https://rootlesscontaine.rs/ to learn about Rootless mode.
 
-We are releasing the initial support for those interested in rootless and hopefully some people can help to improve the usability.  First, ensure you have a proper setup and support for user namespaces.  Refer to the [requirements section](https://github.com/rootless-containers/rootlesskit#setup) in RootlessKit for instructions.
-In short, latest Ubuntu is your best bet for this to work.
-
-### Known Issues with RootlessKit
+### Known Issues with Rootless mode
 
 * **Ports**
 
@@ -184,24 +201,41 @@ In short, latest Ubuntu is your best bet for this to work.
 
     Currently, only `LoadBalancer` services are automatically bound.
 
-* **Daemon lifecycle**
-
-    Once you kill K3s and then start a new instance of K3s it will create a new network namespace, but it doesn't kill the old pods.  So you are left
-    with a fairly broken setup.  This is the main issue at the moment, how to deal with the network namespace.
-
-    The issue is tracked in https://github.com/rootless-containers/rootlesskit/issues/65
-
 * **Cgroups**
 
-    Cgroups are not supported.
+    Cgroup v1 is not supported. v2 is supported.
+
+* **Multi-node cluster**
+
+    Multi-cluster installation is untested and undocumented.
 
 ### Running Servers and Agents with Rootless
+* Enable cgroup v2 delegation, see https://rootlesscontaine.rs/getting-started/common/cgroup2/ .
+  This step is optional, but highly recommended for enabling CPU and memory resource limtitation.
 
-Just add `--rootless` flag to either server or agent. So run `k3s server --rootless` and then look for the message `Wrote kubeconfig [SOME PATH]` for where your kubeconfig file is.
+* Download `k3s-rootless.service` from [`https://github.com/k3s-io/k3s/blob/<VERSION>/k3s-rootless.service`](https://github.com/k3s-io/k3s/blob/master/k3s-rootless.service).
+  Make sure to use the same version of `k3s-rootless.service` and `k3s`.
 
-For more information about setting up the kubeconfig file, refer to the [section about cluster access.](../cluster-access)
+* Install `k3s-rootless.service` to `~/.config/systemd/user/k3s-rootless.service`.
+  Installing this file as a system-wide service (`/etc/systemd/...`) is not supported.
+  Depending on the path of `k3s` binary, you might need to modify the `ExecStart=/usr/local/bin/k3s ...` line of the file.
 
-> Be careful, if you use `-o` to write the kubeconfig to a different directory it will probably not work. This is because the K3s instance in running in a different mount namespace.
+* Run `systemctl --user daemon-reload`
+
+* Run `systemctl --user enable --now k3s-rootless`
+
+* Run `KUBECONFIG=~/.kube/k3s.yaml kubectl get pods -A`, and make sure the pods are running.
+
+> **Note:** Don't try to run `k3s server --rootless` on a terminal, as it doesn't enable cgroup v2 delegation.
+> If you really need to try it on a terminal, prepend `systemd-run --user -p Delegate=yes --tty` to create a systemd scope.
+>
+> i.e., `systemd-run --user -p Delegate=yes --tty k3s server --rootless`
+
+### Troubleshooting
+
+* Run `systemctl --user status k3s-rootless` to check the daemon status
+* Run `journalctl --user -f -u k3s-rootless` to see the daemon log
+* See also https://rootlesscontaine.rs/
 
 # Node Labels and Taints
 
@@ -373,4 +407,64 @@ Using a custom `--data-dir` under SELinux is not supported. To customize it, you
 It is recommended to turn off firewalld:
 ```
 systemctl disable firewalld --now
+```
+
+If enabled, it is required to disable nm-cloud-setup and reboot the node:
+```
+systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
+reboot
+```
+
+# Enabling Lazy Pulling of eStargz (Experimental)
+
+## What's lazy pulling and eStargz?
+
+Pulling images is known as one of the time-consuming steps in the container lifecycle.
+According to [Harter, et al.](https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter),
+
+> pulling packages accounts for 76% of container start time, but only 6.4% of that data is read
+
+To address this issue, k3s experimentally supports *lazy pulling* of image contents.
+This allows k3s to start a container before the entire image has been pulled.
+Instead, the necessary chunks of contents (e.g. individual files) are fetched on-demand. 
+Especially for large images, this technique can shorten the container startup latency.
+
+To enable lazy pulling, the target image needs to be formatted as [*eStargz*](https://github.com/containerd/stargz-snapshotter/blob/main/docs/stargz-estargz.md).
+This is an OCI-alternative but 100% OCI-compatible image format for lazy pulling.
+Because of the compatibility, eStargz can be pushed to standard container registries (e.g. ghcr.io) as well as this is *still runnable* even on eStargz-agnostic runtimes.
+
+eStargz is developed based on the [stargz format proposed by Google CRFS project](https://github.com/google/crfs) but comes with practical features including content verification and performance optimization.
+For more details about lazy pulling and eStargz, please refer to [Stargz Snapshotter project repository](https://github.com/containerd/stargz-snapshotter).
+
+## Configure k3s for lazy pulling of eStargz
+
+As shown in the following, `--snapshotter=stargz` option is needed for k3s server and agent.
+
+```
+k3s server --snapshotter=stargz
+```
+
+With this configuration, you can perform lazy pulling for eStargz-formatted images.
+The following Pod manifest uses eStargz-formatted `node:13.13.0` image (`ghcr.io/stargz-containers/node:13.13.0-esgz`).
+k3s performs lazy pulling for this image.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodejs
+spec:
+  containers:
+  - name: nodejs-estargz
+    image: ghcr.io/stargz-containers/node:13.13.0-esgz
+    command: ["node"]
+    args:
+    - -e
+    - var http = require('http');
+      http.createServer(function(req, res) {
+        res.writeHead(200);
+        res.end('Hello World!\n');
+      }).listen(80);
+    ports:
+    - containerPort: 80
 ```

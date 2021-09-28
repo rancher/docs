@@ -3,6 +3,7 @@ title: Troubleshooting
 weight: 276
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/helm-rancher/troubleshooting
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/helm-rancher/troubleshooting/
 ---
 
 ### Where is everything

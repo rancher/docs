@@ -4,6 +4,7 @@ weight: 7005
 aliases:
   - /rancher/v2.5/en/concepts/api-keys/
   - /rancher/v2.5/en/tasks/user-settings/api-keys/
+  - /rancher/v2.x/en/user-settings/api-keys/
 ---
 
 ## API Keys and User Authentication

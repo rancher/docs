@@ -1,6 +1,8 @@
 ---
 title: Rancher HA
 weight: 104
+aliases:
+  - /rancher/v2.x/en/troubleshooting/rancherha/
 ---
 
 The commands/steps listed on this page can be used to check your Rancher Kubernetes Installation.

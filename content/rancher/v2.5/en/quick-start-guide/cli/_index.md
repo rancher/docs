@@ -1,13 +1,15 @@
 ---
 title: CLI with Rancher
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/cli/
 ---
 
 Interact with Rancher using command line interface (CLI) tools from your workstation.
 
 ## Rancher CLI
 
-Follow the steps in [rancher cli](../cli).
+Follow the steps in [rancher cli](../../cli).
 
 Ensure you can run `rancher kubectl get pods` successfully.
 

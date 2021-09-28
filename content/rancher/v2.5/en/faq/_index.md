@@ -3,9 +3,10 @@ title: FAQ
 weight: 25
 aliases:
   - /rancher/v2.5/en/about/
+  - /rancher/v2.x/en/faq/
 ---
 
-This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.x.
+This FAQ is a work in progress designed to answer the questions our users most frequently ask about Rancher v2.x.
 
 See [Technical FAQ]({{<baseurl>}}/rancher/v2.5/en/faq/technical/), for frequently asked technical questions.
 
@@ -31,7 +32,7 @@ As of Rancher 2.3.0, we support Windows Server 1809 containers. For details on h
 
 **Does Rancher support Istio?**
 
-As of Rancher 2.3.0, we support [Istio.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/istio/)
+As of Rancher 2.3.0, we support [Istio.]({{<baseurl>}}/rancher/v2.5/en/istio/)
 
 Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Rancher 2.x along with any CNCF compliant Kubernetes cluster. You can read more about it [here](https://rio.io/)
 
@@ -39,7 +40,7 @@ Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Ranche
 
 **Will Rancher v2.x support Hashicorp's Vault for storing secrets?**
 
-Secrets management is on our roadmap but we haven't assigned it to a specific release yet. 
+There is no built-in integration of Rancher and Hashicorp's Vault. Rancher manages Kubernetes and integrates with secrets via the Kubernetes API. Thus in any downstream (managed) cluster, you can use a secret vault of your choice provided it integrates with Kubernetes, including [Vault](https://www.vaultproject.io/docs/platform/k8s). 
 
 <br>
 

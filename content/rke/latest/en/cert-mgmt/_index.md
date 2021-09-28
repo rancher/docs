@@ -5,6 +5,8 @@ weight: 150
 
 _Available as of v0.2.0_
 
+> **Note:** This is not "TLS Certificates management in Kubernetes". Refer the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/) and RKE [cluster.yaml example]({{<baseurl>}}/rke/latest/en/example-yamls/) for more details.
+
 Certificates are an important part of Kubernetes clusters and are used for all Kubernetes cluster components. RKE has a `rke cert` command to help work with certificates.
 
 * [Ability to generate certificate sign requests for the Kubernetes components](#generating-certificate-signing-requests-csrs-and-keys)
@@ -23,7 +25,8 @@ By default, Kubernetes clusters require certificates and RKE will automatically 
 After the certificates are rotated, the Kubernetes components are automatically restarted. Certificates can be rotated for the following services:
 
 - etcd
-- kubelet
+- kubelet (node certificate)
+- kubelet (serving certificate, if [enabled]({{<baseurl>}}/rke/latest/en/config-options/services/#kubelet-options))
 - kube-apiserver
 - kube-proxy
 - kube-scheduler

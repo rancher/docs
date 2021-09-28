@@ -3,6 +3,7 @@ title: CIS Benchmark Rancher Self-Assessment Guide - v2.4
 weight: 204
 aliases:
   - /rancher/v2.0-v2.4/en/security/benchmark-2.4
+  - /rancher/v2.x/en/security/rancher-2.4/benchmark-2.4/
 ---
 
 ### CIS Kubernetes Benchmark v1.5 - Rancher v2.4 with Kubernetes v1.15

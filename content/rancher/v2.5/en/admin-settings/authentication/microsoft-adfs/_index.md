@@ -1,6 +1,8 @@
 ---
 title: Configuring Microsoft Active Directory Federation Service (SAML)
 weight: 1205
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/
 ---
 
 If your organization uses Microsoft Active Directory Federation Services (AD FS) for user authentication, you can configure Rancher to allow your users to log in using their AD FS credentials.

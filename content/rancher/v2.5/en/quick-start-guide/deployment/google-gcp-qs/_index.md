@@ -2,6 +2,8 @@
 title: Rancher GCP Quick Start Guide
 description: Read this step by step Rancher GCP guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/deployment/google-gcp-qs/
 ---
 The following steps will quickly deploy a Rancher server on GCP in a single-node RKE Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
@@ -25,7 +27,7 @@ The following steps will quickly deploy a Rancher server on GCP in a single-node
 1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
 1. Edit `terraform.tfvars` and customize the following variables:
-    - `gcp_account_json` - GCP service account file path and file name 
+    - `gcp_account_json` - GCP service account file path and file name
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
 1. **Optional:** Modify optional variables within `terraform.tfvars`.
@@ -46,7 +48,7 @@ Suggestions include:
     Outputs:
 
     rancher_node_ip = xx.xx.xx.xx
-    rancher_server_url = https://rancher.xx.xx.xx.xx.xip.io
+    rancher_server_url = https://rancher.xx.xx.xx.xx.sslip.io
     workload_node_ip = yy.yy.yy.yy
     ```
 

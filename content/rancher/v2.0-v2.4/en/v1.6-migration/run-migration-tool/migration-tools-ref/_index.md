@@ -1,6 +1,8 @@
 ---
 title: Migration Tools CLI Reference
 weight: 100
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/run-migration-tool/migration-tools-ref/
 ---
 
 The migration-tools CLI includes multiple commands and options to assist your migration from Rancher v1.6 to Rancher v2.x.

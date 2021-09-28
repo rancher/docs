@@ -4,6 +4,7 @@ weight: 17
 aliases:
   - /rancher/v2.5/en/installation/options/feature-flags/
   - /rancher/v2.5/en/admin-settings/feature-flags/
+  - /rancher/v2.x/en/installation/resources/feature-flags/
 ---
 Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
@@ -51,10 +52,10 @@ The below table shows the availability and default value for feature flags in Ra
 
 When you install Rancher, enable the feature you want with a feature flag. The command is different depending on whether you are installing Rancher on a single node or if you are doing a Kubernetes Installation of Rancher.
 
+### Enabling Features for Kubernetes Installs
+
 > **Note:** Values set from the Rancher API will override the value passed in through the command line.
 
-{{% tabs %}}
-{{% tab "Kubernetes Install" %}}
 When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
 
 ```
@@ -76,6 +77,40 @@ Here is an example of a command for passing in the feature flag names when rende
 
 The Helm 3 command is as follows:
 
+{{% tabs %}}
+{{% tab "Rancher v2.5.8+" %}}
+
+```
+helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+  --no-hooks \ # prevent files for Helm hooks from being generated
+  --namespace cattle-system \
+  --set hostname=<RANCHER.YOURDOMAIN.COM> \
+  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+  --set ingress.tls.source=secret \
+  --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
+  --set useBundledSystemChart=true # Use the packaged Rancher system charts
+  --set 'extraEnv[0].name=CATTLE_FEATURES'
+  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
+```
+{{% /tab %}}
+{{% tab "Rancher before v2.5.8" %}}
+
+```
+helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+  --namespace cattle-system \
+  --set hostname=<RANCHER.YOURDOMAIN.COM> \
+  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+  --set ingress.tls.source=secret \
+  --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
+  --set useBundledSystemChart=true # Use the packaged Rancher system charts
+  --set 'extraEnv[0].name=CATTLE_FEATURES'
+  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
+```
+{{% /tab %}}
+{{% /tabs %}}
+
+The Helm 2 command is as follows:
+
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --namespace cattle-system \
@@ -88,23 +123,8 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
 ```
 
-The Helm 2 command is as follows:
+### Enabling Features for Docker Installs
 
-```
-helm template ./rancher-<VERSION>.tgz --output-dir . \
-  --name rancher \
-  --namespace cattle-system \
-  --set hostname=<RANCHER.YOURDOMAIN.COM> \
-  --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-  --set ingress.tls.source=secret \
-  --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
-  --set useBundledSystemChart=true # Use the packaged Rancher system charts
-  --set 'extraEnv[0].name=CATTLE_FEATURES'
-  --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
-```
-
-{{% /tab %}}
-{{% tab "Docker Install" %}}
 When installing Rancher with Docker, use the `--features` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 
 ```
@@ -114,8 +134,6 @@ docker run -d -p 80:80 -p 443:443 \
   --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-NAME-2>=true 
 ```
 
-{{% /tab %}}
-{{% /tabs %}}
 
 # Enabling Features with the Rancher UI
 

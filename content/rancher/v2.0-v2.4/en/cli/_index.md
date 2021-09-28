@@ -6,6 +6,7 @@ metaDescription: "The Rancher CLI is a unified tool that you can use to interact
 weight: 21
 aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/cluster-access/cli
+  - /rancher/v2.x/en/cli/
 ---
 
 The Rancher CLI (Command Line Interface) is a unified tool that you can use to interact with Rancher. With this tool, you can operate Rancher using a command line rather than the GUI.

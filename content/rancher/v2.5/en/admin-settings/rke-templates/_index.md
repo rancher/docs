@@ -1,6 +1,8 @@
 ---
 title: RKE Templates
 weight: 7010
+aliases:
+  - /rancher/v2.x/en/admin-settings/rke-templates/
 ---
 
 RKE templates are designed to allow DevOps and security teams to standardize and simplify the creation of Kubernetes clusters.

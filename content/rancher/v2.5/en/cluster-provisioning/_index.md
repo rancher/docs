@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/concepts/clusters/
   - /rancher/v2.5/en/concepts/clusters/cluster-providers/
   - /rancher/v2.5/en/tasks/clusters/
+  - /rancher/v2.x/en/cluster-provisioning/
 ---
 
 Rancher simplifies the creation of clusters by allowing you to create them through the Rancher UI rather than more complex alternatives. Rancher provides multiple options for launching a cluster. Use the option that best fits your use case.
@@ -18,6 +19,7 @@ This section covers the following topics:
 
 <!-- TOC -->
 
+- [Cluster Management Capabilities by Cluster Type](#cluster-management-capabilities-by-cluster-type)
 - [Setting up clusters in a hosted Kubernetes provider](#setting-up-clusters-in-a-hosted-kubernetes-provider)
 - [Launching Kubernetes with Rancher](#launching-kubernetes-with-rancher)
   - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
@@ -26,6 +28,8 @@ This section covers the following topics:
 - [Importing Existing Clusters](#importing-existing-clusters)
 
   <!-- /TOC -->
+
+### Cluster Management Capabilities by Cluster Type
 
 The following table summarizes the options and settings available for each cluster type:
 

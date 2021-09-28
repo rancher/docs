@@ -1,6 +1,8 @@
 ---
 title: RKE Cluster Configuration Reference
 weight: 2250
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/options/
 ---
 
 When Rancher installs Kubernetes, it uses [RKE]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) as the Kubernetes distribution.
@@ -19,6 +21,7 @@ This section is a cluster configuration reference, covering the following topics
 - [Rancher UI Options](#rancher-ui-options)
   - [Kubernetes version](#kubernetes-version)
   - [Network provider](#network-provider)
+  - [Project network isolation](#project-network-isolation)
   - [Kubernetes cloud providers](#kubernetes-cloud-providers)
   - [Private registries](#private-registries)
   - [Authorized cluster endpoint](#authorized-cluster-endpoint)
@@ -58,18 +61,31 @@ Out of the box, Rancher is compatible with the following network providers:
 - [Calico](https://docs.projectcalico.org/v3.11/introduction/)
 - [Weave](https://github.com/weaveworks/weave)
 
-**Notes on Canal:**
-  
-If you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/projects-and-namespaces/).
-
 
 **Notes on Weave:**
 
 When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) and the [Weave Network Plug-in Options]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
 
+### Project Network Isolation
+
+Project network isolation is used to enable or disable communication between pods in different projects.
+
+{{% tabs %}}
+{{% tab "Rancher v2.5.8+" %}}
+
+To enable project network isolation as a cluster option, you will need to use any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
+
+{{% /tab %}}
+{{% tab "Rancher before v2.5.8" %}}
+
+To enable project network isolation as a cluster option, you will need to use Canal as the CNI.
+
+{{% /tab %}}
+{{% /tabs %}}
+
 ### Kubernetes Cloud Providers
 
-You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
+You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers). If you want to use [volumes and storage]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
 
 >**Note:** If the cloud provider you want to use is not listed as an option, you will need to use the [config file option](#cluster-config-file) to configure the cloud provider. Please reference the [RKE cloud provider documentation]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to configure the cloud provider.
 
@@ -94,7 +110,7 @@ See the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/co
 
 Authorized Cluster Endpoint can be used to directly access the Kubernetes API server, without requiring communication through Rancher.
 
-> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.5/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters) to provision the cluster. It is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+> The authorized cluster endpoint is available only in clusters that Rancher has provisioned [using RKE]({{<baseurl>}}/rancher/v2.5/en/overview/architecture/#tools-for-provisioning-kubernetes-clusters). It is not available for clusters in hosted Kubernetes providers, such as Amazon's EKS. Additionally, the authorized cluster endpoint cannot be enabled for RKE clusters that are registered with Rancher; it is available only on Rancher-launched Kubernetes clusters.
 
 This is enabled by default in Rancher-launched Kubernetes clusters, using the IP of the node with the `controlplane` role and the default Kubernetes self signed certificates.
 
@@ -272,11 +288,15 @@ See [Docker Root Directory](#docker-root-directory).
 
 ### enable_cluster_monitoring
 
-Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/).
+Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/).
 
 ### enable_network_policy
 
 Option to enable or disable Project Network Isolation.
+
+Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE. 
+
+In v2.5.8+, project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 
 ### local_cluster_auth_endpoint
 

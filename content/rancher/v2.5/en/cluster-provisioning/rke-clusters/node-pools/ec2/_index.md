@@ -3,6 +3,8 @@ title: Creating an Amazon EC2 Cluster
 shortTitle: Amazon EC2
 description: Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using Rancher
 weight: 2210
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/
 ---
 In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
 
@@ -50,6 +52,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 ### 3. Create a cluster with node pools using the node template
 
 Add one or more node pools to your cluster. For more information about node pools, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools)
+
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Amazon EC2**.

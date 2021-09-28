@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/installation/options/chart-options/
   - /rancher/v2.5/en/installation/options/helm2/helm-rancher/chart-options/
   - /rancher/v2.5/en/installation/resources/chart-options
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/
 ---
 
 This page is a configuration reference for the Rancher Helm chart.
@@ -48,7 +49,7 @@ For information on enabling experimental features, refer to [this page.]({{<base
 | `auditLog.hostPath`            | "/var/log/rancher/audit"                              | `string` - log file destination on host (only applies when `auditLog.destination` is set to `hostPath`)                                           |
 | `auditLog.level`               | 0                                                     | `int` - set the [API Audit Log]({{<baseurl>}}/rancher/v2.5/en/installation/api-auditing) level. 0 is off. [0-3]                                   |
 | `auditLog.maxAge`              | 1                                                     | `int` - maximum number of days to retain old audit log files (only applies when `auditLog.destination` is set to `hostPath`)                      |
-| `auditLog.maxBackups`          | 1                                                     | `int` - maximum number of audit log files to retain (only applies when `auditLog.destination` is set to `hostPath`)                               |
+| `auditLog.maxBackup`           | 1                                                     | `int` - maximum number of audit log files to retain (only applies when `auditLog.destination` is set to `hostPath`)                               |
 | `auditLog.maxSize`             | 100                                                   | `int` - maximum size in megabytes of the audit log file before it gets rotated (only applies when `auditLog.destination` is set to `hostPath`)    |
 | `busyboxImage`                 | "busybox"                                             | `string` - Image location for busybox image used to collect audit logs                |
 | `certmanager.version`          | ""                                                    | `string` - set cert-manager compatibility                                                                                                         |

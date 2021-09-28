@@ -4,6 +4,7 @@ shortTitle: Rancher Server
 weight: 1
 aliases:
   - /rancher/v2.5/en/best-practices/v2.5/rancher-server
+  - /rancher/v2.x/en/best-practices/v2.5/rancher-server/
 ---
 
 This guide contains our recommendations for running the Rancher server, and is intended to be used in situations in which Rancher manages downstream Kubernetes clusters.

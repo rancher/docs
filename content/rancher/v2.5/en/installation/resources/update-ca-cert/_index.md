@@ -1,6 +1,8 @@
 ---
 title: Updating a Private CA Certificate
 weight: 10
+aliases:
+  - /rancher/v2.x/en/installation/resources/update-ca-cert/
 ---
 
 Follow these steps to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/) or to switch from the default self-signed certificate to a custom certificate.
@@ -110,10 +112,10 @@ Method 3 can be used as a fallback if method 1 and 2 are unfeasible.
 
 ### Method 1: Kubectl command
 
-For each cluster under Rancher management (including `local`) run the following command using the Kubeconfig file of the Rancher management cluster (RKE or K3S).
+For each cluster under Rancher management (except the `local` Rancher management cluster) run the following command using the Kubeconfig file of the Rancher management cluster (RKE or K3S).
 
 ```
-kubectl patch clusters <REPLACE_WITH_CLUSTERID> -p '{"status":{"agentImage":"dummy"}}' --type merge
+kubectl patch clusters.management.cattle.io <REPLACE_WITH_CLUSTERID> -p '{"status":{"agentImage":"dummy"}}' --type merge
 ```
 
 This command will cause all Agent Kubernetes resources to be reconfigured with the checksum of the new certificate.
@@ -132,7 +134,7 @@ Using a Kubeconfig for each downstream cluster update the environment variable f
 
 ```
 $ kubectl edit -n cattle-system ds/cattle-node-agent
-$ kubectl edit -n cattle-system deployment/cluster-agent
+$ kubectl edit -n cattle-system deployment/cattle-cluster-agent
 ```
 
 ### Method 3: Recreate Rancher agents

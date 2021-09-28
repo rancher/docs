@@ -1,6 +1,8 @@
 ---
 title: Rancher Agents
 weight: 2400
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/rancher-agents/
 ---
 
 There are two different agent resources deployed on Rancher managed clusters:

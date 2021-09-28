@@ -4,6 +4,7 @@ description: Learn how to install Rancher in development and production environm
 weight: 3
 aliases:
   - /rancher/v2.5/en/installation/how-ha-works/
+  - /rancher/v2.x/en/installation/
 ---
 
 This section provides an overview of the architecture options of installing Rancher, describing advantages of each option.

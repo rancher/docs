@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb
   - /rancher/v2.5/en/installation/options/single-node-install-external-lb
   - /rancher/v2.5/en/installation/single-node-install-external-lb
+  - /rancher/v2.x/en/installation/resources/advanced/single-node-install-external-lb/
 ---
 
 For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.

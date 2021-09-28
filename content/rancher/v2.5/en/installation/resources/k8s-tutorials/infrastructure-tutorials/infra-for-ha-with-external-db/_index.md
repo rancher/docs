@@ -1,6 +1,9 @@
 ---
 title: 'Set up Infrastructure for a High Availability K3s Kubernetes Cluster'
 weight: 1
+aliases:
+  - /rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db/
+  - /rancher/v2.x/en/installation/resources/k8s-tutorials/ha-with-external-db/
 ---
 
 This tutorial is intended to help you provision the underlying infrastructure for a Rancher management server.

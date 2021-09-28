@@ -1,6 +1,8 @@
 ---
 title: Locked Roles
 weight: 1129
+aliases:
+  - /rancher/v2.x/en/admin-settings/rbac/locked-roles/
 ---
 
 You can set roles to a status of `locked`. Locking roles prevent them from being assigned users in the future.

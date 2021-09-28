@@ -1,6 +1,8 @@
 ---
 title: Creating Persistent Storage in Amazon's EBS
 weight: 3053
+aliases:
+  - /rancher/v2.x/en/cluster-admin/volumes-and-storage/examples/ebs/
 ---
 
 This section describes how to set up Amazon's Elastic Block Store in EC2.

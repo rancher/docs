@@ -2,6 +2,8 @@
 title: Rancher DigitalOcean Quick Start Guide
 description: Read this step by step Rancher DigitalOcean guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/deployment/digital-ocean-qs/
 ---
 The following steps will quickly deploy a Rancher Server on DigitalOcean with a single node cluster attached.
 
@@ -45,7 +47,7 @@ Suggestions include:
     Outputs:
 
     rancher_node_ip = xx.xx.xx.xx
-    rancher_server_url = https://rancher.xx.xx.xx.xx.xip.io
+    rancher_server_url = https://rancher.xx.xx.xx.xx.sslip.io
     workload_node_ip = yy.yy.yy.yy
     ```
 

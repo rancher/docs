@@ -1,6 +1,8 @@
 ---
 title: Cluster Administration
 weight: 8
+aliases:
+  - /rancher/v2.x/en/cluster-admin/
 ---
 
 After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.
@@ -36,4 +38,3 @@ Rancher contains a variety of tools that aren't included in Kubernetes to assist
 - Istio Service Mesh
 - OPA Gatekeeper
 
-For more information, see [Tools]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/)

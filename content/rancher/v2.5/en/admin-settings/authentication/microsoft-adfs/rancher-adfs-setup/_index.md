@@ -1,6 +1,8 @@
 ---
 title: 2. Configuring Rancher for Microsoft AD FS
 weight: 1205
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/rancher-adfs-setup/
 ---
 
 After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/rancher/v2.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/), enter your AD FS information into Rancher to allow AD FS users to authenticate with Rancher.
@@ -51,5 +53,5 @@ After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/ranch
 **Tip:** You can generate a certificate using an openssl command. For example:
 
 ```
-openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=https://myservice.example.com"
+openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
 ```

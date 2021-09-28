@@ -3,6 +3,7 @@ title: Pipelines
 weight: 10
 aliases:
   - /rancher/v2.5/en/k8s-in-rancher/pipelines  
+  - /rancher/v2.x/en/pipelines/
 ---
 
 > As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by [Fleet,]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet) available in Cluster Explorer.
@@ -19,7 +20,7 @@ After configuring Rancher and GitHub, you can deploy containers running Jenkins 
 - Run unit tests.  
 - Run regression tests.
 
->**Note: Rancher's pipeline provides a simple CI/CD experience, but it does not offer the full power and flexibility of and is not a replacement of enterprise-grade Jenkins or other CI tools your team uses.
+>**Note:** Rancher's pipeline provides a simple CI/CD experience, but it does not offer the full power and flexibility of and is not a replacement of enterprise-grade Jenkins or other CI tools your team uses.
 
 This section covers the following topics:
 

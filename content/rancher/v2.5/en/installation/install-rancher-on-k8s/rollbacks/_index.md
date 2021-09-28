@@ -8,6 +8,7 @@ aliases:
   - /rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks
   - /rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks/ha-server-rollbacks
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/rollbacks
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/rollbacks/
 ---
 
 - [Rolling Back to Rancher v2.5.0+](#rolling-back-to-rancher-v2-5-0)
@@ -25,7 +26,16 @@ A restore is performed by creating a Restore custom resource.
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)
-> * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
+> * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. So Rancher will be unavailable during the restore.
+
+### Scale the Rancher Deployment to 0
+
+1. From the **Global** view, hover over the **local** cluster.
+1. Under **Projects in local**, click on **System**.
+1. From the **cattle-system** namespace section, find the `rancher-hook` deployment.
+1. Select **&#8942; > Edit**.
+1. Change **Scalable deployment of _ pods** to `0`.
+1. Scroll to the bottom and click **Save**.
 
 ### Create the Restore Custom Resource
 
@@ -56,7 +66,7 @@ A restore is performed by creating a Restore custom resource.
 
 1. Click **Create.**
 
-**Result:** The rancher-operator scales down the rancher deployment during restore, and scales it back up once the restore completes. The resources are restored in this order:
+**Result:** The backup file is created and updated to the target storage location. The resources are restored in this order:
 
 1. Custom Resource Definitions (CRDs)
 2. Cluster-scoped resources
@@ -69,14 +79,25 @@ kubectl get pods -n cattle-resources-system
 kubectl logs -n cattle-resources-system -f
 ```
 
-### Roll back to the previous Rancher version
+### Roll back to a previous Rancher version
 
-Rancher can be rolled back using the Rancher UI.
+Rancher can be rolled back using the Helm CLI. To roll back to the previous version:
 
-1. In the Rancher UI, go to the local cluster. 
-1. Go to the System project.
-1. Edit Rancher deployment and modify image to version that you are rolling back to.
-1. Save changes made.
+```yaml
+helm rollback rancher -n cattle-system
+```
+
+If the previous revision is not the intended target, you can specify a revision to roll back to. To see the deployment history:
+
+```yaml
+helm history rancher -n cattle-system
+```
+
+When the target revision is determined, perform the rollback. This example will roll back to revision `3`:
+
+```yaml
+helm rollback rancher 3 -n cattle-system
+```
 
 # Rolling Back to Rancher v2.2-v2.4+
 

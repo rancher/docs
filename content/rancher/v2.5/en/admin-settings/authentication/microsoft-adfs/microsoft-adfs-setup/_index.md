@@ -1,6 +1,8 @@
 ---
 title: 1. Configuring Microsoft AD FS for Rancher
 weight: 1205
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/
 ---
 
 Before configuring Rancher to support AD FS users, you must add Rancher as a [relying party trust](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/technical-reference/understanding-key-ad-fs-concepts) in AD FS. 

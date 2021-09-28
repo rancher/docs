@@ -1,6 +1,8 @@
 ---
 title: Applying Templates
 weight: 50
+aliases:
+  - /rancher/v2.x/en/admin-settings/rke-templates/applying-templates/
 ---
 
 You can create a cluster from an RKE template that you created, or from a template that has been [shared with you.]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rke-templates/template-access-and-sharing)

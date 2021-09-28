@@ -2,6 +2,8 @@
 title: How to Configure Out-of-tree vSphere Cloud Provider
 shortTitle: Out-of-tree Cloud Provider
 weight: 10
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/
 ---
 _Available as of v2.5+_
 
@@ -24,7 +26,7 @@ The Cloud Provider Interface (CPI) should be installed first before installing t
 ### 1. Create a vSphere cluster
 
 1. On the Clusters page, click on **Add Cluster** and select the **vSphere** option or **Existing Nodes** option.
-1. Under **Cluster Options > Cloud Provider** select **External (Out-of-tree)**. This sets the cloud provider option on the Kubernetes cluster to `external` which sets your Kubernetes cluster up to be configured with an out-of-tree cloud provider. 
+1. Under **Cluster Options** in the **Cloud Provider** section, select **External (Out-of-tree)**. This sets the cloud provider option on the Kubernetes cluster to `external` which sets your Kubernetes cluster up to be configured with an out-of-tree cloud provider.
 1. Finish creating your cluster.
 
 ### 2. Install the CPI plugin

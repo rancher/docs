@@ -122,6 +122,37 @@ With custom encryption configuration, RKE allows the user to provide their own c
 
 >**Warning:** Using invalid Encryption Provider Configuration could cause several issues with your cluster, ranging from crashing the Kubernetes API service, `kube-api`,  to completely losing access to encrypted data.
 
+### Example: Using Custom Encryption Configuration with User Provided 32-byte Random Key
+
+The following describes the steps required to configure custom encryption with a user provided 32-byte random key.
+
+Step 1: Generate a 32 byte random key and base64 encode it. If you're on Linux or macOS, run the following command:
+
+```
+head -c 32 /dev/urandom | base64
+```
+
+Place that value in the secret field.
+
+```yaml
+kube-api:
+    secrets_encryption_config:
+      enabled: true
+      custom_config:
+        api_version: apiserver.config.k8s.io/v1
+        kind: EncryptionConfiguration
+        resources:
+        - Providers:
+            - AESCBC:
+                Keys:
+                    - Name: key1
+                    Secret: <BASE 64 ENCODED SECRET>
+              Resources:
+                - secrets
+            - identity: {}
+```
+
+
 ### Example: Using Custom Encryption Configuration with Amazon KMS
 
 An example for custom configuration would be enabling an external key management system like [Amazon KMS](https://aws.amazon.com/kms/). The following is an example of the configuration for AWS KMS:

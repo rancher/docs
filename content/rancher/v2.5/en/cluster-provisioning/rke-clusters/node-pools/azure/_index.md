@@ -4,6 +4,7 @@ shortTitle: Azure
 weight: 2220
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-azure/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/azure/
 ---
 
 In this section, you'll learn how to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in Azure through Rancher.
@@ -65,6 +66,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 ### 3. Create a cluster with node pools using the node template
 
 Use Rancher to create a Kubernetes cluster in Azure.
+
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Azure**.

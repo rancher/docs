@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup/deploy-workloads
   - /rancher/v2.0-v2.4/en/istio/legacy/setup/deploy-workloads
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup/deploy-workloads
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/deploy-workloads/
 ---
 
 > **Prerequisite:** To enable Istio for a workload, the cluster and namespace must have Istio enabled.  

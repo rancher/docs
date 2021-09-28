@@ -1,6 +1,8 @@
 ---
 title: Hardening Guide with CIS 1.6 Benchmark
 weight: 100
+aliases:
+  - /rancher/v2.x/en/security/rancher-2.5/1.6-hardening-2.5/
 ---
 
 This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.5.4. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
@@ -180,7 +182,7 @@ services:
     path: ""
     uid: 52034
     gid: 52034
-    snapshot: true
+    snapshot: false
     retention: ""
     creation: ""
     backup_config: null
@@ -285,6 +287,36 @@ addons: |
     - downwardAPI
     - configMap
     - projected
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: psp:restricted
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - restricted
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: psp:restricted
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: psp:restricted
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:serviceaccounts
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:authenticated
   ---
   apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy

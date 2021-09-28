@@ -4,6 +4,7 @@ shortTitle: Set up RKE2 for Rancher
 weight: 2
 aliases:
   - /rancher/v2.x/en/installation/resources/k8s-tutorials/ha-RKE2
+  - /rancher/v2.x/en/installation/resources/k8s-tutorials/ha-RKE2/
 ---
 _Tested on v2.5.6_
 
@@ -11,7 +12,7 @@ This section describes how to install a Kubernetes cluster according to the [bes
 
 # Prerequisites
 
-These instructions assume you have set up three nodes, a load balancer, and a DNS record as described [this section.]({{<baseurl>}}/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
+These instructions assume you have set up three nodes, a load balancer, and a DNS record, as described in [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha)
 
 Note that in order for RKE2 to work correctly with the load balancer, you need to set up two listeners: one for the supervisor on port 9345, and one for the Kubernetes API on port 6443.
 
@@ -22,7 +23,7 @@ Rancher needs to be installed on a supported Kubernetes version. To find out whi
 
 RKE2 server runs with embedded etcd so you will not need to set up an external datastore to run in HA mode.
 
-1. On the first node, you should set up the configuration file with your own pre-shared secret as the token. The token argument can be set on startup.
+On the first node, you should set up the configuration file with your own pre-shared secret as the token. The token argument can be set on startup.
 
 If you do not specify a pre-shared secret, RKE2 will generate one and place it at /var/lib/rancher/rke2/server/node-token.
 
@@ -37,25 +38,25 @@ tls-san:
   - another-kubernetes-domain.com
 ```
 After that you need to run the install command and enable and start rke2:
+
 ```
-curl -sfL https://get.rke2.io | sh -
+curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.20 sh -
 systemctl enable rke2-server.service
 systemctl start rke2-server.service
 ```
 1. To join the rest of the nodes, you need to configure each additional node with the same shared token or the one generated automatically. Here is an example of the configuration file:
-```
-token: my-shared-secret
-server: https://<DNS-DOMAIN>:9345
-tls-san:
-  - my-kubernetes-domain.com
-  - another-kubernetes-domain.com
-```
+
+        token: my-shared-secret
+        server: https://<DNS-DOMAIN>:9345
+        tls-san:
+          - my-kubernetes-domain.com
+          - another-kubernetes-domain.com
 After that you need to run the installer and enable then start rke2
-```
-curl -sfL https://get.rke2.io | sh -
-systemctl enable rke2-server.service
-systemctl start rke2-server.service
-```
+
+        curl -sfL https://get.rke2.io | sh -
+        systemctl enable rke2-server.service
+        systemctl start rke2-server.service
+
 
 1. Repeat the same command on your third RKE2 server node.
 
@@ -81,7 +82,7 @@ Then test the health of the cluster pods:
 
 When you installed RKE2 on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
-To use this `kubeconfig` file, 
+To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/rke2/rke2.yaml` and save it to the directory `~/.kube/config` on your local machine.
@@ -163,7 +164,7 @@ Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the R
 
 To rectify that, place the following file in /var/lib/rancher/rke2/server/manifests on any of the server nodes:
 
-```
+```yaml
 apiVersion: helm.cattle.io/v1
 kind: HelmChartConfig
 metadata:
@@ -175,7 +176,4 @@ spec:
       kind: DaemonSet
       daemonset:
         useHostPort: true
-      image:
-        repository: us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller
-        tag: "v0.34.1"
 ```

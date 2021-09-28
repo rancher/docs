@@ -1,6 +1,8 @@
 ---
 title: Global Permissions
 weight: 1126
+aliases:
+  - /rancher/v2.x/en/admin-settings/rbac/global-permissions/
 ---
 
 _Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.
@@ -46,7 +48,7 @@ CATTLE_RESTRICTED_DEFAULT_ADMIN=true
 The permissions for the `restricted-admin` role differ based on the Rancher version.
 
 {{% tabs %}}
-{{% tab "v2.5.6" %}}
+{{% tab "v2.5.7+" %}}
 
 The `restricted-admin` permissions are as follows:
 
@@ -55,7 +57,7 @@ The `restricted-admin` permissions are as follows:
 - Can create other restricted admins.
 
 {{% /tab %}}
-{{% tab "v2.5.0-v2.5.5" %}}
+{{% tab "v2.5.0-v2.5.6" %}}
 
 The `restricted-admin` permissions are as follows:
 

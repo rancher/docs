@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio
   - /rancher/v2.0-v2.4/en/istio/legacy/disabling-istio
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/disabling-istio
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/disabling-istio/
 ---
 
 This section describes how to disable Istio in a cluster, namespace, or workload.

@@ -7,11 +7,12 @@ aliases:
   - /rancher/v2.5/en/installation/air-gap-single-node/config-rancher-for-private-reg/
   - /rancher/v2.5/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
   - /rancher/v2.5/en/installation/air-gap-installation/prepare-private-reg/
+  - /rancher/v2.x/en/installation/other-installation-methods/air-gap/populate-private-registry/
 ---
 
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
-By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
+By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/) or launch any tools in Rancher, e.g. monitoring and logging, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
 
 Populating the private registry with images is the same process for installing Rancher with Docker and for installing Rancher on a Kubernetes cluster.
 
@@ -64,7 +65,7 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
     ```plain
     helm repo add jetstack https://charts.jetstack.io
     helm repo update
-    helm fetch jetstack/cert-manager --version v1.0.4
+    helm fetch jetstack/cert-manager --version v1.5.1
     helm template ./cert-manager-<version>.tgz | grep -oP '(?<=image: ").*(?=")' >> ./rancher-images.txt
     ```
 

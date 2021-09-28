@@ -3,6 +3,8 @@ title: CIS Scans
 weight: 17
 aliases:
   - /rancher/v2.5/en/cis-scans/v2.5
+  - /rancher/v2.x/en/cis-scans/
+  - /rancher/v2.x/en/cis-scans/v2.5/
 ---
 
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
@@ -294,9 +296,9 @@ Alerts can be configured to be sent out for a scan that runs on a schedule.
 
 > **Prerequisite:** 
 >
-> Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager/)
+> Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/)
 >
-> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager/#example-route-config-for-cis-scan-alerts)
+> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/#example-route-config-for-cis-scan-alerts)
 
 While installing or upgrading the `rancher-cis-benchmark` application, set the following flag to `true` in the `values.yaml`:
 
@@ -321,9 +323,9 @@ The `rancher-cis-benchmark` application supports two types of alerts:
 
 > **Prerequisite:** 
 >
-> Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager/)
+> Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/)
 >
-> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/configuration/alertmanager/#example-route-config-for-cis-scan-alerts)
+> While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/#example-route-config-for-cis-scan-alerts)
 
 To configure alerts for a scan that runs on a schedule,
 

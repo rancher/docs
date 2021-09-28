@@ -2,6 +2,7 @@
 title: Configuring a Global Default Private Registry
 weight: 400
 aliases:
+  - /rancher/v2.x/en/admin-settings/config-private-registry/
 ---
 
 You might want to use a private Docker registry to share your custom base images within your organization. With a private registry, you can keep a private, consistent, and centralized source of truth for the Docker images that are used in your clusters.

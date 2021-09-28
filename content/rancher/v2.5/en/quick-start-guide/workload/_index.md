@@ -1,6 +1,8 @@
 ---
 title: Deploying Workloads
 weight: 200
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/workload/
 ---
 
 These guides walk you through the deployment of an application, including how to expose the application for use outside of the cluster.

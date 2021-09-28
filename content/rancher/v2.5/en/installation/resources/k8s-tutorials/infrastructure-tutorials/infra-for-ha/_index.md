@@ -1,6 +1,8 @@
 ---
 title: 'Set up Infrastructure for a High Availability RKE Kubernetes Cluster'
 weight: 2
+aliases:
+  - /rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha/
 ---
 
 This tutorial is intended to help you create a high-availability RKE cluster that can be used to install a Rancher server.

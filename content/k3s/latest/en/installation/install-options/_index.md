@@ -46,6 +46,11 @@ When using this method to install K3s, the following environment variables can b
 | `INSTALL_K3S_CHANNEL_URL` | Channel URL for fetching K3s download URL. Defaults to https://update.k3s.io/v1-release/channels. |
 | `INSTALL_K3S_CHANNEL` | Channel to use for fetching K3s download URL. Defaults to "stable". Options include: `stable`, `latest`, `testing`. |
 
+This example shows where to place aforementioned environment variables as options (after the pipe):
+
+```
+curl -sfL https://get.k3s.io | INSTALL_K3S_CHANNEL=latest sh -
+```
 
 Environment variables which begin with `K3S_` will be preserved for the systemd and openrc services to use.
 
@@ -53,7 +58,7 @@ Setting `K3S_URL` without explicitly setting an exec command will default the co
 
 When running the agent `K3S_TOKEN` must also be set.
 
-# Installing K3s from the Binary
+### Options for installation from binary
 
 As stated, the installation script is primarily concerned with configuring K3s to run as a service. If you choose to not use the script, you can run K3s simply by downloading the binary from our [release page](https://github.com/rancher/k3s/releases/latest), placing it on your path, and executing it. The K3s binary supports the following commands:
 

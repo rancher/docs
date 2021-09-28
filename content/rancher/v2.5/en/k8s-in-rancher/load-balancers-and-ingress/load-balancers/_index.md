@@ -5,6 +5,7 @@ weight: 3041
 aliases:
   - /rancher/v2.5/en/concepts/load-balancing/
   - /rancher/v2.5/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers
+  - /rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/
 ---
 Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer-7 Load Balancing.
 
@@ -58,9 +59,9 @@ Some cloud-managed layer-7 load balancers (such as the ALB ingress controller on
 Other layer-7 load balancers, such as the Google Load Balancer or Nginx Ingress Controller, directly expose one or more IP addresses. Google Load Balancer provides a single routable IP address. Nginx Ingress Controller exposes the external IP of all nodes that run the Nginx Ingress Controller. You can do either of the following:
 
 1.	Configure your own DNS to map (via A records) your domain name to the IP addresses exposes by the Layer-7 load balancer.
-2.	Ask Rancher to generate an xip.io host name for your ingress rule. Rancher will take one of your exposed IPs, say a.b.c.d, and generate a host name <ingressname>.<namespace>.a.b.c.d.xip.io.
+2.	Ask Rancher to generate an sslip.io host name for your ingress rule. Rancher will take one of your exposed IPs, say a.b.c.d, and generate a host name <ingressname>.<namespace>.a.b.c.d.sslip.io.
 
-The benefit of using xip.io is that you obtain a working entrypoint URL immediately after you create the ingress rule. Setting up your own domain name, on the other hand, requires you to configure DNS servers and wait for DNS to propagate.
+The benefit of using sslip.io is that you obtain a working entrypoint URL immediately after you create the ingress rule. Setting up your own domain name, on the other hand, requires you to configure DNS servers and wait for DNS to propagate.
 
 ## Related Links
 

@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/logging/kafka
   - /rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/kafka
   - /rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/kafka
+  - /rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/kafka/
 ---
 
 If your organization uses [Kafka](https://kafka.apache.org/), you can configure Rancher to send it Kubernetes logs.  Afterwards, you can log into your Kafka server to view logs.

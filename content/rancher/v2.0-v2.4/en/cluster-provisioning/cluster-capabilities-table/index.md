@@ -16,7 +16,8 @@ headless: true
 | [Ability to back up your Kubernetes Clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/backing-up-etcd/) | ✓ | | |
 | [Ability to recover and restore etcd]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/restoring-etcd/) | ✓ | | |
 | [Cleaning Kubernetes components when clusters are no longer reachable from Rancher]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/cleaning-cluster-nodes/) | ✓ | | |
-| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/pod-security-policy/) | ✓ |  | |
+| [Configuring Pod Security Policies]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/pod-security-policy/) | ✓ | | |
 | [Running Security Scans]({{<baseurl>}}/rancher/v2.0-v2.4/en/security/security-scan/) | ✓ |  | |
+| [Authorized Cluster Endpoint]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/#authorized-cluster-endpoint) | ✓ | | |
 
 \* Cluster configuration options can't be edited for imported clusters, except for K3s clusters.

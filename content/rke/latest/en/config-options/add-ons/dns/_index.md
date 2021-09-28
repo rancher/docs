@@ -3,6 +3,25 @@ title: DNS providers
 weight: 262
 ---
 
+- [Available DNS Providers](#available-dns-providers)
+- [Disabling deployment of a DNS Provider](#disabling-deployment-of-a-dns-provider)
+- [CoreDNS](#coredns)
+  - [Scheduling CoreDNS](#scheduling-coredns)
+  - [Upstream nameservers](#coredns-upstream-nameservers)
+  - [Priority Class Name](#coredns-priority-class-name)
+  - [Tolerations](#coredns-tolerations)
+- [kube-dns](#kube-dns)
+  - [Scheduling kube-dns](#scheduling-kube-dns)
+  - [Upstream nameservers](#kube-dns-upstream-nameservers)
+  - [Priority Class Name](#kube-dns-priority-class-name)
+  - [Tolerations](#kube-dns-tolerations)
+- [NodeLocal DNS](#nodelocal-dns)
+  - [Configuring NodeLocal DNS](#configuring-nodelocal-dns)
+  - [Priority Class Name](#nodelocal-priority-class-name)
+  - [Removing NodeLocal DNS](#removing-nodelocal-dns)
+
+# Available DNS Providers
+
 RKE provides the following DNS providers that can be deployed as add-ons:
 
   * [CoreDNS](https://coredns.io)
@@ -18,6 +37,17 @@ CoreDNS was made the default in RKE v0.2.5 when using Kubernetes 1.14 and higher
 
 > **Note:** If you switch from one DNS provider to another, the existing DNS provider will be removed before the new one is deployed.
 
+# Disabling Deployment of a DNS Provider
+
+_Available as of v0.2.0_
+
+You can disable the default DNS provider by specifying `none` to  the dns `provider` directive in the cluster configuration. Be aware that this will prevent your pods from doing name resolution in your cluster.
+
+```yaml
+dns:
+  provider: none
+```
+
 # CoreDNS
 
 _Available as of v0.2.5_
@@ -28,7 +58,7 @@ RKE will deploy CoreDNS as a Deployment with the default replica count of 1. The
 
 The images used for CoreDNS are under the [`system_images` directive]({{<baseurl>}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with CoreDNS, but these can be overridden by changing the image tag in `system_images`.
 
-## Scheduling CoreDNS
+### Scheduling CoreDNS
 
 If you only want the CoreDNS pod to be deployed on specific nodes, you can set a `node_selector` in the `dns` section. The label in the `node_selector` would need to match the label on the nodes for the CoreDNS pod to be deployed.
 
@@ -46,9 +76,8 @@ dns:
     app: dns
 ```
 
-## Configuring CoreDNS
 
-### Upstream nameservers
+### CoreDNS Upstream nameservers
 
 By default, CoreDNS will use the host configured nameservers (usually residing at `/etc/resolv.conf`) to resolve external queries. If you want to configure specific upstream nameservers to be used by CoreDNS, you can use the `upstreamnameservers` directive.
 
@@ -62,13 +91,28 @@ dns:
   - 8.8.4.4
 ```
 
-### Tolerations
+
+### CoreDNS Priority Class Name
+
+_Available as of RKE v1.2.6+_
+
+The [pod priority](https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#pod-priority) is set by configuring a priority class name under `options`:
+
+```yaml
+dns:
+    options:
+      coredns_autoscaler_priority_class_name: system-cluster-critical
+      coredns_priority_class_name: system-cluster-critical
+    provider: coredns
+```
+
+### CoreDNS Tolerations
 
 _Available as of v1.2.4_
 
 The configured tolerations apply to the `coredns` and the `coredns-autoscaler` Deployment.
 
-```
+```yaml
 dns:
   provider: coredns
   tolerations:
@@ -95,7 +139,7 @@ RKE will deploy kube-dns as a Deployment with the default replica count of 1. Th
 
 The images used for kube-dns are under the [`system_images` directive]({{<baseurl>}}/rke/latest/en/config-options/system-images/). For each Kubernetes version, there are default images associated with kube-dns, but these can be overridden by changing the image tag in `system_images`.
 
-## Scheduling kube-dns
+### Scheduling kube-dns
 
 _Available as of v0.2.0_
 
@@ -115,9 +159,7 @@ dns:
     app: dns
 ```
 
-## Configuring kube-dns
-
-### Upstream nameservers
+### kube-dns Upstream nameservers
 
 _Available as of v0.2.0_
 
@@ -133,13 +175,28 @@ dns:
   - 8.8.4.4
 ```
 
-### Tolerations
+### kube-dns Priority Class Name
+
+_Available as of RKE v1.2.6+_
+
+The [pod priority](https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#pod-priority) is set by configuring a priority class name under `options`:
+
+```yaml
+dns:
+    options:
+      kube_dns_autoscaler_priority_class_name: system-cluster-critical
+      kube_dns_priority_class_name: system-cluster-critical
+    provider: kube-dns
+```
+
+
+### kube-dns Tolerations
 
 _Available as of v1.2.4_
 
 The configured tolerations apply to the `kube-dns` and the `kube-dns-autoscaler` Deployment.
 
-```
+```yaml
 dns:
   provider: kube-dns
   tolerations:
@@ -161,16 +218,7 @@ kubectl get deploy kube-dns -n kube-system -o jsonpath='{.spec.template.spec.tol
 kubectl get deploy kube-dns-autoscaler -n kube-system -o jsonpath='{.spec.template.spec.tolerations}'
 ```
 
-# Disabling deployment of a DNS provider
 
-_Available as of v0.2.0_
-
-You can disable the default DNS provider by specifying `none` to  the dns `provider` directive in the cluster configuration. Be aware that this will prevent your pods from doing name resolution in your cluster.
-
-```yaml
-dns:
-  provider: none
-```
 
 # NodeLocal DNS
 
@@ -186,7 +234,7 @@ NodeLocal DNS is an additional component that can be deployed on each node to im
 
 Enable NodeLocal DNS by configuring an IP address.
 
-## Configuring NodeLocal DNS
+### Configuring NodeLocal DNS
 
 The `ip_address` parameter is used to configure what link-local IP address will be configured one each host to listen on, make sure this IP address is not already configured on the host.
 
@@ -199,7 +247,21 @@ dns:
 
 > **Note:** When enabling NodeLocal DNS on an existing cluster, pods that are currently running will not be modified, the updated `/etc/resolv.conf` configuration will take effect only for pods started after enabling NodeLocal DNS.
 
-## Removing NodeLocal DNS
+### NodeLocal Priority Class Name
+
+_Available as of RKE v1.2.6+_
+
+The [pod priority](https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#pod-priority) is set by configuring a priority class name under `options`:
+
+```yaml
+dns:
+    options:
+      nodelocal_autoscaler_priority_class_name: system-cluster-critical
+      nodelocal_priority_class_name: system-cluster-critical
+    provider: coredns # a DNS provider must be configured
+```
+
+### Removing NodeLocal DNS
 
 By removing the `ip_address` value, NodeLocal DNS will be removed from the cluster.
 

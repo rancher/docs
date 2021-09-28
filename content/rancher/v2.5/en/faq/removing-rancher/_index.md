@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/installation/removing-rancher/
   - /rancher/v2.5/en/admin-settings/removing-rancher/
   - /rancher/v2.5/en/admin-settings/removing-rancher/rancher-cluster-nodes/
+  - /rancher/v2.x/en/faq/removing-rancher/
 ---
 
 This page is intended to answer questions about what happens if you don't want Rancher anymore, if you don't want a cluster to be managed by Rancher anymore, or if the Rancher server is deleted.
@@ -31,6 +32,15 @@ The capability to access a downstream cluster without Rancher depends on the typ
 ### What if I don't want Rancher anymore?
 
 If you [installed Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/) remove Rancher by using the [System Tools]({{<baseurl>}}/rancher/v2.5/en/system-tools/) with the `remove` subcommand.
+
+As of Rancher v2.5.8, uninstalling Rancher in high-availability (HA) mode will also remove all `helm-operation-*` pods and the following apps:
+
+- fleet
+- fleet-agent
+- rancher-operator
+- rancher-webhook
+
+Custom resources (CRDs) and custom namespaces will still need to be manually removed.
 
 If you installed Rancher with Docker, you can uninstall Rancher by removing the single Docker container that it runs in.
 

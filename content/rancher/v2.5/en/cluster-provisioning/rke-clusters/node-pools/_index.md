@@ -3,6 +3,7 @@ title: Launching Kubernetes on New Nodes in an Infrastructure Provider
 weight: 2205
 aliases:
   - /rancher/v2.5/en/concepts/global-configuration/node-templates/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
 ---
 
 Using Rancher, you can create pools of nodes based on a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/#node-templates). This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.
@@ -34,6 +35,8 @@ After you create a node template in Rancher, it's saved so that you can use this
 ### Node Labels
 
 You can add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) on each node template, so that any nodes created from the node template will automatically have these labels on them.
+
+Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
 ### Node Taints
 

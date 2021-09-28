@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup/gateway
   - /rancher/v2.0-v2.4/en/istio/legacy/setup/gateway
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup/gateway
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/gateway/
 ---
 
 The gateway to each cluster can have its own port or load balancer, which is unrelated to a service mesh. By default, each Rancher-provisioned cluster has one NGINX ingress controller allowing traffic into the cluster. 
