@@ -25,6 +25,7 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 
 The following is a list of the feature flags available in Rancher:
 
+- `harvester`: This feature flag is available starting in v2.6.1. It is used to manage access to the Virtualization Management page where users can navigate directly to Harvester clusters and access the Harvester UI.
 - `rke2`: We have introduced the ability to provision RKE2 clusters as tech preview. By default, this feature flag is enabled, which allows users to attempt to provision these type of clusters. 
 - `token-hashing`: This feature enables one-way [hashing of tokens]({{<baseurl>}}/rancher/v2.6/en/api/api-tokens) and cannot be disabled once enabled.
 - `fleet`: Rancher comes with [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet) preinstalled in v2.5+. Rancher v2.6's new provisioning system leverages Fleet's bundle deployment capabilities in order to manage clusters at scale. Therefore, in Rancher v2.6, Fleet can no longer be disabled. If Fleet was disabled in Rancher v2.5.x, it will become enabled if Rancher is upgraded to v2.6.x.
@@ -47,6 +48,7 @@ The below table shows the availability and default value for feature flags in Ra
 | `fleet`  | `true` | Can no longer be disabled | v2.6.0 | N/A  |
 | `continuous-delivery` | `true` | GA* | v2.6.0 | |
 | `token-hashing` | `false` | GA* | v2.6.0 | |
+| `harvester` | `true` | Experimental | v2.6.1 | |
 | `rke2` | `true` | Experimental | v2.6.0 | |
 
 \* Generally Available. This feature is included in Rancher and it is not experimental.
