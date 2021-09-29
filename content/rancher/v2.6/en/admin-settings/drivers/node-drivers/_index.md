@@ -7,6 +7,8 @@ Node drivers are used to provision hosts, which Rancher uses to launch and manag
 
 If there are specific node drivers that you don't want to show to your users, you would need to de-activate these node drivers.
 
+Harvester v0.3.0 is in tech preview for Rancher v2.6.1. For more information on Harvester node drivers, click [here](https://rancher.com/docs/rancher/v2.6/en/virtualization-admin/#harvester-node-driver).
+
 #### Managing Node Drivers
 
 >**Prerequisites:** To create, edit, or delete drivers, you need _one_ of the following permissions:
