@@ -7,6 +7,8 @@ metaDescription: "Rancher 2 adds significant value on top of Kubernetes: managin
 insertOneSix: false
 weight: 1
 ctaBanner: 0
+aliases:
+  - /rancher/v2.x/en/
 ---
 Rancher was originally built to work with multiple orchestrators, and it included its own orchestrator called Cattle. With the rise of Kubernetes in the marketplace, Rancher 2 exclusively deploys and manages Kubernetes clusters running anywhere, on any provider.
 

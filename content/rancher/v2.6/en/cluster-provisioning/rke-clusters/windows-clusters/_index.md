@@ -59,6 +59,8 @@ For the support lifecycle dates for Windows Server, see the [Microsoft Documenta
 
 Kubernetes v1.15+ is required.
 
+If you are using Kubernetes v1.21 with Windows Server 20H2 Standard Core, the patch "2019-08 Servicing Stack Update for Windows Server" must be installed on the node.
+
 ### Node Requirements
 
 The hosts in the cluster need to have at least:
@@ -152,7 +154,7 @@ You will provision three nodes:
 | Node 2 | Linux (Ubuntu Server 18.04 recommended)                      |
 | Node 3 | Windows (Windows Server core version 1809 or above required) |
 
-If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers)
+If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers)
 
 # 2. Create the Cluster on Existing Nodes
 

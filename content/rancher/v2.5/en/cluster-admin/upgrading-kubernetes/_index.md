@@ -26,7 +26,7 @@ This section covers the following topics:
 
 # Tested Kubernetes Versions
 
-Before a new version of Rancher is released, it's tested with the latest minor versions of Kubernetes to ensure compatibility. For example, Rancher v2.3.0 is was tested with Kubernetes v1.15.4, v1.14.7, and v1.13.11. For details on which versions of Kubernetes were tested on each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.3.0/)
+Before a new version of Rancher is released, it's tested with the latest minor versions of Kubernetes to ensure compatibility. For details on which versions of Kubernetes were tested on each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.5.9/)
 
 # How Upgrades Work
 

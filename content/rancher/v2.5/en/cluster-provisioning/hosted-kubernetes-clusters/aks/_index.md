@@ -115,9 +115,7 @@ To give role-based access to your service principal,
 
 Use Rancher to set up and configure your Kubernetes cluster.
 
-1. In the upper left corner, click **≡ > Cluster Management.**
-
-1. From the **Clusters** page, click **Create**.
+1. From the **Clusters** page, click **Add Cluster**.
 
 1. Choose **Azure AKS**.
 
@@ -125,7 +123,8 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 
-1. Use your subscription ID, client ID, and client secret to give your cluster access to AKS. If you don't have all of that information, you can retrieve it using these instructions:
+1. Use your subscription ID, tenant ID, client ID, and client secret to give your cluster access to AKS. If you don't have all of that information, you can retrieve it using these instructions:
+  - **Tenant ID:** To get the Tenant ID, you can go to the Azure Portal, then click **Azure Active Directory**, then click **Properties** and find the **Tenant ID** field.
   - **Client ID:** To get the Client ID, you can go to the Azure Portal, then click **Azure Active Directory**, then click **Enterprise applications.** Click **All applications.** Select your application, click **Properties,** and copy the application ID.
   - **Client secret:** If you didn't copy the client secret when creating the service principal, you can get a new one if you go to the app registration detail page, then click **Certificates & secrets**, then click **New client secret.** 
   - **Subscription ID:** You can get the subscription ID is available in the portal from **All services > Subscriptions.**
