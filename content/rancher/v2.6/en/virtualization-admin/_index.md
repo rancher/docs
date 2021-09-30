@@ -11,9 +11,9 @@ New in Rancher v2.6.1, [Harvester v0.3.0](https://docs.harvesterhci.io/v0.3/) is
 
 The Harvester feature flag is used to manage access to the Virtualization Management (VM) page in Rancher where users can navigate directly to Harvester clusters and access the Harvester UI. The Harvester feature flag is enabled by default. Click [here](https://rancher.com/docs/rancher/v2.6/en/installation/resources/feature-flags/) for more information on feature flags in Rancher.
 
-To navigate to the Harvester cluster, click **☰ > Virtualization Management > Harvester Listing Page.** From there, click one of the clusters listed to go to the single Harvester cluster view. 
+To navigate to the Harvester cluster, click **☰ > Virtualization Management**. From Harvester Clusters page, click one of the clusters listed to go to the single Harvester cluster view. 
 
-* If the Harvester feature flag is enabled, the filtered Harvester host clusters will appear from any pages or apps (such as Fleet, multi-cluster app) that list Kubernetes clusters.
+* If the Harvester feature flag is enabled, Harvester clusters will be filtered out from any pages or apps (such as Fleet and the multi-cluster app) that list Kubernetes clusters.
 
 * If the Harvester feature flag is disabled, and a Harvester cluster is imported, the Harvester cluster will be shown in the Rancher cluster list in the Cluster Management page. Harvester clusters will only be shown on the cluster list when the feature flag is off.
 
@@ -25,7 +25,7 @@ To navigate to the Harvester cluster, click **☰ > Virtualization Management > 
 
 The [Harvester node driver](https://docs.harvesterhci.io/v0.3/rancher/node-driver/) is marked as `tech preview` on RKE and RKE2 options in Rancher. This will be the case both on the Create page and once the driver is already enabled. The node driver is available whether or not the Harvester feature flag is enabled. Note that the node driver is off by default. 
 
-Users may create an RKE or RKE2 cluster only from the Cluster Management page. Once you have created the cluster, you will then go to the Virtualization Management page to continue.
+Users may create RKE or RKE2 clusters on Harvester only from the Cluster Management page. Once you have created the cluster, you will then go to the Virtualization Management page to continue.
 
 Click [here](https://rancher.com/docs/rancher/v2.6/en/admin-settings/drivers/node-drivers/) for more information on node drivers in Rancher.
 
