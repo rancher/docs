@@ -43,4 +43,6 @@ Rancher supports several major cloud providers, but by default, these node drive
 *   [Digital Ocean]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/)
 *   [vSphere]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/vsphere/)
 
-Starting in v2.6.1, Rancher also supports the [Harvester node driver]({{<baseurl>}}/rancher/v2.6/en/virtualization-admin/#harvester-node-driver/). This node driver is off by default and must be enabled for deployment.
+There are several other node drivers that are disabled by default, but are packaged in Rancher: 
+
+*   [Harvester]({{<baseurl>}}/rancher/v2.6/en/virtualization-admin/#harvester-node-driver/), available in Rancher v2.6.1
