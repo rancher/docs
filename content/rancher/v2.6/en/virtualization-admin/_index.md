@@ -23,9 +23,7 @@ To navigate to the Harvester cluster, click **☰ > Virtualization Management**.
 
 ### Harvester Node Driver
 
-The [Harvester node driver](https://docs.harvesterhci.io/v0.3/rancher/node-driver/) is marked as `tech preview` on RKE and RKE2 options in Rancher. This will be the case both on the Create page and once the driver is already enabled. The node driver is available whether or not the Harvester feature flag is enabled. Note that the node driver is off by default. 
-
-Users may create RKE or RKE2 clusters on Harvester only from the Cluster Management page. Once you have created the cluster, you will then go to the Virtualization Management page to continue.
+The [Harvester node driver](https://docs.harvesterhci.io/v0.3/rancher/node-driver/) is marked as `tech preview` on RKE and RKE2 options in Rancher. This will be the case both on the Create page and once the driver is already enabled. The node driver is available whether or not the Harvester feature flag is enabled. Note that the node driver is off by default. Users may create RKE or RKE2 clusters on Harvester only from the Cluster Management page.
 
 Click [here]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/#node-drivers) for more information on node drivers in Rancher.
 
