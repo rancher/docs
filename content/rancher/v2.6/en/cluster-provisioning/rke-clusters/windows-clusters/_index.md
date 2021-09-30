@@ -34,7 +34,9 @@ _Tech Preview_
 
 Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
 
-The RKE2 provisioning tech preview also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
+The RKE2 provisioning tech preview also includes installing RKE2 on Windows clusters. When provisioning a new Windows cluster, users can select "Windows" and then choose the appropriate options to configure the custom cluster under the Cluster Management page. Only Windows worker nodes may be registered.
+
+Windows features for RKE2 include:
 
 - Windows Containers with RKE2 powered by containerd
 - Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
@@ -56,6 +58,8 @@ For the support lifecycle dates for Windows Server, see the [Microsoft Documenta
 ### Kubernetes Version
 
 Kubernetes v1.15+ is required.
+
+If you are using Kubernetes v1.21 with Windows Server 20H2 Standard Core, the patch "2019-08 Servicing Stack Update for Windows Server" must be installed on the node.
 
 ### Node Requirements
 
@@ -150,7 +154,7 @@ You will provision three nodes:
 | Node 2 | Linux (Ubuntu Server 18.04 recommended)                      |
 | Node 3 | Windows (Windows Server core version 1809 or above required) |
 
-If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/cloud-providers)
+If your nodes are hosted by a **Cloud Provider** and you want automation support such as loadbalancers or persistent storage devices, your nodes have additional configuration requirements. For details, see [Selecting Cloud Providers.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers)
 
 # 2. Create the Cluster on Existing Nodes
 

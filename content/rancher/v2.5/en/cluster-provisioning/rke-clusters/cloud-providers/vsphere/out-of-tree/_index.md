@@ -25,10 +25,8 @@ The Cloud Provider Interface (CPI) should be installed first before installing t
 
 ### 1. Create a vSphere cluster
 
-1. In the upper left corner, click **≡ > Cluster Management.**
-1. From the **Clusters** page, click **Create.**
-1. Click **VMWare vSphere.**
-1. Under **Cluster Options** in the **Cloud Provider** section, select **External (Out-of-tree)**. This sets the cloud provider option on the Kubernetes cluster to `external` which sets your Kubernetes cluster up to be configured with an out-of-tree cloud provider. 
+1. On the Clusters page, click on **Add Cluster** and select the **vSphere** option or **Existing Nodes** option.
+1. Under **Cluster Options** in the **Cloud Provider** section, select **External (Out-of-tree)**. This sets the cloud provider option on the Kubernetes cluster to `external` which sets your Kubernetes cluster up to be configured with an out-of-tree cloud provider.
 1. Finish creating your cluster.
 
 ### 2. Install the CPI plugin

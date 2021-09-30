@@ -49,7 +49,7 @@ If the scrape configuration you want cannot be specified via a ServiceMonitor or
 
 A [scrape_config section](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) specifies a set of targets and parameters describing how to scrape them. In the general case, one scrape configuration specifies a single job.
 
-An example of where this might be used is with Istio. For more information, see [this section.](https://rancher.com/docs/rancher/v2.5/en/istio/v2.5/configuration-reference/selectors-and-scrape)
+An example of where this might be used is with Istio. For more information, see [this section.](https://rancher.com/docs/rancher/v2.5/en/istio/configuration-reference/selectors-and-scrape)
 
 
 # Configuring Applications Packaged within Monitoring v2
@@ -64,7 +64,7 @@ But in the top level chart you can add values that override values that exist in
 
 ### Increase the Replicas of Alertmanager
 
-As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster. The replicas can all be managed using the same underlying Alertmanager Config Secret. For more information on the Alertmanager Config Secret, refer to [this section.](../configuration/advanced/alertmanager/#multiple-alertmanager-replicas)
+As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster. The replicas can all be managed using the same underlying Alertmanager Config Secret. For more information on the Alertmanager Config Secret, refer to [this section]({{<baseurl>}}/monitoring-alerting/configuration/advanced/alertmanager/#multiple-alertmanager-replicas)
 
 ### Configuring the Namespace for a Persistent Grafana Dashboard
 
