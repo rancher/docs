@@ -18,7 +18,7 @@ The following account types are not supported for Azure Subscriptions:
 
 # Prerequisites for RKE and RKE2
 
-**To set up the Azure cloud provider in both RKE and RKE2, the following credentials need to be configured:**
+To set up the Azure cloud provider for both RKE and RKE2, the following credentials need to be configured:
 
 1. [Set up the Azure Tenant ID](#1-set-up-the-azure-tenant-id)
 2. [Set up the Azure Client ID and Azure Client Secret](#2-set-up-the-azure-client-id-and-azure-client-secret)
@@ -78,14 +78,12 @@ Only hosts expected to be load balancer back ends need to be in this group.
 1. * Supply the Cloud Provider Configuration. Note that Rancher will automatically create a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster. 
    * You can click on "Show Advanced" to see more of these automatically generated names and update them if
    necessary. Your Cloud Provider Configuration **must** match the fields in the Machine Pools section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group. 
-   * If you choose to edit as YAML, an example is provided below. You will modify it as needed.
+   * An example is provided below. You will modify it as needed.
 
-    {{% accordion id="v2.6.0-cloud-provider-config-file" label="Example Cloud Provider Config File" %}}
+    {{% accordion id="v2.6.0-cloud-provider-config-file" label="Example Cloud Provider Config" %}}
 
-    ```yaml
-
-    # Cloud Provider Config
-
+```yaml
+{   
     "cloud":"AzurePublicCloud",
     "tenantId": "YOUR TENANTID HERE",
     "aadClientId": "YOUR AADCLIENTID HERE",
@@ -103,9 +101,10 @@ Only hosts expected to be load balancer back ends need to be in this group.
     "cloudProviderBackoff": false,
     "useManagedIdentityExtension": false,
     "useInstanceMetadata": true
-    ```
+}
+```
     {{% /accordion %}}
     
-1. Under the Cluster Configuration > Advanced section, click "Add" under Additional Controller Manager Args and add this flag: `--configure-cloud-routes=false`
+1. Under the **Cluster Configuration > Advanced** section, click **Add** under **Additional Controller Manager Args** and add this flag: `--configure-cloud-routes=false`
 
-1. Click the Create button to submit the form and create the cluster.
+1. Click the **Create** button to submit the form and create the cluster.
