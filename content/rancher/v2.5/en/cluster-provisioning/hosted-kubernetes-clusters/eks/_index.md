@@ -50,9 +50,7 @@ For more detailed information on IAM policies for EKS, refer to the official [do
 
 Use Rancher to set up and configure your Kubernetes cluster.
 
-1. In the upper left corner, click **≡ > Cluster Management.**
-
-1. From the **Clusters** page, click **Create**.
+1. From the **Clusters** page, click **Add Cluster**.
 
 1. Choose **Amazon EKS**.
 

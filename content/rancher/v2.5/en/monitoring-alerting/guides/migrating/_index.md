@@ -41,7 +41,7 @@ For more information on how to configure Monitoring & Alerting V2, see [this pag
 
 Project owners and members no longer get access to Grafana or Prometheus by default. If view-only users had access to Grafana, they would be able to see data from any namespace. For Kiali, any user can edit things they don’t own in any namespace.
 
-For more information about role-based access control in `rancher-monitoring`, refer to [this page.](../rbac)
+For more information about role-based access control in `rancher-monitoring`, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/rbac)
 
 # Migrating from Monitoring V1 to Monitoring V2
 

@@ -11,6 +11,7 @@ This section contains advanced information describing the different ways you can
 - [Certificate rotation](#certificate-rotation)
 - [Auto-deploying manifests](#auto-deploying-manifests)
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
+- [Using etcdctl](#using-etcdctl)
 - [Configuring containerd](#configuring-containerd)
 - [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
 - [Running K3s with Rootless mode (Experimental)](#running-k3s-with-rootless-mode-experimental)
@@ -22,6 +23,7 @@ This section contains advanced information describing the different ways you can
 - [Enabling cgroups for Raspbian Buster](#enabling-cgroups-for-raspbian-buster)
 - [SELinux Support](#selinux-support)
 - [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
+- [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
 
 # Certificate Rotation
 
@@ -31,7 +33,7 @@ If the certificates are expired or have fewer than 90 days remaining before they
 
 # Auto-Deploying Manifests
 
-Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`.
+Any file found in `/var/lib/rancher/k3s/server/manifests` will automatically be deployed to Kubernetes in a manner similar to `kubectl apply`, both on startup and when the file is changed on disk. Deleting files out of this directory will not delete the corresponding resources from the cluster.
 
 For information about deploying Helm charts, refer to the section about [Helm.](../helm)
 
@@ -114,6 +116,24 @@ rancher/library-traefik          1.7.19              aa764f7db3051       85.7MB
 rancher/local-path-provisioner   v0.0.11             9d12f9848b99f       36.2MB
 rancher/metrics-server           v0.3.6              9dd718864ce61       39.9MB
 rancher/pause                    3.1                 da86e6ba6ca19       742kB
+```
+
+# Using etcdctl
+
+etcdctl provides a CLI for etcd.
+
+If you would like to use etcdctl after installing K3s with embedded etcd, install etcdctl using the [official documentation.](https://etcd.io/docs/latest/install/) 
+
+```
+$ VERSION="v3.5.0"
+$ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VERSION}-linux-amd64.tar.gz --output etcdctl-${VERSION}-linux-amd64.tar.gz
+$ sudo tar -zxvf etcdctl-${VERSION}-linux-amd64.tar.gz -C /usr/local/bin
+```
+
+Then start using etcdctl commands with the appropriate K3s flags:
+
+```
+$ sudo etcdctl --cacert=/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt --cert=/var/lib/rancher/k3s/server/tls/etcd/client.crt --key=/var/lib/rancher/k3s/server/tls/etcd/client.key version
 ```
 
 # Configuring containerd
@@ -393,4 +413,58 @@ If enabled, it is required to disable nm-cloud-setup and reboot the node:
 ```
 systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
 reboot
+```
+
+# Enabling Lazy Pulling of eStargz (Experimental)
+
+## What's lazy pulling and eStargz?
+
+Pulling images is known as one of the time-consuming steps in the container lifecycle.
+According to [Harter, et al.](https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter),
+
+> pulling packages accounts for 76% of container start time, but only 6.4% of that data is read
+
+To address this issue, k3s experimentally supports *lazy pulling* of image contents.
+This allows k3s to start a container before the entire image has been pulled.
+Instead, the necessary chunks of contents (e.g. individual files) are fetched on-demand. 
+Especially for large images, this technique can shorten the container startup latency.
+
+To enable lazy pulling, the target image needs to be formatted as [*eStargz*](https://github.com/containerd/stargz-snapshotter/blob/main/docs/stargz-estargz.md).
+This is an OCI-alternative but 100% OCI-compatible image format for lazy pulling.
+Because of the compatibility, eStargz can be pushed to standard container registries (e.g. ghcr.io) as well as this is *still runnable* even on eStargz-agnostic runtimes.
+
+eStargz is developed based on the [stargz format proposed by Google CRFS project](https://github.com/google/crfs) but comes with practical features including content verification and performance optimization.
+For more details about lazy pulling and eStargz, please refer to [Stargz Snapshotter project repository](https://github.com/containerd/stargz-snapshotter).
+
+## Configure k3s for lazy pulling of eStargz
+
+As shown in the following, `--snapshotter=stargz` option is needed for k3s server and agent.
+
+```
+k3s server --snapshotter=stargz
+```
+
+With this configuration, you can perform lazy pulling for eStargz-formatted images.
+The following Pod manifest uses eStargz-formatted `node:13.13.0` image (`ghcr.io/stargz-containers/node:13.13.0-esgz`).
+k3s performs lazy pulling for this image.
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodejs
+spec:
+  containers:
+  - name: nodejs-estargz
+    image: ghcr.io/stargz-containers/node:13.13.0-esgz
+    command: ["node"]
+    args:
+    - -e
+    - var http = require('http');
+      http.createServer(function(req, res) {
+        res.writeHead(200);
+        res.end('Hello World!\n');
+      }).listen(80);
+    ports:
+    - containerPort: 80
 ```

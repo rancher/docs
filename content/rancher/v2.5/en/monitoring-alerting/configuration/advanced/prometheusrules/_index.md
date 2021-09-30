@@ -65,7 +65,7 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 |-------|----------------|
 | Alert Name |  The name of the alert. Must be a valid label value.   |
 | Wait To Fire For |   Duration in seconds. Alerts are considered firing once they have been returned for this long. Alerts which have not yet fired for long enough are considered pending. |
-| PromQL Expression |   The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and all resultant time series will become pending/firing alerts. For more information, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../expression) |
+| PromQL Expression |   The PromQL expression to evaluate. Prometheus will evaluate the current value of this PromQL expression on every evaluation cycle and all resultant time series will become pending/firing alerts. For more information, refer to the [Prometheus documentation](https://prometheus.io/docs/prometheus/latest/querying/basics/) or our [example PromQL expressions.](../../../expression) |
 | Labels |  Labels to add or overwrite for each alert.      |
 | Severity |   When enabled, labels are attached to the alert or record that identify it by the severity level.  |
 | Severity Label Value | Critical, warning, or none |
