@@ -48,7 +48,7 @@ The below table shows the availability and default value for feature flags in Ra
 | `token-hashing` | `false` for new installs, `true` for upgrades | GA* | v2.6.0 | |
 | `legacy` | `false` for new installs, `true` for upgrades | GA* | v2.6.0 | |
 | `multi-cluster-management` | `false` | GA* | v2.5.0 | |
-| `harvester` | `true` | Experimental | v2.6.1 | |
+| `harvester` | `false` | Experimental | v2.6.1 | |
 | `rke2` | `true` | Experimental | v2.6.0 | |
 
 \* Generally Available. This feature is included in Rancher and it is not experimental.

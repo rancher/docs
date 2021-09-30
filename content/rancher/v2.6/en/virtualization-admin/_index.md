@@ -9,7 +9,7 @@ New in Rancher v2.6.1, [Harvester v0.3.0](https://docs.harvesterhci.io/v0.3/) is
 
 ### Feature Flag
 
-The Harvester feature flag is used to manage access to the Virtualization Management (VM) page in Rancher where users can navigate directly to Harvester clusters and access the Harvester UI. The Harvester feature flag is enabled by default. Click [here]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/) for more information on feature flags in Rancher.
+The Harvester feature flag is used to manage access to the Virtualization Management (VM) page in Rancher where users can navigate directly to Harvester clusters and access the Harvester UI. The Harvester feature flag is disabled by default. Click [here]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/) for more information on feature flags in Rancher.
 
 To navigate to the Harvester cluster, click **☰ > Virtualization Management**. From Harvester Clusters page, click one of the clusters listed to go to the single Harvester cluster view. 
 
