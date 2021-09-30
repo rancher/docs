@@ -9,7 +9,7 @@ New in Rancher v2.6.1, [Harvester v0.3.0](https://docs.harvesterhci.io/v0.3/) is
 
 ### Feature Flag
 
-The Harvester feature flag is used to manage access to the Virtualization Management (VM) page in Rancher where users can navigate directly to Harvester clusters and access the Harvester UI. The Harvester feature flag is enabled by default. Click [here](https://rancher.com/docs/rancher/v2.6/en/installation/resources/feature-flags/) for more information on feature flags in Rancher.
+The Harvester feature flag is used to manage access to the Virtualization Management (VM) page in Rancher where users can navigate directly to Harvester clusters and access the Harvester UI. The Harvester feature flag is enabled by default. Click [here]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/) for more information on feature flags in Rancher.
 
 To navigate to the Harvester cluster, click **☰ > Virtualization Management**. From Harvester Clusters page, click one of the clusters listed to go to the single Harvester cluster view. 
 
@@ -27,7 +27,7 @@ The [Harvester node driver](https://docs.harvesterhci.io/v0.3/rancher/node-drive
 
 Users may create RKE or RKE2 clusters on Harvester only from the Cluster Management page. Once you have created the cluster, you will then go to the Virtualization Management page to continue.
 
-Click [here](https://rancher.com/docs/rancher/v2.6/en/admin-settings/drivers/node-drivers/) for more information on node drivers in Rancher.
+Click [here]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/#node-drivers) for more information on node drivers in Rancher.
 
 ### Limitations
 
