@@ -113,7 +113,7 @@ You can define [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) to
 
 ### cri-dockerd
 
-Kubernetes will remove code in the kubelet that interacts with Docker (dockershim) in Kubernetes 1.23. For more information, see [Dockershim Deprecation FAQ](https://kubernetes.io/blog/2020/12/02/dockershim-faq/). The component that replaces this code is called `cri-dockerd` and can be enabled using the following configuration:
+Kubernetes will remove code in the kubelet that interacts with Docker (dockershim) in a future Kubernetes release. For more information, see [Dockershim Deprecation FAQ: When will dockershim be removed?](https://kubernetes.io/blog/2020/12/02/dockershim-faq/#when-will-dockershim-be-removed). The component that replaces this code is called `cri-dockerd` and can be enabled using the following configuration:
 
 ```
 enable_cri_dockerd: true
