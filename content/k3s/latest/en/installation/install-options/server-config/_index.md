@@ -59,7 +59,7 @@ In this section, you'll learn how to configure the K3s server.
 
 | Flag | Environment Variable | Description |
 |------|----------------------|-------------|
-|  `--token value, -t` value  | `K3S_TOKEN`      | Shared secret used to join a server or agent to a cluster |
+|  `--token value, -t` value  | `K3S_TOKEN`      | Shared secret used to join a server or agent to a cluster. This token must **not** be in the `K10` format (i.e. it starts with the string `K10`), use a random string instead. |
 |  `--token-file` value    |  `K3S_TOKEN_FILE`   | File containing the cluster-secret/token      |
 
 ### Client Options
