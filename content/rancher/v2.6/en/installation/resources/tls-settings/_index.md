@@ -3,30 +3,20 @@ title: TLS Settings
 weight: 3
 ---
 
-The default TLS configuration only accepts TLS 1.2 and secure TLS cipher suites. TLS 1.3 and TLS 1.3 exclusive cipher suites are not supported.
+Changing the default TLS settings depends on the chosen installation method.
 
-# Configuring TLS settings
+# Running Rancher in a highly available Kubernetes cluster
 
-The Audit Log is enabled and configured by passing environment variables to the Rancher server container. See the following to enable on your installation.
+When you install Rancher inside of a Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. The possible TLS settings depend on the used ingress controller:
 
-- [TLS settings in Docker options]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/advanced/#tls-settings)
+* nginx-ingress-controller (default for RKE1 and RKE2): [Default TLS Version and Ciphers](https://kubernetes.github.io/ingress-nginx/user-guide/tls/#default-tls-version-and-ciphers).
+* traefik (default for K3s): [TLS Options](https://doc.traefik.io/traefik/https/tls/#tls-options).
 
-- [TLS settings in Helm chart options]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#tls-settings)
+# Running Rancher in a single Docker container
 
-# TLS Environment Variables
+The default TLS configuration only accepts TLS 1.2 and secure TLS cipher suites. You can change this by setting the following environment variables:
 
 | Parameter | Description | Default | Available options |
 |-----|-----|-----|-----|
-| `CATTLE_TLS_MIN_VERSION` | Minimum TLS version | `1.2` | `1.0`, `1.1`, `1.2` |
-| `CATTLE_TLS_CIPHERS` | Allowed TLS cipher suites | `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,`<br/>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,`<br/>`TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,`<br/>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,`<br/>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,`<br/>`TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305` | See [Golang tls constants](https://golang.org/pkg/crypto/tls/#pkg-constants) |
-
-
-# Legacy configuration
-
-If you need to configure TLS the same way as it was before Rancher v2.1.7, please use the following settings:
-
-
-| Parameter | Legacy value |
-|-----|-----|
-| `CATTLE_TLS_MIN_VERSION` | `1.0` |
-| `CATTLE_TLS_CIPHERS` | `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,`<br/>`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,`<br/>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,`<br/>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,`<br/>`TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,`<br/>`TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,`<br/>`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,`<br/>`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA,`<br/>`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,`<br/>`TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA,`<br/>`TLS_RSA_WITH_AES_128_GCM_SHA256,`<br/>`TLS_RSA_WITH_AES_256_GCM_SHA384,`<br/>`TLS_RSA_WITH_AES_128_CBC_SHA,`<br/>`TLS_RSA_WITH_AES_256_CBC_SHA,`<br/>`TLS_ECDHE_RSA_WITH_3DES_EDE_CBC_SHA,`<br/>`TLS_RSA_WITH_3DES_EDE_CBC_SHA`
+| `CATTLE_TLS_MIN_VERSION` | Minimum TLS version | `1.2` | `1.0`, `1.1`, `1.2`, `1.3` |
+| `CATTLE_TLS_CIPHERS` | Allowed TLS cipher suites | `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`,<br/>`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`,<br/>`TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305`,<br/>`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`,<br/>`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`,<br/>`TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305` | See [Golang tls constants](https://golang.org/pkg/crypto/tls/#pkg-constants) |

@@ -1,6 +1,8 @@
 ---
 title: Rancher Helm Chart Options
 weight: 1
+aliases:
+  - /rancher/v2.6/en/installation/resources/chart-options
 ---
 
 This page is a configuration reference for the Rancher Helm chart.
@@ -110,12 +112,7 @@ You can set extra environment variables for Rancher server using `extraEnv`. Thi
 
 ### TLS Settings
 
-To set a different TLS configuration, you can use the `CATTLE_TLS_MIN_VERSION` and `CATTLE_TLS_CIPHERS` environment variables. For example, to configure TLS 1.0 as minimum accepted TLS version:
-
-```plain
---set 'extraEnv[0].name=CATTLE_TLS_MIN_VERSION'
---set 'extraEnv[0].value=1.0'
-```
+When you install Rancher inside of a Kubernetes cluster, TLS is offloaded at the cluster's ingress controller. The possible TLS settings depend on the used ingress controller.
 
 See [TLS settings]({{<baseurl>}}/rancher/v2.6/en/installation/resources/tls-settings) for more information and options.
 
