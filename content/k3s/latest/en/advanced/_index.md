@@ -24,6 +24,7 @@ This section contains advanced information describing the different ways you can
 - [SELinux Support](#selinux-support)
 - [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
 - [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
+- [Additional Logging Sources](#additional-logging-sources)
 
 # Certificate Rotation
 
@@ -467,4 +468,15 @@ spec:
       }).listen(80);
     ports:
     - containerPort: 80
+```
+
+# Additional Logging Sources
+
+Rancher logging for K3s can be installed without using Rancher. The following instructions should be executed to do so:
+
+```
+helm repo add rancher-charts https://charts.rancher.io
+helm repo update
+helm install --create-namespace -n cattle-logging-system rancher-logging-crd rancher-charts/rancher-logging-crd
+helm install --create-namespace -n cattle-logging-system rancher-logging --se tadditionalLoggingSources.k3s.enabled=true rancher-charts/rancher-logging
 ```
