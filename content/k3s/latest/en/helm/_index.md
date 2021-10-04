@@ -66,6 +66,20 @@ spec:
 
 Content placed in `/var/lib/rancher/k3s/server/static/` can be accessed anonymously via the Kubernetes APIServer from within the cluster. This URL can be templated using the special variable `%{KUBERNETES_API}%` in the `spec.chart` field. For example, the packaged Traefik component loads its chart from `https://%{KUBERNETES_API}%/static/charts/traefik-1.81.0.tgz`.
 
+
+>**Notice on File Naming Requirements:** `HelmChart`, `HelmChartConfig` and manifest files require adherence to naming conventions to avoid confusion and errors in logs. For example, neither uppercase letters nor underscores should be used in chart names. A filename with underscores will produce errors like the following:
+```
+level=error msg="Failed to process config: failed to process 
+/var/lib/rancher/rke2/server/manifests/rke2_ingress_daemonset.yaml: 
+Addon.k3s.cattle.io \"rke2_ingress_daemonset\" is invalid: metadata.name: 
+Invalid value: \"rke2_ingress_daemonset\": a lowercase RFC 1123 subdomain 
+must consist of lower case alphanumeric characters, '-' or '.', and must 
+start and end with an alphanumeric character (e.g. 'example.com', regex 
+used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]
+([-a-z0-9]*[a-z0-9])?)*')"
+```
+To learn more about best practices on chart naming conventions, go [here](https://v2-14-0.helm.sh/docs/chart_best_practices/#chart-names).
+
 ### Customizing Packaged Components with HelmChartConfig
 
 To allow overriding values for packaged components that are deployed as HelmCharts (such as Traefik), K3s versions starting with v1.19.0+k3s1 support customizing deployments via a HelmChartConfig resources. The HelmChartConfig resource must match the name and namespace of its corresponding HelmChart, and supports providing additional `valuesContent`, which is passed to the `helm` command as an additional value file.
