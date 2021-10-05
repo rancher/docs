@@ -129,6 +129,10 @@ s3:
 ```
 ### Example credentialSecret
 
+_IMPORTANT: When creating secrets use following command structure: kubectl create secret generic mys3cred --from-literal='accessKey=XYZ' --from-literal='secretKey=XYZ' 
+as per: https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/
+otherwise if you just compose the yaml file the secret won't be accepted, as the header will be malformed. _
+
 ```yaml
 apiVersion: v1
 kind: Secret
