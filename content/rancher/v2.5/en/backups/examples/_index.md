@@ -269,8 +269,8 @@ metadata:
   name: creds
 type: Opaque
 data:
-  accessKey: <Enter your access key>
-  secretKey: <Enter your secret key>
+  accessKey: <Enter your base64-encoded access key>
+  secretKey: <Enter your base64-encoded secret key>
 ```
 
 # Example EncryptionConfiguration
