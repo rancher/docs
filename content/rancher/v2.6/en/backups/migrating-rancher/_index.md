@@ -37,8 +37,8 @@ metadata:
   name: s3-creds
 type: Opaque
 stringData:
-  accessKey: <Enter your access key>
-  secretKey: <Enter your secret key>
+  accessKey: <Enter your base64-encoded access key>
+  secretKey: <Enter your base64-encoded secret key>
 ```
 
 This secret can be created in any namespace, with the above example it will get created in the default namespace
