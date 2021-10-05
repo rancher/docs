@@ -30,6 +30,7 @@ On this page, we provide security-related documentation along with resources to 
 - [The CIS Benchmark and self-assessment](#the-cis-benchmark-and-self-assessment)
 - [Third-party penetration test reports](#third-party-penetration-test-reports)
 - [Rancher CVEs and resolutions](#rancher-cves-and-resolutions)
+- [Kubernetes Security Best Practices](#kubernetes-security-best-practices)
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 
@@ -83,3 +84,7 @@ Results:
 ### Rancher CVEs and Resolutions
 
 Rancher is committed to informing the community of security issues in our products. For the list of CVEs (Common Vulnerabilities and Exposures) for issues we have resolved, refer to [this page.](./cve)
+
+### Kubernetes Security Best Practices
+
+For recommendations on securing your Kubernetes cluster, refer to the [Best Practices](./best-practices) guide.
