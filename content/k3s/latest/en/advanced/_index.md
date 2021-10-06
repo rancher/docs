@@ -25,6 +25,7 @@ This section contains advanced information describing the different ways you can
 - [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
 - [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
 - [Additional Logging Sources](#additional-logging-sources)
+- [K10 Token Formatting](#k10-token-formatting)
 
 # Certificate Rotation
 
@@ -480,3 +481,14 @@ helm repo update
 helm install --create-namespace -n cattle-logging-system rancher-logging-crd rancher-charts/rancher-logging-crd
 helm install --create-namespace -n cattle-logging-system rancher-logging --set additionalLoggingSources.k3s.enabled=true rancher-charts/rancher-logging
 ```
+
+# K10 Token Formatting
+
+>K10 prefixed tokens cannot be used by default, but K10 formatting is possible with additional configuration. The following steps will help users to properly use K10 tokens:
+>
+>* When K10 formatting is used, the token is treated as `K10<ca-hash>::<username>:<password>`. If the K10 prefix is missing, the token will be treated as `<password>` only.
+>
+>* To use the K10 format, perform the following steps:
+>   1. Start server with `--token=randomstring`
+>   1. Retrieve the full K10 token off of the server
+>   1. Use the full K10 token to join agents and other servers
