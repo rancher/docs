@@ -472,11 +472,11 @@ spec:
 
 # Additional Logging Sources
 
-Rancher logging for K3s can be installed without using Rancher. The following instructions should be executed to do so:
+[Rancher logging]({{<baseurl>}}//rancher/v2.6/en/logging/helm-chart-options/) for K3s can be installed without using Rancher. The following instructions should be executed to do so:
 
 ```
 helm repo add rancher-charts https://charts.rancher.io
 helm repo update
 helm install --create-namespace -n cattle-logging-system rancher-logging-crd rancher-charts/rancher-logging-crd
-helm install --create-namespace -n cattle-logging-system rancher-logging --se tadditionalLoggingSources.k3s.enabled=true rancher-charts/rancher-logging
+helm install --create-namespace -n cattle-logging-system rancher-logging --set additionalLoggingSources.k3s.enabled=true rancher-charts/rancher-logging
 ```
