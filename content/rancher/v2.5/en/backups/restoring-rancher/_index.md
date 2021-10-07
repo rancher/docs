@@ -56,8 +56,17 @@ To check how the restore is progressing, you can check the logs of the operator.
 
 ```
 kubectl logs -n cattle-resources-system -l app.kubernetes.io/name=rancher-backup -f
-
+```
 
 ### Cleanup
 
 If you created the restore resource with kubectl, remove the resource to prevent a naming conflict with future restores.
+
+### Known Issues
+In some cases, after restoring the backup, Rancher logs will show errors similar to the following:
+```
+2021/10/05 21:30:45 [ERROR] error syncing 'c-89d82/m-4067aa68dd78': handler rke-worker-upgrader: clusters.management.cattle.io "c-89d82" not found, requeuing
+```
+This happens because one of the resources that was just restored has finalizers but the related resources have been deleted so the handler cannot find it.
+
+To eliminate the errors, we need to find and delete the resource that causes the error. See more information [here](https://github.com/rancher/rancher/issues/35050#issuecomment-937968556)
