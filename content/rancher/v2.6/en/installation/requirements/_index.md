@@ -174,12 +174,4 @@ To operate properly, Rancher requires a number of ports to be open on Rancher no
 
 # Dockershim Support
 
-In Kubernetes v1.20, the dockershim became deprecated, and Docker became deprecated as a container runtime for Kubernetes. Dockershim was built into Kubernetes as a type of adapter that allowed Kubernetes to manage Docker containers. It was necessary because the Docker Daemon was not compliant with the CRI (Container Runtime Interface) that was created for Kubernetes. The dockershim is still included in the kubelet in Kubernetes v1.20. 
-
-Rancher plans to implement the [upstream open source community Dockershim announced by Mirantis and Docker](https://www.mirantis.com/blog/mirantis-to-take-over-support-of-kubernetes-dockershim-2/) to ensure RKE clusters can continue to leverage Docker as their container runtime. Users of RKE will be able to continue upgrading and building new RKE clusters leveraging Docker as the runtime and install method.
-
-For users looking to use another container runtime, Rancher has the edge-focused K3s and datacenter-focused RKE2 Kubernetes distributions that use containerd as the default runtime. Imported RKE2 and K3s Kubernetes clusters can then be upgraded and managed through Rancher going forward.
-
-For more information on the deprecation of Docker as a container runtime for Kubernetes, see the [official Kubernetes blog post](https://kubernetes.io/blog/2020/12/02/dont-panic-kubernetes-and-docker/) and the [official blog post from Mirantis.](https://www.mirantis.com/blog/mirantis-to-take-over-support-of-kubernetes-dockershim-2/)
-
-The dockershim deprecation schedule is tracked by the upstream Kubernetes community in [Kubernetes Enhancement Proposal (KEP) 1985.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1985-remove-dockershim) 
+For more information on Dockershim support, refer to [this page]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/dockershim/).
