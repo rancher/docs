@@ -3,7 +3,7 @@ title: Architecture Recommendations
 weight: 3
 ---
 
-Kubernetes cluster. If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the node running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
+If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the node running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
 
 This section covers the following topics:
 
@@ -48,7 +48,7 @@ In an RKE installation, the cluster data is replicated on each of three etcd nod
 
 We recommend the following configurations for the load balancer and Ingress controllers:
 
-* The DNS for Rancher should resolve to a Layer 4 load balancer (TCP)
+* The DNS for Rancher should resolve to a Layer 4 load balancer (TCP).
 * The Load Balancer should forward port TCP/80 and TCP/443 to all 3 nodes in the Kubernetes cluster.
 * The Ingress controller will redirect HTTP to HTTPS and terminate SSL/TLS on port TCP/443.
 * The Ingress controller will forward traffic to port TCP/80 on the pod in the Rancher deployment.
