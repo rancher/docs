@@ -73,7 +73,7 @@ the pods. Bob is authenticated through Rancher's authentication proxy.
 
 The authentication proxy forwards all Kubernetes API calls to downstream clusters. It integrates with authentication services like local authentication, Active Directory, and GitHub. On every Kubernetes API call, the authentication proxy authenticates the caller and sets the proper Kubernetes impersonation headers before forwarding the call to Kubernetes masters.
 
-Rancher communicates with Kubernetes clusters using a [service account,](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) which provides an identity for processes that run in a pod.
+Rancher communicates with Kubernetes clusters using a [service account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/), which provides an identity for processes that run in a pod.
 
 By default, Rancher generates a [kubeconfig file]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) that contains credentials for proxying through the Rancher server to connect to the Kubernetes API server on a downstream user cluster. The kubeconfig file (`kube_config_rancher-cluster.yml`) contains full access to the cluster.
 
