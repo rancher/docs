@@ -66,8 +66,9 @@ spec:
 
 Content placed in `/var/lib/rancher/k3s/server/static/` can be accessed anonymously via the Kubernetes APIServer from within the cluster. This URL can be templated using the special variable `%{KUBERNETES_API}%` in the `spec.chart` field. For example, the packaged Traefik component loads its chart from `https://%{KUBERNETES_API}%/static/charts/traefik-1.81.0.tgz`.
 
+**Note:** The `name` field should follow the Helm chart naming conventions. Refer [here](https://helm.sh/docs/chart_best_practices/conventions/#chart-names) to learn more.
 
->**Notice on File Naming Requirements:** `HelmChart`, `HelmChartConfig` and manifest files require adherence to naming conventions to avoid confusion and errors in logs. The Helm chart controller uses the filename to create objects. Therefore, if a filename doesn’t align with the validation, that will cause an error installing the chart, even if the chart configuration is correct. For example, underscores, uppercase letters, and dots are not permitted in filenames. The example below is an error generated from using underscores:
+>**Notice on File Naming Requirements:** `HelmChart` and `HelmChartConfig` manifest filenames should adhere to Kubernetes object [naming restrictions](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/). The Helm Controller uses filenames to create objects; therefore, the filename must also align with the restrictions. Any related errors can be observed in the RKE2-server logs. The example below is an error generated from using underscores:
 ```
 level=error msg="Failed to process config: failed to process 
 /var/lib/rancher/rke2/server/manifests/rke2_ingress_daemonset.yaml: 
@@ -78,7 +79,6 @@ start and end with an alphanumeric character (e.g. 'example.com', regex
 used for validation is '[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]
 ([-a-z0-9]*[a-z0-9])?)*')"
 ```
->**Note:** Despite the error message stating dots can be used, they should not be. Refer [here](https://helm.sh/docs/chart_best_practices/conventions/#chart-names) to learn more about best practices on file naming conventions.
 
 ### Customizing Packaged Components with HelmChartConfig
 
