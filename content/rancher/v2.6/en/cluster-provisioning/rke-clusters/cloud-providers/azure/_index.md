@@ -16,7 +16,9 @@ The following account types are not supported for Azure Subscriptions:
 - Single tenant accounts (i.e. accounts with no subscriptions).
 - Multi-subscription accounts.
 
-To set up the Azure cloud provider following credentials need to be configured:
+# Prerequisites for RKE and RKE2
+
+To set up the Azure cloud provider for both RKE and RKE2, the following credentials need to be configured:
 
 1. [Set up the Azure Tenant ID](#1-set-up-the-azure-tenant-id)
 2. [Set up the Azure Client ID and Azure Client Secret](#2-set-up-the-azure-client-id-and-azure-client-secret)
@@ -68,3 +70,41 @@ If you provision hosts using Rancher Machine Azure driver, you will need to edit
 You should already assign custom hosts to this Network Security Group during provisioning.
 
 Only hosts expected to be load balancer back ends need to be in this group.
+
+# RKE2 Cluster Set-up in Rancher
+
+1. Choose "Azure" from the Cloud Provider drop-down in the Cluster Configuration section.
+
+1. * Supply the Cloud Provider Configuration. Note that Rancher will automatically create a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster. 
+   * You can click on "Show Advanced" to see more of these automatically generated names and update them if
+   necessary. Your Cloud Provider Configuration **must** match the fields in the Machine Pools section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group. 
+   * An example is provided below. You will modify it as needed.
+
+    {{% accordion id="v2.6.0-cloud-provider-config-file" label="Example Cloud Provider Config" %}}
+
+```yaml
+{   
+    "cloud":"AzurePublicCloud",
+    "tenantId": "YOUR TENANTID HERE",
+    "aadClientId": "YOUR AADCLIENTID HERE",
+    "aadClientSecret": "YOUR AADCLIENTSECRET HERE",
+    "subscriptionId": "YOUR SUBSCRIPTIONID HERE",
+    "resourceGroup": "docker-machine",
+    "location": "westus",
+    "subnetName": "docker-machine",
+    "securityGroupName": "rancher-managed-KA4jV9V2",
+    "securityGroupResourceGroup": "docker-machine",
+    "vnetName": "docker-machine-vnet",
+    "vnetResourceGroup": "docker-machine",
+    "primaryAvailabilitySetName": "docker-machine",
+    "routeTableResourceGroup": "docker-machine",
+    "cloudProviderBackoff": false,
+    "useManagedIdentityExtension": false,
+    "useInstanceMetadata": true
+}
+```
+    {{% /accordion %}}
+    
+1. Under the **Cluster Configuration > Advanced** section, click **Add** under **Additional Controller Manager Args** and add this flag: `--configure-cloud-routes=false`
+
+1. Click the **Create** button to submit the form and create the cluster.
