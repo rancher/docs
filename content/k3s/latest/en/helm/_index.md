@@ -68,7 +68,7 @@ Content placed in `/var/lib/rancher/k3s/server/static/` can be accessed anonymou
 
 **Note:** The `name` field should follow the Helm chart naming conventions. Refer [here](https://helm.sh/docs/chart_best_practices/conventions/#chart-names) to learn more.
 
->**Notice on File Naming Requirements:** `HelmChart` and `HelmChartConfig` manifest filenames should adhere to Kubernetes object [naming restrictions](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/). The Helm Controller uses filenames to create objects; therefore, the filename must also align with the restrictions. Any related errors can be observed in the RKE2-server logs. The example below is an error generated from using underscores:
+>**Notice on File Naming Requirements:** `HelmChart` and `HelmChartConfig` manifest filenames should adhere to Kubernetes object [naming restrictions](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/). The Helm Controller uses filenames to create objects; therefore, the filename must also align with the restrictions. Any related errors can be observed in the rke2-server logs. The example below is an error generated from using underscores:
 ```
 level=error msg="Failed to process config: failed to process 
 /var/lib/rancher/rke2/server/manifests/rke2_ingress_daemonset.yaml: 
