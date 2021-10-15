@@ -9,7 +9,7 @@ Rancher is a container management platform built for organizations that deploy c
 
 Kubernetes has become the container orchestration standard. Most cloud and virtualization vendors now offer it as standard infrastructure. Rancher users have the choice of creating Kubernetes clusters with Rancher Kubernetes Engine (RKE) or cloud Kubernetes services, such as GKE, AKS, and EKS. Rancher users can also import and manage their existing Kubernetes clusters created using any Kubernetes distribution or installer.
 
-# Meet IT requirements
+# Meet IT Requirements
 
 Rancher supports centralized authentication, access control, and monitoring for all Kubernetes clusters under its control. For example, you can:
 
