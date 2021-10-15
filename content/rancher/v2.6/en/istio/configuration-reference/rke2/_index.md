@@ -16,20 +16,23 @@ When installing or upgrading the Istio Helm chart through **Apps & Marketplace,*
       components:
         cni:
           enabled: true
+          k8s:
+            overlays:
+            - apiVersion: "apps/v1"
+              kind: "DaemonSet"
+              name: "istio-cni-node"
+              patches:
+              - path: spec.template.spec.containers.[name:install-cni].securityContext.privileged
+                value: true
       values:
         cni:
-          image: rancher/istio-install-cni:1.7.3
+          image: rancher/mirrored-istio-install-cni:1.9.3
           excludeNamespaces:
             - istio-system
             - kube-system
           logLevel: info
           cniBinDir: /opt/cni/bin
           cniConfDir: /etc/cni/net.d
-    ```
-1. After installing or upgrading Istio, you'll notice the cni-node pods in the istio-system namespace in a CrashLoopBackoff error. Manually edit the `istio-cni-node` daemonset to include the following on the `install-cni` container:
-    ```yaml
-    securityContext:
-        privileged: true
     ```
 
 **Result:** Now you should be able to utilize Istio as desired, including sidecar injection and monitoring via Kiali.
