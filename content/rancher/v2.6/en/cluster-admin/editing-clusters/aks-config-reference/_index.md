@@ -21,10 +21,6 @@ Rancher can configure member roles for AKS clusters in the same way as any other
 
 > The configuration information in this section assumes you have already set up a service principal for Rancher. For step-by-step instructions for how to set up the service principal, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/aks/#prerequisites-in-microsoft-azure)
 
-### Tenant ID
-
-To get the tenant ID, go to the Azure Portal, then click **Azure Active Directory**, then click **App registrations**, then click the name of the service principal. The tenant ID is listed on the app registration detail page as **Directory (tenant) ID**.
-
 ### Subscription ID
 
 To get the subscription ID, click **All Services** in the left navigation bar. Then click **Subscriptions**. Go to the name of the subscription that you want to associate with your Kubernetes cluster and copy the **Subscription ID**.
