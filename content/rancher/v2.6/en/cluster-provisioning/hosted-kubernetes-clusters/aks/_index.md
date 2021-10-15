@@ -27,7 +27,6 @@ To interact with Azure APIs, an AKS cluster requires an Azure Active Directory (
 Before creating the service principal, you need to obtain the following information from the [Microsoft Azure Portal](https://portal.azure.com):
 
 - Subscription ID
-- Tenant ID
 - Client ID
 - Client secret
 
@@ -84,7 +83,7 @@ You can also follow these instructions to set up a service principal and give it
 1. Optional: Choose which accounts can use the service principal.
 1. Click **Register**.
 1. You should now see the name of your service principal under **Azure Active Directory > App registrations**. 
-1. Click the name of your service principal. Take note of the tenant ID and application ID (also called app ID or client ID) so that you can use it when provisioning your AKS cluster. Then click **Certificates & secrets**.
+1. Click the name of your service principal. Take note of the application ID (also called app ID or client ID) so that you can use it when provisioning your AKS cluster. Then click **Certificates & secrets**.
 1. Click **New client secret**.
 1. Enter a short description, pick an expiration time, and click **Add**. Take note of the client secret so that you can use it when provisioning the AKS cluster.
 

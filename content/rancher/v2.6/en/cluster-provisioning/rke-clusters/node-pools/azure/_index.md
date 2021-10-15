@@ -32,7 +32,7 @@ az ad sp create-for-rbac \
   --scopes="/subscriptions/<subscription Id>"
 ```
   
-The creation of this service principal returns three pieces of identification information, *The application ID, also called the client ID*, *The client secret*, and *The tenant ID*. This information will be used when you create a node template for Azure.
+The creation of this service principal returns three pieces of identification information, *The application ID, also called the client ID*, and *The client secret*. This information will be used when you create a node template for Azure.
 
 # Creating an Azure Cluster
 
