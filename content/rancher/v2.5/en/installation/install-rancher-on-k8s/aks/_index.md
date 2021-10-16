@@ -48,9 +48,8 @@ To create an AKS cluster, run the following command. Use a VM size that applies 
 
 ```
 az aks create \
-  --resource-group rancher-rg
+  --resource-group rancher-rg \
   --name rancher-server \
-  --kubernetes-version 1.18.14 \
   --node-count 3 \
   --node-vm-size Standard_D2_v3
 ```
