@@ -35,6 +35,7 @@ Rancher can be installed on any Kubernetes cluster. For Rancher installs on a K3
 > - Rancher nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
 > - Kubernetes recommends TCP 30000-32767 for node port services.
 > - For firewalls, traffic may need to be enabled within the cluster and pod CIDR.
+> - Rancher nodes may also need outbound access to an external S3 location which is used for storing cluster backups (Minio for example).
 
 ### Ports for Rancher Server Nodes on K3s
 
