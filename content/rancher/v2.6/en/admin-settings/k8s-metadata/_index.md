@@ -61,7 +61,7 @@ However, if you have an [air gap setup,](#air-gap-setups) you will need to mirro
 
 ### Air Gap Setups
 
-Rancher relies on a periodic refresh of the `rke-metadata-config` to download new Kubernetes version metadata if it is supported with the current version of the Rancher server. For a table of compatible Kubernetes and Rancher versions, refer to the [service terms section.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.2.8/)
+Rancher relies on a periodic refresh of the `rke-metadata-config` to download new Kubernetes version metadata if it is supported with the current version of the Rancher server. For a table of compatible Kubernetes and Rancher versions, refer to the [service terms section.](https://rancher.com/support-matrix/all-supported-versions/rancher-v2.2.8/)
 
 If you have an air gap setup, you might not be able to get the automatic periodic refresh of the Kubernetes metadata from Rancher's Git repository. In that case, you should disable the periodic refresh to prevent your logs from showing errors. Optionally, you can configure your metadata settings so that Rancher can sync with a local copy of the RKE metadata.
 

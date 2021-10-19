@@ -96,7 +96,7 @@ $ port upgrade rke
 
 The Kubernetes cluster components are launched using Docker on a Linux distro. You can use any Linux you want, as long as you can install Docker on it.
 
-> For information on which Docker versions were tested with your version of RKE, refer to the [terms of service](https://rancher.com/support-maintenance-terms) for installing Rancher on RKE.
+> For information on which Docker versions were tested with your version of RKE, refer to the [terms of service](https://rancher.com/support-matrix) for installing Rancher on RKE.
 
 Review the [OS requirements]({{<baseurl>}}/rke/latest/en/installation/os/) and configure each node appropriately.
 
