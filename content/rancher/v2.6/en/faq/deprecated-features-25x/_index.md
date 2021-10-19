@@ -5,7 +5,7 @@ weight: 100
 
 ### What is Rancher's Deprecation policy?
 
-Starting in Rancher 2.5 we have published our official deprecation policy in the support [terms of service](https://rancher.com/support-maintenance-terms).
+Starting in Rancher 2.5 we have published our official deprecation policy in the support [terms of service](https://rancher.com/support-matrix).
 
 ### Where can I find out which features have been deprecated in Rancher 2.5?
 
