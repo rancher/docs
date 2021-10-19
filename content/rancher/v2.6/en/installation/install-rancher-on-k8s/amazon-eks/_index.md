@@ -84,7 +84,7 @@ To create an EKS cluster, run the following command. Use the AWS region that app
 ```
 eksctl create cluster \
   --name rancher-server \
-  --version 1.18 \
+  --version 1.20 \
   --region us-west-2 \
   --nodegroup-name ranchernodes \
   --nodes 3 \
