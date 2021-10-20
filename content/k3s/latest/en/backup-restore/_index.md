@@ -26,6 +26,8 @@ _Available as of v1.19.1+k3s1_
 
 In this section, you'll learn how to create backups of the K3s cluster data and to restore the cluster from backup.
 
+>**Note on Single-Server with embedded SQLite:** Currently, backups of SQLite are not supported. Instead, delete K3s and make a copy of `/var/lib/rancher/k3s/server`.
+
 ### Creating Snapshots
 
 Snapshots are enabled by default.
