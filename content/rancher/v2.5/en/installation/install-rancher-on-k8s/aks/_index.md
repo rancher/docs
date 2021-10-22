@@ -19,6 +19,7 @@ If you already have an AKS Kubernetes cluster, skip to the step about [installin
 - [Microsoft Azure Subscription](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal): Use this link to follow a tutorial to create a Microsoft Azure subscription if you don't have one yet.
 - [Micsoroft Azure Tenant](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant): Use this link and follow instructions to create a Microsoft Azure tenant.
 - Your subscription has sufficient quota for at least 2 vCPUs. For details on Rancher server resource requirements, refer to [this section]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/#rke-and-hosted-kubernetes)
+- When installing Rancher with Helm in Azure, use the L7 load balancer to avoid networking issues.
 
 # 1. Prepare your Workstation
 
