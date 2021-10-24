@@ -18,7 +18,7 @@ Make sure the nodes for the Rancher server fulfill the following requirements:
 
 Rancher should work with any modern Linux distribution and any modern Docker version. Linux is required for the etcd and controlplane nodes of all downstream clusters. Worker nodes may run Linux or [Windows Server.](#windows-nodes)
 
-For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-matrix/)
+For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.]https://rancher.com/support-maintenance-terms/all-supported-versions/)
 
 All supported operating systems are 64-bit x86.
 
