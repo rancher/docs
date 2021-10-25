@@ -18,7 +18,7 @@ Then you will create an Azure cluster in Rancher, and when configuring the new c
 > - Terminate the SSL/TLS on the internal load balancer
 > - Use the L7 load balancer
 
-> For more information, refer to the [Azure load balancer](https://docs.microsoft.com/en-us/azure/load-balancer/concepts#limitations) and [troubleshooting](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-troubleshoot) documentation.
+> For more information, refer to the documentation on [Azure load balancer limitations](https://docs.microsoft.com/en-us/azure/load-balancer/components#limitations).
 
 For more information on configuring the Kubernetes cluster that Rancher will install on the Azure nodes, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options)
 
