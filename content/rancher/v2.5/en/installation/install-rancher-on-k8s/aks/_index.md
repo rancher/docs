@@ -4,7 +4,7 @@ shortTitle: AKS
 weight: 4
 ---
 
-This page covers how to install Rancher on Microsoft's Azure Kubernetes Servcice (AKS).
+This page covers how to install Rancher on Microsoft's Azure Kubernetes Service (AKS).
 
 The guide uses command line tools to provision an AKS cluster with an ingress. If you prefer to provision your cluster using the Azure portal, refer to the [official documentation](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal).
 
