@@ -29,7 +29,7 @@ If you do not specify a pre-shared secret, RKE2 will generate one and place it a
 
 To avoid certificate errors with the fixed registration address, you should launch the server with the tls-san parameter set. This option adds an additional hostname or IP as a Subject Alternative Name in the server's TLS cert, and it can be specified as a list if you would like to access via both the IP and the hostname.
 
-Here is an example of what the RKE2 config file (at /etc/rancher/rke2/config.yaml) would look like if you are following this guide:
+Create the RKE2 config file at `/etc/rancher/rke2/config.yaml` using the following example:
 
 ```
 token: my-shared-secret
@@ -37,7 +37,7 @@ tls-san:
   - my-kubernetes-domain.com
   - another-kubernetes-domain.com
 ```
-After that you need to run the install command and enable and start rke2:
+After that, you need to run the install command and enable and start rke2:
 
 ```
 curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.20 sh -
@@ -51,7 +51,7 @@ systemctl start rke2-server.service
         tls-san:
           - my-kubernetes-domain.com
           - another-kubernetes-domain.com
-After that you need to run the installer and enable then start rke2
+After that, you need to run the installer and enable, then start, rke2:
 
         curl -sfL https://get.rke2.io | sh -
         systemctl enable rke2-server.service
