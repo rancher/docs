@@ -46,8 +46,3 @@ For details on using Fleet behind a proxy, see [this page.](./proxy)
 # Documentation
 
 The Fleet documentation is at [https://fleet.rancher.io/.](https://fleet.rancher.io/)
-
-
-### Using Fleet Behind a Proxy
-
-For details on using Fleet with a proxy, see [this page.](./proxy)
