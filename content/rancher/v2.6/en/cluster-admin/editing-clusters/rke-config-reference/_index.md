@@ -169,7 +169,7 @@ Configures whether nodes are allowed to run versions of Docker that Rancher does
 
 If you choose to require a supported Docker version, Rancher will stop pods from running on nodes that don't have a supported Docker version installed.
 
-For details on which Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-matrix/)
+For details on which Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 ### Docker Root Directory
 

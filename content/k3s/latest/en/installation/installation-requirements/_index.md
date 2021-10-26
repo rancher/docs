@@ -25,7 +25,7 @@ Some OSs have specific requirements:
 - If you are using **Alpine Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-alpine-linux-setup) for additional setup.
 - If you are using **(Red Hat/CentOS) Enterprise Linux**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#additional-preparation-for-red-hat-centos-enterprise-linux) for additional setup.
 
-For more information on which OSs were tested with Rancher managed K3s clusters, refer to the [Rancher support and maintenance terms.](https://rancher.com/support-matrix/)
+For more information on which OSs were tested with Rancher managed K3s clusters, refer to the [Rancher support and maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 ## Hardware
 

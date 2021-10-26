@@ -62,7 +62,7 @@ Make sure the feature version you are upgrading to is considered "stable" as det
 
 Keep in mind that Rancher does End of Life support for old versions, so you will eventually want to upgrade if you want to continue to receive patches.
 
-For more detail on what happens during the Rancher product lifecycle, refer to the [Support Maintenance Terms](https://rancher.com/support-matrix/).
+For more detail on what happens during the Rancher product lifecycle, refer to the [Support Maintenance Terms](https://rancher.com/support-maintenance-terms/).
 
 # Network Topology
 These tips can help Rancher work more smoothly with your network.
