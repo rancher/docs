@@ -117,8 +117,10 @@ The following command creates a three-node cluster.
 
 Replace `cluster-name` with the name of your new cluster.
 
+When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
+
 ```
-gcloud container clusters create cluster-name --num-nodes=3
+gcloud container clusters create cluster-name --num-nodes=3 --cluster-version=1.20.8-gke.900
 ```
 
 # 6. Get Authentication Credentials

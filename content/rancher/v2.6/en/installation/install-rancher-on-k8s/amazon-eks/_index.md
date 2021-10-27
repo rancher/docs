@@ -79,7 +79,7 @@ Then enter the following values:
 
 ### 3. Create the EKS Cluster
 
-To create an EKS cluster, run the following command. Use the AWS region that applies to your use case:
+To create an EKS cluster, run the following command. Use the AWS region that applies to your use case. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```
 eksctl create cluster \
