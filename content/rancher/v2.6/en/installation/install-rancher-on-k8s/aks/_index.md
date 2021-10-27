@@ -45,13 +45,13 @@ az group create --name rancher-rg --location eastus
 
 # 3. Create the AKS Cluster
 
-To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options.
+To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```
 az aks create \
   --resource-group rancher-rg \
   --name rancher-server \
-  --kubernetes-version 1.20.5 \
+  --kubernetes-version 1.20.7 \
   --node-count 3 \
   --node-vm-size Standard_D2_v3
 ```
