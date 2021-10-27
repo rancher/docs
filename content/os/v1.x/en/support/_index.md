@@ -17,7 +17,7 @@ RancherOS v1.x is currently in a maintain-only-as-essential mode. That is to say
 
 **For customers with a currently active support subscription for RancherOS:**
 
-- Commercial support continues to be available until the subscription term end date, per our terms of service described [here](https://rancher.com/support-matrix/). Upon term end date, currently active subscriptions shall not be available for renewal toward a new term, for reasons cited in the [Development Status](#development-status) section above.
+- Commercial support continues to be available until the subscription term end date, per our terms of service described [here](https://rancher.com/support-maintenance-terms/). Upon term end date, currently active subscriptions shall not be available for renewal toward a new term, for reasons cited in the [Development Status](#development-status) section above.
 
 **For Rancher (1.x and 2.x) customers without a separate and currently active subscription for Rancher OS:**
 
