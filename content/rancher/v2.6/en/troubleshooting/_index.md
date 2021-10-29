@@ -39,3 +39,7 @@ This section contains information to help you troubleshoot issues when using Ran
 - [User ID Tracking in Audit Logs]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/userid-tracking-in-audit-logs/)
 
     Read more about how a Rancher Admin can trace an event from the Rancher audit logs and into the Kubernetes audit logs using the external Identity Provider username.
+
+- [Expired Webhook Certificates]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/expired-webhook-certificates/)  
+
+    Read more about how to rotate Rancher webhook certificate secret after it expires on an annual basis.
