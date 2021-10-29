@@ -42,4 +42,4 @@ This section contains information to help you troubleshoot issues when using Ran
 
 - [Expired Webhook Certificates]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/expired-webhook-certificates/)  
 
-    Read more about how to rotate Rancher webhook certificate secret after it expires on an annual basis.
+    Read more about how to rotate a Rancher webhook certificate secret after it expires on an annual basis.
