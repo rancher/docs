@@ -29,11 +29,9 @@ For more information about the default limits, see [this page.]({{<baseurl>}}/ra
 
 1.  Click **☰ > Cluster Management**.
 1. Go to the cluster that you created and click **Explore**.
-1. Click **Apps & Marketplace**.
-1. Click **Charts**.
-1. Click the **Monitoring** app.
-1. Optional: Click **Chart Options** and configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration/helm-chart-options/)
-1. Scroll to the bottom of the Helm chart README and click **Install**.
+1. Click **Cluster Tools** (bottom left corner).
+1. Click **Install** by Monitoring.
+1. Optional: Click **Customize Helm options before install** to configure alerting, Prometheus and Grafana. For help, refer to the [configuration reference.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration/helm-chart-options/)
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
