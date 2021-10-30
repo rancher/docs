@@ -36,9 +36,15 @@ To automate upgrades in this manner, you must do the following:
 
 
 ### Install the system-upgrade-controller
- The system-upgrade-controller can be installed as a deployment into your cluster. The deployment requires a service-account, clusterRoleBinding, and a configmap. To install these components, run the following command:
+ The system-upgrade-controller can be installed as a deployment into your cluster. The deployment requires a service-account, clusterRoleBinding, and a configmap. To install these components, run the following commands:
+
+* Get the latest release tag
 ```
-kubectl apply -f https://github.com/rancher/system-upgrade-controller/releases/download/v0.6.2/system-upgrade-controller.yaml
+release_tag=$(curl -s "https://api.github.com/repos/rancher/system-upgrade-controller/releases/latest" | awk -F '"' '/tag_name/{print $4}')
+```
+* Apply the controller manifest with the release tag
+```
+kubectl apply -f https://github.com/rancher/system-upgrade-controller/releases/download/$release_tag/system-upgrade-controller.yaml
 ```
 The controller can be configured and customized via the previously mentioned configmap, but the controller must be redeployed for the changes to be applied.
 
