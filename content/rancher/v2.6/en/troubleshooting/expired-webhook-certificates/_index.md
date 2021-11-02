@@ -13,10 +13,10 @@ kubectl delete secret -n cattle-system cattle-webhook-tls
 kubectl delete pod -n cattle-system -l app=rancher-webhook
 ```
 
-##### 2. Users with no cluster access via `kubectl`
+##### 2. Users with no cluster access via `kubectl`:
 
 1. Delete the `cattle-webhook-tls` secret in the `cattle-system` namespace in the local cluster.
 
 1. Delete the `rancher-webhook` pod in the `cattle-system` namespace in the local cluster.
 
-> **Note:** The webhook certificate expiration issue is not specific to `cattle-webhook-tls` as listed in the examples. You will fill in your expired certificate secret accordingly.
+**Note:** The webhook certificate expiration issue is not specific to `cattle-webhook-tls` as listed in the examples. You will fill in your expired certificate secret accordingly.
