@@ -15,6 +15,7 @@ Fleet is a separate project from Rancher, and can be installed on any Kubernetes
 - [Accessing Fleet in the Rancher UI](#accessing-fleet-in-the-rancher-ui)
 - [Windows Support](#windows-support)
 - [GitHub Repository](#github-repository)
+- [Using Fleet Behind a Proxy](#using-fleet-behind-a-proxy)
 - [Documentation](#documentation)
 
 # Architecture
@@ -46,8 +47,3 @@ For details on using Fleet behind a proxy, see [this page.](./proxy)
 # Documentation
 
 The Fleet documentation is at [https://fleet.rancher.io/.](https://fleet.rancher.io/)
-
-
-### Using Fleet Behind a Proxy
-
-For details on using Fleet with a proxy, see [this page.](./proxy)

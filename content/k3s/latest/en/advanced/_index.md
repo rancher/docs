@@ -24,6 +24,7 @@ This section contains advanced information describing the different ways you can
 - [SELinux Support](#selinux-support)
 - [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
 - [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
+- [Additional Logging Sources](#additional-logging-sources)
 
 # Certificate Rotation
 
@@ -344,7 +345,7 @@ sudo reboot
 
 Standard Raspbian Buster installations do not start with `cgroups` enabled. **K3S** needs `cgroups` to start the systemd service. `cgroups`can be enabled by appending `cgroup_memory=1 cgroup_enable=memory` to `/boot/cmdline.txt`.
 
-## example of /boot/cmdline.txt
+### example of /boot/cmdline.txt
 ```
 console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait cgroup_memory=1 cgroup_enable=memory
 ```
@@ -417,7 +418,7 @@ reboot
 
 # Enabling Lazy Pulling of eStargz (Experimental)
 
-## What's lazy pulling and eStargz?
+### What's lazy pulling and eStargz?
 
 Pulling images is known as one of the time-consuming steps in the container lifecycle.
 According to [Harter, et al.](https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter),
@@ -436,7 +437,7 @@ Because of the compatibility, eStargz can be pushed to standard container regist
 eStargz is developed based on the [stargz format proposed by Google CRFS project](https://github.com/google/crfs) but comes with practical features including content verification and performance optimization.
 For more details about lazy pulling and eStargz, please refer to [Stargz Snapshotter project repository](https://github.com/containerd/stargz-snapshotter).
 
-## Configure k3s for lazy pulling of eStargz
+### Configure k3s for lazy pulling of eStargz
 
 As shown in the following, `--snapshotter=stargz` option is needed for k3s server and agent.
 
@@ -467,4 +468,15 @@ spec:
       }).listen(80);
     ports:
     - containerPort: 80
+```
+
+# Additional Logging Sources
+
+[Rancher logging]({{<baseurl>}}//rancher/v2.6/en/logging/helm-chart-options/) for K3s can be installed without using Rancher. The following instructions should be executed to do so:
+
+```
+helm repo add rancher-charts https://charts.rancher.io
+helm repo update
+helm install --create-namespace -n cattle-logging-system rancher-logging-crd rancher-charts/rancher-logging-crd
+helm install --create-namespace -n cattle-logging-system rancher-logging --set additionalLoggingSources.k3s.enabled=true rancher-charts/rancher-logging
 ```

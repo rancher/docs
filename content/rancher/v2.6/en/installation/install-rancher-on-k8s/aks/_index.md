@@ -4,7 +4,7 @@ shortTitle: AKS
 weight: 4
 ---
 
-This page covers how to install Rancher on Microsoft's Azure Kubernetes Servcice (AKS).
+This page covers how to install Rancher on Microsoft's Azure Kubernetes Service (AKS).
 
 The guide uses command line tools to provision an AKS cluster with an ingress. If you prefer to provision your cluster using the Azure portal, refer to the [official documentation](https://docs.microsoft.com/en-us/azure/aks/kubernetes-walkthrough-portal).
 
@@ -19,6 +19,7 @@ If you already have an AKS Kubernetes cluster, skip to the step about [installin
 - [Microsoft Azure Subscription](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal): Use this link to follow a tutorial to create a Microsoft Azure subscription if you don't have one yet.
 - [Micsoroft Azure Tenant](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant): Use this link and follow instructions to create a Microsoft Azure tenant.
 - Your subscription has sufficient quota for at least 2 vCPUs. For details on Rancher server resource requirements, refer to [this section]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/#rke-and-hosted-kubernetes)
+- When installing Rancher with Helm in Azure, use the L7 load balancer to avoid networking issues. For more information, refer to the documentation on [Azure load balancer limitations](https://docs.microsoft.com/en-us/azure/load-balancer/components#limitations).
 
 # 1. Prepare your Workstation
 
@@ -44,13 +45,13 @@ az group create --name rancher-rg --location eastus
 
 # 3. Create the AKS Cluster
 
-To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options.
+To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```
 az aks create \
-  --resource-group rancher-rg
+  --resource-group rancher-rg \
   --name rancher-server \
-  --kubernetes-version 1.18.14 \
+  --kubernetes-version 1.20.7 \
   --node-count 3 \
   --node-vm-size Standard_D2_v3
 ```

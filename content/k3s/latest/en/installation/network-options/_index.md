@@ -69,3 +69,18 @@ You should see that IP forwarding is set to true.
 
 {{% /tab %}}
 {{% /tabs %}}
+
+### Dual-stack installation
+
+To enable dual-stack in k3s, you must provide valid dual-stack `cluster-cidr` and `service-cidr`, and set `disable-network-policy` on all server nodes. Both servers and agents must provide valid dual-stack `node-ip` settings. Node address auto-detection and network policy enforcement are not supported on dual-stack clusters when using the default flannel CNI. Besides, only vxlan backend is supported at the moment. This is an example of a valid configuration:
+
+```
+node-ip: 10.0.10.7,2a05:d012:c6f:4611:5c2:5602:eed2:898c
+cluster-cidr: 10.42.0.0/16,2001:cafe:42:0::/56
+service-cidr: 10.43.0.0/16,2001:cafe:42:1::/112
+disable-network-policy: true
+```
+
+Note that you can choose whatever `cluster-cidr` and `service-cidr` value, however the `node-ip` values must correspond to the ip addresses of your main interface. Remember to allow ipv6 traffic if you are deploying in a public cloud.
+
+If you are using a custom cni plugin, i.e. a cni plugin different from flannel, the previous configuration might not be enough to enable dual-stack in the cni plugin. Please check how to enable dual-stack in its documentation and verify if network policies can be enabled.

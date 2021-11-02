@@ -286,6 +286,36 @@ addons: |
     - configMap
     - projected
   ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: psp:restricted
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - restricted
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: psp:restricted
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: psp:restricted
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:serviceaccounts
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:authenticated
+  ---
   apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy
   metadata:

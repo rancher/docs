@@ -19,11 +19,12 @@ Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes 
 - [K3s Kubernetes installation docs]({{<baseurl>}}/k3s/latest/en/installation/)
 
 ### 1. Install the rancher-backup Helm chart
+Install version 2.x.x of the rancher-backup chart.
 ```
 helm repo add rancher-charts https://charts.rancher.io
 helm repo update
-helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace
-helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system
+helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace --version $CHART_VERSION
+helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system --version $CHART_VERSION
 ```
 
 ### 2. Restore from backup using a Restore custom resource
@@ -37,8 +38,8 @@ metadata:
   name: s3-creds
 type: Opaque
 stringData:
-  accessKey: <Enter your access key>
-  secretKey: <Enter your secret key>
+  accessKey: <Enter your base64-encoded access key>
+  secretKey: <Enter your base64-encoded secret key>
 ```
 
 This secret can be created in any namespace, with the above example it will get created in the default namespace
