@@ -16,3 +16,5 @@ Certificates can be rotated for the following services:
 - kube-scheduler
 - kube-controller-manager
 
+> **Note:** For users who didn't rotate their webhook certificates, and they have expired after one year, please see this [page]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/expired-webhook-certificates/) for help.
+
