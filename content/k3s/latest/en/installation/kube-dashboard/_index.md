@@ -87,5 +87,5 @@ sudo k3s kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard
 ```bash
 sudo k3s kubectl delete ns kubernetes-dashboard
 sudo k3s kubectl delete clusterrolebinding kubernetes-dashboard
-sudo k3s kubectl delete clusterroles kubernetes-dashboard
+sudo k3s kubectl delete clusterrole kubernetes-dashboard
 ```
