@@ -9,7 +9,7 @@ weight: 3
 
 # Rolling Back to Rancher v2.5.0+
 
-To roll back to Rancher v2.5.0+, use the `rancher backup` application and restore Rancher from backup.
+To roll back to Rancher v2.5.0+, use the **Rancher-Backups** application and restore Rancher from backup.
 
 Rancher has to be started with the lower/previous version after a rollback.
 
@@ -32,9 +32,10 @@ A restore is performed by creating a Restore custom resource.
 
 ### Create the Restore Custom Resource
 
-1.  Click **☰ > Cluster Management**.
-1. Go to the cluster that you created and click **Explore**.
+1. Click **☰ > Cluster Management**.
+1. Go to the local cluster and click **Explore**.
 1. In the left navigation bar, click **Rancher Backups > Restore**.
+	* **Note:** If the Rancher Backups app is not visible, you will need to install it from the Charts page in **Apps & Marketplace**. Refer [here]({{<baseurl>}}/rancher/v2.6/en/helm-charts/#charts) for more information.
 1. Click **Create**.
 1. Create the Restore with the form or with YAML. For help creating the Restore resource using the online form, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples) 
 1. To use the YAML editor, you can click **Create > Create from YAML.** Enter the Restore YAML. The following is an example Restore custom resource:
