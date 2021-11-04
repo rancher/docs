@@ -181,6 +181,8 @@ deployment "rancher" successfully rolled out
 
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA.
 
+>**Note:**: You need to have port 80 open as the HTTP-01 challenge can only be done on port 80.
+
 In the following command,
 
 - `hostname` is set to the public DNS record,
