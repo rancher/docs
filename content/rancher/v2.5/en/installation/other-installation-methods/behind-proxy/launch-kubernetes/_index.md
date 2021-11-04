@@ -114,12 +114,12 @@ After that, you can create the Kubernetes cluster by running:
 rke up --config rancher-cluster.yaml
 ```
 
-RKE creates a state file called `rancher-cluster.rkestate`, this is needed if you want to perform updates, modify your cluster configuration or restore it from a backup. It also creates a `kube_config_rancher-cluster.yaml` file, that you can use to connect to the remote Kubernetes cluster locally with tools like kubectl or Helm. Make sure to save all of these files in a secure location, for example by putting them into a version control system.
+RKE creates a state file called `rancher-cluster.rkestate`, this is needed if you want to perform updates, modify your cluster configuration or restore it from a backup. It also creates a `kube_config_cluster.yaml` file, that you can use to connect to the remote Kubernetes cluster locally with tools like kubectl or Helm. Make sure to save all of these files in a secure location, for example by putting them into a version control system.
 
 To have a look at your cluster run:
 
 ```
-export KUBECONFIG=kube_config_rancher-cluster.yaml
+export KUBECONFIG=kube_config_cluster.yaml
 kubectl cluster-info
 kubectl get pods --all-namespaces
 ```
@@ -141,7 +141,7 @@ default backend - 404
 Save a copy of the following files in a secure location:
 
 - `rancher-cluster.yml`: The RKE cluster configuration file.
-- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `kube_config_cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
 - `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains the current state of the cluster including the RKE configuration and the certificates.
 
 > **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.

@@ -5,7 +5,7 @@ weight: 102
 
 The commands/steps listed on this page can be used to check networking related issues in your cluster.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
 ### Double check if all the required ports are opened in your (host) firewall
 

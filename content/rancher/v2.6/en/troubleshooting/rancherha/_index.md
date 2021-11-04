@@ -5,7 +5,7 @@ weight: 104
 
 The commands/steps listed on this page can be used to check your Rancher Kubernetes Installation.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml`).
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml`).
 
 ### Check Rancher pods
 
