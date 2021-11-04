@@ -7,7 +7,7 @@ aliases:
 
 The commands/steps listed on this page can be used to check name resolution issues in your cluster.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
 Before running the DNS checks, check the [default DNS provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/#default-dns-provider) for your cluster and make sure that [the overlay network is functioning correctly]({{<baseurl>}}/rancher/v2.5/en/troubleshooting/networking/#check-if-overlay-network-is-functioning-correctly) as this can also be the reason why DNS resolution (partly) fails.
 
