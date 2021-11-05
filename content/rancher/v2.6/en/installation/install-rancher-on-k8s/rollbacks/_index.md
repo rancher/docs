@@ -18,7 +18,7 @@ A restore is performed by creating a Restore custom resource.
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
-> * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. So Rancher will be unavailable during the restore.
+> * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. As a result, Rancher and its UI will be unavailable until the restore is complete. While the UI is unavailable, use the original cluster kubeconfig with the restore YAML file: `kubectl apply -f restore.yaml`.
 
 ### Scale the Rancher Deployment to 0
 
