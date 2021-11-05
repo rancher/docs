@@ -6,7 +6,9 @@ aliases:
   - /rancher/v2.x/en/pipelines/
 ---
 
-> As of Rancher v2.5, Git-based deployment pipelines are now recommended to be handled with Rancher Continuous Delivery powered by [Fleet,]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet) available in Cluster Explorer.
+> As of Rancher v2.5, Git-based deployment pipelines are now deprecated. We recommend handling pipelines with Rancher Continuous Delivery powered by [Fleet]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet), available in Cluster Explorer.
+>
+>**Notice:** Fleet does not replace Rancher pipelines; the distinction is that Rancher pipelines are now powered by Fleet.
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
 
