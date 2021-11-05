@@ -30,7 +30,7 @@ In this section, you'll learn how to create backups of the K3s cluster data and 
 
 Snapshots are enabled by default.
 
-The snapshot directory defaults to `${data-dir}/server/db/snapshots`. Note that the `/var/lib/rancher/k3s` prefix can be changed by setting the `--data-dir` flag. This prefix is currently omitted from the documented paths.
+The snapshot directory defaults to `${data-dir}/server/db/snapshots`. Note that the `/var/lib/rancher/k3s` prefix can be changed by setting the `--data-dir` flag.
 
 To configure the snapshot interval or the number of retained snapshots, refer to the [options.](#options)
 
