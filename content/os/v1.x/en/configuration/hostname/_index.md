@@ -11,3 +11,8 @@ You can set the hostname of the host using [cloud-config]({{< baseurl >}}/os/v1.
 #cloud-config
 hostname: myhost
 ```
+You can use command:
+
+```yaml
+#sudo ros config set hostname new-hostname
+```
