@@ -294,7 +294,7 @@ For hardware recommendations for large Kubernetes clusters, refer to the officia
 
 ### Etcd Clusters
 
-For hardware recommendations for etcd clusters in production, refer to the official [etcd documentation](https://etcd.io/docs/v3.4/op-guide/hardware/).
+For hardware recommendations for etcd clusters in production, refer to the official [etcd documentation](https://etcd.io/docs/v3.5/op-guide/hardware/).
 
 ## Ports
 {{< ports-rke-nodes >}}
