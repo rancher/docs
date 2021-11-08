@@ -74,7 +74,7 @@ Welcome to Rancher! You are now able to create your first Kubernetes cluster.
 
 In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-prem VM, or bare-metal) to be used in a cluster.
 
-0. (If you are presented with "Cluster Dashboard", click the "Cluster Manager" button, then from the "local" dropdown, select "Global")
+**Note:** You create the cluster on the Clusters page. If you are on the Cluster Dashboard, navigate to the Clusters page by clicking the **Cluster Manager** button in the upper-right of the UI. If your dropdown is set to **local**, select **Global**. 
 
 1. From the **Clusters** page, click **Add Cluster**.
 
