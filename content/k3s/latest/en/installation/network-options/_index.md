@@ -72,6 +72,8 @@ You should see that IP forwarding is set to true.
 
 ### Dual-stack installation
 
+Dual-stack networking must be configured when the cluster is first created. It cannot be enabled on an existing single-stack cluster.
+
 To enable dual-stack in k3s, you must provide valid dual-stack `cluster-cidr` and `service-cidr`, and set `disable-network-policy` on all server nodes. Both servers and agents must provide valid dual-stack `node-ip` settings. Node address auto-detection and network policy enforcement are not supported on dual-stack clusters when using the default flannel CNI. Besides, only vxlan backend is supported at the moment. This is an example of a valid configuration:
 
 ```
