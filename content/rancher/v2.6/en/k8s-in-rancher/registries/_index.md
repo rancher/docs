@@ -35,7 +35,7 @@ Currently, deployments pull the private registry credentials automatically only 
 
 **Result:** 
 
-- Your secret is added to the project or namespace, depending on the scope you chose.
+- Your secret is added to the namespace you chose.
 - You can view the secret in the Rancher UI from the **Resources > Registries** view.
 - Any workload that you create in the Rancher UI will have the credentials to access the registry if the workload is within the registry's scope.
 
