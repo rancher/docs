@@ -62,6 +62,12 @@ If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<b
 
 For the container runtime, RKE should work with any modern Docker version.
 
+Note that the following sysctl setting must be applied:
+
+```
+net.bridge.bridge-nf-call-iptables=1
+```
+
 ### K3s Specific Requirements
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
