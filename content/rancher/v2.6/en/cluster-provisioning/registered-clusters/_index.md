@@ -12,6 +12,7 @@ The control that Rancher has to manage a registered cluster depends on the type 
 - [Management Capabilities for Registered Clusters](#management-capabilities-for-registered-clusters)
 - [Configuring K3s Cluster Upgrades](#configuring-k3s-cluster-upgrades)
 - [Debug Logging and Troubleshooting for Registered K3s Clusters](#debug-logging-and-troubleshooting-for-registered-k3s-clusters)
+- [ACE Support for RKE2 and K3s Clusters](#ace-support-for-rke2-and-k3s-clusters)
 - [Annotating Registered Clusters](#annotating-registered-clusters)
 
 # Prerequisites
@@ -147,8 +148,49 @@ If the cluster becomes stuck in upgrading, restart the `system-upgrade-controlle
 
 To prevent issues when upgrading, the [Kubernetes upgrade best practices](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/) should be followed.
 
+# ACE Support for RKE2 and K3s Clusters
 
+_Available as of v2.6.3_
 
+**Authorized Cluster Endpoint** (ACE) support has been added for registered RKE2 and K3s clusters. This support includes manual steps you will perform on the downstream cluster to enable the ACE. For additional information on the ACE, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/).
+
+> **Notice:**
+>
+> - The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
+>
+> - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
+
+###### **Manual steps to be taken on the downstream cluster to enable ACE:**
+
+1. Create a file at `/var/lib/rancher/{rke2,k3s}/kube-api-authn-webhook.yaml` with the following contents:
+
+        apiVersion: v1
+        kind: Config
+        clusters:
+        - name: Default
+          cluster:
+            insecure-skip-tls-verify: true
+            server: http://127.0.0.1:6440/v1/authenticate
+        users:
+        - name: Default
+          user:
+            insecure-skip-tls-verify: true
+        current-context: webhook
+        contexts:
+        - name: webhook
+          context:
+            user: Default
+            cluster: Default
+        
+1. Add the following to the config file (or create one if it doesn’t exist); note that the default location is `/etc/rancher/{rke2,k3s}/config.yaml`:
+
+        kube-apiserver-arg:
+            - authentication-token-webhook-config-file=/var/lib/rancher/{rke2,k3s}/kube-api-authn-webhook.yaml
+        
+1. Finally, run the following commands:
+
+  - `sudo systemctl stop {rke2,k3s}-server`
+  - `sudo systemctl start {rke2,k3s}-server`
 
 # Annotating Registered Clusters
 
