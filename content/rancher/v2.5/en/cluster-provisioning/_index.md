@@ -25,7 +25,6 @@ This section covers the following topics:
   - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
   - [Launching Kubernetes on Existing Custom Nodes](#launching-kubernetes-on-existing-custom-nodes)
 - [Registering Existing Clusters](#registering-existing-clusters)
-- [Importing Existing Clusters](#importing-existing-clusters)
 
   <!-- /TOC -->
 
