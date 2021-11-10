@@ -3,7 +3,7 @@ title: "Air-Gap Install"
 weight: 60
 ---
 
-You can install K3s in an air-gapped environment using two different methods. You can either deploy a private registry and mirror docker.io or you can manually deploy images such as for small clusters.
+You can install K3s in an air-gapped environment using two different methods. An air-gapped environment is any environment that is not directly connected to the Internet. You can either deploy a private registry and mirror docker.io, or you can manually deploy images such as for small clusters.
 
 # Private Registry Method
 
@@ -39,22 +39,23 @@ Follow the steps in the next section to install K3s.
 
 # Install K3s
 
-Only after you have completed either the [Private Registry Method](#private-registry-method) or the [Manually Deploy Images Method](#manually-deploy-images-method) above should you install K3s.
+### Prerequisites
 
-Obtain the K3s binary from the [releases](https://github.com/rancher/k3s/releases) page, matching the same version used to get the airgap images.
-Obtain the K3s install script at https://get.k3s.io
+- Before installing K3s, complete the the [Private Registry Method](#private-registry-method) or the [Manually Deploy Images Method](#manually-deploy-images-method) above to prepopulate the images that K3s needs to install.
+- Download the K3s binary from the [releases](https://github.com/rancher/k3s/releases) page, matching the same version used to get the airgap images. Place the binary in `/usr/local/bin` on each air-gapped node and ensure it is executable.
+- Download the K3s install script at https://get.k3s.io. Place the install script anywhere on each air-gapped node, and name it `install.sh`.
 
-Place the binary in `/usr/local/bin` on each node and ensure it is executable.
-Place the install script anywhere on each node, and name it `install.sh`.
+When running the K3s script with the `INSTALL_K3S_SKIP_DOWNLOAD` environment variable, K3s will use the local version of the script and binary.
 
 
-### Install Options
+### Installing K3s in an Air-Gapped Environment
+
 You can install K3s on one or more servers as described below.
 
 {{% tabs %}}
 {{% tab "Single Server Configuration" %}}
 
-To install K3s on a single server simply do the following on the server node.
+To install K3s on a single server, simply do the following on the server node:
 
 ```
 INSTALL_K3S_SKIP_DOWNLOAD=true ./install.sh
