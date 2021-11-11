@@ -33,7 +33,7 @@ You will first need to create an external datastore for the cluster. See the [Cl
 ### 2. Launch Server Nodes
 K3s requires two or more server nodes for this HA configuration. See the [Installation Requirements]({{<baseurl>}}/k3s/latest/en/installation/installation-requirements/) guide for minimum machine requirements.
 
-When running the `k3s server` command on these nodes, you must set the `datastore-endpoint` parameter so that K3s knows how to connect to the external datastore. The `token` parameter can also be used to set a deterministic token when adding nodes, when empty this token will be generated automatically for further use.
+When running the `k3s server` command on these nodes, you must set the `datastore-endpoint` parameter so that K3s knows how to connect to the external datastore. The `token` parameter can also be used to set a deterministic token when adding nodes. When empty, this token will be generated automatically for further use.
 
 For example, a command like the following could be used to install the K3s server with a MySQL database as the external datastore and [set a token]({{<baseurl>}}/k3s/latest/en/installation/install-options/server-config/#cluster-options}}):
 
