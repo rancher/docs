@@ -1,6 +1,6 @@
 ---
 title: Rancher Equinix Metal Quick Start
-weight: 400
+weight: 300
 ---
 
 ## This tutorial walks you through the following:
