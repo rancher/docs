@@ -1,6 +1,7 @@
 ---
 title: Rancher Equinix Metal Quick Start
-weight: 400
+description: Read this step by step Rancher Equinix Metal quick start guide to quickly deploy a Rancher Server with a single node cluster attached.
+weight: 100
 ---
 
 ## This tutorial walks you through the following:
