@@ -152,7 +152,7 @@ To prevent issues when upgrading, the [Kubernetes upgrade best practices](https:
 
 _Available as of v2.6.3_
 
-**Authorized Cluster Endpoint** (ACE) support has been added for registered RKE2 and K3s clusters. This support includes manual steps you will perform on the downstream cluster to enable the ACE. For additional information on the ACE, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/).
+Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and K3s clusters. This support includes manual steps you will perform on the downstream cluster to enable the ACE. For additional information on the ACE, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/).
 
 > **Notice:**
 >
