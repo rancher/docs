@@ -153,7 +153,7 @@ docker run -d --restart=unless-stopped \
 
 ### Option E: Localhost tunneling, no Certificate
 
-If you are installing Rancher in a development or testing environment where you have a localhost tunneling solution running (i.e. [ngrok](https://ngrok.com/)), you'll need to avoid generating a Certificate. This installation option doesn't request for a certificate.
+If you are installing Rancher in a development or testing environment where you have a localhost tunneling solution running, such as [ngrok](https://ngrok.com/), avoid generating a certificate. This installation option doesn't require a certificate.
 
 Log into your host machine, and run the Docker command below.
 
