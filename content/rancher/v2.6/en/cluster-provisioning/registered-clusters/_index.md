@@ -38,9 +38,9 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 1. On the **Clusters** page, **Import Existing**.
 1. Enter a **Cluster Name**.
 1. Choose the type of cluster.
-  - **Note:** If you are importing a generic Kubernetes cluster in Rancher, you must enable Project Network Isolation to ensure the cluster supports Kubernetes `NetworkPolicy` resources. As of Rancher v2.6.0, users can select the **Project Network Isolation** option under the **Advanced Options** dropdown to do so.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. If it is a generic custom cluster, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
+  - **Note:** If you are importing a generic Kubernetes cluster in Rancher, you must enable Project Network Isolation to ensure the cluster supports Kubernetes `NetworkPolicy` resources. As of Rancher v2.6.0, users can select the **Project Network Isolation** option under the **Advanced Options** dropdown to do so.
 1. Click **Create**.
 1. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
 1. Copy the `kubectl` command to your clipboard and run it on a node where kubeconfig is configured to point to the cluster you want to import. If you are unsure it is configured correctly, run `kubectl get nodes` to verify before running the command shown in Rancher.
