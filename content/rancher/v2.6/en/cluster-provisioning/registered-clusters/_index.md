@@ -12,7 +12,7 @@ The control that Rancher has to manage a registered cluster depends on the type 
 - [Management Capabilities for Registered Clusters](#management-capabilities-for-registered-clusters)
 - [Configuring K3s Cluster Upgrades](#configuring-k3s-cluster-upgrades)
 - [Debug Logging and Troubleshooting for Registered K3s Clusters](#debug-logging-and-troubleshooting-for-registered-k3s-clusters)
-- [ACE Support for RKE2 and K3s Clusters](#ace-support-for-rke2-and-k3s-clusters)
+- [Authorized Cluster Endpoint Support for RKE2 and K3s Clusters](#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters)
 - [Annotating Registered Clusters](#annotating-registered-clusters)
 
 # Prerequisites
@@ -154,7 +154,7 @@ _Available as of v2.6.3_
 
 **Authorized Cluster Endpoint** (ACE) support has been added for registered RKE2 and K3s clusters. This support includes manual steps you will perform on the downstream cluster to enable the ACE. For additional information on the ACE, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/).
 
-> **Notice:**
+> **Note:**
 >
 > - The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
 >
@@ -189,8 +189,8 @@ _Available as of v2.6.3_
         
 1. Finally, run the following commands:
 
-  - `sudo systemctl stop {rke2,k3s}-server`
-  - `sudo systemctl start {rke2,k3s}-server`
+        sudo systemctl stop {rke2,k3s}-server
+        sudo systemctl start {rke2,k3s}-server
 
 # Annotating Registered Clusters
 
