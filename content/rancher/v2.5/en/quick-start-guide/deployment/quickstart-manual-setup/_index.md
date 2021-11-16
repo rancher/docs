@@ -46,7 +46,7 @@ To install Rancher on your host, connect to it and then use a shell to install.
 
 1.  Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection.
 
-2.  From your shell, enter the following command:
+1.  From your shell, enter the following command:
 
 	```
   sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
@@ -58,13 +58,17 @@ To install Rancher on your host, connect to it and then use a shell to install.
 
 Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
 
-1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.
+1. Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.
 
     Replace `<SERVER_IP>` with your host IP address.
 
-2.  When prompted, create a password for the default `admin` account there cowpoke!
+1. When prompted, create a password for the default `admin` account there cowpoke!
 
-3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster.
+1. Set the **Default View**.
+  - If `I want to create or manage multiple clusters` is selected, the Cluster Manager UI is used as the default view.
+  - If `I'm only going to use the cluster Rancher was installed on` is selected, the Cluster Explorer UI is used as the default view.
+
+1. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster.
 
 <br/>
 
@@ -74,29 +78,29 @@ Welcome to Rancher! You are now able to create your first Kubernetes cluster.
 
 In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-prem VM, or bare-metal) to be used in a cluster.
 
-**Note:** You create the cluster on the Clusters page. If you are on the Cluster Dashboard, navigate to the Clusters page by clicking the **Cluster Manager** button in the upper-right of the UI. If your dropdown is set to **local**, select **Global**. 
+1. If you chose `I'm only going to use the cluster Rancher was installed on` when setting the default view, click the **Cluster Manager** button in the upper-right of the UI to access the **Clusters** page.
 
 1. From the **Clusters** page, click **Add Cluster**.
 
-2. Choose **Existing Nodes**.
+1. Choose **Existing Nodes**.
 
-3. Enter a **Cluster Name**.
+1. Enter a **Cluster Name**.
 
-4. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
+1. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
 
-5. Click **Next**.
+1. Click **Next**.
 
-6. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
+1. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
 
-7. **Optional**: Rancher auto-detects the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
+1. **Optional**: Rancher auto-detects the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
 
-8. Skip the **Labels** stuff. It's not important for now.
+1. Skip the **Labels** stuff. It's not important for now.
 
-9. Copy the command displayed on screen to your clipboard.
+1. Copy the command displayed on screen to your clipboard.
 
-10. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
+1. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
 
-11. When you finish running the command on your Linux host, click **Done**.
+1. When you finish running the command on your Linux host, click **Done**.
 
 **Result:** 
 
