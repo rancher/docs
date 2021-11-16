@@ -16,6 +16,7 @@ Fleet is a separate project from Rancher, and can be installed on any Kubernetes
 - [Windows Support](#windows-support)
 - [GitHub Repository](#github-repository)
 - [Using Fleet Behind a Proxy](#using-fleet-behind-a-proxy)
+- [Troubleshooting](#troubleshooting)
 - [Documentation](#documentation)
 
 # Architecture
@@ -43,6 +44,16 @@ The Fleet Helm charts are available [here.](https://github.com/rancher/fleet/rel
 _Available as of v2.5.8_
 
 For details on using Fleet behind a proxy, see [this page.](./proxy)
+
+# Troubleshooting
+
+- **Known Issue:** Fleet in Rancher v2.5 becomes inoperable after a restore using the [backup-restore operator](({{<baseurl>}}rancher/v2.5/en/backups/back-up-rancher/#install-the-rancher-backup-operator)). We will update the community once a permanent solution is in place.
+- **Temporary Workaround:** </br> 
+        1. Find the two service account tokens listed in the fleet-controller and the fleet-controller-bootstrap service accounts. These are under the fleet-system Namespace of the local cluster. </br>
+        2. Remove the non-existent token secret. Doing so allows for only one entry to be present for the service account token secret that actually exists. </br> 
+        3. Delete the fleet-controller Pod in the fleet-system Namespace to reschedule. </br>
+        4. After the service account token issue is resolved, you can force redeployment of the fleet-agents. In the Rancher UI, go to **☰ > Cluster Management**, click on **Clusters** page, then click **Force Update**. </br> 
+        5. If the fleet-agent bundles remain in a `Modified` state after Step 4, use the command `spec.forceSyncGeneration` for fleet-agent bundle to force re-creation.
 
 # Documentation
 
