@@ -75,13 +75,13 @@ For example, step two of the High Availability with an External DB guide mention
 
 ```
 curl -sfL https://get.k3s.io | sh -s - server \
-  --datastore-endpoint="mysql://username:password@tcp(hostname:3306)/database-name"
+  --datastore-endpoint='mysql://username:password@tcp(hostname:3306)/database-name'
 ```
 
 Instead, you would modify such examples like below:
 
 ```
-INSTALL_K3S_SKIP_DOWNLOAD=true INSTALL_K3S_EXEC='server --datastore-endpoint="mysql://username:password@tcp(hostname:3306)/database-name"' ./install.sh
+INSTALL_K3S_SKIP_DOWNLOAD=true INSTALL_K3S_EXEC='server' K3S_DATASTORE_ENDPOINT='mysql://username:password@tcp(hostname:3306)/database-name' ./install.sh
 ```
 
 {{% /tab %}}
