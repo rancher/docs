@@ -15,13 +15,13 @@ Mounted secrets will be updated automatically unless they are mounted as subpath
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. Go to the cluster where you want to add a secret and click **Explore**.
-1. Click **More Resources > Core > Secrets**.
+1. To navigate to secrets, you may click either **Storage > Secrets** or **More Resources > Core > Secrets**. 
 1. Click **Create**.
 1. Select the type of secret you want to create.
 1. Select a **Namespace** for the secret.
 1. Enter a **Name** for the secret.
 
-    >**Note:** Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your secret must have a unique name among all secrets within your workspace.
+    >**Note:** Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a namespace can have duplicate names. Therefore, to prevent conflicts, your secret must have a unique name among all secrets within your workspace.
 
 1. From **Data**, click **Add** to add a key-value pair. Add as many values as you need.
 
@@ -31,12 +31,12 @@ Mounted secrets will be updated automatically unless they are mounted as subpath
 
 1. Click **Save**.
 
-**Result:** Your secret is added to the project or namespace, depending on the scope you chose. You can view the secret in the Rancher UI from the **Resources > Secrets** view.
+**Result:** Your secret is added to the namespace you chose. You can view the secret in the Rancher UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**. 
 
 Mounted secrets will be updated automatically unless they are mounted as subpath volumes. For details on how updated secrets are propagated, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/secret/#mounted-secrets-are-updated-automatically)
 
 # What's Next?
 
-Now that you have a secret added to the project or namespace, you can add it to a workload that you deploy.
+Now that you have a secret added to a namespace, you can add it to a workload that you deploy.
 
 For more information on adding secret to a workload, see [Deploying Workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads/).
