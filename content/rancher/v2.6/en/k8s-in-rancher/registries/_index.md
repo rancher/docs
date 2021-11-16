@@ -48,7 +48,7 @@ Prior to v2.6, secrets were required to be in a project scope. Projects are no l
 1. In the upper left corner, click **☰ > Global Settings** in the dropdown.
 1. Click **Feature Flags**.
 1. Go to the `legacy` feature flag and click **Activate**.
-1. Continue following [steps 1 - 9]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/registries/#creating-a-registry-in-namespaces) above to create and save your project-level registry. Note that in Step 7 above, you will select the project rather than the namespace you want to use.
+1. Continue following [steps 1 - 9](#creating-a-registry-in-namespaces) above to create and save your project-level registry. Note that in Step 7 above, you will select the project rather than the namespace you want to use.
 
 **Result:** 
 
