@@ -52,6 +52,8 @@ Prior to v2.6, secrets were required to be in a project scope. Projects are no l
 
 **Result:** Your secret is added to the individual project you chose. You can view the secret in the Rancher UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**. 
 
+>**Note:** Project-scoped secrets on the local cluster are only visible when a single project is selected.
+
 # What's Next?
 
 Now that you have a secret added to a namespace, you can add it to a workload that you deploy.
