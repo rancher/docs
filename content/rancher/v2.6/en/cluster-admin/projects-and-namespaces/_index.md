@@ -8,7 +8,7 @@ A namespace is a Kubernetes concept that allows a virtual cluster within a clust
 
 A project is a group of namespaces, and it is a concept introduced by Rancher. Projects allow you to manage multiple namespaces as a group and perform Kubernetes operations in them. You can use projects to support multi-tenancy, so that a team can access a project within a cluster without having access to other projects in the same cluster.
 
->**Note:** As of Rancher v2.6, projects are de-emphasized on the UI because you don't need them anymore to create secrets exclusively. However, it's still possible to create [secrets in projects]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/#creating-secrets-in-projects) if desired.
+>**Note:** As of Rancher v2.6, projects are de-emphasized on the UI because it is no longer required to create any Kubernetes resources within a project scope. However, resources such as [Secrets]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/#creating-secrets-in-projects) can still be created in a project scope if the legacy feature flag is enabled.
 
 This section describes how projects and namespaces work with Rancher. It covers the following topics:
 
