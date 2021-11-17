@@ -302,7 +302,7 @@ spec:
   - Ingress
 ```
 
-A few of the packaged components may also need NetworkPolicies applied to allow them to work properly. For example, metrics-server will only work intermittently and the Traefik ingress controller will be blocked by default if not supplying the below policies. For Traefik in k3s version 1.20 and below there is a different `traefik` label used than in 1.21 and above, so remove the one in the below yaml that is not associated with your Kubernetes version.
+The metrics-server and Traefik ingress controller will be blocked by default if network policies are not created to allow access. Traefik v1 as packaged in K3s version 1.20 and below uses different labels than Traefik v2; ensure that you only use the sample yaml below that is associated with the version of Traefik present on your cluster.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
