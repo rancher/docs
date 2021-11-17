@@ -28,7 +28,7 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 1. Click **Rancher Backups.**
 1. Configure the default storage location. For help, refer to the [storage configuration section.](../configuration/storage-config)
 
->**NOTE:** There is a [known Fleet issue](https://github.com/rancher/backup-restore-operator/issues/164) in Rancher v2.5 that occurs after performing a restoration using the backup-restore-operator. Fleet agents in both the local and downstream Rancher clusters are unable to connect. A temporary workaround may be found [here]({{<baseurl>}}rancher/v2.5/en/deploy-across-clusters/fleet/#troubleshooting).
+>**NOTE:** There are two known issues in Fleet that occur after performing a restoration using the backup-restore-operator: Fleet agents are inoperable and clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.5/en/deploy-across-clusters/fleet/#troubleshooting) for workarounds.
 
 ### 2. Perform a Backup
 
