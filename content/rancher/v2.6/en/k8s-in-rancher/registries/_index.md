@@ -41,7 +41,7 @@ Currently, deployments pull the private registry credentials automatically only 
 
 >**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 
-Prior to v2.6, secrets were required to be in a project scope. Projects are no longer required, and you may use the namespace scope instead. As a result, the Rancher UI was updated to reflect this new functionality. However, you may still create a project-scoped registry if desired. Use the following steps to do so:
+Before v2.6, secrets were required to be in a project scope. Projects are no longer required, and you may use the namespace scope instead. As a result, the Rancher UI was updated to reflect this new functionality. However, you may still create a project-scoped registry if desired. Use the following steps to do so:
 
 1. In the upper left corner, click **☰ > Global Settings** in the dropdown.
 1. Click **Feature Flags**.
