@@ -302,9 +302,23 @@ spec:
   - Ingress
 ```
 
-If you are using the default traefik ingress controller with k3s, it will also be blocked by default, so the following network policies must be added to allow traffic to both traefik pods and svclb pods in the kube-system namespace. For version 1.20 and below there is a different label `traefik` used than in 1.21 and above, so remove the one that is not associated with your Kubernetes version.
+A few of the packaged components may also need NetworkPolicies applied to allow them to work properly. For example, metrics-server will only work intermittently and the Traefik ingress controller will be blocked by default if not supplying the below policies. For Traefik in k3s version 1.20 and below there is a different `traefik` label used than in 1.21 and above, so remove the one in the below yaml that is not associated with your Kubernetes version.
 
 ```yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-metrics-server
+  namespace: kube-system
+spec:
+  podSelector:
+    matchLabels:
+      k8s-app: metrics-server
+  ingress:
+  - {}
+  policyTypes:
+  - Ingress
+---
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -319,7 +333,7 @@ spec:
   policyTypes:
   - Ingress
 ---
-# 1.20
+# Below is for 1.20 ONLY -- remove if on 1.21 or above
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -334,7 +348,7 @@ spec:
   policyTypes:
   - Ingress
 ---
-# 1.21
+# Below is for 1.21 and above ONLY -- remove if on 1.20 or below
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
