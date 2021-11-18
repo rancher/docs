@@ -9,6 +9,7 @@ A restore is performed by creating a Restore custom resource.
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
 > * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
+> * If you need to restore Rancher to a previous version after an upgrade, see the [rollback documentation.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/rollbacks/ )
 
 ### Create the Restore Custom Resource
 
