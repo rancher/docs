@@ -12,7 +12,7 @@ This section covers the following topics:
 - [Recommended Load Balancer Configuration for Kubernetes Installations](#recommended-load-balancer-configuration-for-kubernetes-installations)
 - [Environment for Kubernetes Installations](#environment-for-kubernetes-installations)
 - [Recommended Node Roles for Kubernetes Installations](#recommended-node-roles-for-kubernetes-installations)
-- [Architecture for an Authorized Cluster Endpoint](#architecture-for-an-authorized-cluster-endpoint)
+- [Architecture for an Authorized Cluster Endpoint (ACE)](#architecture-for-an-authorized-cluster-endpoint-ace)
 
 # Separation of Rancher and User Clusters
 
