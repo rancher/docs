@@ -54,7 +54,7 @@ For details on using Fleet behind a proxy, see [this page.](./proxy)
         2. Remove the non-existent token secret. Doing so allows for only one entry to be present for the service account token secret that actually exists. </br> 
         3. Delete the fleet-controller Pod in the fleet-system Namespace to reschedule. </br>
         4. After the service account token issue is resolved, you can force redeployment of the fleet-agents. In the Rancher UI, go to **☰ > Cluster Management**, click on **Clusters** page, then click **Force Update**. </br> 
-        5. If the fleet-agent bundles remain in a `Modified` state after Step 4, use the command `spec.forceSyncGeneration` for the fleet-agent bundle to force re-creation.
+        5. If the fleet-agent bundles remain in a `Modified` state after Step 4, update the field `spec.forceSyncGeneration` for the fleet-agent bundle to force re-creation.
 
 ---
 * **Known Issue:** clientSecretName and helmSecretName secrets for Fleet gitrepos are not included in the backup nor restore created by the [backup-restore-operator]({{<baseurl>}}rancher/v2.5/en/backups/back-up-rancher/#1-install-the-rancher-backup-operator). We will update the community once a permanent solution is in place. 
