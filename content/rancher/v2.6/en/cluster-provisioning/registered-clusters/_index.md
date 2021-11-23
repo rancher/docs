@@ -152,15 +152,17 @@ To prevent issues when upgrading, the [Kubernetes upgrade best practices](https:
 
 _Available as of v2.6.3_
 
-Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and K3s clusters. This support includes manual steps you will perform on the downstream cluster to enable the ACE. For additional information on the ACE, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/).
+Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and K3s clusters. This support includes manual steps you will perform on the downstream cluster to enable the ACE. For additional information on the authorized cluster endpoint, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/).
 
 > **Note:**
+>
+> - These steps only need to be performed on the control plane nodes of the downstream cluster. You must configure each control plane node individually. 
 >
 > - The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
 >
 > - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
 
-###### **Manual steps to be taken on the downstream cluster to enable ACE:**
+###### **Manual steps to be taken on the control plane of each downstream cluster to enable ACE:**
 
 1. Create a file at `/var/lib/rancher/{rke2,k3s}/kube-api-authn-webhook.yaml` with the following contents:
 
