@@ -12,6 +12,7 @@ Fleet is a separate project from Rancher, and can be installed on any Kubernetes
 - [Windows Support](#windows-support)
 - [GitHub Repository](#github-repository)
 - [Using Fleet Behind a Proxy](#using-fleet-behind-a-proxy)
+- [Troubleshooting](#troubleshooting)
 - [Documentation](#documentation)
 
 # Architecture
@@ -35,6 +36,16 @@ The Fleet Helm charts are available [here.](https://github.com/rancher/fleet/rel
 # Using Fleet Behind a Proxy
 
 For details on using Fleet behind a proxy, see [this page.](./proxy)
+
+# Troubleshooting
+
+---
+* **Known Issue:** clientSecretName and helmSecretName secrets for Fleet gitrepos are not included in the backup nor restore created by the [backup-restore-operator]({{<baseurl>}}rancher/v2.6/en/backups/back-up-rancher/#1-install-the-rancher-backups-operator). We will update the community once a permanent solution is in place. 
+
+* **Temporary Workaround:** </br>
+By default, user-defined secrets are not backed up in Fleet. It is necessary to recreate secrets if performing a disaster recovery restore or migration of Rancher into a fresh cluster. To modify resourceSet to include extra resources you want to backup, refer to docs [here](https://github.com/rancher/backup-restore-operator#user-flow).
+
+---
 
 # Documentation
 
