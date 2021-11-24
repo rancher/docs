@@ -52,7 +52,7 @@ For details on using Fleet behind a proxy, see [this page.](./proxy)
 * **Temporary Workaround:** </br>
         1. Find the two service account tokens listed in the fleet-controller and the fleet-controller-bootstrap service accounts. These are under the fleet-system namespace of the local cluster. </br>
         2. Remove the non-existent token secret. Doing so allows for only one entry to be present for the service account token secret that actually exists. </br> 
-        3. Delete the fleet-controller Pod in the fleet-system Namespace to reschedule. </br>
+        3. Delete the fleet-controller Pod in the fleet-system namespace to reschedule. </br>
         4. After the service account token issue is resolved, you can force redeployment of the fleet-agents. In the Rancher UI, go to **☰ > Cluster Management**, click on **Clusters** page, then click **Force Update**. </br> 
         5. If the fleet-agent bundles remain in a `Modified` state after Step 4, update the field `spec.forceSyncGeneration` for the fleet-agent bundle to force re-creation.
 
