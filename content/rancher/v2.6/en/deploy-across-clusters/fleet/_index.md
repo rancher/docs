@@ -12,6 +12,7 @@ Fleet is a separate project from Rancher, and can be installed on any Kubernetes
 - [Windows Support](#windows-support)
 - [GitHub Repository](#github-repository)
 - [Using Fleet Behind a Proxy](#using-fleet-behind-a-proxy)
+- [Fleet Helm Chart Dependencies](#fleet-helm-chart-dependencies)
 - [Troubleshooting](#troubleshooting)
 - [Documentation](#documentation)
 
@@ -36,6 +37,12 @@ The Fleet Helm charts are available [here.](https://github.com/rancher/fleet/rel
 # Using Fleet Behind a Proxy
 
 For details on using Fleet behind a proxy, see [this page.](./proxy)
+
+# Fleet Helm Chart Dependencies
+
+In order for the Helm chart dependencies in Fleet to deploy successfully, you must run a manual command (as listed below) to let Fleet know where to retrieve them. If you do not do this and proceed to clone your repository and run `helm install`, your installation will fail because the dependencies will be missing.
+
+The Helm chart in the git repository must include its dependencies in the charts subdirectory. You must either manually run `helm dependencies update` OR run `helm dependencies build` locally, then commit the complete charts directory to your git repository.
 
 # Troubleshooting
 
