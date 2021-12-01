@@ -13,7 +13,7 @@ You're ready to create your first Kubernetes [workload](https://kubernetes.io/do
 
 For this workload, you'll be deploying the application Rancher Hello-World.
 
-1.  Click **☰ > Cluster Management**.
+1. Click **☰ > Cluster Management**.
 1. Go to the cluster that you created and click **Explore**.
 1. Click **Workload**.
 1. Click **Create**.
@@ -21,6 +21,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 1. Enter a **Name** for your workload.
 1. From the **Docker Image** field, enter `rancher/hello-world`. This field is case-sensitive.
 1. Click **Create**.
+1. Click **Add Port** to enter a port mapping, which enables access to the application inside and outside of the cluster. For more information, see [Services]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/#services).
 
 **Result:**
 
