@@ -34,25 +34,25 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 Now that the application is up and running it needs to be exposed so that other services can connect.
 
 1.  Click **☰ > Cluster Management**.
-1. Go to the cluster that you created and click **Explore**.
+1.  Go to the cluster that you created and click **Explore**.
 
-2.  From the main menu of the **Dashboard**, select **Projects**.
+1.  From the main menu of the **Dashboard**, select **Projects**.
 
-3.  Open the **Default** project.
+1.  Open the **Default** project.
 
-4.  Click **Resources > Workloads > Load Balancing**. Click on the **Load Balancing** tab.
+1.  Click **Service Discovery > Ingresses**.
 
-5.  Click **Add Ingress**.
+1.  Click **Create.**
 
-6.  Enter a name i.e. **hello**.
+1.  Enter a name, such as **hello**.
 
-7.  In the **Target** field, drop down the list and choose the name that you set for your service.
+1.  In the **Target Service** field, drop down the list and choose the name that you set for your service.
 
-8.  Enter `80` in the **Port** field.
+1.  Enter `80` in the **Port** field.
 
-9.  Leave everything else as default and click **Save**.
+1.  Click **Create** at the bottom right.
 
-**Result:**  The application is assigned a `xip.io` address and exposed. It may take a minute or two to populate.
+**Result:** The application is assigned a `sslip.io` address and exposed. It may take a minute or two to populate.
 
 ### View Your Application
 
