@@ -131,10 +131,6 @@ The relationship between the default roles deployed by Rancher Cluster Manager (
 | project-owner* | admin | monitoring-admin | RoleBinding within Project namespace |
 | project-member* | edit | monitoring-edit | RoleBinding within Project namespace |
 
->**Note:**
->
->By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces. For more information about project roles, click [here]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/#project-roles).
-
 In addition to these default Roles, the following additional Rancher project roles can be applied to members of your Cluster to provide additional access to Monitoring. These Rancher Roles will be tied to ClusterRoles deployed by the Monitoring chart:
 
 <figcaption>Non-default Rancher Permissions and Corresponding Kubernetes ClusterRoles</figcaption>
