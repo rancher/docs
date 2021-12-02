@@ -20,8 +20,8 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 1. Click **Deployment**.
 1. Enter a **Name** for your workload.
 1. From the **Docker Image** field, enter `rancher/hello-world`. This field is case-sensitive.
-1. Click **Create**.
 1. Click **Add Port** to enter a port mapping, which enables access to the application inside and outside of the cluster. For more information, see [Services]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/#services).
+1. Click **Create**.
 
 **Result:**
 
@@ -31,7 +31,7 @@ For this workload, you'll be deploying the application Rancher Hello-World.
 <br/>
 ### 2. Expose The Application Via An Ingress
 
-Now that the application is up and running it needs to be exposed so that other services can connect.
+Now that the application is up and running, it needs to be exposed so that other services can connect.
 
 1.  Click **☰ > Cluster Management**.
 1.  Go to the cluster that you created and click **Explore**.
@@ -47,6 +47,8 @@ Now that the application is up and running it needs to be exposed so that other 
 1.  Enter a name, such as **hello**.
 
 1.  In the **Target Service** field, drop down the list and choose the name that you set for your service.
+
+1.  Specify your **path**, such as `/hello`.
 
 1.  Enter `80` in the **Port** field.
 
