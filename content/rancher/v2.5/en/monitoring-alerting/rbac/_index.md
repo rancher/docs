@@ -128,8 +128,8 @@ The relationship between the default roles deployed by Rancher Cluster Manager (
 | --------- | --------- | --------- | --------- |
 | cluster-owner | cluster-admin | N/A | ClusterRoleBinding |
 | cluster-member | admin | monitoring-admin | ClusterRoleBinding |
-| project-owner* | admin | monitoring-admin | RoleBinding within Project namespace |
-| project-member* | edit | monitoring-edit | RoleBinding within Project namespace |
+| project-owner | admin | monitoring-admin | RoleBinding within Project namespace |
+| project-member | edit | monitoring-edit | RoleBinding within Project namespace |
 
 In addition to these default Roles, the following additional Rancher project roles can be applied to members of your Cluster to provide additional access to Monitoring. These Rancher Roles will be tied to ClusterRoles deployed by the Monitoring chart:
 
