@@ -56,7 +56,7 @@ Now that the application is up and running, it needs to be exposed so that other
 
 ### View Your Application
 
-From the **Load Balancing** page, click the target link, which will look something like `hello.default.xxx.xxx.xxx.xxx.xip.io > hello-world`.
+From the **Ingress** page, click the target link, which will look something like `hello.default.xxx.xxx.xxx.xxx.sslip.io > hello-world`.
 
 Your application will open in a separate window.
 
