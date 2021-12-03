@@ -36,19 +36,17 @@ Now that the application is up and running, it needs to be exposed so that other
 1.  Click **☰ > Cluster Management**.
 1.  Go to the cluster that you created and click **Explore**.
 
-1.  From the main menu of the **Dashboard**, select **Projects**.
-
-1.  Open the **Default** project.
-
 1.  Click **Service Discovery > Ingresses**.
 
 1.  Click **Create.**
 
-1.  Enter a name, such as **hello**.
+1.  When choosing **Namespace**, ensure it is the same as the one used when you created your deployment. Otherwise, your deployment will not be available when you attempt to select **Target Service**, as in Step 8 below.
+
+1.  Enter a **Name**, such as **hello**.
+
+1.  Specify your **Path**, such as `/hello`.
 
 1.  In the **Target Service** field, drop down the list and choose the name that you set for your service.
-
-1.  Specify your **path**, such as `/hello`.
 
 1.  Enter `80` in the **Port** field.
 
