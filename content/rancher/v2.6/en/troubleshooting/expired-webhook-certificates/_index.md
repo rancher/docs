@@ -10,7 +10,7 @@ Rancher will advise the community once there is a permanent solution in place fo
 ##### 1. Users with cluster access, run the following commands:
 ```
 kubectl delete secret -n cattle-system cattle-webhook-tls
-kubectl delete mutatingwebhookconfigurations.admissionregistration.k8s.io rancher.cattle.io
+kubectl delete mutatingwebhookconfigurations.admissionregistration.k8s.io --ignore-not-found=true rancher.cattle.io
 kubectl delete pod -n cattle-system -l app=rancher-webhook
 ```
 
