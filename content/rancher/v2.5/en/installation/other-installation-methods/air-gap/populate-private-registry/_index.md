@@ -66,7 +66,7 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
     helm repo add jetstack https://charts.jetstack.io
     helm repo update
     helm fetch jetstack/cert-manager --version v1.5.1
-    helm template ./cert-manager-<version>.tgz | awk '$1 ~ /image:/ {print $2}' | sed s/\"//g' >> ./rancher-images.txt
+    helm template ./cert-manager-<version>.tgz | awk '$1 ~ /image:/ {print $2}' | sed s/\"//g >> ./rancher-images.txt
     ```
 
 2.  Sort and unique the images list to remove any overlap between the sources:
