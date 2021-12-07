@@ -60,14 +60,16 @@ Create a namespace:
 kubectl create namespace cattle-system
 ```
 
-And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata:
+And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata. 
+
+Note that `rancher.cattle-system` must be added to the noProxy list (as shown below) so that Rancher can communicate directly with Kubernetes service DNS using service discovery.
 
 ```
 helm upgrade --install rancher rancher-latest/rancher \
    --namespace cattle-system \
    --set hostname=rancher.example.com \
    --set proxy=http://${proxy_host}
-   --set noProxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
+   --set noProxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local,rancher.cattle-system
 ```
 
 After waiting for the deployment to finish:
