@@ -48,7 +48,7 @@ Now that the application is up and running, it needs to be exposed so that other
 
 1.  In the **Target Service** field, drop down the list and choose the name that you set for your service.
 
-1.  Enter `80` in the **Port** field.
+1.  In the **Port** field, drop down the list and select `80`.
 
 1.  Click **Create** at the bottom right.
 
