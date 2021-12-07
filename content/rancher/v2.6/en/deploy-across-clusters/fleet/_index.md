@@ -22,7 +22,24 @@ For information about how Fleet works, see [this page.](./architecture)
 
 # Accessing Fleet in the Rancher UI
 
-Fleet comes preinstalled in Rancher. To access it, click **☰ > Continuous Delivery**.
+Fleet comes preinstalled in Rancher and is managed by the **Continous Delivery** option in the Rancher UI. For additional information on Continuous Delivery and other Fleet troubleshooting tips, refer [here](https://fleet.rancher.io/troubleshooting/).
+
+Users can leverage continuous delivery to deploy their applications to the Kubernetes clusters in the git repository without any manual operation by following **gitops** practice.
+
+Follow the steps below to access Continuous Delivery in the Rancher UI:
+
+1. Click **☰ > Continuous Delivery**.
+
+1. Select your namespace at the top of the menu, noting the following: 
+    - By default,`fleet-default` is selected which includes all downstream clusters that are registered through Rancher. 
+    - You may switch to `fleet-local`, which only contains the `local` cluster, or you may create your own workspace to which you may assign and move clusters. 
+    - You can then manage clusters by clicking on **Clusters** on the left navigation bar.
+
+1. Click on **Gitrepos** on the left navigation bar to deploy the gitrepo into your clusters in the current workspace. 
+
+1. Select your [git repository](https://fleet.rancher.io/gitrepo-add/) and [target clusters/cluster group](https://fleet.rancher.io/gitrepo-structure/). You can also create the cluster group in the UI by clicking on **Cluster Groups** from the left navigation bar.
+
+1. Once the gitrepo is deployed, you can monitor the application through the Rancher UI.
 
 # Windows Support
 
