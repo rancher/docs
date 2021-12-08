@@ -173,3 +173,8 @@ In Kubernetes v1.13, the `TaintBasedEvictions` feature is enabled by default. Se
 ### Can I use keyboard shortcuts in the UI?
 
 Yes, most parts of the UI can be reached using keyboard shortcuts. For an overview of the available shortcuts, press `?` anywhere in the UI.
+
+
+### What does `Unknown schema for type:` errors followed by something like `catalog.cattle.io.operation` mean when trying to modify an App?
+
+This error occurs when Kubernetes can not find the CRD mentioned.  The vast majority of the time these are a result of missing RBAC permissions.  Try with an admin user and if this works, add permissions for the resource mentioned by the error (ie. `Get`, `List`, `Patch` as needed).
