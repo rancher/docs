@@ -31,7 +31,7 @@ The following steps will quickly deploy a Rancher Server on Hetzner Cloud with a
 See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Hetzner Quickstart Readme](https://github.com/rancher/quickstart/tree/master/hcloud) for more information.
 Suggestions include:
     - `prefix` - Prefix for all created resources
-    - `instance_type` - Instance type, minimum required is `cx22`
+    - `instance_type` - Instance type, minimum required is `cx21`
     - `ssh_key_file_name` - Use a specific SSH key instead of `~/.ssh/id_rsa` (public key is assumed to be `${ssh_key_file_name}.pub`)
 
 1. Run `terraform init`.
