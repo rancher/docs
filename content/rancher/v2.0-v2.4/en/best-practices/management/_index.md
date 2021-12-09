@@ -4,6 +4,7 @@ weight: 101
 aliases:
   - /rancher/v2.0-v2.4/en/best-practices/management
   - /rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/management
+  - /rancher/v2.x/en/best-practices/management/
   - /rancher/v2.x/en/best-practices/v2.0-v2.4/management/
 ---
 
