@@ -71,7 +71,7 @@ The Helm chart in the git repository must include its dependencies in the charts
 
 # Troubleshooting
 ---
-* **Known Issue:** Fleet becomes inoperable after a restore using the [backup-restore-operator]({{<baseurl>}}rancher/v2.5/en/backups/back-up-rancher/#1-install-the-rancher-backup-operator). We will update the community once a permanent solution is in place. 
+* **Known Issue:** Fleet becomes inoperable after a restore using the [backup-restore-operator]({{<baseurl>}}/rancher/v2.5/en/backups/back-up-rancher/#1-install-the-rancher-backup-operator). We will update the community once a permanent solution is in place. 
 
 * **Temporary Workaround:** </br>
         1. Find the two service account tokens listed in the fleet-controller and the fleet-controller-bootstrap service accounts. These are under the fleet-system namespace of the local cluster. </br>
@@ -81,7 +81,7 @@ The Helm chart in the git repository must include its dependencies in the charts
         5. If the fleet-agent bundles remain in a `Modified` state after Step 4, update the field `spec.forceSyncGeneration` for the fleet-agent bundle to force re-creation.
 
 ---
-* **Known Issue:** clientSecretName and helmSecretName secrets for Fleet gitrepos are not included in the backup nor restore created by the [backup-restore-operator]({{<baseurl>}}rancher/v2.5/en/backups/back-up-rancher/#1-install-the-rancher-backup-operator). We will update the community once a permanent solution is in place. 
+* **Known Issue:** clientSecretName and helmSecretName secrets for Fleet gitrepos are not included in the backup nor restore created by the [backup-restore-operator]({{<baseurl>}}/rancher/v2.5/en/backups/back-up-rancher/#1-install-the-rancher-backup-operator). We will update the community once a permanent solution is in place. 
 
 * **Temporary Workaround:** </br>
 By default, user-defined secrets are not backed up in Fleet. It is necessary to recreate secrets if performing a disaster recovery restore or migration of Rancher into a fresh cluster. To modify resourceSet to include extra resources you want to backup, refer to docs [here](https://github.com/rancher/backup-restore-operator#user-flow).
