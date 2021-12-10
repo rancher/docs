@@ -15,7 +15,7 @@ Note that the Rancher app version 2.x.x is for the Rancher v2.6.x line.
 
 The Rancher version must be v2.5.0 and up.
 
-Refer [here]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher
+Refer [here]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher/
 #2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in Rancher v2.6.3.
 
 ### 1. Install the Rancher Backups operator
