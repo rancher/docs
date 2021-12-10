@@ -43,8 +43,7 @@ When a Restore custom resource is created, the operator accesses the backup .tar
 
 The Backup and Restore custom resources can be created in the Rancher UI, or by using `kubectl apply`.
 
->**Note:** Refer [here]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher
-#2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in Rancher v2.6.3.
+>**Note:** Refer [here]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher#2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in Rancher v2.6.3.
 
 # Installing the rancher-backup Operator
 
