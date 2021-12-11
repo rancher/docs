@@ -127,8 +127,8 @@ If you would like to use etcdctl after installing K3s with embedded etcd, instal
 
 ```
 $ VERSION="v3.5.0"
-$ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VERSION}-linux-amd64.tar.gz --output etcdctl-${VERSION}-linux-amd64.tar.gz
-$ sudo tar -zxvf etcdctl-${VERSION}-linux-amd64.tar.gz -C /usr/local/bin
+$ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VERSION}-linux-amd64.tar.gz --output etcdctl-linux-amd64.tar.gz
+$ sudo tar -zxvf etcdctl-linux-amd64.tar.gz --strip-components=1 -C /usr/local/bin etcd-${VERSION}-linux-amd64/etcdctl
 ```
 
 Then start using etcdctl commands with the appropriate K3s flags:
