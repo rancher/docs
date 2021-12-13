@@ -4,9 +4,9 @@ weight: 26
 ---
 
 # Secrets Encryption Config
-_Avaliable as of v1.17.4+k3s1_
+_Available as of v1.17.4+k3s1_
 
-K3s supports enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server, this flag will do the following automatically:
+K3s supports enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server; this flag will do the following automatically:
 
 - Generate an AES-CBC key
 - Generate an encryption config file with the generated key
@@ -44,9 +44,9 @@ Example of the encryption config file:
 
 
 ## Secrets Encryption Tool
-_Avaliable as of v1.21.8+k3s1_
+_Available as of v1.21.8+k3s1_
 
-K3s contains a utility tool `secrets-encrypt`, which enable automatic control over:
+K3s contains a utility tool `secrets-encrypt`, which enables automatic control over the following:
 
 - Disabling/Enabling secrets encryption
 - Adding new encryption keys
@@ -89,7 +89,7 @@ To rotate secrets encryption keys on HA setups:
 
 >**Note** While not required, it is recommended that you pick one server node from which to run the `secrets-encrypt` commands.
 
-- Start up 3 K3s servers, all with the `--secrets-encrytion` flag. For brevity, the servers will be referred to as S1, S2, S3.
+- Start up all three K3s servers with the `--secrets-encryption` flag. For brevity, the servers will be referred to as S1, S2, S3.
 
 1. Prepare on S1
 
@@ -153,7 +153,7 @@ To re-enable secrets encryption on a single node cluster:
     k3s secrets-encrypt reencrypt --force --skip
     ```
 
-### High-Avaliability Secrets Encryption Disable/Enable
+### High-Availability Secrets Encryption Disable/Enable
 After launching a HA cluster with `--secrets-encryption` flags, secrets encryption can be disabled.
 >**Note** While not required, it is recommended that you pick one server node from which to run the `secrets-encrypt` commands.
 
@@ -225,13 +225,13 @@ Active  Key Type  Name
 
 ```
 
-Details on each section are as followed:  
+Details on each section are as follows:  
 
 - __Encryption Status__: Displayed whether secrets encryption is disabled or enabled on the node  
 - __Current Rotation Stage__: Indicates the current rotation stage on the node.  
   Stages are: `start`, `prepare`, `rotate`, `reencrypt_request`, `reencrypt_active`, `reencrypt_finished`  
-- __Server Encryption Hashes__: Useful for HA clusters, this indicates whether all server are on the same stage with their local files. This can be used to identify whether a restart of servers is required before proceeding to the next stage. In the HA example above, node-1 and node-2 different hashes, indicating that they currently do not have the same encryption configuration. Restarting the servers will sync up their configuration.
+- __Server Encryption Hashes__: Useful for HA clusters, this indicates whether all servers are on the same stage with their local files. This can be used to identify whether a restart of servers is required before proceeding to the next stage. In the HA example above, node-1 and node-2 have different hashes, indicating that they currently do not have the same encryption configuration. Restarting the servers will sync up their configuration.
 - __Key Table__: Summarizes information about the secrets encryption keys found on the node.  
-  * __Active__: The "*" indicates which, if any, of the keys are currently used for secrets encryption. An active key is used by kubernetes to encrypt any new secrets.
+  * __Active__: The "*" indicates which, if any, of the keys are currently used for secrets encryption. An active key is used by Kubernetes to encrypt any new secrets.
   * __Key Type__: All keys using this tool are `AES-CBC` type. See more info [here.](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#providers)
   * __Name__: Name of the encryption key.  
