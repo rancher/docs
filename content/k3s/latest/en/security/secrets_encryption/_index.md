@@ -53,14 +53,14 @@ K3s contains a utility tool `secrets-encrypt`, which enables automatic control o
 - Rotating and deleting encryption keys
 - Reencrypting secrets
 
->**Warning** Failure to follow proper procedure for rotating encryption keys can leave your cluster permanently corrupted. Proceed with caution.
+>**Warning:** Failure to follow proper procedure for rotating encryption keys can leave your cluster permanently corrupted. Proceed with caution.
 
 ### Single-Server Encryption Key Rotation
 To rotate secrets encryption keys on a single-node cluster:
 
 - Start the K3s server with the flag `--secrets-encryption`
 
->**Note** Starting K3s without encryption and enabling it at a later time is currently *not* supported.
+>**Note:** Starting K3s without encryption and enabling it at a later time is currently *not* supported.
 
 1. Prepare
 
@@ -87,7 +87,7 @@ The steps are the same for both embedded DB and external DB clusters.
 
 To rotate secrets encryption keys on HA setups:
 
->**Note** While not required, it is recommended that you pick one server node from which to run the `secrets-encrypt` commands.
+>**Note:** While not required, it is recommended that you pick one server node from which to run the `secrets-encrypt` commands.
 
 - Start up all three K3s servers with the `--secrets-encryption` flag. For brevity, the servers will be referred to as S1, S2, S3.
 
@@ -155,7 +155,7 @@ To re-enable secrets encryption on a single node cluster:
 
 ### High-Availability Secrets Encryption Disable/Enable
 After launching a HA cluster with `--secrets-encryption` flags, secrets encryption can be disabled.
->**Note** While not required, it is recommended that you pick one server node from which to run the `secrets-encrypt` commands.
+>**Note:** While not required, it is recommended that you pick one server node from which to run the `secrets-encrypt` commands.
 
 For brevity, the three servers used in this guide will be referred to as S1, S2, S3.
 
