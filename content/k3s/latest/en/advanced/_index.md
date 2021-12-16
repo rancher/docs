@@ -25,7 +25,7 @@ This section contains advanced information describing the different ways you can
 - [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
 - [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
 - [Additional Logging Sources](#additional-logging-sources)
-- [Server and agent tokens](#Server-and-agent-tokens)
+- [Server and agent tokens](#server-and-agent-tokens)
 
 # Certificate Rotation
 
@@ -484,10 +484,10 @@ helm install --create-namespace -n cattle-logging-system rancher-logging --set a
 
 # Server and agent tokens
 
-En k3s existen dos tipos de tokens: K3S_TOKEN y K3S_AGENT_TOKEN, cuyo uso es distinto.
+In K3s, there are two types of tokens: K3S_TOKEN and K3S_AGENT_TOKEN.
 
-K3S_TOKEN: Define la clave que el servidor require para poder acceder a los recursos HTTP, los cuales son solicitados por otros servidores para incorporarse a un cluster de alta disponibilidad. Si no se define K3S_AGENT_TOKEN, los agentes tambien utilizan esta clave. Es importante saber que esta clave tambien es utilizada para generar la clave de encriptado para contenido importante en la base de datos.
+K3S_TOKEN: Defines the key required by the server to offer the HTTP config resources. These resources are requested by the other servers before joining the K3s HA cluster. If the K3S_AGENT_TOKEN is not defined, the agents use this token as well to access the required HTTP resources to join the cluster. Note that this token is also used to generate the encryption key for important content in the database (e.g., bootstrap data).
 
-K3S_AGENT_TOKEN: Define la clave que el servidor solicita a los agentes para acceder a los recursos HTTP necesarios para incorporarse al cluster. Si no se define, se utiliza K3S_TOKEN para agente y servidor. Es recomendable definir esta variable para evitar que los agentes puedan generar la clave de encriptado mencionada anteriormente.
+K3S_AGENT_TOKEN: Optional. Defines the key required by the server to offer HTTP config resources to the agents. If not defined, agents will require K3S_TOKEN. Defining K3S_AGENT_TOKEN is encouraged to avoid agents having to know K3S_TOKEN, which is also used to encrypt data.
 
-Cuando no se ha definido ningun K3S_TOKEN, el servidor k3s genera uno aleatoriamente. El resultado es parte del contenido de `/var/lib/rancher/k3s/server/token`, por ejemplo `K1070878408e06a827960208f84ed18b65fa10f27864e71a57d9e053c4caff8504b::server:df54383b5659b9280aa1e73e60ef78fc`, donde `K1070878408e06a827960208f84ed18b65fa10f27864e71a57d9e053c4caff8504b` es el hash del CA, `server` es el usuario y `df54383b5659b9280aa1e73e60ef78fc` es la clave que seria reemplazada por K3S_TOKEN.
+If no K3S_TOKEN is defined, the first K3s server will generate a random one. The result is part of the content in `/var/lib/rancher/k3s/server/token`. For example, `K1070878408e06a827960208f84ed18b65fa10f27864e71a57d9e053c4caff8504b::server:df54383b5659b9280aa1e73e60ef78fc`, where `df54383b5659b9280aa1e73e60ef78fc` is the K3S_TOKEN.
