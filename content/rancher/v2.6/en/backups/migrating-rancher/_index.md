@@ -29,6 +29,13 @@ helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-sy
 
 ### 2. Restore from backup using a Restore custom resource
 
+>**Important:** Kubernetes v1.22, available as an experimental feature of v2.6.3, does not support restoring from backup files containing CRDs with the apiVersion `apiextensions.k8s.io/v1beta1`. In v1.22, the default `resourceSet` in the rancher-backup app is updated to collect only CRDs that use `apiextensions.k8s.io/v1`. There are currently two ways to work around this issue:
+>
+1. Update the default `resourceSet` to collect the CRDs with the apiVersion v1.
+1. Update the default `resourceSet` and the client to use the new APIs internally, with `apiextensions.k8s.io/v1` as the replacement.
+>
+> - Note that when making or restoring backups for v1.22, the Rancher version and the local cluster's Kubernetes version should be the same. The Kubernetes version should be considered when restoring a backup since the supported apiVersion in the cluster and in the backup file could be different.
+
 If you are using an S3 store as the backup source, and need to use your S3 credentials for restore, create a secret in this cluster using your S3 credentials. The Secret data must have two keys, `accessKey` and `secretKey` containing the s3 credentials like this:
 
 ```yaml
@@ -68,20 +75,19 @@ spec:
       endpoint: s3.us-west-2.amazonaws.com
 ```
 
-> **Important:** The field `encryptionConfigSecretName` must be set only if your backup was created with encryption enabled. Provide the name of the Secret containing the encryption config file. If you only have the encryption config file, but don't have a secret created with it in this cluster, use the following steps to create the secret:  
-1. The encryption configuration file must be named `encryption-provider-config.yaml`, and the `--from-file` flag must be used to create this secret. So save your `EncryptionConfiguration` in a file called `encryption-provider-config.yaml` and run this command:
+>**Important:** The field `encryptionConfigSecretName` must be set only if your backup was created with encryption enabled. Provide the name of the Secret containing the encryption config file. If you only have the encryption config file, but don't have a secret created with it in this cluster, use the following steps to create the secret:  
 
-```
-kubectl create secret generic encryptionconfig \
-  --from-file=./encryption-provider-config.yaml \
-  -n cattle-resources-system
-```
-
-Then apply the resource:
-
-```
-kubectl apply -f migrationResource.yaml 
-```
+1. The encryption configuration file must be named `encryption-provider-config.yaml`, and the `--from-file` flag must be used to create this secret. So save your `EncryptionConfiguration` in a file called `encryption-provider-config.yaml` and run this command:   
+    ```
+    kubectl create secret generic encryptionconfig \
+      --from-file=./encryption-provider-config.yaml \
+      -n cattle-resources-system
+    ```
+ 
+1. Then apply the resource:
+    ```
+    kubectl apply -f migrationResource.yaml 
+    ```
 
 ### 3. Install cert-manager
 
