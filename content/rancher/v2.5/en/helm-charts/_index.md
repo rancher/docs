@@ -52,18 +52,24 @@ These items represent helm repositories, and can be either traditional helm endp
 
 To add a private CA for Helm Chart repositories:
 
-- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click `Edit YAML` for the chart repo and set, as in the following example:</br>
+- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:</br>
     ```
     [...]
     spec:
-        caBundle:
+      caBundle:
     MIIFXzCCA0egAwIBAgIUWNy8WrvSkgNzV0zdWRP79j9cVcEwDQYJKoZIhvcNAQELBQAwPzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRQwEgYDVQQKDAtNeU9yZywgSW5jLjENMAsGA1UEAwwEcm9vdDAeFw0yMTEyMTQwODMyMTdaFw0yNDEwMDMwODMyMT
     ...
     nDxZ/tNXt/WPJr/PgEB3hQdInDWYMg7vGO0Oz00G5kWg0sJ0ZTSoA10ZwdjIdGEeKlj1NlPyAqpQ+uDnmx6DW+zqfYtLnc/g6GuLLVPamraqN+gyU8CHwAWPNjZonFN9Vpg0PIk1I2zuOc4EHifoTAXSpnjfzfyAxCaZsnTptimlPFJJqAMj+FfDArGmr4=
     [...]
     ```
 
-- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click `Edit YAML` for the chart repo, and add the key/value pair: `spec.insecureSkipTLSVerify: true`.
+- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click **Edit YAML** for the chart repo, and add the key/value pair as follows: 
+    ```
+    [...]
+    spec:
+      insecureSkipTLSVerify: true
+    [...]
+    ```
 
 ### Helm Compatibility
 
