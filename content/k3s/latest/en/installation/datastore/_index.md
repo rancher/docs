@@ -23,7 +23,7 @@ If you wish to use an external datastore such as PostgreSQL, MySQL, or etcd you 
 
   CLI Flag | Environment Variable | Description
   ------------|-------------|------------------
- <span style="white-space: nowrap">`--datastore-endpoint`</span> | `K3S_DATASTORE_ENDPOINT` | Specify a PostgresSQL, MySQL, or etcd connection string. This is a string used to describe the connection to the datastore. The structure of this string is specific to each backend and is detailed below.
+ <span style="white-space: nowrap">`--datastore-endpoint`</span> | `K3S_DATASTORE_ENDPOINT` | Specify a PostgreSQL, MySQL, or etcd connection string. This is a string used to describe the connection to the datastore. The structure of this string is specific to each backend and is detailed below.
  <span style="white-space: nowrap">`--datastore-cafile`</span> | `K3S_DATASTORE_CAFILE` | TLS Certificate Authority (CA) file used to help secure communication with the datastore. If your datastore serves requests over TLS using a certificate signed by a custom certificate authority, you can specify that CA using this parameter so that the K3s client can properly verify the certificate. |                              
 |  <span style="white-space: nowrap">`--datastore-certfile`</span> | `K3S_DATASTORE_CERTFILE` | TLS certificate file used for client certificate based authentication to your datastore. To use this feature, your datastore must be configured to support client certificate based authentication. If you specify this parameter, you must also specify the `datastore-keyfile` parameter. |     
 |  <span style="white-space: nowrap">`--datastore-keyfile`</span> | `K3S_DATASTORE_KEYFILE` | TLS key file used for client certificate based authentication to your datastore. See the previous `datastore-certfile` parameter for more details. |
@@ -81,7 +81,7 @@ The above assumes a typical three node etcd cluster. The parameter can accept on
 {{% /tab %}}
 {{% /tabs %}}
 
-<br/>Based on the above, the following example command could be used to launch a server instance that connects to a PostgresSQL database named k3s:
+<br/>Based on the above, the following example command could be used to launch a server instance that connects to a PostgreSQL database named k3s:
 ```
 K3S_DATASTORE_ENDPOINT='postgres://username:password@hostname:5432/k3s' k3s server
 ```

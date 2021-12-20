@@ -17,6 +17,14 @@ The control that Rancher has to manage a registered cluster depends on the type 
 
 # Prerequisites
 
+## Kubernetes Node Roles
+
+Registered RKE Kubernetes clusters must have all three node roles - etcd, controlplane and worker. A cluster with only controlplane components cannot be registered in Rancher.
+
+For more information on RKE node roles, see the [best practices.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production/#cluster-architecture)
+
+## Permissions
+
 If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
 
 In order to apply the privilege, you need to run:

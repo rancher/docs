@@ -95,14 +95,14 @@ This section describes how to set up your workspace so that you can interact wit
 
 Assuming you have installed `kubectl`, you need to place the `kubeconfig` file in a location where `kubectl` can reach it. The `kubeconfig` file contains the credentials necessary to access your cluster with `kubectl`.
 
-When you ran `rke up`, RKE should have created a `kubeconfig` file named `kube_config_rancher-cluster.yml`. This file has the credentials for `kubectl` and `helm`.
+When you ran `rke up`, RKE should have created a `kubeconfig` file named `kube_config_cluster.yml`. This file has the credentials for `kubectl` and `helm`.
 
 > **Note:** If you have used a different file name from `rancher-cluster.yml`, then the kube config file will be named `kube_config_<FILE_NAME>.yml`.
 
-Move this file to `$HOME/.kube/config`, or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_rancher-cluster.yml`:
+Move this file to `$HOME/.kube/config`, or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_cluster.yml`:
 
 ```
-export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
+export KUBECONFIG=$(pwd)/kube_config_cluster.yml
 ```
 
 Test your connectivity with `kubectl` and see if all your nodes are in `Ready` state:
@@ -153,7 +153,7 @@ This confirms that you have successfully installed a Kubernetes cluster that the
 Save a copy of the following files in a secure location:
 
 - `rancher-cluster.yml`: The RKE cluster configuration file.
-- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `kube_config_cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
 - `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains credentials for full access to the cluster.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
 
 > **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.

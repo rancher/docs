@@ -27,6 +27,10 @@ weight: 5
   - [Docker](#docker)
   - [Installing Docker](#installing-docker)
   - [Checking the Installed Docker Version](#checking-the-installed-docker-version)
+- [Hardware](#hardware)
+  - [Worker Role](#worker-role)
+  - [Large Kubernetes Clusters](#large-kubernetes-clusters)
+  - [Etcd clusters](#etcd-clusters)  
 - [Ports](#ports)
   - [Opening port TCP/6443 using `iptables`](#opening-port-tcp-6443-using-iptables)
   - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp-6443-using-firewalld)
@@ -273,6 +277,24 @@ Refer to [Installing Docker]({{<baseurl>}}/rancher/v2.5/en/installation/requirem
 ### Checking the Installed Docker Version
 
 Confirm that a Kubernetes supported version of Docker is installed on your machine, by running `docker version --format '{{.Server.Version}}'`.
+
+## Hardware
+
+This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters.
+
+### Worker Role
+
+The hardware requirements for nodes with the `worker` role mostly depend on your workloads. The minimum to run the Kubernetes node components is 1 CPU (core) and 1GB of memory. 
+
+Regarding CPU and memory, it is recommended that the different planes of Kubernetes clusters (etcd, controlplane, and workers) should be hosted on different nodes so that they can scale separately from each other.
+
+### Large Kubernetes Clusters
+
+For hardware recommendations for large Kubernetes clusters, refer to the official Kubernetes documentation on [building large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
+
+### Etcd Clusters
+
+For hardware recommendations for etcd clusters in production, refer to the official [etcd documentation](https://etcd.io/docs/v3.5/op-guide/hardware/).
 
 ## Ports
 {{< ports-rke-nodes >}}

@@ -27,6 +27,8 @@ Note that these URLs will not return valid data until the authentication configu
 
     1. **Groups Field**: Make entries for managing group memberships (example: `memberOf`).
 
+    1. **Entity ID Field** (optional): The published, protocol-dependent, unique identifier of your partner. This ID defines your organization as the entity operating the server for SAML 2.0 transactions. This ID may have been obtained out-of-band or via a SAML metadata file.
+
     1. **Rancher API Host**: Enter the URL for your Rancher Server.
 
 	1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your IdP.

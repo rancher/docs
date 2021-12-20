@@ -8,6 +8,8 @@ A namespace is a Kubernetes concept that allows a virtual cluster within a clust
 
 A project is a group of namespaces, and it is a concept introduced by Rancher. Projects allow you to manage multiple namespaces as a group and perform Kubernetes operations in them. You can use projects to support multi-tenancy, so that a team can access a project within a cluster without having access to other projects in the same cluster.
 
+>**Note:** As of Rancher v2.6, projects are de-emphasized on the UI because it is no longer required to create any Kubernetes resources within a project scope. However, resources such as [Secrets]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/#creating-secrets-in-projects) can still be created in a project scope if the legacy feature flag is enabled.
+
 This section describes how projects and namespaces work with Rancher. It covers the following topics:
 
 - [About namespaces](#about-namespaces)
@@ -150,6 +152,9 @@ By default, your user is added as the project `Owner`.
 >**Notes on Permissions:**
 >
 >- Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `Owner` or `Member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
+>
+>- By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
+>
 >- Choose `Custom` to create a custom role on the fly: [Custom Project Roles]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
 
 To add members:

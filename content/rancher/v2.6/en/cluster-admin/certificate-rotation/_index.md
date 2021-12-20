@@ -10,7 +10,8 @@ By default, Kubernetes clusters require certificates and Rancher launched Kubern
 Certificates can be rotated for the following services:
 
 - etcd
-- kubelet
+- kubelet (node certificate)
+- kubelet (serving certificate, if [enabled]({{<baseurl>}}/rke/latest/en/config-options/services/#kubelet-options))
 - kube-apiserver
 - kube-proxy
 - kube-scheduler

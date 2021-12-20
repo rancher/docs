@@ -5,7 +5,7 @@ weight: 103
 
 The commands/steps listed on this page can be used to check name resolution issues in your cluster.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
 Before running the DNS checks, check the [default DNS provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/#default-dns-provider) for your cluster and make sure that [the overlay network is functioning correctly]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/networking/#check-if-overlay-network-is-functioning-correctly) as this can also be the reason why DNS resolution (partly) fails.
 
@@ -158,7 +158,7 @@ kubectl run -i --restart=Never --rm test-${RANDOM} --image=ubuntu --overrides='{
 Enabling query logging can be done by enabling the [log plugin](https://coredns.io/plugins/log/) in the Corefile configuration in the configmap `coredns`. You can do so by using `kubectl -n kube-system edit configmap coredns` or use the command below to replace the configuration in place:
 
 ```
-kubectl get configmap -n kube-system coredns -o json |  kubectl get configmap -n kube-system coredns -o json | sed -e 's_loadbalance_log\\n    loadbalance_g' | kubectl apply -f -
+kubectl get configmap -n kube-system coredns -o json | sed -e 's_loadbalance_log\\n    loadbalance_g' | kubectl apply -f -
 ```
 
 All queries will now be logged and can be checked using the command in [Check CoreDNS logging](#check-coredns-logging).

@@ -58,6 +58,12 @@ If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).]({{<b
 
 For the container runtime, RKE should work with any modern Docker version.
 
+Note that the following sysctl setting must be applied:
+
+```
+net.bridge.bridge-nf-call-iptables=1
+```
+
 ### K3s Specific Requirements
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
@@ -145,7 +151,7 @@ Each node in the Kubernetes cluster that Rancher is installed on should run an I
 
 The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes.
 
-For RKE and K3s installations, you don't have to install the Ingress manually because is is installed by default.
+For RKE and K3s installations, you don't have to install the Ingress manually because it is installed by default.
 
 For hosted Kubernetes clusters (EKS, GKE, AKS) and RKE2 Kubernetes installations, you will need to set up the ingress.
 

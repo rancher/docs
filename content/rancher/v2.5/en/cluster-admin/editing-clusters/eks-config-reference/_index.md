@@ -16,7 +16,7 @@ Complete each drop-down and field using the information obtained for your IAM po
 | Setting    | Description       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
+| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/user-settings/cloud-credentials/) |
 
 ### Service Role
 
@@ -186,7 +186,7 @@ Complete each drop-down and field using the information obtained for your IAM po
 | Setting    | Description       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
+| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/user-settings/cloud-credentials/) |
 
 ### Service Role
 

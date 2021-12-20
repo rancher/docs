@@ -18,7 +18,7 @@ A restore is performed by creating a Restore custom resource.
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
-> * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. So Rancher will be unavailable during the restore.
+> * While restoring Rancher on the same setup, the Rancher deployment is manually scaled down before the restore starts, then the operator will scale it back up once the restore completes. As a result, Rancher and its UI will be unavailable until the restore is complete. While the UI is unavailable, use the original cluster kubeconfig with the restore YAML file: `kubectl create -f restore.yaml`.
 
 ### Scale the Rancher Deployment to 0
 
@@ -32,11 +32,13 @@ A restore is performed by creating a Restore custom resource.
 
 ### Create the Restore Custom Resource
 
-1.  Click **☰ > Cluster Management**.
-1. Go to the cluster that you created and click **Explore**.
+1. Click **☰ > Cluster Management**.
+1. Go to the local cluster and click **Explore**.
 1. In the left navigation bar, click **Rancher Backups > Restore**.
+	* **Note:** If the Rancher Backups app is not visible, you will need to install it from the Charts page in **Apps & Marketplace**. Refer [here]({{<baseurl>}}/rancher/v2.6/en/helm-charts/#charts) for more information.
 1. Click **Create**.
-1. Create the Restore with the form, or with YAML.  For creating the Restore resource using form, refer to the  [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples) The following is an example Restore custom resource:
+1. Create the Restore with the form or with YAML. For help creating the Restore resource using the online form, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples) 
+1. To use the YAML editor, you can click **Create > Create from YAML.** Enter the Restore YAML. The following is an example Restore custom resource:
 
     ```yaml
     apiVersion: resources.cattle.io/v1
@@ -55,8 +57,7 @@ A restore is performed by creating a Restore custom resource.
 	      region: us-west-2
 	      endpoint: s3.us-west-2.amazonaws.com
       ```
-
-      For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config/) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples/)
+	For help configuring the Restore, refer to the [configuration reference]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config) and to the [examples.]({{<baseurl>}}/rancher/v2.6/en/backups/examples) 
 
 1. Click **Create**.
 
