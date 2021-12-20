@@ -7,7 +7,7 @@ aliases:
   - /rancher/v2.x/en/backups/v2.5/back-up-rancher/
 ---
 
-In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer the instructions for [single node backups]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/docker-installs/docker-backups)
+In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer to the instructions for [single node backups]({{<baseurl>}}/rancher/v2.5/en/backups/v2.5/docker-installs/docker-backups).
 
 The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
@@ -29,6 +29,8 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 1. Click **Apps.**
 1. Click **Rancher Backups.**
 1. Configure the default storage location. For help, refer to the [storage configuration section.](../configuration/storage-config)
+
+>**NOTE:** There are two known issues in Fleet that occur after performing a restoration using the backup-restore-operator: Fleet agents are inoperable and clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}/rancher/v2.5/en/deploy-across-clusters/fleet/#troubleshooting) for workarounds.
 
 ### 2. Perform a Backup
 

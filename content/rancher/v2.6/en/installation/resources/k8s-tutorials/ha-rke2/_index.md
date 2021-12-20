@@ -5,7 +5,7 @@ weight: 2
 ---
 _Tested on v2.5.6_
 
-This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#environment-for-kubernetes-installations)
+This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations/#environment-for-kubernetes-installations)
 
 # Prerequisites
 

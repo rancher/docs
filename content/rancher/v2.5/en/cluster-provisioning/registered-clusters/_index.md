@@ -20,6 +20,17 @@ The control that Rancher has to manage a registered cluster depends on the type 
 
 # Prerequisites
 
+{{% tabs %}}
+{{% tab "v2.5.9+" %}}
+
+## Kubernetes Node Roles
+
+Registered RKE Kubernetes clusters must have all three node roles - etcd, controlplane and worker. A cluster with only controlplane components cannot be registered in Rancher.
+
+For more information on RKE node roles, see the [best practices.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/production/#cluster-architecture)
+
+## Permissions
+
 If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
 
 In order to apply the privilege, you need to run:
@@ -35,6 +46,29 @@ before running the `kubectl` command to register the cluster.
 By default, GKE users are not given this privilege, so you will need to run the command before registering GKE clusters. To learn more about role-based access control for GKE, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
 
 If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
+
+{{% /tab %}}
+{{% tab "Rancher before v2.5.9" %}}
+
+## Permissions
+
+If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
+
+In order to apply the privilege, you need to run:
+
+```plain
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user [USER_ACCOUNT]
+```
+
+before running the `kubectl` command to register the cluster.
+
+By default, GKE users are not given this privilege, so you will need to run the command before registering GKE clusters. To learn more about role-based access control for GKE, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
+
+If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
+{{% /tab %}}
+{{% /tabs %}}
 
 # Registering a Cluster
 

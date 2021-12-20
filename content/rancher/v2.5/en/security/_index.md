@@ -45,7 +45,7 @@ The Center for Internet Security (CIS) is a 501(c\)(3) non-profit organization, 
 
 CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
 
-The Benchmark provides recommendations of two types: Scored and Not Scored. We run tests related to only Scored recommendations.
+The Benchmark provides recommendations of two types: Automated and Manual. We run tests related to only Automated recommendations.
 
 When Rancher runs a CIS security scan on a cluster, it generates a report showing the results of each test, including a summary with the number of passed, skipped and failed tests. The report also includes remediation steps for any failed tests.
 

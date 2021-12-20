@@ -189,7 +189,7 @@ Option to enable or disable [recurring etcd snapshots]({{<baseurl>}}/rke/latest/
 
 ### Agent Environment Variables
 
-Option to set environment variables for [rancher agents]({{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
+Option to set environment variables for [rancher agents]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 
 ### Updating ingress-nginx
 
