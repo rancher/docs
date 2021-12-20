@@ -25,18 +25,6 @@ From the left sidebar select _"Repositories"_.
 
 These items represent helm repositories, and can be either traditional helm endpoints which have an index.yaml, or git repositories which will be cloned and can point to a specific branch. In order to use custom charts, simply add your repository here and they will become available in the Charts tab under the name of the repository.
 
-> **Note:** Helm chart repositories with authentication
->
-> As of Rancher v2.6.3, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL. 
->
-> To use this feature for an existing Helm chart repository, click **⋮ > Edit YAML**. On the `spec` portion of the YAML file, add `disableSameOriginCheck` and set it to `true`.
->
-> ```yaml
-[...]
-spec:
-  disableSameOriginCheck: true
-[...]
-```
 
 ### Helm Compatibility
 
@@ -58,3 +46,13 @@ Most Rancher tools have additional pages located in the toolbar below the _"Apps
 >  * use the default upgrade option ( i.e do not use _"--force"_ option )
 >  * uninstall the existing chart and install the upgraded chart
 >  * delete the resources with immutable fields from the cluster before performing the _"--force"_ upgrade
+
+#### Changes in Rancher v2.6.3
+
+The upgrade button has been removed for legacy apps from the **Apps & Marketplace > Installed Apps** page.
+
+If you have a legacy app installed and want to upgrade it:
+
+- The legacy [feature flag]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/) must be turned on (if it's not turned on automatically because of having a legacy app before upgrading)
+- You can upgrade the app from cluster explorer, from the left nav section **Legacy > Project > Apps**
+- For multi-cluster apps, you can go to **≡ > Multi-cluster Apps** and upgrade the app from there
