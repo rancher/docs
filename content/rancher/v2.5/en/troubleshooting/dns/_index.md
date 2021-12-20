@@ -160,7 +160,7 @@ kubectl run -i --restart=Never --rm test-${RANDOM} --image=ubuntu --overrides='{
 Enabling query logging can be done by enabling the [log plugin](https://coredns.io/plugins/log/) in the Corefile configuration in the configmap `coredns`. You can do so by using `kubectl -n kube-system edit configmap coredns` or use the command below to replace the configuration in place:
 
 ```
-kubectl get configmap -n kube-system coredns -o json |  kubectl get configmap -n kube-system coredns -o json | sed -e 's_loadbalance_log\\n    loadbalance_g' | kubectl apply -f -
+kubectl get configmap -n kube-system coredns -o json | sed -e 's_loadbalance_log\\n    loadbalance_g' | kubectl apply -f -
 ```
 
 All queries will now be logged and can be checked using the command in [Check CoreDNS logging](#check-coredns-logging).
