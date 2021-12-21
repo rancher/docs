@@ -20,7 +20,7 @@ This section covers the following topics:
   - [The authentication proxy](#1-the-authentication-proxy)
   - [Cluster controllers and cluster agents](#2-cluster-controllers-and-cluster-agents)
   - [Node agents](#3-node-agents)
-  - [Authorized cluster endpoint](#4-authorized-cluster-endpoint)
+  - [Authorized cluster endpoint (ACE)](#4-authorized-cluster-endpoint-ace)
 - [Important files](#important-files)
 - [Tools for provisioning Kubernetes clusters](#tools-for-provisioning-kubernetes-clusters)
 - [Rancher server components and source code](#rancher-server-components-and-source-code)
@@ -103,11 +103,13 @@ If the cluster agent (also called `cattle-cluster-agent`) is not available, one 
 
 The `cattle-node-agent` is deployed using a [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) resource to make sure it runs on every node in a Rancher-launched Kubernetes cluster. It is used to interact with the nodes when performing cluster operations. Examples of cluster operations include upgrading the Kubernetes version and creating or restoring etcd snapshots.
 
-### 4. Authorized Cluster Endpoint
+### 4. Authorized Cluster Endpoint (ACE)
 
 An authorized cluster endpoint allows users to connect to the Kubernetes API server of a downstream cluster without having to route their requests through the Rancher authentication proxy.
 
-> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) to provision the cluster. It is not available for registered clusters, or for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) to provision the cluster. The ACE is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+
+> The [ACE is available for registered RKE2 and K3s clusters]({{<baseurl>}}/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters) as of Rancher v2.6.3. 
 
 There are two main reasons why a user might need the authorized cluster endpoint:
 

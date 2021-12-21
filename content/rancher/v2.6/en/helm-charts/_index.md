@@ -46,3 +46,13 @@ Most Rancher tools have additional pages located in the toolbar below the _"Apps
 >  * use the default upgrade option ( i.e do not use _"--force"_ option )
 >  * uninstall the existing chart and install the upgraded chart
 >  * delete the resources with immutable fields from the cluster before performing the _"--force"_ upgrade
+
+#### Changes in Rancher v2.6.3
+
+The upgrade button has been removed for legacy apps from the **Apps & Marketplace > Installed Apps** page.
+
+If you have a legacy app installed and want to upgrade it:
+
+- The legacy [feature flag]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/) must be turned on (if it's not turned on automatically because of having a legacy app before upgrading)
+- You can upgrade the app from cluster explorer, from the left nav section **Legacy > Project > Apps**
+- For multi-cluster apps, you can go to **≡ > Multi-cluster Apps** and upgrade the app from there

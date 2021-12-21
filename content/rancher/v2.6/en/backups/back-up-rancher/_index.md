@@ -5,11 +5,17 @@ weight: 1
 
 In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer the instructions for [single node backups]({{<baseurl>}}/rancher/v2.6/en/backups/docker-installs/docker-backups)
 
-The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
+The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster. 
+
+Note that the rancher-backup operator version 2.x.x is for Rancher v2.6.x.
+
+> When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made. The Kubernetes version should also be considered when restoring a backup, since the supported apiVersion in the cluster and in the backup file could be different.
 
 ### Prerequisites
 
 The Rancher version must be v2.5.0 and up.
+
+Refer [here]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher/#2-restore-from-backup-using-a-restore-custom-resource) for help on restoring an existing backup file into a v1.22 cluster in Rancher v2.6.3.
 
 ### 1. Install the Rancher Backups operator
 
