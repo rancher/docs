@@ -5,6 +5,56 @@ weight: 11
 
 In this section, you'll learn how to manage Helm chart repositories and applications in Rancher. Helm chart repositories are managed using **Apps & Marketplace**. It uses a catalog-like system to import bundles of charts from repositories and then uses those charts to either deploy custom Helm applications or Rancher's tools such as Monitoring or Istio. Rancher tools come as pre-loaded repositories which deploy as standalone Helm charts. Any additional repositories are only added to the current cluster.
 
+### Changes in Rancher v2.6
+
+Starting in Rancher v2.6.0, a new versioning scheme for Rancher feature charts was implemented for Monitoring. The changes are centered around the major version of the charts and the +up annotation for upstream charts, where applicable.
+
+**Major Version:** The major version of the charts is tied to Rancher minor versions. When you upgrade to a new Rancher minor version, you should ensure that all of your **Apps & Marketplace** charts are also upgraded to the correct release line for the chart. 
+
+>**Note:** Any major versions that are less than the ones mentioned in the table below are meant for 2.5 and below only. For example, you are advised to not use <100.x.x versions of Monitoring in 2.6.x+.
+
+**Feature Charts for Monitoring V2:**
+
+| **Name** | **Starting Major Version** |
+| ---------------- | ------------------ |
+| rancher-vsphere-csi | 100.0.0 |                                  
+| rancher-vsphere-cpi | 100.0.0 |                                  
+| Logging V2 | 100.0.0+up3.12.0 |                                   
+| Monitoring V2 | 100.0.0+up16.6.0 |                                   
+| gke-operator | 100.0.0+up1.1.1 |                                   
+| aks-operator | 100.0.0+up1.0.1 |                                  
+| eks-operator | 100.0.0+up1.1.1 |                                  
+| rancher-backup | 2.0.0 |                                  
+| rancher-alerting-drivers | 100.0.0 |                                  
+| rancher-prom2teams | 100.0.0+up0.2.0 |                                   
+| rancher-sachet | 100.0.0 |                                  
+| rancher-cis-benchmark | 2.0.0 |                                  
+| fleet | 100.0.0+up0.3.6 |                                  
+| longhorn | 100.0.0+up1.1.2 |                                  
+| rancher-gatekeeper | 100.0.0+up3.5.1 |                                  
+| rancher-istio | 100.0.0+up1.10.4 |                                  
+| rancher-kiali-server | 100.0.0+up1.35.0 |                                  
+| rancher-tracing | 100.0.0 |                                   
+| rancher-pushprox | 100.0.0 |                                  
+| rancher-prometheus-adapter | 100.0.0+up2.14.0 |                                  
+| rancher-grafana | 100.0.0+up6.11.0 |                                  
+| rancher-windows-exporter | 100.0.0 |                           
+| rancher-node-exporter | 100.0.0+up1.18.1 |                                   
+| rancher-kube-state-metrics | 100.0.0+up3.2.0 |                                  
+| rancher-wins-upgrader | 100.0.0+up0.0.1 |                                  
+| system-upgrade-controller | 100.0.0+up0.3.0 |                                  
+| rancher-webhook | 1.0.0+up0.2.0 |                           
+| external-ip-webhook | 100.0.0+up1.0.0 |                                  
+| rancher-sriov | 100.0.0+up0.1.0 |                           
+
+<br/>
+**Charts based on upstream:** For charts that are based on upstreams, the +up annotation should inform you of what upstream version the Rancher chart is tracking. Check the upstream version compatibility with Rancher during upgrades also.
+
+- As an example, `100.x.x+up16.6.0` for Monitoring tracks upstream kube-prometheus-stack `16.6.0` with some Rancher patches added to it
+
+- On upgrades, ensure that you are not downgrading the version of the chart that you are using. For example, if you are using a version of Monitoring > `16.6.0` in Rancher 2.5, you should not upgrade to `100.x.x+up16.6.0`. Instead, you should upgrade to the appropriate version in the next release. 
+
+
 ### Charts
 
 From the top-left menu select _"Apps & Marketplace"_ and you will be taken to the Charts page.
