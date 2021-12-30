@@ -131,7 +131,7 @@ deployment "rancher" successfully rolled out
 
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA. This configuration uses HTTP validation (`HTTP-01`) so the load balancer must have a public DNS record and be accessible from the internet.
 
-- Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt` and `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices)
+- Set `hostname` to the public DNS record, set `ingress.tls.source` to `letsEncrypt`, `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices), and `letsEncrypt.ingress.class` to whatever your ingress controlller is (`traefik`, `nginx`, `haproxy`).
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
 ```
@@ -140,7 +140,8 @@ helm install rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=letsEncrypt \
-  --set letsEncrypt.email=me@example.org
+  --set letsEncrypt.email=me@example.org \ 
+  --set letsEncrypt.ingress.class=nginx
 ```
 
 Wait for Rancher to be rolled out:
