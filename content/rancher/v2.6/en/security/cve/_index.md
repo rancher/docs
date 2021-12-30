@@ -1,9 +1,9 @@
 ---
-title: Rancher CVEs and Resolutions
+title: Security Advisories and CVEs
 weight: 300
 ---
 
-Rancher is committed to informing the community of security issues in our products. Rancher will publish CVEs (Common Vulnerabilities and Exposures) for issues we have resolved.
+Rancher is committed to informing the community of security issues in our products. Rancher will publish security advisories and CVEs (Common Vulnerabilities and Exposures) for issues we have resolved. New security advisories are also published in Rancher's GitHub [security page](https://github.com/rancher/rancher/security/advisories).
 
 | ID | Description | Date | Resolution |
 |----|-------------|------|------------|
