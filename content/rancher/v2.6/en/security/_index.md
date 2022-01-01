@@ -46,7 +46,7 @@ The Benchmark provides recommendations of two types: Automated and Manual. We ru
 
 When Rancher runs a CIS security scan on a cluster, it generates a report showing the results of each test, including a summary with the number of passed, skipped and failed tests. The report also includes remediation steps for any failed tests.
 
-For details, refer to the section on [security scans.]({{<baseurl>}}/rancher/v2.6/en/security/cis-scans/)
+For details, refer to the section on [security scans]({{<baseurl>}}/rancher/v2.6/en/cis-scans).
 
 ### SELinux RPM
 
