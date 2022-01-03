@@ -3,7 +3,7 @@ title: Rancher Hetzner Cloud Quick Start Guide
 description: Read this step by step Rancher Hetzner Cloud guide to quickly deploy a Rancher Server with a single node cluster attached.
 weight: 100
 ---
-The following steps will quickly deploy a Rancher Server on Hetzner Cloud with a single node cluster attached.
+The following steps will quickly deploy a Rancher server on Hetzner Cloud in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
 ## Prerequisites
 
@@ -19,24 +19,24 @@ The following steps will quickly deploy a Rancher Server on Hetzner Cloud with a
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-1. Go into the Hetzner folder containing the terraform files by executing `cd quickstart/hcloud`.
+2. Go into the Hetzner folder containing the terraform files by executing `cd quickstart/hcloud`.
 
-1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
+3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-1. Edit `terraform.tfvars` and customize the following variables:
+4. Edit `terraform.tfvars` and customize the following variables:
     - `hcloud_token` - Hetzner API access key
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
-1. **Optional:** Modify optional variables within `terraform.tfvars`.
+5. **Optional:** Modify optional variables within `terraform.tfvars`.
 See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Hetzner Quickstart Readme](https://github.com/rancher/quickstart/tree/master/hcloud) for more information.
 Suggestions include:
     - `prefix` - Prefix for all created resources
     - `instance_type` - Instance type, minimum required is `cx21`
-    - `ssh_key_file_name` - Use a specific SSH key instead of `~/.ssh/id_rsa` (public key is assumed to be `${ssh_key_file_name}.pub`)
+    - `hcloud_location` - Hetzner Cloud location, choose the closest instead of the default (`fsn1`)
 
-1. Run `terraform init`.
+6. Run `terraform init`.
 
-2. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:
+7. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:
 
     ```
     Apply complete! Resources: 15 added, 0 changed, 0 destroyed.
@@ -44,15 +44,16 @@ Suggestions include:
     Outputs:
 
     rancher_node_ip = xx.xx.xx.xx
-    rancher_server_url = https://rancher.xx.xx.xx.xx.xip.io
+    rancher_server_url = https://rancher.xx.xx.xx.xx.sslip.io
     workload_node_ip = yy.yy.yy.yy
     ```
 
-3. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
+8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
+9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/hcloud`.
 
 #### Result
 
-Two Kubernetes clusters are deployed into your Hetzner account, one running Rancher Server and the other ready for experimentation deployments.
+Two Kubernetes clusters are deployed into your Hetzner account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
 
 ### What's Next?
 
