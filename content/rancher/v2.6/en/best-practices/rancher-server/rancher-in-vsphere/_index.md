@@ -50,7 +50,7 @@ https://rancher.com/docs/rancher/v2.6/en/installation/requirements/
 
 ### Leverage VM Templates to Construct the Environment
 
-To facilitate consistency across the deployed Virtual Machines across the environment, consider the use of "Golden Images" in the form of VM templates. Packer can be used to accomplish this, adding greater customisation options.
+To facilitate the consistency of Virtual Machines deployed across the environment, consider the use of "Golden Images" in the form of VM templates. Packer can be used to accomplish this, adding greater customisation options.
 
 ### Leverage DRS Anti-Affinity Rules (Where Possible) to Separate Rancher Cluster Nodes Across ESXi Hosts
 
