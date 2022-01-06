@@ -15,23 +15,23 @@ Starting in Rancher v2.6.0, a new versioning scheme for Rancher feature charts w
 
 **Feature Charts:**
 
-| **Name** | **Starting Major Version** |
-| ---------------- | ------------------ |
-| rancher-alerting-drivers | 100.0.0 |                                                                  
-| rancher-cis-benchmark | 2.0.0 |  
-| external-ip-webhook | 100.0.0+up1.0.0 |
-| harvester-cloud-provider | 100.0.0+up0.1.8 |
-| harvester-csi-driver | 100.0.0+up0.1.9 |
-| rancher-istio | 100.0.0+up1.10.4 |
-| rancher-logging | 100.0.0+up3.12.0 |
-| rancher-longhorn | 100.0.0+up1.1.2 |                                  
-| rancher-monitoring | 100.0.0+up16.6.0 |
-| rancher-gatekeeper | 100.0.0+up3.5.1 |                                                                  
-| rancher-backups | 2.0.0 |                                  
-| rancher-wins-upgrader | 100.0.0+up0.0.1 |                                  
-| rancher-sriov (experimental) | 100.0.0+up0.1.0 |                           
-| rancher-vsphere-cpi | 100.0.0 |
-| rancher-vsphere-csi | 100.0.0 |
+| **Name** | **Supported Minimum Version** | **Supported Maximum Version** |
+| ---------------- | ------------ | ------------ |
+| rancher-alerting-drivers | 100.0.0 | 100.0.1 |                                                                  
+| rancher-cis-benchmark | 2.0.0 | 2.0.2 | 
+| external-ip-webhook | 100.0.0+up1.0.0 | 100.0.1+up1.0.1 |
+| harvester-cloud-provider | 100.0.0+up0.1.8 | 100.0.0+up0.1.8 |
+| harvester-csi-driver | 100.0.0+up0.1.9 | 100.0.0+up0.1.9 |
+| rancher-istio | 100.0.0+up1.10.4 | 100.1.0+up1.11.4 |
+| rancher-logging | 100.0.0+up3.12.0 | 100.0.1+up3.15.0 |
+| rancher-longhorn | 100.0.0+up1.1.2 | 100.1.1+up1.2.3 |                                 
+| rancher-monitoring | 100.0.0+up16.6.0 | 100.1.0+up19.0.3
+| rancher-gatekeeper | 100.0.0+up3.5.1 | 100.0.1+up3.6.0 |
+| rancher-backups | 2.0.0 | 2.1.0 |                                 
+| rancher-wins-upgrader | 100.0.0+up0.0.1 | 100.0.0+up0.0.1 |                                 
+| rancher-sriov (experimental) | 100.0.0+up0.1.0 | 100.0.1+up0.1.0 |                         
+| rancher-vsphere-cpi | 100.0.0 | 100.1.0+up1.0.100
+| rancher-vsphere-csi | 100.0.0 | 100.1.0+up2.3.0 |
 
 <br/>
 **Charts based on upstream:** For charts that are based on upstreams, the +up annotation should inform you of what upstream version the Rancher chart is tracking. Check the upstream version compatibility with Rancher during upgrades also.
