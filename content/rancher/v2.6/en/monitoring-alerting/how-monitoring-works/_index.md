@@ -13,7 +13,7 @@ weight: 1
 
 _**The following steps describe how data flows through the Monitoring V2 application:**_
 
-**1.** **ServiceMonitors and PodMonitors** declaratively specify targets, such as Services and Pods, that need to be monitored.
+**1. ServiceMonitors and PodMonitors** declaratively specify targets, such as Services and Pods, that need to be monitored.
 
 - Targets are scraped on a recurring schedule based on the configured Prometheus scrape interval, and the metrics that are scraped are stored into the Prometheus Time Series Database (TSDB).
 - In order to perform the scrape, ServiceMonitors and PodMonitors are defined with label selectors that determine which Services or Pods should be scraped and endpoints that determine how the scrape should happen on the given target, e.g., scrape/metrics in TCP 10252, proxying through IP addr x.x.x.x.
@@ -38,12 +38,12 @@ _**The following steps describe how data flows through the Monitoring V2 applica
 
     For more information, see [Scraping and Exposing Metrics](#5-scraping-and-exposing-metrics).
 
-**2.** **PrometheusRules** allow users to define rules for what metrics or time series database queries should result in alerts being fired. Rules are evaluated on an interval.
+**2. PrometheusRules** allow users to define rules for what metrics or time series database queries should result in alerts being fired. Rules are evaluated on an interval.
 
 - **Recording rules** create a new time series based on existing series that have been collected. They are frequently used to precompute complex queries.
 - **Alerting rules** run a particular query and fire an alert from Prometheus if the query evaluates to a non-zero value.
 
-**3.** **Prometheus Operator** observes ServiceMonitors, PodMonitors, and PrometheusRules being created. When the Prometheus configuration resources are created, Prometheus Operator calls the Prometheus API to sync the new configuration.
+**3. Prometheus Operator** observes ServiceMonitors, PodMonitors, and PrometheusRules being created. When the Prometheus configuration resources are created, Prometheus Operator calls the Prometheus API to sync the new configuration.
 
 **4.** Once Prometheus determines that an alert needs to be fired, alerts are forwarded to **Alertmanager**.
 
@@ -124,7 +124,7 @@ By editing custom YAML in the Alertmanager or Receiver configuration, you can al
 
 # 4. Monitoring V2 Specific Components
 
-Prometheus Operator introduces a set of [Custom Resource Definitions](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions) that allow users to deploy and manage Prometheus and Alertmanager instances by creating and modifying those custom resources on a cluster. 
+Prometheus Operator introduces a set of [Custom Resource Definitions](https://github.com/prometheus-operator/prometheus-operator#customresourcedefinitions) that allow users to deploy and manage Prometheus and Alertmanager instances by creating and modifying those custom resources on a cluster.
 
 Prometheus Operator will automatically update your Prometheus configuration based on the live state of the resources and configuration options that are edited in the Rancher UI.
 
@@ -138,15 +138,15 @@ The resources that get deployed onto your cluster to support this solution can b
 
 Monitoring V2 deploys three default exporters that provide additional metrics for Prometheus to store:
 
-1. `node-exporter`: exposes hardware and OS metrics for Linux hosts. For more information on `node-exporter`, refer to the [upstream documentation.](https://prometheus.io/docs/guides/node-exporter/)
+1. `node-exporter`: exposes hardware and OS metrics for Linux hosts. For more information on `node-exporter`, refer to the [upstream documentation](https://prometheus.io/docs/guides/node-exporter/).
 
-1. `windows-exporter`: exposes hardware and OS metrics for Windows hosts (only deployed on Windows clusters).
+1. `windows-exporter`: exposes hardware and OS metrics for Windows hosts (only deployed on Windows clusters). For more information on `windows-exporter`, refer to the [upstream documentation](https://github.com/prometheus-community/windows_exporter).
 
-1. [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics): expose additional metrics that track the state of resources contained in the Kubernetes API (e.g. pods, workloads, etc.).
+1. `kube-state-metrics`: expose additional metrics that track the state of resources contained in the Kubernetes API (e.g., pods, workloads, etc.). For more information on `kube-state-metrics`, refer to the [upstream documentation](https://github.com/kubernetes/kube-state-metrics/tree/master/docs).
 
 ServiceMonitors and PodMonitors will scrape these exporters, as defined [here](#defining-what-metrics-are-scraped). Prometheus stores these metrics, and you can query the results via either Prometheus's UI or Grafana.
 
-See [architecture](#1-architecture-overview) section for more information on recording rules, alerting rules, and Alertmanager.
+See the [architecture](#1-architecture-overview) section for more information on recording rules, alerting rules, and Alertmanager.
 
 ### Components Exposed in the Rancher UI
 
@@ -156,7 +156,7 @@ When the monitoring application is installed, you will be able to edit the follo
 |--------------|------------------------|---------------------------|
 | ServiceMonitor | Custom resource | Sets up Kubernetes Services to scrape custom metrics from. Automatically updates the scrape configuration in the Prometheus custom resource. |
 | PodMonitor | Custom resource | Sets up Kubernetes Pods to scrape custom metrics from. Automatically updates the scrape configuration in the Prometheus custom resource. |
-| Receiver | Configuration block (part of Alertmanager) | Modifies information on where to send an alert (e.g. Slack, PagerDuty, etc.) and any necessary information to send the alert (e.g. TLS certs, proxy URLs, etc.). Automatically updates the Alertmanager custom resource. |
+| Receiver | Configuration block (part of Alertmanager) | Modifies information on where to send an alert (e.g., Slack, PagerDuty, etc.) and any necessary information to send the alert (e.g., TLS certs, proxy URLs, etc.). Automatically updates the Alertmanager custom resource. |
 | Route | Configuration block (part of Alertmanager) | Modifies the routing tree that is used to filter, label, and group alerts based on labels and send them to the appropriate Receiver. Automatically updates the Alertmanager custom resource. |
 | PrometheusRule | Custom resource | Defines additional queries that need to trigger alerts or define materialized views of existing series that are within Prometheus's TSDB.  Automatically updates the Prometheus custom resource. |
 
@@ -203,7 +203,7 @@ The following Kubernetes components are directly scraped by Prometheus:
 - coreDns/kubeDns
 - kube-api-server
 
-\* You can optionally use hardenedKubelet.enabled to use a PushProx, but that is not the default.
+\* You can optionally use `hardenedKubelet.enabled` to use a PushProx, but that is not the default.
 
 ** For RKE and RKE2 clusters, ingress-nginx is deployed by default and treated as an internal Kubernetes component.
 
