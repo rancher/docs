@@ -1,6 +1,6 @@
 ---
 title: Rancher AWS Quick Start Guide
-description: Read this step by step Rancher AWS guide to quickly deploy a Rancher Server with a single node cluster attached.
+description: Read this step by step Rancher AWS guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
 weight: 100
 ---
 The following steps will quickly deploy a Rancher server on AWS in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
@@ -51,7 +51,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/aws`.
+9. ssh to the Rancher server using the `id_rsa` key generated in `quickstart/aws`.
 
 #### Result
 
