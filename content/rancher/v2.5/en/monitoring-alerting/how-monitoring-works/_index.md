@@ -11,43 +11,57 @@ weight: 1
 
 # 1. Architecture Overview
 
-_**The following steps describe how data flows through the Monitoring V2 application:**_
+_**The following sections describe how data flows through the Monitoring V2 application:**_
 
-**1. ServiceMonitors and PodMonitors** declaratively specify targets, such as Services and Pods, that need to be monitored.
+### Prometheus Operator
+
+Prometheus Operator observes ServiceMonitors, PodMonitors, and PrometheusRules being created. When the Prometheus configuration resources are created, Prometheus Operator calls the Prometheus API to sync the new configuration. As the diagram at the end of this section shows, the Prometheus Operator acts as the intermediary between Prometheus and Kubernetes, calling the Prometheus API to synchronize Prometheus with the monitoring-related resources in Kubernetes.
+
+### ServiceMonitors and PodMonitors
+
+ServiceMonitors and PodMonitors declaratively specify targets, such as Services and Pods, that need to be monitored.
 
 - Targets are scraped on a recurring schedule based on the configured Prometheus scrape interval, and the metrics that are scraped are stored into the Prometheus Time Series Database (TSDB).
+
 - In order to perform the scrape, ServiceMonitors and PodMonitors are defined with label selectors that determine which Services or Pods should be scraped and endpoints that determine how the scrape should happen on the given target, e.g., scrape/metrics in TCP 10252, proxying through IP addr x.x.x.x.
-- Out of the box, Monitoring V2 comes with certain pre-configured exporters that are deployed based on the type of Kubernetes cluster that it is deployed on.
-    - Certain internal Kubernetes components are scraped via a proxy deployed as part of Monitoring V2 called **PushProx**. The Kubernetes components that expose metrics to Prometheus through PushProx are the following: `kube-controller-manager`, `kube-scheduler`, `etcd`, and `kube-proxy`.
-    - For each PushProx exporter, we deploy one PushProx client onto all target nodes. For example, a PushProx client is deployed onto all controlplane nodes for kube-controller-manager, all etcd nodes for kube-etcd, and all nodes for kubelet. 
+
+- Out of the box, Monitoring V2 comes with certain pre-configured exporters that are deployed based on the type of Kubernetes cluster that it is deployed on. For more information, see [Scraping and Exposing Metrics](#5-scraping-and-exposing-metrics).
+
+### How PushProx Works
+
+- Certain internal Kubernetes components are scraped via a proxy deployed as part of Monitoring V2 called **PushProx**. The Kubernetes components that expose metrics to Prometheus through PushProx are the following:
+`kube-controller-manager`, `kube-scheduler`, `etcd`, and `kube-proxy`.
+
+- For each PushProx exporter, we deploy one PushProx client onto all target nodes. For example, a PushProx client is deployed onto all controlplane nodes for kube-controller-manager, all etcd nodes for kube-etcd, and all nodes for kubelet. 
     
-    - We deploy exactly one PushProx proxy per exporter. The process for exporting metrics is as follows:
+- We deploy exactly one PushProx proxy per exporter. The process for exporting metrics is as follows:
 
-        1. The PushProx Client establishes an outbound connection with the PushProx Proxy.
-        1. The client then polls the proxy for scrape requests that have come into the proxy.
-        1. When the proxy receives a scrape request from Prometheus, the client sees it as a result of the poll.
-        1. The client scrapes the internal component.
-        1. The internal component responds by pushing metrics back to the proxy.
+1. The PushProx Client establishes an outbound connection with the PushProx Proxy.    
+1. The client then polls the proxy for scrape requests that have come into the proxy.
+1. When the proxy receives a scrape request from Prometheus, the client sees it as a result of the poll.
+1. The client scrapes the internal component.
+1. The internal component responds by pushing metrics back to the proxy.
     
-    </br>
 
-    <figcaption>Process for Exporting Metrics with PushProx:</figcaption>
+<figcaption><br>Process for Exporting Metrics with PushProx:</br></figcaption>
 
-    ![Process for Exporting Metrics with PushProx]({{<baseurl>}}/img/rancher/pushprox-process.svg)
+![Process for Exporting Metrics with PushProx]({{<baseurl>}}/img/rancher/pushprox-process.svg)
 
-    For more information, see [Scraping and Exposing Metrics](#5-scraping-and-exposing-metrics).
+### PrometheusRules
 
-**2. PrometheusRules** allow users to define rules for what metrics or time series database queries should result in alerts being fired. Rules are evaluated on an interval.
+PrometheusRules allow users to define rules for what metrics or time series database queries should result in alerts being fired. Rules are evaluated on an interval.
 
 - **Recording rules** create a new time series based on existing series that have been collected. They are frequently used to precompute complex queries.
 - **Alerting rules** run a particular query and fire an alert from Prometheus if the query evaluates to a non-zero value.
 
-**3. Prometheus Operator** observes ServiceMonitors, PodMonitors, and PrometheusRules being created. When the Prometheus configuration resources are created, Prometheus Operator calls the Prometheus API to sync the new configuration.
+### Alert Routing
 
-**4.** Once Prometheus determines that an alert needs to be fired, alerts are forwarded to **Alertmanager**.
+Once Prometheus determines that an alert needs to be fired, alerts are forwarded to **Alertmanager**.
 
 - Alerts contain labels that come from the PromQL query itself and additional labels and annotations that can be provided as part of specifying the initial PrometheusRule.
+
 - Before receiving any alerts, Alertmanager will use the **routes** and **receivers** specified in its configuration to form a routing tree on which all incoming alerts are evaluated. Each node of the routing tree can specify additional grouping, labeling, and filtering that needs to happen based on the labels attached to the Prometheus alert. A node on the routing tree (usually a leaf node) can also specify that an alert that reaches it needs to be sent out to a configured Receiver, e.g., Slack, PagerDuty, SMS, etc. Note that Alertmanager will send an alert first to **alertingDriver**, then alertingDriver will send or forward alert to the proper destination.
+
 - Routes and receivers are also stored in the Kubernetes API via the Alertmanager Secret. When the Secret is updated, Alertmanager is also updated automatically. Note that routing occurs via labels only (not via annotations, etc.).
 
 <figcaption>How data flows through the monitoring application:</figcaption>
@@ -94,6 +108,7 @@ Alerting rules are more commonly used. Whenever an alerting rule evaluates to a 
 The Rule file adds labels and annotations to alerts before firing them, depending on the use case:
 
 - Labels indicate information that identifies the alert and could affect the routing of the alert. For example, if when sending an alert about a certain container, the container ID could be used as a label.
+
 - Annotations denote information that doesn't affect where an alert is routed, for example, a runbook or an error message.
 
 # 3. How Alertmanager Works
@@ -101,8 +116,11 @@ The Rule file adds labels and annotations to alerts before firing them, dependin
 The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of the following tasks:
 
 - Deduplicating, grouping, and routing alerts to the correct receiver integration such as email, PagerDuty, or OpsGenie
+
 - Silencing and inhibition of alerts
+
 - Tracking alerts that fire over time
+
 - Sending out the status of whether an alert is currently firing, or if it is resolved
 
 ### Alerts Forwarded by alertingDrivers
@@ -159,13 +177,13 @@ When the monitoring application is installed, you will be able to edit the follo
 | Route | Configuration block (part of Alertmanager) | Modifies the routing tree that is used to filter, label, and group alerts based on labels and send them to the appropriate Receiver. Automatically updates the Alertmanager custom resource. |
 | PrometheusRule | Custom resource | Defines additional queries that need to trigger alerts or define materialized views of existing series that are within Prometheus's TSDB.  Automatically updates the Prometheus custom resource. |
 
-### How PushProx Works
+### PushProx
 
 PushProx allows Prometheus to scrape metrics across a network boundary, which prevents users from having to expose metrics ports for internal Kubernetes components on each node in a Kubernetes cluster.
 
 Since the metrics for Kubernetes components are generally exposed on the host network of nodes in the cluster, PushProx deploys a DaemonSet of clients that sit on the hostNetwork of each node and make an outbound connection to a single proxy that is sitting on the Kubernetes API. Prometheus can then be configured to proxy scrape requests through the proxy to each client, which allows it to scrape metrics from the internal Kubernetes components without requiring any inbound node ports to be open.
 
-For more details about how PushProx works, refer to [Scraping Metrics with PushProx](#scraping-metrics-with-pushprox).
+Refer to [Scraping Metrics with PushProx](#scraping-metrics-with-pushprox) for more.
 
 # 5. Scraping and Exposing Metrics
 
@@ -191,7 +209,7 @@ Prometheus scrapes metrics from deployments known as [exporters,](https://promet
 
 ### Scraping Metrics with PushProx
 
-Certain internal Kubernetes components are scraped via a proxy deployed as part of Monitoring V2 called PushProx. For detailed information on PushProx, refer [here](#pushprox) and to the above [architecture](#1-architecture-overview) section.
+Certain internal Kubernetes components are scraped via a proxy deployed as part of Monitoring V2 called PushProx. For detailed information on PushProx, refer [here](#how-pushprox-works) and to the above [architecture](#1-architecture-overview) section.
 
 ### Scraping Metrics
 
