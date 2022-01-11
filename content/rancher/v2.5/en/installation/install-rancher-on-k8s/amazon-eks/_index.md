@@ -2,6 +2,8 @@
 title: Installing Rancher on Amazon EKS
 shortTitle: Amazon EKS
 weight: 4
+aliases:
+  - /rancher/v2.x/en/installation/install-rancher-on-k8s/amazon-eks/
 ---
 
 This page covers two ways to install Rancher on EKS.
@@ -79,12 +81,12 @@ Then enter the following values:
 
 ### 3. Create the EKS Cluster
 
-To create an EKS cluster, run the following command. Use the AWS region that applies to your use case:
+To create an EKS cluster, run the following command. Use the AWS region that applies to your use case. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```
 eksctl create cluster \
   --name rancher-server \
-  --version 1.18 \
+  --version 1.20 \
   --region us-west-2 \
   --nodegroup-name ranchernodes \
   --nodes 3 \

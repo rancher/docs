@@ -1,6 +1,8 @@
 ---
 title: Configuring PingIdentity (SAML)
 weight: 1200
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/ping-federate/
 ---
 
 If your organization uses Ping Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
@@ -27,6 +29,8 @@ Note that these URLs will not return valid data until the authentication configu
     1. **UID Field**: Enter an AD attribute that is unique to every user (example: `sAMAccountName`, `distinguishedName`).
 
     1. **Groups Field**: Make entries for managing group memberships (example: `memberOf`).
+
+    1. **Entity ID Field** (optional): The published, protocol-dependent, unique identifier of your partner. This ID defines your organization as the entity operating the server for SAML 2.0 transactions. This ID may have been obtained out-of-band or via a SAML metadata file.
 
     1. **Rancher API Host**: Enter the URL for your Rancher Server.
 

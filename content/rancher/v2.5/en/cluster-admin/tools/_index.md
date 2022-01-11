@@ -3,6 +3,7 @@ title: Tools for Logging, Monitoring, and Visibility
 weight: 2033
 aliases:
   - /rancher/v2.5/en/tools/notifiers-and-alerts/
+  - /rancher/v2.x/en/cluster-admin/tools/
 ---
 
 Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:

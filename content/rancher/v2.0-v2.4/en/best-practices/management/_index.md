@@ -4,6 +4,8 @@ weight: 101
 aliases:
   - /rancher/v2.0-v2.4/en/best-practices/management
   - /rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/management
+  - /rancher/v2.x/en/best-practices/management/
+  - /rancher/v2.x/en/best-practices/v2.0-v2.4/management/
 ---
 
 Rancher allows you to set up numerous combinations of configurations. Some configurations are more appropriate for development and testing, while there are other best practices for production environments for maximum availability and fault tolerance. The following best practices should be followed for production.
@@ -85,8 +87,8 @@ Run your etcd and control plane nodes on virtual machines where you can scale vC
 ### Use at Least Three etcd Nodes
 Provision 3 or 5 etcd nodes. Etcd requires a quorum to determine a leader by the majority of nodes, therefore it is not recommended to have clusters of even numbers. Three etcd nodes is generally sufficient for smaller clusters and five etcd nodes for large clusters.
 
-### Use at Least Two Control Plane Nodes
-Provision two or more control plane nodes. Some control plane components, such as the `kube-apiserver`, run in [active-active](https://www.jscape.com/blog/active-active-vs-active-passive-high-availability-cluster) mode and will give you more scalability. Other components such as kube-scheduler and kube-controller run in active-passive mode (leader elect) and give you more fault tolerance.
+### Use at Least Three Control Plane Nodes
+Provision three or more control plane nodes. Some control plane components, such as the `kube-apiserver`, run in [active-active](https://www.jscape.com/blog/active-active-vs-active-passive-high-availability-cluster) mode and will give you more scalability. Other components such as kube-scheduler and kube-controller run in active-passive mode (leader elect) and give you more fault tolerance.
 
 ### Monitor Your Cluster
 Closely monitor and scale your nodes as needed. You should [enable cluster monitoring]({{<baseurl>}}/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/) and use the Prometheus metrics and Grafana visualization options as a starting point.

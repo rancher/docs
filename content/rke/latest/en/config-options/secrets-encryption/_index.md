@@ -56,7 +56,7 @@ services:
 ```
 Once enabled, RKE will perform the following [actions](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#encrypting-your-data) to enable at-rest data encryption:
 
-- Generate a new random 32-bit encryption key
+- Generate a new random 32-byte encryption key
 - Generate an encryption provider configuration file using the new key The default [provider](https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/#providers) used is `aescbc`
 - Deploy the provider configuration file to all nodes with `controlplane` role
 - Update the `kube-apiserver` container arguments to point to the provider configuration file.
@@ -105,7 +105,7 @@ OPTIONS:
 ```
 This command will perform the following actions:
 
-- Generate a new random 32-bit encryption key
+- Generate a new random 32-byte encryption key
 - Generate a new provider configuration with the new key as the first provider and the second key as the second provider. When the secrets are rewritten, the first key will be used to encrypt the data on the write operation, while the second key (the old key) will be used to decrypt the stored data during the the read operation
 - Deploy the new provider configuration to all `controlplane` nodes and restart the `kube-apiserver`
 - Rewrite all secrets. This process will re-encrypt all the secrets with the new key.
@@ -121,6 +121,37 @@ With managed configuration, RKE provides the user with a very simple way to enab
 With custom encryption configuration, RKE allows the user to provide their own configuration. Although RKE will help the user to deploy the configuration and rewrite the secrets if needed, it doesn't provide a configuration validation on user's behalf. It's the user responsibility to make sure their configuration is valid.
 
 >**Warning:** Using invalid Encryption Provider Configuration could cause several issues with your cluster, ranging from crashing the Kubernetes API service, `kube-api`,  to completely losing access to encrypted data.
+
+### Example: Using Custom Encryption Configuration with User Provided 32-byte Random Key
+
+The following describes the steps required to configure custom encryption with a user provided 32-byte random key.
+
+Step 1: Generate a 32-byte random key and base64 encode it. If you're on Linux or macOS, run the following command:
+
+```
+head -c 32 /dev/urandom | base64
+```
+
+Place that value in the secret field.
+
+```yaml
+kube-api:
+    secrets_encryption_config:
+      enabled: true
+      custom_config:
+        api_version: apiserver.config.k8s.io/v1
+        kind: EncryptionConfiguration
+        resources:
+        - Providers:
+            - AESCBC:
+                Keys:
+                    - Name: key1
+                    Secret: <BASE 64 ENCODED SECRET>
+              Resources:
+                - secrets
+            - identity: {}
+```
+
 
 ### Example: Using Custom Encryption Configuration with Amazon KMS
 

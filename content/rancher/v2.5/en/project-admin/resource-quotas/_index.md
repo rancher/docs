@@ -2,7 +2,8 @@
 title: Project Resource Quotas
 weight: 2515
 aliases:
-  - /rancher/v2.5/en/k8s-in-rancher/projects-and-namespaces/resource-quotas 
+  - /rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas 
+  - /rancher/v2.x/en/project-admin/resource-quotas/
 ---
 
 In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a _resource quota_, which is a Rancher feature that limits the resources available to a project or namespace.
@@ -15,7 +16,7 @@ Resource quotas in Rancher include the same functionality as the [native version
 
 ### Applying Resource Quotas to Existing Projects
 
-Edit [resource quotas]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) when:
+Edit [resource quotas]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas) when:
 
 - You want to limit the resources that a project and its namespaces can use.
 - You want to scale the resources available to a project up or down when a research quota is already in effect.
@@ -41,4 +42,4 @@ Edit [resource quotas]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/projects-and
 
 1. Click **Create**.
 
-**Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, Rancher validates that the project can accommodate the namespace. If the project can't allocate the resources, Rancher won't let you save your changes.
+**Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, Rancher validates that the project can accommodate the namespace. If the project can't allocate the resources, you may still create namespaces, but they will be given a resource quota of 0. Subsequently, Rancher will not allow you to create any resources restricted by this quota.

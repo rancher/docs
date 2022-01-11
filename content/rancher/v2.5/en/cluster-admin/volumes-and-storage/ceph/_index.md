@@ -1,6 +1,8 @@
 ---
 title: Using an External Ceph Driver
 weight: 10
+aliases:
+  - /rancher/v2.x/en/cluster-admin/volumes-and-storage/ceph/
 ---
 
 These instructions are about using the external Ceph driver in an RKE2 cluster. If you are using RKE, additional steps are required. For details, refer to [this section.](#using-the-ceph-driver-with-rke)

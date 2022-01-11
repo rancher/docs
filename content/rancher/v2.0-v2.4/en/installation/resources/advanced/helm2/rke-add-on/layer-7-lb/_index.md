@@ -2,8 +2,9 @@
 title: Kubernetes Install with External Load Balancer (HTTPS/Layer 7)
 weight: 276
 aliases:
-- /rancher/v2.0-v2.4/en/installation/ha-server-install-external-lb/
-- /rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/layer-7-lb
+  - /rancher/v2.0-v2.4/en/installation/ha-server-install-external-lb/
+  - /rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/layer-7-lb
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/layer-7-lb/
 ---
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**

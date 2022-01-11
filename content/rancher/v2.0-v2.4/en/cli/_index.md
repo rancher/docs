@@ -6,6 +6,7 @@ metaDescription: "The Rancher CLI is a unified tool that you can use to interact
 weight: 21
 aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/cluster-access/cli
+  - /rancher/v2.x/en/cli/
 ---
 
 The Rancher CLI (Command Line Interface) is a unified tool that you can use to interact with Rancher. With this tool, you can operate Rancher using a command line rather than the GUI.
@@ -62,13 +63,13 @@ The following commands are available for use in Rancher CLI.
 | `apps, [app]`  | Performs operations on catalog applications (i.e. individual [Helm charts](https://docs.helm.sh/developing_charts/) or Rancher charts.  |
 | `catalog`  | Performs operations on [catalogs]({{<baseurl>}}/rancher/v2.0-v2.4/en/catalog/).  |
 | `clusters, [cluster]`  | Performs operations on your [clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/).  |
-| `context`  | Switches between Rancher [projects]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/). For an example, see [Project Selection](#project-selection).  |
+| `context`  | Switches between Rancher [projects]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/projects-and-namespaces/). For an example, see [Project Selection](#project-selection).  |
 | `inspect [OPTIONS] [RESOURCEID RESOURCENAME]`  | Displays details about [Kubernetes resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#resource-types) or Rancher resources (i.e.: [projects]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/) and [workloads]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/workloads/)). Specify resources by name or ID.  |
 | `kubectl`  |Runs [kubectl commands](https://kubernetes.io/docs/reference/kubectl/overview/#operations).   |
 | `login, [l]`  | Logs into a Rancher Server. For an example, see [CLI Authentication](#cli-authentication).  |
 | `namespaces, [namespace]`  |Performs operations on namespaces.   |
 | `nodes, [node]`  |Performs operations on nodes.   |
-| `projects, [project]`  | Performs operations on [projects]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/).  |
+| `projects, [project]`  | Performs operations on [projects]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/projects-and-namespaces/).  |
 | `ps`  | Displays [workloads]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/workloads) in a project.  |
 | `settings, [setting]`  | Shows the current settings for your Rancher Server.  |
 | `ssh`  | Connects to one of your cluster nodes using the SSH protocol.  |

@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/air-gap-high-availability/provision-hosts
   - /rancher/v2.0-v2.4/en/installation/air-gap-single-node/provision-host
   - /rancher/v2.0-v2.4/en/installation/options/air-gap-helm2/prepare-nodes
+  - /rancher/v2.x/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/
 ---
 
 This section is about how to prepare your node(s) to install Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.

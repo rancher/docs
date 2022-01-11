@@ -7,16 +7,16 @@ weight: 5
 <!-- TOC -->
 - [Operating System](#operating-system)
   - [General Linux Requirements](#general-linux-requirements)
-  - [SUSE Linux Enterprise Server (SLES) / openSUSE](#suse-linux-enterprise-server-sles--opensuse)
+  - [SUSE Linux Enterprise Server (SLES) / openSUSE](#suse-linux-enterprise-server-sles-opensuse)
     - [Using Upstream Docker](#using-upstream-docker)
-    - [Using SUSE/openSUSE packaged Docker](#using-suseopensuse-packaged-docker)
+    - [Using SUSE/openSUSE packaged Docker](#using-suse-opensuse-packaged-docker)
     - [Adding the Software Repository for Docker](#adding-the-software-repository-for-docker)
-  - [openSUSE MicroOS/Kubic (Atomic)](#opensuse-microoskubic-atomic)
+  - [openSUSE MicroOS/Kubic (Atomic)](#opensuse-microos-kubic-atomic)
     - [openSUSE MicroOS](#opensuse-microos)
     - [openSUSE Kubic](#opensuse-kubic)
-  - [Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS](#red-hat-enterprise-linux-rhel--oracle-linux-ol--centos)
+  - [Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS](#red-hat-enterprise-linux-rhel-oracle-linux-ol-centos)
     - [Using upstream Docker](#using-upstream-docker-1)
-    - [Using RHEL/CentOS packaged Docker](#using-rhelcentos-packaged-docker)
+    - [Using RHEL/CentOS packaged Docker](#using-rhel-centos-packaged-docker)
   - [Red Hat Atomic](#red-hat-atomic)
     - [OpenSSH version](#openssh-version)
     - [Creating a Docker Group](#creating-a-docker-group)
@@ -27,9 +27,13 @@ weight: 5
   - [Docker](#docker)
   - [Installing Docker](#installing-docker)
   - [Checking the Installed Docker Version](#checking-the-installed-docker-version)
+- [Hardware](#hardware)
+  - [Worker Role](#worker-role)
+  - [Large Kubernetes Clusters](#large-kubernetes-clusters)
+  - [Etcd clusters](#etcd-clusters)  
 - [Ports](#ports)
-  - [Opening port TCP/6443 using `iptables`](#opening-port-tcp6443-using-iptables)
-  - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp6443-using-firewalld)
+  - [Opening port TCP/6443 using `iptables`](#opening-port-tcp-6443-using-iptables)
+  - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp-6443-using-firewalld)
 - [SSH Server Configuration](#ssh-server-configuration)
 
 <!-- /TOC -->
@@ -52,54 +56,13 @@ RKE runs on almost any Linux OS with Docker installed. For details on which OS a
 
 - Swap should be disabled on any worker nodes
 
-- Following kernel modules should be present. This can be checked using:
-   * `modprobe module_name`
-   * `lsmod | grep module_name`
-   * `grep module_name /lib/modules/$(uname -r)/modules.builtin`, if it's a built-in module
-   * The following bash script
+- Please check the network plugin documentation for any additional requirements (for example, kernel modules)
+  - [Calico](https://docs.projectcalico.org/getting-started/kubernetes/requirements#kernel-dependencies)
+  - [Flannel](https://github.com/flannel-io/flannel/tree/master/Documentation)
+  - Canal (Combination Calico and Flannel)
+  - [Weave](https://www.weave.works/docs/net/latest/install/installing-weave/)
 
-```bash
-     for module in br_netfilter ip6_udp_tunnel ip_set ip_set_hash_ip ip_set_hash_net iptable_filter iptable_nat iptable_mangle iptable_raw nf_conntrack_netlink nf_conntrack nf_conntrack_ipv4   nf_defrag_ipv4 nf_nat nf_nat_ipv4 nf_nat_masquerade_ipv4 nfnetlink udp_tunnel veth vxlan x_tables xt_addrtype xt_conntrack xt_comment xt_mark xt_multiport xt_nat xt_recent xt_set  xt_statistic xt_tcpudp;
-     do
-       if ! lsmod | grep -q $module; then
-         echo "module $module is not present";
-       fi;
-     done
-```
-
-Module name |
-------------|
-br_netfilter |
-ip6_udp_tunnel |
-ip_set |
-ip_set_hash_ip |
-ip_set_hash_net |
-iptable_filter |
-iptable_nat |
-iptable_mangle |
-iptable_raw |
-nf_conntrack_netlink |
-nf_conntrack |
-nf_conntrack_ipv4 |
-nf_defrag_ipv4 |
-nf_nat |
-nf_nat_ipv4 |
-nf_nat_masquerade_ipv4 |
-nfnetlink |
-udp_tunnel |
-veth |
-vxlan |
-x_tables |
-xt_addrtype |
-xt_conntrack |
-xt_comment |
-xt_mark |
-xt_multiport |
-xt_nat |
-xt_recent |
-xt_set |
-xt_statistic |
-xt_tcpudp |
+> **Note:** If you or your cloud provider are using a custom minimal kernel, some required (network) kernel modules might not be present.
 
 - Following sysctl settings must be applied
 
@@ -184,6 +147,13 @@ https://kubic.opensuse.org/blog/2021-02-08-MicroOS-Kubic-Rancher-RKE/
 ### Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS
 
 If using Red Hat Enterprise Linux, Oracle Linux or CentOS, you cannot use the `root` user as [SSH user]({{<baseurl>}}/rke/latest/en/config-options/nodes/#ssh-user) due to [Bugzilla 1527565](https://bugzilla.redhat.com/show_bug.cgi?id=1527565). Please follow the instructions below how to setup Docker correctly, based on the way you installed Docker on the node.
+
+>**Note:** In RHEL 8.4, two extra services are included on the NetworkManager: `nm-cloud-setup.service` and `nm-cloud-setup.timer`. These services add a routing table that interferes with the CNI plugin's configuration. If these services are enabled, you must disable them using the command below, and then reboot the node to restore connectivity:
+>  
+>  ```
+   systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
+   reboot
+   ```
 
 #### Using upstream Docker
 If you are using upstream Docker, the package name is `docker-ce` or `docker-ee`. You can check the installed package by executing:
@@ -309,22 +279,29 @@ Each Kubernetes version supports different Docker versions. The Kubernetes relea
 
 ### Installing Docker
 
-You can either follow the [Docker installation](https://docs.docker.com/install/) instructions or use one of Rancher's [install scripts](https://github.com/rancher/install-docker) to install Docker. For RHEL, please see [How to install Docker on Red Hat Enterprise Linux 7](https://access.redhat.com/solutions/3727511).
-
-Docker Version   | Install Script |
-----------|------------------
-18.09.2 |  <code>curl https://releases.rancher.com/install-docker/18.09.2.sh &#124; sh</code> |
-18.06.2 |  <code>curl https://releases.rancher.com/install-docker/18.06.2.sh &#124; sh</code> |
-17.03.2 |  <code>curl https://releases.rancher.com/install-docker/17.03.2.sh &#124; sh</code> |
+Refer to [Installing Docker]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/installing-docker/)
 
 ### Checking the Installed Docker Version
 
 Confirm that a Kubernetes supported version of Docker is installed on your machine, by running `docker version --format '{{.Server.Version}}'`.
 
-```
-docker version --format '{{.Server.Version}}'
-17.03.2-ce
-```
+## Hardware
+
+This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters.
+
+### Worker Role
+
+The hardware requirements for nodes with the `worker` role mostly depend on your workloads. The minimum to run the Kubernetes node components is 1 CPU (core) and 1GB of memory. 
+
+Regarding CPU and memory, it is recommended that the different planes of Kubernetes clusters (etcd, controlplane, and workers) should be hosted on different nodes so that they can scale separately from each other.
+
+### Large Kubernetes Clusters
+
+For hardware recommendations for large Kubernetes clusters, refer to the official Kubernetes documentation on [building large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
+
+### Etcd Clusters
+
+For hardware recommendations for etcd clusters in production, refer to the official [etcd documentation](https://etcd.io/docs/v3.5/op-guide/hardware/).
 
 ## Ports
 {{< ports-rke-nodes >}}

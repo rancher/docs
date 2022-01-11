@@ -2,9 +2,10 @@
 title: 6. Generate and View Traffic
 weight: 7
 aliases:
-  - /rancher/v2.5/en/cluster-admin/tools/istio/setup/view-traffic
+  - /rancher/v2.5/en/istio/setup/view-traffic
   - /rancher/v2.5/en/istio/setup/view-traffic
   - /rancher/v2.5/en/istio/v2.5/setup/view-traffic
+  - /rancher/v2.x/en/istio/v2.5/setup/view-traffic/
 ---
 
 This section describes how to view the traffic that is being managed by Istio.

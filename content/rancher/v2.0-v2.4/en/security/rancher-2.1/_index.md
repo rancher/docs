@@ -1,6 +1,8 @@
 ---
 title: Rancher v2.1
 weight: 5
+aliases:
+  - /rancher/v2.x/en/security/rancher-2.1/
 ---
 
 ### Self Assessment Guide

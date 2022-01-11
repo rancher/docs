@@ -1,6 +1,8 @@
 ---
 title: Cluster and Project Roles
 weight: 1127
+aliases:
+  - /rancher/v2.x/en/admin-settings/rbac/cluster-project-roles/
 ---
 
 Cluster and project roles define user authorization inside a cluster or project. You can manage these roles from the **Global > Security > Roles** page.
@@ -84,6 +86,10 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
     These users can manage project-scoped resources like namespaces and workloads, but cannot manage other project members.
 
+    >**Note:**
+    >
+    >By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
+
 - **Read Only:**
 
     These users can view everything in the project but cannot create, update, or delete anything.
@@ -91,7 +97,6 @@ _Project roles_ are roles that can be used to grant users access to a project. T
     >**Caveat:**
     >
     >Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `owner` or `member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
-
 
 #### Custom Project Roles
 

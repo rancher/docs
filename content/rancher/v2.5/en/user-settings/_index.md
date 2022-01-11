@@ -3,6 +3,7 @@ title: User Settings
 weight: 23
 aliases:
   - /rancher/v2.5/en/tasks/user-settings/
+  - /rancher/v2.x/en/user-settings/
 ---
 
 Within Rancher, each user has a number of settings associated with their login: personal preferences, API keys, etc. You can configure these settings by choosing from the **User Settings** menu. You can open this menu by clicking your avatar, located within the main menu.

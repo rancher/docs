@@ -2,6 +2,8 @@
 title: Port Requirements
 description: Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes
 weight: 300
+aliases:
+  - /rancher/v2.x/en/installation/requirements/ports/
 ---
 
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes.
@@ -89,7 +91,7 @@ The following tables break down the port requirements for traffic between the Ra
 | TCP | 6443 | Kubernetes apiserver |
 | UDP | 8472 | Canal/Flannel VXLAN overlay networking |
 | TCP | 9099 | Canal/Flannel livenessProbe/readinessProbe |
-| TCP | 10250 | kubelet |
+| TCP | 10250 | Metrics server communication with all nodes |
 | TCP | 10254 | Ingress controller livenessProbe/readinessProbe |
 
 The following tables break down the port requirements for inbound and outbound traffic:
@@ -223,7 +225,7 @@ Note: Registered clusters were called imported clusters before Rancher v2.5.
 
 {{% accordion label="Click to expand" %}}
 
-The following table depicts the port requirements for [registered clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/imported-clusters/).
+The following table depicts the port requirements for [registered clusters]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/).
 
 {{< ports-imported-hosted >}}
 

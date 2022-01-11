@@ -1,6 +1,8 @@
 ---
 title: Troubleshooting
 weight: 26
+aliases:
+  - /rancher/v2.x/en/troubleshooting/
 ---
 
 This section contains information to help you troubleshoot issues when using Rancher.

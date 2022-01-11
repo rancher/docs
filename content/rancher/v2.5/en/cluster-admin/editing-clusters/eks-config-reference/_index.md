@@ -16,7 +16,7 @@ Complete each drop-down and field using the information obtained for your IAM po
 | Setting    | Description       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
+| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/user-settings/cloud-credentials/) |
 
 ### Service Role
 
@@ -148,7 +148,7 @@ The following settings are also configurable. All of these except for the "Node 
 | Desired ASG Size | The desired number of instances. |
 | Maximum ASG Size | The maximum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
 | Minimum ASG Size | The minimum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
-| Labels | Kubernetes labels applied to the nodes in the managed node group. |
+| Labels | Kubernetes labels applied to the nodes in the managed node group. Note: Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) |
 | Tags | These are tags for the managed node group and do not propagate to any of the associated resources. |
 
 
@@ -186,7 +186,7 @@ Complete each drop-down and field using the information obtained for your IAM po
 | Setting    | Description       |
 | ---------- | -------------------------------------------------------------------------------------------------------------------- |
 | Region     | From the drop-down choose the geographical region in which to build your cluster.                                    |
-| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/user-settings/cloud-credentials/) |
+| Cloud Credentials | Select the cloud credentials that you created for your IAM policy. For more information on creating cloud credentials in Rancher, refer to [this page.]({{<baseurl>}}/rancher/v2.5/en/user-settings/cloud-credentials/) |
 
 ### Service Role
 

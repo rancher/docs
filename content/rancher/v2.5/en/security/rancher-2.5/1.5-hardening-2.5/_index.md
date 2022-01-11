@@ -1,6 +1,8 @@
 ---
 title: Hardening Guide with CIS 1.5 Benchmark
 weight: 200
+aliases:
+  - /rancher/v2.x/en/security/rancher-2.5/1.5-hardening-2.5/
 ---
 
 This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
@@ -13,7 +15,7 @@ This hardening guide is intended to be used for RKE clusters and associated with
 ----------------|-----------------------|------------------
  Rancher v2.5 | Benchmark v1.5 | Kubernetes 1.15
 
-[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.6.pdf)
+[Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.5/Rancher_Hardening_Guide_CIS_1.5.pdf)
 
 ### Overview
 

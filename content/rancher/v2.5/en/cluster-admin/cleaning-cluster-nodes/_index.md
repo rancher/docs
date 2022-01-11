@@ -4,6 +4,7 @@ description: Learn about cluster cleanup when removing nodes from your Rancher-l
 weight: 2055
 aliases:
   - /rancher/v2.5/en/faq/cleaning-cluster-nodes/
+  - /rancher/v2.x/en/cluster-admin/cleaning-cluster-nodes/
 ---
 
 This section describes how to disconnect a node from a Rancher-launched Kubernetes cluster and remove all of the Kubernetes components from the node. This process allows you to use the node for other purposes.

@@ -4,6 +4,7 @@ shortTitle: DigitalOcean
 weight: 2215
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-digital-ocean/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/
 ---
 In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in DigitalOcean.
 
@@ -36,6 +37,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 1. Fill out a node template for DigitalOcean. For help filling out the form, refer to [DigitalOcean Node Template Configuration.](./do-node-template-config)
 
 ### 3. Create a cluster with node pools using the node template
+
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **DigitalOcean**.

@@ -1,6 +1,8 @@
 ---
 title: Installing and Configuring kubectl
 weight: 100
+aliases:
+  - /rancher/v2.x/en/faq/kubectl/
 ---
 
 `kubectl` is a CLI utility for running commands against Kubernetes clusters. It's required for many maintenance and administrative tasks in Rancher 2.x.
@@ -11,12 +13,12 @@ See [kubectl Installation](https://kubernetes.io/docs/tasks/tools/install-kubect
 
 ### Configuration
 
-When you create a Kubernetes cluster with RKE, RKE creates a `kube_config_rancher-cluster.yml` in the local directory that contains credentials to connect to your new cluster with tools like `kubectl` or `helm`.
+When you create a Kubernetes cluster with RKE, RKE creates a `kube_config_cluster.yml` in the local directory that contains credentials to connect to your new cluster with tools like `kubectl` or `helm`.
 
-You can copy this file to `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_rancher-cluster.yml`.
+You can copy this file to `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_cluster.yml`.
 
 ```
-export KUBECONFIG=$(pwd)/kube_config_rancher-cluster.yml
+export KUBECONFIG=$(pwd)/kube_config_cluster.yml
 ```
 
 Test your connectivity with `kubectl` and see if you can get the list of nodes back.

@@ -3,6 +3,7 @@ title: Creating a Custom Benchmark Version for Running a Cluster Scan
 weight: 4
 aliases:
   - /rancher/v2.5/en/cis-scans/v2.5/custom-benchmark
+  - /rancher/v2.x/en/cis-scans/v2.5/custom-benchmark/
 ---
 
 _Available as of v2.5.4_

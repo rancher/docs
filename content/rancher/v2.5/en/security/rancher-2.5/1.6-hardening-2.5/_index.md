@@ -1,6 +1,8 @@
 ---
 title: Hardening Guide with CIS 1.6 Benchmark
 weight: 100
+aliases:
+  - /rancher/v2.x/en/security/rancher-2.5/1.6-hardening-2.5/
 ---
 
 This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.5.4. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
@@ -26,7 +28,7 @@ For more detail about evaluating a hardened cluster against the official CIS ben
 - Rancher **exec shell** and **view logs** for pods are **not** functional in a CIS 1.6 hardened setup when only public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
 - When setting the `default_pod_security_policy_template_id:` to `restricted` Rancher creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The CIS 1.6 5.1.5 check requires the default service accounts have no roles or cluster roles bound to it apart from the defaults. In addition the default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 
-Migration Rancher from 2.4 to 2.5. Addons were removed in HG 2.5, and therefore namespaces on migration may be not created on the downstream clusters. Pod may fail to run because of missing namesapce like ingress-nginx, cattlae-system.
+Migration Rancher from 2.4 to 2.5. Addons were removed in HG 2.5, and therefore namespaces on migration may be not created on the downstream clusters. Pod may fail to run because of missing namesapce like ingress-nginx, cattle-system.
 
 ### Configure Kernel Runtime Parameters
 
@@ -180,7 +182,7 @@ services:
     path: ""
     uid: 52034
     gid: 52034
-    snapshot: true
+    snapshot: false
     retention: ""
     creation: ""
     backup_config: null
@@ -285,6 +287,36 @@ addons: |
     - downwardAPI
     - configMap
     - projected
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: psp:restricted
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - restricted
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: psp:restricted
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: psp:restricted
+  subjects:
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:serviceaccounts
+  - apiGroup: rbac.authorization.k8s.io
+    kind: Group
+    name: system:authenticated
   ---
   apiVersion: networking.k8s.io/v1
   kind: NetworkPolicy

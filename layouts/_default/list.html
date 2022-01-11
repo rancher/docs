@@ -25,9 +25,19 @@
       {{ $product := index $path 1 }}
       {{ $version := index $path 2 }}
       {{ $productVersion := printf "%s/%s" $product $version}}
-      {{ if eq $productVersion "rancher/v2.x" }}
+      {{ if in .Dir "/v2.x" }}
       <div class="alert alert-notice">
-          <strong>We are transitioning to versioned documentation.</strong> The v2.x docs will no longer be maintained. For Rancher v2.5 docs, go <a href="https://rancher.com/docs/rancher/v2.5/en/">here.</a> For Rancher v2.0-v2.4 docs, go <a href="https://rancher.com/docs/rancher/v2.0-v2.4/en/">here.</a>
+          <strong>We are transitioning to versioned documentation.</strong> The v2.x docs will no longer be maintained. <a href="https://rancher.com/docs/rancher/v2.6/en/">Rancher v2.6 docs</a> • <a href="https://rancher.com/docs/rancher/v2.5/en/">Rancher v2.5 docs</a> • <a href="https://rancher.com/docs/rancher/v2.0-v2.4/en/">Rancher v2.0-2.4 docs</a>
+      </div>
+      {{end}}
+      {{ if in .Dir "/multi-cluster-apps" }}
+      <div class="alert alert-notice">
+          <strong>As of Rancher v2.5, multi-cluster apps are deprecated.</strong> We now recommend using <a href="https://rancher.com/docs/rancher/v2.5/en/deploy-across-clusters/fleet/">Fleet</a> for deploying apps across clusters. It is available in the Rancher UI by clicking <b>☰ > Continuous Delivery</b>.
+      </div>
+      {{end}}
+      {{ if in .Dir "os/v1.x" }}
+      <div class="alert alert-notice">
+          <strong>RancherOS 1.x is currently in a maintain-only-as-essential mode.</strong> It is no longer being actively maintained at a code level other than addressing critical or security fixes. For more information about the support status of RancherOS, see <a href="https://rancher.com/docs/os/v1.x/en/support/"> this page.</a> 
       </div>
       {{end}}
       

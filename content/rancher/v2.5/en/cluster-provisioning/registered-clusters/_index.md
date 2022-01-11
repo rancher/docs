@@ -3,6 +3,8 @@ title: Registering Existing Clusters
 weight: 6
 aliases:
   - /rancher/v2.5/en/cluster-provisioning/imported-clusters
+  - /rancher/v2.x/en/cluster-provisioning/imported-clusters/
+  - /rancher/v2.x/en/cluster-provisioning/registered-clusters/
 ---
 
 The cluster registration feature replaced the feature to import clusters.
@@ -17,6 +19,17 @@ The control that Rancher has to manage a registered cluster depends on the type 
 - [Annotating Registered Clusters](#annotating-registered-clusters)
 
 # Prerequisites
+
+{{% tabs %}}
+{{% tab "v2.5.9+" %}}
+
+## Kubernetes Node Roles
+
+Registered RKE Kubernetes clusters must have all three node roles - etcd, controlplane and worker. A cluster with only controlplane components cannot be registered in Rancher.
+
+For more information on RKE node roles, see the [best practices.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/production/#cluster-architecture)
+
+## Permissions
 
 If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
 
@@ -34,10 +47,33 @@ By default, GKE users are not given this privilege, so you will need to run the 
 
 If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
 
+{{% /tab %}}
+{{% tab "Rancher before v2.5.9" %}}
+
+## Permissions
+
+If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
+
+In order to apply the privilege, you need to run:
+
+```plain
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user [USER_ACCOUNT]
+```
+
+before running the `kubectl` command to register the cluster.
+
+By default, GKE users are not given this privilege, so you will need to run the command before registering GKE clusters. To learn more about role-based access control for GKE, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
+
+If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
+{{% /tab %}}
+{{% /tabs %}}
+
 # Registering a Cluster
 
 1. From the **Clusters** page, click **Add Cluster**.
-2. Choose **Register**.
+2. Under **Register an existing Kubernetes cluster**, click the type of Kubernetes cluster you want to register.
 3. Enter a **Cluster Name**.
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 5. For Rancher v2.5.6+, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
@@ -96,9 +132,9 @@ Greater management capabilities are now available for [registered GKE clusters.]
 After registering a cluster, the cluster owner can:
 
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
-- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/)
+- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/)
 - Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/)
-- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/)
+- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)
 - Manage projects and workloads
 
@@ -125,7 +161,7 @@ The capabilities for registered clusters are listed in the table on [this page.]
 
 
 {{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.8" %}}
+{{% tab "Rancher before v2.5.8" %}}
 
 - [Features for All Registered Clusters](#before-2-5-8-features-for-all-registered-clusters)
 - [Additional Features for Registered K3s Clusters](#before-2-5-8-additional-features-for-registered-k3s-clusters)
@@ -137,9 +173,9 @@ The capabilities for registered clusters are listed in the table on [this page.]
 After registering a cluster, the cluster owner can:
 
 - [Manage cluster access]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac/cluster-project-roles/) through role-based access control
-- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/v2.5/)
+- Enable [monitoring, alerts and notifiers]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/)
 - Enable [logging]({{<baseurl>}}/rancher/v2.5/en/logging/v2.5/)
-- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/)
+- Enable [Istio]({{<baseurl>}}/rancher/v2.5/en/istio/)
 - Use [pipelines]({{<baseurl>}}/rancher/v2.5/en/project-admin/pipelines/)
 - Manage projects and workloads
 

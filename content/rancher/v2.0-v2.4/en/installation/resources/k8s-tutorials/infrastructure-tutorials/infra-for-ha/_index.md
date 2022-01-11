@@ -9,7 +9,8 @@ This tutorial is intended to help you create a high-availability RKE cluster tha
 
 To install the Rancher management server on a high-availability RKE cluster, we recommend setting up the following infrastructure:
 
-- **Three Linux nodes,** typically virtual machines, in an infrastructure provider such as Amazon's EC2, Google Compute Engine, or vSphere.
+- **Three Linux nodes,** typically virtual machines, in an infrastructure provider such as Amazon's EC2, Google Compute Engine, Azure, or vSphere.
+    * **Note:** When installing Rancher with Helm in Azure, use the L7 load balancer to avoid networking issues. Please refer [here](https://docs.microsoft.com/en-us/azure/load-balancer/components#limitations) for more information on Azure load balancer limitations.
 - **A load balancer** to direct front-end traffic to the three nodes.
 - **A DNS record** to map a URL to the load balancer. This will become the Rancher server URL, and downstream Kubernetes clusters will need to reach it.
 

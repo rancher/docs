@@ -7,6 +7,7 @@ aliases:
   - /rancher/v2.5/en/upgrades/upgrades/single-node
   - /rancher/v2.5/en/upgrades/upgrades/single-node-upgrade/
   - /rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/
+  - /rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/
 ---
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
@@ -86,7 +87,7 @@ During upgrade, you create a copy of the data from your current Rancher containe
 
 
     ```
-    docker run --volumes-from rancher-data -v $PWD:/backup busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+    docker run --volumes-from rancher-data -v "$PWD:/backup" --rm busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
     ```
 
     **Step Result:** When you enter this command, a series of commands should run.
@@ -361,4 +362,4 @@ Remove the previous Rancher server container. If you only stop the previous Ranc
 
 # Rolling Back
 
-If your upgrade does not complete successfully, you can roll back Rancher server and its data back to its last healthy state. For more information, see [Docker Rollback]({{<baseurl>}}/rancher/v2.5/en/upgrades/rollbacks/single-node-rollbacks/).
+If your upgrade does not complete successfully, you can roll back Rancher server and its data back to its last healthy state. For more information, see [Docker Rollback]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks).

@@ -1,6 +1,8 @@
 ---
 title: Setting up the Amazon Cloud Provider
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/amazon/
 ---
 
 When using the `Amazon` cloud provider, you can leverage the following capabilities:

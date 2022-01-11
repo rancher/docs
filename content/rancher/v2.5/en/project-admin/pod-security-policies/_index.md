@@ -1,6 +1,8 @@
 ---
 title: Pod Security Policies
 weight: 5600
+aliases:
+  - /rancher/v2.x/en/project-admin/pod-security-policies/
 ---
 
 > These cluster options are only available for [clusters in which Rancher has launched Kubernetes]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/).  

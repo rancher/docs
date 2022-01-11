@@ -1,6 +1,8 @@
 ---
 title: Roles for Nodes in Kubernetes
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/production/nodes-and-roles/
 ---
 
 This section describes the roles for etcd nodes, controlplane nodes, and worker nodes in Kubernetes, and how the roles work together in a cluster.

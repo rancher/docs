@@ -1,6 +1,8 @@
 ---
 title: Updating a Private CA Certificate
 weight: 10
+aliases:
+  - /rancher/v2.x/en/installation/resources/update-ca-cert/
 ---
 
 Follow these steps to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/) or to switch from the default self-signed certificate to a custom certificate.
@@ -132,7 +134,7 @@ Using a Kubeconfig for each downstream cluster update the environment variable f
 
 ```
 $ kubectl edit -n cattle-system ds/cattle-node-agent
-$ kubectl edit -n cattle-system deployment/cluster-agent
+$ kubectl edit -n cattle-system deployment/cattle-cluster-agent
 ```
 
 ### Method 3: Recreate Rancher agents

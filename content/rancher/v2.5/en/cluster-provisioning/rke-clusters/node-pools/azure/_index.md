@@ -4,6 +4,7 @@ shortTitle: Azure
 weight: 2220
 aliases:
   - /rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-azure/
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/azure/
 ---
 
 In this section, you'll learn how to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in Azure through Rancher.
@@ -11,6 +12,13 @@ In this section, you'll learn how to install an [RKE]({{<baseurl>}}/rke/latest/e
 First, you will set up your Azure cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in Azure. 
 
 Then you will create an Azure cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
+
+>**Warning:** When the Rancher RKE cluster is running in Azure and has an Azure load balancer in front, the outbound flow will fail. The workaround for this problem is as follows:
+
+> - Terminate the SSL/TLS on the internal load balancer
+> - Use the L7 load balancer
+
+> For more information, refer to the documentation on [Azure load balancer limitations](https://docs.microsoft.com/en-us/azure/load-balancer/components#limitations).
 
 For more information on configuring the Kubernetes cluster that Rancher will install on the Azure nodes, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options)
 
@@ -65,6 +73,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 ### 3. Create a cluster with node pools using the node template
 
 Use Rancher to create a Kubernetes cluster in Azure.
+
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Azure**.

@@ -1,6 +1,8 @@
 ---
 title: "3. Expose Your Services"
 weight: 400
+aliases:
+  - /rancher/v2.x/en/v1.6-migration/expose-services/
 ---
 
 In testing environments, you usually need to route external traffic to your cluster containers by using an unadvertised IP and port number, providing users access to their apps. You can accomplish this goal using port mapping, which exposes a workload (i.e., service) publicly over a specific port, provided you know your node IP address(es). You can either map a port using HostPorts (which exposes a service on a specified port on a single node) or NodePorts (which exposes a service on _all_ nodes on a single port).

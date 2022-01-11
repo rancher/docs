@@ -18,7 +18,7 @@ For details on taking database snapshots and restoring your database from them, 
 
 - [Official MySQL documentation](https://dev.mysql.com/doc/refman/8.0/en/replication-snapshot-method.html)
 - [Official PostgreSQL documentation](https://www.postgresql.org/docs/8.3/backup-dump.html)
-- [Official etcd documentation](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/recovery.md)
+- [Official etcd documentation](https://etcd.io/docs/latest/op-guide/recovery/)
 
 # Backup and Restore with Embedded etcd Datastore (Experimental)
 
@@ -26,17 +26,19 @@ _Available as of v1.19.1+k3s1_
 
 In this section, you'll learn how to create backups of the K3s cluster data and to restore the cluster from backup.
 
+>**Note on Single-Server with embedded SQLite:** Currently, backups of SQLite are not supported. Instead, make a copy of `/var/lib/rancher/k3s/server` and then delete K3s. 
+
 ### Creating Snapshots
 
 Snapshots are enabled by default.
 
-The snapshot directory defaults to `/server/db/snapshots`.
+The snapshot directory defaults to `${data-dir}/server/db/snapshots`. The data-dir value defaults to `/var/lib/rancher/k3s` and can be changed by setting the `--data-dir` flag.
 
 To configure the snapshot interval or the number of retained snapshots, refer to the [options.](#options)
 
 ### Restoring a Cluster from a Snapshot
 
-When K3s is restored from backup, the old data directory will be moved to `/server/db/etcd-old/`. Then K3s will attempt to restore the snapshot by creating a new data directory, then starting etcd with a new K3s cluster with one etcd member.
+When K3s is restored from backup, the old data directory will be moved to `${data-dir}/server/db/etcd-old/`. Then K3s will attempt to restore the snapshot by creating a new data directory, then starting etcd with a new K3s cluster with one etcd member.
 
 To restore the cluster from backup, run K3s with the `--cluster-reset` option, with the `--cluster-reset-restore-path` also given:
 
@@ -100,4 +102,42 @@ k3s server \
   --etcd-s3-bucket=<S3-BUCKET-NAME> \
   --etcd-s3-access-key=<S3-ACCESS-KEY> \
   --etcd-s3-secret-key=<S3-SECRET-KEY>
+```
+
+### Etcd Snapshot and Restore Subcommands
+
+k3s supports a set of subcommands for working with your etcd snapshots.
+
+| Subcommand | Description |
+| ----------- | --------------- |
+| delete      |  Delete given snapshot(s) |
+| ls, list, l |  List snapshots |
+| prune       |  Remove snapshots that exceed the configured retention count |
+| save        |  Trigger an immediate etcd snapshot |
+
+*note* The `save` subcommand is the same as `k3s etcd-snapshot`. The latter will eventually be deprecated in favor of the former.
+
+These commands will perform as expected whether the etcd snapshots are stored locally or in an S3 compatible object store.
+
+For additional information on the etcd snapshot subcommands, run `k3s etcd-snapshot`.
+
+Delete a snapshot from S3.
+
+```
+k3s etcd-snapshot delete          \
+  --s3                            \
+  --s3-bucket=<S3-BUCKET-NAME>    \
+  --s3-access-key=<S3-ACCESS-KEY> \
+  --s3-secret-key=<S3-SECRET-KEY> \
+  <SNAPSHOT-NAME>
+```
+
+Prune local snapshots with the default retention policy (5). The `prune` subcommand takes an additional flag `--snapshot-retention` that allows for overriding the default retention policy.
+
+```
+k3s etcd-snapshot prune
+```
+
+```
+k3s etcd-snapshot prune --snapshot-retention 10
 ```

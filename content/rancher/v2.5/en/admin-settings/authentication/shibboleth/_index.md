@@ -1,6 +1,8 @@
 ---
 title: Configuring Shibboleth (SAML)
 weight: 1210
+aliases:
+  - /rancher/v2.x/en/admin-settings/authentication/shibboleth/
 ---
 
 If your organization uses Shibboleth Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in to Rancher using their Shibboleth credentials.

@@ -1,6 +1,8 @@
 ---
 title: Assigning Pod Security Policies
 weight: 2260
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/options/pod-security-policies/
 ---
 
 _Pod Security Policies_ are objects that control security-sensitive aspects of pod specification (like root privileges).

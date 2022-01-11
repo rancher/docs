@@ -3,6 +3,7 @@ title: CIS Benchmark Rancher Self-Assessment Guide v2.1
 weight: 209
 aliases:
   - /rancher/v2.0-v2.4/en/security/benchmark-2.1
+  - /rancher/v2.x/en/security/rancher-2.1/benchmark-2.1/
 ---
 
 This document is a companion to the Rancher v2.1 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.

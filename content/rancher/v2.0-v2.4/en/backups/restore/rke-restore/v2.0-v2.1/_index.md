@@ -1,6 +1,8 @@
 ---
 title: "Rolling back to v2.0.0-v2.1.5"
 weight: 1
+aliases:
+  - /rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/v2.0-v2.1/
 ---
 
 > Rolling back to Rancher v2.0-v2.1 is no longer supported. The instructions for rolling back to these versions are preserved here and are intended to be used only in cases where upgrading to Rancher v2.2+ is not feasible.
@@ -26,7 +28,7 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
 
 2. After executing the command a `tokens.json` file will be created.  Important! Back up this file in a safe place.** You will need it to restore functionality to your clusters after rolling back Rancher.  **If you lose this file, you may lose access to your clusters.**
 
-3. Rollback Rancher following the [normal instructions]({{<baseurl>}}/rancher/v2.x/en/upgrades/rollbacks/).
+3. Rollback Rancher following the [normal instructions]({{<baseurl>}}/rancher/v2.0-v2.4/en/upgrades/rollbacks/).
 
 4. Once Rancher comes back up, every cluster managed by Rancher (except for Imported clusters) will be in an `Unavailable` state.
 

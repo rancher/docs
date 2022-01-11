@@ -1,6 +1,9 @@
 ---
 title: Security
 weight: 20
+aliases:
+  - /rancher/v2.x/en/security/rancher-2.5/
+  - /rancher/v2.x/en/security/
 ---
 
 <table width="100%">
@@ -30,6 +33,7 @@ On this page, we provide security-related documentation along with resources to 
 - [The CIS Benchmark and self-assessment](#the-cis-benchmark-and-self-assessment)
 - [Third-party penetration test reports](#third-party-penetration-test-reports)
 - [Rancher CVEs and resolutions](#rancher-cves-and-resolutions)
+- [Kubernetes Security Best Practices](#kubernetes-security-best-practices)
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 
@@ -41,7 +45,7 @@ The Center for Internet Security (CIS) is a 501(c\)(3) non-profit organization, 
 
 CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
 
-The Benchmark provides recommendations of two types: Scored and Not Scored. We run tests related to only Scored recommendations.
+The Benchmark provides recommendations of two types: Automated and Manual. We run tests related to only Automated recommendations.
 
 When Rancher runs a CIS security scan on a cluster, it generates a report showing the results of each test, including a summary with the number of passed, skipped and failed tests. The report also includes remediation steps for any failed tests.
 
@@ -83,3 +87,7 @@ Results:
 ### Rancher CVEs and Resolutions
 
 Rancher is committed to informing the community of security issues in our products. For the list of CVEs (Common Vulnerabilities and Exposures) for issues we have resolved, refer to [this page.](./cve)
+
+### Kubernetes Security Best Practices
+
+For recommendations on securing your Kubernetes cluster, refer to the [Best Practices](./best-practices) guide.

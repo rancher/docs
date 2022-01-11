@@ -1,6 +1,8 @@
 ---
 title: Opening Ports with firewalld
 weight: 1
+aliases:
+  - /rancher/v2.x/en/installation/resources/advanced/firewall/
 ---
 
 > We recommend disabling firewalld. For Kubernetes 1.19, firewalld must be turned off.
@@ -32,7 +34,7 @@ You can check the default firewall rules with this command:
 sudo iptables --list
 ```
 
-This section describes how to use `firewalld` to apply the [firewall port rules]({{<baseurl>}}/rancher/v2.5/en/installation/references) for nodes in a high-availability Rancher server cluster.
+This section describes how to use `firewalld` to apply the [firewall port rules]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/ports) for nodes in a high-availability Rancher server cluster.
 
 # Prerequisite
 

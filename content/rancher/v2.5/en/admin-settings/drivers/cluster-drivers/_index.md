@@ -1,6 +1,8 @@
 ---
 title: Cluster Drivers
-weight: 1
+weight: 1  
+aliases:
+  - /rancher/v2.x/en/admin-settings/drivers/cluster-drivers/
 ---
 
 Cluster drivers are used to create clusters in a [hosted Kubernetes provider]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/), such as Google GKE. The availability of which cluster driver to display when creating clusters is defined by the cluster driver's status. Only `active` cluster drivers will be displayed as an option for creating clusters. By default, Rancher is packaged with several existing cloud provider cluster drivers, but you can also add custom cluster drivers to Rancher.

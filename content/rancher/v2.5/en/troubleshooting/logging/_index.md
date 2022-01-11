@@ -1,6 +1,8 @@
 ---
 title: Logging
 weight: 110
+aliases:
+  - /rancher/v2.x/en/troubleshooting/logging/
 ---
 
 The following log levels are used in Rancher:
@@ -16,7 +18,7 @@ The following log levels are used in Rancher:
 * Kubernetes install
  * Configure debug log level
 ```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ KUBECONFIG=./kube_config_cluster.yml
 $ kubectl -n cattle-system get pods -l app=rancher --no-headers -o custom-columns=name:.metadata.name | while read rancherpod; do kubectl -n cattle-system exec $rancherpod -c rancher -- loglevel --set debug; done
 OK
 OK
@@ -26,7 +28,7 @@ $ kubectl -n cattle-system logs -l app=rancher -c rancher
 
  * Configure info log level
 ```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ KUBECONFIG=./kube_config_cluster.yml
 $ kubectl -n cattle-system get pods -l app=rancher --no-headers -o custom-columns=name:.metadata.name | while read rancherpod; do kubectl -n cattle-system exec $rancherpod -c rancher -- loglevel --set info; done
 OK
 OK

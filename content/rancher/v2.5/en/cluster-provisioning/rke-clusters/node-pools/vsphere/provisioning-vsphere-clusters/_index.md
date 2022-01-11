@@ -1,6 +1,8 @@
 ---
 title: Provisioning Kubernetes Clusters in vSphere
 weight: 1
+aliases:
+  - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/
 ---
 
 In this section, you'll learn how to use Rancher to install an [RKE]({{<baseurl>}}/rke/latest/en/)  Kubernetes cluster in vSphere.
@@ -59,7 +61,7 @@ The a vSphere cluster is created in Rancher depends on the Rancher version.
 1. In the Rancher UI, click the user profile button in the upper right corner, and click **Cloud Credentials.**
 1. Click **Add Cloud Credential.**
 1. Enter a name for the cloud credential.
-1. In the **Cloud Credential Type** field, select **vSphere**.
+1. In the **Cloud Credential Type** field, select **VMware vSphere**.
 1. Enter your vSphere credentials. For help, refer to **Account Access** in the [node template configuration reference.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/)
 1. Click **Create.**
 
@@ -76,6 +78,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rk
 ### 3. Create a cluster with node pools using the node template
 
 Use Rancher to create a Kubernetes cluster in vSphere.
+
+Clusters won't begin provisioning until all three node roles (worker, etcd and controlplane) are present.
 
 1. Navigate to **Clusters** in the **Global** view.
 1. Click **Add Cluster** and select the **vSphere** infrastructure provider.

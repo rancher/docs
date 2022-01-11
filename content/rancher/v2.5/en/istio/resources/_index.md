@@ -4,8 +4,9 @@ weight: 1
 aliases:
   - /rancher/v2.5/en/project-admin/istio/configuring-resource-allocations/
   - /rancher/v2.5/en/project-admin/istio/config/
-  - /rancher/v2.5/en/cluster-admin/tools/istio/resources
+  - /rancher/v2.5/en/istio/resources
   - /rancher/v2.5/en/istio/v2.5/resources
+  - /rancher/v2.x/en/istio/v2.5/resources/
 ---
 
 This section describes the minimum recommended computing resources for the Istio components in a cluster.
@@ -18,7 +19,7 @@ Before enabling Istio, we recommend that you confirm that your Rancher worker no
 
 The table below shows a summary of the minimum recommended resource requests and limits for the CPU and memory of each core Istio component.
 
-In Kubernetes, the resource request indicates that the workload will not deployed on a node unless the node has at least the specified amount of memory and CPU available. If the workload surpasses the limit for CPU or memory, it can be terminated or evicted from the node. For more information on managing resource limits for containers, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
+In Kubernetes, the resource request indicates that the workload will not be deployed on a node unless the node has at least the specified amount of memory and CPU available. If the workload surpasses the limit for CPU or memory, it can be terminated or evicted from the node. For more information on managing resource limits for containers, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
 
 {{% tabs %}}
 {{% tab "v2.5.6+" %}}
@@ -59,7 +60,7 @@ You can find more information about Istio configuration in the [official Istio d
 To configure the resources allocated to an Istio component,
 
 1. In the Rancher **Cluster Explorer**, navigate to your Istio installation in **Apps & Marketplace**
-1. Click **Upgrade** to edit the base components via changes the values.yaml or add an [overlay file]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/configuration-reference/#overlay-file). For more information about editing the overlay file, see [this section.](./#editing-the-overlay-file)
+1. Click **Upgrade** to edit the base components via changes to the values.yaml or add an [overlay file]({{<baseurl>}}/rancher/v2.5/en/istio/v2.5/configuration-reference/#overlay-file). For more information about editing the overlay file, see [this section.](./#editing-the-overlay-file)
 1. Change the CPU or memory allocations, the nodes where each component will be scheduled to, or the node tolerations.
 1. Click **Upgrade.** to rollout changes
 

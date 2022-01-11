@@ -1,6 +1,8 @@
 ---
 title: CLI with Rancher
 weight: 100
+aliases:
+  - /rancher/v2.x/en/quick-start-guide/cli/
 ---
 
 Interact with Rancher using command line interface (CLI) tools from your workstation.

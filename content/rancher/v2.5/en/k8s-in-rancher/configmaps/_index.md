@@ -4,6 +4,7 @@ weight: 3061
 aliases:
   - /rancher/v2.5/en/tasks/projects/add-configmaps
   - /rancher/v2.5/en/k8s-in-rancher/configmaps  
+  - /rancher/v2.x/en/k8s-in-rancher/configmaps/
 ---
 
 While most types of Kubernetes secrets store sensitive information, [ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) store general configuration information, such as a group of config files. Because ConfigMaps don't store sensitive information, they can be updated automatically, and therefore don't require their containers to be restarted following update (unlike most secret types, which require manual updates and a container restart to take effect).

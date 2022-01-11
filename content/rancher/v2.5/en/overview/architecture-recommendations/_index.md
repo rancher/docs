@@ -1,6 +1,8 @@
 ---
 title: Architecture Recommendations
 weight: 3
+aliases:
+  - /rancher/v2.x/en/overview/architecture-recommendations/
 ---
 
 Kubernetes cluster. If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the node running Rancher should be [separate from downstream clusters.](#separation-of-rancher-and-user-clusters)
@@ -32,7 +34,7 @@ We don't recommend installing Rancher in a single Docker container, because if t
 
 ### K3s Kubernetes Cluster Installations
 
-One option for the underlying Kubernetes cluster is to use K3s Kubernetes. K3s Rancher's CNCF certified Kubernetes distribution. It is easy to install, with half the memory of Kubernetes, all in a binary less than 100 MB. One main advantage of this K3s architecture is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
+One option for the underlying Kubernetes cluster is to use K3s Kubernetes. K3s is Rancher's CNCF certified Kubernetes distribution. It is easy to install and uses half the memory of Kubernetes, all in a binary of less than 100 MB. Another advantage of K3s is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
 
 <figcaption>Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server</figcaption>
 ![Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server]({{<baseurl>}}/img/rancher/k3s-server-storage.svg)

@@ -4,6 +4,7 @@ shortTitle: On-Premises Rancher in vSphere
 weight: 3
 aliases:
   - /rancher/v2.5/en/best-practices/v2.5/rancher-server/rancher-in-vsphere
+  - /rancher/v2.x/en/best-practices/v2.5/rancher-server/rancher-in-vsphere/
 ---
 
 This guide outlines a reference architecture for installing Rancher on an RKE Kubernetes cluster in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.
@@ -52,7 +53,7 @@ https://rancher.com/docs/rancher/v2.5/en/installation/requirements/
 
 ### Leverage VM Templates to Construct the Environment
 
-To facilitate consistency across the deployed Virtual Machines across the environment, consider the use of "Golden Images" in the form of VM templates. Packer can be used to accomplish this, adding greater customisation options.
+To facilitate the consistency of Virtual Machines deployed across the environment, consider the use of "Golden Images" in the form of VM templates. Packer can be used to accomplish this, adding greater customization options.
 
 ### Leverage DRS Anti-Affinity Rules (Where Possible) to Separate Rancher Cluster Nodes Across ESXi Hosts
 

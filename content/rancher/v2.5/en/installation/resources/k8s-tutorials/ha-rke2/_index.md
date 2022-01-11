@@ -4,10 +4,11 @@ shortTitle: Set up RKE2 for Rancher
 weight: 2
 aliases:
   - /rancher/v2.x/en/installation/resources/k8s-tutorials/ha-RKE2
+  - /rancher/v2.x/en/installation/resources/k8s-tutorials/ha-RKE2/
 ---
 _Tested on v2.5.6_
 
-This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.x/en/overview/architecture-recommendations/#environment-for-kubernetes-installations)
+This section describes how to install a Kubernetes cluster according to the [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.5/en/overview/architecture-recommendations/#environment-for-kubernetes-installations)
 
 # Prerequisites
 
@@ -22,13 +23,19 @@ Rancher needs to be installed on a supported Kubernetes version. To find out whi
 
 RKE2 server runs with embedded etcd so you will not need to set up an external datastore to run in HA mode.
 
-1. On the first node, you should set up the configuration file with your own pre-shared secret as the token. The token argument can be set on startup.
+On the first node, you should set up the configuration file with your own pre-shared secret as the token. The token argument can be set on startup.
 
 If you do not specify a pre-shared secret, RKE2 will generate one and place it at /var/lib/rancher/rke2/server/node-token.
 
 To avoid certificate errors with the fixed registration address, you should launch the server with the tls-san parameter set. This option adds an additional hostname or IP as a Subject Alternative Name in the server's TLS cert, and it can be specified as a list if you would like to access via both the IP and the hostname.
 
-Here is an example of what the RKE2 config file (at /etc/rancher/rke2/config.yaml) would look like if you are following this guide:
+First, you must create the directory where the RKE2 config file is going to be placed:
+
+```
+mkdir -p /etc/rancher/rke2/
+```
+
+Next, create the RKE2 config file at `/etc/rancher/rke2/config.yaml` using the following example:
 
 ```
 token: my-shared-secret
@@ -36,26 +43,26 @@ tls-san:
   - my-kubernetes-domain.com
   - another-kubernetes-domain.com
 ```
-After that you need to run the install command and enable and start rke2:
+After that, you need to run the install command and enable and start rke2:
+
 ```
-curl -sfL https://get.rke2.io | sh -
+curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.20 sh -
 systemctl enable rke2-server.service
 systemctl start rke2-server.service
 ```
 1. To join the rest of the nodes, you need to configure each additional node with the same shared token or the one generated automatically. Here is an example of the configuration file:
-```
-token: my-shared-secret
-server: https://<DNS-DOMAIN>:9345
-tls-san:
-  - my-kubernetes-domain.com
-  - another-kubernetes-domain.com
-```
-After that you need to run the installer and enable then start rke2
-```
-curl -sfL https://get.rke2.io | sh -
-systemctl enable rke2-server.service
-systemctl start rke2-server.service
-```
+
+        token: my-shared-secret
+        server: https://<DNS-DOMAIN>:9345
+        tls-san:
+          - my-kubernetes-domain.com
+          - another-kubernetes-domain.com
+After that, you need to run the installer and enable, then start, rke2:
+
+        curl -sfL https://get.rke2.io | sh -
+        systemctl enable rke2-server.service
+        systemctl start rke2-server.service
+
 
 1. Repeat the same command on your third RKE2 server node.
 
@@ -81,7 +88,7 @@ Then test the health of the cluster pods:
 
 When you installed RKE2 on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/rke2/rke2.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
-To use this `kubeconfig` file, 
+To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/rke2/rke2.yaml` and save it to the directory `~/.kube/config` on your local machine.

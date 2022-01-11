@@ -3,6 +3,7 @@ title: Best Practices for Rancher Managed vSphere Clusters
 shortTitle: Rancher Managed Clusters in vSphere
 aliases:
   - /rancher/v2.5/en/best-practices/v2.5/rancher-managed/managed-vsphere
+  - /rancher/v2.x/en/best-practices/v2.5/rancher-managed/managed-vsphere/
 ---
 
 This guide outlines a reference architecture for provisioning downstream Rancher clusters in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.
@@ -14,7 +15,7 @@ This guide outlines a reference architecture for provisioning downstream Rancher
 
 <figcaption>Solution Overview</figcaption>
 
-![Solution Overview](/img/rancher/solution_overview.drawio.svg)
+![Solution Overview]({{<baseurl>}}/img/rancher/solution_overview.drawio.svg)
 
 # 1. VM Considerations
 

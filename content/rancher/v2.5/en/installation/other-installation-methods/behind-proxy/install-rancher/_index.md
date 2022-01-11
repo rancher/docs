@@ -1,6 +1,8 @@
 ---
 title: 3. Install Rancher
 weight: 300
+aliases:
+  - /rancher/v2.x/en/installation/other-installation-methods/behind-proxy/install-rancher/
 ---
 
 Now that you have a running RKE cluster, you can install Rancher in it. For security reasons all traffic to Rancher must be encrypted with TLS. For this tutorial you are going to automatically issue a self-signed certificate through [cert-manager](https://cert-manager.io/). In a real-world use-case you will likely use Let's Encrypt or provide your own certificate. 
@@ -34,7 +36,7 @@ helm upgrade --install cert-manager jetstack/cert-manager \
   --namespace cert-manager --version v0.15.2 \
   --set http_proxy=http://${proxy_host} \
   --set https_proxy=http://${proxy_host} \
-  --set no_proxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
+  --set noProxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
 ```
 
 Now you should wait until cert-manager is finished starting up:
@@ -58,14 +60,16 @@ Create a namespace:
 kubectl create namespace cattle-system
 ```
 
-And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata:
+And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata. 
+
+Note that `rancher.cattle-system` must be added to the noProxy list (as shown below) so that Fleet can communicate directly to Rancher with Kubernetes service DNS using service discovery.
 
 ```
 helm upgrade --install rancher rancher-latest/rancher \
    --namespace cattle-system \
    --set hostname=rancher.example.com \
    --set proxy=http://${proxy_host}
-   --set no_proxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
+   --set noProxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local,rancher.cattle-system
 ```
 
 After waiting for the deployment to finish:

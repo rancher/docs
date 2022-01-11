@@ -1,11 +1,13 @@
 ---
 title: Networking
 weight: 102
+aliases:
+  - /rancher/v2.x/en/troubleshooting/networking/
 ---
 
 The commands/steps listed on this page can be used to check networking related issues in your cluster.
 
-Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
+Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` for Rancher HA) or are using the embedded kubectl via the UI.
 
 ### Double check if all the required ports are opened in your (host) firewall
 
@@ -15,6 +17,8 @@ Double check if all the [required ports]({{<baseurl>}}/rancher/v2.5/en/cluster-p
 The pod can be scheduled to any of the hosts you used for your cluster, but that means that the NGINX ingress controller needs to be able to route the request from `NODE_1` to `NODE_2`. This happens over the overlay network. If the overlay network is not functioning, you will experience intermittent TCP/HTTP connection failures due to the NGINX ingress controller not being able to route to the pod.
 
 To test the overlay network, you can launch the following `DaemonSet` definition. This will run a `swiss-army-knife` container on every host (image was developed by Rancher engineers and can be found here: https://github.com/rancherlabs/swiss-army-knife), which we will use to run a `ping` test between containers on all hosts.
+
+> **Note:** This container [does not support ARM nodes](https://github.com/leodotcloud/swiss-army-knife/issues/18), such as a Raspberry Pi. This will be seen in the pod logs as `exec user process caused: exec format error`.
 
 1. Save the following file as `overlaytest.yml`
 
@@ -35,7 +39,7 @@ To test the overlay network, you can launch the following `DaemonSet` definition
           tolerations:
           - operator: Exists
           containers:
-          - image: rancher/swiss-army-knife
+          - image: rancherlabs/swiss-army-knife
             imagePullPolicy: Always
             name: overlaytest
             command: ["sh", "-c", "tail -f /dev/null"]

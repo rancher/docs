@@ -3,6 +3,7 @@ title: Contributing to Rancher
 weight: 27
 aliases:
   - /rancher/v2.5/en/faq/contributing/
+  - /rancher/v2.x/en/contributing/
 ---
 
 This section explains the repositories used for Rancher, how to build the repositories, and what information to include when you file an issue.
@@ -80,7 +81,7 @@ Please follow this checklist when filing an issue which will helps us investigat
         ```
       - Kubernetes install using `kubectl`
 
-        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` if Rancher is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
+        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` if Rancher is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
 
         ```
         kubectl -n cattle-system \
@@ -97,7 +98,7 @@ Please follow this checklist when filing an issue which will helps us investigat
         ```
       - Kubernetes Install with RKE Add-On
 
-        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_rancher-cluster.yml` if the Rancher server is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
+        > **Note:** Make sure you configured the correct kubeconfig (for example, `export KUBECONFIG=$PWD/kube_config_cluster.yml` if the Rancher server is installed on a Kubernetes cluster) or are using the embedded kubectl via the UI.
 
         ```
         kubectl -n cattle-system \

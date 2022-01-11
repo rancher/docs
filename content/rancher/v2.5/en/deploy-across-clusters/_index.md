@@ -1,6 +1,8 @@
 ---
 title: Deploying Applications across Clusters
 weight: 12
+aliases:
+  - /rancher/v2.x/en/deploy-across-clusters/
 ---
 ### Fleet
 

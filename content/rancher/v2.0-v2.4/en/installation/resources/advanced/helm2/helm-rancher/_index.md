@@ -3,6 +3,7 @@ title: "4.  Install Rancher"
 weight: 200
 aliases:
   - /rancher/v2.0-v2.4/en/installation/options/helm2/helm-rancher
+  - /rancher/v2.x/en/installation/resources/advanced/helm2/helm-rancher/
 ---
 
 Rancher installation is managed using the Helm package manager for Kubernetes.  Use `helm` to install the prerequisite and charts to install Rancher.

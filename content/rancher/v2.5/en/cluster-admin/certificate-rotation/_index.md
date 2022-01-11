@@ -1,6 +1,8 @@
 ---
 title: Certificate Rotation
 weight: 2040
+aliases:
+  - /rancher/v2.x/en/cluster-admin/certificate-rotation/
 ---
 
 > **Warning:** Rotating Kubernetes certificates may result in your cluster being temporarily unavailable as components are restarted. For production environments, it's recommended to perform this action during a maintenance window.
@@ -10,7 +12,8 @@ By default, Kubernetes clusters require certificates and Rancher launched Kubern
 Certificates can be rotated for the following services:
 
 - etcd
-- kubelet
+- kubelet (node certificate)
+- kubelet (serving certificate, if [enabled]({{<baseurl>}}/rke/latest/en/config-options/services/#kubelet-options))
 - kube-apiserver
 - kube-proxy
 - kube-scheduler

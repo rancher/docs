@@ -1,6 +1,8 @@
 ---
 title: Nodes and Node Pools
 weight: 2030
+aliases:
+  - /rancher/v2.x/en/cluster-admin/nodes/
 ---
 
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/) to provision the cluster, there are different node options available.
@@ -40,11 +42,11 @@ The following table lists which node options are available for each type of clus
 | [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                          |                  |                     |                     |                    | Download SSH key in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     | ✓                   |                    | Scale the number of nodes in the node pool up or down.               |
 
-[1]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
-[2]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
-[3]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
-[4]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
-[5]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
+[1]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/
+[2]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes/
+[3]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/
+[4]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/
+[5]: {{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/registered-clusters/
 
 \* Delete option accessible via View API
 
@@ -175,19 +177,6 @@ You can label nodes to be ignored by using a setting in the Rancher UI, or by us
 
 > **Note:** There is an [open issue](https://github.com/rancher/rancher/issues/24172) in which nodes labeled to be ignored can get stuck in an updating state.
 
-### Labeling Nodes to be Ignored with the Rancher UI
-
-To add a node that is ignored by Rancher,
-
-1. From the **Global** view, click the **Settings** tab.
-1. Go to the `ignore-node-name` setting and click **&#8942; > Edit.**
-1. Enter a name that Rancher will use to ignore nodes. All nodes with this name will be ignored.
-1. Click **Save.**
-
-**Result:** Rancher will not wait to register nodes with this name. In the UI, the node will displayed with a grayed-out status. The node is still part of the cluster and can be listed with `kubectl`.
-
-If the setting is changed afterward, the ignored nodes will continue to be hidden.
-
 ### Labeling Nodes to be Ignored with kubectl
 
 To add a node that will be ignored by Rancher, use `kubectl` to create a node that has the following label:
@@ -202,4 +191,4 @@ If the label is added before the node is added to the cluster, the node will not
 
 If the label is added after the node is added to a Rancher cluster, the node will not be removed from the UI.
 
-If you delete the node from the Rancher server using the Rancher UI or API, the node will not be removed from the cluster if the `nodeName` is listed in the Rancher settings under `ignore-node-name`.
+If you delete the node from the Rancher server using the Rancher UI or API, the node will not be removed from the cluster if the `nodeName` is listed in the Rancher settings in the Rancher API under `v3/settings/ignore-node-name`.

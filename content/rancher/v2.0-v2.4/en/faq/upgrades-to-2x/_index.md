@@ -1,6 +1,8 @@
 ---
 title: Questions about Upgrading to Rancher v2.x
 weight: 1
+aliases:
+  - /rancher/v2.x/en/faq/upgrades-to-2x/
 ---
 
 This page contains frequently asked questions about the changes between Rancher v1.x and v2.x, and how to upgrade from Rancher v1.x to v2.x.

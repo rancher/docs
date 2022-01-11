@@ -6,6 +6,7 @@ aliases:
   - /rancher/v2.5/en/concepts/clusters/
   - /rancher/v2.5/en/concepts/clusters/cluster-providers/
   - /rancher/v2.5/en/tasks/clusters/
+  - /rancher/v2.x/en/cluster-provisioning/
 ---
 
 Rancher simplifies the creation of clusters by allowing you to create them through the Rancher UI rather than more complex alternatives. Rancher provides multiple options for launching a cluster. Use the option that best fits your use case.
@@ -24,7 +25,6 @@ This section covers the following topics:
   - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
   - [Launching Kubernetes on Existing Custom Nodes](#launching-kubernetes-on-existing-custom-nodes)
 - [Registering Existing Clusters](#registering-existing-clusters)
-- [Importing Existing Clusters](#importing-existing-clusters)
 
   <!-- /TOC -->
 

@@ -110,3 +110,11 @@ $ echo $SSH_AUTH_SOCK
 ### Add-ons Job Timeout
 
 You can define [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/) to be deployed after the Kubernetes cluster comes up, which uses Kubernetes [jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/). RKE will stop attempting to retrieve the job status after the timeout, which is in seconds. The default timeout value is `30` seconds.
+
+### cri-dockerd
+
+Kubernetes will remove code in the kubelet that interacts with Docker (dockershim) in a future Kubernetes release. For more information, see [Dockershim Deprecation FAQ: When will dockershim be removed?](https://kubernetes.io/blog/2020/12/02/dockershim-faq/#when-will-dockershim-be-removed). The component that replaces this code is called `cri-dockerd` and can be enabled using the following configuration:
+
+```
+enable_cri_dockerd: true
+```

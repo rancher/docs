@@ -1,6 +1,8 @@
 ---
 title: Technical
 weight: 8006
+aliases:
+  - /rancher/v2.x/en/faq/technical/
 ---
 
 ### How can I reset the administrator password?
@@ -14,7 +16,7 @@ New password for default administrator (user-xxxxx):
 
 Kubernetes install (Helm):
 ```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ KUBECONFIG=./kube_config_cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- reset-password
 New password for default administrator (user-xxxxx):
 <new_password>
@@ -33,7 +35,7 @@ New password for default administrator (user-xxxxx):
 
 Kubernetes install (Helm):
 ```
-$ KUBECONFIG=./kube_config_rancher-cluster.yml
+$ KUBECONFIG=./kube_config_cluster.yml
 $ kubectl --kubeconfig $KUBECONFIG -n cattle-system exec $(kubectl --kubeconfig $KUBECONFIG -n cattle-system get pods -l app=rancher | grep '1/1' | head -1 | awk '{ print $1 }') -- ensure-default-admin
 New password for default administrator (user-xxxxx):
 <new_password>
@@ -171,3 +173,8 @@ In Kubernetes v1.13, the `TaintBasedEvictions` feature is enabled by default. Se
 ### Can I use keyboard shortcuts in the UI?
 
 Yes, most parts of the UI can be reached using keyboard shortcuts. For an overview of the available shortcuts, press `?` anywhere in the UI.
+
+
+### What does `Unknown schema for type:` errors followed by something like `catalog.cattle.io.operation` mean when trying to modify an App?
+
+This error occurs when Kubernetes can not find the CRD mentioned.  The vast majority of the time these are a result of missing RBAC permissions.  Try with an admin user and if this works, add permissions for the resource mentioned by the error (ie. `Get`, `List`, `Patch` as needed).

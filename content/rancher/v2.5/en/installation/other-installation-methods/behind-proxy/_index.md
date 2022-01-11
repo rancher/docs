@@ -1,6 +1,8 @@
 ---
 title: Installing Rancher behind an HTTP Proxy
 weight: 4
+aliases:
+  - /rancher/v2.x/en/installation/other-installation-methods/behind-proxy/
 ---
 
 In a lot of enterprise environments, servers or VMs running on premise do not have direct Internet access, but must connect to external services through a HTTP(S) proxy for security reasons. This tutorial shows step by step how to set up a highly available Rancher installation in such an environment.

@@ -3,6 +3,7 @@ title: '3. Install Kubernetes (Skip for Docker Installs)'
 weight: 300
 aliases:
   - /rancher/v2.5/en/installation/air-gap-high-availability/install-kube
+  - /rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/
 ---
 
 > Skip this section if you are installing Rancher on a single node with Docker.
@@ -208,7 +209,7 @@ rke up --config ./rancher-cluster.yml
 Save a copy of the following files in a secure location:
 
 - `rancher-cluster.yml`: The RKE cluster configuration file.
-- `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
+- `kube_config_cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
 - `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains the current state of the cluster including the RKE configuration and the certificates.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
 {{% /tab %}}
 {{% /tabs %}}

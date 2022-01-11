@@ -1,6 +1,8 @@
 ---
 title: Namespaces
 weight: 2520
+aliases:
+  - /rancher/v2.x/en/project-admin/namespaces/
 ---
 
 Within Rancher, you can further divide projects into different [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/), which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the `default` namespace, you can use multiple namespaces to isolate applications and resources.
@@ -12,7 +14,6 @@ Resources that you can assign directly to namespaces include:
 - [Workloads]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/workloads/)
 - [Load Balancers/Ingress]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/load-balancers-and-ingress/)
 - [Service Discovery Records]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/service-discovery/)
-- [Persistent Volume Claims]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/volumes-and-storage/persistent-volume-claims/)
 - [Certificates]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/certificates/)
 - [ConfigMaps]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/configmaps/)
 - [Registries]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/registries/)
@@ -35,7 +36,7 @@ Create a new namespace to isolate apps and resources in a project.
 
 1. From the main menu, select **Namespace**. The click **Add Namespace**.
 
-1. **Optional:** If your project has [Resource Quotas]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/projects-and-namespaces/resource-quotas) in effect, you can override the default resource **Limits** (which places a cap on the resources that the namespace can consume).  
+1. **Optional:** If your project has [Resource Quotas]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas) in effect, you can override the default resource **Limits** (which places a cap on the resources that the namespace can consume).  
 
 1. Enter a **Name** and then click **Create**.
 
@@ -54,7 +55,7 @@ Cluster admins and members may occasionally need to move a namespace to another 
     >**Notes:**
     >
     >- Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
-    >- You cannot move a namespace into a project that already has a [resource quota]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/projects-and-namespaces/resource-quotas/) configured.
+    >- You cannot move a namespace into a project that already has a [resource quota]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas/) configured.
     >- If you move a namespace from a project that has a quota set to a project with no quota set, the quota is removed from the namespace.
 
 1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.
@@ -65,4 +66,4 @@ Cluster admins and members may occasionally need to move a namespace to another 
 
 You can always override the namespace default limit to provide a specific namespace with access to more (or less) project resources.
 
-For more information, see how to [edit namespace resource quotas]({{<baseurl>}}/rancher/v2.5/en/project-admin//resource-quotas/override-namespace-default/).
+For more information, see how to [edit namespace resource quotas]({{<baseurl>}}/rancher/v2.5/en/project-admin/resource-quotas/override-namespace-default/).

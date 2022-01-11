@@ -84,6 +84,10 @@ _Project roles_ are roles that can be used to grant users access to a project. T
 
     These users can manage project-scoped resources like namespaces and workloads, but cannot manage other project members.
 
+    >**Note:**
+    >
+    >By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
+
 - **Read Only:**
 
     These users can view everything in the project but cannot create, update, or delete anything.

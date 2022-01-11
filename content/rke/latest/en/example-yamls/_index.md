@@ -30,16 +30,20 @@ nodes:
       role:
         - controlplane
         - etcd
-      ssh_key_path: /home/user/.ssh/id_rsa
       port: 2222
+      docker_socket: /var/run/docker.sock
     - address: 2.2.2.2
       user: ubuntu
       role:
         - worker
+      ssh_key_path: /home/user/.ssh/id_rsa
       ssh_key: |-
         -----BEGIN RSA PRIVATE KEY-----
 
         -----END RSA PRIVATE KEY-----
+      ssh_cert_path: /home/user/.ssh/test-key-cert.pub
+      ssh_cert: |-
+        ssh-rsa-cert-v01@openssh.com AAAAHHNzaC1yc2EtY2VydC12MDFAb3Bl....
     - address: example.com
       user: ubuntu
       role:
@@ -48,10 +52,22 @@ nodes:
       internal_address: 192.168.1.6
       labels:
         app: ingress
+      taints:
+        - key: test-key
+          value: test-value
+          effect: NoSchedule
 
 # If set to true, RKE will not fail when unsupported Docker version
 # are found
 ignore_docker_version: false
+
+# Enable running cri-dockerd
+# Up to Kubernetes 1.23, kubelet contained code called dockershim 
+# to support Docker runtime. The replacement is called cri-dockerd 
+# and should be enabled if you want to keep using Docker as your
+# container runtime
+# Only available to enable in Kubernetes 1.21 and higher
+enable_cri_dockerd: true
 
 # Cluster level SSH private key
 # Used if no ssh information is set for the node
@@ -132,6 +148,9 @@ system_images:
 
 services:
     etcd:
+      # Custom uid/guid for etcd directory and files
+      uid: 52034
+      gid: 52034
       # if external etcd is used
       # path: /etcdcluster
       # external_urls:
@@ -159,6 +178,60 @@ services:
       # Expose a different port range for NodePort services
       service_node_port_range: 30000-32767    
       pod_security_policy: false
+      # Encrypt secret data at Rest
+      # Available as of v0.3.1
+      secrets_encryption_config:
+        enabled: true
+        custom_config:
+          apiVersion: apiserver.config.k8s.io/v1
+          kind: EncryptionConfiguration
+          resources:
+          - resources:
+            - secrets
+            providers:
+            - aescbc:
+                keys:
+                - name: k-fw5hn
+                  secret: RTczRjFDODMwQzAyMDVBREU4NDJBMUZFNDhCNzM5N0I=
+            - identity: {}
+      # Enable audit logging
+      # Available as of v1.0.0
+      audit_log:
+        enabled: true
+        configuration:
+          max_age: 6
+          max_backup: 6
+          max_size: 110
+          path: /var/log/kube-audit/audit-log.json
+          format: json
+          policy:
+            apiVersion: audit.k8s.io/v1 # This is required.
+            kind: Policy
+            omitStages:
+              - "RequestReceived"
+            rules:
+              # Log pod changes at RequestResponse level
+              - level: RequestResponse
+                resources:
+                - group: ""
+                  # Resource "pods" doesn't match requests to any subresource of pods,
+                  # which is consistent with the RBAC policy.
+                  resources: ["pods"]
+      # Using the EventRateLimit admission control enforces a limit on the number of events
+      # that the API Server will accept in a given time period
+      # Available as of v1.0.0
+      event_rate_limit:
+        enabled: true
+        configuration:
+          apiVersion: eventratelimit.admission.k8s.io/v1alpha1
+          kind: Configuration
+          limits:
+          - type: Server
+            qps: 6000
+            burst: 30000
+      # Enable AlwaysPullImages Admission controller plugin
+      # Available as of v0.2.0
+      always_pull_images: false
       # Add additional arguments to the kubernetes API server
       # This WILL OVERRIDE any existing defaults
       extra_args:
@@ -178,6 +251,17 @@ services:
       # IP range for any services created on Kubernetes
       # This must match the service_cluster_ip_range in kube-api
       service_cluster_ip_range: 10.43.0.0/16
+      # Add additional arguments to the kubernetes API server
+      # This WILL OVERRIDE any existing defaults
+      extra_args:
+        # Set the level of log output to debug-level
+        v: 4
+        # Enable RotateKubeletServerCertificate feature gate
+        feature-gates: RotateKubeletServerCertificate=true
+        # Enable TLS Certificates management
+        # https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
+        cluster-signing-cert-file: "/etc/kubernetes/ssl/kube-ca.pem"
+        cluster-signing-key-file: "/etc/kubernetes/ssl/kube-ca-key.pem"
     kubelet:
       # Base domain for the cluster
       cluster_domain: cluster.local
@@ -185,15 +269,28 @@ services:
       cluster_dns_server: 10.43.0.10
       # Fail if swap is on
       fail_swap_on: false
+      # Configure pod-infra-container-image argument
+      pod-infra-container-image: "k8s.gcr.io/pause:3.2"
       # Generate a certificate signed by the kube-ca Certificate Authority
       # for the kubelet to use as a server certificate
+      # Available as of v1.0.0
       generate_serving_certificate: true
-      # Set max pods to 250 instead of default 110
       extra_args:
+        # Set max pods to 250 instead of default 110
         max-pods: 250
+        # Enable RotateKubeletServerCertificate feature gate
+        feature-gates: RotateKubeletServerCertificate=true
       # Optionally define additional volume binds to a service
       extra_binds:
         - "/usr/libexec/kubernetes/kubelet-plugins:/usr/libexec/kubernetes/kubelet-plugins"
+    scheduler:
+      extra_args:
+        # Set the level of log output to debug-level
+        v: 4
+    kubeproxy:
+      extra_args:
+        # Set the level of log output to debug-level
+        v: 4
 
 # Currently, only authentication strategy supported is x509.
 # You can optionally create additional SANs (hostnames or IPs) to
@@ -223,19 +320,69 @@ addon_job_timeout: 30
 
 # Specify network plugin-in (canal, calico, flannel, weave, or none)
 network:
-    plugin: canal
+  plugin: canal
+  # Specify MTU
+  mtu: 1400
+  options:
+    # Configure interface to use for Canal
+    canal_iface: eth1
+    canal_flannel_backend_type: vxlan
+    # Available as of v1.2.6
+    canal_autoscaler_priority_class_name: system-cluster-critical
+    canal_priority_class_name: system-cluster-critical
+  # Available as of v1.2.4
+  tolerations:
+  - key: "node.kubernetes.io/unreachable"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+  - key: "node.kubernetes.io/not-ready"
+    operator: "Exists"
+    effect: "NoExecute"
+    tolerationseconds: 300
+  # Available as of v1.1.0
+  update_strategy:
+    strategy: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 6
 
 # Specify DNS provider (coredns or kube-dns)
 dns:
-    provider: coredns
+  provider: coredns
+  # Available as of v1.1.0
+  update_strategy:
+    strategy: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 20%
+      maxSurge: 15%
+  linear_autoscaler_params:
+    cores_per_replica: 0.34
+    nodes_per_replica: 4
+    prevent_single_point_failure: true
+    min: 2
+    max: 3
+
+# Specify monitoring provider (metrics-server)
+monitoring:
+  provider: metrics-server
+  # Available as of v1.1.0
+  update_strategy:
+    strategy: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 8
 
 # Currently only nginx ingress provider is supported.
 # To disable ingress controller, set `provider: none`
 # `node_selector` controls ingress placement and is optional
 ingress:
-    provider: nginx
-    node_selector:
-      app: ingress
+  provider: nginx
+  node_selector:
+    app: ingress
+  # Available as of v1.1.0
+  update_strategy:
+    strategy: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 5
       
 # All add-on manifests MUST specify a namespace
 addons: |-

@@ -1,6 +1,8 @@
 ---
 title: Resource Quota Type Reference
 weight: 4
+aliases:
+  - /rancher/v2.x/en/project-admin/resource-quotas/quota-type-reference/
 ---
 
 When you create a resource quota, you are configuring the pool of resources available to the project. You can set the following resource limits for the following resource types.

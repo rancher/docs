@@ -5,6 +5,7 @@ aliases:
   - /rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup/enable-istio-in-cluster
   - /rancher/v2.0-v2.4/en/istio/legacy/setup/enable-istio-in-cluster
   - /rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup/enable-istio-in-cluster
+  - /rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/enable-istio-in-cluster/
 ---
 
 This cluster uses the default Nginx controller to allow traffic into the cluster.
