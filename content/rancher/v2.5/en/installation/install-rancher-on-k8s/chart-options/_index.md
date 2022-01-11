@@ -124,7 +124,6 @@ To customize or use a different ingress with Rancher server you can set your own
 Example on setting a custom certificate issuer:
 
 ```plain
---set ingress.tls.source=secret
 --set ingress.extraAnnotations.'cert-manager\.io/cluster-issuer'=issuer-name
 ```
 
