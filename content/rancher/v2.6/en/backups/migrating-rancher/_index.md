@@ -89,7 +89,7 @@ spec:
 1. Then apply the resource:
     ```
     kubectl apply -f migrationResource.yaml 
-    ```  
+    ```
 
 ### 3. Install cert-manager
 
