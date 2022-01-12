@@ -3,7 +3,7 @@ title: Configuring a Global Default Private Registry
 weight: 40
 ---
 
-You might want to use a private Docker registry to share your custom base images within your organization. With a private registry, you can keep a private, consistent, and centralized source of truth for the container images that are used in your clusters.
+You might want to use a private container registry to share your custom base images within your organization. With a private registry, you can keep a private, consistent, and centralized source of truth for the container images that are used in your clusters.
 
 There are two main ways to set up private registries in Rancher: by setting up the global default registry through the **Settings** tab in the global view, and by setting up a private registry in the advanced options in the cluster-level settings. The global default registry is intended to be used for air-gapped setups, for registries that do not require credentials. The cluster-level private registry is intended to be used in all setups in which the private registry requires credentials.
 
