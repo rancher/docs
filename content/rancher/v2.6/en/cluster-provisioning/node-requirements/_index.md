@@ -30,6 +30,13 @@ For information on how to install Docker, refer to the official [Docker document
 
 Some distributions of Linux derived from RHEL, including Oracle Linux, may have default firewall rules that block communication with Helm. We recommend disabling firewalld. For Kubernetes 1.19, firewalld must be turned off.
 
+>**Note:** In RHEL 8.4, two extra services are included on the NetworkManager: `nm-cloud-setup.service` and `nm-cloud-setup.timer`. These services add a routing table that interferes with the CNI plugin's configuration. If these services are enabled, you must disable them using the command below, and then reboot the node to restore connectivity:
+>  
+>  ```
+   systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
+   reboot
+   ```
+
 ### SUSE Linux Nodes
 
 SUSE Linux may have a firewall that blocks all ports by default. In that situation, follow [these steps]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/ports/#opening-suse-linux-ports) to open the ports needed for adding a host to a custom cluster.

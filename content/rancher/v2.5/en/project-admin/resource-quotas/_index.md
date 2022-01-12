@@ -42,4 +42,4 @@ Edit [resource quotas]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/projects-and-
 
 1. Click **Create**.
 
-**Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, Rancher validates that the project can accommodate the namespace. If the project can't allocate the resources, Rancher won't let you save your changes.
+**Result:** The resource quota is applied to your project and namespaces. When you add more namespaces in the future, Rancher validates that the project can accommodate the namespace. If the project can't allocate the resources, you may still create namespaces, but they will be given a resource quota of 0. Subsequently, Rancher will not allow you to create any resources restricted by this quota.
