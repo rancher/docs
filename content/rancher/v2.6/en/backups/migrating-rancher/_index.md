@@ -11,6 +11,8 @@ These instructions assume you have [created a backup](../back-up-rancher) and yo
 
 It is required to use the same hostname that was set as the server URL in the first cluster.
 
+>**Note:** To change the Rancher URL for migration, you'll need to update the agents on the downstream cluster using the [`cluster-agent-tool`](https://github.com/rancherlabs/support-tools/tree/master/cluster-agent-tool). If not done, downstream clusters will show as unavailable in the cluster management page of the UI, and you won't be able to click inside the cluster or go to <b>Cluster Explore</b>.
+
 Rancher version must be v2.5.0 and up
 
 Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes clusters such as Amazon EKS clusters. For help installing Kubernetes, refer to the documentation of the Kubernetes distribution. One of Rancher's Kubernetes distributions may also be used:
@@ -36,7 +38,10 @@ helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-sy
 >
 > - Note that when making or restoring backups for v1.22, the Rancher version and the local cluster's Kubernetes version should be the same. The Kubernetes version should be considered when restoring a backup since the supported apiVersion in the cluster and in the backup file could be different.
 
-If you are using an S3 store as the backup source, and need to use your S3 credentials for restore, create a secret in this cluster using your S3 credentials. The Secret data must have two keys, `accessKey` and `secretKey` containing the s3 credentials like this:
+If you are using an S3 store as the backup source and need to use your S3 credentials for restore, create a secret in this cluster using your S3 credentials. The Secret data must have two keys - `accessKey` and `secretKey` - that contain the s3 credentials.
+
+>**Warning:** The values `accessKey` and `secretKey` in the example below must be base64-encoded first when creating the object directly. If not encoded first, the pasted values will cause errors when you are attempting to backup or restore.
+
 
 ```yaml
 apiVersion: v1
@@ -49,7 +54,7 @@ stringData:
   secretKey: <Enter your base64-encoded secret key>
 ```
 
-This secret can be created in any namespace, with the above example it will get created in the default namespace
+This secret can be created in any namespace, with the above example it will get created in the default namespace.
 
 In the Restore custom resource, `prune` must be set to false. 
 
@@ -88,6 +93,12 @@ spec:
     ```
     kubectl apply -f migrationResource.yaml 
     ```
+
+>**EKS Cluster security group caveats:**
+>
+>- During restore or migration, you must regenerate your kubeconfig or API tokens. 
+>
+>- You must also configure the HTTPS 443 connectivity between the Rancher Server and the downstream clusters during a restore.    
 
 ### 3. Install cert-manager
 
