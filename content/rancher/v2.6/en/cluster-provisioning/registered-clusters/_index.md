@@ -168,7 +168,7 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
 >
 > - The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
 >
-> - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
+> - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of the ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
 
 ###### **Manual steps to be taken on the control plane of each downstream cluster to enable ACE:**
 
@@ -197,10 +197,14 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
         kube-apiserver-arg:
             - authentication-token-webhook-config-file=/var/lib/rancher/{rke2,k3s}/kube-api-authn-webhook.yaml
         
-1. Finally, run the following commands:
+1. Run the following commands:
 
         sudo systemctl stop {rke2,k3s}-server
         sudo systemctl start {rke2,k3s}-server
+
+1. Finally, you **must** go back to the Rancher UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.  
+      
+      >**Note:** The <b>FQDN</b> field is optional, and if one is entered, it should point to the downstream cluster. Certificate information is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, make no changes to the <b>CA Certificates</b> field.
 
 # Annotating Registered Clusters
 
