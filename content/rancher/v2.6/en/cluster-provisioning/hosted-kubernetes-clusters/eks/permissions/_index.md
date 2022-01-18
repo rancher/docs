@@ -24,6 +24,7 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
                 "ec2:RunInstances",
                 "ec2:RevokeSecurityGroupIngress",
                 "ec2:RevokeSecurityGroupEgress",
+                "ec2:DescribeRegions",
                 "ec2:DescribeVpcs",
                 "ec2:DescribeTags",
                 "ec2:DescribeSubnets",
