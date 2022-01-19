@@ -71,6 +71,7 @@ For more information, see the [Canal GitHub Page.](https://github.com/projectcal
 Flannel is a simple and easy way to configure L3 network fabric designed for Kubernetes. Flannel runs a single binary agent named flanneld on each host, which is responsible for allocating a subnet lease to each host out of a larger, preconfigured address space. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data (such as the host's public IP). Packets are forwarded using one of several backend mechanisms, with the default encapsulation being [VXLAN](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#vxlan).
 
 Encapsulated traffic is unencrypted by default. Flannel provides two solutions for encryption:
+
 * [IPSec](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers. It is an experimental backend for encryption.
 * [WireGuard](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#wireguard), which is a more faster-performing alternative to strongSwan.
 
@@ -133,6 +134,7 @@ The following table summarizes the different features available for each CNI net
 | Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | Yes | No |
 | Calico | Encapsulated (VXLAN,IPIP) OR Unencapsulated | Yes | Yes | Yes | Etcd and K8S API | Yes | Yes |
 | Weave | Encapsulated | Yes | Yes | Yes | No | Yes | Yes |
+| Cilium | Encapsulated (VXLAN) | Yes | Yes | Yes | Etcd and K8S API | Yes | Yes |
 
 - Network Model: Encapsulated or unencapsulated. For more information, see [What Network Models are Used in CNI?](#what-network-models-are-used-in-cni)
 
