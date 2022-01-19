@@ -130,11 +130,11 @@ The following table summarizes the different features available for each CNI net
 
 | Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | Yes | Yes |
-| Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | Yes | No |
-| Calico | Encapsulated (VXLAN,IPIP) OR Unencapsulated | Yes | Yes | Yes | Etcd and K8S API | Yes | Yes |
+| Canal | Encapsulated (VXLAN) | No | Yes | No | K8s API | Yes | Yes |
+| Flannel | Encapsulated (VXLAN) | No | No | No | K8s API | Yes | No |
+| Calico | Encapsulated (VXLAN,IPIP) OR Unencapsulated | Yes | Yes | Yes | Etcd and K8s API | Yes | Yes |
 | Weave | Encapsulated | Yes | Yes | Yes | No | Yes | Yes |
-| Cilium | Encapsulated (VXLAN) | Yes | Yes | Yes | Etcd and K8S API | Yes | Yes |
+| Cilium | Encapsulated (VXLAN) | Yes | Yes | Yes | Etcd and K8s API | Yes | Yes |
 
 - Network Model: Encapsulated or unencapsulated. For more information, see [What Network Models are Used in CNI?](#what-network-models-are-used-in-cni)
 
