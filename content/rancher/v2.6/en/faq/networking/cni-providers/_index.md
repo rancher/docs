@@ -16,7 +16,7 @@ For more information visit [CNI GitHub project](https://github.com/containernetw
 
 ### What Network Models are Used in CNI?
 
-CNI network providers implement their network fabric using either an encapsulated network model such as Virtual Extensible Lan ([VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan)) or an unencapsulated network model such as Border Gateway Protocol ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)).
+CNI network providers implement their network fabric using either an encapsulated network model such as Virtual Extensible Lan ([VXLAN](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#vxlan)) or an unencapsulated network model such as Border Gateway Protocol ([BGP](https://en.wikipedia.org/wiki/Border_Gateway_Protocol)).
 
 #### What is an Encapsulated Network?
 
@@ -26,7 +26,7 @@ In simple terms, this network model generates a kind of network bridge extended 
 
 This network model is used when an extended L2 bridge is preferred. This network model is sensitive to L3 network latencies of the Kubernetes workers. If datacenters are in distinct geolocations, be sure to have low latencies between them to avoid eventual network segmentation.
 
-CNI network providers using this network model include Flannel, Canal, and Weave.
+CNI network providers using this network model include Flannel, Canal, Weave or Cilium. Calico by default is not using this model but it could be configured.
 
 ![Encapsulated Network]({{<baseurl>}}/img/rancher/encapsulated-network.png)
 
@@ -38,13 +38,13 @@ In simple terms, this network model generates a kind of network router extended 
 
 This network model is used when a routed L3 network is preferred. This mode dynamically updates routes at the OS level for Kubernetes workers. It's less sensitive to latency.
 
-CNI network providers using this network model include Calico and Romana.
+CNI network providers using this network model include Calico. Cilium can also be configured with this model although it is not the default mode.
 
 ![Unencapsulated Network]({{<baseurl>}}/img/rancher/unencapsulated-network.png)
 
 ### What CNI Providers are Provided by Rancher?
 
-Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave. You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
+Out-of-the-box, Rancher provides the following CNI network providers for RKE Kubernetes clusters: Canal, Flannel and Weave. For RKE2 Kubernetes clusters: Canal, Calico and Cilium. You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
 
 #### Canal
 
@@ -64,23 +64,25 @@ For more information, see the [Canal GitHub Page.](https://github.com/projectcal
 
 ![Flannel Logo]({{<baseurl>}}/img/rancher/flannel-logo.png)
 
-Flannel is a simple and easy way to configure L3 network fabric designed for Kubernetes. Flannel runs a single binary agent named flanneld on each host, which is responsible for allocating a subnet lease to each host out of a larger, preconfigured address space. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data (such as the host's public IP). Packets are forwarded using one of several backend mechanisms, with the default encapsulation being [VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan).
+Flannel is a simple and easy way to configure L3 network fabric designed for Kubernetes. Flannel runs a single binary agent named flanneld on each host, which is responsible for allocating a subnet lease to each host out of a larger, preconfigured address space. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data (such as the host's public IP). Packets are forwarded using one of several backend mechanisms, with the default encapsulation being [VXLAN](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#vxlan).
 
-Encapsulated traffic is unencrypted by default. Therefore, flannel provides an experimental backend for encryption, [IPSec](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers.
+Encapsulated traffic is unencrypted by default. Flannel provides two solutions for encryption:
+* [IPSec](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers. It is considered experimental
+* [Wireguard](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#wireguard), which is a more performing alternative to strongswan
 
 Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
 
 ![Flannel Diagram]({{<baseurl>}}/img/rancher/flannel-diagram.png)
 
-For more information, see the [Flannel GitHub Page](https://github.com/coreos/flannel).
+For more information, see the [Flannel GitHub Page](https://github.com/flannel-io/flannel).
 
 #### Calico
 
 ![Calico Logo]({{<baseurl>}}/img/rancher/calico-logo.png)
 
-Calico enables networking and network policy in Kubernetes clusters across the cloud. Calico uses a pure, unencapsulated IP network fabric and policy engine to provide networking for your Kubernetes workloads. Workloads are able to communicate over both cloud infrastructure and on-prem using BGP.
+Calico enables networking and network policy in Kubernetes clusters across the cloud. By default, Calico uses a pure, unencapsulated IP network fabric and policy engine to provide networking for your Kubernetes workloads. Workloads are able to communicate over both cloud infrastructure and on-prem using BGP.
 
-Calico also provides a stateless IP-in-IP encapsulation mode that can be used, if necessary. Calico also offers policy isolation, allowing you to secure and govern your Kubernetes workloads using advanced ingress and egress policies.
+Calico also provides a stateless IP-in-IP or VXLAN encapsulation mode that can be used, if necessary. Calico also offers policy isolation, allowing you to secure and govern your Kubernetes workloads using advanced ingress and egress policies.
 
 Kubernetes workers should open TCP port `179` (BGP). See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
 
@@ -110,10 +112,11 @@ The following table summarizes the different features available for each CNI net
 
 | Provider | Network Model | Route Distribution | Network Policies | Mesh | External Datastore | Encryption | Ingress/Egress Policies |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | No | Yes |
-| Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | No | No |
-| Calico | Encapsulated (VXLAN,IPIP) OR Unencapsulated | Yes | Yes | Yes | Etcd and K8S API | No | Yes |
+| Canal | Encapsulated (VXLAN) | No | Yes | No | K8S API | Yes | Yes |
+| Flannel | Encapsulated (VXLAN) | No | No | No | K8S API | Yes | No |
+| Calico | Encapsulated (VXLAN,IPIP) OR Unencapsulated | Yes | Yes | Yes | Etcd and K8S API | Yes | Yes |
 | Weave | Encapsulated | Yes | Yes | Yes | No | Yes | Yes |
+| Cilium | Encapsulated (VXLAN) | Yes | Yes | Yes | Etcd and K8S API | Yes | Yes |
 
 - Network Model: Encapsulated or unencapsulated. For more information, see [What Network Models are Used in CNI?](#what-network-models-are-used-in-cni)
 
@@ -129,16 +132,26 @@ The following table summarizes the different features available for each CNI net
 
 - Ingress/Egress Policies: This feature allows you to manage routing control for both Kubernetes and non-Kubernetes communications.
 
+
+### Cilium
+
+![Cilium Logo]({{<baseurl>}}/img/rancher/cilium-logo.png)
+
+Cilium enables networking and network policies (L3, L4 and L7) in Kubernetes. Cilium by default uses eBPF technologies to route packets inside the node and vxlan to send packets to other nodes, unencapsulated techniques can also be configured. 
+
+Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4140` for health checks. Besides ICMP 8/0 must be enabled for health checks too. Fro more information check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements)
+
 #### CNI Community Popularity
 
-The following table summarizes different GitHub metrics to give you an idea of each project's popularity and activity. This data was collected in January 2020.
+The following table summarizes different GitHub metrics to give you an idea of each project's popularity and activity. This data was collected in January 2022.
 
 | Provider | Project | Stars | Forks | Contributors |
 | ---- | ---- | ---- | ---- | ---- |
-| Canal | https://github.com/projectcalico/canal | 614 | 89 | 19 |
-| flannel | https://github.com/coreos/flannel | 4977 | 1.4k | 140 |
-| Calico | https://github.com/projectcalico/calico | 1534 | 429 | 135 |
-| Weave | https://github.com/weaveworks/weave/ | 5737 | 559 | 73 |
+| Canal | https://github.com/projectcalico/canal | 679 | 100 | 21 |
+| flannel | https://github.com/flannel-io/flannel | 7k | 2.5k | 185 |
+| Calico | https://github.com/projectcalico/calico | 3.1k | 741 | 224 |
+| Weave | https://github.com/weaveworks/weave/ | 6.2k | 635 | 84 |
+| Cilium | https://github.com/cilium/cilium | 10.6k | 1.3k | 352 |
 
 <br/>
 
