@@ -38,7 +38,7 @@ In simple terms, this network model generates a kind of network router extended 
 
 This network model is used when a routed L3 network is preferred. This mode dynamically updates routes at the OS level for Kubernetes workers. It's less sensitive to latency.
 
-CNI network providers using this network model include Calico and Cilium. Cilium can also be configured with this model although it is not the default mode.
+CNI network providers using this network model include Calico and Cilium. Cilium may be configured with this model although it is not the default mode.
 
 ![Unencapsulated Network]({{<baseurl>}}/img/rancher/unencapsulated-network.png)
 
