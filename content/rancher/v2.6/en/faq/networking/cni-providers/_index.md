@@ -120,9 +120,9 @@ For more information, see the following pages:
 
 ![Cilium Logo]({{<baseurl>}}/img/rancher/cilium-logo.png)
 
-Cilium enables networking and network policies (L3, L4 and L7) in Kubernetes. Cilium by default uses eBPF technologies to route packets inside the node and vxlan to send packets to other nodes, unencapsulated techniques can also be configured. 
+Cilium enables networking and network policies (L3, L4, and L7) in Kubernetes. By default, Cilium uses eBPF technologies to route packets inside the node and VXLAN to send packets to other nodes. Unencapsulated techniques can also be configured. 
 
-Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4140` for health checks. Besides ICMP 8/0 must be enabled for health checks too. Fro more information check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements)
+Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4140` for health checks. In addition, ICMP 8/0 must be enabled for health checks. For more informationm check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements).
 
 ## CNI Features by Provider
 
