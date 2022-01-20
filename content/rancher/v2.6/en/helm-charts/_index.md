@@ -61,6 +61,27 @@ From the left sidebar select _"Repositories"_.
 
 These items represent helm repositories, and can be either traditional helm endpoints which have an index.yaml, or git repositories which will be cloned and can point to a specific branch. In order to use custom charts, simply add your repository here and they will become available in the Charts tab under the name of the repository.
 
+To add a private CA for Helm Chart repositories:
+
+- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:</br>
+    ```
+    [...]
+    spec:
+      caBundle:
+    MIIFXzCCA0egAwIBAgIUWNy8WrvSkgNzV0zdWRP79j9cVcEwDQYJKoZIhvcNAQELBQAwPzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRQwEgYDVQQKDAtNeU9yZywgSW5jLjENMAsGA1UEAwwEcm9vdDAeFw0yMTEyMTQwODMyMTdaFw0yNDEwMDMwODMyMT
+    ...
+    nDxZ/tNXt/WPJr/PgEB3hQdInDWYMg7vGO0Oz00G5kWg0sJ0ZTSoA10ZwdjIdGEeKlj1NlPyAqpQ+uDnmx6DW+zqfYtLnc/g6GuLLVPamraqN+gyU8CHwAWPNjZonFN9Vpg0PIk1I2zuOc4EHifoTAXSpnjfzfyAxCaZsnTptimlPFJJqAMj+FfDArGmr4=
+    [...]
+    ```
+
+- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click **Edit YAML** for the chart repo, and add the key/value pair as follows: 
+    ```
+    [...]
+    spec:
+      insecureSkipTLSVerify: true
+    [...]
+    ```
+    
 > **Note:** Helm chart repositories with authentication
 >
 > As of Rancher v2.6.3, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL. 
