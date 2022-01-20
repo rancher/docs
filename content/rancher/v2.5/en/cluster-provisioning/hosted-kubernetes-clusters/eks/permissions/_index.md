@@ -24,6 +24,7 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
                 "ec2:RunInstances",
                 "ec2:RevokeSecurityGroupIngress",
                 "ec2:RevokeSecurityGroupEgress",
+                "ec2:DescribeRegions",
                 "ec2:DescribeVpcs",
                 "ec2:DescribeTags",
                 "ec2:DescribeSubnets",
@@ -123,31 +124,6 @@ Resource targeting uses `*` as the ARN of many of the resources created cannot b
 
 ### Service Role Permissions
 
-Rancher will create a service role with the following trust policy:
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Action": "sts:AssumeRole",
-      "Principal": {
-        "Service": "eks.amazonaws.com"
-      },
-      "Effect": "Allow",
-      "Sid": ""
-    }
-  ]
-}
-```
-
-This role will also have two role policy attachments with the following policies ARNs:
-
-```
-arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
-arn:aws:iam::aws:policy/AmazonEKSServicePolicy
-```
-
 Permissions required for Rancher to create service role on users behalf during the EKS cluster creation process.
 
 ```json
@@ -182,36 +158,66 @@ Permissions required for Rancher to create service role on users behalf during t
 }
 ```
 
+When an EKS cluster is created, Rancher will create a service role with the following trust policy:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": "sts:AssumeRole",
+      "Principal": {
+        "Service": "eks.amazonaws.com"
+      },
+      "Effect": "Allow",
+      "Sid": ""
+    }
+  ]
+}
+```
+
+This role will also have two role policy attachments with the following policies ARNs:
+
+```
+arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
+arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+```
+
 ### VPC Permissions
 
 Permissions required for Rancher to create VPC and associated resources.
 
 ```json
 {
-  "Sid": "VPCPermissions",
-  "Effect": "Allow",
-  "Action": [
-     "ec2:ReplaceRoute",
-     "ec2:ModifyVpcAttribute",
-     "ec2:ModifySubnetAttribute",
-     "ec2:DisassociateRouteTable",
-     "ec2:DetachInternetGateway",
-     "ec2:DescribeVpcs",
-     "ec2:DeleteVpc",
-     "ec2:DeleteTags",
-     "ec2:DeleteSubnet",
-     "ec2:DeleteRouteTable",
-     "ec2:DeleteRoute",
-     "ec2:DeleteInternetGateway",
-     "ec2:CreateVpc",
-     "ec2:CreateSubnet",
-     "ec2:CreateSecurityGroup",
-     "ec2:CreateRouteTable",
-     "ec2:CreateRoute",
-     "ec2:CreateInternetGateway",
-     "ec2:AttachInternetGateway",
-     "ec2:AssociateRouteTable"
-  ],
-  "Resource": "*"
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VPCPermissions",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:ReplaceRoute",
+        "ec2:ModifyVpcAttribute",
+        "ec2:ModifySubnetAttribute",
+        "ec2:DisassociateRouteTable",
+        "ec2:DetachInternetGateway",
+        "ec2:DescribeVpcs",
+        "ec2:DeleteVpc",
+        "ec2:DeleteTags",
+        "ec2:DeleteSubnet",
+        "ec2:DeleteRouteTable",
+        "ec2:DeleteRoute",
+        "ec2:DeleteInternetGateway",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateRouteTable",
+        "ec2:CreateRoute",
+        "ec2:CreateInternetGateway",
+        "ec2:AttachInternetGateway",
+        "ec2:AssociateRouteTable"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```

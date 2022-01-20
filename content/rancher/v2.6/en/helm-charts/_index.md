@@ -5,6 +5,42 @@ weight: 11
 
 In this section, you'll learn how to manage Helm chart repositories and applications in Rancher. Helm chart repositories are managed using **Apps & Marketplace**. It uses a catalog-like system to import bundles of charts from repositories and then uses those charts to either deploy custom Helm applications or Rancher's tools such as Monitoring or Istio. Rancher tools come as pre-loaded repositories which deploy as standalone Helm charts. Any additional repositories are only added to the current cluster.
 
+### Changes in Rancher v2.6
+
+Starting in Rancher v2.6.0, a new versioning scheme for Rancher feature charts was implemented. The changes are centered around the major version of the charts and the +up annotation for upstream charts, where applicable.
+
+**Major Version:** The major version of the charts is tied to Rancher minor versions. When you upgrade to a new Rancher minor version, you should ensure that all of your **Apps & Marketplace** charts are also upgraded to the correct release line for the chart. 
+
+>**Note:** Any major versions that are less than the ones mentioned in the table below are meant for 2.5 and below only. For example, you are advised to not use <100.x.x versions of Monitoring in 2.6.x+.
+
+**Feature Charts:**
+
+| **Name** | **Supported Minimum Version** | **Supported Maximum Version** |
+| ---------------- | ------------ | ------------ |
+| external-ip-webhook | 100.0.0+up1.0.0 | 100.0.1+up1.0.1 |
+| harvester-cloud-provider | 100.0.0+up0.1.8 | 100.0.0+up0.1.8 |
+| harvester-csi-driver | 100.0.0+up0.1.9 | 100.0.0+up0.1.9 |
+| rancher-alerting-drivers | 100.0.0 | 100.0.1 |                                                                  
+| rancher-backups | 2.0.0 | 2.1.0 |
+| rancher-cis-benchmark | 2.0.0 | 2.0.2 | 
+| rancher-gatekeeper | 100.0.0+up3.5.1 | 100.0.1+up3.6.0 | 
+| rancher-istio | 100.0.0+up1.10.4 | 100.1.0+up1.11.4 |
+| rancher-logging | 100.0.0+up3.12.0 | 100.0.1+up3.15.0 |
+| rancher-longhorn | 100.0.0+up1.1.2 | 100.1.1+up1.2.3 |                                 
+| rancher-monitoring | 100.0.0+up16.6.0 | 100.1.0+up19.0.3
+| rancher-sriov (experimental) | 100.0.0+up0.1.0 | 100.0.1+up0.1.0 |                                
+| rancher-vsphere-cpi | 100.0.0 | 100.1.0+up1.0.100
+| rancher-vsphere-csi | 100.0.0 | 100.1.0+up2.3.0 |
+| rancher-wins-upgrader | 100.0.0+up0.0.1 | 100.0.0+up0.0.1 |                                                   
+
+</br>
+**Charts based on upstream:** For charts that are based on upstreams, the +up annotation should inform you of what upstream version the Rancher chart is tracking. Check the upstream version compatibility with Rancher during upgrades also.
+
+- As an example, `100.x.x+up16.6.0` for Monitoring tracks upstream kube-prometheus-stack `16.6.0` with some Rancher patches added to it.
+
+- On upgrades, ensure that you are not downgrading the version of the chart that you are using. For example, if you are using a version of Monitoring > `16.6.0` in Rancher 2.5, you should not upgrade to `100.x.x+up16.6.0`. Instead, you should upgrade to the appropriate version in the next release. 
+
+
 ### Charts
 
 From the top-left menu select _"Apps & Marketplace"_ and you will be taken to the Charts page.
@@ -25,6 +61,27 @@ From the left sidebar select _"Repositories"_.
 
 These items represent helm repositories, and can be either traditional helm endpoints which have an index.yaml, or git repositories which will be cloned and can point to a specific branch. In order to use custom charts, simply add your repository here and they will become available in the Charts tab under the name of the repository.
 
+To add a private CA for Helm Chart repositories:
+
+- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:</br>
+    ```
+    [...]
+    spec:
+      caBundle:
+    MIIFXzCCA0egAwIBAgIUWNy8WrvSkgNzV0zdWRP79j9cVcEwDQYJKoZIhvcNAQELBQAwPzELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRQwEgYDVQQKDAtNeU9yZywgSW5jLjENMAsGA1UEAwwEcm9vdDAeFw0yMTEyMTQwODMyMTdaFw0yNDEwMDMwODMyMT
+    ...
+    nDxZ/tNXt/WPJr/PgEB3hQdInDWYMg7vGO0Oz00G5kWg0sJ0ZTSoA10ZwdjIdGEeKlj1NlPyAqpQ+uDnmx6DW+zqfYtLnc/g6GuLLVPamraqN+gyU8CHwAWPNjZonFN9Vpg0PIk1I2zuOc4EHifoTAXSpnjfzfyAxCaZsnTptimlPFJJqAMj+FfDArGmr4=
+    [...]
+    ```
+
+- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click **Edit YAML** for the chart repo, and add the key/value pair as follows: 
+    ```
+    [...]
+    spec:
+      insecureSkipTLSVerify: true
+    [...]
+    ```
+    
 > **Note:** Helm chart repositories with authentication
 >
 > As of Rancher v2.6.3, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL. 
