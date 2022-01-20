@@ -16,6 +16,6 @@ When a new version of an application image is released on Docker Hub, you can up
 
     These options control how the upgrade rolls out to containers that are currently running. For example, for scalable deployments, you can choose whether you want to stop old pods before deploying new ones, or vice versa, as well as the upgrade batch size.
 
-1. Click **Upgrade**.
+1. Click **Save**.
 
 **Result:** The workload begins upgrading its containers, per your specifications. Note that scaling up the deployment or updating the upgrade/scaling policy won't result in the pods recreation.

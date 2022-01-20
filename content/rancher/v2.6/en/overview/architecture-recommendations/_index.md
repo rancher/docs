@@ -12,7 +12,7 @@ This section covers the following topics:
 - [Recommended Load Balancer Configuration for Kubernetes Installations](#recommended-load-balancer-configuration-for-kubernetes-installations)
 - [Environment for Kubernetes Installations](#environment-for-kubernetes-installations)
 - [Recommended Node Roles for Kubernetes Installations](#recommended-node-roles-for-kubernetes-installations)
-- [Architecture for an Authorized Cluster Endpoint](#architecture-for-an-authorized-cluster-endpoint)
+- [Architecture for an Authorized Cluster Endpoint (ACE)](#architecture-for-an-authorized-cluster-endpoint-ace)
 
 # Separation of Rancher and User Clusters
 
@@ -104,8 +104,10 @@ Because no additional workloads will be deployed on the Rancher server cluster, 
 
 For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.6/en/best-practices/)
 
-# Architecture for an Authorized Cluster Endpoint 
+# Architecture for an Authorized Cluster Endpoint (ACE)
 
-If you are using an [authorized cluster endpoint,]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
+If you are using an [authorized cluster endpoint (ACE),]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
 
 If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) and [API keys]({{<baseurl>}}/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) for more information.
+
+As of Rancher v2.6.3, ACE support is available for registered RKE2 and K3s clusters. To view the manual steps to perform on the downstream cluster to enable the ACE, click [here]({{<baseurl>}}/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
