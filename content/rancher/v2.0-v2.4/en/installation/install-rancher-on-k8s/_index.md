@@ -231,7 +231,7 @@ helm install rancher rancher-<CHART_REPO>/rancher \
 If you are using a Private CA signed certificate , add `--set privateCA=true` to the command:
 
 ```
-helm install rancher rancher-latest/rancher \
+helm install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=secret \
