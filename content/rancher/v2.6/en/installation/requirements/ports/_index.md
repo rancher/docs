@@ -88,7 +88,7 @@ The following tables break down the port requirements for traffic between the Ra
 | TCP | 2379 | etcd client requests |
 | TCP | 2380 | etcd peer communication |
 | TCP | 6443 | Kubernetes apiserver |
-| TCP | 8443 | Nginx Ingress's Validating Webhoook |
+| TCP | 8443 | Nginx Ingress's Validating Webhook |
 | UDP | 8472 | Canal/Flannel VXLAN overlay networking |
 | TCP | 9099 | Canal/Flannel livenessProbe/readinessProbe |
 | TCP | 10250 | Metrics server communication with all nodes |
