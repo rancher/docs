@@ -58,7 +58,7 @@ Canal is a CNI network provider that gives you the best of Flannel and Calico. I
 
 In Rancher, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
 
-Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). If using Wireguard, you should open UDP ports `51820` and `51821`. For details, refer to [the port requirements for user clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/)
+Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (health checks). If using Wireguard, you should open UDP ports `51820` and `51821`. For more details, refer to [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/).
 
 {{< img "/img/rancher/canal-diagram.png" "Canal Diagram">}}
 
@@ -107,7 +107,7 @@ Calico enables networking and network policy in Kubernetes clusters across the c
 
 Calico also provides a stateless IP-in-IP or VXLAN encapsulation mode that can be used, if necessary. Calico also offers policy isolation, allowing you to secure and govern your Kubernetes workloads using advanced ingress and egress policies.
 
-Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if using VXLAN encapsulation. Besides, TCP port `5473` is needed when using Typha. See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
+Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if using VXLAN encapsulation. In addition, TCP port `5473` is needed when using Typha. See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
 
 ![Calico Diagram]({{<baseurl>}}/img/rancher/calico-diagram.svg)
 
