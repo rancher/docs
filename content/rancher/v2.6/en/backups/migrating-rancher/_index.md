@@ -19,12 +19,17 @@ Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes 
 - [K3s Kubernetes installation docs]({{<baseurl>}}/k3s/latest/en/installation/)
 
 ### 1. Install the rancher-backup Helm chart
-Install version 2.x.x of the rancher-backup chart.
+Install version 2.x.x of the rancher-backup chart. The following assumes a connected environment with access to DockerHub:
 ```
 helm repo add rancher-charts https://charts.rancher.io
 helm repo update
 helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace --version $CHART_VERSION
 helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system --version $CHART_VERSION
+```
+</br>
+For an **air-gapped environment**, use the option below to pull the `backup-restore-operator` image from your private registry when installing the rancher-backup-crd helm chart.
+```
+--set image.repository $REGISTRY/rancher/backup-restore-operator
 ```
 
 ### 2. Restore from backup using a Restore custom resource
