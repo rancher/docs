@@ -289,6 +289,14 @@ Confirm that a Kubernetes supported version of Docker is installed on your machi
 
 This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters.
 
+---
+*NOTE regarding large nodes for Kubernetes*
+Kubernetes is engineered around the concept of horizontal scaling for redundancy so scaling vertically with large nodes can be very problematic 
+- If you must use nodes larger than 24 CPU, utilize virtualization tooling such as Harvester to subdivide the nodes.
+- There are Kubernetes, kernel, and network limitations that prohibit too many pods per node so we advise keeping to roughly 24 cores per node and the recommended 100 pods per node as a maximum unless you are deploying workloads that specifically require enormous amounts of resources (such as multi threaded heavy compute jobs) or have good reason to increase the pod limit (with an upper limit of 250).
+- Even when deploying workloads like the above, it is recommended to use a virtualization layer to facilitate less downtime/shorter reboots during upgrades and failures
+---
+  
 ### Worker Role
 
 The hardware requirements for nodes with the `worker` role mostly depend on your workloads. The minimum to run the Kubernetes node components is 1 CPU (core) and 1GB of memory. 
