@@ -299,7 +299,7 @@ Regarding CPU and memory, it is recommended that the different planes of Kuberne
 
 Kubernetes is engineered around the concept of horizontal scaling for redundancy, so scaling vertically with large nodes can be problematic if the proper minimum/maximum requirements aren’t followed. The following are tips and recommendations for large Kubernetes nodes:
 
-- If you must use nodes larger than 24 CPU, use virtualization tooling, such as what Harvester provides, to subdivide the nodes.
+- If you must use nodes larger than 24 CPU, use virtualization tooling, such as what [Harvester](https://docs.harvesterhci.io/v1.0/rancher/virtualization-management/) provides, to subdivide the nodes.
 
 - Kubernetes, kernel, and network limitations prevent having too many pods per node. You should maintain a minimum of roughly 24 cores per node and a maximum of the recommended 100 pods per node.
 
