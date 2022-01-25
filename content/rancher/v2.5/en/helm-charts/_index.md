@@ -71,6 +71,19 @@ To add a private CA for Helm Chart repositories:
     [...]
     ```
 
+> **Note:** Helm chart repositories with authentication
+>
+> As of Rancher v2.5.12, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL. 
+>
+> To use this feature for an existing Helm chart repository, click <b>⋮ > Edit YAML</b>. On the `spec` portion of the YAML file, add `disableSameOriginCheck` and set it to `true`.
+>
+> ```yaml
+[...]
+spec:
+  disableSameOriginCheck: true
+[...]
+```    
+
 ### Helm Compatibility
 
 The Cluster Explorer only supports Helm 3 compatible charts.
