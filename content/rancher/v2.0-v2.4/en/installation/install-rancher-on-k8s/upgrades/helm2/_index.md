@@ -114,7 +114,7 @@ helm upgrade --install rancher rancher-<CHART_REPO>/rancher \
 
 {{% accordion label="Option B: Reinstalling Rancher chart" %}}
 
-If you are currently running the cert-manger whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manger due to the API change in cert-manger v0.11. 
+If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11. 
 
 1. Uninstall Rancher
 

@@ -22,7 +22,7 @@ In the RancherD installation instructions, we recommend running three server nod
 
 # Certificates for the Rancher Server
 
-Rancherd does not use cert-manger to provision certs. Instead RancherD allows you to bring your own self-signed or trusted certs by storing the .pem files in `/etc/rancher/ssl/`. When doing this you should also set the `publicCA` parameter to `true` in your HelmChartConfig. For more information on the HelmChartConfig, refer to the section about [customizing the RancherD Helm chart.](#customizing-the-rancherd-helm-chart)
+Rancherd does not use cert-manager to provision certs. Instead RancherD allows you to bring your own self-signed or trusted certs by storing the .pem files in `/etc/rancher/ssl/`. When doing this you should also set the `publicCA` parameter to `true` in your HelmChartConfig. For more information on the HelmChartConfig, refer to the section about [customizing the RancherD Helm chart.](#customizing-the-rancherd-helm-chart)
 
 Private key: `/etc/rancher/ssl/key.pem`
 
