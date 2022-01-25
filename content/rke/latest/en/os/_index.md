@@ -287,7 +287,7 @@ Confirm that a Kubernetes supported version of Docker is installed on your machi
 
 ## Hardware
 
-This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters. 
+This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters.
 
 ### Worker Role
 
