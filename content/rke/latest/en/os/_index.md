@@ -287,8 +287,7 @@ Confirm that a Kubernetes supported version of Docker is installed on your machi
 
 ## Hardware
 
-This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters.
-  
+This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters.  
 ### Worker Role
 
 The hardware requirements for nodes with the `worker` role mostly depend on your workloads. The minimum to run the Kubernetes node components is 1 CPU (core) and 1GB of memory. 
