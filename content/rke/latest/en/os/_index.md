@@ -288,14 +288,6 @@ Confirm that a Kubernetes supported version of Docker is installed on your machi
 ## Hardware
 
 This section describes the hardware requirements for the worker role, large Kubernetes clusters, and etcd clusters.
-
----
-*NOTE regarding large nodes for Kubernetes*
-Kubernetes is engineered around the concept of horizontal scaling for redundancy so scaling vertically with large nodes can be very problematic 
-- If you must use nodes larger than 24 CPU, utilize virtualization tooling such as Harvester to subdivide the nodes.
-- There are Kubernetes, kernel, and network limitations that prohibit too many pods per node so we advise keeping to roughly 24 cores per node and the recommended 100 pods per node as a maximum unless you are deploying workloads that specifically require enormous amounts of resources (such as multi threaded heavy compute jobs) or have good reason to increase the pod limit (with an upper limit of 250).
-- Even when deploying workloads like the above, it is recommended to use a virtualization layer to facilitate less downtime/shorter reboots during upgrades and failures
----
   
 ### Worker Role
 
@@ -305,7 +297,17 @@ Regarding CPU and memory, it is recommended that the different planes of Kuberne
 
 ### Large Kubernetes Clusters
 
-For hardware recommendations for large Kubernetes clusters, refer to the official Kubernetes documentation on [building large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
+Kubernetes is engineered around the concept of horizontal scaling for redundancy, so scaling vertically with large nodes can be problematic if the proper minimum/maximum requirements aren’t followed. The following are tips and recommendations for large Kubernetes nodes:
+
+- If you must use nodes larger than 24 CPU, use virtualization tooling, such as what Harvester provides, to subdivide the nodes.
+
+- Kubernetes, kernel, and network limitations prevent having too many pods per node. You should maintain a minimum of roughly 24 cores per node and a maximum of the recommended 100 pods per node.
+
+- If you are deploying workloads that specifically require enormous amounts of resources (such as multi-threaded heavy compute jobs), you may increase the pod limit up to 250.
+
+- Even when deploying small workloads, it is recommended that you use a virtualization layer to facilitate less downtime and shorter reboots during upgrades and failures.
+
+For additional hardware recommendations for large Kubernetes clusters and nodes, refer to the official Kubernetes documentation on  [building large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
 
 ### Etcd Clusters
 
