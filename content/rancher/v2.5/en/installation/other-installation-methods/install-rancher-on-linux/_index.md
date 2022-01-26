@@ -6,9 +6,7 @@ aliases:
   - /rancher/v2.x/en/installation/install-rancher-on-linux/
 ---
 
-_Available as of Rancher v2.5.4_
-
-> This is an experimental feature.
+> **Note:** RancherD was an experimental feature and has been deprecated.
 
 We are excited to introduce a new, simpler way to install Rancher called RancherD.
 

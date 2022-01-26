@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/installation/install-rancher-on-linux/rancherd-configuration/
 ---
 
-> RancherD is an experimental feature.
+> **Note:** RancherD was an experimental feature and has been deprecated.
 
 In RancherD, a server node is defined as a machine (bare-metal or virtual) running the `rancherd server` command. The server runs the Kubernetes API as well as Kubernetes workloads.
 

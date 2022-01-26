@@ -80,7 +80,7 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 
 ### RancherD Specific Requirements
 
-_The RancherD install is available as of v2.5.4. It is an experimental feature._
+> **Note:** The RancherD install became available in v2.5.4 but has been deprecated. It was an experimental feature.
 
 At this time, only Linux OSes that leverage systemd are supported.
 
@@ -103,6 +103,7 @@ The Ingress should be deployed as DaemonSet to ensure your load balancer can suc
 Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/installing-docker) to install Docker with one command.
 
 Docker is not required for RancherD installs.
+
 # Hardware Requirements
 
 The following sections describe the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
@@ -143,7 +144,7 @@ These CPU and memory requirements apply to each host in a [K3s Kubernetes cluste
 
 ### RancherD
 
-_RancherD is available as of v2.5.4. It is an experimental feature._
+> **Note:** RancherD was an experimental feature and has been deprecated. 
 
 These CPU and memory requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
 

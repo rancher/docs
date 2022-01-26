@@ -119,6 +119,8 @@ The following tables break down the port requirements for inbound and outbound t
 
 ### Ports for Rancher Server Nodes on RancherD or RKE2
 
+> **Note:** RancherD was an experimental feature and has been deprecated.
+
 {{% accordion label="Click to expand" %}}
 
 The RancherD (or RKE2) server needs port 6443 and 9345 to be accessible by other nodes in the cluster.
