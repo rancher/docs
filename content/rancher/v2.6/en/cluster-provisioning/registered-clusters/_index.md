@@ -49,8 +49,8 @@ EKS clusters must have at least one managed node group to be imported into Ranch
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, **Import Existing**.
-1. Enter a **Cluster Name**.
 1. Choose the type of cluster.
+1. Enter a **Cluster Name**.
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 5. If it is a generic custom cluster, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 6. Click **Create**.
