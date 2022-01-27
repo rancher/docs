@@ -15,11 +15,11 @@
     </div>
 
     <div class="head-blank">
-    
+
     </div>
 
     <div class="row max-sized contents-container background-base-gray-side">
-      
+
       {{ $url := urls.Parse .Permalink }}
       {{ $path := split $url.Path "/" }}
       {{ $product := index $path 1 }}
@@ -37,10 +37,15 @@
       {{end}}
       {{ if in .Dir "os/v1.x" }}
       <div class="alert alert-notice">
-          <strong>RancherOS 1.x is currently in a maintain-only-as-essential mode.</strong> It is no longer being actively maintained at a code level other than addressing critical or security fixes. For more information about the support status of RancherOS, see <a href="https://rancher.com/docs/os/v1.x/en/support/"> this page.</a> 
+          <strong>RancherOS 1.x is currently in a maintain-only-as-essential mode.</strong> It is no longer being actively maintained at a code level other than addressing critical or security fixes. For more information about the support status of RancherOS, see <a href="https://rancher.com/docs/os/v1.x/en/support/"> this page.</a>
       </div>
       {{end}}
-      
+      {{ if or (in .Dir "/v2.0-v2.4") (in .Dir "/v2.5") }}
+      <div class="alert alert-notice">
+          <strong>You are viewing the documentation for an older Rancher release.</strong> If you're looking for the documentation for the latest Rancher release, go to <a href="https://rancher.com/docs/rancher/v2.6/en/"> this page</a> instead.
+      </div>
+      {{end}}
+
       <div class="
         col-xl-3
         col-lg-4
