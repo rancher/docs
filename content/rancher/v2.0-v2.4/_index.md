@@ -1,5 +1,5 @@
 ---
-title: v2.0-v2.4.x
+title: Rancher 2.0-2.4
 weight: 3
 showBreadcrumb: false
 ---
