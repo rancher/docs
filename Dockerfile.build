@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:16-alpine
 
 RUN apk update && apk add py-pygments bash git asciidoc gcompat && rm -rf /var/cache/apk/*
 
