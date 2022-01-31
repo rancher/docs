@@ -57,16 +57,12 @@ Suggestions include:
 
 Two Kubernetes clusters are deployed into your AWS account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
 
+## What's Next?
+
+Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.6/en/quick-start-guide/workload).
+
 ## Destroying the Environment
 
 1. From the `quickstart/aws` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.
-
-# Deploying Rancher using AWS Marketplace
-
-There is now an additional way for you to deploy the Rancher server in AWS by using Amazon EKS. To learn more, see our [Amazon Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-2yzbnvagmi4as).
-
-# What's Next?
-
-Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.6/en/quick-start-guide/workload).
