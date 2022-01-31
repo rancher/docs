@@ -1,5 +1,5 @@
 ---
-title: Rancher 2.5.7-2.5.9
+title: Rancher 2.5
 weight: 2
 showBreadcrumb: false
 ---
