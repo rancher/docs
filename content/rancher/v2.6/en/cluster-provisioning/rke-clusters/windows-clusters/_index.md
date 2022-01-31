@@ -43,7 +43,7 @@ The RKE2 provisioning tech preview also includes installing RKE2 on Windows clus
 
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
->**Important:** Rancher will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the <b>NodeSelector</b> in the chart to direct the pods to be placed onto a compatible Windows node.
+>**Important:** Rancher will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the `nodeSelector` in the chart to direct the pods to be placed onto a compatible Windows node. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for more information on how to use `nodeSelector` to assign pods to nodes.
 
 # Requirements for Windows Clusters
 
