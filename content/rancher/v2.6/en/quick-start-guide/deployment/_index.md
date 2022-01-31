@@ -6,7 +6,7 @@ weight: 100
 Use one of the following guides to deploy and provision Rancher and a Kubernetes cluster in the provider of your choice.
 
 - [AWS](./amazon-aws-qs) (uses Terraform)
-- [AWS Alternative](./amazon-aws-qs-alternative) (uses Amazon EKS)
+- [AWS Marketplace](./amazon-aws-marketplace-qs) (uses Amazon EKS)
 - [Azure](./microsoft-azure-qs) (uses Terraform)
 - [DigitalOcean](./digital-ocean-qs) (uses Terraform)
 - [GCP](./google-gcp-qs) (uses Terraform)
