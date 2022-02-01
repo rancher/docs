@@ -34,6 +34,11 @@ Choose the default security group or configure a security group.
 
 Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/ports/#rancher-aws-ec2-security-group) to see what rules are created in the `rancher-nodes` Security Group.
 
+---
+**_New in v2.6.4_**
+
+If you provide your own security group for an EC2 instance, please note that Rancher will not modify it. As such, you will be responsible for ensuring that your security group is set to allow the necessary ports for Rancher to provision the instance. For more information on controlling inbound and outbound traffic to EC2 instances with security groups, refer [here](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#WorkingWithSecurityGroups).
+
 ### Instance Options
 
 Configure the instances that will be created. Make sure you configure the correct **SSH User** for the configured AMI. It is possible that a selected region does not support the default instance type. In this scenario you must select an instance type that does exist, otherwise an error will occur stating the requested configuration is not supported.
