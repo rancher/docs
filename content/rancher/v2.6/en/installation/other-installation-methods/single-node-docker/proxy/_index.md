@@ -40,3 +40,19 @@ docker run -d --restart=unless-stopped \
 ```
 
 Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
+
+### Air-gapped local cluster proxy configuration
+
+_New in v2.6.4_
+
+You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections. 
+
+In addition to setting the default rules for a proxy server as shown above, you will need to add additional rules, shown below, to provision node driver clusters from a proxied Rancher environment. Note that you will configure `/etc/apt/apt.conf.d/proxy.conf` directly:
+
+```
+acl SSL_ports port 22
+acl SSL_ports port 2376
+
+acl Safe_ports port 22      # ssh
+acl Safe_ports port 2376    # docker port
+```
