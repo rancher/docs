@@ -37,7 +37,7 @@ Please refer to [Amazon EC2 security group when using Node Driver]({{<baseurl>}}
 ---
 **_New in v2.6.4_**
 
-If you provide your own security group for an EC2 instance, please note that Rancher will not modify it. As such, you will be responsible for ensuring that your security group is set to allow the necessary ports for Rancher to provision the instance. For more information on controlling inbound and outbound traffic to EC2 instances with security groups, refer [here](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#WorkingWithSecurityGroups).
+If you provide your own security group for an EC2 instance, please note that Rancher will not modify it. As such, you will be responsible for ensuring that your security group is set to allow the [necessary ports for Rancher to provision the instance]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/ports/#ports-for-rancher-server-nodes-on-rke). For more information on controlling inbound and outbound traffic to EC2 instances with security groups, refer [here](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#WorkingWithSecurityGroups).
 
 ### Instance Options
 
