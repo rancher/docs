@@ -7,8 +7,6 @@ Once the infrastructure is ready, you can continue with setting up an RKE cluste
 
 ### Installing Docker
 
-#### HTTP proxy
-
 First, you have to install Docker and setup the HTTP proxy on all three Linux nodes. For this perform the following steps on all three nodes.
 
 For convenience, export the IP address and port of your proxy into an environment variable and set up the HTTP_PROXY variables for your current shell:
