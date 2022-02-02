@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/installation/install-rancher-on-linux/upgrades/
 ---
 
-> **Note:** RancherD was an experimental feature and has been deprecated.
+> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 When RancherD is upgraded, the Rancher Helm controller and the Fleet pods are upgraded.
 

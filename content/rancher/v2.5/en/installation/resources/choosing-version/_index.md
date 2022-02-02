@@ -14,7 +14,7 @@ For Docker installations of Rancher, which is used for development and testing, 
 
 The Helm chart version also applies to RancherD installs because RancherD installs the Rancher Helm chart on a Kubernetes cluster.
 
-> **Note:** RancherD was an experimental feature and has been deprecated.
+> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 {{% tabs %}}
 {{% tab "Helm Charts" %}}

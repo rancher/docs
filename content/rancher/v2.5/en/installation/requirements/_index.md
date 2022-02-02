@@ -80,7 +80,7 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 
 ### RancherD Specific Requirements
 
-> **Note:** The RancherD install became available in v2.5.4 but has been deprecated. It was an experimental feature.
+> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 At this time, only Linux OSes that leverage systemd are supported.
 
@@ -144,7 +144,7 @@ These CPU and memory requirements apply to each host in a [K3s Kubernetes cluste
 
 ### RancherD
 
-> **Note:** RancherD was an experimental feature and has been deprecated. 
+> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 These CPU and memory requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
 
