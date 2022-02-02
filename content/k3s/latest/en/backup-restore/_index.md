@@ -57,7 +57,7 @@ These options can be passed in with the command line, or in the [configuration f
 | Options | Description |
 | ----------- | --------------- |
 | `--etcd-disable-snapshots` | Disable automatic etcd snapshots |
-| `--etcd-snapshot-schedule-cron` value  |  Snapshot interval time in cron spec. eg. every 5 hours `* */5 * * *`(default: `0 */12 * * *`) |
+| `--etcd-snapshot-schedule-cron` value  |  Snapshot interval time in cron spec. eg. every 5 hours `0 */5 * * *`(default: `0 */12 * * *`) |
 | `--etcd-snapshot-retention` value  | Number of snapshots to retain (default: 5) |
 | `--etcd-snapshot-dir` value  | Directory to save db snapshots. (Default location: `${data-dir}/db/snapshots`) |
 | `--cluster-reset`  | Forget all peers and become sole member of a new cluster. This can also be set with the environment variable `[$K3S_CLUSTER_RESET]`.
