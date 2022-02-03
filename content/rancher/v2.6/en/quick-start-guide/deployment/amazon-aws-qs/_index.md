@@ -53,11 +53,11 @@ Suggestions include:
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
 9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/aws`.
 
-#### Result
+##### Result
 
 Two Kubernetes clusters are deployed into your AWS account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
 
-### What's Next?
+## What's Next?
 
 Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.6/en/quick-start-guide/workload).
 
