@@ -7,6 +7,8 @@ aliases:
 
 Docker is required to be installed on nodes where the Rancher server will be installed with Helm or Docker. Docker is not required for RancherD installs.
 
+> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
+
 There are a couple of options for installing Docker. One option is to refer to the [official Docker documentation](https://docs.docker.com/install/) about how to install Docker on Linux. The steps will vary based on the Linux distribution.
 
 Another option is to use one of Rancher's Docker installation scripts, which are available for most recent versions of Docker.
