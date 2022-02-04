@@ -45,9 +45,9 @@ Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/othe
 
 _New in v2.6.4_
 
-You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections. 
+You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections.
 
-In addition to setting the default rules for a proxy server as shown above, you will need to add additional rules, shown below, to provision node driver clusters from a proxied Rancher environment. Configure apt to use this proxy when installing packages; if you are not using Ubuntu, you have to adapt your configuration accordingly.
+In addition to setting the default rules for a proxy server as shown above, you will need to add additional rules, shown below, to provision node driver clusters from a proxied Rancher environment.
 
 You will configure `/etc/apt/apt.conf.d/proxy.conf` with the following:
 

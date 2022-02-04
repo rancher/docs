@@ -62,19 +62,18 @@ sudo systemctl restart docker
 
 _New in v2.6.4_
 
-You can now provision node driver clusters from a proxied Rancher environment. Configure apt to use this proxy when installing packages, including the additional rules shown. If you are not using Ubuntu, you have to adapt this step accordingly:
+You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections.
+
+In addition to setting the default rules for a proxy serverx, you will need to add additional rules, shown below, to provision node driver clusters from a proxied Rancher environment.
+
+Note that you will configure `/etc/apt/apt.conf.d/proxy.conf` directly:
 
 ```
-cat <<'EOF' | sudo tee /etc/apt/apt.conf.d/proxy.conf > /dev/null
-Acquire::http::Proxy "http://${proxy_host}/";
-Acquire::https::Proxy "http://${proxy_host}/";
-
 acl SSL_ports port 22
 acl SSL_ports port 2376
 
 acl Safe_ports port 22      # ssh
 acl Safe_ports port 2376    # docker port
-EOF
 ```
 
 ### Creating the RKE Cluster
