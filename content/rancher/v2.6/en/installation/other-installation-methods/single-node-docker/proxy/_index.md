@@ -49,7 +49,7 @@ You can now provision node driver clusters from an air-gapped cluster configured
 
 In addition to setting the default rules for a proxy server as shown above, you will need to add additional rules, shown below, to provision node driver clusters from a proxied Rancher environment.
 
-You will configure `/etc/apt/apt.conf.d/proxy.conf` with the following:
+You will configure your filepath according to your setup, e.g., `/etc/apt/apt.conf.d/proxy.conf`:
 
 ```
 acl SSL_ports port 22
