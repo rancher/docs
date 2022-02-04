@@ -182,4 +182,8 @@ If you want to use encrypted private keys, you should use `ssh-agent` to load yo
 
 ### Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 
-The node is not reachable on the configured `address` and `port`.
+* The node is not reachable on the configured `address` and `port`.
+* You might be using the `containerd` Container Runtime. You can either switch to using `dockerd` in the `Kubernetes Settings`, or create an alias to use `nerdctl` instead: 
+```
+alias docker=nerdctl
+```
