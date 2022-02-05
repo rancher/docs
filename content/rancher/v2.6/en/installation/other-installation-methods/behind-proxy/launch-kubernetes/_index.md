@@ -9,7 +9,7 @@ Once the infrastructure is ready, you can continue with setting up an RKE cluste
 
 First, you have to install Docker and setup the HTTP proxy on all three Linux nodes. For this perform the following steps on all three nodes.
 
-For convenience export the IP address and port of your proxy into an environment variable and set up the HTTP_PROXY variables for your current shell:
+For convenience, export the IP address and port of your proxy into an environment variable and set up the HTTP_PROXY variables for your current shell:
 
 ```
 export proxy_host="10.0.0.5:8888"
@@ -56,6 +56,24 @@ To apply the configuration, restart the Docker daemon:
 ```
 sudo systemctl daemon-reload
 sudo systemctl restart docker
+```
+
+#### Air-gapped proxy
+
+_New in v2.6.4_
+
+You can now provision node driver clusters from an air-gapped cluster configured to use a proxy for outbound connections.
+
+In addition to setting the default rules for a proxy server, you will need to add additional rules, shown below, to provision node driver clusters from a proxied Rancher environment.
+
+You will configure your filepath according to your setup, e.g., `/etc/apt/apt.conf.d/proxy.conf`:
+
+```
+acl SSL_ports port 22
+acl SSL_ports port 2376
+
+acl Safe_ports port 22      # ssh
+acl Safe_ports port 2376    # docker port
 ```
 
 ### Creating the RKE Cluster
