@@ -198,7 +198,7 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --set hostname=rancher.my.org \
   --set bootstrapPassword=admin \
   --set ingress.tls.source=letsEncrypt \
-  --set letsEncrypt.email=me@example.org
+  --set letsEncrypt.email=me@example.org \
   --set letsEncrypt.ingress.class=nginx
 ```
 
