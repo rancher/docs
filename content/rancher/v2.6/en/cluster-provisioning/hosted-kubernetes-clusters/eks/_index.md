@@ -17,6 +17,7 @@ Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon 
 - [Minimum EKS Permissions](#minimum-eks-permissions)
 - [Syncing](#syncing)
 - [Troubleshooting](#troubleshooting)
+- [Programmatically Creating EKS Clusters](#programmatically-creating-eks-clusters)
 # Prerequisites in Amazon Web Services
 
 >**Note**
@@ -109,3 +110,7 @@ If your changes were overwritten, it could be due to the way the cluster data is
 If an unauthorized error is returned while attempting to modify or register the cluster and the cluster was not created with the role or user that your credentials belong to, refer to [Security and Compliance.](#security-and-compliance)
 
 For any issues or troubleshooting details for your Amazon EKS Kubernetes cluster, please see this [documentation](https://docs.aws.amazon.com/eks/latest/userguide/troubleshooting.html).
+
+# Programmatically Creating EKS Clusters
+
+The most common way to programmatically deploy EKS clusters through Rancher is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)
