@@ -54,3 +54,7 @@ In this scenario, you want to install Kubernetes on bare-metal servers, on-prem 
 If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
 
 For more information, refer to the section on [custom nodes.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes/)
+
+# Programmatically Creating RKE Clusters
+
+The most common way to programmatically deploy RKE clusters through Rancher is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)

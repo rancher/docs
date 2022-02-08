@@ -10,6 +10,7 @@ weight: 2105
 - [Configuration Reference](#configuration-reference)
 - [Updating Kubernetes Version](#updating-kubernetes-version)
 - [Syncing](#syncing)
+- [Programmatically Creating GKE Clusters](#programmatically-creating-gke-clusters)
 
 # Prerequisites
 
@@ -98,3 +99,6 @@ The GKE provisioner can synchronize the state of a GKE cluster between Rancher a
 
 For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
 
+# Programmatically Creating GKE Clusters
+
+The most common way to programmatically deploy GKE clusters through Rancher is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)
