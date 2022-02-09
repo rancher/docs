@@ -9,6 +9,14 @@ A persistent volume (PV) is a piece of storage in the Kubernetes cluster, while 
 
 This page describes how to set up persistent storage with a local storage provider, or with [Longhorn.](#setting-up-longhorn)
 
+# What's changed in K3s storage?
+
+Currently, K3s has removed both the in-tree storage drivers and the in-tree cloud provider. We removed these to achieve a smaller binary size and to avoid dependence on third-party cloud or data center technologies and services, which may not be available in many K3s use cases. We are able to do this because their removal affects neither core Kubernetes functionality nor conformance. 
+
+Both of these have out-of-tree alternatives that work in K3s: [CSI](https://github.com/container-storage-interface/spec/blob/master/spec.md) and [CCM](https://kubernetes.io/docs/tasks/administer-cluster/running-cloud-controller/).
+
+Additionally, upstream Kubernetes will be migrating from in-tree drivers to CSI soon. For more information on this migration, please refer [here](https://kubernetes.io/blog/2021/12/10/storage-in-tree-to-csi-migration-status-update/).
+
 # Setting up the Local Storage Provider
 K3s comes with Rancher's Local Path Provisioner and this enables the ability to create persistent volume claims out of the box using local storage on the respective node. Below we cover a simple example. For more information please reference the official documentation [here](https://github.com/rancher/local-path-provisioner/blob/master/README.md#usage).
 
