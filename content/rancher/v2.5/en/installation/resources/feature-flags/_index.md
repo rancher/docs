@@ -131,7 +131,7 @@ When installing Rancher with Docker, use the `--features` option. In the below e
 docker run -d -p 80:80 -p 443:443 \
   --restart=unless-stopped \
   rancher/rancher:rancher-latest \
-  --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-NAME-2>=true 
+  --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true
 ```
 
 
