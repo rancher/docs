@@ -27,10 +27,9 @@ There are a few things worth noting:
 
 As of version v0.1.7, add-ons are split into two categories:
 
-- **Critical add-ons:** If these add-ons fail to deploy for any reason, RKE will error out.
-- **Non-critical add-ons:** If these add-ons fail to deploy, RKE will only log a warning and continue deploying any other add-ons.
+- **Critical add-ons:** If these add-ons fail to deploy for any reason, RKE will error out. All system add-ons, such as the [network plug-in]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/), KubeDNS, and [ingress controllers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/), are considered critical.
 
-All system add-ons, such as the [network plug-in]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/), KubeDNS, and [ingress controllers]({{<baseurl>}}/rke/latest/en/config-options/add-ons/ingress-controllers/), are considered critical. [User-defined add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) are considered non-critical.
+- **Non-critical add-ons:** If these add-ons fail to deploy, RKE will only log a warning and continue deploying any other add-ons. [User-defined add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/user-defined-add-ons/) are considered non-critical.
 
 # Add-on Deployment Jobs
 
