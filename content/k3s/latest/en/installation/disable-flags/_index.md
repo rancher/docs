@@ -3,7 +3,7 @@ title: "Disable Components Flags"
 weight: 60
 ---
 
-When starting K3s server with --cluster-init it will run all control plane components that includes (api server, controller manager, scheduler, and etcd). However you can run server nodes with certain components and execlude others, the following sections will explain how to do that.
+When starting K3s server with --cluster-init it will run all control plane components that includes (api server, controller manager, scheduler, and etcd). However you can run server nodes with certain components and exclude others, the following sections will explain how to do that.
 
 # ETCD Only Nodes
 
