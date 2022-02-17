@@ -33,9 +33,11 @@ The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administratio
 Out of the box, Rancher is compatible with the following network providers:
 
 - [Canal](https://github.com/projectcalico/canal)
-- [Cilium](https://cilium.io/)
+- [Cilium](https://cilium.io/)*
 - [Calico](https://docs.projectcalico.org/v3.11/introduction/)
 - [Multus](https://github.com/k8snetworkplumbingwg/multus-cni)
+
+\* When using [project network isolation](#project-network-isolation) in the [Cilium CNI]({{<baseurl>}}/rancher/v2.6/en/faq/networking/cni-providers/#cilium), it is possible to enable cross-node ingress routing. Click the [CNI provider docs]({{<baseurl>}}/rancher/v2.6/en/faq/networking/cni-providers/#ingress-routing-across-nodes-in-cilium) to learn more.
 
 For more details on the different networking providers and how to configure them, please view our [RKE2 documentation](https://docs.rke2.io/install/network_options/).
 
@@ -139,7 +141,7 @@ Select the image repository to pull Rancher images from. For more details and co
 
 ### Upgrade Strategy
 
-#### Controle Plane Concurrency
+#### Control Plane Concurrency
 
 Select how many nodes can be upgraded at the same time. Can be a fixed number or percentage.
 
