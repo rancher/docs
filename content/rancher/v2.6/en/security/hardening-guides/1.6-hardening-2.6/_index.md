@@ -33,7 +33,7 @@ For more details about evaluating a hardened cluster against the official CIS be
 #### Known Issues
 
 - Rancher **exec shell** and **view logs** for pods are **not** functional in a CIS v1.6 hardened setup when only public IP is provided when registering custom nodes. This functionality requires a private IP to be provided when registering the custom nodes.
-- When setting the `default_pod_security_policy_template_id:` to `restricted`, Rancher creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The CIS v1.6 check 5.1.5 requires that the default service accounts have no roles or cluster roles bound to it apart from the defaults. In addition the default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
+- When setting the `default_pod_security_policy_template_id:` to `restricted` or `restricted-noroot`, based on the pod security policies (PSP) [provided]({{<baseurl>}}/rancher/v2.6/en/admin-settings/pod-security-policies/) by Rancher, Rancher creates **RoleBindings** and **ClusterRoleBindings** on the default service accounts. The CIS v1.6 check 5.1.5 requires that the default service accounts have no roles or cluster roles bound to it apart from the defaults. In addition the default service accounts should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 
 ### Configure Kernel Runtime Parameters
 
@@ -260,7 +260,7 @@ addons: |
   apiVersion: policy/v1beta1
   kind: PodSecurityPolicy
   metadata:
-    name: restricted
+    name: restricted-noroot
   spec:
     privileged: false
     # Required to prevent escalations to root.
@@ -304,12 +304,12 @@ addons: |
   apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
   metadata:
-    name: psp:restricted
+    name: psp:restricted-noroot
   rules:
   - apiGroups:
     - extensions
     resourceNames:
-    - restricted
+    - restricted-noroot
     resources:
     - podsecuritypolicies
     verbs:
@@ -318,11 +318,11 @@ addons: |
   apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRoleBinding
   metadata:
-    name: psp:restricted
+    name: psp:restricted-noroot
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: ClusterRole
-    name: psp:restricted
+    name: psp:restricted-noroot
   subjects:
   - apiGroup: rbac.authorization.k8s.io
     kind: Group
@@ -445,7 +445,7 @@ The reference RKE template provides the configuration needed to achieve a harden
 #
 # Cluster Config
 #
-default_pod_security_policy_template_id: restricted
+default_pod_security_policy_template_id: restricted-noroot
 docker_root_dir: /var/lib/docker
 enable_cluster_alerting: false
 enable_cluster_monitoring: false
