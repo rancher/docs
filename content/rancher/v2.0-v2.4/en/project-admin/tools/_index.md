@@ -43,4 +43,4 @@ For details on project-level logging, see [this section.](./project-logging)
 
 _Available as of v2.2.0_
 
-Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution. For details, refer to the [monitoring section.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/monitoring)
+Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with [Prometheus](https://prometheus.io/), a leading open-source monitoring solution. For details, refer to the [monitoring section.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/cluster-monitoring)
