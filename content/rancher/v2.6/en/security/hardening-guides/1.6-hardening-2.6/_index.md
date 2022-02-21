@@ -591,6 +591,7 @@ write_files:
     kernel.panic_on_oops=1
     kernel.keys.root_maxbytes=25000000
 package_update: true
+ssh_pwauth: false
 runcmd:
 # Docker should already be installed in SLES 15 SP3
 - zypper install docker containerd
@@ -621,6 +622,7 @@ write_files:
     kernel.panic_on_oops=1
     kernel.keys.root_maxbytes=25000000
 package_update: true
+ssh_pwauth: false
 runcmd:
 # Install Docker from Rancher's Docker installation scripts - github.com/rancher/install-docker
 - curl https://releases.rancher.com/install-docker/20.10.sh | sh
