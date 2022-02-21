@@ -3,12 +3,12 @@ title: "CIS Hardening Guide"
 weight: 80
 ---
 
-This document provides prescriptive guidance for hardening a production installation of K3s. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of K3s. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Internet Security (CIS).
 
 K3s has a number of security mitigations applied and turned on by default and will pass a number of the Kubernetes CIS controls without modification. There are some notable exceptions to this that require manual intervention to fully comply with the CIS Benchmark:
 
 1. K3s will not modify the host operating system. Any host-level modifications will need to be done manually.
-2. Certain CIS policy controls for PodSecurityPolicies and NetworkPolicies will restrict the functionality of this cluster. You must opt into having K3s configure these by adding the appropriate options (enabling of admission plugins) to your command-line flags or configuration file as well as manually applying appropriate policies. Further detail in the sections below.
+2. Certain CIS policy controls for `PodSecurityPolicies` and `NetworkPolicies` will restrict the functionality of the cluster. You must opt into having K3s configure these by adding the appropriate options (enabling of admission plugins) to your command-line flags or configuration file as well as manually applying appropriate policies. Further details are presented in the sections below.
 
 The first section (1.1) of the CIS Benchmark concerns itself primarily with pod manifest permissions and ownership. K3s doesn't utilize these for the core components since everything is packaged into a single binary.
 
@@ -31,23 +31,24 @@ vm.panic_on_oom=0
 vm.overcommit_memory=1
 kernel.panic=10
 kernel.panic_on_oops=1
+kernel.keys.root_maxbytes=25000000
 ```
 
 ## Kubernetes Runtime Requirements
 
-The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSPs) and network policies. These are outlined in this section. K3s doesn't apply any default PSPs or network policies however K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the "NodeRestriction" admission controller. To enable PSPs, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the "NodeRestriction" plugin as well as enabling the "PodSecurityPolicy".
+The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSPs) and network policies. These are outlined in this section. K3s doesn't apply any default PSPs or network policies. However, K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the `NodeRestriction` admission controller. To enable PSPs, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the `NodeRestriction` plugin as well as enabling the `PodSecurityPolicy`.
 
-### PodSecurityPolicies
+### Pod Security Policies
 
 When PSPs are enabled, a policy can be applied to satisfy the necessary controls described in section 5.2 of the CIS Benchmark.
 
-Here's an example of a compliant PSP.
+Here is an example of a compliant PSP.
 
 ```yaml
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: cis1.5-compliant-psp
+  name: restricted-psp
 spec:
   privileged: false                # CIS - 5.2.1
   allowPrivilegeEscalation: false  # CIS - 5.2.5
@@ -59,7 +60,9 @@ spec:
     - 'projected'
     - 'secret'
     - 'downwardAPI'
+    - 'csi'
     - 'persistentVolumeClaim'
+    - 'ephemeral'
   hostNetwork: false               # CIS - 5.2.4
   hostIPC: false                   # CIS - 5.2.3
   hostPID: false                   # CIS - 5.2.2
@@ -80,7 +83,7 @@ spec:
   readOnlyRootFilesystem: false
 ```
 
-Before the above PSP to be effective, we need to create a couple ClusterRoles and ClusterRole. We also need to include a "system unrestricted policy" which is needed for system-level pods that require additional privileges.
+For the above PSP to be effective, we need to create a ClusterRole and a ClusterRoleBinding. We also need to include a "system unrestricted policy" which is needed for system-level pods that require additional privileges.
 
 These can be combined with the PSP yaml above and NetworkPolicy yaml below into a single file and placed in the `/var/lib/rancher/k3s/server/manifests` directory. Below is an example of a `policy.yaml` file. 
 
@@ -88,7 +91,7 @@ These can be combined with the PSP yaml above and NetworkPolicy yaml below into 
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
 metadata:
-  name: cis1.5-compliant-psp
+  name: restricted-psp
 spec:
   privileged: false
   allowPrivilegeEscalation: false
@@ -100,7 +103,9 @@ spec:
     - 'projected'
     - 'secret'
     - 'downwardAPI'
+    - 'csi'
     - 'persistentVolumeClaim'
+    - 'ephemeral'
   hostNetwork: false
   hostIPC: false
   hostPID: false
@@ -123,7 +128,7 @@ spec:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: psp:restricted
+  name: psp:restricted-psp
   labels:
     addonmanager.kubernetes.io/mode: EnsureExists
 rules:
@@ -131,61 +136,22 @@ rules:
   resources: ['podsecuritypolicies']
   verbs:     ['use']
   resourceNames:
-  - cis1.5-compliant-psp
+  - restricted-psp
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: default:restricted
+  name: default:restricted-psp
   labels:
     addonmanager.kubernetes.io/mode: EnsureExists
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:restricted
+  name: psp:restricted-psp
 subjects:
 - kind: Group
   name: system:authenticated
   apiGroup: rbac.authorization.k8s.io
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: intra-namespace
-  namespace: kube-system
-spec:
-  podSelector: {}
-  ingress:
-    - from:
-      - namespaceSelector:
-          matchLabels:
-            name: kube-system
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: intra-namespace
-  namespace: default
-spec:
-  podSelector: {}
-  ingress:
-    - from:
-      - namespaceSelector:
-          matchLabels:
-            name: default
----
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: intra-namespace
-  namespace: kube-public
-spec:
-  podSelector: {}
-  ingress:
-    - from:
-      - namespaceSelector:
-          matchLabels:
-            name: kube-public
 ---
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
@@ -253,6 +219,45 @@ subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
   name: system:serviceaccounts
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: intra-namespace
+  namespace: kube-system
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: kube-system
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: intra-namespace
+  namespace: default
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: default
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: intra-namespace
+  namespace: kube-public
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: kube-public
 ```
 
 > **Note:** The Kubernetes critical additions such as CNI, DNS, and Ingress are ran as pods in the `kube-system` namespace. Therefore, this namespace will have a policy that is less restrictive so that these components can run properly.
@@ -263,7 +268,7 @@ subjects:
 
 CIS requires that all namespaces have a network policy applied that reasonably limits traffic into namespaces and pods.
 
-Here's an example of a compliant network policy. 
+Here is an example of a compliant network policy.
 
 ```yaml
 kind: NetworkPolicy
@@ -302,7 +307,7 @@ spec:
   - Ingress
 ```
 
-The metrics-server and Traefik ingress controller will be blocked by default if network policies are not created to allow access. Traefik v1 as packaged in K3s version 1.20 and below uses different labels than Traefik v2; ensure that you only use the sample yaml below that is associated with the version of Traefik present on your cluster.
+The metrics-server and Traefik ingress controller will be blocked by default if network policies are not created to allow access. Traefik v1 as packaged in K3s version 1.20 and below uses different labels than Traefik v2. Ensure that you only use the sample yaml below that is associated with the version of Traefik present on your cluster.
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -369,21 +374,20 @@ spec:
 ## Known Issues
 The following are controls that K3s currently does not pass by default. Each gap will be explained, along with a note clarifying whether it can be passed through manual operator intervention, or if it will be addressed in a future release of K3s.
 
-
 ### Control 1.2.15
 Ensure that the admission control plugin `NamespaceLifecycle` is set.
 <details>
 <summary>Rationale</summary>
-Setting admission control policy to NamespaceLifecycle ensures that objects cannot be created in non-existent namespaces, and that namespaces undergoing termination are not used for creating the new objects. This is recommended to enforce the integrity of the namespace termination process and also for the availability of the newer objects.
+Setting admission control policy to `NamespaceLifecycle` ensures that objects cannot be created in non-existent namespaces, and that namespaces undergoing termination are not used for creating the new objects. This is recommended to enforce the integrity of the namespace termination process and also for the availability of the newer objects.
 
 This can be remediated by passing this argument as a value to the `enable-admission-plugins=` and pass that to  `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
 
-### Control 1.2.16 (mentioned above)
+### Control 1.2.16
 Ensure that the admission control plugin `PodSecurityPolicy` is set.
 <details>
 <summary>Rationale</summary>
-A Pod Security Policy is a cluster-level resource that controls the actions that a pod can perform and what it has the ability to access. The PodSecurityPolicy objects define a set of conditions that a pod must run with in order to be accepted into the system. Pod Security Policies are comprised of settings and strategies that control the security features a pod has access to and hence this must be used to control pod access permissions.
+A Pod Security Policy is a cluster-level resource that controls the actions that a pod can perform and what it has the ability to access. The `PodSecurityPolicy` objects define a set of conditions that a pod must run with in order to be accepted into the system. Pod Security Policies are comprised of settings and strategies that control the security features a pod has access to and hence this must be used to control pod access permissions.
 
 This can be remediated by passing this argument as a value to the `enable-admission-plugins=` and pass that to  `--kube-apiserver-arg=` argument to `k3s server`. An example can be found below.
 </details>
@@ -446,16 +450,18 @@ This can be remediated by passing this argument as a value to the `--kube-apiser
 Ensure that the `--encryption-provider-config` argument is set as appropriate.
 <details>
 <summary>Rationale</summary>
-Where `etcd` encryption is used, it is important to ensure that the appropriate set of encryption providers is used. Currently, the aescbc, kms and secretbox are likely to be appropriate options.
+`etcd` is a highly available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted at rest to avoid any disclosures.
+
+Detailed steps on how to configure secrets encryption in K3s are available in [Secrets Encryption](../secrets_encryption/).
 </details>
 
 ### Control 1.2.34
 Ensure that encryption providers are appropriately configured.
 <details>
 <summary>Rationale</summary>
-`etcd` is a highly available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted at rest to avoid any disclosures.
+Where `etcd` encryption is used, it is important to ensure that the appropriate set of encryption providers is used. Currently, the `aescbc`, `kms` and `secretbox` are likely to be appropriate options.
 
-This can be remediated by passing a valid configuration to `k3s` as outlined above.
+This can be remediated by passing a valid configuration to `k3s` as outlined above. Detailed steps on how to configure secrets encryption in K3s are available in [Secrets Encryption](../secrets_encryption/).
 </details>
 
 ### Control 1.3.1
@@ -468,14 +474,13 @@ This can be remediated by passing this argument as a value to the `--kube-apiser
 </details>
 
 ### Control 3.2.1
-Ensure that a minimal audit policy is created (Scored)
+Ensure that a minimal audit policy is created.
 <details>
 <summary>Rationale</summary>
 Logging is an important detective control for all systems, to detect potential unauthorized access.
 
 This can be remediated by passing controls 1.2.22 - 1.2.25 and verifying their efficacy.
 </details>
-
 
 ### Control 4.2.7
 Ensure that the `--make-iptables-util-chains` argument is set to true.
@@ -487,24 +492,23 @@ This can be remediated by passing this argument as a value to the `--kube-apiser
 </details>
 
 ### Control 5.1.5
-Ensure that default service accounts are not actively used. (Scored)
+Ensure that default service accounts are not actively used
 <details>
 <summary>Rationale</summary>
-
-Kubernetes provides a default service account which is used by cluster workloads where no specific service account is assigned to the pod.
+Kubernetes provides a `default` service account which is used by cluster workloads where no specific service account is assigned to the pod.
 
 Where access to the Kubernetes API from a pod is required, a specific service account should be created for that pod, and rights granted to that service account.
 
 The default service account should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
-</details>
 
-The remediation for this is to update the `automountServiceAccountToken` field to `false` for the `default` service account in each namespace.
+This can be remediated by updating the `automountServiceAccountToken` field to `false` for the `default` service account in each namespace.
 
 For `default` service accounts in the built-in namespaces (`kube-system`, `kube-public`, `kube-node-lease`, and `default`), K3s does not automatically do this. You can manually update this field on these service accounts to pass the control.
+</details>
 
 ## Control Plane Execution and Arguments
 
-Listed below are the K3s control plane components and the arguments they're given at start, by default. Commented to their right is the CIS 1.5 control that they satisfy.
+Listed below are the K3s control plane components and the arguments they are given at start, by default. Commented to their right is the CIS 1.6 control that they satisfy.
 
 ```bash
 kube-apiserver 
@@ -604,7 +608,7 @@ kubelet
     --tls-private-key-file=/var/lib/rancher/k3s/agent/serving-kubelet.key # 4.2.10
 ```
 
-The command below is an example of how the outlined remediations can be applied.
+The command below is an example of how the outlined remediations can be applied to harden K3s.
 
 ```bash
 k3s server \
@@ -625,4 +629,4 @@ k3s server \
 
 ## Conclusion
 
-If you have followed this guide, your K3s cluster will be configured to comply with the CIS Kubernetes Benchmark. You can review the [CIS Benchmark Self-Assessment Guide](../self_assessment/) to understand the expectations of each of the benchmarks and how you can do the same on your cluster.
+If you have followed this guide, your K3s cluster will be configured to comply with the CIS Kubernetes Benchmark. You can review the [CIS Benchmark Self-Assessment Guide](../self_assessment/) to understand the expectations of each of the benchmark's checks and how you can do the same on your cluster.
