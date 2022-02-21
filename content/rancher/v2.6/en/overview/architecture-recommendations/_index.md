@@ -110,4 +110,4 @@ If you are using an [authorized cluster endpoint (ACE),]({{<baseurl>}}/rancher/v
 
 If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) and [API keys]({{<baseurl>}}/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) for more information.
 
-As of Rancher v2.6.3, ACE support is available for registered RKE2 and K3s clusters. To view the manual steps to perform on the downstream cluster to enable the ACE, click [here]({{<baseurl>}}/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
+As of Rancher v2.6.3, ACE support is available for registered RKE2 and K3s clusters. To view the manual steps to perform on the downstream cluster to enable the ACE, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).
