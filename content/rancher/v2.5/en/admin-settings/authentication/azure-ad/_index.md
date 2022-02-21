@@ -206,3 +206,8 @@ Enter the values that you copied to your [text file](#tip).
 1. Click **Authenticate with Azure**.
 
 **Result:** Azure Active Directory authentication is configured.
+
+> **Note:**
+>
+> The AD user pertaining to the credentials used to test will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which account you use to perform this step.
+
