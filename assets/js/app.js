@@ -33,13 +33,26 @@ const bootstrapDocsSearch = function () {
     })
   );
 
+  const docsVersion =
 
   search.addWidget(
     instantsearch.widgets.infiniteHits({
       container: '#hits',
       templates: {
         empty: '<h3>No results</h3>',
-        item: `<h3><a href="{{permalink}}">{{{_highlightResult.title.value}}}</a></h3><div class="body">{{{_snippetResult.content.value}}}</div>`
+        item: `
+        <h3>
+          <a href="{{permalink}}">
+            {{{_highlightResult.title.value}}}
+          </a>
+        </h3>
+        <div class="body">
+          {{{_snippetResult.content.value}}}
+        </div>
+        <hr/>
+
+        <p>{{permalink}}</p>
+        `
       },
       escapeHits: true,
     })

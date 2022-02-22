@@ -36,7 +36,7 @@ home = ["HTML", "RSS", "Algolia"]
 # page = ["HTML", "Algolia"]
 
 [params.algolia]
-vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink", "docs_version"]
 params = ["categories", "tags"]
 
 [[menu.main]]
