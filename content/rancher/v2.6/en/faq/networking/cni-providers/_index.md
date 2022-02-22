@@ -124,6 +124,25 @@ Cilium enables networking and network policies (L3, L4, and L7) in Kubernetes. B
 
 Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4240` for health checks. In addition, ICMP 8/0 must be enabled for health checks. For more information, check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements).
 
+##### Ingress Routing Across Nodes in Cilium
+<br>
+By default, Cilium does not allow pods to contact pods on other nodes. To work around this, enable the ingress controller to route requests across nodes with a `CiliumNetworkPolicy`.
+
+After selecting the Cilium CNI and enabling Project Network Isolation for your new cluster, configure as follows:
+
+```
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: hn-nodes
+  namespace: default
+spec:
+  endpointSelector: {} 
+  ingress:
+    - fromEntities:
+      - remote-node
+```
+
 ## CNI Features by Provider
 
 The following table summarizes the different features available for each CNI network provider provided by Rancher.

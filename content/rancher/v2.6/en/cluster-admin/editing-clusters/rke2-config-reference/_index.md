@@ -8,7 +8,7 @@ This section covers the configuration options that are available in Rancher for 
 
 # Overview
 
-You can configure the Kubernetes options one of two ways:
+You can configure the Kubernetes options in one of the two following ways:
 
 - [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
 - [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
@@ -28,14 +28,16 @@ For more detail, see [Upgrading Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluste
 
 The [Network Provider](https://kubernetes.io/docs/concepts/cluster-administration/networking/) that the cluster uses.
 
-> After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you  tear down the entire cluster and all its applications.
+> After you launch the cluster, you cannot change your network provider. Therefore, choose which network provider you want to use carefully, as Kubernetes doesn't allow switching between network providers. Once a cluster is created with a network provider, changing network providers would require you to tear down the entire cluster and all its applications.
 
 Out of the box, Rancher is compatible with the following network providers:
 
 - [Canal](https://github.com/projectcalico/canal)
-- [Cilium](https://cilium.io/)
+- [Cilium](https://cilium.io/)*
 - [Calico](https://docs.projectcalico.org/v3.11/introduction/)
 - [Multus](https://github.com/k8snetworkplumbingwg/multus-cni)
+
+\* When using [project network isolation](#project-network-isolation) in the [Cilium CNI]({{<baseurl>}}/rancher/v2.6/en/faq/networking/cni-providers/#cilium), it is possible to enable cross-node ingress routing. Click the [CNI provider docs]({{<baseurl>}}/rancher/v2.6/en/faq/networking/cni-providers/#ingress-routing-across-nodes-in-cilium) to learn more.
 
 For more details on the different networking providers and how to configure them, please view our [RKE2 documentation](https://docs.rke2.io/install/network_options/).
 
@@ -81,7 +83,7 @@ Each cloud provider capable of launching a cluster using RKE2 can collect metric
 
 ### Add-On Config
 
-Additional Kubernetes manifests, managed as a [Add-on](https://kubernetes.io/docs/concepts/cluster-administration/addons/), to apply to the cluster on startup. Refer to the [RKE2 documentation](https://docs.rke2.io/helm/#automatically-deploying-manifests-and-helm-charts) for details.
+Additional Kubernetes manifests, managed as an [Add-on](https://kubernetes.io/docs/concepts/cluster-administration/addons/), to apply to the cluster on startup. Refer to the [RKE2 documentation](https://docs.rke2.io/helm/#automatically-deploying-manifests-and-helm-charts) for details.
 
 ### Agent Environment Vars
 
@@ -139,7 +141,7 @@ Select the image repository to pull Rancher images from. For more details and co
 
 ### Upgrade Strategy
 
-#### Controle Plane Concurrency
+#### Control Plane Concurrency
 
 Select how many nodes can be upgraded at the same time. Can be a fixed number or percentage.
 
