@@ -10,4 +10,4 @@ RUN mkdir -p /output /theme/rancher-website-theme && tar -xzf /run/master.tar.gz
 # Expose default hugo port
 EXPOSE 9001
 
-ENTRYPOINT ["hugo", "serve", "--bind=0.0.0.0", "--buildDrafts", "--buildFuture", "--baseURL=" ]
+ENTRYPOINT ["hugo", "serve", "--bind=0.0.0.0", "--buildDrafts", "--buildFuture" ]
