@@ -1281,7 +1281,7 @@ on the master node and ensure the correct value for the `--bind-address` paramet
 **Expected result**:
 
 ```
-'--bind-address' is present OR '--bind-address' is not present
+'--bind-address' argument is set to 127.0.0.1
 ```
 
 ### 1.4 Scheduler
@@ -1327,7 +1327,7 @@ on the master node and ensure the correct value for the `--bind-address` paramet
 **Expected result**:
 
 ```
-'--bind-address' is present OR '--bind-address' is not present
+'--bind-address' argument is set to 127.0.0.1
 ```
 
 ## 2 Etcd Node Configuration
