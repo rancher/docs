@@ -6,6 +6,8 @@ weight: 100
 
 The following steps will quickly deploy a Rancher server on Azure in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/).
+
 ## Prerequisites
 
 >**Note**
@@ -27,7 +29,7 @@ The following steps will quickly deploy a Rancher server on Azure in a single-no
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
 4. Edit `terraform.tfvars` and customize the following variables:
-    - `azure_subscription_id` - Microsoft Azure Subscription ID 
+    - `azure_subscription_id` - Microsoft Azure Subscription ID
     - `azure_client_id` - Microsoft Azure Client ID
     - `azure_client_secret` - Microsoft Azure Client Secret
     - `azure_tenant_id` - Microsoft Azure Tenant ID
@@ -41,7 +43,7 @@ Suggestions include:
     - `instance_type` - Compute instance size used, minimum is `Standard_DS2_v2` but `Standard_DS2_v3` or `Standard_DS3_v2` could be used if within budget
     - `add_windows_node` - If true, an additional Windows worker node is added to the workload cluster
     - `windows_admin_password` - The admin password of the windows worker node
-    
+
 6. Run `terraform init`.
 
 7. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:

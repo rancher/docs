@@ -10,6 +10,8 @@ Howdy Partner! This tutorial walks you through:
 - Creation of your first cluster
 - Deployment of an application, Nginx
 
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/).
+
 ## Quick Start Outline
 
 This Quick Start Guide is divided into different tasks for easier consumption.
@@ -104,13 +106,13 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 1. When you finish running the command on your Linux host, click **Done**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
