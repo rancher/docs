@@ -20,7 +20,7 @@ Rancher provides an intuitive user interface for interacting with your clusters.
 
 You can use the Kubernetes command-line tool, [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), to manage   your clusters. You have two options for using kubectl:
 
-- **Rancher kubectl shell:** Interact with your clusters by launching a kubectl shell available in the Rancher UI. This option requires no configuration actions on your part. For more information, see [Accessing Clusters with kubectl Shell]({{<baseurl>}}/rancher/v2.6/en/cluster-access/kubectl/).
+- **Rancher kubectl shell:** Interact with your clusters by launching a kubectl shell available in the Rancher UI. This option requires no configuration actions on your part. For more information, see [Accessing Clusters with kubectl Shell]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/).
 - **Terminal remote connection:** You can also interact with your clusters by installing [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) on your local desktop and then copying the cluster's kubeconfig file to your local `~/.kube/config` directory. For more information, see [Accessing Clusters with kubectl and a kubeconfig File](./kubectl/).
 
 ### Rancher CLI
