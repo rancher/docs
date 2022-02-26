@@ -4,6 +4,8 @@ weight: 200
 ---
 The following steps quickly deploy a Rancher Server with a single node cluster attached.
 
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/).
+
 ## Prerequisites
 
 - [Vagrant](https://www.vagrantup.com): Vagrant is required as this is used to provision the machine based on the Vagrantfile.
@@ -14,7 +16,7 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
 - Vagrant will require plugins to create VirtualBox VMs. Install them with the following commands:
 
   `vagrant plugin install vagrant-vboxmanage`
-  
+
   `vagrant plugin install vagrant-vbguest`
 
 ## Getting Started
