@@ -4,7 +4,7 @@ weight: 200
 ---
 The following steps quickly deploy a Rancher Server with a single node cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/).
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
 
 ## Prerequisites
 

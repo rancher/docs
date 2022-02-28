@@ -6,7 +6,7 @@ weight: 100
 
 The following steps will quickly deploy a Rancher server on Azure in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/).
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.5/en/installation/).
 
 ## Prerequisites
 
