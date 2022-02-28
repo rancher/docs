@@ -5,6 +5,8 @@ weight: 100
 ---
 The following steps will quickly deploy a Rancher server on AWS in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
 ## Prerequisites
 
 >**Note**
@@ -24,7 +26,7 @@ The following steps will quickly deploy a Rancher server on AWS in a single-node
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
 4. Edit `terraform.tfvars` and customize the following variables:
-    - `aws_access_key` - Amazon AWS Access Key 
+    - `aws_access_key` - Amazon AWS Access Key
     - `aws_secret_key` - Amazon AWS Secret Key
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
