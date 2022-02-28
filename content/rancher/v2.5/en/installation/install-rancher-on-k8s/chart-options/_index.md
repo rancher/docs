@@ -124,7 +124,7 @@ To customize or use a different ingress with Rancher server you can set your own
 Example on setting a custom certificate issuer:
 
 ```plain
---set ingress.extraAnnotations.'certmanager\.k8s\.io/cluster-issuer'=ca-key-pair
+--set ingress.extraAnnotations.'cert-manager\.io/cluster-issuer'=issuer-name
 ```
 
 Example on setting a static proxy header with `ingress.configurationSnippet`. This value is parsed like a template so variables can be used.

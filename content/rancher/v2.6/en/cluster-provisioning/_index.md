@@ -20,6 +20,7 @@ This section covers the following topics:
   - [Launching Kubernetes and Provisioning Nodes in an Infrastructure Provider](#launching-kubernetes-and-provisioning-nodes-in-an-infrastructure-provider)
   - [Launching Kubernetes on Existing Custom Nodes](#launching-kubernetes-on-existing-custom-nodes)
 - [Registering Existing Clusters](#registering-existing-clusters)
+- [Programmatically Creating Clusters](#programmatically-creating-clusters)
 
   <!-- /TOC -->
 
@@ -78,3 +79,9 @@ Registering EKS clusters now provides additional benefits. For the most part, re
 When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
 
 For more information, see [this page.](./registered-clusters)
+
+# Programmatically Creating Clusters
+
+The most common way to programmatically deploy Kubernetes clusters through Rancher is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)
+
+EKS, GKE, AKS clusters and RKE clusters can be created or imported with Terraform.

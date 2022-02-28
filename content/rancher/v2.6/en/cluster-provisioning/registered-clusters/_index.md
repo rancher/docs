@@ -17,13 +17,13 @@ The control that Rancher has to manage a registered cluster depends on the type 
 
 # Prerequisites
 
-## Kubernetes Node Roles
+### Kubernetes Node Roles
 
 Registered RKE Kubernetes clusters must have all three node roles - etcd, controlplane and worker. A cluster with only controlplane components cannot be registered in Rancher.
 
 For more information on RKE node roles, see the [best practices.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production/#cluster-architecture)
 
-## Permissions
+### Permissions
 
 If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
 
@@ -41,12 +41,16 @@ By default, GKE users are not given this privilege, so you will need to run the 
 
 If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
 
+### EKS Clusters
+
+EKS clusters must have at least one managed node group to be imported into Rancher or provisioned from Rancher successfully.
+
 # Registering a Cluster
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, **Import Existing**.
-1. Enter a **Cluster Name**.
 1. Choose the type of cluster.
+1. Enter a **Cluster Name**.
 4. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 5. If it is a generic custom cluster, use **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.
 6. Click **Create**.
@@ -80,6 +84,34 @@ The option can also be specified using the environment variable `K3S_KUBECONFIG_
 
 ```
 $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
+```
+
+### Configuring an Imported EKS Cluster with Terraform
+
+You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided.
+
+>**Warning:** Even a small difference between the current EKS cluster and a user-provided config could have unexpected results.
+
+The minimum config fields required by Rancher to import EKS clusters with Terraform using `eks_config_v2` are as follows:
+
+- cloud_credential_id
+- name
+- region
+- imported (this field should always be set to `true` for imported clusters)
+
+Example YAML configuration for imported EKS clusters:
+
+```
+resource "rancher2_cluster" "my-eks-to-import" {
+  name        = "my-eks-to-import"
+  description = "Terraform EKS Cluster"
+  eks_config_v2 {
+    cloud_credential_id = rancher2_cloud_credential.aws.id
+    name                = var.aws_eks_name
+    region              = var.aws_region
+    imported            = true
+  }
+}
 ```
 
 # Management Capabilities for Registered Clusters
@@ -168,7 +200,7 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
 >
 > - The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
 >
-> - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
+> - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of the ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
 
 ###### **Manual steps to be taken on the control plane of each downstream cluster to enable ACE:**
 
@@ -197,10 +229,14 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
         kube-apiserver-arg:
             - authentication-token-webhook-config-file=/var/lib/rancher/{rke2,k3s}/kube-api-authn-webhook.yaml
         
-1. Finally, run the following commands:
+1. Run the following commands:
 
         sudo systemctl stop {rke2,k3s}-server
         sudo systemctl start {rke2,k3s}-server
+
+1. Finally, you **must** go back to the Rancher UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.  
+      
+      >**Note:** The <b>FQDN</b> field is optional, and if one is entered, it should point to the downstream cluster. Certificate information is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the <b>CA Certificates</b> field.
 
 # Annotating Registered Clusters
 

@@ -109,7 +109,7 @@ An authorized cluster endpoint allows users to connect to the Kubernetes API ser
 
 > The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) to provision the cluster. The ACE is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
 
-> The [ACE is available for registered RKE2 and K3s clusters]({{<baseurl>}}/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters) as of Rancher v2.6.3. 
+> The [ACE is available for registered RKE2 and K3s clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters) as of Rancher v2.6.3. 
 
 There are two main reasons why a user might need the authorized cluster endpoint:
 

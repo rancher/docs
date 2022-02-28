@@ -80,6 +80,8 @@ ingress:
 > Please see the [RKE Documentation]({{<baseurl>}}/rke/latest/en/config-options/) for the full list of options and capabilities.
 > 
 > For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide]({{<baseurl>}}/rancher/v2.6/en/installation/resources/advanced/etcd/).
+>
+> For more information regarding Dockershim support, refer to [this page]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/dockershim/)
 
 ### 2. Run RKE
 

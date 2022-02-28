@@ -58,7 +58,7 @@ Canal is a CNI network provider that gives you the best of Flannel and Calico. I
 
 In Rancher, Canal is the default CNI network provider combined with Flannel and VXLAN encapsulation.
 
-Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). For details, refer to [the port requirements for user clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/)
+Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (health checks). If using Wireguard, you should open UDP ports `51820` and `51821`. For more details, refer to [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/).
 
 {{< img "/img/rancher/canal-diagram.png" "Canal Diagram">}}
 
@@ -75,7 +75,7 @@ Encapsulated traffic is unencrypted by default. Flannel provides two solutions f
 * [IPSec](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#ipsec), which makes use of [strongSwan](https://www.strongswan.org/) to establish encrypted IPSec tunnels between Kubernetes workers. It is an experimental backend for encryption.
 * [WireGuard](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#wireguard), which is a more faster-performing alternative to strongSwan.
 
-Kubernetes workers should open UDP port `8472` (VXLAN) and TCP port `9099` (healthcheck). See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
+Kubernetes workers should open UDP port `8472` (VXLAN). See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
 
 ![Flannel Diagram]({{<baseurl>}}/img/rancher/flannel-diagram.png)
 
@@ -107,7 +107,7 @@ Calico enables networking and network policy in Kubernetes clusters across the c
 
 Calico also provides a stateless IP-in-IP or VXLAN encapsulation mode that can be used, if necessary. Calico also offers policy isolation, allowing you to secure and govern your Kubernetes workloads using advanced ingress and egress policies.
 
-Kubernetes workers should open TCP port `179` (BGP). See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
+Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if using VXLAN encapsulation. In addition, TCP port `5473` is needed when using Typha. See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
 
 ![Calico Diagram]({{<baseurl>}}/img/rancher/calico-diagram.svg)
 
@@ -122,7 +122,26 @@ For more information, see the following pages:
 
 Cilium enables networking and network policies (L3, L4, and L7) in Kubernetes. By default, Cilium uses eBPF technologies to route packets inside the node and VXLAN to send packets to other nodes. Unencapsulated techniques can also be configured. 
 
-Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4140` for health checks. In addition, ICMP 8/0 must be enabled for health checks. For more information, check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements).
+Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4240` for health checks. In addition, ICMP 8/0 must be enabled for health checks. For more information, check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements).
+
+##### Ingress Routing Across Nodes in Cilium
+<br>
+By default, Cilium does not allow pods to contact pods on other nodes. To work around this, enable the ingress controller to route requests across nodes with a `CiliumNetworkPolicy`.
+
+After selecting the Cilium CNI and enabling Project Network Isolation for your new cluster, configure as follows:
+
+```
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: hn-nodes
+  namespace: default
+spec:
+  endpointSelector: {} 
+  ingress:
+    - fromEntities:
+      - remote-node
+```
 
 ## CNI Features by Provider
 
