@@ -1,7 +1,7 @@
 {{ if not .Lastmod.IsZero }}Last updated on {{ .Lastmod.Format "Jan 2, 2006" }}{{ end }}
 <div class="buttons-container">
     <a href="{{.Site.Params.ghdocsrepo}}/edit/master/content/{{.File.Path}}" class="btn bg-link">
-        <button class="button has-icon-right">
+        <button class="button">
             <span>Edit this page</span>
             <svg class="icon right" enable-background="new 0 0 34 34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
                 <g>
