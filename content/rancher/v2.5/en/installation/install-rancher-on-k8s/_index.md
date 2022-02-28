@@ -190,7 +190,7 @@ deployment "rancher" successfully rolled out
 
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA.
 
->**Note:**: You need to have port 80 open as the HTTP-01 challenge can only be done on port 80.
+>**Note:** You need to have port 80 open as the HTTP-01 challenge can only be done on port 80.
 
 In the following command,
 
@@ -198,6 +198,7 @@ In the following command,
 - Set `replicas` to the number of replicas to use for the Rancher Deployment. This defaults to 3; if you have less than 3 nodes in your cluster you should reduce it accordingly.
 - Set `ingress.tls.source` to `letsEncrypt`.
 - Set `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices).
+- Set `letsEncrypt.ingress.class` to whatever your ingress controller is, e.g., `traefik`, `nginx`, `haproxy`, etc.
 - To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`.
 - If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
 
@@ -207,7 +208,8 @@ helm install rancher rancher-<CHART_REPO>/rancher \
   --set hostname=rancher.my.org \
   --set replicas=3 \
   --set ingress.tls.source=letsEncrypt \
-  --set letsEncrypt.email=me@example.org
+  --set letsEncrypt.email=me@example.org \
+  --set letsEncrypt.ingress.class=nginx
 ```
 
 Wait for Rancher to be rolled out:

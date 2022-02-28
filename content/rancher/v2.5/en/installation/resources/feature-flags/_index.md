@@ -56,7 +56,7 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 
 > **Note:** Values set from the Rancher API will override the value passed in through the command line.
 
-When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
+When installing Rancher with a Helm chart, use the `--set` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 
 ```
 helm install rancher-latest/rancher \
@@ -131,7 +131,7 @@ When installing Rancher with Docker, use the `--features` option. In the below e
 docker run -d -p 80:80 -p 443:443 \
   --restart=unless-stopped \
   rancher/rancher:rancher-latest \
-  --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-NAME-2>=true 
+  --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true
 ```
 
 

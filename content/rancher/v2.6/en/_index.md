@@ -2,7 +2,7 @@
 title: "Rancher 2.6"
 shortTitle: "Rancher 2.6  (Latest)"
 description: "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more."
-metaTitle: "Rancher 2.x Docs: What is New?"
+metaTitle: "Rancher 2.6 Docs: What is New?"
 metaDescription: "Rancher 2 adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more."
 insertOneSix: false
 weight: 1

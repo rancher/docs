@@ -9,7 +9,7 @@ If you are migrating Rancher to a new Kubernetes cluster, you don't need to inst
 
 These instructions assume you have [created a backup](../back-up-rancher) and you have already installed a new Kubernetes cluster where Rancher will be deployed.
 
-It is required to use the same hostname that was set as the server URL in the first cluster.
+>**Warning:** It is required to use the same hostname that was set as the server URL in the first cluster. If not done, downstream clusters will show as unavailable in the cluster management page of the UI, and you won't be able to click inside the cluster or on the cluster's <b>Explore</b> button.
 
 Rancher version must be v2.5.0 and up
 
@@ -19,12 +19,17 @@ Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes 
 - [K3s Kubernetes installation docs]({{<baseurl>}}/k3s/latest/en/installation/)
 
 ### 1. Install the rancher-backup Helm chart
-Install version 2.x.x of the rancher-backup chart.
+Install version 2.x.x of the rancher-backup chart. The following assumes a connected environment with access to DockerHub:
 ```
 helm repo add rancher-charts https://charts.rancher.io
 helm repo update
 helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace --version $CHART_VERSION
 helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system --version $CHART_VERSION
+```
+</br>
+For an **air-gapped environment**, use the option below to pull the `backup-restore-operator` image from your private registry when installing the rancher-backup-crd helm chart.
+```
+--set image.repository $REGISTRY/rancher/backup-restore-operator
 ```
 
 ### 2. Restore from backup using a Restore custom resource
@@ -36,7 +41,9 @@ helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-sy
 >
 > - Note that when making or restoring backups for v1.22, the Rancher version and the local cluster's Kubernetes version should be the same. The Kubernetes version should be considered when restoring a backup since the supported apiVersion in the cluster and in the backup file could be different.
 
-If you are using an S3 store as the backup source, and need to use your S3 credentials for restore, create a secret in this cluster using your S3 credentials. The Secret data must have two keys, `accessKey` and `secretKey` containing the s3 credentials like this:
+If you are using an S3 store as the backup source and need to use your S3 credentials for restore, create a secret in this cluster using your S3 credentials. The Secret data must have two keys - `accessKey` and `secretKey` - that contain the S3 credentials.
+
+**Warning:** The values `accessKey` and `secretKey` in the example below must be base64-encoded first when creating the object directly. If not encoded first, the pasted values will cause errors when you are attempting to backup or restore.
 
 ```yaml
 apiVersion: v1
@@ -49,7 +56,7 @@ stringData:
   secretKey: <Enter your base64-encoded secret key>
 ```
 
-This secret can be created in any namespace, with the above example it will get created in the default namespace
+This secret can be created in any namespace; with the above example, it will get created in the default namespace.
 
 In the Restore custom resource, `prune` must be set to false. 
 
