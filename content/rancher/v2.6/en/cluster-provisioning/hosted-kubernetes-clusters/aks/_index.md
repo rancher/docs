@@ -14,7 +14,6 @@ You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Ser
 - [Role-based Access Control](#role-based-access-control)
 - [AKS Cluster Configuration Reference](#aks-cluster-configuration-reference)
 - [Private Clusters](#private-clusters)
-- [Minimum AKS Permissions](#minimum-aks-permissions)
 - [Syncing](#syncing)
 - [Programmatically Creating AKS Clusters](#programmatically-creating-aks-clusters)
 
