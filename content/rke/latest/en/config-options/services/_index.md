@@ -6,7 +6,9 @@ weight: 230
 
 To deploy Kubernetes, RKE deploys several core components or services in Docker containers on the nodes. Based on the roles of the node, the containers deployed may be different.
 
-**All services support additional [custom arguments, Docker mount binds and extra environment variables]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/).**
+>**Note:** All services support <b>additional custom arguments, Docker mount binds, and extra environment variables.</b> 
+>
+>Please see the [documentation]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/) for more details.
 
 | Component               | Services key name in cluster.yml |
 |-------------------------|----------------------------------|
