@@ -8,7 +8,7 @@ To deploy Kubernetes, RKE deploys several core components or services in Docker 
 
 >**Note:** All services support <b>additional custom arguments, Docker mount binds, and extra environment variables.</b> 
 >
->Please see the [documentation]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/) for more details.
+>To configure advanced options for Kubernetes services such as `kubelet`, `kube-controller`, and `kube-apiserver` that are not documented below, see the [`extra_args` documentation]({{<baseurl>}}/rke/latest/en/config-options/services/services-extras/) for more details.
 
 | Component               | Services key name in cluster.yml |
 |-------------------------|----------------------------------|
