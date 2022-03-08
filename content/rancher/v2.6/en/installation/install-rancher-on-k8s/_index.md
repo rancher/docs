@@ -148,6 +148,8 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 
 The exact command to install Rancher differs depending on the certificate configuration.
 
+> **Tip for testing and development:** This final command to install Rancher requires a domain name that forwards traffic to Rancher. If you are using the Helm CLI to set up a proof of concept, you can use a fake domain name when passing the `hostname` option. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`, which would expose Rancher on an IP where Rancher would be running. Production installs would require a real domain name.
+
 {{% tabs %}}
 {{% tab "Rancher-generated Certificates" %}}
 

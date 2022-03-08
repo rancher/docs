@@ -91,7 +91,9 @@ docker run -d --restart=unless-stopped \
 
 ### Option C: Bring Your Own Certificate, Signed by a Recognized CA
 
-In production environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
+In production environments where you're exposing an app publicly, you would use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
+
+The Docker install is not recommended for production. these instructions are provided for testing and development purposes.
 
 > **Prerequisites:**
 >
@@ -126,6 +128,8 @@ docker run -d --restart=unless-stopped \
 > **Remember:** Let's Encrypt provides rate limits for requesting new certificates. Therefore, limit how often you create or destroy the container. For more information, see [Let's Encrypt documentation on rate limits](https://letsencrypt.org/docs/rate-limits/).
 
 For production environments, you also have the option of using [Let's Encrypt](https://letsencrypt.org/) certificates. Let's Encrypt uses an http-01 challenge to verify that you have control over your domain. You can confirm that you control the domain by pointing the hostname that you want to use for Rancher access (for example, `rancher.mydomain.com`) to the IP of the machine it is running on. You can bind the hostname to the IP address by creating an A record in DNS.
+
+The Docker install is not recommended for production. These instructions are provided for testing and development purposes.
 
 > **Prerequisites:**
 >

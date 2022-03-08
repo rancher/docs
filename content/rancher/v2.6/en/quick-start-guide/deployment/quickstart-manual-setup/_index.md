@@ -1,118 +1,84 @@
 ---
-title: Manual Quick Start
+title: Helm CLI Quick Start
 weight: 300
 ---
-Howdy Partner! This tutorial walks you through:
 
-- Installation of Rancher 2.x
-- Creation of your first cluster
-- Deployment of an application, Nginx
+These instructions capture a quick way to set up a proof-of-concept Rancher installation.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+These instructions assume you have a Linux virtual machine that you will communicate with from your local workstation. Rancher will be installed on the Linux machine. You will need to retrieve the IP address of that machine to make it so that you can access Rancher from your local workstation. Rancher is designed to manage Kubernetes clusters remotely, so any Kubernetes cluster that Rancher manages in the future will also need to be able to reach this IP address.
 
-## Quick Start Outline
+We don't recommend installing Rancher locally because it creates a networking problem. Installing Rancher on localhost does not allow Rancher to communicate with downstream Kubernetes clusters, so on localhost you wouldn't be able to test Rancher's cluster provisioning or cluster management functionality.
 
-This Quick Start Guide is divided into different tasks for easier consumption.
+Your Linux machine can be anywhere. It could be an Amazon EC2 instance, a Digital Ocean droplet, or an Azure virtual machine, to name a few examples. (Other Rancher docs often use 'node' as a generic term for all of these.) One possible way to deploy a Linux machine is by setting up an Amazon EC2 instance as shown in [this tutorial.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/infrastructure-tutorials/ec2-node/)
 
-<!-- TOC -->
+The full installation requirements are [here.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/)
 
 
-1. [Provision a Linux Host](#1-provision-a-linux-host)
+## Install K3s on Linux
 
-1. [Install Rancher](#2-install-rancher)
+Install a K3s Kubernetes cluster by running this command on the Linux machine:
 
-1. [Log In](#3-log-in)
+```
+curl -sfL https://get.k3s.io | sh -s - server
+```
 
-1. [Create the Cluster](#4-create-the-cluster)
+Save the IP of the Linux machine.
 
-<!-- /TOC -->
-<br/>
-### 1. Provision a Linux Host
+## Save the kubeconfig to your workstation
 
- Begin creation of a custom cluster by provisioning a Linux host. Your host can be:
+The kubeconfig file is important for accessing the Kubernetes cluster. Copy the file at `/etc/rancher/k3s/k3s.yaml` from the Linux machine and save it to your local workstation in the directory `~/.kube/config`. One way to do this is by using the `scp` tool and run this command on your local machine:
 
-- A cloud-host virtual machine (VM)
-- An on-prem VM
-- A bare-metal server
+```
+scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml ~/.kube/config
+```
 
-  >**Note:**
-  > When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
-  >
-  > For a full list of port requirements, refer to [Docker Installation]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/).
+## Edit the Rancher server URL in the kubeconfig
 
-  Provision the host according to our [Requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/).
+In the kubeconfig file, the server directive is defined as `localhost`. You will need to change the server directive from `localhost` to `<IP_OF_LINUX_NODE>:6443`. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) This edit is needed so that when you run Helm or kubectl commands from your local workstation, you will be able to communicate with the Kubernetes cluster that Rancher will be installed on. 
 
-### 2. Install Rancher
+One way to open the kubeconfig file for editing is to use Vim:
 
-To install Rancher on your host, connect to it and then use a shell to install.
+```
+vi ~/.kube/config
+```
 
-1.  Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection.
+Press `i` to put Vim in insert mode. To save your work, press `Esc`. Then press `:wq` and press `enter`.
 
-2.  From your shell, enter the following command:
+## Install Rancher with Helm
 
-	```
-  sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
-  ```
+Then from your local workstation, run the following commands. You will need to have installed [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) and [helm.](https://helm.sh/docs/intro/install/)
 
-**Result:** Rancher is installed.
+```
+helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 
-### 3. Log In
+kubectl create namespace cattle-system
 
-Log in to Rancher to begin using the application. After you log in, you'll make some one-time configurations.
+kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
 
-1.  Open a web browser and enter the IP address of your host: `https://<SERVER_IP>`.
+helm repo add jetstack https://charts.jetstack.io
 
-    Replace `<SERVER_IP>` with your host IP address.
+helm repo update
 
-2.  When prompted, create a password for the default `admin` account there cowpoke!
+helm install cert-manager jetstack/cert-manager \
+  --namespace cert-manager \
+  --create-namespace \
+  --version v1.5.1
+```
 
-3. Set the **Rancher Server URL**. The URL can either be an IP address or a host name. However, each node added to your cluster must be able to connect to this URL.<br/><br/>If you use a hostname in the URL, this hostname must be resolvable by DNS on the nodes you want to add to you cluster.
+The final command to install Rancher is below. The command requires a domain name that forwards traffic to the Linux machine. For the sake of simplicity in this tutorial, you can use a fake domain name to create your proof of concept. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`.
 
-<br/>
+```
+helm install rancher rancher-latest/rancher \
+  --namespace cattle-system \
+  --set hostname=<IP_OF_LINUX_NODE>.sslip.io \
+  --set replicas=1 \
+  --set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
+```
 
-### 4. Create the Cluster
+Now if you navigate to `<IP_OF_LINUX_NODE>.sslip.io` in a web browser, you should see the Rancher UI.
 
-Welcome to Rancher! You are now able to create your first Kubernetes cluster.
+To make these instructions simple, we used a fake domain name and self-signed certificates to do this installation. For production installs, you would need a high-availability setup with a load balancer, a real domain name and real certificates.
 
-In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-prem VM, or bare-metal) to be used in a cluster.
+These instructions also left out the full installation requirements and other installation options. If you have any issues with these steps, refer to the full [Helm CLI installation docs.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/)
 
-1.  Click **☰ > Cluster Management**.
-1. From the **Clusters** page, click **Create**.
-2. Choose **Custom**.
-
-3. Enter a **Cluster Name**.
-
-4. Skip **Member Roles** and **Cluster Options**. We'll tell you about them later.
-
-5. Click **Next**.
-
-6. From **Node Role**, select _all_ the roles: **etcd**, **Control**, and **Worker**.
-
-7. **Optional**: Rancher auto-detects the IP addresses used for Rancher communication and cluster communication. You can override these using `Public Address` and `Internal Address` in the **Node Address** section.
-
-8. Skip the **Labels** stuff. It's not important for now.
-
-9. Copy the command displayed on screen to your clipboard.
-
-10. Log in to your Linux host using your preferred shell, such as PuTTy or a remote Terminal connection. Run the command copied to your clipboard.
-
-11. When you finish running the command on your Linux host, click **Done**.
-
-**Result:**
-
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
-
-You can access your cluster after its state is updated to **Active**.
-
-**Active** clusters are assigned two Projects:
-
-- `Default`, containing the `default` namespace
-- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
-
-#### Finished
-
-Congratulations! You have created your first cluster.
-
-#### What's Next?
-
-Use Rancher to create a deployment. For more information, see [Creating Deployments]({{<baseurl>}}/rancher/v2.6/en/quick-start-guide/workload).
+To launch new Kubernetes clusters with your new Rancher server, you may need to set up cloud credentials in Rancher. For more information, see [Launching Kubernetes clusters with Rancher.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/)
