@@ -11,7 +11,7 @@ A summary of the steps is as follows:
 2. Create or update the `tls-ca` Kubernetes secret resource with the root CA certificate (only required when using a private CA).
 3. Update the Rancher installation using the Helm CLI.
 4. Reconfigure the Rancher agents to trust the new CA certificate.
-5. Select Force Update of fleet clusters to connect fleet-agent to Rancher
+5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher.
 
 The details of these instructions are below.
 
