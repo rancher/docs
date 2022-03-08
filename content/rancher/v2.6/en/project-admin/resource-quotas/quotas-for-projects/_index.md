@@ -35,10 +35,10 @@ In the following diagram, a Rancher administrator wants to apply a resource quot
 Let's highlight some more nuanced functionality. If a quota is deleted at the project level, it will also be removed from all namespaces contained within that project, despite any overrides that may exist. Further, updating an existing namespace default limit for a quota at the project level will not result in that value being propagated to existing namespaces in the project; the updated value will only be applied to newly created namespaces in that project. To update a namespace default limit for existing namespaces you can delete and subsequently recreate the quota at the project level with the new default value. This will result in the new default value being applied to all existing namespaces in the project.
 
 Before creating a namespace in a project, Rancher compares the amounts of the project's available resources and requested resources (regardless of whether they come from the default or overriden limits).
-If a new namespace, for any one resource, will exceed the remaining quota for it,
-Rancher will still grant the remaining amount for that resource.
+If the requested resources exceed the remaining capacity in the project for those resources, Rancher will assign the namespace the remaining capacity for that resource.
+
 However, this is not the case with namespaces created outside of Rancher's UI. For namespaces created via `kubectl`, Rancher
-will assign a resource quota that has a **zero** amount for any exceeding resource.
+will assign a resource quota that has a **zero** amount for any resource that requested more capacity than what remains in the project.
 
 To create a namespace in an existing project via `kubectl`, use the `field.cattle.io/projectId` annotation. To override the default
 requested quota limit, use the `field.cattle.io/resourceQuota` annotation.
