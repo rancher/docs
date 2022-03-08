@@ -147,7 +147,7 @@ https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
 
 # 5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher
 
-Select 'Force Update' for the clusters within the Continuous Delivery view of the Rancher Explorer UI to allow the fleet-agent in downstream clusters to successfully connect to Rancher.
+Select 'Force Update' for the clusters within the [Continuous Delivery]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet/#accessing-fleet-in-the-rancher-ui) view of the Rancher UI to allow the fleet-agent in downstream clusters to successfully connect to Rancher.
 
 ### Why is this step required?
 
