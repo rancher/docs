@@ -145,7 +145,7 @@ First, generate the agent definitions as described here: https://gist.github.com
 Then, connect to a controlplane node of the downstream cluster via SSH, create a Kubeconfig and apply the definitions:
 https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
 
-# 5. Select Force Update of fleet clusters to connect fleet-agent to Rancher
+# 5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher
 
 Select 'Force Update' for the clusters within the Continuous Delivery view of the Rancher Explorer UI to allow the fleet-agent in downstream clusters to successfully connect to Rancher.
 
