@@ -19,11 +19,13 @@ The resource quota includes two limits, which you set while creating or editing 
 
 - **Project Limits:**
 
-    This set of values configures an overall resource limit for the project. If you try to add a new namespace to the project, Rancher uses the limits you've set to validate that the project has enough resources to accommodate the namespace.  In other words, if you try to move a namespace into a project near its resource quota, Rancher blocks you from moving the namespace.
+    This set of values configures a total limit for each specified resource shared among all namespaces in the project.
 
 - **Namespace Default Limits:**
 
-    This value is the default resource limit available for each namespace. When the resource quota is created at the project level, this limit is automatically propagated to each namespace in the project. Each namespace is bound to this default limit unless you override it.
+    This set of values configures the default quota limit available for each namespace for each specified resource.
+    When a namespace is created in the project without overrides, this limit is automatically bound to the namespace and enforced.
+
     
 In the following diagram, a Rancher administrator wants to apply a resource quota that sets the same CPU and memory limit for every namespace in their project (`Namespace 1-4`). However, in Rancher, the administrator can set a resource quota for the project (`Project Resource Quota`) rather than individual namespaces. This quota includes resource limits for both the entire project (`Project Limit`) and individual namespaces (`Namespace Default Limit`). Rancher then propagates the `Namespace Default Limit` quotas to each namespace (`Namespace Resource Quota`) when created.
 
@@ -31,6 +33,24 @@ In the following diagram, a Rancher administrator wants to apply a resource quot
 ![Rancher Resource Quota Implementation]({{<baseurl>}}/img/rancher/rancher-resource-quota.png)
 
 Let's highlight some more nuanced functionality. If a quota is deleted at the project level, it will also be removed from all namespaces contained within that project, despite any overrides that may exist. Further, updating an existing namespace default limit for a quota at the project level will not result in that value being propagated to existing namespaces in the project; the updated value will only be applied to newly created namespaces in that project. To update a namespace default limit for existing namespaces you can delete and subsequently recreate the quota at the project level with the new default value. This will result in the new default value being applied to all existing namespaces in the project.
+
+Before creating a namespace in a project, Rancher compares the amounts of the project's available resources and requested resources (regardless of whether they come from the default or overriden limits).
+If the requested resources exceed the remaining capacity in the project for those resources, Rancher will assign the namespace the remaining capacity for that resource.
+
+However, this is not the case with namespaces created outside of Rancher's UI. For namespaces created via `kubectl`, Rancher
+will assign a resource quota that has a **zero** amount for any resource that requested more capacity than what remains in the project.
+
+To create a namespace in an existing project via `kubectl`, use the `field.cattle.io/projectId` annotation. To override the default
+requested quota limit, use the `field.cattle.io/resourceQuota` annotation.
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    field.cattle.io/projectId: [your-cluster-ID]:[your-project-ID]
+    field.cattle.io/resourceQuota: '{"limit":{"limitsCpu":"100m", "limitsMemory":"100Mi", "configMaps": "50"}}'
+  name: my-ns
+```
 
 The following table explains the key differences between the two quota types.
 
