@@ -98,7 +98,7 @@ Create a bash script file called `account_update.sh`. Be sure to `chmod +x accou
 ```bash
 #!/bin/bash -e
 
-for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces -A -o=jsonpath="{.items[*]['metadata.name']}"); do
   kubectl patch serviceaccount default -n ${namespace} -p "$(cat account_update.yaml)"
 done
 ```
@@ -137,7 +137,7 @@ Create a bash script file called `apply_networkPolicy_to_all_ns.sh`. Be sure to 
 ```bash
 #!/bin/bash -e
 
-for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
+for namespace in $(kubectl get namespaces -A -o=jsonpath="{.items[*]['metadata.name']}"); do
   kubectl apply -f default-allow-all.yaml -n ${namespace}
 done
 ```
