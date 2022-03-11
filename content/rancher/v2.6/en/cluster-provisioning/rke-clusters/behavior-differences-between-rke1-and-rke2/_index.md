@@ -17,6 +17,12 @@ RKE2/K3s provisioning is built on top of the Cluster API (CAPI) upstream framewo
 
 When you make changes to your cluster configuration in RKE2, this **may** result in nodes reprovisioning. This is controlled by CAPI controllers and not by Rancher itself. Note that for etcd nodes, the same behavior does not apply.
 
+The following are some specific example configuration changes that may cause the described behavior:
+
+- When editing the cluster and enabling `drain before delete`, the existing control plane nodes and worker are deleted and new nodes are created.
+
+- When nodes are being provisioned, performing a scale down operation may result in both nodes getting deleted and a new one being provisioned.
+
 Users who are used to RKE1 provisioning should take note of this new RKE2 behavior which may be unexpected.
 
 ### Terminology
