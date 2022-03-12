@@ -21,7 +21,7 @@ The following are some specific example configuration changes that may cause the
 
 - When editing the cluster and enabling `drain before delete`, the existing control plane nodes and worker are deleted and new nodes are created.
 
-- When nodes are being provisioned, performing a scale down operation may, in some cases, result in both nodes getting deleted and a new one being provisioned.
+- When nodes are being provisioned and a scale down operation is performed, rather than scaling down directly, nodes are deleted and new nodes are provisioned to reach the desired node count.
 
 Users who are used to RKE1 provisioning should take note of this new RKE2 behavior which may be unexpected.
 
