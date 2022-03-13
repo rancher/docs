@@ -36,7 +36,7 @@ kernel.keys.root_maxbytes=25000000
 
 ## Kubernetes Runtime Requirements
 
-The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSPs) and network policies. These are outlined in this section. K3s doesn't apply any default PSPs or network policies. However, K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the `NodeRestriction` admission controller. To enable PSPs, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the `NodeRestriction` plugin as well as enabling the `PodSecurityPolicy`.
+The runtime requirements to comply with the CIS Benchmark are centered around pod security (PSPs), network policies and API Server auditing logs. These are outlined in this section. K3s doesn't apply any default PSPs or network policies. However, K3s ships with a controller that is meant to apply a given set of network policies. By default, K3s runs with the `NodeRestriction` admission controller. To enable PSPs, add the following to the K3s start command: `--kube-apiserver-arg="enable-admission-plugins=NodeRestriction,PodSecurityPolicy,ServiceAccount"`. This will have the effect of maintaining the `NodeRestriction` plugin as well as enabling the `PodSecurityPolicy`. The same happens with the API Server auditing logs, K3s doesn't enable them by default, so audit log configuration and audit policy must be created manually.
 
 ### Pod Security Policies
 
@@ -371,6 +371,50 @@ spec:
 
 > **Note:** Operators must manage network policies as normal for additional namespaces that are created.
 
+### API Server audit configuration
+
+CIS requirements 1.2.22 to 1.2.25 are related to configuring audit logs for the API Server. K3s doesn't create by default the log directory and audit policy, as auditing requirements are specific to each user's policies and environment.
+
+The log directory, ideally, must be created before starting K3s. A restrictive access permission is recommended to avoid leaking potential sensitive information.
+
+```bash
+sudo mkdir -p -m 700 /var/lib/rancher/k3s/server/logs
+```
+
+A starter audit policy to log request metadata is provided below. The policy should be written to a file named `audit.yaml` in `/var/lib/rancher/k3s/server` directory. Detailed information about policy configuration for the API server can be found in the Kubernetes [documentation](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/).
+
+```yaml
+apiVersion: audit.k8s.io/v1
+kind: Policy
+rules:
+- level: Metadata
+```
+
+Both configurations must be passed as arguments to the API Server as:
+
+```bash
+--kube-apiserver-arg='audit-log-path=/var/lib/rancher/k3s/server/logs/audit.log'
+--kube-apiserver-arg='audit-policy-file=/var/lib/rancher/k3s/server/audit.yaml'
+```
+
+If the configurations are created after K3s is installed, they must be added to K3s' systemd service in `/etc/systemd/system/k3s.service`.
+
+```bash
+ExecStart=/usr/local/bin/k3s \
+    server \
+	'--kube-apiserver-arg=audit-log-path=/var/lib/rancher/k3s/server/logs/audit.log' \
+	'--kube-apiserver-arg=audit-policy-file=/var/lib/rancher/k3s/server/audit.yaml' \
+```
+
+K3s must be restarted to load the new configuration.
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart k3s.service
+```
+
+Additional information about CIS requirements 1.2.22 to 1.2.25 is presented below.
+
 ## Known Issues
 The following are controls that K3s currently does not pass by default. Each gap will be explained, along with a note clarifying whether it can be passed through manual operator intervention, or if it will be addressed in a future release of K3s.
 
@@ -614,7 +658,8 @@ The command below is an example of how the outlined remediations can be applied 
 k3s server \
     --protect-kernel-defaults=true \
     --secrets-encryption=true \
-    --kube-apiserver-arg='audit-log-path=/var/lib/rancher/k3s/server/logs/audit-log' \
+    --kube-apiserver-arg='audit-log-path=/var/lib/rancher/k3s/server/logs/audit.log' \
+    --kube-apiserver-arg='audit-policy-file=/var/lib/rancher/k3s/server/audit.yaml' \
     --kube-apiserver-arg='audit-log-maxage=30' \
     --kube-apiserver-arg='audit-log-maxbackup=10' \
     --kube-apiserver-arg='audit-log-maxsize=100' \
