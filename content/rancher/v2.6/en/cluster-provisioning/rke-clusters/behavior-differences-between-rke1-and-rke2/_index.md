@@ -27,7 +27,7 @@ Users who are used to RKE1 provisioning should take note of this new RKE2 behavi
 
 ### Terminology
 
-You will notice that some terms have changed or gone away going from RKE1 to RKE2. For example, in RKE2, **node templates** have been deprecated, and you can confiugure your cluster nodes directly. Another example is that the term **node pool** in RKE1 is now known as **machine pool** in RKE2.
+You will notice that some terms have changed or gone away going from RKE1 to RKE2. For example, in RKE2, **node templates** have been deprecated, and you can configure your cluster nodes directly. Another example is that the term **node pool** in RKE1 is now known as **machine pool** in RKE2.
 
 
 
