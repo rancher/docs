@@ -8,7 +8,7 @@ weight: 24
 The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it:
 
 {{% tabs %}}
-{{% tab % "Rancher v2.6.4+" %}}
+{{% tab "Rancher v2.6.4+" %}}
 
 1. Click on your user avatar in the upper right corner. 
 1. Click  **Account & API Keys**.
