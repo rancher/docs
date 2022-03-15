@@ -53,7 +53,7 @@ get_id_text() {
 
 get_section_ids() {
   id=${1}
-  jq -r --arg id "${id}" '.[] | select(.id==$id) | .checks[].id' ${results_file}
+  jq -r --arg id "${id}" '.[] | select(.id==$id) | .checks[].id' ${results_file} | sort -V
 }
 
 get_section_desc() {
