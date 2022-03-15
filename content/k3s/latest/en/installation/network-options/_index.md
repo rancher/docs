@@ -22,7 +22,7 @@ If you wish to use WireGuard as your flannel backend it may require additional k
 
 ### Custom CNI
 
-Run K3s with `--flannel-backend=none` and install your CNI of choice. IP Forwarding should be enabled for Canal and Calico. Please reference the steps below.
+Run K3s with `--flannel-backend=none` and install your CNI of choice. Most CNI plugins come with their own network policy engine, so it is recommended to set `--disable-network-policy` as well to avoid conflicts. IP Forwarding should be enabled for Canal and Calico. Please reference the steps below.
 
 {{% tabs %}}
 {{% tab "Canal" %}}
