@@ -206,6 +206,7 @@ services:
     extra_args:
       feature-gates: RotateKubeletServerCertificate=true
       tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+      bind-address: 127.0.0.1
     extra_binds: []
     extra_env: []
     win_extra_args: {}
@@ -217,6 +218,7 @@ services:
     image: ""
     extra_args:
       tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+      bind-address: 127.0.0.1
     extra_binds: []
     extra_env: []
     win_extra_args: {}
@@ -393,7 +395,7 @@ authorization:
   mode: ""
   options: {}
 ignore_docker_version: false
-kubernetes_version: v1.18.12-rancher1-1
+kubernetes_version: ""
 private_registries: []
 ingress:
   provider: ""
@@ -530,6 +532,7 @@ rancher_kubernetes_engine_config:
     scheduler:
       extra_args:
         tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+      bind-address: 127.0.0.1
     etcd:
       backup_config:
         enabled: true
@@ -541,10 +544,10 @@ rancher_kubernetes_engine_config:
       extra_args:
         election-timeout: 5000
         heartbeat-interval: 500
-      gid: 52034
       retention: 72h
       snapshot: false
       uid: 52034
+      gid: 52034
     kube_api:
       always_pull_images: false
       audit_log:
@@ -559,6 +562,7 @@ rancher_kubernetes_engine_config:
       extra_args:
         feature-gates: RotateKubeletServerCertificate=true
         tls-cipher-suites: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
+      bind-address: 127.0.0.1
     kubelet:
       extra_args:
         feature-gates: RotateKubeletServerCertificate=true
