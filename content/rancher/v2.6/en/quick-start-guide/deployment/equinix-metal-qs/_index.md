@@ -10,6 +10,8 @@ weight: 250
 - Creation of your first cluster
 - Deployment of an application, Nginx
 
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
 ## Quick Start Outline
 
 This Quick Start Guide is divided into different tasks for easier consumption.
@@ -41,7 +43,7 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   - [Equinix Metal Pricing](https://metal.equinix.com/developers/docs/servers/server-specs/)
 
   **Note:**
-  > When provisioning a new Equinix Metal Server via the CLI or API you will need to be able to provide the following information:  project-id, plan, metro, and the operating-system 
+  > When provisioning a new Equinix Metal Server via the CLI or API you will need to be able to provide the following information:  project-id, plan, metro, and the operating-system
   > When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
   > For a full list of port requirements, refer to [Docker Installation]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/).
   > Provision the host according to our [Requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/).
@@ -102,13 +104,13 @@ In this task, you can use the versatile **Custom** option. This option lets you 
 
 11. When you finish running the command on your Linux host, click **Done**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

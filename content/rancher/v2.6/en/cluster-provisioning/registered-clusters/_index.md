@@ -168,7 +168,7 @@ Also in the K3s documentation, nodes with the worker role are called agent nodes
 
 # Debug Logging and Troubleshooting for Registered K3s Clusters
 
-Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes. 
+Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes.
 
 To enable debug logging on the system upgrade controller deployment, edit the [configmap](https://github.com/rancher/system-upgrade-controller/blob/50a4c8975543d75f1d76a8290001d87dc298bdb4/manifests/system-upgrade-controller.yaml#L32) to set the debug environment variable to true. Then restart the `system-upgrade-controller` pod.
 
@@ -196,7 +196,7 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
 
 > **Note:**
 >
-> - These steps only need to be performed on the control plane nodes of the downstream cluster. You must configure each control plane node individually. 
+> - These steps only need to be performed on the control plane nodes of the downstream cluster. You must configure each control plane node individually.
 >
 > - The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
 >
@@ -223,19 +223,19 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
           context:
             user: Default
             cluster: Default
-        
+
 1. Add the following to the config file (or create one if it doesn’t exist); note that the default location is `/etc/rancher/{rke2,k3s}/config.yaml`:
 
         kube-apiserver-arg:
             - authentication-token-webhook-config-file=/var/lib/rancher/{rke2,k3s}/kube-api-authn-webhook.yaml
-        
+
 1. Run the following commands:
 
         sudo systemctl stop {rke2,k3s}-server
         sudo systemctl start {rke2,k3s}-server
 
 1. Finally, you **must** go back to the Rancher UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.  
-      
+
       >**Note:** The <b>FQDN</b> field is optional, and if one is entered, it should point to the downstream cluster. Certificate information is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the <b>CA Certificates</b> field.
 
 # Annotating Registered Clusters
@@ -286,4 +286,3 @@ To annotate a registered cluster,
 1. Click **Save**.
 
 **Result:** The annotation does not give the capabilities to the cluster, but it does indicate to Rancher that the cluster has those capabilities.
-

@@ -341,7 +341,10 @@ Example:
 local_cluster_auth_endpoint:
   enabled: true
   fqdn: "FQDN"
-  ca_certs: "BASE64_CACERT"
+  ca_certs: |-
+    -----BEGIN CERTIFICATE-----
+    ...
+    -----END CERTIFICATE-----
 ```
 
 ### Custom Network Plug-in
