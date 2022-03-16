@@ -7,7 +7,7 @@ weight: 90
 
 #### Overview
 
-This document is a companion to the K3s security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of K3s, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the CIS Kubernetes Benchmark. It is to be used by K3s operators, security teams, auditors, and decision-makers.
+This document is a companion to the [K3s security hardening guide]({{<baseurl>}}/k3s/latest/en/security/hardening_guide/). The hardening guide provides prescriptive guidance for hardening a production installation of K3s, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the CIS Kubernetes Benchmark. It is to be used by K3s operators, security teams, auditors, and decision-makers.
 
 This guide is specific to the **v1.17**, **v1.18**, **v1.19**, **v1.20** and **v1.21** release line of K3s and the **v1.6** release of the CIS Kubernetes Benchmark.
 
