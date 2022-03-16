@@ -511,6 +511,8 @@ rancher_kubernetes_engine_config:
     kube_controller:
       extra_args:
         feature-gates: RotateKubeletServerCertificate=true
+        bind-address: 127.0.0.1
+        address: 127.0.0.1
     kubelet:
       extra_args:
         feature-gates: RotateKubeletServerCertificate=true
@@ -519,6 +521,10 @@ rancher_kubernetes_engine_config:
           TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256
       fail_swap_on: false
       generate_serving_certificate: true
+    scheduler:
+      extra_args:
+        bind-address: 127.0.0.1
+        address: 127.0.0.1
   ssh_agent_auth: false
   upgrade_strategy:
     max_unavailable_controlplane: '1'
