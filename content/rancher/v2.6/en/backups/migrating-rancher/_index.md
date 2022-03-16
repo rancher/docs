@@ -90,11 +90,23 @@ spec:
       --from-file=./encryption-provider-config.yaml \
       -n cattle-resources-system
     ```
- 
-1. Then apply the resource:
+
+Apply the manifest, and watch for the Restore resources status :
+
+1. Apply the resource:
     ```
     kubectl apply -f migrationResource.yaml 
     ```
+1. Watch the Restore status:
+    ```
+    kubectl get restore
+    ```
+1. Watch the restoration logs:
+    ```
+    kubectl logs -n cattle-resources-system --tail 100 -f rancher-backup-xxx-xxx
+    ```
+
+Once the Restore resource has the status `Completed`, you can continue the Rancher installation.
 
 ### 3. Install cert-manager
 
