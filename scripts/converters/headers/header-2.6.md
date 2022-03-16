@@ -9,7 +9,7 @@ weight: 101
 
 #### Overview
 
-This document is a companion to the Rancher v2.6 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
+This document is a companion to the [Rancher v2.6 security hardening guide]({{<baseurl>}}/rancher/v2.6/en/security/hardening-guides/). The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.
 
 This guide corresponds to specific versions of the hardening guide, Rancher, CIS Benchmark and Kubernetes:
 
