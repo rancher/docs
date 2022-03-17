@@ -97,11 +97,11 @@ Apply the manifest, and watch for the Restore resources status :
     ```
     kubectl apply -f migrationResource.yaml 
     ```
-1. Watch the Restore status:
+Watch the Restore status:
     ```
     kubectl get restore
     ```
-1. Watch the restoration logs:
+Watch the restoration logs:
     ```
     kubectl logs -n cattle-resources-system --tail 100 -f rancher-backup-xxx-xxx
     ```
