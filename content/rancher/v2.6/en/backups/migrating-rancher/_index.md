@@ -93,7 +93,7 @@ spec:
 
 Apply the manifest, and watch for the Restore resources status :
 
-1. Apply the resource:
+Apply the resource:
     ```
     kubectl apply -f migrationResource.yaml 
     ```
