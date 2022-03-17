@@ -9,7 +9,7 @@ RKE1 and RKE2 have several slight behavioral differences to note, and this page 
 
 ### Control Plane Components
 
-RKE1 uses Docker for deploying and managing control plane components and the container runtime for Kubernetes. By contrast, RKE2 launches control plane components such as static pods that are managed by the kubelet. RKE2's container runtime is containerd, which allows things such as container registry mirroring (RKE1 with Docker does not).
+RKE1 uses Docker for deploying and managing control plane components, and it also uses Docker as the container runtime for Kubernetes. By contrast, RKE2 launches control plane components such as static pods that are managed by the kubelet. RKE2's container runtime is containerd, which allows things such as container registry mirroring (RKE1 with Docker does not).
 
 ### Cluster API
 
@@ -21,13 +21,13 @@ The following are some specific example configuration changes that may cause the
 
 - When editing the cluster and enabling `drain before delete`, the existing control plane nodes and worker are deleted and new nodes are created.
 
-- When nodes are being provisioned and a scale down operation is performed, rather than scaling down directly, nodes are deleted and new nodes are provisioned to reach the desired node count.
+- When nodes are being provisioned and a scale down operation is performed, rather than scaling down the desired number of nodes, it is possible that the currently provisioning nodes get deleted and new nodes are provisioned to reach the desired node count.
 
 Users who are used to RKE1 provisioning should take note of this new RKE2 behavior which may be unexpected.
 
 ### Terminology
 
-You will notice that some terms have changed or gone away going from RKE1 to RKE2. For example, in RKE2, **node templates** have been deprecated, and you can configure your cluster nodes directly. Another example is that the term **node pool** in RKE1 is now known as **machine pool** in RKE2.
+You will notice that some terms have changed or gone away going from RKE1 to RKE2. For example, in RKE1 provisioning, you use **node templates**; in RKE2 provisioning, you can configure your cluster nodes directly. Another example is that the term **node pool** in RKE1 is now known as **machine pool** in RKE2.
 
 
 
