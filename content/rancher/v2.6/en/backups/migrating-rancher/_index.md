@@ -85,16 +85,30 @@ spec:
 >**Important:** The field `encryptionConfigSecretName` must be set only if your backup was created with encryption enabled. Provide the name of the Secret containing the encryption config file. If you only have the encryption config file, but don't have a secret created with it in this cluster, use the following steps to create the secret:  
 
 1. The encryption configuration file must be named `encryption-provider-config.yaml`, and the `--from-file` flag must be used to create this secret. So save your `EncryptionConfiguration` in a file called `encryption-provider-config.yaml` and run this command:   
-    ```
-    kubectl create secret generic encryptionconfig \
-      --from-file=./encryption-provider-config.yaml \
-      -n cattle-resources-system
-    ```
- 
-1. Then apply the resource:
-    ```
-    kubectl apply -f migrationResource.yaml 
-    ```
+```
+kubectl create secret generic encryptionconfig \
+  --from-file=./encryption-provider-config.yaml \
+  -n cattle-resources-system
+```
+
+1. Apply the manifest, and watch for the Restore resources status:
+
+    Apply the resource:
+```
+kubectl apply -f migrationResource.yaml
+```
+
+    Watch the Restore status:
+```
+kubectl get restore
+```
+
+    Watch the restoration logs:
+```
+kubectl logs -n cattle-resources-system --tail 100 -f rancher-backup-xxx-xxx
+```
+
+Once the Restore resource has the status `Completed`, you can continue the Rancher installation.
 
 ### 3. Install cert-manager
 

@@ -35,7 +35,7 @@ K3s requires two or more server nodes for this HA configuration. See the [Instal
 
 When running the `k3s server` command on these nodes, you must set the `datastore-endpoint` parameter so that K3s knows how to connect to the external datastore. The `token` parameter can also be used to set a deterministic token when adding nodes. When empty, this token will be generated automatically for further use.
 
-For example, a command like the following could be used to install the K3s server with a MySQL database as the external datastore and [set a token]({{<baseurl>}}/k3s/latest/en/installation/install-options/server-config/#cluster-options}}):
+For example, a command like the following could be used to install the K3s server with a MySQL database as the external datastore and [set a token]({{<baseurl>}}/k3s/latest/en/installation/install-options/server-config/#cluster-options):
 
 ```bash
 curl -sfL https://get.k3s.io | sh -s - server \
@@ -72,7 +72,7 @@ If the first server node was started without the `--token` CLI flag or `K3S_TOKE
 cat /var/lib/rancher/k3s/server/token
 ```
 
-Additional server nodes can then be added [using the token]({{<baseurl>}}/k3s/latest/en/installation/install-options/server-config/#cluster-options}}):
+Additional server nodes can then be added [using the token]({{<baseurl>}}/k3s/latest/en/installation/install-options/server-config/#cluster-options):
 
 ```bash
 curl -sfL https://get.k3s.io | sh -s - server \
