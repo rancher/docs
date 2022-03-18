@@ -109,6 +109,12 @@ Calico also provides a stateless IP-in-IP or VXLAN encapsulation mode that can b
 
 Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if using VXLAN encapsulation. In addition, TCP port `5473` is needed when using Typha. See [the port requirements for user clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/#networking-requirements) for more details.
 
+>**Important:** In Rancher v2.6.3, Calico probes fail on Windows nodes upon RKE2 installation. <b>Note that this issue is resolved in v2.6.4.<b>
+>
+>- To work around this issue, first navigate to `https://<rancherserverurl>/v3/settings/windows-rke2-install-script`. 
+>
+>- There, change the current setting: `https://raw.githubusercontent.com/rancher/wins/v0.1.3/install.ps1` to this new setting: `https://raw.githubusercontent.com/rancher/rke2/master/windows/rke2-install.ps1`.
+
 ![Calico Diagram]({{<baseurl>}}/img/rancher/calico-diagram.svg)
 
 For more information, see the following pages:
