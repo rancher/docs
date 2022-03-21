@@ -5,11 +5,11 @@ weight: 300
 
 These instructions capture a quick way to set up a proof-of-concept Rancher installation.
 
-These instructions assume you have a Linux virtual machine that you will communicate with from your local workstation. Rancher will be installed on the Linux machine. You will need to retrieve the IP address of that machine to make it so that you can access Rancher from your local workstation. Rancher is designed to manage Kubernetes clusters remotely, so any Kubernetes cluster that Rancher manages in the future will also need to be able to reach this IP address.
+These instructions assume you have a Linux virtual machine that you will communicate with from your local workstation. Rancher will be installed on the Linux machine. You will need to retrieve the IP address of that machine so that you can access Rancher from your local workstation. Rancher is designed to manage Kubernetes clusters remotely, so any Kubernetes cluster that Rancher manages in the future will also need to be able to reach this IP address.
 
 We don't recommend installing Rancher locally because it creates a networking problem. Installing Rancher on localhost does not allow Rancher to communicate with downstream Kubernetes clusters, so on localhost you wouldn't be able to test Rancher's cluster provisioning or cluster management functionality.
 
-Your Linux machine can be anywhere. It could be an Amazon EC2 instance, a Digital Ocean droplet, or an Azure virtual machine, to name a few examples. (Other Rancher docs often use 'node' as a generic term for all of these.) One possible way to deploy a Linux machine is by setting up an Amazon EC2 instance as shown in [this tutorial.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/infrastructure-tutorials/ec2-node/)
+Your Linux machine can be anywhere. It could be an Amazon EC2 instance, a Digital Ocean droplet, or an Azure virtual machine, to name a few examples. Other Rancher docs often use 'node' as a generic term for all of these. One possible way to deploy a Linux machine is by setting up an Amazon EC2 instance as shown in [this tutorial.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/infrastructure-tutorials/ec2-node/)
 
 The full installation requirements are [here.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/)
 
@@ -28,13 +28,36 @@ Save the IP of the Linux machine.
 
 The kubeconfig file is important for accessing the Kubernetes cluster. Copy the file at `/etc/rancher/k3s/k3s.yaml` from the Linux machine and save it to your local workstation in the directory `~/.kube/config`. One way to do this is by using the `scp` tool and run this command on your local machine:
 
+{{% tabs %}}
+{{% tab "Mac and Linux" %}}
+
 ```
 scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 ```
 
+{{% /tab %}}
+{{% tab "Windows" %}}
+
+By default, "scp" is not a recognized command, so we need to install a module first.
+
+In Windows Powershell:
+
+```
+Find-Module Posh-SSH
+Install-Module Posh-SSH
+
+## Get the remote kubeconfig file
+scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml $env:USERPROFILE\.kube\config
+```
+{{%  /tab %}}
+{{% tabs %}}
+
 ## Edit the Rancher server URL in the kubeconfig
 
-In the kubeconfig file, the server directive is defined as `localhost`. You will need to change the server directive from `localhost` to `<IP_OF_LINUX_NODE>:6443`. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) This edit is needed so that when you run Helm or kubectl commands from your local workstation, you will be able to communicate with the Kubernetes cluster that Rancher will be installed on. 
+In the kubeconfig file, the server directive is defined as `localhost`. You will need to change the server directive from `localhost` to `<IP_OF_LINUX_NODE>:6443`. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) This edit is needed so that when you run Helm or kubectl commands from your local workstation, you will be able to communicate with the Kubernetes cluster that Rancher will be installed on.
+
+{{% tabs %}}
+{{% tab "Mac and Linux" %}}
 
 One way to open the kubeconfig file for editing is to use Vim:
 
@@ -42,7 +65,22 @@ One way to open the kubeconfig file for editing is to use Vim:
 vi ~/.kube/config
 ```
 
-Press `i` to put Vim in insert mode. To save your work, press `Esc`. Then press `:wq` and press `enter`.
+Press `i` to put Vim in insert mode. To save your work, press `Esc`. Then press `:wq` and press `Enter`.
+
+{{% /tab %}}
+{{% tab "Windows" %}}
+
+In Windows Powershell, you can use `notepad.exe` for editing the kubeconfig file:
+
+```
+notepad.exe $env:USERPROFILE\.kube\config
+```
+
+Once edited, either press `ctrl+s` or go to `File > Save` to save your work.
+
+
+{{%  /tab %}}
+{{% tabs %}}
 
 ## Install Rancher with Helm
 
@@ -63,9 +101,15 @@ helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
   --version v1.5.1
+
+# Windows Powershell
+helm install cert-manager jetstack/cert-manager \`
+  --namespace cert-manager \`
+  --create-namespace \`
+  --version v1.5.1
 ```
 
-The final command to install Rancher is below. The command requires a domain name that forwards traffic to the Linux machine. For the sake of simplicity in this tutorial, you can use a fake domain name to create your proof of concept. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`.
+The final command to install Rancher is below. The command requires a domain name that forwards traffic to the Linux machine. For the sake of simplicity in this tutorial, you can use a fake domain name to create your proof-of-concept. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`.
 
 ```
 helm install rancher rancher-latest/rancher \
@@ -73,6 +117,14 @@ helm install rancher rancher-latest/rancher \
   --set hostname=<IP_OF_LINUX_NODE>.sslip.io \
   --set replicas=1 \
   --set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
+
+# Windows Powershell
+helm install rancher rancher-latest/rancher `
+  --namespace cattle-system `
+  --set hostname=<IP_OF_LINUX_NODE>.sslip.io `
+  --set replicas=1 `
+  --set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
+```
 ```
 
 Now if you navigate to `<IP_OF_LINUX_NODE>.sslip.io` in a web browser, you should see the Rancher UI.

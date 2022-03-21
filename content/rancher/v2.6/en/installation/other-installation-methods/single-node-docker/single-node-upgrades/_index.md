@@ -5,7 +5,7 @@ weight: 1010
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
 
-> **Docker installs are not supported in production.** We don't support upgrading Docker installs in production environments, and these instructions are provided for testing and development purposes only. If you have already deployed a Docker install in production and need to upgrade to a new Rancher version, we recommend [migrating to the Helm chart install]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher/) before upgrading.
+> **Docker installs are not supported in production environments.** These instructions are provided for testing and development purposes only. If you have already deployed a Docker install in production and need to upgrade to a new Rancher version, we recommend [migrating to the Helm chart install]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher/) before upgrading.
 
 # Prerequisites
 
