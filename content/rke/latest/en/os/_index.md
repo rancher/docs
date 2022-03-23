@@ -301,7 +301,7 @@ Kubernetes is engineered around the concept of horizontal scaling for redundancy
 
 - If you must use servers larger than 24 CPU, use virtualization tooling, such as what [Harvester](https://docs.harvesterhci.io/v1.0/rancher/virtualization-management/) provides, to subdivide the servers.
 
-- Kubernetes, kernel, and network limitations prevent having too many pods per server. You should maintain a minimum of roughly 24 cores per server and a maximum of the recommended 110 pods per server.
+- Kubernetes, kernel, and network limitations prevent having too many pods per server. You should maintain a maximum of roughly 24 cores per server and a maximum of the recommended 110 pods per server.
 
 - If you are deploying an application or system that specifically requires a large number of pods, you may increase the pod limit. Please note, however, that going above 254 pods per server is not supported by default pod CIDR settings unless the pods are using host networking.
 
