@@ -37,4 +37,4 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 
 **Results:** The selected certificates will be rotated and the related services will be restarted to start using the new certificate.
 
-> **Note:** Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, Rancher currently doesn't allow the ability to upload these in Rancher Launched Kubernetes clusters.
+> **Note:** Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, Rancher currently doesn't allow the ability to upload these in Rancher launched Kubernetes clusters.
