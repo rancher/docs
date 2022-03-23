@@ -74,7 +74,7 @@ To add a private CA for Helm Chart repositories:
     [...]
     ```
 
-- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click **Edit YAML** for the chart repo, and add the key/value pair as follows: 
+- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click **Edit YAML** for the chart repo and add the key/value pair as follows: 
     ```
     [...]
     spec:
