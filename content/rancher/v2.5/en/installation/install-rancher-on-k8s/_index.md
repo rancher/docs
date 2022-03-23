@@ -157,7 +157,7 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 
 The exact command to install Rancher differs depending on the certificate configuration.
 
-However, irrespective of the certificate configuration the name of the Rancher installation in the `cattle-system` namespace should always be `rancher`.
+However, irrespective of the certificate configuration, the name of the Rancher installation in the `cattle-system` namespace should always be `rancher`.
 
 {{% tabs %}}
 {{% tab "Rancher-generated Certificates" %}}
