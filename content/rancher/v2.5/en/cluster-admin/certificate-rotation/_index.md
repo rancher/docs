@@ -31,7 +31,7 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 3. Select which certificates that you want to rotate.
 
    * Rotate all Service certificates (keep the same CA)
-   * Rotate an individual service and choose one of the services from the drop down menu
+   * Rotate an individual service and choose one of the services from the drop-down menu
 
 4. Click **Save**.
 
