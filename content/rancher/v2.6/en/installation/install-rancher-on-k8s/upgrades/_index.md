@@ -150,6 +150,8 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
 
 If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11. 
 
+>**Note:** New in v2.6.4, cert-manager versions 1.6.2 and 1.7.1 are compatible. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022.
+
 1. Uninstall Rancher
 
     ```
