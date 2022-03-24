@@ -11,7 +11,7 @@ We don't recommend installing Rancher locally because it creates a networking pr
 
 Your Linux machine can be anywhere. It could be an Amazon EC2 instance, a Digital Ocean droplet, or an Azure virtual machine, to name a few examples. Other Rancher docs often use 'node' as a generic term for all of these. One possible way to deploy a Linux machine is by setting up an Amazon EC2 instance as shown in [this tutorial]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/infrastructure-tutorials/ec2-node/).
 
-The full installation requirements are [here.]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/)
+The full installation requirements are [here]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/).
 
 
 ## Install K3s on Linux
