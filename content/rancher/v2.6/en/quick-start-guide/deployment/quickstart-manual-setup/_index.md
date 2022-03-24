@@ -54,7 +54,7 @@ scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml $env:USERPROFILE\.kube\
 
 ## Edit the Rancher server URL in the kubeconfig
 
-In the kubeconfig file, the server directive is defined as `localhost`. You will need to change the server directive from `localhost` to `<IP_OF_LINUX_NODE>:6443`. (The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443.) This edit is needed so that when you run Helm or kubectl commands from your local workstation, you will be able to communicate with the Kubernetes cluster that Rancher will be installed on.
+In the kubeconfig file, the server directive is defined as `localhost`. You will need to change the server directive from `localhost` to `<IP_OF_LINUX_NODE>:6443`. The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443. This edit is needed so that when you run Helm or kubectl commands from your local workstation, you will be able to communicate with the Kubernetes cluster that Rancher will be installed on.
 
 {{% tabs %}}
 {{% tab "Mac and Linux" %}}
