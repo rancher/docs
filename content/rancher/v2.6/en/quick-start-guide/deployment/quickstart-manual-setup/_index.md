@@ -16,7 +16,7 @@ The full installation requirements are [here]({{<baseurl>}}/rancher/v2.6/en/inst
 
 ## Install K3s on Linux
 
-Install a K3s Kubernetes cluster by running this command on the Linux machine:
+Install a K3s cluster by running this command on the Linux machine:
 
 ```
 curl -sfL https://get.k3s.io | sh -s - server
