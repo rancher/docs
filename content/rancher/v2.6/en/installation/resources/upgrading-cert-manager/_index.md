@@ -15,7 +15,7 @@ To address these changes, this guide will do two things:
 1. Explain the cert-manager API changes and link to cert-manager's official documentation for migrating your data
 
 > **Important:**
-> If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, you need to reinstall both of them:
+> If you are currently running the cert-manager whose version is 1.5 or below, and want to upgrade both Rancher and cert-manager to a new version (1.6+ in the case of cert-manager), then you need to re-install both Rancher and cert-manager due to the API change in cert-manager 1.6. This will also be necessary if you are upgrading from a version of cert manager below 0.11 to a version of cert-manager above 0.11. Follow the steps below:
 
 > 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
 > 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
