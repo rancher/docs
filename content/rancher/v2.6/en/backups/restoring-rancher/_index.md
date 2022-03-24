@@ -5,6 +5,13 @@ weight: 2
 
 A restore is performed by creating a Restore custom resource. 
 
+---
+**New Requirement for Restore in HA Rancher:** 
+
+The HA Rancher server is not coming up active when restoring Rancher with a backup taken in v2.6.3. To work around this issue, you must manually clean up the cluster **before** restoring the backup. Two scripts have been created to assist you: one to clean up the cluster, and one to check for any Rancher-related resources in the cluster. Refer [here](https://github.com/rancherlabs/support-tools/tree/master/cleanup-rancher-k8s-resources) for details on the scripts.
+
+---
+
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
