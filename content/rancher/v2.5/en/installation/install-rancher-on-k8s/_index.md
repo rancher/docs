@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.5/en/installation/k8s-install/
   - /rancher/v2.5/en/installation/k8s-install/helm-rancher
   - /rancher/v2.5/en/installation/k8s-install/kubernetes-rke
-  - /rancher/v2.5/en/installation/ha-server-install 
+  - /rancher/v2.5/en/installation/ha-server-install
   - /rancher/v2.5/en/installation/install-rancher-on-k8s/install
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/
 ---
@@ -24,7 +24,7 @@ In this section, you'll learn how to deploy Rancher on a Kubernetes cluster usin
 
 ### Kubernetes Cluster
 
-Set up the Rancher server's local Kubernetes cluster. 
+Set up the Rancher server's local Kubernetes cluster.
 
 Rancher can be installed on any Kubernetes cluster. This cluster can use upstream Kubernetes, or it can use one of Rancher's Kubernetes distributions, or it can be a managed Kubernetes cluster from a provider such as Amazon EKS.
 
@@ -113,7 +113,7 @@ There are three recommended options for the source of the certificate used for T
 
 ### 4. Install cert-manager
 
-> You should skip this step if you are bringing your own certificate files (option `ingress.tls.source=secret`), or if you use [TLS termination on an external load balancer]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination). 
+> You should skip this step if you are bringing your own certificate files (option `ingress.tls.source=secret`), or if you use [TLS termination on an external load balancer]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
 
 This step is only required to use certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) or to request Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`).
 
@@ -157,6 +157,8 @@ cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 
 The exact command to install Rancher differs depending on the certificate configuration.
 
+However, irrespective of the certificate configuration, the name of the Rancher installation in the `cattle-system` namespace should always be `rancher`.
+
 {{% tabs %}}
 {{% tab "Rancher-generated Certificates" %}}
 
@@ -168,7 +170,7 @@ Because `rancher` is the default option for `ingress.tls.source`, we are not spe
 - Set `hostname` to the DNS record that resolves to your load balancer.
 - Set `replicas` to the number of replicas to use for the Rancher Deployment. This defaults to 3; if you have less than 3 nodes in your cluster you should reduce it accordingly.
 - To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`.
-- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
@@ -200,7 +202,7 @@ In the following command,
 - Set `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices).
 - Set `letsEncrypt.ingress.class` to whatever your ingress controller is, e.g., `traefik`, `nginx`, `haproxy`, etc.
 - To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`.
-- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
@@ -234,7 +236,7 @@ Although an entry in the `Subject Alternative Names` is technically required, ha
 - Set `replicas` to the number of replicas to use for the Rancher Deployment. This defaults to 3; if you have less than 3 nodes in your cluster you should reduce it accordingly.
 - Set `ingress.tls.source` to `secret`.
 - To install a specific Rancher version, use the `--version` flag, example: `--version 2.3.6`.
-- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
 
 ```
 helm install rancher rancher-<CHART_REPO>/rancher \
