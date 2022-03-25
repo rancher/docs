@@ -11,6 +11,7 @@ A summary of the steps is as follows:
 2. Create or update the `tls-ca` Kubernetes secret resource with the root CA certificate (only required when using a private CA).
 3. Update the Rancher installation using the Helm CLI.
 4. Reconfigure the Rancher agents to trust the new CA certificate.
+5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher.
 
 The details of these instructions are below.
 
@@ -143,3 +144,11 @@ First, generate the agent definitions as described here: https://gist.github.com
 
 Then, connect to a controlplane node of the downstream cluster via SSH, create a Kubeconfig and apply the definitions:
 https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
+
+# 5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher
+
+Select 'Force Update' for the clusters within the [Continuous Delivery]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet/#accessing-fleet-in-the-rancher-ui) view of the Rancher UI to allow the fleet-agent in downstream clusters to successfully connect to Rancher.
+
+### Why is this step required?
+
+Fleet agents in Rancher managed clusters store kubeconfig that is used to connect to the Rancher proxied kube-api in the fleet-agent secret of the fleet-system namespace. The kubeconfig contains a certificate-authority-data block containing the Rancher CA. When changing the Rancher CA, this block needs to be updated for a successful connection of the fleet-agent to Rancher.

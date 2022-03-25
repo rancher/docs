@@ -23,36 +23,87 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
       ><sup>1</sup>: Optionally, you can enable either one or both of these settings.
       ><sup>2</sup>: Rancher SAML metadata won't be generated until a SAML provider is configured and saved.
-  
+
   {{< img "/img/rancher/keycloak/keycloak-saml-client-configuration.png" "">}}
-      
+
 - In the new SAML client, create Mappers to expose the users fields
   - Add all "Builtin Protocol Mappers"
     {{< img "/img/rancher/keycloak/keycloak-saml-client-builtin-mappers.png" "">}}
   - Create a new "Group list" mapper to map the member attribute to a user's groups
-    {{< img "/img/rancher/keycloak/keycloak-saml-client-group-mapper.png" "">}}       
-- Export a `metadata.xml` file from your Keycloak client:
-  From the `Installation` tab, choose the `SAML Metadata IDPSSODescriptor` format option and download your file.
-  
-  >**Note**
-  > Keycloak versions 6.0.0 and up no longer provide the IDP metadata under the `Installation` tab.
-  > You can still get the XML from the following url:
-  >  
-  > `https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}/protocol/saml/descriptor`
-  >  
-  > The XML obtained from this URL contains `EntitiesDescriptor` as the root element. Rancher expects the root element to be `EntityDescriptor` rather than `EntitiesDescriptor`. So before passing this XML to Rancher, follow these steps to adjust it:
-  >  
-  >    * Copy all the attributes from `EntitiesDescriptor` to the `EntityDescriptor` that are not present.
-  >    * Remove the `<EntitiesDescriptor>` tag from the beginning.
-  >    * Remove the `</EntitiesDescriptor>` from the end of the xml.
-  >  
-  > You are left with something similar as the example below:
-  >  
-  > ```
-  > <EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" entityID="https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}">
-  >   .... 
-  > </EntityDescriptor>
-  > ```
+    {{< img "/img/rancher/keycloak/keycloak-saml-client-group-mapper.png" "">}}
+
+## Getting the IDP Metadata
+
+{{% tabs %}}
+{{% tab "Keycloak 5 and earlier" %}}
+To get the IDP metadata, export a `metadata.xml` file from your Keycloak client.
+From the **Installation** tab, choose the **SAML Metadata IDPSSODescriptor** format option and download your file.
+{{% /tab %}}
+{{% tab "Keycloak 6-13" %}}
+
+1. From the **Configure** section, click the **Realm Settings** tab.
+1. Click the **General** tab.
+1. From the **Endpoints** field, click **SAML 2.0 Identity Provider Metadata**.
+
+Verify the IDP metadata contains the following attributes:
+
+```
+xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+```
+
+Some browsers, such as Firefox, may render/process the document such that the contents appear to have been modified, and some attributes appear to be missing. In this situation, use the raw response data that can be found using your browser.
+
+The following is an example process for Firefox, but will vary slightly for other browsers:
+
+1. Press **F12** to access the developer console.
+1. Click the **Network** tab.
+1. From the table, click the row containing `descriptor`.
+1. From the details pane, click the **Response** tab.
+1. Copy the raw response data.
+
+The XML obtained contains `EntitiesDescriptor` as the root element. Rancher expects the root element to be `EntityDescriptor` rather than `EntitiesDescriptor`. So before passing this XML to Rancher, follow these steps to adjust it:
+
+1. Copy all the attributes from `EntitiesDescriptor` to the `EntityDescriptor` that are not present.
+1. Remove the `<EntitiesDescriptor>` tag from the beginning.
+1. Remove the `</EntitiesDescriptor>` from the end of the xml.
+
+You are left with something similar as the example below:
+
+```
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" entityID="https://{KEYCLOAK-URL}/auth/realms/{REALM-NAME}">
+....
+</EntityDescriptor>
+```
+
+{{% /tab %}}
+{{% tab "Keycloak 14+" %}}
+
+1. From the **Configure** section, click the **Realm Settings** tab.
+1. Click the **General** tab.
+1. From the **Endpoints** field, click **SAML 2.0 Identity Provider Metadata**.
+
+Verify the IDP metadata contains the following attributes:
+
+```
+xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+```
+
+Some browsers, such as Firefox, may render/process the document such that the contents appear to have been modified, and some attributes appear to be missing. In this situation, use the raw response data that can be found using your browser.
+
+The following is an example process for Firefox, but will vary slightly for other browsers:
+
+1. Press **F12** to access the developer console.
+1. Click the **Network** tab.
+1. From the table, click the row containing `descriptor`.
+1. From the details pane, click the **Response** tab.
+1. Copy the raw response data.
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ## Configuring Keycloak in Rancher
 

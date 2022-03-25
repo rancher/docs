@@ -1803,13 +1803,13 @@ on the master node and ensure the correct value for the --bind-address parameter
 **Expected Result**:
 
 ```console
-'--bind-address' is not present OR '--bind-address' is not present
+'--bind-address' argument is set to 127.0.0.1
 ```
 
 **Returned Value**:
 
 ```console
-root        4788    4773  4 16:16 ?        00:00:09 kube-controller-manager --configure-cloud-routes=false --cloud-provider= --service-cluster-ip-range=10.43.0.0/16 --v=2 --pod-eviction-timeout=5m0s --leader-elect=true --cluster-cidr=10.42.0.0/16 --kubeconfig=/etc/kubernetes/ssl/kubecfg-kube-controller-manager.yaml --profiling=false --node-monitor-grace-period=40s --service-account-private-key-file=/etc/kubernetes/ssl/kube-service-account-token-key.pem --address=0.0.0.0 --allow-untagged-cloud=true --root-ca-file=/etc/kubernetes/ssl/kube-ca.pem --allocate-node-cidrs=true --enable-hostpath-provisioner=false --terminated-pod-gc-threshold=1000 --feature-gates=RotateKubeletServerCertificate=true --use-service-account-credentials=true
+root        4788    4773  4 16:16 ?        00:00:09 kube-controller-manager --configure-cloud-routes=false --cloud-provider= --service-cluster-ip-range=10.43.0.0/16 --v=2 --bind-address=127.0.0.1 --pod-eviction-timeout=5m0s --leader-elect=true --cluster-cidr=10.42.0.0/16 --kubeconfig=/etc/kubernetes/ssl/kubecfg-kube-controller-manager.yaml --profiling=false --node-monitor-grace-period=40s --service-account-private-key-file=/etc/kubernetes/ssl/kube-service-account-token-key.pem --address=127.0.0.1 --allow-untagged-cloud=true --root-ca-file=/etc/kubernetes/ssl/kube-ca.pem --allocate-node-cidrs=true --enable-hostpath-provisioner=false --terminated-pod-gc-threshold=1000 --feature-gates=RotateKubeletServerCertificate=true --use-service-account-credentials=true
 
 ```
 ## 1.4 Scheduler
@@ -1859,13 +1859,13 @@ on the master node and ensure the correct value for the --bind-address parameter
 **Expected Result**:
 
 ```console
-'--bind-address' is not present OR '--bind-address' is not present
+'--bind-address' argument is set to 127.0.0.1
 ```
 
 **Returned Value**:
 
 ```console
-root        4947    4930  1 16:16 ?        00:00:02 kube-scheduler --kubeconfig=/etc/kubernetes/ssl/kubecfg-kube-scheduler.yaml --leader-elect=true --profiling=false --v=2 --address=0.0.0.0
+root        4947    4930  1 16:16 ?        00:00:02 kube-scheduler --kubeconfig=/etc/kubernetes/ssl/kubecfg-kube-scheduler.yaml --leader-elect=true --profiling=false --v=2 --address=127.0.0.1 --bind-address=127.0.0.1
 
 ```
 ## 2 Etcd Node Configuration Files
