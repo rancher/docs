@@ -13,7 +13,10 @@ This page covers how to install the Cloud Provider Interface (CPI) and Cloud Sto
 
 # Prerequisites
 
-The vSphere version must be 7.0u1 or higher. 
+The vSphere versions supported:
+
+* 6.7u3
+* 7.0u1 or higher. 
 
 The Kubernetes version must be 1.19 or higher.
 
