@@ -19,3 +19,22 @@ Certificates can be rotated for the following services:
 
 > **Note:** For users who didn't rotate their webhook certificates, and they have expired after one year, please see this [page]({{<baseurl>}}/rancher/v2.6/en/troubleshooting/expired-webhook-certificates/) for help.
 
+
+### Certificate Rotation
+
+Rancher launched Kubernetes clusters have the ability to rotate the auto-generated certificates through the UI.
+
+1. In the **Global** view, navigate to the cluster that you want to rotate certificates.
+
+2. Select **⋮ > Rotate Certificates**.
+
+3. Select which certificates that you want to rotate.
+
+   * Rotate all Service certificates (keep the same CA)
+   * Rotate an individual service and choose one of the services from the drop-down menu
+
+4. Click **Save**.
+
+**Results:** The selected certificates will be rotated and the related services will be restarted to start using the new certificate.
+
+> **Note:** Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, Rancher currently doesn't allow the ability to upload these in Rancher launched Kubernetes clusters.
