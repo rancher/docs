@@ -5,6 +5,15 @@ weight: 2
 
 A restore is performed by creating a Restore custom resource. 
 
+---
+**Caution:** Before performing a restore or rollback, note the following:
+
+- In Rancher v2.6.4, the cluster-api module has been upgraded from v0.4.4 to v1.0.2 in which the apiVersion of CAPI CRDs are upgraded from `cluster.x-k8s.io/v1alpha4` to `cluster.x-k8s.io/v1beta1`. This has the effect of causing rollbacks from Rancher v2.6.4 to any previous version of Rancher v2.6.x to fail because the previous version the CRDs needed to roll back are no longer available in v1beta1. 
+
+- To avoid this, the Rancher resource cleanup scripts should be run **before** the restore or rollback is attempted. Specifically, two scripts have been created to assist you: one to clean up the cluster (`cleanup.sh`), and one to check for any Rancher-related resources in the cluster (`verify.sh`). Details on the cleanup script can be found in the [rancherlabs/support-tools repo](https://github.com/rancherlabs/support-tools/tree/master/cleanup-rancher-k8s-resources).
+
+---
+
 > **Important**
 >
 > * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
