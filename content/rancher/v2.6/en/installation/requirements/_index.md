@@ -170,6 +170,8 @@ Rancher performance depends on etcd in the cluster performance. To ensure optima
 
 This section describes the networking requirements for the node(s) where the Rancher server is installed.
 
+> If a server containing Rancher has the `X-Frame-Options=DENY` header, the Ember UI will be completely unreachable on upgrading from the legacy UI. This is because any screen written for the legacy UI is rendered as an embedded iframe within the new Dashboard. 
+
 ### Node IP Addresses
 
 Each node used should have a static IP configured, regardless of whether you are installing Rancher on a single node or on an HA cluster. In case of DHCP, each node should have a DHCP reservation to make sure the node gets the same IP allocated.
