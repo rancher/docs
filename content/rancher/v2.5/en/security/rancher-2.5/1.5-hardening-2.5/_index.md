@@ -667,6 +667,7 @@ rancher_kubernetes_engine_config:
       service_node_port_range: 30000-32767
     kube_controller:
       extra_args:
+        bind-address: 127.0.0.1
         address: 127.0.0.1
         feature-gates: RotateKubeletServerCertificate=true
         profiling: 'false'
@@ -685,6 +686,7 @@ rancher_kubernetes_engine_config:
       generate_serving_certificate: true
     scheduler:
       extra_args:
+        bind-address: 127.0.0.1
         address: 127.0.0.1
         profiling: 'false'
   ssh_agent_auth: false

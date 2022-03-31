@@ -27,25 +27,6 @@ This section covers the following topics:
   - [Configuring global permissions for groups](#configuring-global-permissions-for-groups)
   - [Refreshing group memberships](#refreshing-group-memberships)
 
-### List of `restricted-admin` Permissions
-
-The `restricted-admin` permissions are as follows:
-
-- Has full admin access to all downstream clusters managed by Rancher.
-- Has very limited access to the local Kubernetes cluster. Can access Rancher custom resource definitions, but has no access to any Kubernetes native types.
-- Can add other users and assign them to clusters outside of the local cluster.
-- Can create other restricted admins.
-- Cannot grant any permissions in the local cluster they don't currently have. (This is how Kubernetes normally operates)
-
-
-### Changing Global Administrators to Restricted Admins
-
-If Rancher already has a global administrator, they should change all global administrators over to the new `restricted-admin` role.
-
-This can be done through **Security > Users** and moving any Administrator role over to Restricted Administrator.
-
-Signed-in users can change themselves over to the `restricted-admin` if they wish, but they should only do that as the last step, otherwise they won't have the permissions to do so.
-
 # Global Permission Assignment
 
 Global permissions for local users are assigned differently than users who log in to Rancher using external authentication.
