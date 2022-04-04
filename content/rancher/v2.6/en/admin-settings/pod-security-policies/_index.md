@@ -9,7 +9,6 @@ If a pod does not meet the conditions specified in the PSP, Kubernetes will not 
 
 - [How PSPs Work](#how-psps-work)
 - [Default PSPs](#default-psps)
-  - [Restricted-NoRoot](#restricted-noroot)
   - [Restricted](#restricted)
   - [Unrestricted](#unrestricted)
 - [Creating PSPs](#creating-psps)
@@ -29,22 +28,18 @@ PSPs work through inheritance:
 
 Any workloads that are already running in a cluster or project before a PSP is assigned will not be checked if it complies with the PSP. Workloads would need to be cloned or upgraded to see if they pass the PSP.
 
-Read more about Pod Security Policies in the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
+Read more about Pod Security Policies in the [Kubernetes Documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
 
 # Default PSPs
 
-Rancher ships with three default Pod Security Policies (PSPs): the `restricted-noroot`, `restricted` and `unrestricted` policies.
+Rancher ships with two default Pod Security Policies (PSPs): the `restricted` and `unrestricted` policies.
 
-### Restricted-NoRoot
+### Restricted
 
 This policy is based on the Kubernetes [example restricted policy](https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/policy/restricted-psp.yaml). It significantly restricts what types of pods can be deployed to a cluster or project. This policy:
 
 - Prevents pods from running as a privileged user and prevents escalation of privileges.
-- Validates that server-required security mechanisms are in place, such as restricting what volumes can be mounted to only the core volume types and preventing root supplemental groups from being added.
-
-### Restricted
-
-This policy is a relaxed version of the `restricted-noroot` policy, with almost all the restrictions in place, except for the fact that it allows running containers as a privileged user.
+- Validates that server-required security mechanisms are in place (such as restricting what volumes can be mounted to only the core volume types and preventing root supplemental groups from being added.
 
 ### Unrestricted
 
@@ -56,9 +51,9 @@ Using Rancher, you can create a Pod Security Policy using our GUI rather than cr
 
 ### Requirements
 
-Rancher can only assign PSPs for clusters that are [launched using RKE]({{< baseurl >}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/).
+Rancher can only assign PSPs for clusters that are [launched using RKE.]({{< baseurl >}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/)
 
-You must enable PSPs at the cluster level before you can assign them to a project. This can be configured by [editing the cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/).
+You must enable PSPs at the cluster level before you can assign them to a project. This can be configured by [editing the cluster.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/)
 
 It is a best practice to set PSP at the cluster level.
 
@@ -68,11 +63,19 @@ We recommend adding PSPs during cluster and project creation instead of adding i
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. In the left navigation bar, click **Pod Security Policies**.
-1. Click **Add Policy**.
+1. Click **Add policy**.
 1. Name the policy.
 1. Complete each section of the form. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) for more information on what each policy does.
 1. Click **Create**.
 
 # Configuration
 
-The Kubernetes documentation on PSPs is [here](https://kubernetes.io/docs/concepts/policy/pod-security-policy/).
+The Kubernetes documentation on PSPs is [here.](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
+
+
+
+<!-- links -->
+
+[1]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems
+[2]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#host-namespaces
+[3]: https://kubernetes.io/docs/concepts/policy/pod-security-policy/#users-and-groups

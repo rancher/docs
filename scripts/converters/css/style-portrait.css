@@ -238,7 +238,7 @@ h2 {
  font-size:1.5em;
  }
 
-h3 {font-size:1.2em;}
+h3 {font-size:1.4em;}
 h4 {font-size:1.3em;
 	line-height:30px;
 }
@@ -283,7 +283,7 @@ nav ul li a {
 nav ul li a::after {content: target-counter(attr(href url), page, decimal); float:right;margin-right:10px;}
 nav ul li ul {list-style-type: none; border-left-style: dashed; border-left-width: 1px; border-color: #000; margin-top:1.5em;}
 nav ul li ul li {margin-left:-.5em;color:#ff0000;}
-nav ul li ul li a {border:none;font-family:PoppinsExtraLight;font-size:.75em;margin-bottom:1.8em;}
+nav ul li ul li a {border:none;font-family:PoppinsExtraLight;margin-top:-1.5em;}
 nav ul li ul li a::after {font-size:.75em;}
 nav code {background:none;}
 nav a{text-decoration:none;outline:none;color:#000;}
