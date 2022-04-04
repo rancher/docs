@@ -1,4 +1,4 @@
-baseURL = ""
+baseURL = ".Permalink"
 languageCode = "en-us"
 title = "Rancher Labs"
 

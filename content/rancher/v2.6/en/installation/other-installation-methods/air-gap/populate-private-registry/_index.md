@@ -51,6 +51,8 @@ If you will use ARM64 hosts, the registry must support manifests. As of April 20
 
 In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. 
 
+**Note:** New in v2.6.4, cert-manager versions 1.6.2 and 1.7.1 are compatible. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022.
+
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
     > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
@@ -58,7 +60,7 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
     ```plain
     helm repo add jetstack https://charts.jetstack.io
     helm repo update
-    helm fetch jetstack/cert-manager --version v1.5.1
+    helm fetch jetstack/cert-manager --version v1.7.1
     helm template ./cert-manager-<version>.tgz | awk '$1 ~ /image:/ {print $2}' | sed s/\"//g >> ./rancher-images.txt
     ```
 
