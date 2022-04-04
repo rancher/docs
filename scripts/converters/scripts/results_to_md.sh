@@ -19,7 +19,7 @@ get_id_text() {
 
 get_section_ids() {
   id=${1}
-  jq -r --arg id "${id}" '.[] | select(.id==$id) | .checks[].id' ${results_file} | sort -V
+  jq -r --arg id "${id}" '.[] | select(.id==$id) | .checks[].id' ${results_file}
 }
 
 get_section_desc() {
@@ -53,11 +53,12 @@ for id in $(get_ids); do
       test_desc=$(echo ${result} | jq -r '.description')
       audit=$(echo ${result} | jq -r '.audit')
       audit_config=$(echo ${result} | jq -r '.audit_config')
-      actual_value=$(echo ${result} | jq -r '.actual_value_per_node[]')
+      actual_value=$(echo ${result} | jq -r '.actual_value_per_node."cis-aio-0"')
       type=$(echo ${result} | jq -r '.test_type')
       status=$(echo ${result} | jq -r '.state')
       remediation=$(echo ${result} | jq -r '.remediation')
       expected_result=$(echo ${result} | jq -r '.expected_result')
+#      echo "#### ${test} ${test_desc}"
       echo
       if [ "${type}" = "skip" ]; then
         echo "**Result:** Not Applicable"
@@ -75,7 +76,7 @@ for id in $(get_ids); do
         if [[ ${audit} =~ ".sh" ]]; then
           audit_script=$(basename $(echo ${audit} | cut -d ' ' -f1))
           test_helper="${test_helpers}/${audit_script}"
-          echo "**Audit Script:** \`${audit_script}\`"
+          echo "**Audit Script:** ${audit_script}"
           echo
           echo '```bash'
           cat ${test_helper}
@@ -105,19 +106,19 @@ for id in $(get_ids); do
         echo '```'
         echo
       fi
-      if [ ! -z "${expected_result}" ]; then
-        echo "**Expected Result**:"
-        echo
-        echo '```console'
-        echo ${expected_result}
-        echo '```'
-        echo
-      fi
       if [ ! -z "${actual_value}" ] && [ "${status}" != "PASS" ] && [ "${type}" != "skip" ] && [ "${type}" != "manual" ]; then
         echo "**Returned Value**:"
         echo
         echo '```console'
         echo ${actual_value}
+        echo '```'
+        echo
+      fi
+      if [ ! -z "${expected_result}" ]; then
+        echo "**Expected result**:"
+        echo
+        echo '```console'
+        echo ${expected_result}
         echo '```'
         echo
       fi
