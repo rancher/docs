@@ -170,7 +170,7 @@ Rancher performance depends on etcd in the cluster performance. To ensure optima
 
 This section describes the networking requirements for the node(s) where the Rancher server is installed.
 
-> If a server containing Rancher has the `X-Frame-Options=DENY` header, the Ember UI will be completely unreachable on upgrading from the legacy UI. This is because any screen written for the legacy UI is rendered as an embedded iframe within the new Dashboard. 
+> If a server containing Rancher has the `X-Frame-Options=DENY` header, some pages in the new Rancher UI will not be able to render after upgrading from the legacy UI. This is because some legacy pages are embedded as iFrames in the new UI.
 
 ### Node IP Addresses
 
