@@ -49,8 +49,9 @@ Install-Module Posh-SSH
 ## Get the remote kubeconfig file
 scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml $env:USERPROFILE\.kube\config
 ```
-{{%  /tab %}}
-{{% tabs %}}
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ## Edit the Rancher server URL in the kubeconfig
 
@@ -80,7 +81,7 @@ Once edited, either press `ctrl+s` or go to `File > Save` to save your work.
 
 
 {{%  /tab %}}
-{{% tabs %}}
+{{% /tabs %}}
 
 ## Install Rancher with Helm
 
@@ -129,7 +130,7 @@ helm install rancher rancher-latest/rancher `
 
 Now if you navigate to `<IP_OF_LINUX_NODE>.sslip.io` in a web browser, you should see the Rancher UI.
 
-To make these instructions simple, we used a fake domain name and self-signed certificates to do this installation. For production installs, you would need a high-availability setup with a load balancer, a real domain name and real certificates.
+To make these instructions simple, we used a fake domain name and self-signed certificates to do this installation. Therefore, you will probably need to add a security exception to your web browser to see the Rancher UI. Note that for production installs, you would need a high-availability setup with a load balancer, a real domain name and real certificates.
 
 These instructions also left out the full installation requirements and other installation options. If you have any issues with these steps, refer to the full [Helm CLI installation docs.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/)
 
