@@ -5,7 +5,22 @@ weight: 24
 
 ## How to use the API
 
-The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it, click on your user avatar in the upper right corner. Under **API & Keys**, you can find the URL endpoint (`https://<rancher_fqdn>/v3`) as well as create [API keys]({{<baseurl>}}/rancher/v2.6/en/user-settings/api-keys/).
+The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it:
+
+{{% tabs %}}
+{{% tab "Rancher v2.6.4+" %}}
+
+1. Click on your user avatar in the upper right corner. 
+1. Click  **Account & API Keys**.
+1. Under the **API Keys** section, find the **API Endpoint** field and click the link. The link will look something like `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your Rancher deployment.
+
+{{% /tab %}}
+{{% tab "Rancher before v2.6.4" %}}
+
+Go to the URL endpoint at `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your Rancher deployment.
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ## Authentication
 
