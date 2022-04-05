@@ -3,34 +3,34 @@ title: Provisioning Kubernetes Clusters in Nutanix AOS
 weight: 1
 ---
 
-In this section, you'll learn how to use Rancher to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in Nutanix AOS (AHV).
+To use Rancher to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in Nutanix AOS (AHV):
 
-First, you will locate Rancher's built-in Nutanix [node driver and activate it]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/#activating-deactivating-node-drivers).
+1. Locate Rancher's built-in Nutanix [node driver and activate it]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/#activating-deactivating-node-drivers).
 
-Then you will create a node template, which Rancher will use to provision nodes in Nutanix AOS. 
+1. Create a node template, which Rancher will use to provision nodes in Nutanix AOS. 
 
-Finally, you will create a Nutanix AOS cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
+1. Create a Nutanix AOS cluster in Rancher. When configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
 For details on configuring the Nutanix AOS node template, refer to the [Nutanix AOS node template configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/)
 
-For details on configuring RKE Kubernetes clusters in Rancher, refer to the [cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options)
+For details on configuring RKE Kubernetes clusters in Rancher, refer to the [cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/rke-config-reference/)
 
-- [Preparation in Nutanix AOS](#preparation-in-Nutanix AOS)
-- [Creating a Nutanix AOS Cluster](#creating-a-Nutanix AOS-cluster)
+- [Preparation in Nutanix AOS](#preparation-in-nutanix-aos)
+- [Creating a Nutanix AOS Cluster](#creating-a-nutanix-aos-cluster)
 
 # Preparation in Nutanix AOS
 
-This section describes the requirements for setting up Nutanix AOS so that Rancher can provision VMs and clusters.
+The following sections describe the requirements for setting up Nutanix AOS so that Rancher can provision VMs and clusters.
 
-The node templates are documented and tested with Nutanix AOS version 5.20.2 and 6.0.1.
+**Note:** The node templates are documented and tested with Nutanix AOS version 5.20.2 and 6.0.1.
 
 ### Create Credentials in Nutanix AOS
 
-Before proceeding to create a cluster, you must ensure that you have a Nutanix Prism Central user with admin permissions. When you set up a node template, the template will need to use these credentials.
+Before proceeding to create a cluster, you must ensure that you have a [Nutanix Prism Central user account](https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Security-Guide-v6_0:wc-user-create-wc-t.html) with admin permissions. When you set up a node template, the template will need to use these credentials.
 
 ### Network Permissions
 
-It must be ensured that the hosts running the Rancher server are able to establish the following network connections:
+You must ensure that the hosts running the Rancher server are able to establish the following network connections:
 
 - To the Nutanix Prism Central API (usually port 9440/TCP).
 - To port 22/TCP and 2376/TCP on the created VMs
@@ -62,18 +62,16 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rk
 
 Use Rancher to create a Kubernetes cluster in Nutanix AOS.
 
-1. In the upper left corner, click **☰ > Cluster Management**.
+1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
 1. Click **Nutanix**.
 1. Enter a **Cluster Name**, then click **Continue**.
-1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. To see more cluster options, click on **Show advanced options**. For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options)
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users who can access the cluster. Use the **Role** drop-down to set permissions for each user.
+1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used, and whether you want to enable project network isolation. To see more cluster options, click on **Show advanced options**. For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/rke-config-reference/)
 1. Add one or more node pools to your cluster. Each node pool uses a node template to provision new nodes. For more information about node pools, including best practices for assigning Kubernetes roles to the nodes, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#node-pools)
 1. Review your options to confirm they're correct. Then click **Create**.
 
-**Result:** 
-
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+**Result:** Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
@@ -88,4 +86,5 @@ You can access your cluster after its state is updated to **Active**.
 After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:
 
 - **Access your cluster with the kubectl CLI:** Follow [these steps]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/#accessing-clusters-with-kubectl-on-your-workstation) to access clusters with kubectl on your workstation. In this case, you will be authenticated through the Rancher server’s authentication proxy, then Rancher will connect you to the downstream cluster. This method lets you manage the cluster without the Rancher UI.
+
 - **Access your cluster with the kubectl CLI, using the authorized cluster endpoint:** Follow [these steps]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/#authenticating-directly-with-a-downstream-cluster) to access your cluster with kubectl directly, without authenticating through Rancher. We recommend setting up this alternative method to access your cluster so that in case you can’t connect to Rancher, you can still access the cluster.
