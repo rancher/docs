@@ -75,10 +75,13 @@ The following profiles are available:
 - RKE hardened 1.5
 - RKE permissive 1.6
 - RKE hardened 1.6
+- RKE2 permissive 1.5
+- RKE2 hardened 1.5
+- RKE2 permissive 1.6
+- RKE2 hardened 1.6
+- AKS
 - EKS
 - GKE
-- RKE2 permissive 1.5
-- RKE2 permissive 1.5
 
 You also have the ability to customize a profile by saving a set of tests to skip.
 
@@ -99,7 +102,7 @@ The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
 
 - For RKE Kubernetes clusters, the RKE Permissive 1.6 profile is the default.
 - EKS and GKE have their own CIS Benchmarks published by `kube-bench`. The corresponding test profiles are used by default for those clusters.
-- For RKE2 Kubernetes clusters, the RKE2 Permissive 1.5 profile is the default.
+- For RKE2 Kubernetes clusters, the RKE2 Permissive 1.6 profile is the default.
 - For cluster types other than RKE, RKE2, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
 
 # About Skipped and Not Applicable Tests
