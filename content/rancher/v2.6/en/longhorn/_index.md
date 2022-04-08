@@ -24,12 +24,12 @@ With Longhorn, you can:
 
 ### Installing Longhorn with Rancher
 
-1. Fulfill all [Installation Requirements.](https://longhorn.io/docs/1.1.0/deploy/install/#installation-requirements)
+1. Fulfill all [Installation Requirements.](https://longhorn.io/docs/latest/deploy/install/#installation-requirements)
 1. Go to the cluster where you want to install Longhorn.
 1. Click **Apps & Marketplace**.
 1. Click **Charts**.
 1. Click **Longhorn**.
-1. Optional: To customize the initial settings, click **Longhorn Default Settings** and edit the configuration. For help customizing the settings, refer to the [Longhorn documentation.](https://longhorn.io/docs/1.0.2/references/settings/)
+1. Optional: To customize the initial settings, click **Longhorn Default Settings** and edit the configuration. For help customizing the settings, refer to the [Longhorn documentation.](https://longhorn.io/docs/latest/references/settings/)
 1. Click **Install**.
 
 **Result:** Longhorn is deployed in the Kubernetes cluster.
@@ -64,7 +64,7 @@ Longhorn creates a dedicated storage controller for each volume and synchronousl
 
 The storage controller and replicas are themselves orchestrated using Kubernetes.
 
-You can learn more about its architecture [here.](https://longhorn.io/docs/1.0.2/concepts/)
+You can learn more about its architecture [here.](https://longhorn.io/docs/latest/concepts/)
 
 <figcaption>Longhorn Architecture</figcaption>
 ![Longhorn Architecture]({{<baseurl>}}/img/rancher/longhorn-architecture.svg)
