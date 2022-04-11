@@ -12,13 +12,15 @@ By default, K3s will run with flannel as the CNI, using VXLAN as the default bac
 The default backend for flannel is VXLAN. To enable encryption, pass the IPSec (Internet Protocol Security) or WireGuard options below.
 
 If you wish to use WireGuard as your flannel backend it may require additional kernel modules. Please see the [WireGuard Install Guide](https://www.wireguard.com/install/) for details. The WireGuard install steps will ensure the appropriate kernel modules are installed for your operating system. You need to install WireGuard on every node, both server and agents before attempting to leverage the WireGuard flannel backend option.
+The 'wireguard' backend will be removed from v1.26 in favour of 'wireguard-native' backend natively from flannel. To update to the new backend every nodes on the cluster should be updated to support the new backend and requires to change the controller config with the new backend and a reboot of all the nodes.
 
   CLI Flag and Value | Description
   -------------------|------------
  <span style="white-space: nowrap">`--flannel-backend=vxlan`</span> | (Default) Uses the VXLAN backend. |
  <span style="white-space: nowrap">`--flannel-backend=ipsec`</span> | Uses the IPSEC backend which encrypts network traffic. |
  <span style="white-space: nowrap">`--flannel-backend=host-gw`</span> |  Uses the host-gw backend. |
- <span style="white-space: nowrap">`--flannel-backend=wireguard`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. |
+ <span style="white-space: nowrap">`--flannel-backend=wireguard`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. [Deprecated will be removed from version 1.26]|
+ <span style="white-space: nowrap">`--flannel-backend=wireguard-native`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. |
  <span style="white-space: nowrap">`--flannel-ipv6-masq`</span> | Apply masquerading rules to IPv6 traffic (default for IPv4). Only applies on dual-stack or IPv6-only clusters |
 
 ### Custom CNI
