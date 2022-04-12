@@ -272,7 +272,7 @@ data:
 
 # Example EncryptionConfiguration
 
-The snippet below demonstrates two different types of secrets and their relevance with respect to Backup and Restore of custom resources.s
+The snippet below demonstrates two different types of secrets and their relevance with respect to Backup and Restore of custom resources.
 
 The first example is that of a secret that is used to encrypt the backup files. The backup operator, in this case, will not be able to read the secrets encryption file. It only uses the contents of the secret. 
 
