@@ -75,9 +75,10 @@ You should see that IP forwarding is set to true.
 
 Dual-stack networking must be configured when the cluster is first created. It cannot be enabled on an existing single-stack cluster.
 
-Dual-stack is supported on k3s v1.21 or above.
+Dual-stack is supported on K3s v1.21 or above.
 
-To enable dual-stack in K3s, you must provide valid dual-stack `cluster-cidr` and `service-cidr` on all server nodes. Both servers and agents must provide valid dual-stack `node-ip` settings. Node address auto-detection is not supported on dual-stack clusters, because kubelet fetches only the first IP address that it finds. Additionally, only vxlan backend is supported currently. This is an example of a valid configuration:
+To enable dual-stack in K3s, you must provide valid dual-stack `cluster-cidr` and `service-cidr` on all server nodes. Both servers and agents must provide valid dual-stack `node-ip` settings. Node address auto-detection is not supported on dual-stack clusters, because kubelet fetches only the first IP address that it finds. Additionally, only vxlan backend is supported currently and Traefik does not correctly handle ingress resources on a dual-stack cluster.
+This is an example of a valid configuration:
 
 ```
 k3s server --node-ip 10.0.10.7,2a05:d012:c6f:4611:5c2:5602:eed2:898c --cluster-cidr 10.42.0.0/16,2001:cafe:42:0::/56 --service-cidr 10.43.0.0/16,2001:cafe:42:1::/112
