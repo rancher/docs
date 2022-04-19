@@ -12,11 +12,11 @@ By default, K3s will run with flannel as the CNI, using VXLAN as the default bac
 The default backend for flannel is VXLAN. To enable encryption, pass the IPSec (Internet Protocol Security) or WireGuard options below.
 
 If you wish to use WireGuard as your flannel backend it may require additional kernel modules. Please see the [WireGuard Install Guide](https://www.wireguard.com/install/) for details. The WireGuard install steps will ensure the appropriate kernel modules are installed for your operating system. You need to install WireGuard on every node, both server and agents before attempting to leverage the WireGuard flannel backend option.
-The `wireguard` backend will be removed from v1.26 in favour of `wireguard-native` backend natively from flannel.
+The `wireguard` backend will be removed from v1.26 in favor of `wireguard-native` backend natively from flannel.
 
-We recommend users to migrate to the new backend as soon as possible. The migration requires a short period of down-time while nodes come up with the new configuration. You should follow the following two steps:
+We recommend that users migrate to the new backend as soon as possible. The migration requires a short period of downtime while nodes come up with the new configuration. You should follow these two steps:
 
-1 - Update the k3s config in all control-plane nodes. The config file `/etc/rancher/k3s/config.yaml` should include `flannel-backend: wireguard-native` instead of `flannel-backend: wireguard`
+1 - Update the K3s config in all control-plane nodes. The config file `/etc/rancher/k3s/config.yaml` should include `flannel-backend: wireguard-native` instead of `flannel-backend: wireguard`
 
 2 - Reboot all nodes
 
@@ -25,7 +25,7 @@ We recommend users to migrate to the new backend as soon as possible. The migrat
  <span style="white-space: nowrap">`--flannel-backend=vxlan`</span> | (Default) Uses the VXLAN backend. |
  <span style="white-space: nowrap">`--flannel-backend=ipsec`</span> | Uses the IPSEC backend which encrypts network traffic. |
  <span style="white-space: nowrap">`--flannel-backend=host-gw`</span> |  Uses the host-gw backend. |
- <span style="white-space: nowrap">`--flannel-backend=wireguard`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. [Deprecated will be removed from version 1.26]|
+ <span style="white-space: nowrap">`--flannel-backend=wireguard`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. (Deprecated and will be removed from version 1.26)|
  <span style="white-space: nowrap">`--flannel-backend=wireguard-native`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. |
  <span style="white-space: nowrap">`--flannel-ipv6-masq`</span> | Apply masquerading rules to IPv6 traffic (default for IPv4). Only applies on dual-stack or IPv6-only clusters |
 
