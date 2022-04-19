@@ -104,9 +104,9 @@ helm install cert-manager jetstack/cert-manager \
   --version v1.7.1
 
 # Windows Powershell
-helm install cert-manager jetstack/cert-manager \`
-  --namespace cert-manager \`
-  --create-namespace \`
+helm install cert-manager jetstack/cert-manager `
+  --namespace cert-manager `
+  --create-namespace `
   --version v1.7.1
 ```
 
