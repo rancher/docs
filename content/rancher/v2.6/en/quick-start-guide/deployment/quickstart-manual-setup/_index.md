@@ -107,7 +107,7 @@ helm install cert-manager jetstack/cert-manager \
 helm install cert-manager jetstack/cert-manager `
   --namespace cert-manager `
   --create-namespace `
-  --version v1.5.1
+  --version v1.7.1
 ```
 
 The final command to install Rancher is below. The command requires a domain name that forwards traffic to the Linux machine. For the sake of simplicity in this tutorial, you can use a fake domain name to create your proof-of-concept. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`.
