@@ -102,6 +102,10 @@ By default, Rancher collects logs for control plane components and node componen
 
 # Troubleshooting
 
+### Unable to uninstall Logging V1 in Rancher v2.6+
+
+The UI changes when upgrading from Rancher v2.5 to Rancher v2.6 may cause issues when attempting to uninstall Logging V1 and other Multi-Cluster apps. Fortunately, as of Rancher v2.6.4., the legacy UI is still available at `https://<your-url>/g`. Use the instructions for [deleting a Multi-Cluster Application in Rancher v2.5](https://rancher.com/docs/rancher/v2.5/en/deploy-across-clusters/multi-cluster-apps/#deleting-a-multi-cluster-application) in the legacy UI to uninstall Logging V1. For manual uninstallation, follow the instructions [here](#the-cattle-logging-namespace-being-recreated).
+
 ### The `cattle-logging` Namespace Being Recreated
 
 If your cluster previously deployed logging from the global view in the legacy Rancher UI, you may encounter an issue where its `cattle-logging` namespace is continually being recreated.
