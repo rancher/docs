@@ -1,9 +1,11 @@
 ---
 title: Creating a vSphere Virtual Machine Template
-weight: 2
+weight: 4
 ---
 
-Creating virtual machines in a repeatable and reliable fashion can often be difficult. VMware vSphere offers the ability to build one VM that can then be converted to a template. The template can then be used to create identically configured VMs. Rancher leverages this capability within node pools to create identical RKE1 and RKE2 nodes. With that said, Rancher does have some specific requirements for the VM to have pre-installed to leverage the template to create new VMs. After configuring the VM with the requirements, the VM will need to be prepared before creating the template. Once preparation is complete, the VM can be converted to a template and moved into a content library, ready for Rancher node pool usage.
+Creating virtual machines in a repeatable and reliable fashion can often be difficult. VMware vSphere offers the ability to build one VM that can then be converted to a template. The template can then be used to create identically configured VMs. Rancher leverages this capability within node pools to create identical RKE1 and RKE2 nodes.
+
+In order to leverage the template to create new VMs, Rancher has some [specific requirements](#requirements) that the VM must have pre-installed. After you configure the VM with these requirements, you will next need to [prepare the VM](#preparing-your-vm) before [creating the template](#creating-a-template). Finally, once preparation is complete, the VM can be [converted to a template](#converting-to-a-template) and [moved into a content library](#moving-to-a-content-library), ready for Rancher node pool usage.
 
 - [Requirements](#requirements)
 - [Template Creation](#template-creation)
@@ -14,11 +16,13 @@ Creating virtual machines in a repeatable and reliable fashion can often be diff
 
 # Requirements
 
-There are specific tooling required for both Linux and Windows VMs to be usable by the vSphere node driver. The most critical dependency is [cloud-init](https://cloud-init.io/) for Linux and [cloudbase-init](https://cloudbase.it/cloudbase-init/) for Windows. Both of these are used for provisioning the VMs by configuring the hostname, settings up the SSH access, and default Rancher user. Users can add additional content to these as desired if additional configuration is desired. Outside of that some additional requirements will be listed below. If you have any specific firewall rules or configuration, this should be added to the VM before creating a template. 
+There is specific tooling required for both Linux and Windows VMs to be usable by the vSphere node driver. The most critical dependency is [cloud-init](https://cloud-init.io/) for Linux and [cloudbase-init](https://cloudbase.it/cloudbase-init/) for Windows. Both of these are used for provisioning the VMs by configuring the hostname and by setting up the SSH access and the default Rancher user. Users can add additional content to these as desired if other configuration is needed. In addition, other requirements are listed below for reference.
+
+**Note:** If you have any specific firewall rules or configuration, you will need to add this to the VM before creating a template.
 
 ## Linux Dependencies
 
-Here is the list of packages that need installed on the template. These will have slightly varied names based on distribution with some distributions shipping these by default.
+The packages that need to be installed on the template are listed below. These will have slightly different names based on distribution; some distributions ship these by default, for example.
 
 * curl 
 * wget
@@ -38,7 +42,7 @@ Here is the list of packages that need installed on the template. These will hav
 
 ## Windows Dependencies
 
-Here is the list of packages that need installed on the template.
+The list of packages that need to be installed on the template is as follows:
 
 * Windows Container Feature
 * [cloudbase-init](https://cloudbase.it/cloudbase-init/#download)
@@ -124,18 +128,20 @@ sysprep.exe /generalize /shutdown /oobe
 
 To convert a VM to a template the first step is to shut down and stop the VM. Once it has been stopped, right-click on the VM in the inventory list and select Template. Then click on `Convert to Template`. Once that process has finished, there is now a template that can be used. 
 
-* [VMware guide](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-5B3737CC-28DB-4334-BD18-6E12011CDC9F.html)
+For additional information on converting a VM to a template, see the [VMware guide](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-5B3737CC-28DB-4334-BD18-6E12011CDC9F.html).
 
-# Moving to a content library
+# Moving to a Content library
 
-Rancher has the ability to consume templates provided by a content library. Content libraries store and manage content within vSphere. Content libraries offer the ability to publish and share that content. 
+Rancher has the ability to use templates provided by a content library. Content libraries store and manage content within vSphere, and they also offer the ability to publish and share that content.
+
+Below are some helpful links on content libraries:
 
 * [Create a content library](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-2A0F1C13-7336-45CE-B211-610D39A6E1F4.html)
 * [Clone the template to the content library](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AC1545F0-F8BA-4CD2-96EB-21B3DFAA1DC1.html)
 
 # Other Resources
 
-Here is a list of additional resources that may be useful.
+Here is a list of additional resources that may be useful:
 
 * [Tutorial for creating a Linux template](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/manage/hybrid/server/best-practices/vmware-ubuntu-template)
 * [Tutorial for creating a Windows template](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/manage/hybrid/server/best-practices/vmware-windows-template)
