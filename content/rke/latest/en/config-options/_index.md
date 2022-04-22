@@ -50,9 +50,10 @@ cluster_name: mycluster
 
 ### Supported Docker Versions
 
-By default, RKE will check the installed Docker version on all hosts and fail with an error if the version is not supported by Kubernetes. The list of supported Docker versions are set specifically for each Kubernetes version in kontainer-driver-metadata depending on the RKE version used (to override this behavior, set this option to `true`). Refer to the following:
-- For RKE v1.3.x, see this [link](https://github.com/rancher/kontainer-driver-metadata/blob/release-v2.6/rke/k8s_docker_info.go for RKE v1.3.x)
-- For RKE v1.2.x, see this [link](https://github.com/rancher/kontainer-driver-metadata/blob/release-v2.5/rke/k8s_docker_info.go)
+By default, RKE will check the installed Docker version on all hosts and fail with an error if the version is not supported by Kubernetes. The list of supported Docker versions is set specifically for each Kubernetes version in kontainer-driver-metadata depending on the RKE version used, as shown below. To override this behavior, set this option to `true`. Refer to the following:
+
+- For RKE v1.3.x, see this [link](https://github.com/rancher/kontainer-driver-metadata/blob/release-v2.6/rke/k8s_docker_info.go).
+- For RKE v1.2.x, see this [link](https://github.com/rancher/kontainer-driver-metadata/blob/release-v2.5/rke/k8s_docker_info.go).
 
 The default value is `false`.
 
