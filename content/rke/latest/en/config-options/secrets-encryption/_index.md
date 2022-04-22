@@ -147,7 +147,7 @@ kube-api:
                 Keys:
                     - Name: key1
                     Secret: <BASE 64 ENCODED SECRET>
-              Resources:
+              resources:
                 - secrets
             - identity: {}
 ```
