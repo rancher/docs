@@ -26,7 +26,7 @@ K3s is a fully compliant Kubernetes distribution with the following enhancements
 * Secure by default with reasonable defaults for lightweight environments.
 * Simple but powerful "batteries-included" features have been added, such as: a local storage provider, a service load balancer, a Helm controller, and the Traefik ingress controller.
 * Operation of all Kubernetes control plane components is encapsulated in a single binary and process. This allows K3s to automate and manage complex cluster operations like distributing certificates.
-* External dependencies have been minimized (just a modern kernel and cgroup mounts needed). K3s packages required dependencies, including:
+* External dependencies have been minimized (just a modern kernel and cgroup mounts needed). K3s packages the required dependencies, including:
     * containerd
     * Flannel
     * CoreDNS
