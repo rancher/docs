@@ -8,8 +8,8 @@ Creating virtual machines in a repeatable and reliable fashion can often be diff
 In order to leverage the template to create new VMs, Rancher has some [specific requirements](#requirements) that the VM must have pre-installed. After you configure the VM with these requirements, you will next need to [prepare the VM](#preparing-your-vm) before [creating the template](#creating-a-template). Finally, once preparation is complete, the VM can be [converted to a template](#converting-to-a-template) and [moved into a content library](#moving-to-a-content-library), ready for Rancher node pool usage.
 
 - [Requirements](#requirements)
-- [Template Creation](#template-creation)
-- [Preparation](#preparation)
+- [Creating a Template](#creating-a-template)
+- [Preparing Your VM](#preparing-your-vm)
 - [Converting to a Template](#converting-to-a-template)
 - [Moving to a content library](#moving-to-a-content-library)
 - [Other Resources](#other-resources)
@@ -48,30 +48,39 @@ The list of packages that need to be installed on the template is as follows:
 * [cloudbase-init](https://cloudbase.it/cloudbase-init/#download)
 * [Docker EE](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-Server#install-docker) - RKE1 Only
 
-**Now here is where the configuration for Windows templates need to differ between RKE1 and RKE2. RKE1 leverages Docker, so any templates for RKE1 will need to have Docker EE preinstalled too. RKE2 doesn't require Docker EE and doesn't require that it be installed.**
+**Important to note: The configuration for Windows templates varies between RKE1 and RKE2:**
+- RKE1 leverages Docker, so any RKE1 templates need to have Docker EE pre-installed as well
+- RKE2 does not require Docker EE, and thus it does not need to be installed
 
-# Template Creation
+# Creating a Template
 
-There a few different approaches that can be pursued at this step. You can manually create your VM by following [these instructions](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AE8AFBF1-75D1-4172-988C-378C35C9FAF2.html) from VMware. Once you have a VM running, you can manually install the dependency listed above to configure the VM correctly for the vSphere node driver. After the required dependencies are configured, you can further customize based on your specific environment and requirements. Finally, you are ready to precede with the final preparation before creating your template. 
+You may either manually create your VM or you can utilize [other alternatives](#alternatives-to-manual-creation) to create your VM.
 
-## Alternatives to manual creation
+## Manual Creation
+1. Manually create your VM by following [these instructions](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AE8AFBF1-75D1-4172-988C-378C35C9FAF2.html) from VMware. Once you have a VM running, you can manually install the dependency listed above to configure the VM correctly for the vSphere node driver.
+2. Customize as needed based on your specific environment and requirements.
+3. Proceed with the final preparation before creating your template.
 
-Alternatives to manual creation do exist and below is a list of tools that can assist.
+## Alternatives to Manual Creation
+
+Other alternative options to create VMs are listed below:
 
 * [VMware PowerCLI](https://developer.vmware.com/powercli)
 * [Packer](https://www.packer.io/)
 * [SaltStack](https://saltproject.io/)
 * [Ansible](https://www.ansible.com/)
 
-Packer is often used and here is a good [reference](https://github.com/vmware-samples/packer-examples-for-vsphere) for usage with vSphere. 
+Packer is a frequently-used alternative. Refer to this [reference](https://github.com/vmware-samples/packer-examples-for-vsphere) for examples of its usage with vSphere.
 
-# Preparation
+# Preparing Your VM
 
-Once you have a VM created with all the dependencies listed above and any additional items that are required, the most critical step is next. That step is preparing the VM to be turned into a template. This basically resets the VM hostname, IPs, etc. to prevent that information from being brought into a new VM. When VMs are created from a template without this step, those VMs could have the same hostname, IP address, etc. The steps differ between Linux and Windows.
+After creating a VM with all the required dependencies (and any additional required items), you must perform the most critical step next: preparing the VM to be turned into a template. This preparation will reset critical data such as the VM hostname, IPs, etc., to prevent that information from being brought into a new VM. If you fail to perform this step, you could create a VM with the same hostname, IP address, etc.
+
+Note that these preparatory steps differ between Linux and Windows.
 
 ## Linux Preparation
 
-Here is how to achieve the different items that need reset.
+The commands below will reset your VM in Linux:
 
 ```Bash
 # Cleaning logs.
@@ -118,7 +127,7 @@ cloud-init clean -s -l
 
 ## Windows Preparation
 
-Windows has a utility called [sysprep](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) that is used to generalize an image and reset the same items listed above for Linux. The command would look like this.
+Windows has a utility called [sysprep](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) that is used to generalize an image and reset the same items listed above for Linux. The command is as follows:
 
 ```PowerShell
 sysprep.exe /generalize /shutdown /oobe
@@ -126,7 +135,11 @@ sysprep.exe /generalize /shutdown /oobe
 
 # Converting to a Template
 
-To convert a VM to a template the first step is to shut down and stop the VM. Once it has been stopped, right-click on the VM in the inventory list and select Template. Then click on `Convert to Template`. Once that process has finished, there is now a template that can be used. 
+1. Shut down and stop the VM.
+2. Right-click on the VM in the inventory list and select **Template**.
+3. Click on **Convert to Template**.
+
+**Result:** Once the process has completed, a template will be available for use.
 
 For additional information on converting a VM to a template, see the [VMware guide](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-5B3737CC-28DB-4334-BD18-6E12011CDC9F.html).
 
