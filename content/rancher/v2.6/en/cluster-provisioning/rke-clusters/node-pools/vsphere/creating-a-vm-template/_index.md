@@ -57,7 +57,7 @@ The list of packages that need to be installed on the template is as follows:
 You may either manually create your VM or you can utilize [other alternatives](#alternatives-to-manual-creation) to create your VM.
 
 ## Manual Creation
-1. Manually create your VM by following [these instructions](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AE8AFBF1-75D1-4172-988C-378C35C9FAF2.html) from VMware. Once you have a VM running, you can manually install the dependency listed above to configure the VM correctly for the vSphere node driver.
+1. Manually create your VM by following [these instructions](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AE8AFBF1-75D1-4172-988C-378C35C9FAF2.html) from VMware. Once you have a VM running, you can manually install the dependencies listed above to configure the VM correctly for the vSphere node driver.
 2. Customize as needed based on your specific environment and requirements.
 3. Proceed with the final preparation before creating your template.
 
