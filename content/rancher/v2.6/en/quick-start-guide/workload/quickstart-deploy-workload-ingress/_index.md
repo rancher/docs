@@ -54,6 +54,7 @@ Now that the application is up and running, it needs to be exposed so that other
 
 **Result:** The application is assigned a `sslip.io` address and exposed. It may take a minute or two to populate.
 
+
 ### View Your Application
 
 From the **Deployments** page, find the **Endpoints** column for your deployment and click on an endpoint. The endpoints available will depend on how you configured the port you added to your deployment. For endpoints where you do not see a randomly assigned port, append the path you specified when creating the ingress to the IP address. For example, if your endpoint looks like `xxx.xxx.xxx.xxx` or `https://xxx.xxx.xxx.xxx` change it to `xxx.xxx.xxx.xxx/hello` or `https://xxx.xxx.xxx.xxx/hello`.

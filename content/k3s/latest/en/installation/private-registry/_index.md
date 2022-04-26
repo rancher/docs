@@ -32,22 +32,43 @@ mirrors:
 
 Each mirror must have a name and set of endpoints. When pulling an image from a registry, containerd will try these endpoint URLs one by one, and use the first working one.
 
+#### Rewrites
+
+Each mirror can have a set of rewrites. Rewrites can change the tag of an image based on a regular expression. This is useful if the organization/project structure in the mirror registry is different to the upstream one.
+
+For example, the following configuration would transparently pull the image `docker.io/rancher/coredns-coredns:1.6.3` from `registry.example.com:5000/mirrorproject/rancher-images/coredns-coredns:1.6.3`:
+
+```
+mirrors:
+  docker.io:
+    endpoint:
+      - "https://registry.example.com:5000"
+    rewrite:
+      "^rancher/(.*)": "mirrorproject/rancher-images/$1"
+```
+
+The image will still be stored under the original name so that a `crictl image ls` will show `docker.io/rancher/coredns-coredns:1.6.3` as available on the node, even though the image was pulled from the mirrored registry with a different name.
+
 ### Configs
 
-The configs section defines the TLS and credential configuration for each mirror. For each mirror you can define `auth` and/or `tls`. The TLS part consists of:
+The `configs` section defines the TLS and credential configuration for each mirror. For each mirror you can define `auth` and/or `tls`. 
 
-Directive | Description
-----------|------------
-`cert_file` | The client certificate path that will be used to authenticate with the registry
-`key_file` | The client key path that will be used to authenticate with the registry
-`ca_file` | Defines the CA certificate path to be used to verify the registry's server cert file
-`insecure_skip_verify` | Boolean that defines if TLS verification should be skipped for the registry
+The `tls` part consists of:
 
-The credentials consist of either username/password or authentication token:
+| Directive              | Description                                                                          |
+|------------------------|--------------------------------------------------------------------------------------|
+| `cert_file`            | The client certificate path that will be used to authenticate with the registry      |
+| `key_file`             | The client key path that will be used to authenticate with the registry              |
+| `ca_file`              | Defines the CA certificate path to be used to verify the registry's server cert file |
+| `insecure_skip_verify` | Boolean that defines if TLS verification should be skipped for the registry          |
 
-- username: user name of the private registry basic auth
-- password: user password of the private registry basic auth
-- auth: authentication token of the private registry basic auth
+The `auth` part consists of either username/password or authentication token:
+
+| Directive  | Description                                             |
+|------------|---------------------------------------------------------|
+| `username` | user name of the private registry basic auth            |
+| `password` | user password of the private registry basic auth        |
+| `auth`     | authentication token of the private registry basic auth |
 
 Below are basic examples of using private registries in different modes:
 

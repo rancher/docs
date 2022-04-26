@@ -139,7 +139,7 @@ kube-api:
     secrets_encryption_config:
       enabled: true
       custom_config:
-        api_version: apiserver.config.k8s.io/v1
+        apiVersion: apiserver.config.k8s.io/v1
         kind: EncryptionConfiguration
         resources:
         - Providers:
@@ -147,7 +147,7 @@ kube-api:
                 Keys:
                     - Name: key1
                     Secret: <BASE 64 ENCODED SECRET>
-              Resources:
+              resources:
                 - secrets
             - identity: {}
 ```

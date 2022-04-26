@@ -2,7 +2,7 @@
 title: Setting up Cloud Providers
 weight: 2300
 ---
-A _cloud provider_ is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes. For more information, refer to the [official Kubernetes documentation on cloud providers.](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/)
+A _cloud provider_ is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes.
 
 When a cloud provider is set up in Rancher, the Rancher server can automatically provision new nodes, load balancers or persistent storage devices when launching Kubernetes definitions, if the cloud provider you're using supports such automation.
 
@@ -35,9 +35,9 @@ For details on enabling the vSphere cloud provider, refer to [this page.](./vsph
 
 ### Setting up a Custom Cloud Provider
 
-The `Custom` cloud provider is available if you want to configure any [Kubernetes cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/).
+The `Custom` cloud provider is available if you want to configure any Kubernetes cloud provider.
 
-For the custom cloud provider option, you can refer to the [RKE docs]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration :
+For the custom cloud provider option, you can refer to the [RKE docs]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/) on how to edit the yaml file for your specific cloud provider. There are specific cloud providers that have more detailed configuration:
 
 * [vSphere]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/vsphere/)
 * [OpenStack]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/openstack/)

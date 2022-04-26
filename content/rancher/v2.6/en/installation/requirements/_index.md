@@ -170,6 +170,8 @@ Rancher performance depends on etcd in the cluster performance. To ensure optima
 
 This section describes the networking requirements for the node(s) where the Rancher server is installed.
 
+> If a server containing Rancher has the `X-Frame-Options=DENY` header, some pages in the new Rancher UI will not be able to render after upgrading from the legacy UI. This is because some legacy pages are embedded as iFrames in the new UI.
+
 ### Node IP Addresses
 
 Each node used should have a static IP configured, regardless of whether you are installing Rancher on a single node or on an HA cluster. In case of DHCP, each node should have a DHCP reservation to make sure the node gets the same IP allocated.

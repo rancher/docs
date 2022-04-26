@@ -46,5 +46,4 @@ token: "secret"
 node-ip: 10.0.10.22,2a05:d012:c6f:4655:d73c:c825:a184:1b75 
 cluster-cidr: 10.42.0.0/16,2001:cafe:42:0::/56
 service-cidr: 10.43.0.0/16,2001:cafe:42:1::/112
-disable-network-policy: true
 ```

@@ -49,8 +49,9 @@ Install-Module Posh-SSH
 ## Get the remote kubeconfig file
 scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml $env:USERPROFILE\.kube\config
 ```
-{{%  /tab %}}
-{{% tabs %}}
+
+{{% /tab %}}
+{{% /tabs %}}
 
 ## Edit the Rancher server URL in the kubeconfig
 
@@ -80,7 +81,7 @@ Once edited, either press `ctrl+s` or go to `File > Save` to save your work.
 
 
 {{%  /tab %}}
-{{% tabs %}}
+{{% /tabs %}}
 
 ## Install Rancher with Helm
 
@@ -91,7 +92,7 @@ helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 
 kubectl create namespace cattle-system
 
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
+kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.7.1/cert-manager.crds.yaml
 
 helm repo add jetstack https://charts.jetstack.io
 
@@ -100,13 +101,13 @@ helm repo update
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.5.1
+  --version v1.7.1
 
 # Windows Powershell
-helm install cert-manager jetstack/cert-manager \`
-  --namespace cert-manager \`
-  --create-namespace \`
-  --version v1.5.1
+helm install cert-manager jetstack/cert-manager `
+  --namespace cert-manager `
+  --create-namespace `
+  --version v1.7.1
 ```
 
 The final command to install Rancher is below. The command requires a domain name that forwards traffic to the Linux machine. For the sake of simplicity in this tutorial, you can use a fake domain name to create your proof-of-concept. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`.
@@ -129,7 +130,7 @@ helm install rancher rancher-latest/rancher `
 
 Now if you navigate to `<IP_OF_LINUX_NODE>.sslip.io` in a web browser, you should see the Rancher UI.
 
-To make these instructions simple, we used a fake domain name and self-signed certificates to do this installation. For production installs, you would need a high-availability setup with a load balancer, a real domain name and real certificates.
+To make these instructions simple, we used a fake domain name and self-signed certificates to do this installation. Therefore, you will probably need to add a security exception to your web browser to see the Rancher UI. Note that for production installs, you would need a high-availability setup with a load balancer, a real domain name and real certificates.
 
 These instructions also left out the full installation requirements and other installation options. If you have any issues with these steps, refer to the full [Helm CLI installation docs.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/)
 
