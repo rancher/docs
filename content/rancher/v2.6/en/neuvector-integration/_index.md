@@ -5,7 +5,7 @@ weight: 22
 
 ##### _Tech Preview_
 
-New in Rancher v2.6.5, [NeuVector 5.x](https://open-docs.neuvector.com/) is an open-source container-centric security platform that is now integrated into Rancher. NeuVector offers real-time compliance, visibility, and protection for critical applications and data during runtime. NeuVector provides a firewall, container process/file system monitoring, security auditing with CIS benchmarks, and vulnerability scanning. For more information on Rancher security, please see the [hardening guides and benchmark versions]({{<baseurl>}}/rancher/v2.6/en/security/).
+New in Rancher v2.6.5, [NeuVector 5.x](https://open-docs.neuvector.com/) is an open-source container-centric security platform that is now integrated into Rancher. NeuVector offers real-time compliance, visibility, and protection for critical applications and data during runtime. NeuVector provides a firewall, container process/file system monitoring, security auditing with CIS benchmarks, and vulnerability scanning. For more information on Rancher security, please see the [security documentation]({{<baseurl>}}/rancher/v2.6/en/security/).
 
 NeuVector can be enabled through a Helm chart that may be installed either through **Apps & Marketplace** or through the **Cluster Tools** button in the Rancher UI. Once the Helm chart is installed, users can easily [deploy and manage NeuVector clusters within Rancher](https://open-docs.neuvector.com/deploying/rancher#deploy-and-manage-neuvector-through-rancher-apps-marketplace).
 
