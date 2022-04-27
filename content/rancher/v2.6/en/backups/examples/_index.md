@@ -276,7 +276,7 @@ The snippet below demonstrates two different types of secrets and their relevanc
 
 The first example is that of a secret that is used to encrypt the backup files. The backup operator, in this case, will not be able to read the secrets encryption file. It only uses the contents of the secret. 
 
-The second example is that of a Kubernetes secrets encryption config file that is used to encrypt secrets when stored in etcd. **While backing up your etcd config, be sure to also backup your EncryptionConfiguration.** Failing to do so might result in you not being able to use the restored data. 
+The second example is that of a Kubernetes secrets encryption config file that is used to encrypt secrets when stored in etcd. **When backing up the etcd datastore, be sure to also back up the EncryptionConfiguration.** Failure to do so will result in an inability to use the restored data if secrets encryption was in use at the time the data was backed up.
 
 
 ```yaml
