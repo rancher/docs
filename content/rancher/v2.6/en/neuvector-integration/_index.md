@@ -76,4 +76,8 @@ To learn more about NeuVector's architecture, please refer [here](https://open-d
 
 ### Limitations
 
-* Currently, NeuVector feature chart installation fails when a NeuVector partner chart already exists. To work around this issue, uninstall the NeuVector partner chart and reinstall the NeuVector feature chart. 
+* Currently, NeuVector feature chart installation fails when a NeuVector partner chart already exists. To work around this issue, uninstall the NeuVector partner chart and reinstall the NeuVector feature chart.
+
+* Users cannot access the NeuVector UI from Rancher for a custom RKE1 cluster. To work around this, restart the controllers; note that while the controller pods are restarting, it will take additional time for the controller pods to become active.
+
+* Container runtime is not auto-detected for different cluster types when installing the NeuVector chart.
