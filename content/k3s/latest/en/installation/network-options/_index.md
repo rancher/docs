@@ -89,10 +89,8 @@ If you are using a custom cni plugin, i.e. a cni plugin different from flannel, 
 
 ### IPv6 only installation
 
-IPv6 only setup is supported on k3s v1.22 or above. As in dual-stack operation, IPv6 node addresses cannot be auto-detected; all nodes must have an explicitly configured IPv6 `node-ip`. This is an example of a valid configuration:
+IPv6 only setup is supported on k3s v1.22 or above. Note that network policy enforcement is not supported on IPv6-only clusters when using the default flannel CNI. This is an example of a valid configuration:
 
 ```
-k3s server --node-ip 2a05:d012:c6f:4611:5c2:5602:eed2:898c --cluster-cidr 2001:cafe:42:0::/56 --service-cidr 2001:cafe:42:1::/112
+k3s server --disable-network-policy
 ```
-
-Note that you can specify only one IPv6 `cluster-cidr` value.
