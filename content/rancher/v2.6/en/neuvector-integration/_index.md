@@ -18,7 +18,7 @@ The Harvester Helm Chart is used to manage access to the NeuVector UI in Rancher
 1. Click **☰ > Cluster Management**.
 1. On the Clusters page, go to the cluster where you want to deploy NeuVector, and click **Explore**.
 1. Go to **Apps & Marketplace > Repositories**, then click **Create**.
-1. In the Target section, select **Git repository containing Helm chart or cluster template definitions**. Then enter the index URL of https://github.com/selvamt94/charts.git and the branch **neuvector**. Click **Create**.
+1. In the Target section, select **Git repository containing Helm chart or cluster template definitions**. Then enter the index URL of https://github.com/rancher/charts.git and the branch **neuvector**. Click **Create**.
 1. Go to **Apps & Marketplace > Charts**, and install **NeuVector** from the chart repo. When configuring Helm chart values, go to the **Container Runtime** section, de-select **Docker** and instead select **Containerd Runtime**. Finally, click **Install** again.
 
 **To navigate to and install the NeuVector chart through Cluster Tools:**
