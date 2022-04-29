@@ -11,3 +11,5 @@ package-lock.json
 /scripts/converters/results_to_markdown/.terraform
 /scripts/converters/results_to_markdown/terraform.tfstate*
 /scripts/converters/results_to_markdown/*.tfvars
+
+.idea/
