@@ -3,7 +3,7 @@ title: NeuVector Integration
 weight: 22
 ---
 
-##### _Tech Preview_
+### NeuVector Integration in Rancher
 
 New in Rancher v2.6.5, [NeuVector 5.x](https://open-docs.neuvector.com/) is an open-source container-centric security platform that is now integrated into Rancher. NeuVector offers real-time compliance, visibility, and protection for critical applications and data during runtime. NeuVector provides a firewall, container process/file system monitoring, security auditing with CIS benchmarks, and vulnerability scanning. For more information on Rancher security, please see the [security documentation]({{<baseurl>}}/rancher/v2.6/en/security/).
 
@@ -17,35 +17,40 @@ The Harvester Helm Chart is used to manage access to the NeuVector UI in Rancher
 
 1. Click **☰ > Cluster Management**.
 1. On the Clusters page, go to the cluster where you want to deploy NeuVector, and click **Explore**.
-1. Go to **Apps & Marketplace > Repositories**, then click **Create**.
-1. In the Target section, select **Git repository containing Helm chart or cluster template definitions**. Then enter the index URL of https://github.com/rancher/charts.git and the branch **neuvector**. Click **Create**.
-1. Go to **Apps & Marketplace > Charts**, and install **NeuVector** from the chart repo. When configuring Helm chart values, go to the **Container Runtime** section, de-select **Docker** and instead select **Containerd Runtime**. Finally, click **Install** again.
+1. Go to **Apps & Marketplace > Charts**, and install **NeuVector** from the chart repo. 
+1. Different cluster types require different container runtimes. When configuring Helm chart values, go to the **Container Runtime** section, and select your runtime in accordance with the cluster type:
+
+   - RKE1: Select `docker`
+   - K3s and RKE2: Select `k3scontainerd`
+   - AKS: Select `containerd`</br>
+
+    >**Note:** Only one container runtime engine may be selected at a time during installation.
+1. Click **Install** again.
 
 **To navigate to and install the NeuVector chart through Cluster Tools:**
 
-1. Repeat steps 1 - 4 above.
+1. Click **☰ > Cluster Management**.
+1. On the Clusters page, go to the cluster where you want to deploy NeuVector, and click **Explore**.
 1. Click on **Cluster Tools** at the bottom of the left navigation bar.
-1. Select the **NeuVector** chart and then click **Install**. When configuring Helm chart values, go to the **Container Runtime** section, de-select **Docker** and instead select **Containerd Runtime**. Finally, click **Install** again.
+1. Repeat step 4 above to select your container runtime accordingly, then click **Install** again.
 
 ### Accessing NeuVector from the Rancher UI
 
-1. Go to the cluster where NeuVector is installed. In the left navigation bar, click **NeuVector**.
-1. Click the external link to go to the NeuVector UI.
+1. Navigate to the cluster explorer of the cluster where NeuVector is installed. In the left navigation bar, click **NeuVector**.
+1. Click the external link to go to the NeuVector UI. Once the link is selected, users must accept the `END USER LICENSE AGREEMENT` to access the NeuVector UI.
 
 ### Uninstalling NeuVector from the Rancher UI
 
 **To uninstall from Apps & Marketplace:**
 
 1. Click **☰ > Cluster Management**.
-1. On the Clusters page, go to the cluster where NeuVector is deployed, and click **Explore**.
-1. In the left navigation bar, click **NeuVector**.
 1. Under **Apps & Marketplace**, click **Installed Apps**.
 1. Under `cattle-neuvector-system`, select both the NeuVector app (and the associated CRD if desired), then click **Delete**.
 
 **To uninstall from Cluster Tools:**
 
-1. Repeat steps 1 - 3 above.
-1. Click on **Cluster Tools** at the bottom-left of the screen, then click on the trash can icon under the NeuVector chart. Select `Delete the CRD associated with this app` if desired.
+1. Click **☰ > Cluster Management**.
+1. Click on **Cluster Tools** at the bottom-left of the screen, then click on the trash can icon under the NeuVector chart. Select `Delete the CRD associated with this app` if desired, then click **Delete**.
 
 ### GitHub Repository
 
@@ -73,6 +78,19 @@ The NeuVector security solution contains four types of security containers: Cont
 ![NeuVector Architecture]({{<baseurl>}}/img/rancher/neuvector-architecture.png)
 
 To learn more about NeuVector's architecture, please refer [here](https://open-docs.neuvector.com/basics/overview#architecture).
+
+### CPU and Memory Allocations
+
+Below are the minimum recommended computing resources for the NeuVector chart installation in a default deployment. Note that the resource limit is not set.
+
+| Container   |   CPU - Request  |   Memory - Request  |
+|------------|--------|---------|
+| Controller   |  3 (1GB 1vCPU needed per controller) | *
+| Enforcer     |  On all nodes (500MB .5vCPU) | 1GB
+| Manager      |  1 (500MB .5vCPU) | *
+| Scanner      |  3 (100MB .5vCPU) | *
+
+\* Minimum 1GB of memory total required for Controller, Manager, and Scanner containers combined.
 
 ### Limitations
 
