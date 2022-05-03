@@ -155,7 +155,7 @@ If using Red Hat Enterprise Linux, Oracle Linux or CentOS, you cannot use the `r
    reboot
    ```
 >
-> In addition, the default firewall settings of RHEL 8.4 prevents RKE1 pods from reaching out to Rancher to connect to the cluster agent. To allow Docker containers to reach out to the internet and connect to Rancher, make the following updates to the firewall settings:
+> In addition, the default firewall settings of RHEL 8.4 prevent RKE1 pods from reaching out to Rancher to connect to the cluster agent. To allow Docker containers to reach out to the internet and connect to Rancher, make the following updates to the firewall settings:
 > ```
   firewall-cmd --zone=public  --add-masquerade --permanent
   firewall-cmd --reload
