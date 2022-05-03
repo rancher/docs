@@ -18,14 +18,17 @@ The Harvester Helm Chart is used to manage access to the NeuVector UI in Rancher
 1. Click **☰ > Cluster Management**.
 1. On the Clusters page, go to the cluster where you want to deploy NeuVector, and click **Explore**.
 1. Go to **Apps & Marketplace > Charts**, and install **NeuVector** from the chart repo. 
-1. Different cluster types require different container runtimes. When configuring Helm chart values, go to the **Container Runtime** section, and select your runtime in accordance with the cluster type:
+1. Different cluster types require different container runtimes. When configuring Helm chart values, go to the **Container Runtime** section, and select your runtime in accordance with the cluster type. Finally, click **Install** again.
 
-   - RKE1: Select `docker`
-   - K3s and RKE2: Select `k3scontainerd`
-   - AKS: Select `containerd`</br>
+Some examples are as follows:
+
+   - RKE1: `docker`
+   - K3s and RKE2: `k3scontainerd`
+   - AKS: `containerd` for v1.19 and up
+   - EKS: `docker` for v1.22 and below; `containerd` for v1.23 and up
+   - GKE: `containerd` (see the [Google docs](https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd) for more)
 
     >**Note:** Only one container runtime engine may be selected at a time during installation.
-1. Click **Install** again.
 
 **To navigate to and install the NeuVector chart through Cluster Tools:**
 
