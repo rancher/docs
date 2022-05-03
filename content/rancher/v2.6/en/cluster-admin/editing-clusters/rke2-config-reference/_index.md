@@ -1,5 +1,5 @@
 ---
-title: RKE2 Cluster Configuration Reference (Tech Preview)
+title: RKE2 Cluster Configuration Reference
 shortTitle: RKE2 Cluster Configuration
 weight: 5
 ---
