@@ -6,7 +6,7 @@ weight: 2220
 
 In this section, you'll learn how to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in Azure through Rancher.
 
-First, you will set up your Azure cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in Azure. 
+First, you will set up your Azure cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in Azure.
 
 Then you will create an Azure cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
@@ -25,29 +25,31 @@ For more information on configuring Azure node templates, refer to the [Azure no
 - [Creating an Azure Cluster](#creating-an-azure-cluster)
 
 # Preparation in Azure
-  
+
 Before creating a node template in Rancher using a cloud infrastructure such as Azure, we must configure Rancher to allow the manipulation of resources in an Azure subscription.
 
 To do this, we will first create a new Azure **service principal (SP)** in Azure **Active Directory (AD)**, which, in Azure, is an application user who has permission to manage Azure resources.
 
 The following is a template `az cli` script that you have to run for creating an service principal, where you have to enter your SP name, role, and scope:
-  
+
 ```
 az ad sp create-for-rbac \
   --name="<Rancher ServicePrincipal name>" \
   --role="Contributor" \
   --scopes="/subscriptions/<subscription Id>"
 ```
-  
+
 The creation of this service principal returns three pieces of identification information, *The application ID, also called the client ID*, and *The client secret*. This information will be used when you create a node template for Azure.
 
 # Creating an Azure Cluster
 
+{{% tabs %}}
+{{% tab "RKE" %}}
 
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials](#2-create-a-node-template-with-your-cloud-credentials)
 3. [Create a cluster with node pools using the node template](#3-create-a-cluster-with-node-pools-using-the-node-template)
- 
+
 ### 1. Create your cloud credentials
 
 1. Click **☰ > Cluster Management**.
@@ -57,7 +59,7 @@ The creation of this service principal returns three pieces of identification in
 1. Enter your Azure credentials.
 1. Click **Create**.
 
-**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters. 
+**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters.
 
 ### 2. Create a node template with your cloud credentials
 
@@ -82,16 +84,85 @@ Use Rancher to create a Kubernetes cluster in Azure.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Click **Create**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+
+{{% /tab %}}
+{{% tab "RKE2" %}}
+
+### 1. Create your cloud credentials
+
+1. Click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
+1. Click **Create**.
+1. Click **Azure**.
+1. Enter your Azure credentials.
+1. Click **Create**.
+
+**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters.
+
+### 2. Create your cluster
+
+Use Rancher to create a Kubernetes cluster in Azure.
+
+1. Click **☰ > Cluster Management**.
+1. On the **Clusters** page, click **Create**.
+1. Click **Azure**.
+1. Enter a **Cluster Name**.
+1. Create a machine pool for each Kubernetes role. Refer to the [best practices]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools#node-roles-in-rke2) for recommendations on role assignments and counts.
+    1. For each machine pool, define the machine configuration. Refer to the [Azure machine configuration reference]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-machine-config/) for information on configuration options.
+1. Use the **Cluster Configuration** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation.  For help configuring the cluster, refer to the [RKE2 cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/rke2-config-reference/)
+1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
+1. Click **Create**.
+
+{{% /tab %}}
+{{% tab "RKE2 - Cluster Template" %}}
+
+### 1. Create your cloud credentials
+
+1. Click **☰ > Cluster Management**.
+1. Click **Cloud Credentials**.
+1. Click **Create**.
+1. Click **Azure**.
+1. Enter your Azure credentials.
+1. Click **Create**.
+
+### 2. Add your cluster template
+
+1. Follow these [instructions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/cluster-templates/#adding-a-cluster-template-to-rancher) to add a cluster template to Rancher.
+
+### 3. Create your cluster using a cluster template
+
+1. Click **☰ > Cluster Management**.
+1. Under the **Use a Catalog Template to create a cluster** section, click **catalog-template**.
+1. Enter a name for the cluster.
+1. Select cloud credentials to use.
+1. Select the **Infrastructure Provider**. If you are using Rancher's [example cluster templates](https://github.com/rancher/cluster-template-examples), select `azure`.
+1. Choose a **Kubernetes Version**.
+1. Configure your nodepools. For help with configurations, refer to [Azure Node Template Configuration.](./azure-node-template-config)
+1. Click **Install**.
+
+{{% /tabs %}}
+
+**Result:**
+
+Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
+
+You can access your cluster after its state is updated to **Active**.
+
+**Active** clusters are assigned two Projects:
+
+- `Default`, containing the `default` namespace
+- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+
 
 ### Optional Next Steps
 
