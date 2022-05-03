@@ -1,5 +1,5 @@
 ---
-title: K3s Cluster Configuration Reference (Tech Preview)
+title: K3s Cluster Configuration Reference
 shortTitle: K3s Cluster Configuration
 weight: 6
 ---

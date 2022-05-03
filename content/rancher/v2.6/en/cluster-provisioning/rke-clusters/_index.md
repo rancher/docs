@@ -15,9 +15,9 @@ RKE clusters include clusters that Rancher launched on Windows nodes or other ex
 
 ### Changes in Rancher v2.6
 
-_Tech Preview_
-
 Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
+
+As of Rancher v2.6.5, provisioning for RKE2 is GA.
 
 RKE2 provisioning is built on top of a new provisioning framework that leverages the upstream [Cluster API](https://github.com/kubernetes-sigs/cluster-api) project. With this new provisioning framework, you can:
 
@@ -26,7 +26,7 @@ RKE2 provisioning is built on top of a new provisioning framework that leverages
 - Choose CNI options Calico, Cilium, and Multus in addition to Canal
 - Install custom RKE2 clusters on pre-provisioned VMs or bare-metal nodes
 
-The RKE2 provisioning tech preview also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
+The RKE2 provisioning features also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
 
 - Windows Containers with RKE2 powered by containerd
 - Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI

@@ -27,7 +27,7 @@ This section covers the following topics:
 
 # Changes in Rancher v2.6
 
-_Tech Preview_
+
 
 Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
 
