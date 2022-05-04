@@ -128,55 +128,40 @@ Now that you have set up the `kubeconfig` file, you can use `kubectl` to access 
 Check that all the required pods and containers are healthy are ready to continue:
 
 ```
- /var/lib/rancher/rke2/bin/kubectl         --kubeconfig /etc/rancher/rke2/rke2.yaml get pods -A
-NAMESPACE     NAME                                                 READY   STATUS      RESTARTS   AGE
-kube-system   etcd-ip-172-31-18-145                                1/1     Running     0          4m37s
-kube-system   etcd-ip-172-31-25-73                                 1/1     Running     0          20m
-kube-system   etcd-ip-172-31-31-210                                1/1     Running     0          9m12s
-kube-system   helm-install-rke2-canal-th9k9                        0/1     Completed   0          21m
-kube-system   helm-install-rke2-coredns-6njr6                      0/1     Completed   0          21m
-kube-system   helm-install-rke2-ingress-nginx-vztsd                0/1     Completed   0          21m
-kube-system   helm-install-rke2-kube-proxy-6std5                   0/1     Completed   0          21m
-kube-system   helm-install-rke2-metrics-server-9sl7m               0/1     Completed   0          21m
-kube-system   kube-apiserver-ip-172-31-18-145                      1/1     Running     0          4m22s
-kube-system   kube-apiserver-ip-172-31-25-73                       1/1     Running     0          20m
-kube-system   kube-apiserver-ip-172-31-31-210                      1/1     Running     0          9m8s
-kube-system   kube-controller-manager-ip-172-31-18-145             1/1     Running     0          4m8s
-kube-system   kube-controller-manager-ip-172-31-25-73              1/1     Running     0          21m
-kube-system   kube-controller-manager-ip-172-31-31-210             1/1     Running     0          8m55s
-kube-system   kube-proxy-57twm                                     1/1     Running     0          10m
-kube-system   kube-proxy-f7pc6                                     1/1     Running     0          5m24s
-kube-system   kube-proxy-rj4t5                                     1/1     Running     0          21m
-kube-system   kube-scheduler-ip-172-31-18-145                      1/1     Running     0          4m15s
-kube-system   kube-scheduler-ip-172-31-25-73                       1/1     Running     0          21m
-kube-system   kube-scheduler-ip-172-31-31-210                      1/1     Running     0          8m48s
-kube-system   rke2-canal-4x972                                     2/2     Running     0          10m
-kube-system   rke2-canal-flh8m                                     2/2     Running     0          5m24s
-kube-system   rke2-canal-zfhkr                                     2/2     Running     0          21m
-kube-system   rke2-coredns-rke2-coredns-6cd96645d6-cmstq           1/1     Running     0          21m
-kube-system   rke2-ingress-nginx-controller-54946dd48f-6mp76       1/1     Running     0          20m
-kube-system   rke2-ingress-nginx-default-backend-5795954f8-p92xx   1/1     Running     0          20m
-kube-system   rke2-metrics-server-5f9b5757dc-k5sgh                 1/1     Running     0          20m
+/var/lib/rancher/rke2/bin/kubectl --kubeconfig /etc/rancher/rke2/rke2.yaml get pods -A
+NAMESPACE     NAME                                                    READY   STATUS      RESTARTS   AGE
+kube-system   cloud-controller-manager-rke2-server-1                  1/1     Running     0          2m28s
+kube-system   cloud-controller-manager-rke2-server-2                  1/1     Running     0          61s
+kube-system   cloud-controller-manager-rke2-server-3                  1/1     Running     0          49s
+kube-system   etcd-rke2-server-1                                      1/1     Running     0          2m13s
+kube-system   etcd-rke2-server-2                                      1/1     Running     0          87s
+kube-system   etcd-rke2-server-3                                      1/1     Running     0          56s
+kube-system   helm-install-rke2-canal-hs6sx                           0/1     Completed   0          2m17s
+kube-system   helm-install-rke2-coredns-xmzm8                         0/1     Completed   0          2m17s
+kube-system   helm-install-rke2-ingress-nginx-flwnl                   0/1     Completed   0          2m17s
+kube-system   helm-install-rke2-metrics-server-7sggn                  0/1     Completed   0          2m17s
+kube-system   kube-apiserver-rke2-server-1                            1/1     Running     0          116s
+kube-system   kube-apiserver-rke2-server-2                            1/1     Running     0          66s
+kube-system   kube-apiserver-rke2-server-3                            1/1     Running     0          48s
+kube-system   kube-controller-manager-rke2-server-1                   1/1     Running     0          2m30s
+kube-system   kube-controller-manager-rke2-server-2                   1/1     Running     0          57s
+kube-system   kube-controller-manager-rke2-server-3                   1/1     Running     0          42s
+kube-system   kube-proxy-rke2-server-1                                1/1     Running     0          2m25s
+kube-system   kube-proxy-rke2-server-2                                1/1     Running     0          59s
+kube-system   kube-proxy-rke2-server-3                                1/1     Running     0          85s
+kube-system   kube-scheduler-rke2-server-1                            1/1     Running     0          2m30s
+kube-system   kube-scheduler-rke2-server-2                            1/1     Running     0          57s
+kube-system   kube-scheduler-rke2-server-3                            1/1     Running     0          42s
+kube-system   rke2-canal-b9lvm                                        2/2     Running     0          91s
+kube-system   rke2-canal-khwp2                                        2/2     Running     0          2m5s
+kube-system   rke2-canal-swfmq                                        2/2     Running     0          105s
+kube-system   rke2-coredns-rke2-coredns-547d5499cb-6tvwb              1/1     Running     0          92s
+kube-system   rke2-coredns-rke2-coredns-547d5499cb-rdttj              1/1     Running     0          2m8s
+kube-system   rke2-coredns-rke2-coredns-autoscaler-65c9bb465d-85sq5   1/1     Running     0          2m8s
+kube-system   rke2-ingress-nginx-controller-69qxc                     1/1     Running     0          52s
+kube-system   rke2-ingress-nginx-controller-7hprp                     1/1     Running     0          52s
+kube-system   rke2-ingress-nginx-controller-x658h                     1/1     Running     0          52s
+kube-system   rke2-metrics-server-6564db4569-vdfkn                    1/1     Running     0          66s
 ```
 
 **Result:** You have confirmed that you can access the cluster with `kubectl` and the RKE2 cluster is running successfully. Now the Rancher management server can be installed on the cluster.
-
-### 5. Configure nginx to be a daemonset
-
-Currently, RKE2 deploys nginx-ingress as a deployment, and that can impact the Rancher deployment so that you cannot use all servers to proxy requests to the Rancher pods.
-
-To rectify that, place the following file in /var/lib/rancher/rke2/server/manifests on any of the server nodes:
-
-```yaml
-apiVersion: helm.cattle.io/v1
-kind: HelmChartConfig
-metadata:
-  name: rke2-ingress-nginx
-  namespace: kube-system
-spec:
-  valuesContent: |-
-    controller:
-      kind: DaemonSet
-      daemonset:
-        useHostPort: true
-```
