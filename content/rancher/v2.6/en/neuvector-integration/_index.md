@@ -95,10 +95,22 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 
 \* Minimum 1GB of memory total required for Controller, Manager, and Scanner containers combined.
 
-### Limitations
+
+### Support Limitations
+
+* Only admins and cluster owners are currently supported.
+
+* Fleet multi-cluster deployment is not supported.
+
+* NeuVector is not supported on a Windows cluster.
+
+* Airgap is not supported.
+
+### Other Limitations
 
 * Currently, NeuVector feature chart installation fails when a NeuVector partner chart already exists. To work around this issue, uninstall the NeuVector partner chart and reinstall the NeuVector feature chart.
 
 * Users cannot access the NeuVector UI from Rancher for a custom RKE1 cluster. To work around this, restart the controllers; note that while the controller pods are restarting, it will take additional time for the controller pods to become active.
 
 * Container runtime is not auto-detected for different cluster types when installing the NeuVector chart.
+
