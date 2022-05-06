@@ -104,6 +104,10 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 
 * NeuVector is not supported on a Windows cluster.
 
+* Hardened cluster NeuVector installation is not supported.
+
+* SELinux clusters are not supported.
+
 * Airgap is not supported.
 
 ### Other Limitations
