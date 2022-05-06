@@ -60,8 +60,8 @@ The RKE2 provisioning also includes installing RKE2 on Windows clusters. Windows
 
 - Windows Containers with RKE2 powered by ContainerD
 - Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
-- Calico CNI for Windows RKE2 custom clusters. 
-- SAC releases of Windows Server (2004 and 20H2) are included in the technical preview.
+- Calico CNI for Windows RKE2 custom clusters 
+- SAC releases of Windows Server (2004 and 20H2) are included in the technical preview
 
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
