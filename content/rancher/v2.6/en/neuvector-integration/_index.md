@@ -104,17 +104,17 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 
 * NeuVector is not supported on a Windows cluster.
 
-* Hardened cluster NeuVector installation is not supported.
+* NeuVector installation is not supported on hardened clusters.
 
-* SELinux clusters are not supported.
+* NeuVector installation is not supported on SELinux clusters.
 
-* Airgap is not supported.
+* NeuVector installation is not supported on clusters in an air-gapped environment.
 
 ### Other Limitations
 
 * Currently, NeuVector feature chart installation fails when a NeuVector partner chart already exists. To work around this issue, uninstall the NeuVector partner chart and reinstall the NeuVector feature chart.
 
-* Users cannot access the NeuVector UI from Rancher for a custom RKE1 cluster. To work around this, restart the controllers; note that while the controller pods are restarting, it will take additional time for the controller pods to become active.
+* Sometimes when the controllers are not ready, the NeuVector UI is not accessible from the Rancher UI. During this time, controllers will try to restart, and it takes a few minutes for the controllers to be active.
 
 * Container runtime is not auto-detected for different cluster types when installing the NeuVector chart.
 
