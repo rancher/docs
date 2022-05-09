@@ -115,6 +115,7 @@ Use Rancher to create a Kubernetes cluster in Azure.
 
 1. Click **☰ > Cluster Management**.
 1. On the **Clusters** page, click **Create**.
+1. Toggle the switch to **RKE2/K3s**.
 1. Click **Azure**.
 1. Enter a **Cluster Name**.
 1. Create a machine pool for each Kubernetes role. Refer to the [best practices]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools#node-roles-in-rke2) for recommendations on role assignments and counts.
