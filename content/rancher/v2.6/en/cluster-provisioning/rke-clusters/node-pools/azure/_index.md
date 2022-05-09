@@ -84,17 +84,6 @@ Use Rancher to create a Kubernetes cluster in Azure.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Click **Create**.
 
-**Result:**
-
-Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
-
-You can access your cluster after its state is updated to **Active**.
-
-**Active** clusters are assigned two Projects:
-
-- `Default`, containing the `default` namespace
-- `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
-
 {{% /tab %}}
 {{% tab "RKE2" %}}
 
