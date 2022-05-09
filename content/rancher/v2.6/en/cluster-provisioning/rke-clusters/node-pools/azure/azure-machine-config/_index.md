@@ -52,27 +52,35 @@ Update domains indicate groups of virtual machines and underlying physical hardw
 
 For more information on update domains, see [refer here](https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview#how-do-availability-sets-work).
 
-### Purchase Plan (LabeledInput)
+### Purchase Plan
 
 Some VM images in the Azure Marketplace require a plan. If applicable, select a purchase plan, formatted as `publisher:product:plan`, to use with your chosen image.
 
-### Subnet (LabeledInput)
+### Subnet
 
 The name of the subnet when creating a new VNet or referencing an existing one.
 
 Default: `docker-machine`
 
-### Subnet Prefix (LabeledInput)
+### Subnet Prefix
 
 The subnet IP address prefix to use when creating a new VNet in CIDR format.
 
 Default: `192.168.0.0/16`
 
-### Virtual Network (LabeledInput)
-    placeholder: [resourcegroup:]name
+### Virtual Network
 
-### Public IP Options (Checkbox)
-    No Public IP    Static Public IP
+The [virtual network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) to use or create if one does not exist. Formatted as `[resourcegroup:]name`.
+
+### Public IP Options
+
+#### No Public IP
+
+Do not allocate a public IP address.
+
+#### Static Public IP
+
+Allocate a static public IP address.
 
 ### Use Private IP
 
@@ -82,19 +90,23 @@ Use a static private IP address.
 
 Configure a static private IP address to use.
 
-### Network Security Group (LabeledInput)
-    help: When using a Rancher managed or providing an existing NSG, all nodes using this template will use the supplied NSG. If no NSG is provided, a new NSG will be created for each node.
+### Network Security Group
 
-### DNS Label (LabeledInput)
-    help: A unique DNS label for the public IP address.
+The [network security group](https://docs.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview) to use. All nodes using this template will use the supplied network security group. If no network security group is provided, a new one will be created for each node.
 
-### Storage Type* (LabeledSelect)
+### DNS Label
 
-### Use Managed Disks (Checkbox)
+A unique DNS name label for the public IP address.
+
+### Storage Type
+
+The [storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview) type to use with your VMs. Options include Standard LRS, Standard ZRS, Standard GRS, Standard RAGRS, and Premium LRS.
+
+### Use Managed Disks
 
 [Azure managed disks](https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview) are block-level storage volumes that are managed by Azure and used with Azure Virtual Machines. Managed disks are designed for 99.999% availability. Managed disks achieve this by providing you with three replicas of your data, allowing for high durability.
 
-### Managed Disk Size (LabeledInput)
+### Managed Disk Size
 
 The size in GB for the disk for each node.
 
