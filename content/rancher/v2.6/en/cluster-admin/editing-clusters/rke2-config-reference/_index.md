@@ -6,12 +6,35 @@ weight: 5
 
 This section covers the configuration options that are available in Rancher for a new or existing RKE2 Kubernetes cluster.
 
+- [Overview](#overview)
+- [Editing Clusters with a Form in the Rancher UI](#editing-clusters-with-a-form-in-the-rancher-ui)
+- [Editing Clusters with YAML](#editing-clusters-with-yaml)
+- [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui)
+- [Cluster Config File Reference](#cluster-config-file-reference)
+
 # Overview
 
 You can configure the Kubernetes options in one of the two following ways:
 
 - [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
 - [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
+
+# Editing Clusters with a Form in the Rancher UI
+
+To edit your cluster,
+
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster you want to configure and click **⋮ > Edit Config**.
+
+# Editing Clusters with YAML
+
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the options available in an RKE2 installation by specifying them in YAML.
+
+To edit an RKE2 config file directly from the Rancher UI,
+
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster you want to configure and click **⋮ > Edit as YAML**.
+1. Edit the RKE options under the `rancher_kubernetes_engine_config` directive.
 
 # Configuration Options in the Rancher UI
 
@@ -161,10 +184,110 @@ Option to remove all pods from the node prior to upgrading.
 
 Option to set kubelet options for different nodes. For available options, refer to the [Kubernetes documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/).
 
-# Cluster Config File
+#### Kubernetes Node Labels
 
-Instead of using the Rancher UI forms to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
+A label, formatted as a key/value pair, to attach to a node to help with organization and object selection. Labels are applied to all nodes in a pool. Labels must be added for additional pools, if applicable.
 
-To edit an RKE2 config file directly from the Rancher UI, click **Edit as YAML**.
+# Cluster Config File Reference
 
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a config file. Using a config file allows you to set any of the [options available](https://docs.rke2.io/install/install_options/server_config/) in an RKE2 installation, including those already listed in [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui), as well as Rancher-specific parameters.
 
+{{% accordion id="rke2-cluster-config-file" label="Example Cluster Config File Snippet" %}}
+
+```yaml
+spec:
+  cloudCredentialSecretName: cattle-global-data:cc-s879v
+  kubernetesVersion: v1.23.6+rke2r2
+  localClusterAuthEndpoint: {}
+  rkeConfig:
+    chartValues:
+      rke2-calico: {}
+    etcd:
+      snapshotRetention: 5
+      snapshotScheduleCron: 0 */5 * * *
+    machineGlobalConfig:
+      cni: calico
+      disable-kube-proxy: false
+      etcd-expose-metrics: false
+      profile: null
+    machinePools:
+    - controlPlaneRole: true
+      etcdRole: true
+      machineConfigRef:
+        kind: Amazonec2Config
+        name: nc-test-pool1-pwl5h
+      name: pool1
+      quantity: 1
+      unhealthyNodeTimeout: 0s
+      workerRole: true
+    machineSelectorConfig:
+    - config:
+        protect-kernel-defaults: false
+    registries: {}
+    upgradeStrategy:
+      controlPlaneConcurrency: "1"
+      controlPlaneDrainOptions:
+        deleteEmptyDirData: true
+        enabled: true
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        timeout: 120
+      workerConcurrency: "1"
+      workerDrainOptions:
+        deleteEmptyDirData: true
+        enabled: true
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        timeout: 120
+```
+
+### chartValues
+
+Option to install charts and specify their values. This option is intended to be used for RKE2/K3s system charts. All charts install using this method are installed in the `kube-system` namespace.
+
+Example:
+
+```yaml
+chartValues:
+    chart-name:
+        key: value
+```
+
+This would install the chart with `chart-name` with the values `key = value`.
+
+### machineGlobalConfig
+
+The RKE2/K3s configurations are nested under the `machineGlobalConfig` directive. Any configuration change made here will apply to every node. All configuration options available in the [standalone version of RKE2](https://docs.rke2.io/install/install_options/server_config/) can also be applied here.
+
+Example:
+
+```yaml
+machineGlobalConfig:
+    etcd-arg:
+        key1: value1
+        key2: value2
+```
+
+### machineSelectorConfig
+
+This is the same as [`machineGlobalConfig`](#machineglobalconfig) except that a [label](#kubernetes-node-labels) selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector.
+
+Multiple `config` entries are allowed, each specifying their own `machineLabelSelector`. A user can specify `matchExpressions`, `matchLabels`, both, or neither. Omitting the `machineLabelSelector` section of this has the same effect as putting the config in the `machineGlobalConfig` section.
+
+Example:
+
+```yaml
+machineSelectorConfig
+  - config:
+      config-key: config-value
+    machineLabelSelector:
+      matchExpressions:
+        - key: example-key
+          operator: string # Like Exists, In, NotIn
+          values:
+            - example-value1
+            - example-value2
+      matchLabels:
+        key1: value1
+        key2: value2
+```
