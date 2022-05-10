@@ -73,3 +73,6 @@ For more information on advanced configurations, refer to [this page](https://gi
 |`helmProjectOperator.hardenedNamespaces.configuration`| The configuration to be supplied to the default ServiceAccount or auto-generated NetworkPolicy on managing a namespace |
 -->
 
+### Prometheus Federator on the Local Cluster
+
+Prometheus Federator is a resource intensive application. Installing it to the local cluster is possible, but **not recommended**.
