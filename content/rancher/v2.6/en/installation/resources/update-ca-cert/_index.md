@@ -133,7 +133,7 @@ Using a Kubeconfig for each downstream cluster update the environment variable f
 
 ```
 $ kubectl edit -n cattle-system ds/cattle-node-agent
-$ kubectl edit -n cattle-system deployment/cluster-agent
+$ kubectl edit -n cattle-system deployment/cattle-cluster-agent
 ```
 
 ### Method 3: Recreate Rancher agents
