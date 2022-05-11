@@ -163,4 +163,4 @@ Example: `docker tag coredns-coredns:1.6.3 mycustomreg:5000/coredns-coredns`
 
 Last, push the images to the private registry.
 
-Example: `docker push mycustomreg:5000/coredns-coredns`
+Example: `docker push mycustomreg.com:5000/coredns-coredns`
