@@ -11,7 +11,9 @@ You can have Rancher launch a Kubernetes cluster using any nodes you want. When 
 
 Rancher can install Kubernetes on existing nodes, or it can dynamically provision nodes in an infrastructure provider and install Kubernetes on them.
 
-RKE/RKE2 clusters include clusters that Rancher launched on Windows nodes or other existing custom nodes, as well as clusters that Rancher launched with new nodes on Azure, Digital Ocean, EC2, or vSphere.
+Rancher can also create pools of nodes. One benefit of installing Kubernetes on node pools hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher can automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
+
+RKE/RKE2 clusters include clusters that Rancher launched on Windows nodes or other existing custom nodes, as well as clusters that Rancher launched with new nodes on Azure, Digital Ocean, EC2, vSphere, Linode or Harvester.
 
 ## RKE
 
@@ -54,7 +56,6 @@ RKE2 provisioning is built on top of a new provisioning framework that leverages
 - Provision RKE2 clusters on Digital Ocean, AWS EC2, Azure, and vSphere
 - Fully configure RKE2 clusters within Rancher
 - Choose CNI options Calico, Cilium, and Multus in addition to Canal
-- Install custom RKE2 clusters on pre-provisioned VMs or bare-metal nodes
 
 The RKE2 provisioning also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
 
@@ -66,6 +67,8 @@ The RKE2 provisioning also includes installing RKE2 on Windows clusters. Windows
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
 ### Launching Kubernetes on Existing Custom Nodes
+
+RKE2 provisioning also allows you to install custom clusters on pre-provisioned VMs or bare-metal nodes.
 
 If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
 
