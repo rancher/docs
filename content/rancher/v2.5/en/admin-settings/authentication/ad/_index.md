@@ -101,7 +101,7 @@ The table below details the parameters for the group schema configuration.
 | Search Attribute | Attribute used to construct search filters when adding groups to clusters or projects. See description of user schema `Search Attribute`. |
 | Search Filter | This filter gets applied to the list of groups that is searched when Rancher attempts to add groups to a site access list or tries to add groups to clusters or projects. For example, a group search filter could be <code>(&#124;(cn=group1)(cn=group2))</code>. Note: If the search filter does not use [valid AD search syntax,](https://docs.microsoft.com/en-us/windows/win32/adsi/search-filter-syntax) the list of groups will be empty. |
 | Group DN Attribute | The name of the group attribute whose format matches the values in the user attribute describing a the user's memberships. See  `User Member Attribute`. |
-| Nested Group Membership | This settings defines whether Rancher should resolve nested group memberships. Use only if your organisation makes use of these nested memberships (ie. you have groups that contain other groups as members. We advise avoiding nested groups when possible). |
+| Nested Group Membership | This settings defines whether Rancher should resolve nested group memberships. Use only if your organization makes use of these nested memberships (i.e., you have groups that contain other groups as members. We advise avoiding nested groups when possible). |
 
 ---
 
@@ -153,7 +153,7 @@ This command performs an LDAP search with the search base set to the domain root
 
 Since in this case the user's DN is `CN=John Doe,CN=Users,DC=acme,DC=com` [5], we should configure the **User Search Base** with the parent node DN `CN=Users,DC=acme,DC=com`.
 
-Similarly, based on the DN of the group referenced in the **memberOf** attribute [4], the correct value for the **Group Search Base** would be the parent node of that value, ie. `OU=Groups,DC=acme,DC=com`.
+Similarly, based on the DN of the group referenced in the **memberOf** attribute [4], the correct value for the **Group Search Base** would be the parent node of that value, i.e., `OU=Groups,DC=acme,DC=com`.
 
 ### Identify User Schema
 
@@ -166,7 +166,7 @@ The output of the above `ldapsearch` query also allows to determine the correct 
 
 > **Note:**
 >
-> If the AD users in our organisation were to authenticate with their UPN (e.g. jdoe@acme.com) instead of the short logon name, then we would have to set the `Login Attribute` to **userPrincipalName** instead.
+> If the AD users in our organization were to authenticate with their UPN (e.g. jdoe@acme.com) instead of the short logon name, then we would have to set the `Login Attribute` to **userPrincipalName** instead.
 
 We'll also set the `Search Attribute` parameter to **sAMAccountName|name**. That way users can be added to clusters/projects in the Rancher UI either by entering their username or full name.
 
