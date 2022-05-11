@@ -53,6 +53,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rk
 
 ### 1. Create your cloud credentials
 
+If you already have a set of cloud credentials to use, skip this section.
+
 1. Click **☰ > Cluster Management**.
 1. Click **Cloud Credentials**.
 1. Click **Create**.
@@ -68,6 +70,7 @@ Use Rancher to create a Kubernetes cluster in DigitalOcean.
 1. On the **Clusters** page, click **Create**.
 1. Toggle the switch to **RKE2/K3s**.
 1. Click **DigitalOcean**.
+1. Select a **Cloud Credential**, if more than one exists. Otherwise, it's preselected.
 1. Enter a **Cluster Name**.
 1. Create a machine pool for each Kubernetes role. Refer to the [best practices]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools#node-roles-in-rke2) for recommendations on role assignments and counts.
     1. For each machine pool, define the machine configuration. Refer to the [DigitalOcean machine configuration reference]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-machine-config/) for information on configuration options.
@@ -75,32 +78,6 @@ Use Rancher to create a Kubernetes cluster in DigitalOcean.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Click **Create**.
 
-{{% /tab %}}
-{{% tab "RKE2 - Cluster Template" %}}
-
-### 1. Create your cloud credentials
-
-1. Click **☰ > Cluster Management**.
-1. Click **Cloud Credentials**.
-1. Click **Create**.
-1. Click **DigitalOcean**.
-1. Enter your Digital Ocean credentials.
-1. Click **Create**.
-
-### 2. Add your cluster template
-
-1. Follow these [instructions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/cluster-templates/#adding-a-cluster-template-to-rancher) to add a cluster template to Rancher.
-
-### 3. Create your cluster using a cluster template
-
-1. Click **☰ > Cluster Management**.
-1. Under the **Use a Catalog Template to create a cluster** section, click **catalog-template**.
-1. Enter a name for the cluster.
-1. Select cloud credentials to use.
-1. Select the **Infrastructure Provider**. If you are using Rancher's [example cluster templates](https://github.com/rancher/cluster-template-examples), select `digitalocean`.
-1. Choose a **Kubernetes Version**.
-1. Configure your nodepools. For help with configurations, refer to the [DigitalOcean Node Template Configuration](./do-node-template-config).
-1. Click **Install**.
 {{% /tab %}}
 {{% /tabs %}}
 
