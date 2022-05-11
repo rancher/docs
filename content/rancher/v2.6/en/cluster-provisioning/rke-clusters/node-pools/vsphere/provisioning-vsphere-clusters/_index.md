@@ -99,6 +99,8 @@ Use Rancher to create a Kubernetes cluster in vSphere.
 
 ### 1. Create your cloud credentials
 
+If you already have a set of cloud credentials to use, skip this section.
+
 1. Click **☰ > Cluster Management**.
 1. Click **Cloud Credentials**.
 1. Click **Create**.
@@ -116,6 +118,7 @@ Use Rancher to create a Kubernetes cluster in vSphere.
 1. On the **Clusters** page, click **Create**.
 1. Toggle the switch to **RKE2/K3s**.
 1. Click **VMware vSphere**.
+1. Select a **Cloud Credential**, if more than one exists. Otherwise, it's preselected.
 1. Enter a **Cluster Name**.
 1. Create a machine pool for each Kubernetes role. Refer to the [best practices]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools#node-roles-in-rke2) for recommendations on role assignments and counts.
     1. For each machine pool, define the machine configuration. Refer to the [vSphere machine configuration reference]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-machine-config/) for information on configuration options.
@@ -124,34 +127,6 @@ Use Rancher to create a Kubernetes cluster in vSphere.
 1. Click **Create**.
 
 {{% /tab %}}
-{{% tab "RKE2 - Cluster Template" %}}
-
-### 1. Create your cloud credentials
-
-1. Click **☰ > Cluster Management**.
-1. Click **Cloud Credentials**.
-1. Click **Create**.
-1. Click **VMware vSphere**.
-1. Enter your vSphere credentials. For help, refer to **Account Access** in the [node template configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/)
-1. Click **Create**.
-
-**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters.
-
-### 2. Add your cluster template
-
-1. Follow these [instructions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/cluster-templates/#adding-a-cluster-template-to-rancher) to add a cluster template to Rancher.
-
-### 3. Create your cluster using a cluster template
-
-1. Click **☰ > Cluster Management**.
-1. Under the **Use a Catalog Template to create a cluster** section, click **catalog-template**.
-1. Enter a name for the cluster.
-1. Select cloud credentials to use.
-1. Select the **Infrastructure Provider**. If you are using Rancher's [example cluster templates](https://github.com/rancher/cluster-template-examples), select `vsphere`.
-1. Choose a **Kubernetes Version**.
-1. Configure your nodepools. For help with configurations, refer to [vSphere Node Template Configuration.](./vsphere-node-template-config)
-1. Click **Install**.
-
 {{% /tabs %}}
 
 **Result:**
