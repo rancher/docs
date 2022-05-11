@@ -34,7 +34,7 @@ To edit an RKE2 config file directly from the Rancher UI,
 
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster you want to configure and click **⋮ > Edit as YAML**.
-1. Edit the RKE options under the `rancher_kubernetes_engine_config` directive.
+1. Edit the RKE options under the `rkeConfig` directive.
 
 # Configuration Options in the Rancher UI
 
@@ -83,10 +83,6 @@ Select a [CIS benchmark]({{<baseurl>}}/rancher/v2.6/en/cis-scans/) to validate t
 If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication.
 
 Project network isolation is available if you are using any RKE2 network plugin that supports the enforcement of Kubernetes network policies, such as Canal.
-
-#### SELinux
-
-Option to enable or disable [SELinux](https://docs.rke2.io/security/selinux) support.
 
 #### CoreDNS
 
