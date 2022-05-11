@@ -23,7 +23,7 @@ Configure the size (in GB) for your [root device](https://docs.aws.amazon.com/AW
 
 ### VPC/Subnet
 
-The [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html) or specific [subnet](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html), an IP range in your VPC, to your resources to.
+The [VPC](https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html) or specific [subnet](https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html), an IP range in your VPC, to add your resources to.
 
 ### IAM Instance Profile Name
 
