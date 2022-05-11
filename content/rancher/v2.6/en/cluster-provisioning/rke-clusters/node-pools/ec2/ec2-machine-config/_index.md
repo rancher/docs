@@ -3,7 +3,7 @@ title: EC2 Machine Configuration Reference
 weight: 2
 ---
 
-For more details about EC2, nodes, refer to the official documentation for the [EC2 Management Console](https://aws.amazon.com/ec2).
+For more details about EC2 nodes, refer to the official documentation for the [EC2 Management Console](https://aws.amazon.com/ec2).
 
 ### Region
 
@@ -33,7 +33,7 @@ The name of the [instance profile] used to pass an IAM role to an EC2 instance.
 
 ### AMI ID
 
-The [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) used to provision your cluster.
+The [Amazon Machine Image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) used for the nodes in your cluster.
 
 ### SSH Username for AMI
 
@@ -76,3 +76,4 @@ Use [Instance Metadata Service Version 2 (IMDSv2)](https://docs.aws.amazon.com/A
 ### Add Tag
 
 Add metadata using [tags](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) to categorize resources.
+
