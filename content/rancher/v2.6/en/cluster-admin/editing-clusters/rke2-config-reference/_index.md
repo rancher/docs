@@ -338,7 +338,7 @@ machineSelectorConfig
     machineLabelSelector:
       matchExpressions:
         - key: example-key
-          operator: string # Like Exists, In, NotIn
+          operator: string # Valid operators are In, NotIn, Exists and DoesNotExist.
           values:
             - example-value1
             - example-value2
