@@ -78,7 +78,8 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher before 
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB   |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
+Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
+
 {{% /tab %}}
 
 {{% tab "K3s" %}}
@@ -93,7 +94,7 @@ These requirements apply to each host in a [K3s Kubernetes cluster where the Ran
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB    | 2 cores, 4 GB + 1000 IOPS |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes. 
+Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
 {{% /tab %}}
 

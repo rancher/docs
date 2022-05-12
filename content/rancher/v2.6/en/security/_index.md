@@ -24,6 +24,7 @@ Security is at the heart of all Rancher features. From integrating with all the 
 
 On this page, we provide security related documentation along with resources to help you secure your Rancher installation and your downstream Kubernetes clusters:
 
+- [NeuVector Integration with Rancher](#neuvector-integration-with-rancher)
 - [Running a CIS security scan on a Kubernetes cluster](#running-a-cis-security-scan-on-a-kubernetes-cluster)
 - [SELinux RPM](#selinux-rpm)
 - [Guide to hardening Rancher installations](#rancher-hardening-guide)
@@ -31,6 +32,12 @@ On this page, we provide security related documentation along with resources to 
 - [Third-party penetration test reports](#third-party-penetration-test-reports)
 - [Rancher Security Advisories and CVEs](#rancher-security-advisories-and-cves)
 - [Kubernetes Security Best Practices](#kubernetes-security-best-practices)
+
+### NeuVector Integration with Rancher
+
+_New in v2.6.5_
+
+NeuVector is an open-source, container-focused security application that is now integrated into Rancher. NeuVector provides production security, DevOps vulnerability protection, and a container firewall, et al. Please see the [Rancher docs]({{<baseurl>}}/rancher/v2.6/en/neuvector-integration) and the [NeuVector docs](https://open-docs.neuvector.com/) for more information.
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 

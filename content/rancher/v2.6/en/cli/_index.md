@@ -84,3 +84,7 @@ The following commands are available for use in Rancher CLI.
 Once logged into Rancher Server using the CLI, enter `./rancher --help` for a list of commands.
 
 All commands accept the `--help` flag, which documents each command's usage.
+
+### Limitations
+
+The Rancher CLI **cannot** be used to install [dashboard apps or Rancher feature charts](../helm-charts/).
