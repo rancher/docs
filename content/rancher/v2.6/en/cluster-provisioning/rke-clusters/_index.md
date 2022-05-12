@@ -57,7 +57,7 @@ RKE2 provisioning is built on top of a new provisioning framework that leverages
 - Fully configure RKE2 clusters within Rancher
 - Choose CNI options Calico, Cilium, and Multus in addition to Canal
 
-The RKE2 provisioning also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
+The RKE2 provisioning also includes installing RKE2 on clusters with Windows nodes. Windows features for RKE2 include:
 
 - Windows Containers with RKE2 powered by ContainerD
 - Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
