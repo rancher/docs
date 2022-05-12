@@ -17,7 +17,7 @@ This section covers the configuration options that are available in Rancher for 
 You can configure the Kubernetes options in one of the two following ways:
 
 - [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
+- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
 
 # Editing Clusters with a Form in the Rancher UI
 
@@ -239,7 +239,7 @@ spec:
 
 ### chartValues
 
-Option to install charts and specify their values. This option is intended to be used for RKE2/K3s system charts. All charts install using this method are installed in the `kube-system` namespace.
+Option to specify the values for the system charts installed by RKE2/k3s.
 
 Example:
 
@@ -253,15 +253,15 @@ This would install the chart with `chart-name` with the values `key = value`.
 
 ### machineGlobalConfig
 
-The RKE2/K3s configurations are nested under the `machineGlobalConfig` directive. Any configuration change made here will apply to every node. All configuration options available in the [standalone version of RKE2](https://docs.rke2.io/install/install_options/server_config/) can also be applied here.
+The RKE2/K3s configurations are nested under the `machineGlobalConfig` directive. Any configuration change made here will apply to every node. The configuration options available in the [standalone version of RKE2](https://docs.rke2.io/install/install_options/server_config/) can be applied here.
 
 Example:
 
 ```yaml
 machineGlobalConfig:
     etcd-arg:
-        key1: value1
-        key2: value2
+        - key1=value1
+        - key2=value2
 ```
 
 ### machineSelectorConfig
