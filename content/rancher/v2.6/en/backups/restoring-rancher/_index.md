@@ -24,7 +24,7 @@ The additional preparations:
 1. Follow these [instructions](https://github.com/rancherlabs/support-tools/blob/master/rancher-cleanup/README.md) to run the scripts.
 1. Follow these [instructions](https://rancher.com/docs/rancher/v2.6/en/backups/migrating-rancher/) to install the rancher-backup Helm chart on the existing cluster and restore the previous state.
     1. Omit Step 3.
-	1. When Step 4 is reached, install the required Rancher v2.6.x version on the local cluster you intend to roll back to
+	1. When Step 4 is reached, install the required Rancher v2.6.x version on the local cluster you intend to roll back to.
 
 #### Create the Restore Custom Resource
 
@@ -80,6 +80,6 @@ In some cases, after restoring the backup, Rancher logs will show errors similar
 ```
 2021/10/05 21:30:45 [ERROR] error syncing 'c-89d82/m-4067aa68dd78': handler rke-worker-upgrader: clusters.management.cattle.io "c-89d82" not found, requeuing
 ```
-This happens because one of the resources that was just restored has finalizers but the related resources have been deleted so the handler cannot find it.
+This happens because one of the resources that was just restored has finalizers, but the related resources have been deleted so the handler cannot find it.
 
 To eliminate the errors, we need to find and delete the resource that causes the error. See more information [here](https://github.com/rancher/rancher/issues/35050#issuecomment-937968556)
