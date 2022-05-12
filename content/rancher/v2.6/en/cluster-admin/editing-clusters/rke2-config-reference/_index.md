@@ -41,6 +41,14 @@ Out of the box, Rancher is compatible with the following network providers:
 
 For more details on the different networking providers and how to configure them, please view our [RKE2 documentation](https://docs.rke2.io/install/network_options/).
 
+##### Dual-stack Networking
+
+[Dual-stack](https://docs.rke2.io/install/network_options/#dual-stack-configuration) networking is supported for all CNI providers. To configure RKE2 in dual-stack mode, set valid IPv4/IPv6 CIDRs for your [Cluster CIDR](#cluster-cidr) and/or [Service CIDR](#service-cidr).
+
+###### Additional Configuration {#dual-stack-additional-config}
+
+When using `cilium` or `multus,cilium` as your container network interface provider, ensure the **Enable IPv6 Support** option is also enabled.
+
 #### Cloud Provider
 
 You can configure a [Kubernetes cloud provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers). If you want to use dynamically provisioned [volumes and storage]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/) in Kubernetes, typically you must select the specific cloud provider in order to use it. For example, if you want to use Amazon EBS, you would need to select the `aws` cloud provider.
@@ -103,11 +111,23 @@ Option to choose whether to expose etcd metrics to the public or only within the
 
 #### Cluster CIDR
 
-IPv4/IPv6 network CIDRs to use for pod IPs (default: 10.42.0.0/16).
+IPv4 and/or IPv6 network CIDRs to use for pod IPs (default: 10.42.0.0/16).
+
+##### Dual-stack Networking
+
+To configure [dual-stack](https://docs.rke2.io/install/network_options/#dual-stack-configuration) mode, enter a valid IPv4/IPv6 CIDR. For example `10.42.0.0/16,2001:cafe:42:0::/56`.
+
+[Additional configuration](#dual-stack-additional-config) is required when using `cilium` or `multus,cilium` as your [container network](#container-network) interface provider.
 
 #### Service CIDR
 
 IPv4/IPv6 network CIDRs to use for service IPs (default: 10.43.0.0/16).
+
+##### Dual-stack Networking
+
+To configure [dual-stack](https://docs.rke2.io/install/network_options/#dual-stack-configuration) mode, enter a valid IPv4/IPv6 CIDR. For example `10.42.0.0/16,2001:cafe:42:0::/56`.
+
+[Additional configuration](#dual-stack-additional-config) is required when using `cilium ` or `multus,cilium` as your [container network](#container-network) interface provider.
 
 #### Cluster DNS
 
@@ -166,5 +186,3 @@ Option to set kubelet options for different nodes. For available options, refer 
 Instead of using the Rancher UI forms to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
 
 To edit an RKE2 config file directly from the Rancher UI, click **Edit as YAML**.
-
-
