@@ -72,12 +72,12 @@ The benefit of using a node pool is that if a node is destroyed or deleted, you 
 
 Each node pool must have one or more nodes roles assigned. 
 
-Each node role (i.e. etcd, control plane, and worker) should be assigned to a distinct node pool. Although it is possible to assign multiple node roles to a node pool, this should not be done for production clusters.
+Each node role (i.e. etcd, controlplane, and worker) should be assigned to a distinct node pool. Although it is possible to assign multiple node roles to a node pool, this should not be done for production clusters.
 
 The recommended setup is to have:
 
 - a node pool with the etcd node role and a count of three
-- a node pool with the control plane node role and a count of at least two
+- a node pool with the controlplane node role and a count of at least two
 - a node pool with the worker node role and a count of at least two
 
 #### Node Pool Taints
@@ -141,14 +141,14 @@ Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters 
 
 ### Node Roles
 
-The RKE2 CLI exposes two roles, `server` and `agent`, which represent the Kubernetes node-roles `etcd` + `control-plane` and `worker` respectively. With RKE2 integration in Rancher v2.6, RKE2 node pools can represent more fine-grained role assignments such that `etcd` and `control-plane` roles can be represented.
+The RKE2 CLI exposes two roles, `server` and `agent`, which represent the Kubernetes node-roles `etcd` + `controlplane` and `worker` respectively. With RKE2 integration in Rancher v2.6, RKE2 node pools can represent more fine-grained role assignments such that `etcd` and `controlplane` roles can be represented.
 
 The same functionality of using `etcd`, `controlplane` and `worker` nodes is possible in the RKE2 CLI by using flags and node tainting to control where workloads and the Kubernetes master were scheduled. The reason those roles were not implemented as first-class roles in the RKE2 CLI is that RKE2 is conceptualized as a set of raw building blocks that are best leveraged through an orchestration system such as Rancher.
+
+The implementation of the three node roles in Rancher means that Rancher managed RKE2 clusters are able to easily leverage all of the same architectural best practices that are recommended for RKE clusters.
 
 In our [recommended cluster architecture]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production/recommended-architecture/), we outline how many nodes of each role clusters should have:
 
 - At least three nodes with the role etcd to survive losing one node
-- At least two nodes with the role `control plane` for master component high availability
-- At least two nodes with the role `worker` for workload rescheduling upon node failure
-
-The implementation of the three node roles in Rancher means that Rancher managed RKE2 clusters are able to easily leverage all of the same architectural best practices that are recommended for RKE clusters.
+- At least two nodes with the role controlplane for master component high availability
+- At least two nodes with the role worker for workload rescheduling upon node failure

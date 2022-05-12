@@ -3,7 +3,7 @@ title: Launching Kubernetes with Rancher
 weight: 4
 ---
 
-You can have Rancher launch a Kubernetes cluster using any nodes you want. When Rancher deploys Kubernetes onto these nodes, you can choose between [Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/) (RKE), which is Rancher's own lightweight Kubernetes installer, or [RKE2](https://docs.rke2.io). It can launch Kubernetes on any computers, including:
+You can have Rancher launch a Kubernetes cluster using any nodes you want. When Rancher deploys Kubernetes onto these nodes, you can choose between [Rancher Kubernetes Engine]({{<baseurl>}}/rke/latest/en/) (RKE) or [RKE2](https://docs.rke2.io) distributions. Rancher can launch Kubernetes on any computers, including:
 
 - Bare-metal servers
 - On-premise virtual machines
@@ -12,8 +12,6 @@ You can have Rancher launch a Kubernetes cluster using any nodes you want. When 
 Rancher can install Kubernetes on existing nodes, or it can dynamically provision nodes in an infrastructure provider and install Kubernetes on them.
 
 Rancher can also create pools of nodes. One benefit of installing Kubernetes on node pools hosted by an infrastructure provider is that if a node loses connectivity with the cluster, Rancher can automatically create another node to join the cluster to ensure that the count of the node pool is as expected.
-
-RKE/RKE2 clusters include clusters that Rancher launched on Windows nodes or other existing custom nodes, as well as clusters that Rancher launched with new nodes on Azure, Digital Ocean, EC2, vSphere, Linode or Harvester.
 
 ## RKE
 
@@ -43,7 +41,9 @@ The most common way to programmatically deploy RKE clusters through Rancher is b
 
 ## RKE2
 
-Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
+Rancher v2.6 introduced provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector. In Rancher v.2.6.4 and earlier, RKE2 provisioning was in tech preview.
+
+Note that in Rancher v2.6.5, RKE2 provisioning became GA.
 
 ### Requirements
 
@@ -53,16 +53,17 @@ If you use RKE2 to set up a cluster, your nodes must meet the [requirements](htt
 
 RKE2 provisioning is built on top of a new provisioning framework that leverages the upstream [Cluster API](https://github.com/kubernetes-sigs/cluster-api) project. With this new provisioning framework, you can:
 
-- Provision RKE2 clusters on Digital Ocean, AWS EC2, Azure, and vSphere
+- Provision RKE2 clusters onto any provider for which Rancher has a node driver
 - Fully configure RKE2 clusters within Rancher
 - Choose CNI options Calico, Cilium, and Multus in addition to Canal
 
-The RKE2 provisioning also includes installing RKE2 on clusters with Windows nodes. Windows features for RKE2 include:
+RKE2 provisioning also includes installing RKE2 on clusters with Windows nodes. **Note that currently Windows nodes are only supported on custom clusters.** 
 
-- Windows Containers with RKE2 powered by ContainerD
-- Added provisioning of Windows RKE2 custom clusters directly from the Rancher UI
+Windows features for RKE2 include:
+
+- Windows Containers with RKE2 powered by containerd
+- Provisioning of Windows RKE2 custom clusters directly from the Rancher UI
 - Calico CNI for Windows RKE2 custom clusters 
-- SAC releases of Windows Server (2004 and 20H2) are included in the technical preview
 
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
@@ -70,9 +71,7 @@ Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
 RKE2 provisioning also allows you to install custom clusters on pre-provisioned VMs or bare-metal nodes.
 
-If you want to reuse a node from a previous custom cluster, [clean the node]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cleaning-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
-
-For more information, refer to the section on [custom nodes.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes/)
+If you want to reuse a node from a previous custom cluster, clean the node before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
 
 # Programmatically Creating RKE2 Clusters
 
