@@ -137,6 +137,8 @@ If you don't find the node driver that you want to use, you can see if it is ava
 
 Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
 
+> **Note:** For RKE2 cluster templates, please refer to [this page]({{<baseurl>}}/rancher/v2.6/en/admin-settings/cluster-templates/#rke2-cluster-template) for additional information. 
+
 ### Node Roles
 
 The RKE2 CLI exposes two roles, `server` and `agent`, which represent the Kubernetes node-roles `etcd` + `control-plane` and `worker` respectively. With RKE2 integration in Rancher v2.6, RKE2 node pools can represent more fine-grained role assignments such that `etcd` and `control-plane` roles can be represented.
