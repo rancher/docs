@@ -40,6 +40,47 @@ To edit an RKE2 config file directly from the Rancher UI,
 
 > Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the RKE2 cluster configuration file in YAML. For the complete reference of configurable options for RKE2 Kubernetes clusters in YAML, see the [RKE2 documentation.](https://docs.rke2.io/install/install_options/install_options/)
 
+## Machine Pool
+
+This subsection covers the generic machine pool configurations. For infrastructure provider specific, configurations refer to the following pages:
+
+- [Azure](/cluster-provisioning/rke-clusters/node-pools/azure/azure-machine-config)
+- [DigitalOcean](/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-machine-config)
+- [EC2](/cluster-provisioning/rke-clusters/node-pools/ec2/ec2-machine-config)
+- [vSphere](/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-machine-config)
+
+### Pool Name
+
+The name of the machine pool.
+
+### Machine Count
+
+The number of machines in the pool.
+
+### Roles
+
+Option to assign etcd, control plane, and worker roles to nodes.
+
+### Auto Replace
+
+The duration nodes can be unreachable before they are automatically deleted and replaced.
+
+### Drain Before Delete
+
+Enables the option to drain, where all pods are evicted, a node before it is deleted.
+
+### Kubernetes Node Labels
+
+Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/), to nodes to help with organization and object selection.
+
+For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+
+### Taints
+
+Add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to nodes, which allows the node to repel pods from running on it.
+
+## Cluster Configuration
+
 ### Basics
 #### Kubernetes Version
 
@@ -179,10 +220,6 @@ Option to remove all pods from the node prior to upgrading.
 ### Advanced
 
 Option to set kubelet options for different nodes. For available options, refer to the [Kubernetes documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/).
-
-#### Kubernetes Node Labels
-
-A label, formatted as a key/value pair, to attach to a node to help with organization and object selection. Labels are applied to all nodes in a pool. Labels must be added for additional pools, if applicable.
 
 # Cluster Config File Reference
 
