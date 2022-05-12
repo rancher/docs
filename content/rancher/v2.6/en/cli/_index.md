@@ -1,5 +1,5 @@
 ---
-title: Using the Rancher Command Line Interface 
+title: Using the Rancher Command Line Interface
 description: The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI
 metaTitle: "Using the Rancher Command Line Interface "
 metaDescription: "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI"
@@ -36,11 +36,11 @@ Before you can perform any commands, you must select a Rancher project to perfor
 **Example: `./rancher context switch` Output**
 ```
 User:rancher-cli-directory user$ ./rancher context switch
-NUMBER    CLUSTER NAME   PROJECT ID              PROJECT NAME   
-1         cluster-2      c-7q96s:p-h4tmb         project-2      
-2         cluster-2      c-7q96s:project-j6z6d   Default        
-3         cluster-1      c-lchzv:p-xbpdt         project-1      
-4         cluster-1      c-lchzv:project-s2mch   Default       
+NUMBER    CLUSTER NAME   PROJECT ID              PROJECT NAME
+1         cluster-2      c-7q96s:p-h4tmb         project-2
+2         cluster-2      c-7q96s:project-j6z6d   Default
+3         cluster-1      c-lchzv:p-xbpdt         project-1
+4         cluster-1      c-lchzv:project-s2mch   Default
 Select a Project:
 ```
 
@@ -78,3 +78,7 @@ The following commands are available for use in Rancher CLI.
 Once logged into Rancher Server using the CLI, enter `./rancher --help` for a list of commands.
 
 All commands accept the `--help` flag, which documents each command's usage.
+
+### Limitations
+
+The Rancher CLI **cannot** be used to install [dashboard apps or Rancher feature charts](../helm-charts/).

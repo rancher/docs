@@ -9,7 +9,7 @@ In this section, you'll learn how to manage Helm chart repositories and applicat
 
 Starting in Rancher v2.6.0, a new versioning scheme for Rancher feature charts was implemented. The changes are centered around the major version of the charts and the +up annotation for upstream charts, where applicable.
 
-**Major Version:** The major version of the charts is tied to Rancher minor versions. When you upgrade to a new Rancher minor version, you should ensure that all of your **Apps & Marketplace** charts are also upgraded to the correct release line for the chart. 
+**Major Version:** The major version of the charts is tied to Rancher minor versions. When you upgrade to a new Rancher minor version, you should ensure that all of your **Apps & Marketplace** charts are also upgraded to the correct release line for the chart.
 
 >**Note:** Any major versions that are less than the ones mentioned in the table below are meant for 2.5 and below only. For example, you are advised to not use <100.x.x versions of Monitoring in 2.6.x+.
 
@@ -18,27 +18,28 @@ Starting in Rancher v2.6.0, a new versioning scheme for Rancher feature charts w
 | **Name** | **Supported Minimum Version** | **Supported Maximum Version** |
 | ---------------- | ------------ | ------------ |
 | external-ip-webhook | 100.0.0+up1.0.0 | 100.0.1+up1.0.1 |
-| harvester-cloud-provider | 100.0.0+up0.1.8 | 100.0.0+up0.1.8 |
-| harvester-csi-driver | 100.0.0+up0.1.9 | 100.0.0+up0.1.9 |
-| rancher-alerting-drivers | 100.0.0 | 100.0.1 |                                                                  
-| rancher-backups | 2.0.0 | 2.1.0 |
-| rancher-cis-benchmark | 2.0.0 | 2.0.2 | 
-| rancher-gatekeeper | 100.0.0+up3.5.1 | 100.0.1+up3.6.0 | 
-| rancher-istio | 100.0.0+up1.10.4 | 100.1.0+up1.11.4 |
-| rancher-logging | 100.0.0+up3.12.0 | 100.0.1+up3.15.0 |
-| rancher-longhorn | 100.0.0+up1.1.2 | 100.1.1+up1.2.3 |                                 
+| harvester-cloud-provider | 100.0.2+up0.1.12 | 100.0.2+up0.1.12 |
+| harvester-csi-driver | 100.0.2+up0.1.11 | 100.0.2+up0.1.11 |
+| rancher-alerting-drivers | 100.0.0 | 100.0.2 |
+| rancher-backup | 2.0.1 | 2.1.2 |
+| rancher-cis-benchmark | 2.0.1 | 2.0.4 |
+| rancher-gatekeeper | 100.0.0+up3.6.0 | 100.1.0+up3.7.1 |
+| rancher-istio | 100.0.0+up1.10.4 | 100.2.0+up1.12.6 |
+| rancher-logging | 100.0.0+up3.12.0 | 100.1.2+up3.17.4 |
+| rancher-longhorn | 100.0.0+up1.1.2 | 100.1.1+up1.2.3 |
 | rancher-monitoring | 100.0.0+up16.6.0 | 100.1.0+up19.0.3
-| rancher-sriov (experimental) | 100.0.0+up0.1.0 | 100.0.1+up0.1.0 |                                
-| rancher-vsphere-cpi | 100.0.0 | 100.1.0+up1.0.100
-| rancher-vsphere-csi | 100.0.0 | 100.1.0+up2.3.0 |
-| rancher-wins-upgrader | 100.0.0+up0.0.1 | 100.0.0+up0.0.1 |                                                   
+| rancher-sriov (experimental) | 100.0.0+up0.1.0 | 100.0.3+up0.1.0 |
+| rancher-vsphere-cpi | 100.3.0+up1.2.1 | 100.3.0+up1.2.1 |
+| rancher-vsphere-csi | 100.3.0+up2.5.1-rancher1 | 100.3.0+up2.5.1-rancher1 |
+| rancher-wins-upgrader | 0.0.100 | 100.0.0+up0.0.1 |
+| neuvector | 100.0.0+up2.2.0 | 100.0.0+up2.2.0 |
 
 </br>
 **Charts based on upstream:** For charts that are based on upstreams, the +up annotation should inform you of what upstream version the Rancher chart is tracking. Check the upstream version compatibility with Rancher during upgrades also.
 
 - As an example, `100.x.x+up16.6.0` for Monitoring tracks upstream kube-prometheus-stack `16.6.0` with some Rancher patches added to it.
 
-- On upgrades, ensure that you are not downgrading the version of the chart that you are using. For example, if you are using a version of Monitoring > `16.6.0` in Rancher 2.5, you should not upgrade to `100.x.x+up16.6.0`. Instead, you should upgrade to the appropriate version in the next release. 
+- On upgrades, ensure that you are not downgrading the version of the chart that you are using. For example, if you are using a version of Monitoring > `16.6.0` in Rancher 2.5, you should not upgrade to `100.x.x+up16.6.0`. Instead, you should upgrade to the appropriate version in the next release.
 
 
 ### Charts
@@ -86,10 +87,10 @@ To add a private CA for Helm Chart repositories:
     [...]
     ```
 
-    
+
 > **Note:** Helm chart repositories with authentication
 >
-> As of Rancher v2.6.3, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL. 
+> As of Rancher v2.6.3, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL.
 >
 > To use this feature for an existing Helm chart repository, click <b>⋮ > Edit YAML</b>. On the `spec` portion of the YAML file, add `disableSameOriginCheck` and set it to `true`.
 >
@@ -116,7 +117,7 @@ After installing a chart, you can find it in the _"Installed Apps"_ tab. In this
 Most Rancher tools have additional pages located in the toolbar below the _"Apps & Marketplace"_ section to help manage and use the features. These pages include links to dashboards, forms to easily add Custom Resources, and additional information.
 
 > If you are upgrading your chart using _"Customize Helm options before upgrade"_ , please be aware that using the _"--force"_ option may result in errors if your chart has immutable fields. This is because some objects in Kubernetes cannot be changed once they are created. To ensure you do not get this error you can:
-> 
+>
 >  * use the default upgrade option ( i.e do not use _"--force"_ option )
 >  * uninstall the existing chart and install the upgraded chart
 >  * delete the resources with immutable fields from the cluster before performing the _"--force"_ upgrade
@@ -130,3 +131,7 @@ If you have a legacy app installed and want to upgrade it:
 - The legacy [feature flag]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/) must be turned on (if it's not turned on automatically because of having a legacy app before upgrading)
 - You can upgrade the app from cluster explorer, from the left nav section **Legacy > Project > Apps**
 - For multi-cluster apps, you can go to **≡ > Multi-cluster Apps** and upgrade the app from there
+
+### Limitations
+
+[Dashboard apps or Rancher feature charts](../helm-charts/) **cannot** be installed using the Rancher CLI.
