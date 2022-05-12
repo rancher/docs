@@ -3,7 +3,7 @@ title: Restoring Rancher
 weight: 2
 ---
 
-A restore is performed by creating a Restore custom resource.
+This page outlines how to perform a restore with Rancher.
 
 > **Important**
 >
@@ -11,13 +11,13 @@ A restore is performed by creating a Restore custom resource.
 > * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
 > * If you need to restore Rancher to a previous version after an upgrade, see the [rollback documentation.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/rollbacks/)
 
-### Create the Restore Custom Resource
-
-#### Additional Steps for Rollbacks with Rancher v2.6.4+
+### Additional Steps for Rollbacks with Rancher v2.6.4+
 
 In Rancher v2.6.4, the cluster-api module has been upgraded from v0.4.4 to v1.0.2 in which the apiVersion of CAPI CRDs are upgraded from `cluster.x-k8s.io/v1alpha4` to `cluster.x-k8s.io/v1beta1`. This has the effect of causing rollbacks from Rancher v2.6.4 to any previous version of Rancher v2.6.x to fail because the previous version the CRDs needed to roll back are no longer available in v1beta1.
 
 To avoid this, the Rancher resource cleanup scripts should be run **before** the restore or rollback is attempted. Specifically, two scripts have been created to assist you: one to clean up the cluster (`cleanup.sh`), and one to check for any Rancher-related resources in the cluster (`verify.sh`). Details on the cleanup script can be found in the [rancherlabs/support-tools repo](https://github.com/rancherlabs/support-tools/tree/master/rancher-cleanup).
+
+> **Caution** Rancher will be down as the `cleanup` script runs as it deletes the resources created by rancher.
 
 The additional preparations:
 
@@ -26,7 +26,9 @@ The additional preparations:
     1. Omit Step 3.
 	1. When Step 4 is reached, install the required Rancher v2.6.x version on the local cluster you intend to roll back to.
 
-#### Create the Restore Custom Resource
+### Create the Restore Custom Resource
+
+A restore is performed by creating a Restore custom resource.
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the `local` cluster and click **Explore**. The `local` cluster runs the Rancher server.
