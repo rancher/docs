@@ -61,21 +61,23 @@ The number of machines in the pool.
 
 Option to assign etcd, control plane, and worker roles to nodes.
 
-### Auto Replace
+### Advanced
+
+#### Auto Replace
 
 The duration nodes can be unreachable before they are automatically deleted and replaced.
 
-### Drain Before Delete
+#### Drain Before Delete
 
 Enables the option to drain, where all pods are evicted, a node before it is deleted.
 
-### Kubernetes Node Labels
+#### Kubernetes Node Labels
 
 Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/), to nodes to help with organization and object selection.
 
 For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
-### Taints
+#### Taints
 
 Add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to nodes, which allows the node to repel pods from running on it.
 
