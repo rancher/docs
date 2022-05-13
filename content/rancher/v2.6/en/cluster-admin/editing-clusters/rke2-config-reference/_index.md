@@ -307,9 +307,6 @@ chartValues:
     chart-name:
         key: value
 ```
-
-This would install the chart with `chart-name` with the values `key = value`.
-
 ### machineGlobalConfig
 
 The RKE2/K3s configurations are nested under the `machineGlobalConfig` directive. Any configuration change made here will apply to every node. The configuration options available in the [standalone version of RKE2](https://docs.rke2.io/install/install_options/server_config/) can be applied here.
