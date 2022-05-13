@@ -73,7 +73,7 @@ Enables draining nodes by evicting all pods before the node is deleted.
 
 #### Kubernetes Node Labels
 
-Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/), to nodes to help with organization and object selection.
+Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to nodes to help with organization and object selection.
 
 For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
 
