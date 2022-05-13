@@ -1,5 +1,5 @@
 ---
-title: Using the Rancher Command Line Interface 
+title: Using the Rancher Command Line Interface
 description: The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI
 metaTitle: "Using the Rancher Command Line Interface "
 metaDescription: "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI"
@@ -11,6 +11,12 @@ The Rancher CLI (Command Line Interface) is a unified tool that you can use to i
 ### Download Rancher CLI
 
 The binary can be downloaded directly from the UI. The link can be found in the right hand side of the footer in the UI. We have binaries for Windows, Mac, and Linux. You can also check the [releases page for our CLI](https://github.com/rancher/cli/releases) for direct downloads of the binary.
+
+The binary can be downloaded directly from the UI.
+
+1. In the upper left corner, click **☰**.
+1. At the bottom, click **v2.6.x**, where **v2.6.x** is a hyperlinked text indicating the installed Rancher version.
+1. Under the **CLI Downloads section**, there are links to download the binaries for Windows, Mac, and Linux. You can also check the [releases page for our CLI](https://github.com/rancher/cli/releases) for direct downloads of the binary.
 
 ### Requirements
 
@@ -36,11 +42,11 @@ Before you can perform any commands, you must select a Rancher project to perfor
 **Example: `./rancher context switch` Output**
 ```
 User:rancher-cli-directory user$ ./rancher context switch
-NUMBER    CLUSTER NAME   PROJECT ID              PROJECT NAME   
-1         cluster-2      c-7q96s:p-h4tmb         project-2      
-2         cluster-2      c-7q96s:project-j6z6d   Default        
-3         cluster-1      c-lchzv:p-xbpdt         project-1      
-4         cluster-1      c-lchzv:project-s2mch   Default       
+NUMBER    CLUSTER NAME   PROJECT ID              PROJECT NAME
+1         cluster-2      c-7q96s:p-h4tmb         project-2
+2         cluster-2      c-7q96s:project-j6z6d   Default
+3         cluster-1      c-lchzv:p-xbpdt         project-1
+4         cluster-1      c-lchzv:project-s2mch   Default
 Select a Project:
 ```
 
@@ -78,3 +84,7 @@ The following commands are available for use in Rancher CLI.
 Once logged into Rancher Server using the CLI, enter `./rancher --help` for a list of commands.
 
 All commands accept the `--help` flag, which documents each command's usage.
+
+### Limitations
+
+The Rancher CLI **cannot** be used to install [dashboard apps or Rancher feature charts](../helm-charts/).

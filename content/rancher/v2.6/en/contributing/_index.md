@@ -24,7 +24,7 @@ Repository | URL | Description
 Rancher | https://github.com/rancher/rancher | This repository is the main source code for Rancher 2.x.
 Types | https://github.com/rancher/types | This repository is the repository that has all the API types for Rancher 2.x.
 API Framework | https://github.com/rancher/norman | This repository is an API framework for building Rancher style APIs backed by Kubernetes Custom Resources.
-User Interface | https://github.com/rancher/ui | This repository is the source of the UI.
+User Interface | https://github.com/rancher/dashboard/ | This repository is the source of the Dashboard UI.
 (Rancher) Docker Machine | https://github.com/rancher/machine | This repository is the source of the Docker Machine binary used when using Node Drivers. This is a fork of the `docker/machine` repository.
 machine-package | https://github.com/rancher/machine-package | This repository is used to build the Rancher Docker Machine binary.
 kontainer-engine | https://github.com/rancher/kontainer-engine | This repository is the source of kontainer-engine, the tool to provision hosted Kubernetes clusters.
@@ -36,7 +36,7 @@ loglevel repository | https://github.com/rancher/loglevel | This repository is t
 
 To see all libraries/projects used in Rancher, see the [`go.mod` file](https://github.com/rancher/rancher/blob/master/go.mod) in the `rancher/rancher` repository.
 
-![Rancher diagram]({{<baseurl>}}/img/rancher/ranchercomponentsdiagram.svg)<br/>
+![Rancher diagram]({{<baseurl>}}/img/rancher/ranchercomponentsdiagram-2.6.svg)<br/>
 <sup>Rancher components used for provisioning/managing Kubernetes clusters.</sup>
 
 # Building
