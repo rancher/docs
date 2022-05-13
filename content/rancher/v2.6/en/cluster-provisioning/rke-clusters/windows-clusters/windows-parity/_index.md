@@ -38,7 +38,7 @@ Backup/Restore Operator | Supported | Not Supported
 **CNI / Add-ons** |  | 
 Flannel | Supported | Supported
 Canal | Supported | Not Supported
-Calico | Supported | Supported
+Calico | Supported | Supported (RKE2 Only)
 Cilium | Supported | Not Supported
 Multus | Supported | Not Supported
 Traefik | Supported | Not Supported
