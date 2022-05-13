@@ -245,7 +245,7 @@ Option to set kubelet options for different nodes. For available options, refer 
 
 # Cluster Config File Reference
 
-Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a config file. Using a config file allows you to set any of the [options available](https://docs.rke2.io/install/install_options/server_config/) in an RKE2 installation, including those already listed in [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui), as well as Rancher-specific parameters.
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a config file. Using a config file allows you to set the [options available](https://docs.rke2.io/install/install_options/server_config/) in an RKE2 installation, including those already listed in [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui), as well as Rancher-specific parameters.
 
 {{% accordion id="rke2-cluster-config-file" label="Example Cluster Config File Snippet" %}}
 
