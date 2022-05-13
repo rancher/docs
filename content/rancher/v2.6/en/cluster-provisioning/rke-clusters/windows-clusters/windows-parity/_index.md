@@ -11,7 +11,7 @@ The following chart describes the feature parity between Windows and Linux on Ra
 --- | --- | ---
 **Distributions** |  | 
 RKE | Supported | Supported
-RKE2 | Supported | In Preview in Rancher 2.6.0, General Availability Planned for Rancher 2.6.4
+RKE2 | Supported | Supported
 K3S | Supported | Not Supported
 EKS | Supported | Not Supported
 GKE | Supported | Not Supported
@@ -38,7 +38,7 @@ Backup/Restore Operator | Supported | Not Supported
 **CNI / Add-ons** |  | 
 Flannel | Supported | Supported
 Canal | Supported | Not Supported
-Calico | Supported | In Preview in Rancher 2.6.0, General Availability Planned for Rancher 2.6.4
+Calico | Supported | Supported
 Cilium | Supported | Not Supported
 Multus | Supported | Not Supported
 Traefik | Supported | Not Supported
