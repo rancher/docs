@@ -15,7 +15,6 @@ To run K3s in this mode, you must have an odd number of server nodes. We recomme
 To get started, first launch a server node with the `cluster-init` flag to enable clustering and a token that will be used as a shared secret to join additional servers to the cluster.
 ```
 K3S_TOKEN=SECRET
-export INSTALL_K3S_VERSION=v1.23.6+k3s1
 curl -sfL https://get.k3s.io | sh -s - server --cluster-init
 ```
 
