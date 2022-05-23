@@ -104,12 +104,6 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 
 * NeuVector is not supported on a Windows cluster.
 
-* NeuVector installation is not supported on hardened clusters.
-
-* NeuVector installation is not supported on SELinux clusters.
-
-* NeuVector installation is not supported on clusters in an air-gapped environment.
-
 ### Other Limitations
 
 * Currently, NeuVector feature chart installation fails when a NeuVector partner chart already exists. To work around this issue, uninstall the NeuVector partner chart and reinstall the NeuVector feature chart.
