@@ -66,7 +66,7 @@ To access all node templates, an administrator will need to do the following:
 
 Using Rancher, you can create pools of nodes based on a [node template](#node-templates). 
 
-A node template defines the configuration of a node, like what operating system to use, number of CPUs and amount of memory.
+A node template defines the configuration of a node, like what operating system to use, number of CPUs, and amount of memory.
 
 The benefit of using a node pool is that if a node is destroyed or deleted, you can increase the number of live nodes to compensate for the node that was lost. The node pool helps you ensure that the count of the node pool is as expected.
 
@@ -79,6 +79,10 @@ The recommended setup is to have:
 - a node pool with the etcd node role and a count of three
 - a node pool with the controlplane node role and a count of at least two
 - a node pool with the worker node role and a count of at least two
+
+**RKE1 downstream cluster nodes in an air-gapped environment:**
+
+By default, Rancher tries to run the Docker Install script when provisioning RKE1 downstream cluster nodes, such as in vSphere. However, the Rancher Docker installation script would fail in air-gapped environments. To work around this issue, you may choose to skip installing Docker when creating a Node Template where Docker is pre-installed onto a VM image. [You can accomplish this by selecting **None** in the dropdown list for `Docker Install URL` under **Engine Options** in the Rancher UI.]({{<baseurl>}}/img/rancher/node-template-engine-options-rke1.png)  
 
 #### Node Pool Taints
 
