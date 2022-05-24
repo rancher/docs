@@ -1,7 +1,9 @@
 ---
-title: Updating a Private CA Certificate
+title: Updating the Rancher Certificate
 weight: 10
 ---
+
+# Updating a Private CA Certificate
 
 Follow these steps to update the SSL certificate of the ingress in a Rancher [high availability Kubernetes installation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/) or to switch from the default self-signed certificate to a custom certificate.
 
@@ -14,7 +16,7 @@ A summary of the steps is as follows:
 
 The details of these instructions are below.
 
-# 1. Create/update the certificate secret resource
+## 1. Create/update the certificate secret resource
 
 First, concatenate the server certificate followed by any intermediate certificate(s) to a file named `tls.crt` and provide the corresponding certificate key in a file named `tls.key`.
 
@@ -35,7 +37,7 @@ $ kubectl -n cattle-system create secret tls tls-rancher-ingress \
   --dry-run --save-config -o yaml | kubectl apply -f -
 ```
 
-# 2. Create/update the CA certificate secret resource
+##  2. Create/update the CA certificate secret resource
 
 If the new certificate was signed by a private CA, you will need to copy the corresponding root CA certificate into a file named `cacerts.pem` and create or update the `tls-ca secret` in the `cattle-system` namespace. If the certificate was signed by an intermediate CA, then the `cacerts.pem` must contain both the intermediate and root CA certificates (in this order).
 
@@ -54,7 +56,7 @@ $ kubectl -n cattle-system create secret generic tls-ca \
   --dry-run --save-config -o yaml | kubectl apply -f -
 ```
 
-# 3. Reconfigure the Rancher deployment
+## 3. Reconfigure the Rancher deployment
 
 > Before proceeding, generate an API token in the Rancher UI (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
 
@@ -89,7 +91,7 @@ helm upgrade rancher rancher-stable/rancher \
 
 When the upgrade is completed, navigate to `https://<Rancher_SERVER>/v3/settings/cacerts` to verify that the value matches the CA certificate written in the `tls-ca` secret earlier.
 
-# 4. Reconfigure Rancher agents to trust the private CA
+## 4. Reconfigure Rancher agents to trust the private CA
 
 This section covers three methods to reconfigure Rancher agents to trust the private CA. This step is required if either of the following is true:
 
@@ -143,3 +145,32 @@ First, generate the agent definitions as described here: https://gist.github.com
 
 Then, connect to a controlplane node of the downstream cluster via SSH, create a Kubeconfig and apply the definitions:
 https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
+
+# Updating from a Private CA Certificate to a Common Certificate
+
+It is possible to perform the opposite procedure as shown above: you may change from a private certificate to a common, or non-private, certificate. The steps involved are very similar to the above, with some exceptions.
+
+The steps needed to accomplish this are as follows:
+
+1. Perform [Step 1 above](#1-create-update-the-certificate-secret-resource).
+1. Delete the `tls-ca` secret as it is no longer needed. 
+    
+    >**Note:** You may optionally save a copy of the `tls-ca` secret if desired.
+
+    **To save:**
+    ```
+    kubectl -n cattle-system get secret tls-ca -o yaml > tls-ca.yaml
+    ```
+
+    **To delete:**
+    ```
+    kubectl -n cattle-system delete secret tls-ca
+    ```
+
+1. On Rancher upgrade, the `privateCA` parameter **must** be either removed or set to `false` because the CA is valid:
+
+    ```
+    set privateCA=false
+    ```
+
+1. `CATTLE_CA_CHECKSUM` environment variable on the downstream cluster agents should be removed or set to "" (an empty string).
