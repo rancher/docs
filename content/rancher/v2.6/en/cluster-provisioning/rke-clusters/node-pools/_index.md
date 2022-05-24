@@ -82,7 +82,10 @@ The recommended setup is to have:
 
 **RKE1 downstream cluster nodes in an air-gapped environment:**
 
-By default, Rancher tries to run the Docker Install script when provisioning RKE1 downstream cluster nodes, such as in vSphere. However, the Rancher Docker installation script would fail in air-gapped environments. To work around this issue, you may choose to skip installing Docker when creating a Node Template where Docker is pre-installed onto a VM image. [You can accomplish this by selecting **None** in the dropdown list for `Docker Install URL` under **Engine Options** in the Rancher UI.]({{<baseurl>}}/img/rancher/node-template-engine-options-rke1.png)  
+By default, Rancher tries to run the Docker Install script when provisioning RKE1 downstream cluster nodes, such as in vSphere. However, the Rancher Docker installation script would fail in air-gapped environments. To work around this issue, you may choose to skip installing Docker when creating a Node Template where Docker is pre-installed onto a VM image. You can accomplish this by selecting **None** in the dropdown list for `Docker Install URL` under **Engine Options** in the Rancher UI.
+
+<figcaption>**Engine Options Dropdown:**</figcaption>
+![Engine Options Dropdown]({{<baseurl>}}/img/rancher/node-template-engine-options-rke1.png)
 
 #### Node Pool Taints
 
