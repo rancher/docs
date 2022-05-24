@@ -324,9 +324,7 @@ First, generate the agent definitions as described here: https://gist.github.com
 Then, connect to a controlplane node of the downstream cluster via SSH, create a Kubeconfig and apply the definitions:
 https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
 
->**CHANGE:** 
->
->`CATTLE_CA_CHECKSUM` environment variable on the downstream cluster agents should be removed or set to "" (an empty string).
+>**CHANGE:** `CATTLE_CA_CHECKSUM` environment variable on the downstream cluster agents should be removed or set to "" (an empty string).
 
 ## 5. Select Force Update of Fleet clusters to connect fleet-agent to Rancher
 
