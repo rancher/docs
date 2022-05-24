@@ -263,8 +263,6 @@ This section covers three methods to reconfigure Rancher agents to trust the pri
 - Rancher was initially configured to use the Rancher self-signed certificate (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`)
 - The root CA certificate for the new custom certificate has changed
 
->**CHANGE:** `CATTLE_CA_CHECKSUM` environment variable on the downstream cluster agents should be removed or set to "" (an empty string).
-
 ### Why is this step required?
 
 When Rancher is configured with a certificate signed by a private CA, the CA certificate chain is downloaded into Rancher agent containers. Agents compare the checksum of the downloaded certificate against the `CATTLE_CA_CHECKSUM` environment variable. This means that, when the private CA certificate is changed on Rancher server side, the environvment variable `CATTLE_CA_CHECKSUM` must be updated accordingly.
@@ -312,3 +310,7 @@ First, generate the agent definitions as described here: https://gist.github.com
 
 Then, connect to a controlplane node of the downstream cluster via SSH, create a Kubeconfig and apply the definitions:
 https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
+
+>**CHANGE:** 
+>
+>`CATTLE_CA_CHECKSUM` environment variable on the downstream cluster agents should be removed or set to "" (an empty string).
