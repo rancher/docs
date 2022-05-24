@@ -26,14 +26,14 @@ kubectl create namespace cert-manager
 Install the CustomResourceDefinitions of cert-manager:
 
 ```
-kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.15.2/cert-manager.crds.yaml
+kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
 ```
 
 And install it with Helm. Note that cert-manager also needs your proxy configured in case it needs to communicate with Let's Encrypt or other external certificate issuers:
 
 ```
 helm upgrade --install cert-manager jetstack/cert-manager \
-  --namespace cert-manager --version v0.15.2 \
+  --namespace cert-manager --version v1.5.1 \
   --set http_proxy=http://${proxy_host} \
   --set https_proxy=http://${proxy_host} \
   --set noProxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
@@ -60,14 +60,16 @@ Create a namespace:
 kubectl create namespace cattle-system
 ```
 
-And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata:
+And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata. 
+
+Note that `rancher.cattle-system` must be added to the noProxy list (as shown below) so that Fleet can communicate directly to Rancher with Kubernetes service DNS using service discovery.
 
 ```
 helm upgrade --install rancher rancher-latest/rancher \
    --namespace cattle-system \
    --set hostname=rancher.example.com \
    --set proxy=http://${proxy_host}
-   --set noProxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local
+   --set noProxy=127.0.0.0/8\\,10.0.0.0/8\\,cattle-system.svc\\,172.16.0.0/12\\,192.168.0.0/16\\,.svc\\,.cluster.local,rancher.cattle-system
 ```
 
 After waiting for the deployment to finish:

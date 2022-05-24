@@ -96,8 +96,9 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
-    image: traefik
-    imageTag: v1.7.26-alpine
+    image:
+      name: traefik
+      tag: v2.6.1
     proxyProtocol:
       enabled: true
       trustedIPs:

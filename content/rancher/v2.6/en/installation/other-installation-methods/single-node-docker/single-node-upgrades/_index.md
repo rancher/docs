@@ -5,9 +5,11 @@ weight: 1010
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
 
+> **Docker installs are not supported in production environments.** These instructions are provided for testing and development purposes only. If you have already deployed a Docker install in production and need to upgrade to a new Rancher version, we recommend [migrating to the Helm chart install]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher/) before upgrading.
+
 # Prerequisites
 
-- **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades/#known-upgrade-issues) in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12) Note that upgrades to or from any chart in the [rancher-alpha repository]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories/) aren’t supported.
+- **Review the [known upgrade issues]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades/#known-upgrade-issues)** section in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums](https://forums.rancher.com/c/announcements/12). Note that upgrades to or from any chart in the [rancher-alpha repository]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories/) aren’t supported.
 - **For [air gap installs only,]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version**. Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
 # Placeholder Review
@@ -80,7 +82,7 @@ During upgrade, you create a copy of the data from your current Rancher containe
 
 
     ```
-    docker run --volumes-from rancher-data -v $PWD:/backup busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
+    docker run --volumes-from rancher-data -v "$PWD:/backup" --rm busybox tar zcvf /backup/rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz /var/lib/rancher
     ```
 
     **Step Result:** When you enter this command, a series of commands should run.

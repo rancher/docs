@@ -38,3 +38,11 @@ docker logs kube-apiserver
 docker logs kube-controller-manager
 docker logs kube-scheduler
 ```
+
+# RKE2 Server Logging
+
+If Rancher provisions an RKE2 cluster that can't communicate with Rancher, you can run this command on a server node in the downstream cluster to get the RKE2 server logs:
+
+```
+journalctl -u rke2-server -f
+```

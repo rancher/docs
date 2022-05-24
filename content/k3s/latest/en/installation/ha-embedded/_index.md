@@ -23,3 +23,14 @@ K3S_TOKEN=SECRET k3s server --server https://<ip or hostname of server1>:6443
 ```
 
 Now you have a highly available control plane. Joining additional worker nodes to the cluster follows the same procedure as a single server cluster.
+
+There are a few config flags that must be the same in all server nodes:         
+
+* Network related flags: `--cluster-dns`, `--cluster-domain`, `--cluster-cidr`, `--service-cidr`
+* Flags controlling the deployment of certain components: `--disable-helm-controller`, `--disable-kube-proxy`, `--disable-network-policy` and any component passed to `--disable`
+* Feature related flags: `--secrets-encryption`
+
+## Existing clusters
+If you have an existing cluster using the default embedded SQLite database, you can convert it to etcd by simply restarting your K3s server with the `--cluster-init` flag. Once you've done that, you'll be able to add additional instances as described above.
+
+>**Important:** K3s v1.22.2 and newer support migration from SQLite to etcd. Older versions will create a new empty datastore if you add `--cluster-init` to an existing server.

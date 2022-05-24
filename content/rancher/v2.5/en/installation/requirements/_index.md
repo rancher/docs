@@ -80,7 +80,7 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 
 ### RancherD Specific Requirements
 
-_The RancherD install is available as of v2.5.4. It is an experimental feature._
+> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 At this time, only Linux OSes that leverage systemd are supported.
 
@@ -103,6 +103,7 @@ The Ingress should be deployed as DaemonSet to ensure your load balancer can suc
 Docker is required for Helm chart installs, and it can be installed by following the steps in the official [Docker documentation.](https://docs.docker.com/) Rancher also provides [scripts]({{<baseurl>}}/rancher/v2.5/en/installation/requirements/installing-docker) to install Docker with one command.
 
 Docker is not required for RancherD installs.
+
 # Hardware Requirements
 
 The following sections describe the CPU, memory, and disk requirements for the nodes where the Rancher server is installed.
@@ -125,7 +126,7 @@ These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubern
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB   |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes.
+Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
 ### K3s Kubernetes
 
@@ -139,11 +140,11 @@ These CPU and memory requirements apply to each host in a [K3s Kubernetes cluste
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB    | 2 cores, 4 GB + 1000 IOPS |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes.
+Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
 ### RancherD
 
-_RancherD is available as of v2.5.4. It is an experimental feature._
+> **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
 These CPU and memory requirements apply to each instance with RancherD installed. Minimum recommendations are outlined here.
 
@@ -176,7 +177,7 @@ Each node in the Kubernetes cluster that Rancher is installed on should run an I
 
 The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes.
 
-For RKE, K3s and RancherD installations, you don't have to install the Ingress manually because is is installed by default.
+For RKE, K3s and RancherD installations, you don't have to install the Ingress manually because it is installed by default.
 
 For hosted Kubernetes clusters (EKS, GKE, AKS) and RKE2 Kubernetes installations, you will need to set up the ingress.
 

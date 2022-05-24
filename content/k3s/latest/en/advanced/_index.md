@@ -13,18 +13,18 @@ This section contains advanced information describing the different ways you can
 - [Using Docker as the container runtime](#using-docker-as-the-container-runtime)
 - [Using etcdctl](#using-etcdctl)
 - [Configuring containerd](#configuring-containerd)
-- [Secrets Encryption Config (Experimental)](#secrets-encryption-config-experimental)
 - [Running K3s with Rootless mode (Experimental)](#running-k3s-with-rootless-mode-experimental)
 - [Node labels and taints](#node-labels-and-taints)
 - [Starting the server with the installation script](#starting-the-server-with-the-installation-script)
 - [Additional preparation for Alpine Linux setup](#additional-preparation-for-alpine-linux-setup)
+- [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat/centos-enterprise-linux)
+- [Additional preparation for Raspberry Pi OS Setup](#additional-preparation-for-raspberry-pi-os-setup)
+- [Enabling vxlan on Ubuntu 21.10+ on Raspberry Pi](#enabling-vxlan-on-ubuntu-21.10+-on-raspberry-pi)
 - [Running K3d (K3s in Docker) and docker-compose](#running-k3d-k3s-in-docker-and-docker-compose)
-- [Enabling legacy iptables on Raspbian Buster](#enabling-legacy-iptables-on-raspbian-buster)
-- [Enabling cgroups for Raspbian Buster](#enabling-cgroups-for-raspbian-buster)
 - [SELinux Support](#selinux-support)
-- [Additional preparation for (Red Hat/CentOS) Enterprise Linux](#additional-preparation-for-red-hat-centos-enterprise-linux)
 - [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
 - [Additional Logging Sources](#additional-logging-sources)
+- [Server and agent tokens](#server-and-agent-tokens)
 
 # Certificate Rotation
 
@@ -127,8 +127,8 @@ If you would like to use etcdctl after installing K3s with embedded etcd, instal
 
 ```
 $ VERSION="v3.5.0"
-$ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VERSION}-linux-amd64.tar.gz --output etcdctl-${VERSION}-linux-amd64.tar.gz
-$ sudo tar -zxvf etcdctl-${VERSION}-linux-amd64.tar.gz -C /usr/local/bin
+$ curl -L https://github.com/etcd-io/etcd/releases/download/${VERSION}/etcd-${VERSION}-linux-amd64.tar.gz --output etcdctl-linux-amd64.tar.gz
+$ sudo tar -zxvf etcdctl-linux-amd64.tar.gz --strip-components=1 -C /usr/local/bin etcd-${VERSION}-linux-amd64/etcdctl
 ```
 
 Then start using etcdctl commands with the appropriate K3s flags:
@@ -143,46 +143,8 @@ K3s will generate config.toml for containerd in `/var/lib/rancher/k3s/agent/etc/
 
 For advanced customization for this file you can create another file called `config.toml.tmpl` in the same directory and it will be used instead.
 
-The `config.toml.tmpl` will be treated as a Go template file, and the `config.Node` structure is being passed to the template. [This template](https://github.com/rancher/k3s/blob/master/pkg/agent/templates/templates.go#L16-L32) example on how to use the structure to customize the configuration file.
+The `config.toml.tmpl` will be treated as a Go template file, and the `config.Node` structure is being passed to the template. See [this folder](https://github.com/k3s-io/k3s/blob/master/pkg/agent/templates) for Linux and Windows examples on how to use the structure to customize the configuration file.
 
-# Secrets Encryption Config (Experimental)
-As of v1.17.4+k3s1, K3s added the experimental feature of enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server, this flag will do the following automatically:
-
-- Generate an AES-CBC key
-- Generate an encryption config file with the generated key
-
-```
-{
-  "kind": "EncryptionConfiguration",
-  "apiVersion": "apiserver.config.k8s.io/v1",
-  "resources": [
-    {
-      "resources": [
-        "secrets"
-      ],
-      "providers": [
-        {
-          "aescbc": {
-            "keys": [
-              {
-                "name": "aescbckey",
-                "secret": "xxxxxxxxxxxxxxxxxxx"
-              }
-            ]
-          }
-        },
-        {
-          "identity": {}
-        }
-      ]
-    }
-  ]
-}
-```
-
-- Pass the config to the KubeAPI as encryption-provider-config
-
-Once enabled any created secret will be encrypted with this key. Note that if you disable encryption then any encrypted secrets will not be readable until you enable encryption again.
 
 # Running K3s with Rootless mode (Experimental)
 
@@ -294,6 +256,39 @@ Then update the config and reboot:
 update-extlinux
 reboot
 ```
+# Additional preparation for (Red Hat/CentOS) Enterprise Linux
+
+It is recommended to turn off firewalld:
+```
+systemctl disable firewalld --now
+```
+
+If enabled, it is required to disable nm-cloud-setup and reboot the node:
+```
+systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
+reboot
+```
+
+# Additional preparation for Raspberry Pi OS Setup
+## Enabling legacy iptables on Raspberry Pi OS
+Raspberry Pi OS (formerly Raspbian) defaults to using `nftables` instead of `iptables`.  **K3S** networking features require `iptables` and do not work with `nftables`.  Follow the steps below to switch configure **Buster** to use `legacy iptables`:
+```
+sudo iptables -F
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+sudo reboot
+```
+
+## Enabling cgroups for Raspberry Pi OS
+
+Standard Raspberry Pi OS installations do not start with `cgroups` enabled. **K3S** needs `cgroups` to start the systemd service. `cgroups`can be enabled by appending `cgroup_memory=1 cgroup_enable=memory` to `/boot/cmdline.txt`.
+
+# Enabling vxlan on Ubuntu 21.10+ on Raspberry Pi
+
+Starting with Ubuntu 21.10, vxlan support on Raspberry Pi has been moved into a seperate kernel module. 
+```
+sudo apt install linux-modules-extra-raspi
+```
 
 # Running K3d (K3s in Docker) and docker-compose
 
@@ -330,20 +325,6 @@ Alternatively the `docker run` command can also be used:
       -e K3S_TOKEN=${NODE_TOKEN} \
       --privileged rancher/k3s:vX.Y.Z
 
-
-# Enabling legacy iptables on Raspbian Buster
-
-Raspbian Buster defaults to using `nftables` instead of `iptables`.  **K3S** networking features require `iptables` and do not work with `nftables`.  Follow the steps below to switch configure **Buster** to use `legacy iptables`:
-```
-sudo iptables -F
-sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
-sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
-sudo reboot
-```
-
-# Enabling cgroups for Raspbian Buster
-
-Standard Raspbian Buster installations do not start with `cgroups` enabled. **K3S** needs `cgroups` to start the systemd service. `cgroups`can be enabled by appending `cgroup_memory=1 cgroup_enable=memory` to `/boot/cmdline.txt`.
 
 ### example of /boot/cmdline.txt
 ```
@@ -402,19 +383,6 @@ Using a custom `--data-dir` under SELinux is not supported. To customize it, you
 
 {{%/tab%}}
 {{% /tabs %}}
-
-# Additional preparation for (Red Hat/CentOS) Enterprise Linux
-
-It is recommended to turn off firewalld:
-```
-systemctl disable firewalld --now
-```
-
-If enabled, it is required to disable nm-cloud-setup and reboot the node:
-```
-systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
-reboot
-```
 
 # Enabling Lazy Pulling of eStargz (Experimental)
 
@@ -480,3 +448,13 @@ helm repo update
 helm install --create-namespace -n cattle-logging-system rancher-logging-crd rancher-charts/rancher-logging-crd
 helm install --create-namespace -n cattle-logging-system rancher-logging --set additionalLoggingSources.k3s.enabled=true rancher-charts/rancher-logging
 ```
+
+# Server and agent tokens
+
+In K3s, there are two types of tokens: K3S_TOKEN and K3S_AGENT_TOKEN.
+
+K3S_TOKEN: Defines the key required by the server to offer the HTTP config resources. These resources are requested by the other servers before joining the K3s HA cluster. If the K3S_AGENT_TOKEN is not defined, the agents use this token as well to access the required HTTP resources to join the cluster. Note that this token is also used to generate the encryption key for important content in the database (e.g., bootstrap data).
+
+K3S_AGENT_TOKEN: Optional. Defines the key required by the server to offer HTTP config resources to the agents. If not defined, agents will require K3S_TOKEN. Defining K3S_AGENT_TOKEN is encouraged to avoid agents having to know K3S_TOKEN, which is also used to encrypt data.
+
+If no K3S_TOKEN is defined, the first K3s server will generate a random one. The result is part of the content in `/var/lib/rancher/k3s/server/token`. For example, `K1070878408e06a827960208f84ed18b65fa10f27864e71a57d9e053c4caff8504b::server:df54383b5659b9280aa1e73e60ef78fc`, where `df54383b5659b9280aa1e73e60ef78fc` is the K3S_TOKEN.

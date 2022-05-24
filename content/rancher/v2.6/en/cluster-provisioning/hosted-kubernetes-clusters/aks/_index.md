@@ -14,8 +14,8 @@ You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Ser
 - [Role-based Access Control](#role-based-access-control)
 - [AKS Cluster Configuration Reference](#aks-cluster-configuration-reference)
 - [Private Clusters](#private-clusters)
-- [Minimum AKS Permissions](#minimum-aks-permissions)
 - [Syncing](#syncing)
+- [Programmatically Creating AKS Clusters](#programmatically-creating-aks-clusters)
 
 # Prerequisites in Microsoft Azure
 
@@ -152,3 +152,7 @@ For more information about connecting to an AKS private cluster, see the [AKS do
 The AKS provisioner can synchronize the state of an AKS cluster between Rancher and the provider. For an in-depth technical explanation of how this works, see [Syncing.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/syncing)
 
 For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
+
+# Programmatically Creating AKS Clusters
+
+The most common way to programmatically deploy AKS clusters through Rancher is by using the Rancher2 Terraform provider. The documentation for creating clusters with Terraform is [here.](https://registry.terraform.io/providers/rancher/rancher2/latest/docs/resources/cluster)

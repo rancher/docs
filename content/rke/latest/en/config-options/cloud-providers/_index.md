@@ -3,7 +3,7 @@ title: Cloud Providers
 weight: 250
 ---
 
-RKE supports the ability to set your specific [cloud provider](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/) for your Kubernetes cluster. There are specific cloud configurations for these cloud providers.
+RKE supports the ability to set your specific cloud provider for your Kubernetes cluster. There are specific cloud configurations for these cloud providers.
 To enable a cloud provider its name as well as any required configuration options must be provided under the `cloud_provider` directive in the cluster YML.
 
 * [AWS]({{<baseurl>}}/rke/latest/en/config-options/cloud-providers/aws)

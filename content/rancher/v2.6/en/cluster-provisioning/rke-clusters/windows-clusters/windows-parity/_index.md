@@ -11,7 +11,7 @@ The following chart describes the feature parity between Windows and Linux on Ra
 --- | --- | ---
 **Distributions** |  | 
 RKE | Supported | Supported
-RKE2 | Supported | Tenatively Planned For 2.6.x
+RKE2 | Supported | Supported
 K3S | Supported | Not Supported
 EKS | Supported | Not Supported
 GKE | Supported | Not Supported
@@ -38,7 +38,7 @@ Backup/Restore Operator | Supported | Not Supported
 **CNI / Add-ons** |  | 
 Flannel | Supported | Supported
 Canal | Supported | Not Supported
-Calico | Supported | Tentatively Planned for 2.6.x
+Calico | Supported | Supported (RKE2 Only)
 Cilium | Supported | Not Supported
 Multus | Supported | Not Supported
 Traefik | Supported | Not Supported

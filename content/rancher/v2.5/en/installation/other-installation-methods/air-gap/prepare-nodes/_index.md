@@ -145,7 +145,7 @@ For a how-to guide for setting up a DNS record to route domain traffic to an Ama
 
 Rancher supports air gap installs using a secure Docker private registry. You must have your own private registry or other means of distributing Docker images to your machines.
 
-In a later step, when you set up your K3s Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/k3s/latest/en/installation/private-registry/) with details from this registry.
+In a later step, when you set up your RKE Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/rke/latest/en/config-options/private-registries/) with details from this registry.
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
 
@@ -166,8 +166,6 @@ For an example of one way to set up Linux nodes, refer to this [tutorial]({{<bas
 ### 2. Set up a Private Docker Registry
 
 Rancher supports air gap installs using a Docker private registry on your bastion server. You must have your own private registry or other means of distributing Docker images to your machines.
-
-In a later step, when you set up your K3s Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/k3s/latest/en/installation/private-registry/) with details from this registry.
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/)
 

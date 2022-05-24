@@ -19,10 +19,11 @@ If you wish to use WireGuard as your flannel backend it may require additional k
  <span style="white-space: nowrap">`--flannel-backend=ipsec`</span> | Uses the IPSEC backend which encrypts network traffic. |
  <span style="white-space: nowrap">`--flannel-backend=host-gw`</span> |  Uses the host-gw backend. |
  <span style="white-space: nowrap">`--flannel-backend=wireguard`</span> | Uses the WireGuard backend which encrypts network traffic. May require additional kernel modules and configuration. |
+ <span style="white-space: nowrap">`--flannel-ipv6-masq`</span> | Apply masquerading rules to IPv6 traffic (default for IPv4). Only applies on dual-stack or IPv6-only clusters |
 
 ### Custom CNI
 
-Run K3s with `--flannel-backend=none` and install your CNI of choice. IP Forwarding should be enabled for Canal and Calico. Please reference the steps below.
+Run K3s with `--flannel-backend=none` and install your CNI of choice. Most CNI plugins come with their own network policy engine, so it is recommended to set `--disable-network-policy` as well to avoid conflicts. IP Forwarding should be enabled for Canal and Calico. Please reference the steps below.
 
 {{% tabs %}}
 {{% tab "Canal" %}}
@@ -74,15 +75,22 @@ You should see that IP forwarding is set to true.
 
 Dual-stack networking must be configured when the cluster is first created. It cannot be enabled on an existing single-stack cluster.
 
-To enable dual-stack in k3s, you must provide valid dual-stack `cluster-cidr` and `service-cidr`, and set `disable-network-policy` on all server nodes. Both servers and agents must provide valid dual-stack `node-ip` settings. Node address auto-detection and network policy enforcement are not supported on dual-stack clusters when using the default flannel CNI. Besides, only vxlan backend is supported at the moment. This is an example of a valid configuration:
+Dual-stack is supported on k3s v1.21 or above.
+
+To enable dual-stack in K3s, you must provide valid dual-stack `cluster-cidr` and `service-cidr` on all server nodes. Both servers and agents must provide valid dual-stack `node-ip` settings. Node address auto-detection is not supported on dual-stack clusters, because kubelet fetches only the first IP address that it finds. Additionally, only vxlan backend is supported currently. This is an example of a valid configuration:
 
 ```
-node-ip: 10.0.10.7,2a05:d012:c6f:4611:5c2:5602:eed2:898c
-cluster-cidr: 10.42.0.0/16,2001:cafe:42:0::/56
-service-cidr: 10.43.0.0/16,2001:cafe:42:1::/112
-disable-network-policy: true
+k3s server --node-ip 10.0.10.7,2a05:d012:c6f:4611:5c2:5602:eed2:898c --cluster-cidr 10.42.0.0/16,2001:cafe:42:0::/56 --service-cidr 10.43.0.0/16,2001:cafe:42:1::/112
 ```
 
 Note that you can choose whatever `cluster-cidr` and `service-cidr` value, however the `node-ip` values must correspond to the ip addresses of your main interface. Remember to allow ipv6 traffic if you are deploying in a public cloud.
 
 If you are using a custom cni plugin, i.e. a cni plugin different from flannel, the previous configuration might not be enough to enable dual-stack in the cni plugin. Please check how to enable dual-stack in its documentation and verify if network policies can be enabled.
+
+### IPv6 only installation
+
+IPv6 only setup is supported on k3s v1.22 or above. Note that network policy enforcement is not supported on IPv6-only clusters when using the default flannel CNI. This is an example of a valid configuration:
+
+```
+k3s server --disable-network-policy
+```

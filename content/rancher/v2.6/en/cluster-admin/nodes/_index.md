@@ -40,11 +40,11 @@ The following table lists which node options are available for each type of clus
 | [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                          |                  |                     |                     |                    | Download SSH key in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     | ✓                   |                    | Scale the number of nodes in the node pool up or down.               |
 
-[1]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/
-[2]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/
-[3]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/
-[4]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
-[5]: {{<baseurl>}}/rancher/v2.x/en/cluster-provisioning/registered-clusters/
+[1]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/
+[2]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes/
+[3]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters/
+[4]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/
+[5]: {{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/
 
 \* Delete option accessible via View API
 

@@ -68,7 +68,7 @@ net.bridge.bridge-nf-call-iptables=1
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script. 
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
@@ -81,8 +81,6 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 For details on which OS versions were tested with RKE2, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
 
 Docker is not required for RKE2 installs.
-
-The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes. Currently, RKE2 deploys nginx-ingress as a deployment by default, so you will need to deploy it as a DaemonSet by following [these steps.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/ha-rke2/#5-configure-nginx-to-be-a-daemonset)
 
 ### Installing Docker
 
@@ -110,7 +108,7 @@ These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubern
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB   |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes.
+Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
 ### K3s Kubernetes
 
@@ -124,7 +122,7 @@ These CPU and memory requirements apply to each host in a [K3s Kubernetes cluste
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB    | 2 cores, 4 GB + 1000 IOPS |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
-[Contact Rancher](https://rancher.com/contact/) for more than 2000 clusters and/or 20,000 nodes.
+Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
 
 ### RKE2 Kubernetes
@@ -151,7 +149,7 @@ Each node in the Kubernetes cluster that Rancher is installed on should run an I
 
 The Ingress should be deployed as DaemonSet to ensure your load balancer can successfully route traffic to all nodes.
 
-For RKE and K3s installations, you don't have to install the Ingress manually because is is installed by default.
+For RKE and K3s installations, you don't have to install the Ingress manually because it is installed by default.
 
 For hosted Kubernetes clusters (EKS, GKE, AKS) and RKE2 Kubernetes installations, you will need to set up the ingress.
 
@@ -170,6 +168,8 @@ Rancher performance depends on etcd in the cluster performance. To ensure optima
 
 This section describes the networking requirements for the node(s) where the Rancher server is installed.
 
+> If a server containing Rancher has the `X-Frame-Options=DENY` header, some pages in the new Rancher UI will not be able to render after upgrading from the legacy UI. This is because some legacy pages are embedded as iFrames in the new UI.
+
 ### Node IP Addresses
 
 Each node used should have a static IP configured, regardless of whether you are installing Rancher on a single node or on an HA cluster. In case of DHCP, each node should have a DHCP reservation to make sure the node gets the same IP allocated.
@@ -180,12 +180,4 @@ To operate properly, Rancher requires a number of ports to be open on Rancher no
 
 # Dockershim Support
 
-In Kubernetes v1.20, the dockershim became deprecated, and Docker became deprecated as a container runtime for Kubernetes. Dockershim was built into Kubernetes as a type of adapter that allowed Kubernetes to manage Docker containers. It was necessary because the Docker Daemon was not compliant with the CRI (Container Runtime Interface) that was created for Kubernetes. The dockershim is still included in the kubelet in Kubernetes v1.20. 
-
-Rancher plans to implement the [upstream open source community Dockershim announced by Mirantis and Docker](https://www.mirantis.com/blog/mirantis-to-take-over-support-of-kubernetes-dockershim-2/) to ensure RKE clusters can continue to leverage Docker as their container runtime. Users of RKE will be able to continue upgrading and building new RKE clusters leveraging Docker as the runtime and install method.
-
-For users looking to use another container runtime, Rancher has the edge-focused K3s and datacenter-focused RKE2 Kubernetes distributions that use containerd as the default runtime. Imported RKE2 and K3s Kubernetes clusters can then be upgraded and managed through Rancher going forward.
-
-For more information on the deprecation of Docker as a container runtime for Kubernetes, see the [official Kubernetes blog post](https://kubernetes.io/blog/2020/12/02/dont-panic-kubernetes-and-docker/) and the [official blog post from Mirantis.](https://www.mirantis.com/blog/mirantis-to-take-over-support-of-kubernetes-dockershim-2/)
-
-The dockershim deprecation schedule is tracked by the upstream Kubernetes community in [Kubernetes Enhancement Proposal (KEP) 1985.](https://github.com/kubernetes/enhancements/tree/master/keps/sig-node/1985-remove-dockershim) 
+For more information on Dockershim support, refer to [this page]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/dockershim/).

@@ -12,7 +12,7 @@ This section covers the following topics:
 - [Recommended Load Balancer Configuration for Kubernetes Installations](#recommended-load-balancer-configuration-for-kubernetes-installations)
 - [Environment for Kubernetes Installations](#environment-for-kubernetes-installations)
 - [Recommended Node Roles for Kubernetes Installations](#recommended-node-roles-for-kubernetes-installations)
-- [Architecture for an Authorized Cluster Endpoint](#architecture-for-an-authorized-cluster-endpoint)
+- [Architecture for an Authorized Cluster Endpoint (ACE)](#architecture-for-an-authorized-cluster-endpoint-ace)
 
 # Separation of Rancher and User Clusters
 
@@ -32,7 +32,7 @@ We don't recommend installing Rancher in a single Docker container, because if t
 
 ### K3s Kubernetes Cluster Installations
 
-One option for the underlying Kubernetes cluster is to use K3s Kubernetes. K3s Rancher's CNCF certified Kubernetes distribution. It is easy to install, with half the memory of Kubernetes, all in a binary less than 100 MB. One main advantage of this K3s architecture is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
+One option for the underlying Kubernetes cluster is to use K3s Kubernetes. K3s is Rancher's CNCF certified Kubernetes distribution. It is easy to install and uses half the memory of Kubernetes, all in a binary of less than 100 MB. Another advantage of K3s is that it allows an external datastore to hold the cluster data, allowing the K3s server nodes to be treated as ephemeral.
 
 <figcaption>Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server</figcaption>
 ![Architecture of a K3s Kubernetes Cluster Running the Rancher Management Server]({{<baseurl>}}/img/rancher/k3s-server-storage.svg)
@@ -104,8 +104,10 @@ Because no additional workloads will be deployed on the Rancher server cluster, 
 
 For more best practices for downstream clusters, refer to the [production checklist]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/production) or our [best practices guide.]({{<baseurl>}}/rancher/v2.6/en/best-practices/)
 
-# Architecture for an Authorized Cluster Endpoint 
+# Architecture for an Authorized Cluster Endpoint (ACE)
 
-If you are using an [authorized cluster endpoint,]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
+If you are using an [authorized cluster endpoint (ACE),]({{<baseurl>}}/rancher/v2.6/en/overview/architecture/#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
 
 If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) and [API keys]({{<baseurl>}}/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) for more information.
+
+As of Rancher v2.6.3, ACE support is available for registered RKE2 and K3s clusters. To view the manual steps to perform on the downstream cluster to enable the ACE, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters).

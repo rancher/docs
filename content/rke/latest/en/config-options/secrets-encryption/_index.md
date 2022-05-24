@@ -106,14 +106,14 @@ OPTIONS:
 This command will perform the following actions:
 
 - Generate a new random 32-byte encryption key
-- Generate a new provider configuration with the new key as the first provider and the second key as the second provider. When the secrets are rewritten, the first key will be used to encrypt the data on the write operation, while the second key (the old key) will be used to decrypt the stored data during the the read operation
+- Generate a new provider configuration with the new key as the first provider and the old key as the second provider. When the secrets are rewritten, the first key will be used to encrypt the data on the write operation, while the second key (the old key) will be used to decrypt the stored data during the the read operation
 - Deploy the new provider configuration to all `controlplane` nodes and restart the `kube-apiserver`
 - Rewrite all secrets. This process will re-encrypt all the secrets with the new key.
 - Update the configuration to remove the old key and restart the `kube-apiserver`
 
 ### Rotating Keys by Disabling and Re-enabling Encryption in cluster.yml
 
-For a cluster with encryption enabled, you can rotate the encryption keys by updating `cluster.yml`. If you enable and re-enable the data encryption in the `cluster.yml`, RKE will not reuse old keys. Instead, it will generate new keys every time, yielding the same result as a key rotation with the RKE CLI.
+For a cluster with encryption enabled, you can rotate the encryption keys by updating `cluster.yml`. If you disable and re-enable the data encryption in the `cluster.yml`, RKE will not reuse old keys. Instead, it will generate new keys every time, yielding the same result as a key rotation with the RKE CLI.
 
 # Custom At-Rest Data Encryption Configuration
 With managed configuration, RKE provides the user with a very simple way to enable and disable encryption with minimal interaction and configuration. However, it doesn't allow for any customization to the configuration.
@@ -139,7 +139,7 @@ kube-api:
     secrets_encryption_config:
       enabled: true
       custom_config:
-        api_version: apiserver.config.k8s.io/v1
+        apiVersion: apiserver.config.k8s.io/v1
         kind: EncryptionConfiguration
         resources:
         - Providers:
@@ -147,7 +147,7 @@ kube-api:
                 Keys:
                     - Name: key1
                     Secret: <BASE 64 ENCODED SECRET>
-              Resources:
+              resources:
                 - secrets
             - identity: {}
 ```

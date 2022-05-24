@@ -21,13 +21,19 @@ Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes 
 - [K3s Kubernetes installation docs]({{<baseurl>}}/k3s/latest/en/installation/)
 
 ### 1. Install the rancher-backup Helm chart
-Install version 1.x.x of the rancher-backup chart.
+Install version 1.x.x of the rancher-backup chart. The following assumes a connected environment with access to DockerHub:
+
 ```
 helm repo add rancher-charts https://charts.rancher.io
 helm repo update
 helm install rancher-backup-crd rancher-charts/rancher-backup-crd -n cattle-resources-system --create-namespace --version $CHART_VERSION
 helm install rancher-backup rancher-charts/rancher-backup -n cattle-resources-system --version $CHART_VERSION
 ```
+</br>
+For an **air-gapped environment**, use the option below to pull the `backup-restore-operator` image from your private registry when installing the rancher-backup-crd helm chart.
+```
+--set image.repository $REGISTRY/rancher/backup-restore-operator
+``` 
 
 ### 2. Restore from backup using a Restore custom resource
 
@@ -70,20 +76,19 @@ spec:
       endpoint: s3.us-west-2.amazonaws.com
 ```
 
-> **Important:** The field `encryptionConfigSecretName` must be set only if your backup was created with encryption enabled. Provide the name of the Secret containing the encryption config file. If you only have the encryption config file, but don't have a secret created with it in this cluster, use the following steps to create the secret:  
-1. The encryption configuration file must be named `encryption-provider-config.yaml`, and the `--from-file` flag must be used to create this secret. So save your `EncryptionConfiguration` in a file called `encryption-provider-config.yaml` and run this command:
+>**Important:** The field `encryptionConfigSecretName` must be set only if your backup was created with encryption enabled. Provide the name of the Secret containing the encryption config file. If you only have the encryption config file, but don't have a secret created with it in this cluster, use the following steps to create the secret:  
 
-```
-kubectl create secret generic encryptionconfig \
-  --from-file=./encryption-provider-config.yaml \
-  -n cattle-resources-system
-```
-
-Then apply the resource:
-
-```
-kubectl apply -f migrationResource.yaml 
-```
+1. The encryption configuration file must be named `encryption-provider-config.yaml`, and the `--from-file` flag must be used to create this secret. So save your `EncryptionConfiguration` in a file called `encryption-provider-config.yaml` and run this command:   
+    ```
+    kubectl create secret generic encryptionconfig \
+      --from-file=./encryption-provider-config.yaml \
+      -n cattle-resources-system
+    ```
+  
+1. Then apply the resource:
+    ```
+    kubectl apply -f migrationResource.yaml 
+    ```
 
 ### 3. Install cert-manager
 

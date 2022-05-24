@@ -36,6 +36,7 @@ For the fields to be populated, your setup needs to fulfill the [prerequisites.]
 ### More Supported Operating Systems
 
 You can provision VMs with any operating system that supports `cloud-init`. Only YAML format is supported for the [cloud config.](https://cloudinit.readthedocs.io/en/latest/topics/examples.html)
+
 ### Video Walkthrough of v2.3.3 Node Template Features
 
 In this YouTube video, we demonstrate how to set up a node template with the new features designed to help you bring cloud operations to on-premises clusters.

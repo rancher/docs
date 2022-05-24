@@ -20,6 +20,17 @@ The control that Rancher has to manage a registered cluster depends on the type 
 
 # Prerequisites
 
+{{% tabs %}}
+{{% tab "v2.5.9+" %}}
+
+### Kubernetes Node Roles
+
+Registered RKE Kubernetes clusters must have all three node roles - etcd, controlplane and worker. A cluster with only controlplane components cannot be registered in Rancher.
+
+For more information on RKE node roles, see the [best practices.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/production/#cluster-architecture)
+
+### Permissions
+
 If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
 
 In order to apply the privilege, you need to run:
@@ -35,6 +46,38 @@ before running the `kubectl` command to register the cluster.
 By default, GKE users are not given this privilege, so you will need to run the command before registering GKE clusters. To learn more about role-based access control for GKE, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
 
 If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
+
+### EKS Clusters
+
+EKS clusters must have at least one managed node group to be imported into Rancher or provisioned from Rancher successfully.
+
+{{% /tab %}}
+{{% tab "Rancher before v2.5.9" %}}
+
+### Permissions
+
+If your existing Kubernetes cluster already has a `cluster-admin` role defined, you must have this `cluster-admin` privilege to register the cluster in Rancher.
+
+In order to apply the privilege, you need to run:
+
+```plain
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole cluster-admin \
+  --user [USER_ACCOUNT]
+```
+
+before running the `kubectl` command to register the cluster.
+
+By default, GKE users are not given this privilege, so you will need to run the command before registering GKE clusters. To learn more about role-based access control for GKE, please click [here](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
+
+If you are registering a K3s cluster, make sure the `cluster.yml` is readable. It is protected by default. For details, refer to [Configuring a K3s cluster to enable importation to Rancher.](#configuring-a-k3s-cluster-to-enable-registration-in-rancher)
+
+### EKS Clusters
+
+EKS clusters must have at least one managed node group to be imported into Rancher or provisioned from Rancher successfully.
+
+{{% /tab %}}
+{{% /tabs %}}
 
 # Registering a Cluster
 
@@ -74,6 +117,34 @@ The option can also be specified using the environment variable `K3S_KUBECONFIG_
 
 ```
 $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
+```
+
+### Configuring an Imported EKS Cluster with Terraform
+
+You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided. 
+
+>**Warning:** Even a small difference between the current EKS cluster and a user-provided config could have unexpected results.
+
+The minimum config fields required by Rancher to import EKS clusters with Terraform using `eks_config_v2` are as follows:
+
+- cloud_credential_id
+- name
+- region
+- imported (this field should always be set to `true` for imported clusters)
+
+Example YAML configuration for imported EKS clusters:
+
+```
+resource "rancher2_cluster" "my-eks-to-import" {
+  name        = "my-eks-to-import"
+  description = "Terraform EKS Cluster"
+  eks_config_v2 {
+    cloud_credential_id = rancher2_cloud_credential.aws.id
+    name                = var.aws_eks_name
+    region              = var.aws_region
+    imported            = true
+  }
+}
 ```
 
 # Management Capabilities for Registered Clusters

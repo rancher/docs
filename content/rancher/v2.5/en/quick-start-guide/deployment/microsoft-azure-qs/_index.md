@@ -1,12 +1,12 @@
 ---
 title: Rancher Azure Quick Start Guide
-description: Read this step by step Rancher Azure guide to quickly deploy a Rancher Server with a single node cluster attached.
+description: Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.
 weight: 100
-aliases:
-  - /rancher/v2.x/en/quick-start-guide/deployment/microsoft-azure-qs/
 ---
 
-The following steps will quickly deploy a Rancher server on Azure in a single-node RKE Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
+The following steps will quickly deploy a Rancher server on Azure in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
+
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.5/en/installation/).
 
 ## Prerequisites
 
@@ -24,27 +24,29 @@ The following steps will quickly deploy a Rancher server on Azure in a single-no
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-1. Go into the Azure folder containing the terraform files by executing `cd quickstart/azure`.
+2. Go into the Azure folder containing the terraform files by executing `cd quickstart/azure`.
 
-1. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
+3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
-1. Edit `terraform.tfvars` and customize the following variables:
+4. Edit `terraform.tfvars` and customize the following variables:
     - `azure_subscription_id` - Microsoft Azure Subscription ID
     - `azure_client_id` - Microsoft Azure Client ID
     - `azure_client_secret` - Microsoft Azure Client Secret
     - `azure_tenant_id` - Microsoft Azure Tenant ID
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
-2. **Optional:** Modify optional variables within `terraform.tfvars`.
+5. **Optional:** Modify optional variables within `terraform.tfvars`.
 See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Azure Quickstart Readme](https://github.com/rancher/quickstart/tree/master/azure) for more information.
 Suggestions include:
-    - `azure_location` - Microsoft Azure region, choose the closest instead of the default
+    - `azure_location` - Microsoft Azure region, choose the closest instead of the default (`East US`)
     - `prefix` - Prefix for all created resources
     - `instance_type` - Compute instance size used, minimum is `Standard_DS2_v2` but `Standard_DS2_v3` or `Standard_DS3_v2` could be used if within budget
+    - `add_windows_node` - If true, an additional Windows worker node is added to the workload cluster
+    - `windows_admin_password` - The admin password of the windows worker node
 
-1. Run `terraform init`.
+6. Run `terraform init`.
 
-1. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:
+7. To initiate the creation of the environment, run `terraform apply --auto-approve`. Then wait for output similar to the following:
 
     ```
     Apply complete! Resources: 16 added, 0 changed, 0 destroyed.
@@ -56,11 +58,12 @@ Suggestions include:
     workload_node_ip = yy.yy.yy.yy
     ```
 
-1. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-2. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/azure`.
+8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
+9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/azure`.
+
 #### Result
 
-Two Kubernetes clusters are deployed into your Azure account, one running Rancher Server and the other ready for experimentation deployments.
+Two Kubernetes clusters are deployed into your Azure account, one running Rancher Server and the other ready for experimentation deployments. Please note that while this setup is a great way to explore Rancher functionality, a production setup should follow our high availability setup guidelines. SSH keys for the VMs are auto-generated and stored in the module directory.
 
 ### What's Next?
 

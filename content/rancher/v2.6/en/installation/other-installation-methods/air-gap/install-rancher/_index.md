@@ -94,8 +94,10 @@ helm repo update
 
 Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
 
+**Note:** New in v2.6.4, cert-manager versions 1.6.2 and 1.7.1 are compatible. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022.
+
 ```plain
-helm fetch jetstack/cert-manager --version v1.5.1
+helm fetch jetstack/cert-manager --version v1.7.1
 ```
 
 ### 3. Render the cert-manager template
@@ -103,18 +105,19 @@ helm fetch jetstack/cert-manager --version v1.5.1
 Render the cert-manager template with the options you would like to use to install the chart. Remember to set the `image.repository` option to pull the image from your private registry. This will create a `cert-manager` directory with the Kubernetes manifest files.
 
 ```plain
-helm template cert-manager ./cert-manager-v1.5.1.tgz --output-dir . \
+helm template cert-manager ./cert-manager-v1.7.1.tgz --output-dir . \
     --namespace cert-manager \
     --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller \
     --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook \
-    --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector
+    --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector \
+    --set startupapicheck.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-ctl
 ```
 
 ### 4. Download the cert-manager CRD
 
 Download the required CRD file for cert-manager:
    ```plain
-   curl -L -o cert-manager/cert-manager-crd.yaml https://github.com/jetstack/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
+   curl -L -o cert-manager/cert-manager-crd.yaml https://github.com/jetstack/cert-manager/releases/download/v1.7.1/cert-manager.crds.yaml
    ```
 
 ### 5. Render the Rancher template

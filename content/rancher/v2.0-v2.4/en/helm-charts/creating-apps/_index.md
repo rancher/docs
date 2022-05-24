@@ -128,4 +128,4 @@ This reference contains variables that you can use in `questions.yml` nested und
 
 # Tutorial: Example Custom Chart Creation
 
-For a tutorial on adding a custom Helm chart to a custom catalog, refer to [this page.]({{<baseurl>}}/rancher/v2.x/en/catalog/tutorial)
+For a tutorial on adding a custom Helm chart to a custom catalog, refer to [this page.]({{<baseurl>}}/rancher/v2.0-v2.4/en/catalog/tutorial)

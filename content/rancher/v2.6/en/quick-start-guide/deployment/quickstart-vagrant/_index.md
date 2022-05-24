@@ -4,6 +4,8 @@ weight: 200
 ---
 The following steps quickly deploy a Rancher Server with a single node cluster attached.
 
+>**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
 ## Prerequisites
 
 - [Vagrant](https://www.vagrantup.com): Vagrant is required as this is used to provision the machine based on the Vagrantfile.
@@ -14,7 +16,7 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
 - Vagrant will require plugins to create VirtualBox VMs. Install them with the following commands:
 
   `vagrant plugin install vagrant-vboxmanage`
-  
+
   `vagrant plugin install vagrant-vbguest`
 
 ## Getting Started
@@ -30,7 +32,7 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
 
 4. To initiate the creation of the environment run, `vagrant up --provider=virtualbox`.
 
-5. Once provisioning finishes, go to `https://172.22.101.101` in the browser. The default user/password is `admin/admin`.
+5. Once provisioning finishes, go to `https://192.168.56.101` in the browser. The default user/password is `admin/adminPassword`.
 
 **Result:** Rancher Server and your Kubernetes cluster is installed on VirtualBox.
 
