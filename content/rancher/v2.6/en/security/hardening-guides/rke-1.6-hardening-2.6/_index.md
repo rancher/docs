@@ -1,17 +1,19 @@
 ---
-title: Hardening Guide with CIS v1.6 Benchmark
+title: RKE Hardening Guide with CIS v1.6 Benchmark
 weight: 100
+aliases:
+  - /rancher/v2.6/en/security/hardening-guides/1.6-hardening-2.6/
 ---
 
-This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.6.3. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.6. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 > This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
 
 This hardening guide is intended to be used for RKE clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
 
 | Rancher Version | CIS Benchmark Version | Kubernetes Version |
-| --- | --- | --- |
-| Rancher v2.6.3 | Benchmark v1.6 | Kubernetes v1.18, v1.19, v1.20 and v1.21 |
+| --------------- | --------------------- | ------------------ |
+| Rancher v2.6 | Benchmark v1.6 | Kubernetes v1.18 up to v1.23 |
 
 [Click here to download a PDF version of this document](https://releases.rancher.com/documents/security/2.6/Rancher_v2-6_CIS_v1-6_Hardening_Guide.pdf).
 
@@ -26,7 +28,7 @@ This hardening guide is intended to be used for RKE clusters and associated with
 
 ### Overview
 
-This document provides prescriptive guidance for hardening a RKE cluster to be used for installing Rancher v2.6.3 with Kubernetes v1.18 up to v1.21 or provisioning a RKE cluster with Kubernetes v1.18 up to v.21 to be used within Rancher v2.6.3. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
+This document provides prescriptive guidance for hardening a RKE cluster to be used for installing Rancher v2.6 with Kubernetes v1.18 up to v1.23 or provisioning a RKE cluster with Kubernetes v1.18 up to v1.23 to be used within Rancher v2.6. It outlines the configurations required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
 For more details about evaluating a hardened cluster against the official CIS benchmark, refer to the [CIS 1.6 Benchmark - Self-Assessment Guide - Rancher v2.6]({{<baseurl>}}/rancher/v2.6/en/security/hardening-guides/1.6-benchmark-2.6/).
 
