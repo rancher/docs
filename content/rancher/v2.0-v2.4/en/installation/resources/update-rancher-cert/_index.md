@@ -148,7 +148,7 @@ https://gist.github.com/superseb/b14ed3b5535f621ad3d2aa6a4cd6443b
 
 # Updating from a Private CA Certificate to a Common Certificate
 
->It is possible to perform the opposite procedure as shown above: you may change from a private certificate to a common, or non-private, certificate. The steps involved are very similar to the above, with some exceptions. 
+>It is possible to perform the opposite procedure as shown above: you may change from a private certificate to a common, or non-private, certificate. The steps involved are outlined below.
 
 ## 1. Create/update the certificate secret resource
 
