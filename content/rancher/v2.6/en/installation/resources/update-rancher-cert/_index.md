@@ -228,7 +228,11 @@ helm upgrade rancher rancher-stable/rancher \
   --set ...
 ```
 
-After upgrade is completed, the `privateCA` parameter <b>must</b> be either removed or set to `false` because the CA is valid:
+On upgrade, you can either 
+
+- remove `--set ingress.tls.source=secret \` from the Helm upgrade command, as shown above, or 
+
+- remove the `privateCA` parameter or set it to `false` because the CA is valid:
 
 ```
 set privateCA=false
