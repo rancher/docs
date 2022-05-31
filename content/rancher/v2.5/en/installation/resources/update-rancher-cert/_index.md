@@ -201,7 +201,7 @@ kubectl -n cattle-system delete secret tls-ca
 
 ## 3. Reconfigure the Rancher deployment
 
-> Before proceeding, generate an API token in the Rancher UI (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
+> Before proceeding, [generate an API token in the Rancher UI]({{<baseurl>}}/rancher/v2.5/en/user-settings/api-keys/#creating-an-api-key) (<b>User > API & Keys</b>).
 
 This step is required if Rancher was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
 
