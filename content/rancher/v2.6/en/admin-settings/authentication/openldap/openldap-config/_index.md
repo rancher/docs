@@ -28,13 +28,7 @@ You will need to enter the address, port, and protocol to connect to your OpenLD
 
 > **Using TLS?**
 >
-> - If the certificate used by the OpenLDAP server is self-signed or not from a recognized certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
->
-> - Upon an upgrade to v2.6.0, authenticating via Rancher against an active directory using TLS can fail if the certificates on the AD server do not support SAN attributes. This is a check enabled by default in Go v1.15. 
->
->    - The error received is "Error creating SSL connection: LDAP Result Code 200 "Network Error": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0". 
->
->    - To resolve the error, update or replace the certificates on the AD server with new ones that support the SAN attribute. Alternatively, this error can be ignored by setting `GODEBUG=x509ignoreCN=0` as an environment variable to Rancher server container.
+> If the certificate used by the OpenLDAP server is self-signed or not from a recognized certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
 
 If you are in doubt about the correct values to enter in the user/group Search Base configuration fields, consult your LDAP administrator or refer to the section [Identify Search Base and Schema using ldapsearch]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/ad/#annex-identify-search-base-and-schema-using-ldapsearch) in the Active Directory authentication documentation.
 
