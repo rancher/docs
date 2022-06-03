@@ -107,30 +107,29 @@ USAGE:
    k3s agent [OPTIONS]
 
 OPTIONS:
-   -v value                            (logging) Number for the log level verbosity (default: 0)
-   --vmodule value                     (logging) Comma-separated list of pattern=N settings for file-filtered logging
-   --log value, -l value               (logging) Log to file
-   --alsologtostderr                   (logging) Log to standard error as well as file (if set)
-   --token value, -t value             (cluster) Token to use for authentication [$K3S_TOKEN]
-   --token-file value                  (cluster) Token file to use for authentication [$K3S_TOKEN_FILE]
-   --server value, -s value            (cluster) Server to connect to [$K3S_URL]
-   --data-dir value, -d value          (agent/data) Folder to hold state (default: "/var/lib/rancher/k3s")
-   --node-name value                   (agent/node) Node name [$K3S_NODE_NAME]
-   --with-node-id                      (agent/node) Append id to node name
-   --node-label value                  (agent/node) Registering and starting kubelet with set of labels
-   --node-taint value                  (agent/node) Registering kubelet with set of taints
-   --docker                            (agent/runtime) Use docker instead of containerd
-   --container-runtime-endpoint value  (agent/runtime) Disable embedded containerd and use alternative CRI implementation
-   --pause-image value                 (agent/runtime) Customized pause image for containerd or docker sandbox (default: "docker.io/rancher/pause:3.1")
-   --private-registry value            (agent/runtime) Private registry configuration file (default: "/etc/rancher/k3s/registries.yaml")
-   --node-ip value, -i value           (agent/networking) IP address to advertise for node
-   --node-external-ip value            (agent/networking) External IP address to advertise for node
-   --resolv-conf value                 (agent/networking) Kubelet resolv.conf file [$K3S_RESOLV_CONF]
-   --flannel-iface value               (agent/networking) Override default flannel interface
-   --flannel-conf value                (agent/networking) Override default flannel config file
-   --kubelet-arg value                 (agent/flags) Customized flag for kubelet process
-   --kube-proxy-arg value              (agent/flags) Customized flag for kube-proxy process
-   --rootless                          (experimental) Run rootless
-   --no-flannel                        (deprecated) use --flannel-backend=none
-   --cluster-secret value              (deprecated) use --token [$K3S_CLUSTER_SECRET]
+   --config FILE, -c FILE                     (config) Load configuration from FILE (default: "/etc/rancher/k3s/config.yaml") [$K3S_CONFIG_FILE]
+   --debug                                    (logging) Turn on debug logs [$K3S_DEBUG]
+   -v value                                   (logging) Number for the log level verbosity (default: 0)
+   --vmodule value                            (logging) Comma-separated list of pattern=N settings for file-filtered logging
+   --log value, -l value                      (logging) Log to file
+   --image-credential-provider-bin-dir value  (agent/node) The path to the directory where credential provider plugin binaries are located (default: "/var/lib/rancher/credentialprovider/bin")
+   --image-credential-provider-config value   (agent/node) The path to the credential provider plugin config file (default: "/var/lib/rancher/credentialprovider/config.yaml")
+   --docker                                   (agent/runtime) Use docker instead of containerd
+   --container-runtime-endpoint value         (agent/runtime) Disable embedded containerd and use alternative CRI implementation
+   --pause-image value                        (agent/runtime) Customized pause image for containerd or docker sandbox (default: "rancher/mirrored-pause:3.6")
+   --snapshotter value                        (agent/runtime) Override default containerd snapshotter (default: "overlayfs")
+   --private-registry value                   (agent/runtime) Private registry configuration file (default: "/etc/rancher/k3s/registries.yaml")
+   --node-ip value, -i value                  (agent/networking) IPv4/IPv6 addresses to advertise for node
+   --node-external-ip value                   (agent/networking) IPv4/IPv6 external IP addresses to advertise for node
+   --resolv-conf value                        (agent/networking) Kubelet resolv.conf file [$K3S_RESOLV_CONF]
+   --flannel-iface value                      (agent/networking) Override default flannel interface
+   --flannel-conf value                       (agent/networking) Override default flannel config file
+   --kubelet-arg value                        (agent/flags) Customized flag for kubelet process
+   --kube-proxy-arg value                     (agent/flags) Customized flag for kube-proxy process
+   --protect-kernel-defaults                  (agent/node) Kernel tuning behavior. If set, error if kernel tunables are different than kubelet defaults.
+   --rootless                                 (experimental) Run rootless
+   --selinux                                  (agent/node) Enable SELinux in containerd [$K3S_SELINUX]
+   --lb-server-port value                     (agent/node) Local port for supervisor client load-balancer. If the supervisor and apiserver are not colocated an additional port 1 less than this port will also be used for the apiserver client load-balancer. (default: 6444) [$K3S_LB_SERVER_PORT]
+   --no-flannel                               (deprecated) use --flannel-backend=none
+   --cluster-secret value                     (deprecated) use --token [$K3S_CLUSTER_SECRET]
 ```
