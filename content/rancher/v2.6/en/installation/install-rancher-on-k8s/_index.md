@@ -38,7 +38,7 @@ For RKE, RKE2 and K3s installations, you don't have to install the Ingress contr
 
 For distributions that do not include an Ingress Controller by default, like a hosted Kubernetes cluster, such as EKS, GKE, or AKS, you have to deploy an Ingress controller first. Note, that the Rancher Helm chart does not set an ingressClassName on the ingress by default. Because of this, you have to configure the Ingress controller to also watch ingresses without an ingressClassName.
 
-Examples are included in the **Amazon EKS**, **AKS** and **GKE** tutorials above.
+Examples are included in the **Amazon EKS**, **AKS**, and **GKE** tutorials above.
 
 ### CLI Tools
 
