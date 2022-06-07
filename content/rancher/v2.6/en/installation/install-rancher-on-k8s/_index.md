@@ -32,7 +32,7 @@ For help setting up a Kubernetes cluster, we provide these tutorials:
 
 ### Ingress Controller
 
-The Rancher UI and API is exposed through an Ingress. This means the Kubernetes cluster, that you install Rancher in, must contain an Ingress controller
+The Rancher UI and API are exposed through an Ingress. This means the Kubernetes cluster that you install Rancher in must contain an Ingress controller.
 
 For RKE, RKE2, and K3s installations, you don't have to install the Ingress controller manually because one is installed by default.
 
