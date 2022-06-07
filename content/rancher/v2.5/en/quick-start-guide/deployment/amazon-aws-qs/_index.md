@@ -14,8 +14,25 @@ The following steps will quickly deploy a Rancher server on AWS in a single-node
 
 - [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes.
 - [Amazon AWS Access Key](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html): Use this link to follow a tutorial to create an Amazon AWS Access Key if you don't have one yet.
+- [IAM Policy created](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start): Defines the permissions an account attached with this policy has.
 - Install [Terraform](https://www.terraform.io/downloads.html): Used to provision the server and cluster in Amazon AWS.
 
+### Example IAM Policy
+
+The AWS module just creates an EC2 KeyPair, an EC2 SecurityGroup and an EC2 instance. A simple policy would be:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "ec2:*",
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## Getting Started
 
