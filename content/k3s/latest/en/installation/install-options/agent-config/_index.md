@@ -112,6 +112,15 @@ OPTIONS:
    -v value                                   (logging) Number for the log level verbosity (default: 0)
    --vmodule value                            (logging) Comma-separated list of pattern=N settings for file-filtered logging
    --log value, -l value                      (logging) Log to file
+   --alsologtostderr                          (logging) Log to standard error as well as file (if set)
+   --token value, -t value                    (cluster) Token to use for authentication [$K3S_TOKEN]
+   --token-file value                         (cluster) Token file to use for authentication [$K3S_TOKEN_FILE]
+   --server value, -s value                   (cluster) Server to connect to [$K3S_URL]
+   --data-dir value, -d value                 (agent/data) Folder to hold state (default: "/var/lib/rancher/k3s")
+   --node-name value                          (agent/node) Node name [$K3S_NODE_NAME]
+   --with-node-id                             (agent/node) Append id to node name
+   --node-label value                         (agent/node) Registering and starting kubelet with set of labels
+   --node-taint value                         (agent/node) Registering kubelet with set of taints
    --image-credential-provider-bin-dir value  (agent/node) The path to the directory where credential provider plugin binaries are located (default: "/var/lib/rancher/credentialprovider/bin")
    --image-credential-provider-config value   (agent/node) The path to the credential provider plugin config file (default: "/var/lib/rancher/credentialprovider/config.yaml")
    --docker                                   (agent/runtime) Use docker instead of containerd
