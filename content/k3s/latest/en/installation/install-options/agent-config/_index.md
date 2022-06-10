@@ -61,7 +61,7 @@ In this section, you'll learn how to configure the K3s agent.
 |------|----------------------|-------------|
 |   `--node-ip value, -i` value | N/A   |   IP address to advertise for node  |
 |   `--node-external-ip` value |  N/A   | External IP address to advertise for node      |
-|   `--resolv-conf` value |   `K3S_RESOLV_CONF`    |  Kubelet resolv.conf file      | 
+|   `--resolv-conf` value |   `K3S_RESOLV_CONF`    |  Kubelet resolv.conf file. Note: If you wish to set kubelet parameter `--resolv-conf` to `""`, use `--kubelet-arg=resolv-conf=` instead       | 
 |   `--flannel-iface` value |    N/A   | Override default flannel interface      |
 |   `--flannel-conf` value |    N/A     |  Override default flannel config file |
 
