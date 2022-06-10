@@ -1,7 +1,7 @@
 ---
 title: Installing Rancher on a Google Kubernetes Engine Cluster
 shortTitle: GKE
-weight: 5
+weight: 3
 ---
 
 In this section, you'll learn how to install Rancher using Google Kubernetes Engine.
