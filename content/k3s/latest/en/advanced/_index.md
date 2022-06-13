@@ -25,6 +25,7 @@ This section contains advanced information describing the different ways you can
 - [Enabling Lazy Pulling of eStargz (Experimental)](#enabling-lazy-pulling-of-estargz-experimental)
 - [Additional Logging Sources](#additional-logging-sources)
 - [Server and agent tokens](#server-and-agent-tokens)
+- [Bring Your Own Intermediate CAs](#bring-your-own-intermediate-cas)
 
 # Certificate Rotation
 
@@ -458,3 +459,68 @@ K3S_TOKEN: Defines the key required by the server to offer the HTTP config resou
 K3S_AGENT_TOKEN: Optional. Defines the key required by the server to offer HTTP config resources to the agents. If not defined, agents will require K3S_TOKEN. Defining K3S_AGENT_TOKEN is encouraged to avoid agents having to know K3S_TOKEN, which is also used to encrypt data.
 
 If no K3S_TOKEN is defined, the first K3s server will generate a random one. The result is part of the content in `/var/lib/rancher/k3s/server/token`. For example, `K1070878408e06a827960208f84ed18b65fa10f27864e71a57d9e053c4caff8504b::server:df54383b5659b9280aa1e73e60ef78fc`, where `df54383b5659b9280aa1e73e60ef78fc` is the K3S_TOKEN.
+
+# Bring Your Own Intermediate CAs
+
+If you want to handle your own TLS chains, you can provide your own root or intermediate CA certificates to replace the default CAs which K3s generates on installation. You can find more discussions and references in [k3s#1868](https://github.com/k3s-io/k3s/issues/1868). It is important to be aware that you must perform these steps before installing K3s or it will not work.
+
+## OpenSSL
+
+Here is an example reference of how to generate your own root CAs with OpenSSL.
+
+```
+mkdir -p /var/lib/rancher/k3s/server/tls
+cd /var/lib/rancher/k3s/server/tls
+openssl genrsa -out client-ca.key 2048
+openssl genrsa -out server-ca.key 2048
+openssl genrsa -out request-header-ca.key 2048
+openssl req -x509 -new -nodes -key client-ca.key -sha256 -days 3560 -out client-ca.crt -addext keyUsage=critical,digitalSignature,keyEncipherment,keyCertSign -subj '/CN=k3s-client-ca'
+openssl req -x509 -new -nodes -key server-ca.key -sha256 -days 3560 -out server-ca.crt -addext keyUsage=critical,digitalSignature,keyEncipherment,keyCertSign -subj '/CN=k3s-server-ca'
+openssl req -x509 -new -nodes -key request-header-ca.key -sha256 -days 3560 -out request-header-ca.crt -addext keyUsage=critical,digitalSignature,keyEncipherment,keyCertSign -subj '/CN=k3s-request-header-ca'
+```
+
+## Hashicorp Vault
+
+This example uses an existing self-signed PKI infrastructure in [Hashicorp Vault](https://www.vaultproject.io/) to generate intermediate CAs.
+
+```
+export ROOT_DOMAIN="you-domain-here.com"
+for target in request-header-ca client-ca server-ca; do
+     vault secrets enable -path=k3s-"${target}" pki
+     vault secrets tune -max-lease-ttl=43800h k3s-"${target}"
+
+     # generate the intermediate, ensuring to export the private key
+     vault write -format=json k3s-"${target}"/intermediate/generate/exported \
+          common_name="${ROOT_DOMAIN} k3s ${target} Intermediate Authority G1" > "${target}"-csr.json
+
+     # build the csr
+     jq -r '.data.csr' "${target}"-csr.json > "${target}".csr
+     jq -r '.data.private_key' "${target}"-csr.json >> "${target}".csr
+
+     # sign the intermediate
+     vault write -format=json pki/root/sign-intermediate csr=@"${target}".csr \
+          format=pem_bundle ttl="43800h" > "${target}".json
+
+     # write the target files
+     jq -r '.data.certificate' "${target}".json > "${target}".crt
+     jq -r '.data.private_key' "${target}"-csr.json > "${target}".key
+
+     # verify the modulus
+     openssl x509 -noout -modulus -in "${target}".crt| openssl md5
+     openssl rsa -noout -modulus -in "${target}".key | openssl md5
+
+     # set the roles
+     vault write k3s-"${target}"/roles/"${ROOT_DOMAIN}"  \
+          allowed_domains="k3s.${ROOT_DOMAIN}" \
+          allow_subdomains=true \
+          max_ttl="26280h"
+
+     # sign things
+     vault write k3s-"${target}"/intermediate/set-signed certificate=@<(cat "${target}".crt "${target}".key)
+done
+
+sudo mkdir -p /var/lib/rancher/k3s/server/tls/
+sudo cp ./*.{crt,key} /var/lib/rancher/k3s/server/tls/
+```
+
+Make sure to safely store the generated files.
