@@ -21,7 +21,7 @@ The following steps will quickly deploy a Rancher server on DigitalOcean in a si
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the DigitalOcean folder containing the terraform files by executing `cd quickstart/do`.
+2. Go into the DigitalOcean folder containing the terraform files by executing `cd quickstart/rancher/do`.
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
@@ -51,7 +51,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/do`.
+9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/do`.
 
 #### Result
 
@@ -63,6 +63,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/do` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/rancher/do` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.

@@ -38,7 +38,7 @@ The AWS module just creates an EC2 KeyPair, an EC2 SecurityGroup and an EC2 inst
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the AWS folder containing the terraform files by executing `cd quickstart/aws`.
+2. Go into the AWS folder containing the terraform files by executing `cd quickstart/rancher/aws`.
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
@@ -70,7 +70,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher server using the `id_rsa` key generated in `quickstart/aws`.
+9. ssh to the Rancher server using the `id_rsa` key generated in `quickstart/rancher/aws`.
 
 #### Result
 
@@ -82,6 +82,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/aws` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/rancher/aws` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.
