@@ -79,6 +79,7 @@ In this section, you'll learn how to configure the K3s agent.
 |   `--flannel-iface` value |    N/A   | Override default flannel interface      |
 |   `--flannel-conf` value |    N/A     |  Override default flannel config file |
 
+> Note: if you wish to directly set the kubelet `--resolv-conf` value, use `--kubelet-arg=resolv-conf=value` instead. The k3s flag is only passed through to the kubelet if set to the path of a valid resolv.conf file.
 ### Customized Flags
 | Flag |  Description |
 |------|--------------|
