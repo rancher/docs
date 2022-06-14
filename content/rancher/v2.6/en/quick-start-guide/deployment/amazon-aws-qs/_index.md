@@ -70,7 +70,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/aws`.
+9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/aws`.
 
 ##### Result
 
@@ -82,6 +82,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/aws` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/rancher/aws` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.
