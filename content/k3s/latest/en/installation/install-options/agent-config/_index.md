@@ -6,6 +6,7 @@ In this section, you'll learn how to configure the K3s agent.
 
 > Throughout the K3s documentation, you will see some options that can be passed in as both command flags and environment variables. For help with passing in options, refer to [How to Use Flags and Environment Variables.]({{<baseurl>}}/k3s/latest/en/installation/install-options/how-to-flags)
 
+- [Config](#config)
 - [Logging](#logging)
 - [Cluster Options](#cluster-options)
 - [Data](#data)
@@ -18,14 +19,21 @@ In this section, you'll learn how to configure the K3s agent.
 - [Node Labels and Taints for Agents](#node-labels-and-taints-for-agents)
 - [K3s Agent CLI Help](#k3s-agent-cli-help)
 
-### Logging
+### Config
 
 | Flag | Default | Description |
 |------|---------|-------------|
-|   `-v` value    |     0         | Number for the log level verbosity        |
-|   `--vmodule` value   | N/A        | Comma-separated list of pattern=N settings for file-filtered logging        |
-|   `--log value, -l` value  |  N/A    | Log to file   |
-|   `--alsologtostderr`  | N/A        | Log to standard error as well as file (if set)     | 
+| `--config FILE, -c` FILE | "/etc/rancher/k3s/config.yaml" | Load configuration from FILE |
+
+### Logging
+
+| Flag | Default | Environment Variable | Description |
+|------|---------|----------------------|-------------|
+| `--debug` | N/A | `K3S_DEBUG` | Turn on debug logs |
+|   `-v` value    |     0       | N/A | Number for the log level verbosity        |
+|   `--vmodule` value   | N/A   | N/A | Comma-separated list of pattern=N settings for file-filtered logging        |
+|   `--log value, -l` value  |  N/A  | N/A | Log to file   |
+|   `--alsologtostderr`  | N/A       | N/A | Log to standard error as well as file (if set)     |
 
 ### Cluster Options
 | Flag | Environment Variable | Description |
@@ -41,12 +49,17 @@ In this section, you'll learn how to configure the K3s agent.
 |   `--data-dir value, -d` value  | "/var/lib/rancher/k3s"    |  Folder to hold state |
 
 ### Node
-| Flag | Environment Variable | Description |
-|------|----------------------|-------------|
-|   `--node-name` value |  `K3S_NODE_NAME`      |  Node name       |
-|   `--with-node-id`    |  N/A         | Append id to node name      |
-|   `--node-label` value |    N/A        |  Registering and starting kubelet with set of labels   |
-|   `--node-taint` value |      N/A     | Registering kubelet with set of taints    |
+| Flag | Default | Environment Variable | Description |
+|------|---------|----------------------|-------------|
+|   `--node-name` value | N/A | `K3S_NODE_NAME`      |  Node name       |
+|   `--with-node-id`    | N/A | N/A        | Append id to node name      |
+|   `--node-label` value | N/A | N/A       |  Registering and starting kubelet with set of labels   |
+|   `--node-taint` value | N/A | N/A    | Registering kubelet with set of taints    |
+|   `--image-credential-provider-bin-dir` value | "/var/lib/rancher/credentialprovider/bin" | N/A | The path to the directory where credential provider plugin binaries are located |
+|   `--image-credential-provider-config` value | "/var/lib/rancher/credentialprovider/config.yaml" | N/A | The path to the credential provider plugin config file |
+|   `--protect-kernel-defaults` | N/A | N/A | Kernel tuning behavior. If set, error if kernel tunables are different than kubelet defaults |
+|   `--selinux` | N/A | `K3S_SELINUX` | Enable SELinux in containerd. |
+|   `--lb-server-port` value | 6444 | `K3S_LB_SERVER_PORT` | Local port for supervisor client load-balancer. If the supervisor and apiserver are not colocated an additional port 1 less than this port will also be used for the apiserver client load-balancer. |
 
 ### Runtime
 | Flag | Default | Description |
@@ -54,14 +67,15 @@ In this section, you'll learn how to configure the K3s agent.
 |   `--docker` |      N/A        |      Use docker instead of containerd       |
 |   `--container-runtime-endpoint` value | N/A   |  Disable embedded containerd and use alternative CRI implementation |
 |   `--pause-image` value | "docker.io/rancher/pause:3.1"     |  Customized pause image for containerd or docker sandbox       | (agent/runtime)  (default: )
-|   `--private-registry` value | "/etc/rancher/k3s/registries.yaml"    |   Private registry configuration file   |
+|   `--snapshotter` value | `overlayfs` | Override default containerd snapshotter |
+|   `--private-registry` value | `/etc/rancher/k3s/registries.yaml`    |   Private registry configuration file   |
 
 ### Networking
 | Flag | Environment Variable | Description |
 |------|----------------------|-------------|
 |   `--node-ip value, -i` value | N/A   |   IP address to advertise for node  |
 |   `--node-external-ip` value |  N/A   | External IP address to advertise for node      |
-|   `--resolv-conf` value |   `K3S_RESOLV_CONF`    |  Kubelet resolv.conf file       | 
+|   `--resolv-conf` value |   `K3S_RESOLV_CONF`    |  Kubelet resolv.conf file      |
 |   `--flannel-iface` value |    N/A   | Override default flannel interface      |
 |   `--flannel-conf` value |    N/A     |  Override default flannel config file |
 
@@ -69,7 +83,7 @@ In this section, you'll learn how to configure the K3s agent.
 ### Customized Flags
 | Flag |  Description |
 |------|--------------|
-|   `--kubelet-arg` value |   Customized flag for kubelet process      | 
+|   `--kubelet-arg` value |   Customized flag for kubelet process      |
 |   `--kube-proxy-arg` value |   Customized flag for kube-proxy process    |
 
 ### Experimental
@@ -80,7 +94,7 @@ In this section, you'll learn how to configure the K3s agent.
 ### Deprecated
 | Flag | Environment Variable | Description |
 |------|----------------------|-------------|
-|   `--no-flannel`   |   N/A       |   Use `--flannel-backend=none`       | 
+|   `--no-flannel`   |   N/A       |   Use `--flannel-backend=none`       |
 |   `--cluster-secret` value  |   `K3S_CLUSTER_SECRET`     |    Use `--token` |
 
 ### Node Labels and Taints for Agents

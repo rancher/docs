@@ -89,8 +89,6 @@ If you are using a custom cni plugin, i.e. a cni plugin different from flannel, 
 
 ### IPv6 only installation
 
-IPv6 only setup is supported on k3s v1.22 or above. Note that network policy enforcement is not supported on IPv6-only clusters when using the default flannel CNI. This is an example of a valid configuration:
+IPv6 only setup is supported on k3s v1.22 or above
 
-```
-k3s server --disable-network-policy
-```
+> **Warning:** If your IPv6 default route is set by a router advertisement (RA), you will need to set `net.ipv6.conf.all.accept_ra = 2`; otherwise, the node will drop the default route once it expires. Be aware that accepting RAs could increase the risk of [man-in-the-middle attacks](https://github.com/kubernetes/kubernetes/issues/91507).
