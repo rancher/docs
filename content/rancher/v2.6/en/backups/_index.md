@@ -49,7 +49,7 @@ The Backup and Restore custom resources can be created in the Rancher UI, or by 
 
 The `rancher-backup` operator can be installed from the Rancher UI, or with the Helm CLI. In both cases, the `rancher-backup` Helm chart is installed on the Kubernetes cluster running the Rancher server. It is a cluster-admin only feature and available only for the **local** cluster.  (*If you do not see `rancher-backup` in the Rancher UI, you may have selected the wrong cluster.*)
 
->**NOTE:** There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
+>**NOTE:** There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
 
 ### Installing rancher-backup with the Rancher UI
 

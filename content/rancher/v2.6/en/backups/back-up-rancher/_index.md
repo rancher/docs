@@ -31,7 +31,7 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 1. Configure the default storage location. For help, refer to the [storage configuration section.](../configuration/storage-config)
 1. Click **Install**.
 
->**NOTE:** There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
+>**NOTE:** There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
 
 ### 2. Perform a Backup
 
