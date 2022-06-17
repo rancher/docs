@@ -9,7 +9,7 @@ This section describes how to install a Kubernetes cluster according to our [bes
 
 Rancher can be installed on any Kubernetes cluster, including hosted Kubernetes providers.
 
-The steps to set up an air-gapped Kubernetes cluster on RKE or K3s are shown below.
+The steps to set up an air-gapped Kubernetes cluster on RKE, RKE2, or K3s are shown below.
 
 {{% tabs %}}
 {{% tab "K3s" %}}
