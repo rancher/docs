@@ -268,7 +268,7 @@ For more information about the `kubeconfig` file, refer to the [RKE2 documentati
 
 Upgrading an air-gap environment can be accomplished in the following manner:
 
-1. Download the new air-gap artefacts and install script from the [releases](https://github.com/rancher/rke2/releases) page for the version of RKE2 you will be upgrading to.
+1. Download the new air-gap artifacts and install script from the [releases](https://github.com/rancher/rke2/releases) page for the version of RKE2 you will be upgrading to.
 2. Run the script again just as you had done in the past with the same environment variables.
 3. Restart the RKE2 service.
 {{% /tab %}}
