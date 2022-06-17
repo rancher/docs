@@ -138,7 +138,7 @@ Upgrading an air-gap environment can be accomplished in the following manner:
 {{% /tab %}}
 {{% tab "RKE2" %}}
 
-In this guide, we are assuming you have created your nodes in your air gapped environment and have a secure Docker private registry on your bastion server.
+In this guide, we are assuming you have created your nodes in your air-gapped environment and have a secure Docker private registry on your bastion server.
 
 ### Installation Outline
 
