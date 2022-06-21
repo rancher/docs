@@ -51,7 +51,7 @@ If you will use ARM64 hosts, the registry must support manifests. As of April 20
 
 ### B. Collect all the required images (For Kubernetes Installs using Rancher Generated Self-Signed Certificate)
 
-In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://artifacthub.io/packages/helm/cert-manager/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
@@ -215,7 +215,7 @@ The workstation must have Docker 18.02+ in order to support manifests, which are
 
 ### B. Collect all the required images
 
-**For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
+**For Kubernetes Installs using Rancher Generated Self-Signed Certificate:** In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://artifacthub.io/packages/helm/cert-manager/cert-manager) image to `rancher-images.txt` as well. You skip this step if you are using you using your own certificates.
 
    1. Fetch the latest `cert-manager` Helm chart and parse the template for image details:
       > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/upgrading-cert-manager/).
