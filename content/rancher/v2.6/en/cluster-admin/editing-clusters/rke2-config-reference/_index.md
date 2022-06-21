@@ -17,7 +17,7 @@ This section covers the configuration options that are available in Rancher for 
 You can configure the Kubernetes options in one of the two following ways:
 
 - [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set all the [options](https://docs.rke2.io/install/install_options/install_options) available for an RKE2 installation.
+- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set many additional [options](https://docs.rke2.io/install/install_options/install_options) available for an RKE2 installation.
 
 # Editing Clusters with a Form in the Rancher UI
 
