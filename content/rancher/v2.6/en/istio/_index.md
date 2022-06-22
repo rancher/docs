@@ -28,6 +28,7 @@ Istio needs to be set up by a `cluster-admin` before it can be used in a project
 - [Accessing Visualizations](#accessing-visualizations)
 - [Architecture](#architecture)
 - [Additional steps for installing Istio on an RKE2 cluster](#additional-steps-for-installing-istio-on-an-rke2-cluster)
+- [Upgrading Istio in an Air-Gapped Environment](#upgrading-istio-in-an-air-gapped-environment)
 
 # What's New in Rancher v2.5
 
@@ -64,8 +65,6 @@ Note that this is not a production-qualified deployment of Jaeger. This deployme
 Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough [CPU and memory]({{<baseurl>}}/rancher/v2.6/en/istio/resources) to run all of the components of Istio.
 
 If you are installing Istio on RKE2 cluster, some additional steps are required. For details, see [this section.](#additional-steps-for-installing-istio-on-an-rke2-cluster)
-
-Note that Istio v2 (upstream Istio v1.7+) cannot be upgraded in an air gapped environment.
 
 # Setup Guide
 
@@ -132,3 +131,13 @@ By default the Egress gateway is disabled, but can be enabled on install or upgr
 # Additional Steps for Installing Istio on an RKE2 Cluster
 
 To install Istio on an RKE2 cluster, follow the steps in [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/rke2/)
+
+# Upgrading Istio in an Air-Gapped Environment
+
+In Rancher v2.6.x, Istio may be upgraded in an air-gapped environment.
+
+The Istio pod security policy is now enabled by default, and a new value, `installer.releaseMirror.enabled`, has been added to the rancher-istio chart to enable and disable the server that supports air-gapped upgrades. 
+
+><b>Important:</b> `installer.releaseMirror.enabled` is set to `false` by default. As such, you will need to set the value `installer.releaseMirror.enabled=true` in the values.yaml to allow for the upgrade.
+
+**_Please note that in 2.5.x, Istio cannot be upgraded in an air-gapped environment._** 
