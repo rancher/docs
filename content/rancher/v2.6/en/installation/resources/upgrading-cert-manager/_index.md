@@ -15,13 +15,7 @@ To address these changes, this guide will do two things:
 1. Explain the cert-manager API changes and link to cert-manager's official documentation for migrating your data
 
 > **Important:**
-> If you are currently running the cert-manager whose version is 1.5 or below, and want to upgrade both Rancher and cert-manager to a new version (1.6+ in the case of cert-manager), then you need to re-install both Rancher and cert-manager due to the API change in cert-manager 1.6. This will also be necessary if you are upgrading from a version of cert manager below 0.11 to a version of cert-manager above 0.11. Follow the steps below:
-
-> 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
-> 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
-> 3. Install the newer version of Rancher and cert-manager 
-
-> The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
+> If you are upgrading cert-manager to the latest version from a version older than 1.5, follow the steps in [Option C](#option-c-upgrade-to-new-cert-manager-from-versions-15-and-below) below to do so. Note that you do not need to reinstall Rancher to perform this upgrade.
 
 # Upgrade Cert-Manager
 
@@ -98,7 +92,7 @@ In order to upgrade cert-manager, follow these instructions:
 
 {{% /accordion %}}
 
-### Option B: Upgrade cert-manager in an Air Gap Environment
+### Option B: Upgrade cert-manager in an Air-Gapped Environment
 
 {{% accordion id="airgap" label="Click to expand" %}}
 
@@ -202,6 +196,24 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     ```plain
     kubectl apply -f cert-manager-backup.yaml
     ```
+
+{{% /accordion %}}
+
+### Option C: Upgrade cert-manager from Versions 1.5 and Below
+
+{{% accordion id="normal" label="Click to expand" %}}
+
+Previously, in order to upgrade cert-manager from a much older version, an uninstall and reinstall of Rancher was required. Using the method below, you may upgrade cert-manager without those additional steps in order to better preserve your production environment:
+
+1. Install the cert-manager CLI tool, `cmctl`, using [these docs](https://cert-manager.io/docs/usage/cmctl/#installation).
+
+2. Run `cmctl upgrade migrate-api-version` to ensure that all cert-manager CRs stored in etcd are v1. Refer to the [API version migration docs](https://cert-manager.io/docs/usage/cmctl/#migrate-api-version) for more. Please also see the [docs to upgrade from 1.5 to 1.6](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/) and the [docs to upgrade from 1.6. to 1.7](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/) if needed.
+
+3. Upgrade cert-manager to v1.7.1 with a normal `helm upgrade`. You may go directly from version 1.5 to 1.7 if desired.
+
+4. Follow the Helm tutorial to [update the API version of a release manifest](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest). You will use `release_name=rancher` and `release_namespace=cattle-system`. In the decoded file, search for `cert-manager.io/v1beta1` and **replace it** with `cert-manager.io/v1`.
+
+5. Upgrade Rancher normally with `helm upgrade`.
 
 {{% /accordion %}}
 
