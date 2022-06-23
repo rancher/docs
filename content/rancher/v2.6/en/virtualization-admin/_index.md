@@ -3,10 +3,20 @@ title: Harvester Integration
 weight: 10
 ---
 
-##### _Tech Preview_
+Introduced in Rancher v2.6.1, [Harvester](https://docs.harvesterhci.io/) is an open-source hyper-converged infrastructure (HCI) software built on Kubernetes. Harvester installs on bare metal server clusters and provides integrated virtualization and distributed storage capabilities. Although Harvester operates using Kubernetes, it does not require users to know Kubernetes concepts, making it a more user-friendly application.
 
-New in Rancher v2.6.1, [Harvester v0.3.0](https://docs.harvesterhci.io/v0.3/) is an open-source hyper-converged infrastructure (HCI) software built on Kubernetes. Harvester installs on bare metal server clusters and provides integrated virtualization and distributed storage capabilities. Although Harvester operates using Kubernetes, it does not require users to know Kubernetes concepts, making it a more user-friendly application.
+---
+**_New in v2.6.3_**
 
+- Support is available in an air-gapped environment for both the Harvester single cluster and the Rancher Harvester node driver.
+
+- One-click upgrade will be supported from v1.0.0 to future versions.
+
+    >**Note:** Upgrading from v1.0.0 to future versions might require shutting down the VMs during the upgrade process.
+
+- A manual upgrade process from v0.3.0 to v1.0.0 is currently being developed. The upgrade documentation will be released on the [docs website](https://docs.harvesterhci.io/) once it's ready.
+
+---
 ### Feature Flag
 
 The Harvester feature flag is used to manage access to the Virtualization Management (VM) page in Rancher where users can navigate directly to Harvester clusters and access the Harvester UI. The Harvester feature flag is enabled by default. Click [here]({{<baseurl>}}/rancher/v2.6/en/installation/resources/feature-flags/) for more information on feature flags in Rancher.
@@ -31,5 +41,5 @@ Click [here]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/#node-drivers)
 
 ### Limitations
 
-* Harvester v0.3.0 doesn't support air gap environment installation.
-* Harvester v0.3.0 doesn't support upgrade from v0.2.0 nor upgrade to future v1.0.0.
+- Harvester v0.3.0 doesn’t support air-gapped environment installation.
+- Harvester v0.3.0 doesn’t support upgrade from v0.2.0 nor upgrade to future v1.0.0.
