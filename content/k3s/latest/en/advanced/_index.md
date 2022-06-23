@@ -479,7 +479,7 @@ openssl req -x509 -new -nodes -key server-ca.key -sha256 -days 3560 -out server-
 openssl req -x509 -new -nodes -key request-header-ca.key -sha256 -days 3560 -out request-header-ca.crt -addext keyUsage=critical,digitalSignature,keyEncipherment,keyCertSign -subj '/CN=k3s-request-header-ca'
 ```
 
-## Hashicorp Vault
+## HashiCorp Vault
 
 This example uses an existing self-signed PKI infrastructure in [Hashicorp Vault](https://www.vaultproject.io/) to generate intermediate CAs.
 
