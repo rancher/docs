@@ -26,9 +26,9 @@ services:
         cluster-name: "mycluster"
 ```
 
-#### Defining Additional Arguments Manually
+#### Lack of Additional Logic in Additional Arguments
 
-- It is possible for users to add additional arguments on the default Kubernetes services in the RKE cluster configuation YAML. RKE will add these arguments to the components **without** any additional logic, however. 
+- RKE will add additional arguments to the Kubernetes cluster components **without** any additional logic. 
 
 - Because no additional logic is added when `extra_args` are added to services, users **must** perform any additional steps necessary manually to ensure these changes are compatible with RKE.
 
