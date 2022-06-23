@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/do-node-template-config",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/do-node-template-config",
+  "title": "DigitalOcean Node Template Configuration",
+  "description": "-",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/do-node-template-config.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/do-node-template-config.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "DigitalOcean Node Template Configuration",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a DigitalOcean Cluster",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/"
+  },
+  "next": {
+    "title": "Creating an Amazon EC2 Cluster",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/ec2/"
+  }
+}

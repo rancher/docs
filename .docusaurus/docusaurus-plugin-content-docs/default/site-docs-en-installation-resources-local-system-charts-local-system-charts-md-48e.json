@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/resources/local-system-charts/local-system-charts",
+  "id": "en/installation/resources/local-system-charts/local-system-charts",
+  "title": "Setting up Local System Charts for Air Gapped Installations",
+  "description": "The System Charts repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.",
+  "source": "@site/docs/en/installation/resources/local-system-charts/local-system-charts.md",
+  "sourceDirName": "en/installation/resources/local-system-charts",
+  "slug": "/en/installation/resources/local-system-charts/",
+  "permalink": "/en/en/installation/resources/local-system-charts/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/resources/local-system-charts/local-system-charts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Local System Charts for Air Gapped Installations",
+    "weight": 120
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up a MySQL Database in Amazon RDS",
+    "permalink": "/en/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/"
+  },
+  "next": {
+    "title": "Adding TLS Secrets",
+    "permalink": "/en/en/installation/resources/tls-secrets/"
+  }
+}

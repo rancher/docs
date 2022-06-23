@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/nginx",
+  "id": "version-2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/nginx",
+  "title": "Setting up an NGINX Load Balancer",
+  "description": "NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/nginx.md",
+  "sourceDirName": "v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx",
+  "slug": "/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/",
+  "permalink": "/2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/nginx.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up an NGINX Load Balancer",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/nginx",
+      "/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Set up Infrastructure for a High Availability RKE2 Kubernetes Cluster",
+    "permalink": "/2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-rke2-ha/"
+  },
+  "next": {
+    "title": "Setting up Amazon ELB Network Load Balancer",
+    "permalink": "/2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nlb/"
+  }
+}

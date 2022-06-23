@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/istio/configuration-reference/canal-and-project-network/canal-and-project-network",
+  "id": "en/istio/configuration-reference/canal-and-project-network/canal-and-project-network",
+  "title": "Additional Steps for Project Network Isolation",
+  "description": "In clusters where:",
+  "source": "@site/docs/en/istio/configuration-reference/canal-and-project-network/canal-and-project-network.md",
+  "sourceDirName": "en/istio/configuration-reference/canal-and-project-network",
+  "slug": "/en/istio/configuration-reference/canal-and-project-network/",
+  "permalink": "/en/en/istio/configuration-reference/canal-and-project-network/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/istio/configuration-reference/canal-and-project-network/canal-and-project-network.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Additional Steps for Project Network Isolation",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuration Options",
+    "permalink": "/en/en/istio/configuration-reference/"
+  },
+  "next": {
+    "title": "Enable Istio with Pod Security Policies",
+    "permalink": "/en/en/istio/configuration-reference/enable-istio-with-psp/"
+  }
+}

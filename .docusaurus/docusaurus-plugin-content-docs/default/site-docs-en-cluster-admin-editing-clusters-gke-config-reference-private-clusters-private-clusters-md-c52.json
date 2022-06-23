@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/private-clusters",
+  "id": "en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/private-clusters",
+  "title": "Private Clusters",
+  "description": "In GKE, private clusters are clusters whose nodes are isolated from inbound and outbound traffic by assigning them internal IP addresses only. Private clusters in GKE have the option of exposing the control plane endpoint as a publicly accessible address or as a private address. This is different from other Kubernetes providers, which may refer to clusters with private control plane endpoints as \"private clusters\" but still allow traffic to and from nodes. You may want to create a cluster with private nodes, with or without a public control plane endpoint, depending on your organization's networking and security requirements. A GKE cluster provisioned from Rancher can use isolated nodes by selecting \"Private Cluster\" in the Cluster Options (under \"Show advanced options\"). The control plane endpoint can optionally be made private by selecting \"Enable Private Endpoint\".",
+  "source": "@site/docs/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/private-clusters.md",
+  "sourceDirName": "en/cluster-admin/editing-clusters/gke-config-reference/private-clusters",
+  "slug": "/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/",
+  "permalink": "/en/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/private-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Private Clusters",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "GKE Cluster Configuration Reference",
+    "permalink": "/en/en/cluster-admin/editing-clusters/gke-config-reference/"
+  },
+  "next": {
+    "title": "K3s Cluster Configuration Reference",
+    "permalink": "/en/en/cluster-admin/editing-clusters/k3s-config-reference/"
+  }
+}

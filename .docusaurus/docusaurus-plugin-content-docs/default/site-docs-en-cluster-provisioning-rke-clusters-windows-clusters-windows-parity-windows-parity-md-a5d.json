@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/windows-clusters/windows-parity/windows-parity",
+  "id": "en/cluster-provisioning/rke-clusters/windows-clusters/windows-parity/windows-parity",
+  "title": "Windows and Linux Cluster Feature Parity",
+  "description": "Windows clusters do not share the same feature support as Linux clusters.",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/windows-clusters/windows-parity/windows-parity.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/windows-clusters/windows-parity",
+  "slug": "/en/cluster-provisioning/rke-clusters/windows-clusters/windows-parity/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/windows-clusters/windows-parity/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/windows-clusters/windows-parity/windows-parity.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Windows and Linux Cluster Feature Parity",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Networking Requirements for Host Gateway (L2bridge)",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/"
+  },
+  "next": {
+    "title": "Contributing to Rancher",
+    "permalink": "/en/en/contributing/"
+  }
+}

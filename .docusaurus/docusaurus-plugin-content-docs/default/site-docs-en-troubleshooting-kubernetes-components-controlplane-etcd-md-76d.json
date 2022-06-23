@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/troubleshooting/kubernetes-components/controlplane/etcd",
+  "id": "en/troubleshooting/kubernetes-components/controlplane/etcd",
+  "title": "Troubleshooting Controlplane Nodes",
+  "description": "This section applies to nodes with the controlplane role.",
+  "source": "@site/docs/en/troubleshooting/kubernetes-components/controlplane/etcd.md",
+  "sourceDirName": "en/troubleshooting/kubernetes-components/controlplane",
+  "slug": "/en/troubleshooting/kubernetes-components/controlplane/etcd",
+  "permalink": "/en/en/troubleshooting/kubernetes-components/controlplane/etcd",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/troubleshooting/kubernetes-components/controlplane/etcd.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting Controlplane Nodes",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Components",
+    "permalink": "/en/en/troubleshooting/kubernetes-components/"
+  },
+  "next": {
+    "title": "Troubleshooting etcd Nodes",
+    "permalink": "/en/en/troubleshooting/kubernetes-components/etcd/"
+  }
+}

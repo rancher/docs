@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/project-admin/project-members/project-members",
+  "id": "en/project-admin/project-members/project-members",
+  "title": "Adding Users to Projects",
+  "description": "If you want to provide a user with access and permissions to specific projects and resources within a cluster, assign the user a project membership.",
+  "source": "@site/docs/en/project-admin/project-members/project-members.md",
+  "sourceDirName": "en/project-admin/project-members",
+  "slug": "/en/project-admin/project-members/",
+  "permalink": "/en/en/project-admin/project-members/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/project-admin/project-members/project-members.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Adding Users to Projects",
+    "weight": 2505
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Pod Security Policies",
+    "permalink": "/en/en/project-admin/pod-security-policies/"
+  },
+  "next": {
+    "title": "Project Resource Quotas",
+    "permalink": "/en/en/project-admin/resource-quotas/"
+  }
+}

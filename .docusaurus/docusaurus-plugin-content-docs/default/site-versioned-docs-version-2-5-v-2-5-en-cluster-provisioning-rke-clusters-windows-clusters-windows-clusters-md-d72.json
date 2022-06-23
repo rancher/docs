@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/windows-clusters",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/windows-clusters",
+  "title": "Launching Kubernetes on Windows Clusters",
+  "description": "When provisioning a custom cluster using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to install Kubernetes on your existing nodes.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/windows-clusters.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/windows-clusters",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/windows-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes on Windows Clusters",
+    "weight": 2240,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Agents",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/rancher-agents/"
+  },
+  "next": {
+    "title": "Configuration for Storage Classes in Azure",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/windows-clusters/azure-storageclass/"
+  }
+}

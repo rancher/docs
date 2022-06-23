@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/admin-settings/authentication/azure-ad/azure-ad",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/azure-ad/azure-ad",
+  "title": "Configuring Azure AD",
+  "description": "Available as of v2.0.3",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/azure-ad/azure-ad.md",
+  "sourceDirName": "v2.0-v2.4/en/admin-settings/authentication/azure-ad",
+  "slug": "/v2.0-v2.4/en/admin-settings/authentication/azure-ad/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/azure-ad/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/azure-ad/azure-ad.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Azure AD",
+    "weight": 1115,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/global-configuration/authentication/azure-ad/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring Active Directory (AD)",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/ad/"
+  },
+  "next": {
+    "title": "Configuring FreeIPA",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/freeipa/"
+  }
+}

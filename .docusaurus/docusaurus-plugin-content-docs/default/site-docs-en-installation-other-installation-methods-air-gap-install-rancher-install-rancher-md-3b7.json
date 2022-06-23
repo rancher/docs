@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/other-installation-methods/air-gap/install-rancher/install-rancher",
+  "id": "en/installation/other-installation-methods/air-gap/install-rancher/install-rancher",
+  "title": "4. Install Rancher",
+  "description": "This section is about how to deploy Rancher for your air gapped environment in a high-availability Kubernetes installation. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.",
+  "source": "@site/docs/en/installation/other-installation-methods/air-gap/install-rancher/install-rancher.md",
+  "sourceDirName": "en/installation/other-installation-methods/air-gap/install-rancher",
+  "slug": "/en/installation/other-installation-methods/air-gap/install-rancher/",
+  "permalink": "/en/en/installation/other-installation-methods/air-gap/install-rancher/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/other-installation-methods/air-gap/install-rancher/install-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "4. Install Rancher",
+    "weight": 400
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Air Gapped Helm CLI Install",
+    "permalink": "/en/en/installation/other-installation-methods/air-gap/"
+  },
+  "next": {
+    "title": "Docker Install Commands",
+    "permalink": "/en/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/"
+  }
+}

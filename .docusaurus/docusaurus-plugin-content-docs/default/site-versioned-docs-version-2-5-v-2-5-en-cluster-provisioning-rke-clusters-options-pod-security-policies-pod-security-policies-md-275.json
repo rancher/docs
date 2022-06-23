@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/options/pod-security-policies/pod-security-policies",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/options/pod-security-policies/pod-security-policies",
+  "title": "Assigning Pod Security Policies",
+  "description": "Pod Security Policies are objects that control security-sensitive aspects of pod specification (like root privileges).",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/options/pod-security-policies/pod-security-policies.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/options/pod-security-policies",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/options/pod-security-policies/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/options/pod-security-policies/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/options/pod-security-policies/pod-security-policies.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Assigning Pod Security Policies",
+    "weight": 2260,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/options/pod-security-policies/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE Cluster Configuration Reference",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/options/"
+  },
+  "next": {
+    "title": "Rancher Agents",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/rancher-agents/"
+  }
+}

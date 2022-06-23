@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/rancherd-configuration",
+  "id": "version-2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/rancherd-configuration",
+  "title": "RancherD Configuration Reference",
+  "description": "Note: RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/rancherd-configuration.md",
+  "sourceDirName": "v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration",
+  "slug": "/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/",
+  "permalink": "/2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/rancherd-configuration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RancherD Configuration Reference",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/installation/install-rancher-on-linux/rancherd-configuration",
+      "/rancher/v2.x/en/installation/install-rancher-on-linux/rancherd-configuration/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Install/Upgrade Rancher with RancherD",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/"
+  },
+  "next": {
+    "title": "Rollbacks",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rollbacks/"
+  }
+}

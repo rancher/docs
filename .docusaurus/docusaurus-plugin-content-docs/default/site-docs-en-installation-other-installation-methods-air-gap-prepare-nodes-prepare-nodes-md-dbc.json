@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/other-installation-methods/air-gap/prepare-nodes/prepare-nodes",
+  "id": "en/installation/other-installation-methods/air-gap/prepare-nodes/prepare-nodes",
+  "title": "1. Set up Infrastructure and Private Registry",
+  "description": "In this section, you will provision the underlying infrastructure for your Rancher management server in an air gapped environment. You will also set up the private Docker registry that must be available to your Rancher node(s).",
+  "source": "@site/docs/en/installation/other-installation-methods/air-gap/prepare-nodes/prepare-nodes.md",
+  "sourceDirName": "en/installation/other-installation-methods/air-gap/prepare-nodes",
+  "slug": "/en/installation/other-installation-methods/air-gap/prepare-nodes/",
+  "permalink": "/en/en/installation/other-installation-methods/air-gap/prepare-nodes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/other-installation-methods/air-gap/prepare-nodes/prepare-nodes.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Set up Infrastructure and Private Registry",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "permalink": "/en/en/installation/other-installation-methods/air-gap/populate-private-registry/"
+  },
+  "next": {
+    "title": "Installing Rancher behind an HTTP Proxy",
+    "permalink": "/en/en/installation/other-installation-methods/behind-proxy/"
+  }
+}

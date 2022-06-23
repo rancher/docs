@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/installation/installation",
+  "id": "version-2.5/v2.5/en/installation/installation",
+  "title": "Installing/Upgrading Rancher",
+  "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/installation.md",
+  "sourceDirName": "v2.5/en/installation",
+  "slug": "/v2.5/en/installation/",
+  "permalink": "/2.5/v2.5/en/installation/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/installation.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing/Upgrading Rancher",
+    "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.5/en/installation/how-ha-works/",
+      "/rancher/v2.x/en/installation/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Helm Charts in Rancher",
+    "permalink": "/2.5/v2.5/en/helm-charts/"
+  },
+  "next": {
+    "title": "Install/Upgrade Rancher on a Kubernetes Cluster",
+    "permalink": "/2.5/v2.5/en/installation/install-rancher-on-k8s/"
+  }
+}

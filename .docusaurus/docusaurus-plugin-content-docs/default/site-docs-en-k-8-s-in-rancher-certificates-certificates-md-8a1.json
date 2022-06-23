@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/k8s-in-rancher/certificates/certificates",
+  "id": "en/k8s-in-rancher/certificates/certificates",
+  "title": "Encrypting HTTP Communication",
+  "description": "Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate",
+  "source": "@site/docs/en/k8s-in-rancher/certificates/certificates.md",
+  "sourceDirName": "en/k8s-in-rancher/certificates",
+  "slug": "/en/k8s-in-rancher/certificates/",
+  "permalink": "/en/en/k8s-in-rancher/certificates/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/k8s-in-rancher/certificates/certificates.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Encrypting HTTP Communication",
+    "description": "Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate",
+    "weight": 3060
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Resources",
+    "permalink": "/en/en/k8s-in-rancher/"
+  },
+  "next": {
+    "title": "ConfigMaps",
+    "permalink": "/en/en/k8s-in-rancher/configmaps/"
+  }
+}

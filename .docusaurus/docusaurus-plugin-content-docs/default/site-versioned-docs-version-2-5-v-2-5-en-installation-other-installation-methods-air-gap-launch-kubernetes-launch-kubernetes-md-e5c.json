@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/launch-kubernetes",
+  "id": "version-2.5/v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/launch-kubernetes",
+  "title": "3. Install Kubernetes (Skip for Docker Installs)",
+  "description": "Skip this section if you are installing Rancher on a single node with Docker.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/launch-kubernetes.md",
+  "sourceDirName": "v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes",
+  "slug": "/v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/",
+  "permalink": "/2.5/v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/launch-kubernetes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "3. Install Kubernetes (Skip for Docker Installs)",
+    "weight": 300,
+    "aliases": [
+      "/rancher/v2.5/en/installation/air-gap-high-availability/install-kube",
+      "/rancher/v2.x/en/installation/other-installation-methods/air-gap/launch-kubernetes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker Install Commands",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/"
+  },
+  "next": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/air-gap/populate-private-registry/"
+  }
+}

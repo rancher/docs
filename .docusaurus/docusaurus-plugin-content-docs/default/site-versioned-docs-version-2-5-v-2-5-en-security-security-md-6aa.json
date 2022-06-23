@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/security/security",
+  "id": "version-2.5/v2.5/en/security/security",
+  "title": "Security",
+  "description": "Security policy",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/security/security.md",
+  "sourceDirName": "v2.5/en/security",
+  "slug": "/v2.5/en/security/",
+  "permalink": "/2.5/v2.5/en/security/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/security/security.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security",
+    "weight": 20,
+    "aliases": [
+      "/rancher/v2.x/en/security/rancher-2.5/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Workload with NodePort Quick Start",
+    "permalink": "/2.5/v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/"
+  },
+  "next": {
+    "title": "Kubernetes Security Best Practices",
+    "permalink": "/2.5/v2.5/en/security/best-practices/"
+  }
+}

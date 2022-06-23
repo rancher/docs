@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/istio/setup/setup",
+  "id": "en/istio/setup/setup",
+  "title": "Setup Guide",
+  "description": "This section describes how to enable Istio and start using it in your projects.",
+  "source": "@site/docs/en/istio/setup/setup.md",
+  "sourceDirName": "en/istio/setup",
+  "slug": "/en/istio/setup/",
+  "permalink": "/en/en/istio/setup/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/istio/setup/setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setup Guide",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CPU and Memory Allocations",
+    "permalink": "/en/en/istio/resources/"
+  },
+  "next": {
+    "title": "3. Add Deployments and Services with the Istio Sidecar",
+    "permalink": "/en/en/istio/setup/deploy-workloads/"
+  }
+}

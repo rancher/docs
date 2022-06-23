@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/monitoring-alerting/configuration/receiver/receiver",
+  "id": "en/monitoring-alerting/configuration/receiver/receiver",
+  "title": "Receiver Configuration",
+  "description": "The Alertmanager Config Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.",
+  "source": "@site/docs/en/monitoring-alerting/configuration/receiver/receiver.md",
+  "sourceDirName": "en/monitoring-alerting/configuration/receiver",
+  "slug": "/en/monitoring-alerting/configuration/receiver/",
+  "permalink": "/en/en/monitoring-alerting/configuration/receiver/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/configuration/receiver/receiver.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Receiver Configuration",
+    "shortTitle": "Receivers",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Helm Chart Options",
+    "permalink": "/en/en/monitoring-alerting/configuration/helm-chart-options/"
+  },
+  "next": {
+    "title": "Route Configuration",
+    "permalink": "/en/en/monitoring-alerting/configuration/route/"
+  }
+}

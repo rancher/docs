@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/admin-settings/authentication/user-groups/user-groups",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/user-groups/user-groups",
+  "title": "Users and Groups",
+  "description": "Rancher relies on users and groups to determine who is allowed to log in to Rancher and which resources they can access. When you configure an external authentication provider, users from that provider will be able to log in to your Rancher server. When a user logs in, the authentication provider will supply your Rancher server with a list of groups to which the user belongs.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/user-groups/user-groups.md",
+  "sourceDirName": "v2.0-v2.4/en/admin-settings/authentication/user-groups",
+  "slug": "/v2.0-v2.4/en/admin-settings/authentication/user-groups/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/user-groups/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/user-groups/user-groups.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Users and Groups",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Group Permissions with Shibboleth and OpenLDAP",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/shibboleth/about/"
+  },
+  "next": {
+    "title": "Configuring a Global Default Private Registry",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/config-private-registry/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/monitoring-alerting/guides/migrating/migrating",
+  "id": "en/monitoring-alerting/guides/migrating/migrating",
+  "title": "Migrating to Rancher v2.5+ Monitoring",
+  "description": "If you previously enabled Monitoring, Alerting, or Notifiers in Rancher before v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.",
+  "source": "@site/docs/en/monitoring-alerting/guides/migrating/migrating.md",
+  "sourceDirName": "en/monitoring-alerting/guides/migrating",
+  "slug": "/en/monitoring-alerting/guides/migrating/",
+  "permalink": "/en/en/monitoring-alerting/guides/migrating/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/guides/migrating/migrating.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating to Rancher v2.5+ Monitoring",
+    "weight": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Debugging High Memory Usage",
+    "permalink": "/en/en/monitoring-alerting/guides/memory-usage/"
+  },
+  "next": {
+    "title": "Setting up Monitoring for a Workload",
+    "permalink": "/en/en/monitoring-alerting/guides/monitoring-workloads/"
+  }
+}

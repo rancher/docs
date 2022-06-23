@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/monitoring-alerting/guides/persist-grafana/persist-grafana",
+  "id": "version-2.5/v2.5/en/monitoring-alerting/guides/persist-grafana/persist-grafana",
+  "title": "Persistent Grafana Dashboards",
+  "description": "To allow the Grafana dashboard to persist after the Grafana instance restarts, add the dashboard configuration JSON into a ConfigMap. ConfigMaps also allow the dashboards to be deployed with a GitOps or CD based approach. This allows the dashboard to be put under version control.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/guides/persist-grafana/persist-grafana.md",
+  "sourceDirName": "v2.5/en/monitoring-alerting/guides/persist-grafana",
+  "slug": "/v2.5/en/monitoring-alerting/guides/persist-grafana/",
+  "permalink": "/2.5/v2.5/en/monitoring-alerting/guides/persist-grafana/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/guides/persist-grafana/persist-grafana.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Persistent Grafana Dashboards",
+    "weight": 6,
+    "aliases": [
+      "/rancher/v2.5/en/monitoring-alerting/persist-grafana",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/persist-grafana/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Monitoring for a Workload",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/guides/monitoring-workloads/"
+  },
+  "next": {
+    "title": "Uninstall Monitoring",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/guides/uninstall/"
+  }
+}

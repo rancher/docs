@@ -1,0 +1,38 @@
+{
+  "unversionedId": "v2.0-v2.4/en/backups/restore/k3s-restore/k3s-restore",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/backups/restore/k3s-restore/k3s-restore",
+  "title": "Restoring Rancher Installed on a K3s Kubernetes Cluster",
+  "description": "When Rancher is installed on a high-availability Kubernetes cluster, we recommend using an external database to store the cluster data.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/backups/restore/k3s-restore/k3s-restore.md",
+  "sourceDirName": "v2.0-v2.4/en/backups/restore/k3s-restore",
+  "slug": "/v2.0-v2.4/en/backups/restore/k3s-restore/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/restore/k3s-restore/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/backups/restore/k3s-restore/k3s-restore.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restoring Rancher Installed on a K3s Kubernetes Cluster",
+    "shortTitle": "K3s Installs",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/backups/restorations/k3s-restoration",
+      "/rancher/v2.0-v2.4/en/backups/restorations/k8s-restore/k3s-restore",
+      "/rancher/v2.0-v2.4/en/backups/legacy/restore/k8s-restore/k3s-restore/",
+      "/rancher/v2.0-v2.4/en/backups/legacy/restore/k3s-restore",
+      "/rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/restore/k3s-restore",
+      "/rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/k3s-restore/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restoring Backups—Docker Installs",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/restore/docker-restores/"
+  },
+  "next": {
+    "title": "Restoring Backups—Kubernetes installs",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/restore/rke-restore/"
+  }
+}

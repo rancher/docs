@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/best-practices/rancher-managed/rancher-managed",
+  "id": "version-2.5/v2.5/en/best-practices/rancher-managed/rancher-managed",
+  "title": "Best Practices for Rancher Managed Clusters",
+  "description": "Logging",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-managed/rancher-managed.md",
+  "sourceDirName": "v2.5/en/best-practices/rancher-managed",
+  "slug": "/v2.5/en/best-practices/rancher-managed/",
+  "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-managed/rancher-managed.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices for Rancher Managed Clusters",
+    "shortTitle": "Rancher Managed Clusters",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/best-practices/v2.5/rancher-managed",
+      "/rancher/v2.x/en/best-practices/v2.5/rancher-managed/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Best Practices Guide",
+    "permalink": "/2.5/v2.5/en/best-practices/"
+  },
+  "next": {
+    "title": "Tips for Setting Up Containers",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/containers/"
+  }
+}

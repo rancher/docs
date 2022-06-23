@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/faq/technical/technical",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/faq/technical/technical",
+  "title": "Technical",
+  "description": "How can I reset the administrator password?",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/faq/technical/technical.md",
+  "sourceDirName": "v2.0-v2.4/en/faq/technical",
+  "slug": "/v2.0-v2.4/en/faq/technical/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/technical/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/faq/technical/technical.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Technical",
+    "weight": 8006
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/security/"
+  },
+  "next": {
+    "title": "Telemetry",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/telemetry/"
+  }
+}

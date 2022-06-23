@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/admin-settings/rke-templates/template-access-and-sharing/template-access-and-sharing",
+  "id": "en/admin-settings/rke-templates/template-access-and-sharing/template-access-and-sharing",
+  "title": "Access and Sharing",
+  "description": "If you are an RKE template owner, you can share it with users or groups of users, who can then use the template to create clusters.",
+  "source": "@site/docs/en/admin-settings/rke-templates/template-access-and-sharing/template-access-and-sharing.md",
+  "sourceDirName": "en/admin-settings/rke-templates/template-access-and-sharing",
+  "slug": "/en/admin-settings/rke-templates/template-access-and-sharing/",
+  "permalink": "/en/en/admin-settings/rke-templates/template-access-and-sharing/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/admin-settings/rke-templates/template-access-and-sharing/template-access-and-sharing.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Access and Sharing",
+    "weight": 31
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE Templates and Infrastructure",
+    "permalink": "/en/en/admin-settings/rke-templates/rke-templates-and-hardware/"
+  },
+  "next": {
+    "title": "API",
+    "permalink": "/en/en/api/"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "unversionedId": "v2.6/en/installation/requirements/ports/common-ports-table/index",
+  "id": "v2.6/en/installation/requirements/ports/common-ports-table/index",
+  "title": "index",
+  "description": "| Protocol \t|       Port       \t| Description                                     \t                                |",
+  "source": "@site/docs/v2.6/en/installation/requirements/ports/common-ports-table/index.md",
+  "sourceDirName": "v2.6/en/installation/requirements/ports/common-ports-table",
+  "slug": "/v2.6/en/installation/requirements/ports/common-ports-table/",
+  "permalink": "/v2.6/v2.6/en/installation/requirements/ports/common-ports-table/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6/en/installation/requirements/ports/common-ports-table/index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "headless": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "index",
+    "permalink": "/v2.6/v2.6/en/cluster-provisioning/cluster-capabilities-table/"
+  },
+  "next": {
+    "title": "Rancher 2.6",
+    "permalink": "/v2.6/"
+  }
+}

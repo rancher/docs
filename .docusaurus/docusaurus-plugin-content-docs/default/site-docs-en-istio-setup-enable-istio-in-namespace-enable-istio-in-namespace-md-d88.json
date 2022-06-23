@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/istio/setup/enable-istio-in-namespace/enable-istio-in-namespace",
+  "id": "en/istio/setup/enable-istio-in-namespace/enable-istio-in-namespace",
+  "title": "2. Enable Istio in a Namespace",
+  "description": "You will need to manually enable Istio in each namespace that you want to be tracked or controlled by Istio. When Istio is enabled in a namespace, the Envoy sidecar proxy will be automatically injected into all new workloads that are deployed in the namespace.",
+  "source": "@site/docs/en/istio/setup/enable-istio-in-namespace/enable-istio-in-namespace.md",
+  "sourceDirName": "en/istio/setup/enable-istio-in-namespace",
+  "slug": "/en/istio/setup/enable-istio-in-namespace/",
+  "permalink": "/en/en/istio/setup/enable-istio-in-namespace/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/istio/setup/enable-istio-in-namespace/enable-istio-in-namespace.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Enable Istio in a Namespace",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Enable Istio in the Cluster",
+    "permalink": "/en/en/istio/setup/enable-istio-in-cluster/"
+  },
+  "next": {
+    "title": "4. Set up the Istio Gateway",
+    "permalink": "/en/en/istio/setup/gateway/"
+  }
+}

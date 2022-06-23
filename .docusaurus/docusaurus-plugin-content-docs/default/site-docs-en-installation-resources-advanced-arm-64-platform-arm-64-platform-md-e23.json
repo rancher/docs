@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/resources/advanced/arm64-platform/arm64-platform",
+  "id": "en/installation/resources/advanced/arm64-platform/arm64-platform",
+  "title": "Running on ARM64 (Experimental)",
+  "description": "Important:",
+  "source": "@site/docs/en/installation/resources/advanced/arm64-platform/arm64-platform.md",
+  "sourceDirName": "en/installation/resources/advanced/arm64-platform",
+  "slug": "/en/installation/resources/advanced/arm64-platform/",
+  "permalink": "/en/en/installation/resources/advanced/arm64-platform/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/resources/advanced/arm64-platform/arm64-platform.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Running on ARM64 (Experimental)",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enabling the API Audit Log to Record System Events",
+    "permalink": "/en/en/installation/resources/advanced/api-audit-log/"
+  },
+  "next": {
+    "title": "Tuning etcd for Large Installations",
+    "permalink": "/en/en/installation/resources/advanced/etcd/"
+  }
+}

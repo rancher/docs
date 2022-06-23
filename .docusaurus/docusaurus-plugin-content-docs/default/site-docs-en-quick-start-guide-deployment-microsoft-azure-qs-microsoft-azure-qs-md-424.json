@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs",
+  "id": "en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs",
+  "title": "Rancher Azure Quick Start Guide",
+  "description": "Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/docs/en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs.md",
+  "sourceDirName": "en/quick-start-guide/deployment/microsoft-azure-qs",
+  "slug": "/en/quick-start-guide/deployment/microsoft-azure-qs/",
+  "permalink": "/en/en/quick-start-guide/deployment/microsoft-azure-qs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Azure Quick Start Guide",
+    "description": "Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 115
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Hetzner Cloud Quick Start Guide",
+    "permalink": "/en/en/quick-start-guide/deployment/hetzner-cloud-qs/"
+  },
+  "next": {
+    "title": "Helm CLI Quick Start",
+    "permalink": "/en/en/quick-start-guide/deployment/quickstart-manual-setup/"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio/disabling-istio",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio/disabling-istio",
+  "title": "Disabling Istio",
+  "description": "This section describes how to disable Istio in a cluster, namespace, or workload.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio/disabling-istio.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio",
+  "slug": "/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio/disabling-istio.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Disabling Istio",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio",
+      "/rancher/v2.0-v2.4/en/istio/legacy/disabling-istio",
+      "/rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/disabling-istio",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/disabling-istio/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Istio",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/"
+  },
+  "next": {
+    "title": "Role-based Access Control",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/rbac/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cis-scans/skipped-tests/skipped-tests",
+  "id": "en/cis-scans/skipped-tests/skipped-tests",
+  "title": "Skipped and Not Applicable Tests",
+  "description": "This section lists the tests that are skipped in the permissive test profile for RKE.",
+  "source": "@site/docs/en/cis-scans/skipped-tests/skipped-tests.md",
+  "sourceDirName": "en/cis-scans/skipped-tests",
+  "slug": "/en/cis-scans/skipped-tests/",
+  "permalink": "/en/en/cis-scans/skipped-tests/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cis-scans/skipped-tests/skipped-tests.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Skipped and Not Applicable Tests",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Roles-based Access Control",
+    "permalink": "/en/en/cis-scans/rbac/"
+  },
+  "next": {
+    "title": "CLI with Rancher",
+    "permalink": "/en/en/cli/"
+  }
+}

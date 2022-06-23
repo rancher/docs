@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/load-balancers",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/load-balancers",
+  "title": "Layer 4 and Layer 7 Load Balancing",
+  "description": "Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer-7 Load Balancing. Learn about the support for each way in different deployments",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/load-balancers.md",
+  "sourceDirName": "v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers",
+  "slug": "/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/load-balancers.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Layer 4 and Layer 7 Load Balancing",
+    "description": "Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer-7 Load Balancing. Learn about the support for each way in different deployments",
+    "weight": 3041,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/concepts/load-balancing/",
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Ingresses to Your Project",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress/ingress/"
+  },
+  "next": {
+    "title": "Kubernetes Registry and Docker Registry",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/registries/"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/cce/cce",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/cce/cce",
+  "title": "Creating a Huawei CCE Cluster",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/cce/cce.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/cce",
+  "slug": "/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/cce/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/cce/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/cce/cce.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a Huawei CCE Cluster",
+    "shortTitle": "Huawei Cloud Kubernetes Service",
+    "weight": 2130
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an AKS Cluster",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/aks/"
+  },
+  "next": {
+    "title": "Creating an EKS Cluster",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/eks/"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/cluster-provisioning/hosted-kubernetes-clusters/aks/aks",
+  "id": "en/cluster-provisioning/hosted-kubernetes-clusters/aks/aks",
+  "title": "Creating an AKS Cluster",
+  "description": "You can use Rancher to create a cluster hosted in Microsoft Azure Kubernetes Service (AKS).",
+  "source": "@site/docs/en/cluster-provisioning/hosted-kubernetes-clusters/aks/aks.md",
+  "sourceDirName": "en/cluster-provisioning/hosted-kubernetes-clusters/aks",
+  "slug": "/en/cluster-provisioning/hosted-kubernetes-clusters/aks/",
+  "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/aks/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/hosted-kubernetes-clusters/aks/aks.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating an AKS Cluster",
+    "shortTitle": "Azure Kubernetes Service",
+    "weight": 2115
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an Aliyun ACK Cluster",
+    "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/ack/"
+  },
+  "next": {
+    "title": "Creating a Huawei CCE Cluster",
+    "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/cce/"
+  }
+}

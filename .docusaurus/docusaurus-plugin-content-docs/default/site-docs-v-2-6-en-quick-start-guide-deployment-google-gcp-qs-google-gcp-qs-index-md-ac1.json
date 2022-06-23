@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.6/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs_index",
+  "id": "v2.6/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs_index",
+  "title": "Rancher GCP Quick Start Guide",
+  "description": "Read this step by step Rancher GCP guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/docs/v2.6/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs_index.md",
+  "sourceDirName": "v2.6/en/quick-start-guide/deployment/google-gcp-qs",
+  "slug": "/v2.6/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs_index",
+  "permalink": "/v2.6/v2.6/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher GCP Quick Start Guide",
+    "description": "Read this step by step Rancher GCP guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 130
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Equinix Metal Quick Start",
+    "permalink": "/v2.6/v2.6/en/quick-start-guide/deployment/equinix-metal-qs/equinix-metal-qs_index"
+  },
+  "next": {
+    "title": "Rancher Hetzner Cloud Quick Start Guide",
+    "permalink": "/v2.6/v2.6/en/quick-start-guide/deployment/hetzner-cloud-qs/hetzner-cloud-qs_index"
+  }
+}

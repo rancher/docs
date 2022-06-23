@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/admin-settings/rke-templates/rke-templates-and-hardware/rke-templates-and-hardware",
+  "id": "version-2.5/v2.5/en/admin-settings/rke-templates/rke-templates-and-hardware/rke-templates-and-hardware",
+  "title": "RKE Templates and Infrastructure",
+  "description": "In Rancher, RKE templates are used to provision Kubernetes and define Rancher settings, while node templates are used to provision nodes.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/admin-settings/rke-templates/rke-templates-and-hardware/rke-templates-and-hardware.md",
+  "sourceDirName": "v2.5/en/admin-settings/rke-templates/rke-templates-and-hardware",
+  "slug": "/v2.5/en/admin-settings/rke-templates/rke-templates-and-hardware/",
+  "permalink": "/2.5/v2.5/en/admin-settings/rke-templates/rke-templates-and-hardware/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/admin-settings/rke-templates/rke-templates-and-hardware/rke-templates-and-hardware.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Templates and Infrastructure",
+    "weight": 90,
+    "aliases": [
+      "/rancher/v2.x/en/admin-settings/rke-templates/rke-templates-and-hardware/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Overriding Template Settings",
+    "permalink": "/2.5/v2.5/en/admin-settings/rke-templates/overrides/"
+  },
+  "next": {
+    "title": "Access and Sharing",
+    "permalink": "/2.5/v2.5/en/admin-settings/rke-templates/template-access-and-sharing/"
+  }
+}

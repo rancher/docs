@@ -1,0 +1,36 @@
+{
+  "unversionedId": "v2.5/en/installation/resources/advanced/single-node-install-external-lb/single-node-install-external-lb",
+  "id": "version-2.5/v2.5/en/installation/resources/advanced/single-node-install-external-lb/single-node-install-external-lb",
+  "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+  "description": "For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/resources/advanced/single-node-install-external-lb/single-node-install-external-lb.md",
+  "sourceDirName": "v2.5/en/installation/resources/advanced/single-node-install-external-lb",
+  "slug": "/v2.5/en/installation/resources/advanced/single-node-install-external-lb/",
+  "permalink": "/2.5/v2.5/en/installation/resources/advanced/single-node-install-external-lb/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/resources/advanced/single-node-install-external-lb/single-node-install-external-lb.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "weight": 252,
+    "aliases": [
+      "/rancher/v2.5/en/installation/single-node/single-node-install-external-lb/",
+      "/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb",
+      "/rancher/v2.5/en/installation/options/single-node-install-external-lb",
+      "/rancher/v2.5/en/installation/single-node-install-external-lb",
+      "/rancher/v2.x/en/installation/resources/advanced/single-node-install-external-lb/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Opening Ports with firewalld",
+    "permalink": "/2.5/v2.5/en/installation/resources/advanced/firewall/"
+  },
+  "next": {
+    "title": "Choosing a Rancher Version",
+    "permalink": "/2.5/v2.5/en/installation/resources/choosing-version/"
+  }
+}

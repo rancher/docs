@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/monitoring-alerting/configuration/servicemonitor-podmonitor/servicemonitor-podmonitor",
+  "id": "en/monitoring-alerting/configuration/servicemonitor-podmonitor/servicemonitor-podmonitor",
+  "title": "ServiceMonitor and PodMonitor Configuration",
+  "description": "ServiceMonitors and PodMonitors are both pseudo-CRDs that map the scrape configuration of the Prometheus custom resource.",
+  "source": "@site/docs/en/monitoring-alerting/configuration/servicemonitor-podmonitor/servicemonitor-podmonitor.md",
+  "sourceDirName": "en/monitoring-alerting/configuration/servicemonitor-podmonitor",
+  "slug": "/en/monitoring-alerting/configuration/servicemonitor-podmonitor/",
+  "permalink": "/en/en/monitoring-alerting/configuration/servicemonitor-podmonitor/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/configuration/servicemonitor-podmonitor/servicemonitor-podmonitor.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "ServiceMonitor and PodMonitor Configuration",
+    "shortTitle": "ServiceMonitors and PodMonitors",
+    "weight": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Route Configuration",
+    "permalink": "/en/en/monitoring-alerting/configuration/route/"
+  },
+  "next": {
+    "title": "Built-in Dashboards",
+    "permalink": "/en/en/monitoring-alerting/dashboards/"
+  }
+}

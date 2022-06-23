@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/admin-settings/rke-templates/enforcement/enforcement",
+  "id": "en/admin-settings/rke-templates/enforcement/enforcement",
+  "title": "Template Enforcement",
+  "description": "This section describes how template administrators can enforce templates in Rancher, restricting the ability of users to create clusters without a template.",
+  "source": "@site/docs/en/admin-settings/rke-templates/enforcement/enforcement.md",
+  "sourceDirName": "en/admin-settings/rke-templates/enforcement",
+  "slug": "/en/admin-settings/rke-templates/enforcement/",
+  "permalink": "/en/en/admin-settings/rke-templates/enforcement/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/admin-settings/rke-templates/enforcement/enforcement.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Template Enforcement",
+    "weight": 32
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Template Creator Permissions",
+    "permalink": "/en/en/admin-settings/rke-templates/creator-permissions/"
+  },
+  "next": {
+    "title": "Example Scenarios",
+    "permalink": "/en/en/admin-settings/rke-templates/example-scenarios/"
+  }
+}

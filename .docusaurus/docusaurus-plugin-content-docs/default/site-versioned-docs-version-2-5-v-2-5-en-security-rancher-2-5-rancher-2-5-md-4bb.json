@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.5/en/security/rancher-2.5/rancher-2.5",
+  "id": "version-2.5/v2.5/en/security/rancher-2.5/rancher-2.5",
+  "title": "Self-Assessment and Hardening Guides for Rancher v2.5",
+  "description": "Rancher v2.5 introduced the capability to deploy Rancher on any Kubernetes cluster. For that reason, we now provide separate security hardening guides for Rancher deployments on each of Rancher's Kubernetes distributions.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/security/rancher-2.5/rancher-2.5.md",
+  "sourceDirName": "v2.5/en/security/rancher-2.5",
+  "slug": "/v2.5/en/security/rancher-2.5/",
+  "permalink": "/2.5/v2.5/en/security/rancher-2.5/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/security/rancher-2.5/rancher-2.5.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Self-Assessment and Hardening Guides for Rancher v2.5",
+    "shortTitle": "Rancher v2.5 Guides",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security Advisories and CVEs",
+    "permalink": "/2.5/v2.5/en/security/cve/"
+  },
+  "next": {
+    "title": "CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5",
+    "permalink": "/2.5/v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/"
+  }
+}

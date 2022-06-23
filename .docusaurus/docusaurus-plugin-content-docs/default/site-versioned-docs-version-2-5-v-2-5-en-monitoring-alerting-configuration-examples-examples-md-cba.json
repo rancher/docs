@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.5/en/monitoring-alerting/configuration/examples/examples",
+  "id": "version-2.5/v2.5/en/monitoring-alerting/configuration/examples/examples",
+  "title": "Examples",
+  "description": "ServiceMonitor",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/configuration/examples/examples.md",
+  "sourceDirName": "v2.5/en/monitoring-alerting/configuration/examples",
+  "slug": "/v2.5/en/monitoring-alerting/configuration/examples/",
+  "permalink": "/2.5/v2.5/en/monitoring-alerting/configuration/examples/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/configuration/examples/examples.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Examples",
+    "weight": 400
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring PrometheusRules",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/configuration/advanced/prometheusrules/"
+  },
+  "next": {
+    "title": "Helm Chart Options",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/configuration/helm-chart-options/"
+  }
+}

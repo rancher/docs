@@ -1,0 +1,34 @@
+{
+  "unversionedId": "en/quick-start-guide/quick-start-guide",
+  "id": "en/quick-start-guide/quick-start-guide",
+  "title": "Rancher Deployment Quick Start Guides",
+  "description": "Note: The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see Installation.",
+  "source": "@site/docs/en/quick-start-guide/quick-start-guide.md",
+  "sourceDirName": "en/quick-start-guide",
+  "slug": "/en/quick-start-guide/",
+  "permalink": "/en/en/quick-start-guide/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/quick-start-guide/quick-start-guide.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Deployment Quick Start Guides",
+    "metaDescription": "Use this section to jump start your Rancher deployment and testing. It contains instructions for a simple Rancher setup and some common use cases.",
+    "short title": "Use this section to jump start your Rancher deployment and testing. It contains instructions for a simple Rancher setup and some common use cases.",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/quick-start-guide/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tools for Logging, Monitoring, and Visibility",
+    "permalink": "/en/en/project-admin/tools/"
+  },
+  "next": {
+    "title": "Deploying Rancher Server",
+    "permalink": "/en/en/quick-start-guide/deployment/"
+  }
+}

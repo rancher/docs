@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/deploy-across-clusters/fleet/windows/windows",
+  "id": "en/deploy-across-clusters/fleet/windows/windows",
+  "title": "Windows Support",
+  "description": "Prior to Rancher v2.5.6, the agent did not have native Windows manifests on downstream clusters with Windows nodes. This would result in a failing agent pod for the cluster.",
+  "source": "@site/docs/en/deploy-across-clusters/fleet/windows/windows.md",
+  "sourceDirName": "en/deploy-across-clusters/fleet/windows",
+  "slug": "/en/deploy-across-clusters/fleet/windows/",
+  "permalink": "/en/en/deploy-across-clusters/fleet/windows/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/deploy-across-clusters/fleet/windows/windows.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Windows Support",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Using Fleet Behind a Proxy",
+    "permalink": "/en/en/deploy-across-clusters/fleet/proxy/"
+  },
+  "next": {
+    "title": "Multi-cluster Apps",
+    "permalink": "/en/en/deploy-across-clusters/multi-cluster-apps/"
+  }
+}

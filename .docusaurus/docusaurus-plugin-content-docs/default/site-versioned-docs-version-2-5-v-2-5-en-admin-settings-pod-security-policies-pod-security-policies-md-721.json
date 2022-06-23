@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.5/en/admin-settings/pod-security-policies/pod-security-policies",
+  "id": "version-2.5/v2.5/en/admin-settings/pod-security-policies/pod-security-policies",
+  "title": "Pod Security Policies",
+  "description": "Pod Security Policies (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges).",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/admin-settings/pod-security-policies/pod-security-policies.md",
+  "sourceDirName": "v2.5/en/admin-settings/pod-security-policies",
+  "slug": "/v2.5/en/admin-settings/pod-security-policies/",
+  "permalink": "/2.5/v2.5/en/admin-settings/pod-security-policies/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/admin-settings/pod-security-policies/pod-security-policies.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pod Security Policies",
+    "weight": 1135,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/global-configuration/pod-security-policies/",
+      "/rancher/v2.5/en/tasks/global-configuration/pod-security-policies/",
+      "/rancher/v2.5/en/tasks/clusters/adding-a-pod-security-policy/",
+      "/rancher/v2.x/en/admin-settings/pod-security-policies/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading Kubernetes without Upgrading Rancher",
+    "permalink": "/2.5/v2.5/en/admin-settings/k8s-metadata/"
+  },
+  "next": {
+    "title": "Role-Based Access Control (RBAC)",
+    "permalink": "/2.5/v2.5/en/admin-settings/rbac/"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/best-practices/rancher-managed/logging/logging",
+  "id": "version-2.5/v2.5/en/best-practices/rancher-managed/logging/logging",
+  "title": "Logging Best Practices",
+  "description": "In this guide, we recommend best practices for cluster-level logging and application logging.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-managed/logging/logging.md",
+  "sourceDirName": "v2.5/en/best-practices/rancher-managed/logging",
+  "slug": "/v2.5/en/best-practices/rancher-managed/logging/",
+  "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/logging/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-managed/logging/logging.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Logging Best Practices",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/best-practices/v2.5/rancher-managed/logging",
+      "/rancher/v2.x/en/best-practices/v2.5/rancher-managed/logging/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tips for Setting Up Containers",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/containers/"
+  },
+  "next": {
+    "title": "Best Practices for Rancher Managed vSphere Clusters",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/managed-vsphere/"
+  }
+}

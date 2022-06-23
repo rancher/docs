@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/quick-start-guide/deployment/quickstart-vagrant/quickstart-vagrant",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/quickstart-vagrant/quickstart-vagrant",
+  "title": "Vagrant Quick Start",
+  "description": "The following steps quickly deploy a Rancher Server with a single node cluster attached.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/quickstart-vagrant/quickstart-vagrant.md",
+  "sourceDirName": "v2.0-v2.4/en/quick-start-guide/deployment/quickstart-vagrant",
+  "slug": "/v2.0-v2.4/en/quick-start-guide/deployment/quickstart-vagrant/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/quickstart-vagrant/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/quickstart-vagrant/quickstart-vagrant.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Vagrant Quick Start",
+    "weight": 200
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Manual Quick Start",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/quickstart-manual-setup/"
+  },
+  "next": {
+    "title": "Deploying Workloads",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/workload/"
+  }
+}

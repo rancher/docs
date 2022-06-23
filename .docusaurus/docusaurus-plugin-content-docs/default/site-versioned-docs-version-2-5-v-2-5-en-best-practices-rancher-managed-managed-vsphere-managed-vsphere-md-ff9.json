@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/best-practices/rancher-managed/managed-vsphere/managed-vsphere",
+  "id": "version-2.5/v2.5/en/best-practices/rancher-managed/managed-vsphere/managed-vsphere",
+  "title": "Best Practices for Rancher Managed vSphere Clusters",
+  "description": "This guide outlines a reference architecture for provisioning downstream Rancher clusters in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-managed/managed-vsphere/managed-vsphere.md",
+  "sourceDirName": "v2.5/en/best-practices/rancher-managed/managed-vsphere",
+  "slug": "/v2.5/en/best-practices/rancher-managed/managed-vsphere/",
+  "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/managed-vsphere/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-managed/managed-vsphere/managed-vsphere.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices for Rancher Managed vSphere Clusters",
+    "shortTitle": "Rancher Managed Clusters in vSphere",
+    "aliases": [
+      "/rancher/v2.5/en/best-practices/v2.5/rancher-managed/managed-vsphere",
+      "/rancher/v2.x/en/best-practices/v2.5/rancher-managed/managed-vsphere/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Logging Best Practices",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/logging/"
+  },
+  "next": {
+    "title": "Monitoring Best Practices",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/monitoring/"
+  }
+}

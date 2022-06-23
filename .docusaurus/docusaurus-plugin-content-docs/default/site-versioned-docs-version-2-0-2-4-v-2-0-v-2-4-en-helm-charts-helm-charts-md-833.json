@@ -1,0 +1,37 @@
+{
+  "unversionedId": "v2.0-v2.4/en/helm-charts/helm-charts",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/helm-charts/helm-charts",
+  "title": "Helm Charts in Rancher",
+  "description": "Rancher enables the use of catalogs to repeatedly deploy applications easily. Catalogs are GitHub or Helm Chart repositories filled with deployment-ready apps.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/helm-charts/helm-charts.md",
+  "sourceDirName": "v2.0-v2.4/en/helm-charts",
+  "slug": "/v2.0-v2.4/en/helm-charts/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/helm-charts/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/helm-charts/helm-charts.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Helm Charts in Rancher",
+    "weight": 12,
+    "description": "Rancher enables the use of catalogs to repeatedly deploy applications easily. Catalogs are GitHub or Helm Chart repositories filled with deployment-ready apps.",
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/concepts/global-configuration/catalog/",
+      "/rancher/v2.0-v2.4/en/concepts/catalogs/",
+      "/rancher/v2.0-v2.4/en/tasks/global-configuration/catalog/",
+      "/rancher/v2.0-v2.4/en/catalog",
+      "/rancher/v2.0-v2.4/en/catalog/apps"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Questions about Upgrading to Rancher v2.x",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/upgrades-to-2x/"
+  },
+  "next": {
+    "title": "Creating Custom Catalogs",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/helm-charts/adding-catalogs/"
+  }
+}

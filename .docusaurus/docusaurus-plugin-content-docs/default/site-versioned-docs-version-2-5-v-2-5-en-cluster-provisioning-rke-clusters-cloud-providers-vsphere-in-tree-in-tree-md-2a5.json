@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/in-tree",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/in-tree",
+  "title": "How to Configure In-tree vSphere Cloud Provider",
+  "description": "To set up the in-tree vSphere cloud provider, follow these steps while creating the vSphere cluster in Rancher:",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/in-tree.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/in-tree.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "How to Configure In-tree vSphere Cloud Provider",
+    "shortTitle": "In-tree Cloud Provider",
+    "weight": 10,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up the vSphere Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/"
+  },
+  "next": {
+    "title": "How to Configure Out-of-tree vSphere Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/"
+  }
+}

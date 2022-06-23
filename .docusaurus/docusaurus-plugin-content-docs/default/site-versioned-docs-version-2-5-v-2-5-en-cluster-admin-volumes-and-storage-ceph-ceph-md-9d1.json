@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/volumes-and-storage/ceph/ceph",
+  "id": "version-2.5/v2.5/en/cluster-admin/volumes-and-storage/ceph/ceph",
+  "title": "Using an External Ceph Driver",
+  "description": "These instructions are about using the external Ceph driver in an RKE2 cluster. If you are using RKE, additional steps are required. For details, refer to this section.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/volumes-and-storage/ceph/ceph.md",
+  "sourceDirName": "v2.5/en/cluster-admin/volumes-and-storage/ceph",
+  "slug": "/v2.5/en/cluster-admin/volumes-and-storage/ceph/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/volumes-and-storage/ceph/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/volumes-and-storage/ceph/ceph.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Using an External Ceph Driver",
+    "weight": 10,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/volumes-and-storage/ceph/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Existing Storage",
+    "permalink": "/2.5/v2.5/en/cluster-admin/volumes-and-storage/attaching-existing-storage/"
+  },
+  "next": {
+    "title": "Provisioning Storage Examples",
+    "permalink": "/2.5/v2.5/en/cluster-admin/volumes-and-storage/examples/"
+  }
+}

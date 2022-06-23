@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/opa-gatekeper/opa-gatekeper",
+  "id": "version-2.5/v2.5/en/opa-gatekeper/opa-gatekeper",
+  "title": "OPA Gatekeeper",
+  "description": "To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. OPA (Open Policy Agent) is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/opa-gatekeper/opa-gatekeper.md",
+  "sourceDirName": "v2.5/en/opa-gatekeper",
+  "slug": "/v2.5/en/opa-gatekeper/",
+  "permalink": "/2.5/v2.5/en/opa-gatekeper/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/opa-gatekeper/opa-gatekeper.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "OPA Gatekeeper",
+    "weight": 16,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-admin/tools/opa-gatekeeper",
+      "/rancher/v2.5/en/opa-gatekeeper/Open%20Policy%20Agent - /rancher/v2.x/en/opa-gatekeper/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Windows Cluster Support for Monitoring V2",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/windows-clusters/"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/2.5/v2.5/en/overview/"
+  }
+}

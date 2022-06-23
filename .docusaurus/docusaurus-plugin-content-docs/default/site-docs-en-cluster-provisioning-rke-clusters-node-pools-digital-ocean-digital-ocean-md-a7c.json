@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/digital-ocean",
+  "id": "en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/digital-ocean",
+  "title": "Creating a DigitalOcean Cluster",
+  "description": "In this section, you'll learn how to use Rancher to install an RKE Kubernetes cluster in DigitalOcean.",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/digital-ocean.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/node-pools/digital-ocean",
+  "slug": "/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/digital-ocean.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a DigitalOcean Cluster",
+    "shortTitle": "DigitalOcean",
+    "weight": 2215
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Azure Node Template Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/"
+  },
+  "next": {
+    "title": "DigitalOcean Machine Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-machine-config/"
+  }
+}

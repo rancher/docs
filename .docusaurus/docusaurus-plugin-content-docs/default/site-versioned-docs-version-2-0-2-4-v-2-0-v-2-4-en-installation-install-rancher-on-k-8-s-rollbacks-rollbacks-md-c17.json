@@ -1,0 +1,37 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/install-rancher-on-k8s/rollbacks/rollbacks",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/install-rancher-on-k8s/rollbacks/rollbacks",
+  "title": "Rollbacks",
+  "description": "Rolling Back to Rancher v2.2-v2.4",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/install-rancher-on-k8s/rollbacks/rollbacks.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/install-rancher-on-k8s/rollbacks",
+  "slug": "/v2.0-v2.4/en/installation/install-rancher-on-k8s/rollbacks/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/install-rancher-on-k8s/rollbacks/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/install-rancher-on-k8s/rollbacks/rollbacks.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rollbacks",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/rollbacks",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/rollbacks",
+      "/rancher/v2.0-v2.4/en/upgrades/ha-server-rollbacks",
+      "/rancher/v2.0-v2.4/en/upgrades/rollbacks/ha-server-rollbacks",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/rollbacks/ha-server-rollbacks",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/rollbacks"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Helm Chart Options",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/install-rancher-on-k8s/chart-options/"
+  },
+  "next": {
+    "title": "Upgrades",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/"
+  }
+}

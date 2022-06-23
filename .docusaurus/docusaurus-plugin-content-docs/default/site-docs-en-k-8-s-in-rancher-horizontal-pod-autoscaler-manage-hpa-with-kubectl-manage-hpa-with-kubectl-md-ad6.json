@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl/manage-hpa-with-kubectl",
+  "id": "en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl/manage-hpa-with-kubectl",
+  "title": "Managing HPAs with kubectl",
+  "description": "This section describes HPA management with kubectl. This document has instructions for how to:",
+  "source": "@site/docs/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl/manage-hpa-with-kubectl.md",
+  "sourceDirName": "en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl",
+  "slug": "/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl/",
+  "permalink": "/en/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl/manage-hpa-with-kubectl.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Managing HPAs with kubectl",
+    "weight": 3029
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Background Information on HPAs",
+    "permalink": "/en/en/k8s-in-rancher/horizontal-pod-autoscaler/hpa-background/"
+  },
+  "next": {
+    "title": "Managing HPAs with the Rancher UI",
+    "permalink": "/en/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui/"
+  }
+}

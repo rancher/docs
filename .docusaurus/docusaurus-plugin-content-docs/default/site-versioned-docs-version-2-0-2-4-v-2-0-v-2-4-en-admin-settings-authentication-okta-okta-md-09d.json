@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/admin-settings/authentication/okta/okta",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/okta/okta",
+  "title": "Configuring Okta (SAML)",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/okta/okta.md",
+  "sourceDirName": "v2.0-v2.4/en/admin-settings/authentication/okta",
+  "slug": "/v2.0-v2.4/en/admin-settings/authentication/okta/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/okta/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/okta/okta.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Okta (SAML)",
+    "weight": 1210
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Configuring Rancher for Microsoft AD FS",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/rancher-adfs-setup/"
+  },
+  "next": {
+    "title": "Configuring OpenLDAP",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/openldap/"
+  }
+}

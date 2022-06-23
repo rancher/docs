@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/deploy-across-clusters/multi-cluster-apps/multi-cluster-apps",
+  "id": "version-2.5/v2.5/en/deploy-across-clusters/multi-cluster-apps/multi-cluster-apps",
+  "title": "Multi-cluster Apps",
+  "description": "As of Rancher v2.5, we now recommend using Fleet for deploying apps across clusters.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/deploy-across-clusters/multi-cluster-apps/multi-cluster-apps.md",
+  "sourceDirName": "v2.5/en/deploy-across-clusters/multi-cluster-apps",
+  "slug": "/v2.5/en/deploy-across-clusters/multi-cluster-apps/",
+  "permalink": "/2.5/v2.5/en/deploy-across-clusters/multi-cluster-apps/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/deploy-across-clusters/multi-cluster-apps/multi-cluster-apps.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Multi-cluster Apps",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/deploy-across-clusters/multi-cluster-apps/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Windows Support",
+    "permalink": "/2.5/v2.5/en/deploy-across-clusters/fleet/windows/"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/2.5/v2.5/en/faq/"
+  }
+}

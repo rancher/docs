@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/installation/install-rancher-on-k8s/install-rancher-on-k8s",
+  "id": "en/installation/install-rancher-on-k8s/install-rancher-on-k8s",
+  "title": "Install/Upgrade Rancher on a Kubernetes Cluster",
+  "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+  "source": "@site/docs/en/installation/install-rancher-on-k8s/install-rancher-on-k8s.md",
+  "sourceDirName": "en/installation/install-rancher-on-k8s",
+  "slug": "/en/installation/install-rancher-on-k8s/",
+  "permalink": "/en/en/installation/install-rancher-on-k8s/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/install-rancher-on-k8s/install-rancher-on-k8s.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Install/Upgrade Rancher on a Kubernetes Cluster",
+    "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing/Upgrading Rancher",
+    "permalink": "/en/en/installation/"
+  },
+  "next": {
+    "title": "Installing Rancher on Azure Kubernetes Service",
+    "permalink": "/en/en/installation/install-rancher-on-k8s/aks/"
+  }
+}

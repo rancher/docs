@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cis-scans/custom-benchmark/custom-benchmark",
+  "id": "en/cis-scans/custom-benchmark/custom-benchmark",
+  "title": "Creating a Custom Benchmark Version for Running a Cluster Scan",
+  "description": "Each Benchmark Version defines a set of test configuration files that define the CIS tests to be run by the kube-bench tool.",
+  "source": "@site/docs/en/cis-scans/custom-benchmark/custom-benchmark.md",
+  "sourceDirName": "en/cis-scans/custom-benchmark",
+  "slug": "/en/cis-scans/custom-benchmark/",
+  "permalink": "/en/en/cis-scans/custom-benchmark/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cis-scans/custom-benchmark/custom-benchmark.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a Custom Benchmark Version for Running a Cluster Scan",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuration",
+    "permalink": "/en/en/cis-scans/configuration/"
+  },
+  "next": {
+    "title": "Roles-based Access Control",
+    "permalink": "/en/en/cis-scans/rbac/"
+  }
+}

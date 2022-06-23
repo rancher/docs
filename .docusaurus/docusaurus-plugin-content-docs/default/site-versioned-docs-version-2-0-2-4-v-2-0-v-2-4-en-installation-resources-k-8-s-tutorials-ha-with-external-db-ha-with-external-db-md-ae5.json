@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db/ha-with-external-db",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db/ha-with-external-db",
+  "title": "Setting up a High-availability K3s Kubernetes Cluster for Rancher",
+  "description": "This section describes how to install a Kubernetes cluster according to the best practices for the Rancher server environment.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db/ha-with-external-db.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db",
+  "slug": "/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db/ha-with-external-db.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up a High-availability K3s Kubernetes Cluster for Rancher",
+    "shortTitle": "Set up K3s for Rancher",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up a High-availability RKE Kubernetes Cluster",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-RKE/"
+  },
+  "next": {
+    "title": "About High-availability Installations",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works/"
+  }
+}

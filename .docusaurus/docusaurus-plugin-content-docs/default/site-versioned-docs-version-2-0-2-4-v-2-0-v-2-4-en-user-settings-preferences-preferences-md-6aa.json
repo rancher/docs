@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/user-settings/preferences/preferences",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/user-settings/preferences/preferences",
+  "title": "User Preferences",
+  "description": "Each user can choose preferences to personalize their Rancher experience. To change preference settings, open the User Settings menu and then select Preferences.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/user-settings/preferences/preferences.md",
+  "sourceDirName": "v2.0-v2.4/en/user-settings/preferences",
+  "slug": "/v2.0-v2.4/en/user-settings/preferences/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/user-settings/preferences/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/user-settings/preferences/preferences.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "User Preferences",
+    "weight": 7012
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Managing Node Templates",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/user-settings/node-templates/"
+  },
+  "next": {
+    "title": "Migrating from v1.6 to v2.x",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/"
+  }
+}

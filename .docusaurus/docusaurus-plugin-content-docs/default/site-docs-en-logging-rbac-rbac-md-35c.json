@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/logging/rbac/rbac",
+  "id": "en/logging/rbac/rbac",
+  "title": "Role-based Access Control for Logging",
+  "description": "Rancher logging has two roles, logging-admin and logging-view.",
+  "source": "@site/docs/en/logging/rbac/rbac.md",
+  "sourceDirName": "en/logging/rbac",
+  "slug": "/en/logging/rbac/",
+  "permalink": "/en/en/logging/rbac/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/logging/rbac/rbac.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "shortTitle": "Role-based Access Control",
+    "title": "Role-based Access Control for Logging",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migrating to Rancher v2.5 Logging",
+    "permalink": "/en/en/logging/migrating/"
+  },
+  "next": {
+    "title": "Working with Taints and Tolerations",
+    "permalink": "/en/en/logging/taints-tolerations/"
+  }
+}

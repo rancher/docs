@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/node-pools/node-pools",
+  "id": "en/cluster-provisioning/rke-clusters/node-pools/node-pools",
+  "title": "Launching Kubernetes on New Nodes in an Infrastructure Provider",
+  "description": "This section covers the following topics:",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/node-pools/node-pools.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/node-pools",
+  "slug": "/en/cluster-provisioning/rke-clusters/node-pools/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/node-pools/node-pools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes on New Nodes in an Infrastructure Provider",
+    "weight": 2205
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Agent Options",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/"
+  },
+  "next": {
+    "title": "Creating an Azure Cluster",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/azure/"
+  }
+}

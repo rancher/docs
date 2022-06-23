@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/quickstart-deploy-workload-nodeport",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/quickstart-deploy-workload-nodeport",
+  "title": "Workload with NodePort Quick Start",
+  "description": "Prerequisite",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/quickstart-deploy-workload-nodeport.md",
+  "sourceDirName": "v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport",
+  "slug": "/v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/quickstart-deploy-workload-nodeport.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Workload with NodePort Quick Start",
+    "weight": 200
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Workload with Ingress Quick Start",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/"
+  },
+  "next": {
+    "title": "Security",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/security/"
+  }
+}

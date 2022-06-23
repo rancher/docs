@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/best-practices/best-practices",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/best-practices/best-practices",
+  "title": "Best Practices Guide",
+  "description": "The purpose of this section is to consolidate best practices for Rancher implementations. This also includes recommendations for related technologies, such as Kubernetes, Docker, containers, and more. The objective is to improve the outcome of a Rancher implementation using the operational experience of Rancher and its customers.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/best-practices/best-practices.md",
+  "sourceDirName": "v2.0-v2.4/en/best-practices",
+  "slug": "/v2.0-v2.4/en/best-practices/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/best-practices/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/best-practices/best-practices.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices Guide",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.x/en/best-practices/v2.0-v2.4/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rolling back to v2.0.0-v2.1.5",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1/"
+  },
+  "next": {
+    "title": "Tips for Setting Up Containers",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/best-practices/containers/"
+  }
+}

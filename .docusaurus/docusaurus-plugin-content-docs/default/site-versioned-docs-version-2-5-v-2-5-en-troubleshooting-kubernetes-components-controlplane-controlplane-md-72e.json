@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/troubleshooting/kubernetes-components/controlplane/controlplane",
+  "id": "version-2.5/v2.5/en/troubleshooting/kubernetes-components/controlplane/controlplane",
+  "title": "Troubleshooting Controlplane Nodes",
+  "description": "This section applies to nodes with the controlplane role.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/troubleshooting/kubernetes-components/controlplane/controlplane.md",
+  "sourceDirName": "v2.5/en/troubleshooting/kubernetes-components/controlplane",
+  "slug": "/v2.5/en/troubleshooting/kubernetes-components/controlplane/",
+  "permalink": "/2.5/v2.5/en/troubleshooting/kubernetes-components/controlplane/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/troubleshooting/kubernetes-components/controlplane/controlplane.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting Controlplane Nodes",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/kubernetes-components/controlplane/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Components",
+    "permalink": "/2.5/v2.5/en/troubleshooting/kubernetes-components/"
+  },
+  "next": {
+    "title": "Troubleshooting etcd Nodes",
+    "permalink": "/2.5/v2.5/en/troubleshooting/kubernetes-components/etcd/"
+  }
+}

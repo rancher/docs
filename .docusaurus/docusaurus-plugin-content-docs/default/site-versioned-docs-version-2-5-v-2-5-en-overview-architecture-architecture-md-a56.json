@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/overview/architecture/architecture",
+  "id": "version-2.5/v2.5/en/overview/architecture/architecture",
+  "title": "Architecture",
+  "description": "This section focuses on the Rancher server, its components, and how Rancher communicates with downstream Kubernetes clusters.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/overview/architecture/architecture.md",
+  "sourceDirName": "v2.5/en/overview/architecture",
+  "slug": "/v2.5/en/overview/architecture/",
+  "permalink": "/2.5/v2.5/en/overview/architecture/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/overview/architecture/architecture.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Architecture",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/overview/architecture/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/2.5/v2.5/en/overview/"
+  },
+  "next": {
+    "title": "Architecture Recommendations",
+    "permalink": "/2.5/v2.5/en/overview/architecture-recommendations/"
+  }
+}

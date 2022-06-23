@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/istio/configuration-reference/selectors-and-scrape/selectors-and-scrape",
+  "id": "version-2.5/v2.5/en/istio/configuration-reference/selectors-and-scrape/selectors-and-scrape",
+  "title": "Selectors and Scrape Configs",
+  "description": "The Monitoring app sets prometheus.prometheusSpec.ignoreNamespaceSelectors=false, which enables monitoring across all namespaces by default.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/istio/configuration-reference/selectors-and-scrape/selectors-and-scrape.md",
+  "sourceDirName": "v2.5/en/istio/configuration-reference/selectors-and-scrape",
+  "slug": "/v2.5/en/istio/configuration-reference/selectors-and-scrape/",
+  "permalink": "/2.5/v2.5/en/istio/configuration-reference/selectors-and-scrape/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/istio/configuration-reference/selectors-and-scrape/selectors-and-scrape.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Selectors and Scrape Configs",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/istio/v2.5/configuration-reference/selectors-and-scrape",
+      "/rancher/v2.5/en/istio/setup/node-selectors",
+      "/rancher/v2.x/en/istio/v2.5/configuration-reference/selectors-and-scrape/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Additional Steps for Installing Istio on an RKE2 Cluster",
+    "permalink": "/2.5/v2.5/en/istio/configuration-reference/rke2/"
+  },
+  "next": {
+    "title": "Disabling Istio",
+    "permalink": "/2.5/v2.5/en/istio/disabling-istio/"
+  }
+}

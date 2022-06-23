@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cis-scans/cis-scans",
+  "id": "en/cis-scans/cis-scans",
+  "title": "CIS Scans",
+  "description": "Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark. The CIS scans can run on any Kubernetes cluster, including hosted Kubernetes providers such as EKS, AKS, and GKE.",
+  "source": "@site/docs/en/cis-scans/cis-scans.md",
+  "sourceDirName": "en/cis-scans",
+  "slug": "/en/cis-scans/",
+  "permalink": "/en/en/cis-scans/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cis-scans/cis-scans.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CIS Scans",
+    "weight": 17
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Rancher in a vSphere Environment",
+    "permalink": "/en/en/best-practices/rancher-server/rancher-in-vsphere/"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/en/en/cis-scans/configuration/"
+  }
+}

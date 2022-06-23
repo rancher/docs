@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/installation/resources/update-rancher-cert/update-rancher-cert",
+  "id": "version-2.5/v2.5/en/installation/resources/update-rancher-cert/update-rancher-cert",
+  "title": "Updating the Rancher Certificate",
+  "description": "Follow these steps to update the SSL certificate of the ingress in a Rancher high availability Kubernetes installation or to switch from the default self-signed certificate to a custom certificate.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/resources/update-rancher-cert/update-rancher-cert.md",
+  "sourceDirName": "v2.5/en/installation/resources/update-rancher-cert",
+  "slug": "/v2.5/en/installation/resources/update-rancher-cert/",
+  "permalink": "/2.5/v2.5/en/installation/resources/update-rancher-cert/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/resources/update-rancher-cert/update-rancher-cert.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Updating the Rancher Certificate",
+    "weight": 10,
+    "aliases": [
+      "/rancher/v2.x/en/installation/resources/update-ca-cert/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting the Rancher Server Kubernetes Cluster",
+    "permalink": "/2.5/v2.5/en/installation/resources/troubleshooting/"
+  },
+  "next": {
+    "title": "Upgrading Cert-Manager",
+    "permalink": "/2.5/v2.5/en/installation/resources/upgrading-cert-manager/"
+  }
+}

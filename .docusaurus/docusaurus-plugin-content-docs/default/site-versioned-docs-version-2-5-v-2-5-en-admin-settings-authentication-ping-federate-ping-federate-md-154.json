@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/admin-settings/authentication/ping-federate/ping-federate",
+  "id": "version-2.5/v2.5/en/admin-settings/authentication/ping-federate/ping-federate",
+  "title": "Configuring PingIdentity (SAML)",
+  "description": "If your organization uses Ping Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/admin-settings/authentication/ping-federate/ping-federate.md",
+  "sourceDirName": "v2.5/en/admin-settings/authentication/ping-federate",
+  "slug": "/v2.5/en/admin-settings/authentication/ping-federate/",
+  "permalink": "/2.5/v2.5/en/admin-settings/authentication/ping-federate/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/admin-settings/authentication/ping-federate/ping-federate.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring PingIdentity (SAML)",
+    "weight": 1200,
+    "aliases": [
+      "/rancher/v2.x/en/admin-settings/authentication/ping-federate/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "OpenLDAP Configuration Reference",
+    "permalink": "/2.5/v2.5/en/admin-settings/authentication/openldap/openldap-config/"
+  },
+  "next": {
+    "title": "Configuring Shibboleth (SAML)",
+    "permalink": "/2.5/v2.5/en/admin-settings/authentication/shibboleth/"
+  }
+}

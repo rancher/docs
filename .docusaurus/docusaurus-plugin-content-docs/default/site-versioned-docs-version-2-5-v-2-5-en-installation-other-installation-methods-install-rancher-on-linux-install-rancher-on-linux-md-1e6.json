@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/installation/other-installation-methods/install-rancher-on-linux/install-rancher-on-linux",
+  "id": "version-2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/install-rancher-on-linux",
+  "title": "Install/Upgrade Rancher with RancherD",
+  "description": "Note: RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/install-rancher-on-linux.md",
+  "sourceDirName": "v2.5/en/installation/other-installation-methods/install-rancher-on-linux",
+  "slug": "/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/",
+  "permalink": "/2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/install-rancher-on-linux.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Install/Upgrade Rancher with RancherD",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.5/en/installation/install-rancher-on-linux",
+      "/rancher/v2.x/en/installation/install-rancher-on-linux/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Set up Infrastructure",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/"
+  },
+  "next": {
+    "title": "RancherD Configuration Reference",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/"
+  }
+}

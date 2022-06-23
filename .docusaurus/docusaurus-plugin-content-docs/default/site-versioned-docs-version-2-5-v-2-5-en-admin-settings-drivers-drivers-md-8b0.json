@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/admin-settings/drivers/drivers",
+  "id": "version-2.5/v2.5/en/admin-settings/drivers/drivers",
+  "title": "Provisioning Drivers",
+  "description": "Drivers in Rancher allow you to manage which providers can be used to deploy hosted Kubernetes clusters or nodes in an infrastructure provider to allow Rancher to deploy and manage Kubernetes.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/admin-settings/drivers/drivers.md",
+  "sourceDirName": "v2.5/en/admin-settings/drivers",
+  "slug": "/v2.5/en/admin-settings/drivers/",
+  "permalink": "/2.5/v2.5/en/admin-settings/drivers/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/admin-settings/drivers/drivers.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Provisioning Drivers",
+    "weight": 1140,
+    "aliases": [
+      "/rancher/v2.x/en/admin-settings/drivers/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring a Global Default Private Registry",
+    "permalink": "/2.5/v2.5/en/admin-settings/config-private-registry/"
+  },
+  "next": {
+    "title": "Cluster Drivers",
+    "permalink": "/2.5/v2.5/en/admin-settings/drivers/cluster-drivers/"
+  }
+}

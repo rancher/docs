@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/quick-start-guide/deployment/digital-ocean-qs/digital-ocean-qs",
+  "id": "en/quick-start-guide/deployment/digital-ocean-qs/digital-ocean-qs",
+  "title": "Rancher DigitalOcean Quick Start Guide",
+  "description": "Read this step by step Rancher DigitalOcean guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/docs/en/quick-start-guide/deployment/digital-ocean-qs/digital-ocean-qs.md",
+  "sourceDirName": "en/quick-start-guide/deployment/digital-ocean-qs",
+  "slug": "/en/quick-start-guide/deployment/digital-ocean-qs/",
+  "permalink": "/en/en/quick-start-guide/deployment/digital-ocean-qs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/quick-start-guide/deployment/digital-ocean-qs/digital-ocean-qs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher DigitalOcean Quick Start Guide",
+    "description": "Read this step by step Rancher DigitalOcean guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 120
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher AWS Quick Start Guide",
+    "permalink": "/en/en/quick-start-guide/deployment/amazon-aws-qs/"
+  },
+  "next": {
+    "title": "Rancher Equinix Metal Quick Start",
+    "permalink": "/en/en/quick-start-guide/deployment/equinix-metal-qs/"
+  }
+}

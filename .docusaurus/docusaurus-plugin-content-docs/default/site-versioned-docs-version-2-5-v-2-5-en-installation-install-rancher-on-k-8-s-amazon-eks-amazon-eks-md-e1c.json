@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/installation/install-rancher-on-k8s/amazon-eks/amazon-eks",
+  "id": "version-2.5/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/amazon-eks",
+  "title": "Installing Rancher on Amazon EKS",
+  "description": "This page covers two ways to install Rancher on EKS.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/amazon-eks.md",
+  "sourceDirName": "v2.5/en/installation/install-rancher-on-k8s/amazon-eks",
+  "slug": "/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/",
+  "permalink": "/2.5/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/install-rancher-on-k8s/amazon-eks/amazon-eks.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Rancher on Amazon EKS",
+    "shortTitle": "Amazon EKS",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/amazon-eks/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Rancher on Azure Kubernetes Service",
+    "permalink": "/2.5/v2.5/en/installation/install-rancher-on-k8s/aks/"
+  },
+  "next": {
+    "title": "Rancher Helm Chart Options",
+    "permalink": "/2.5/v2.5/en/installation/install-rancher-on-k8s/chart-options/"
+  }
+}

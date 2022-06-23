@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/advanced/arm64-platform/arm64-platform",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/arm64-platform/arm64-platform",
+  "title": "Running on ARM64 (Experimental)",
+  "description": "Important:",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/arm64-platform/arm64-platform.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/advanced/arm64-platform",
+  "slug": "/v2.0-v2.4/en/installation/resources/advanced/arm64-platform/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/arm64-platform/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/arm64-platform/arm64-platform.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Running on ARM64 (Experimental)",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/arm64-platform"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enabling the API Audit Log to Record System Events",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/api-audit-log/"
+  },
+  "next": {
+    "title": "cluster.yml Templates for RKE add-on installs",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/"
+  }
+}

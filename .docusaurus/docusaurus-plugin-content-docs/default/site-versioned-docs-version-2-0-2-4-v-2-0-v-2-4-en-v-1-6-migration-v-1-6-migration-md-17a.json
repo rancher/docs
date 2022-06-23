@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/v1.6-migration/v1.6-migration",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/v1.6-migration",
+  "title": "Migrating from v1.6 to v2.x",
+  "description": "Rancher v2.x has been rearchitected and rewritten with the goal of providing a complete management solution for Kubernetes and Docker.  Due to these extensive changes, there is no direct upgrade path from v1.6 to v2.x, but rather a migration of your v1.6 services into v2.x as Kubernetes workloads.  In v1.6, the most common orchestration used was Rancher's own engine called Cattle. The following guide explains and educates our Cattle users on running workloads in a Kubernetes environment.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/v1.6-migration.md",
+  "sourceDirName": "v2.0-v2.4/en/v1.6-migration",
+  "slug": "/v2.0-v2.4/en/v1.6-migration/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/v1.6-migration.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating from v1.6 to v2.x",
+    "weight": 28,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "User Preferences",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/user-settings/preferences/"
+  },
+  "next": {
+    "title": "6. Service Discovery",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/discover-services/"
+  }
+}

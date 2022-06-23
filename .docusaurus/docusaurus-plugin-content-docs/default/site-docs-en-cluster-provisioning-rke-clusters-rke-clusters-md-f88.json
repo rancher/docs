@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/rke-clusters",
+  "id": "en/cluster-provisioning/rke-clusters/rke-clusters",
+  "title": "Launching Kubernetes with Rancher",
+  "description": "You can have Rancher launch a Kubernetes cluster using any nodes you want. When Rancher deploys Kubernetes onto these nodes, you can choose between Rancher Kubernetes Engine (RKE) or RKE2 distributions. Rancher can launch Kubernetes on any computers, including:",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/rke-clusters.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters",
+  "slug": "/en/cluster-provisioning/rke-clusters/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/rke-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes with Rancher",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Registering Existing Clusters",
+    "permalink": "/en/en/cluster-provisioning/registered-clusters/"
+  },
+  "next": {
+    "title": "Behavior Differences Between RKE1 and RKE2",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/behavior-differences-between-rke1-and-rke2/"
+  }
+}

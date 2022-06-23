@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/istio/setup/view-traffic/view-traffic",
+  "id": "en/istio/setup/view-traffic/view-traffic",
+  "title": "6. Generate and View Traffic",
+  "description": "This section describes how to view the traffic that is being managed by Istio.",
+  "source": "@site/docs/en/istio/setup/view-traffic/view-traffic.md",
+  "sourceDirName": "en/istio/setup/view-traffic",
+  "slug": "/en/istio/setup/view-traffic/",
+  "permalink": "/en/en/istio/setup/view-traffic/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/istio/setup/view-traffic/view-traffic.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "6. Generate and View Traffic",
+    "weight": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "5. Set up Istio's Components for Traffic Management",
+    "permalink": "/en/en/istio/setup/set-up-traffic-management/"
+  },
+  "next": {
+    "title": "Kubernetes Resources",
+    "permalink": "/en/en/k8s-in-rancher/"
+  }
+}

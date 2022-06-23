@@ -1,0 +1,25 @@
+{
+  "unversionedId": "virtualization-admin/v2.6_virtualization-admin_index",
+  "id": "version-2.6/virtualization-admin/v2.6_virtualization-admin_index",
+  "title": "Harvester Integration",
+  "description": "Tech Preview",
+  "source": "@site/versioned_docs/version-2.6/virtualization-admin/v2.6_virtualization-admin_index.md",
+  "sourceDirName": "virtualization-admin",
+  "slug": "/virtualization-admin/v2.6_virtualization-admin_index",
+  "permalink": "/virtualization-admin/v2.6_virtualization-admin_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.6/virtualization-admin/v2.6_virtualization-admin_index.md",
+  "tags": [],
+  "version": "2.6",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Harvester Integration",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher 2.6",
+    "permalink": "/"
+  }
+}

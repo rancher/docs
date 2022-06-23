@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/k8s-in-rancher/service-discovery/service-discovery",
+  "id": "en/k8s-in-rancher/service-discovery/service-discovery",
+  "title": "Services",
+  "description": "Pod configuration is managed by Deployments, StatefulSets and Daemonsets, whereas services direct traffic to pods using selectors.",
+  "source": "@site/docs/en/k8s-in-rancher/service-discovery/service-discovery.md",
+  "sourceDirName": "en/k8s-in-rancher/service-discovery",
+  "slug": "/en/k8s-in-rancher/service-discovery/",
+  "permalink": "/en/en/k8s-in-rancher/service-discovery/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/k8s-in-rancher/service-discovery/service-discovery.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Services",
+    "weight": 3045
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Secrets",
+    "permalink": "/en/en/k8s-in-rancher/secrets/"
+  },
+  "next": {
+    "title": "Kubernetes Workloads and Pods",
+    "permalink": "/en/en/k8s-in-rancher/workloads/"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/prepare-nodes",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/prepare-nodes",
+  "title": "1. Prepare your Node(s)",
+  "description": "This section is about how to prepare your node(s) to install Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are tabs for either a high availability (recommended) or a Docker installation.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/prepare-nodes.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/prepare-nodes",
+  "slug": "/v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/prepare-nodes.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Prepare your Node(s)",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/provision-hosts",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-single-node/provision-host",
+      "/rancher/v2.0-v2.4/en/installation/options/air-gap-helm2/prepare-nodes",
+      "/rancher/v2.x/en/installation/resources/advanced/air-gap-helm2/prepare-nodes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/air-gap-helm2/populate-private-registry/"
+  },
+  "next": {
+    "title": "Enabling the API Audit Log to Record System Events",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/api-audit-log/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/troubleshooting/imported-clusters/imported-clusters",
+  "id": "version-2.5/v2.5/en/troubleshooting/imported-clusters/imported-clusters",
+  "title": "Registered clusters",
+  "description": "The commands/steps listed on this page can be used to check clusters that you are registering or that are registered in Rancher.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/troubleshooting/imported-clusters/imported-clusters.md",
+  "sourceDirName": "v2.5/en/troubleshooting/imported-clusters",
+  "slug": "/v2.5/en/troubleshooting/imported-clusters/",
+  "permalink": "/2.5/v2.5/en/troubleshooting/imported-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/troubleshooting/imported-clusters/imported-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Registered clusters",
+    "weight": 105,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/imported-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "DNS",
+    "permalink": "/2.5/v2.5/en/troubleshooting/dns/"
+  },
+  "next": {
+    "title": "Kubernetes Components",
+    "permalink": "/2.5/v2.5/en/troubleshooting/kubernetes-components/"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-admin/tools/istio/resources/resources",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/resources/resources",
+  "title": "CPU and Memory Allocations",
+  "description": "Available as of v2.3.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/resources/resources.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-admin/tools/istio/resources",
+  "slug": "/v2.0-v2.4/en/cluster-admin/tools/istio/resources/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/resources/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/resources/resources.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CPU and Memory Allocations",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/istio/configuring-resource-allocations/",
+      "/rancher/v2.0-v2.4/en/project-admin/istio/config/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/resources",
+      "/rancher/v2.0-v2.4/en/istio/legacy/resources",
+      "/rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/resources",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/resources/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Release Notes",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/release-notes/"
+  },
+  "next": {
+    "title": "Setup Guide",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/setup/"
+  }
+}

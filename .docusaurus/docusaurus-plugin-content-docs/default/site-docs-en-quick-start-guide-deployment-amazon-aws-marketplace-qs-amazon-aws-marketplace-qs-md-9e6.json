@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/quick-start-guide/deployment/amazon-aws-marketplace-qs/amazon-aws-marketplace-qs",
+  "id": "en/quick-start-guide/deployment/amazon-aws-marketplace-qs/amazon-aws-marketplace-qs",
+  "title": "Rancher AWS Marketplace Quick Start",
+  "description": "Use Amazon EKS to deploy Rancher server.",
+  "source": "@site/docs/en/quick-start-guide/deployment/amazon-aws-marketplace-qs/amazon-aws-marketplace-qs.md",
+  "sourceDirName": "en/quick-start-guide/deployment/amazon-aws-marketplace-qs",
+  "slug": "/en/quick-start-guide/deployment/amazon-aws-marketplace-qs/",
+  "permalink": "/en/en/quick-start-guide/deployment/amazon-aws-marketplace-qs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/quick-start-guide/deployment/amazon-aws-marketplace-qs/amazon-aws-marketplace-qs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher AWS Marketplace Quick Start",
+    "description": "Use Amazon EKS to deploy Rancher server.",
+    "weight": 110
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Rancher Server",
+    "permalink": "/en/en/quick-start-guide/deployment/"
+  },
+  "next": {
+    "title": "Rancher AWS Quick Start Guide",
+    "permalink": "/en/en/quick-start-guide/deployment/amazon-aws-qs/"
+  }
+}

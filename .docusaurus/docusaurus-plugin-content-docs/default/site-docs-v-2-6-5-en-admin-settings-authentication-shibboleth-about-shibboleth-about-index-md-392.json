@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.6.5/en/admin-settings/authentication/shibboleth/about/shibboleth-about_index",
+  "id": "v2.6.5/en/admin-settings/authentication/shibboleth/about/shibboleth-about_index",
+  "title": "Group Permissions with Shibboleth and OpenLDAP",
+  "description": "This page provides background information and context for Rancher users who intend to set up the Shibboleth authentication provider in Rancher.",
+  "source": "@site/docs/v2.6.5/en/admin-settings/authentication/shibboleth/about/shibboleth-about_index.md",
+  "sourceDirName": "v2.6.5/en/admin-settings/authentication/shibboleth/about",
+  "slug": "/v2.6.5/en/admin-settings/authentication/shibboleth/about/shibboleth-about_index",
+  "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/shibboleth/about/shibboleth-about_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6.5/en/admin-settings/authentication/shibboleth/about/shibboleth-about_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Group Permissions with Shibboleth and OpenLDAP",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring PingIdentity (SAML)",
+    "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/ping-federate/ping-federate_index"
+  },
+  "next": {
+    "title": "Configuring Shibboleth (SAML)",
+    "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/shibboleth/shibboleth_index"
+  }
+}

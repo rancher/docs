@@ -1,0 +1,25 @@
+{
+  "unversionedId": "v2.6.5/en/virtualization-admin/virtualization-admin_index",
+  "id": "v2.6.5/en/virtualization-admin/virtualization-admin_index",
+  "title": "Harvester Integration",
+  "description": "Tech Preview",
+  "source": "@site/docs/v2.6.5/en/virtualization-admin/virtualization-admin_index.md",
+  "sourceDirName": "v2.6.5/en/virtualization-admin",
+  "slug": "/v2.6.5/en/virtualization-admin/virtualization-admin_index",
+  "permalink": "/v2.6.5/v2.6.5/en/virtualization-admin/virtualization-admin_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6.5/en/virtualization-admin/virtualization-admin_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Harvester Integration",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "User Settings",
+    "permalink": "/v2.6.5/v2.6.5/en/user-settings/user-settings_index"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/quick-start-guide/workload/workload",
+  "id": "en/quick-start-guide/workload/workload",
+  "title": "Deploying Workloads",
+  "description": "These guides walk you through the deployment of an application, including how to expose the application for use outside of the cluster.",
+  "source": "@site/docs/en/quick-start-guide/workload/workload.md",
+  "sourceDirName": "en/quick-start-guide/workload",
+  "slug": "/en/quick-start-guide/workload/",
+  "permalink": "/en/en/quick-start-guide/workload/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/quick-start-guide/workload/workload.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Workloads",
+    "weight": 200
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Vagrant Quick Start",
+    "permalink": "/en/en/quick-start-guide/deployment/quickstart-vagrant/"
+  },
+  "next": {
+    "title": "Workload with Ingress Quick Start",
+    "permalink": "/en/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/"
+  }
+}

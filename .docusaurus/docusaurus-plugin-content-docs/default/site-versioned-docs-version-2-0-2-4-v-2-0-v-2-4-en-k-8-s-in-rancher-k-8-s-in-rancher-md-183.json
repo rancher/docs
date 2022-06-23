@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.0-v2.4/en/k8s-in-rancher/k8s-in-rancher",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/k8s-in-rancher",
+  "title": "Kubernetes Resources",
+  "description": "Workloads",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/k8s-in-rancher.md",
+  "sourceDirName": "v2.0-v2.4/en/k8s-in-rancher",
+  "slug": "/v2.0-v2.4/en/k8s-in-rancher/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/k8s-in-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Resources",
+    "weight": 19,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/concepts/",
+      "/rancher/v2.0-v2.4/en/tasks/",
+      "/rancher/v2.0-v2.4/en/concepts/resources/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher 2.0-2.4",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/introduction"
+  },
+  "next": {
+    "title": "Encrypting HTTP Communication",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/certificates/"
+  }
+}

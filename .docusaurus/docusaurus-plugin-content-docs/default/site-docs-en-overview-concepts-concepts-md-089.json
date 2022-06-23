@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/overview/concepts/concepts",
+  "id": "en/overview/concepts/concepts",
+  "title": "Kubernetes Concepts",
+  "description": "This page explains concepts related to Kubernetes that are important for understanding how Rancher works. The descriptions below provide a simplified overview of Kubernetes components. For more details, refer to the official documentation on Kubernetes components.",
+  "source": "@site/docs/en/overview/concepts/concepts.md",
+  "sourceDirName": "en/overview/concepts",
+  "slug": "/en/overview/concepts/",
+  "permalink": "/en/en/overview/concepts/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/overview/concepts/concepts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Concepts",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Architecture Recommendations",
+    "permalink": "/en/en/overview/architecture-recommendations/"
+  },
+  "next": {
+    "title": "Pipelines",
+    "permalink": "/en/en/pipelines/"
+  }
+}

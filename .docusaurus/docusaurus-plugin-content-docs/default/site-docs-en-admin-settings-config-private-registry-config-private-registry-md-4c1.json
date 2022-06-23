@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/admin-settings/config-private-registry/config-private-registry",
+  "id": "en/admin-settings/config-private-registry/config-private-registry",
+  "title": "Configuring a Global Default Private Registry",
+  "description": "You might want to use a private container registry to share your custom base images within your organization. With a private registry, you can keep a private, consistent, and centralized source of truth for the container images that are used in your clusters.",
+  "source": "@site/docs/en/admin-settings/config-private-registry/config-private-registry.md",
+  "sourceDirName": "en/admin-settings/config-private-registry",
+  "slug": "/en/admin-settings/config-private-registry/",
+  "permalink": "/en/en/admin-settings/config-private-registry/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/admin-settings/config-private-registry/config-private-registry.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring a Global Default Private Registry",
+    "weight": 40
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Templates",
+    "permalink": "/en/en/admin-settings/cluster-templates/"
+  },
+  "next": {
+    "title": "Provisioning Drivers",
+    "permalink": "/en/en/admin-settings/drivers/"
+  }
+}

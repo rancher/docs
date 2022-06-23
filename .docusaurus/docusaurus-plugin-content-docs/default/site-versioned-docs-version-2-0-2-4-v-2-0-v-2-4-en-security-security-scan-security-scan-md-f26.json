@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/security/security-scan/security-scan",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/security/security-scan/security-scan",
+  "title": "Security Scans",
+  "description": "The documentation about CIS security scans has moved here.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/security/security-scan/security-scan.md",
+  "sourceDirName": "v2.0-v2.4/en/security/security-scan",
+  "slug": "/v2.0-v2.4/en/security/security-scan/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/security/security-scan/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/security/security-scan/security-scan.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security Scans",
+    "weight": 299,
+    "aliases": [
+      "/rancher/v2.x/en/security/security-scan/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Hardening Guide v2.4",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/security/rancher-2.4/hardening-2.4/"
+  },
+  "next": {
+    "title": "System Tools",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/system-tools/"
+  }
+}

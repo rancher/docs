@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/options/options",
+  "id": "en/cluster-provisioning/rke-clusters/options/options",
+  "title": "RKE Cluster Configuration",
+  "description": "This page has moved here.",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/options/options.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/options",
+  "slug": "/en/cluster-provisioning/rke-clusters/options/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/options/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/options/options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Cluster Configuration",
+    "weight": 2300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "VSphere Node Template Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/"
+  },
+  "next": {
+    "title": "Rancher Agents",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/rancher-agents/"
+  }
+}

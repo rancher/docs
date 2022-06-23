@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/cloning-clusters/cloning-clusters",
+  "id": "version-2.5/v2.5/en/cluster-admin/cloning-clusters/cloning-clusters",
+  "title": "Cloning Clusters",
+  "description": "If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the cloned cluster.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/cloning-clusters/cloning-clusters.md",
+  "sourceDirName": "v2.5/en/cluster-admin/cloning-clusters",
+  "slug": "/v2.5/en/cluster-admin/cloning-clusters/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/cloning-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/cloning-clusters/cloning-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cloning Clusters",
+    "weight": 2035,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-provisioning/cloning-clusters/",
+      "/rancher/v2.x/en/cluster-admin/cloning-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Removing Kubernetes Components from Nodes",
+    "permalink": "/2.5/v2.5/en/cluster-admin/cleaning-cluster-nodes/"
+  },
+  "next": {
+    "title": "Cluster Access",
+    "permalink": "/2.5/v2.5/en/cluster-admin/cluster-access/"
+  }
+}

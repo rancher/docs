@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/agent-options",
+  "id": "en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/agent-options",
+  "title": "Rancher Agent Options",
+  "description": "Rancher deploys an agent on each node to communicate with the node. This pages describes the options that can be passed to the agent. To use these options, you will need to create a cluster with custom nodes and add the options to the generated docker run command when adding a node.",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/agent-options.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/custom-nodes/agent-options",
+  "slug": "/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/agent-options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Agent Options",
+    "weight": 2500
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Launching Kubernetes on Existing Custom Nodes",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/custom-nodes/"
+  },
+  "next": {
+    "title": "Launching Kubernetes on New Nodes in an Infrastructure Provider",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/"
+  }
+}

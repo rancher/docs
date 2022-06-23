@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.5/en/monitoring-alerting/windows-clusters/windows-clusters",
+  "id": "version-2.5/v2.5/en/monitoring-alerting/windows-clusters/windows-clusters",
+  "title": "Windows Cluster Support for Monitoring V2",
+  "description": "Available as of v2.5.8",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/windows-clusters/windows-clusters.md",
+  "sourceDirName": "v2.5/en/monitoring-alerting/windows-clusters",
+  "slug": "/v2.5/en/monitoring-alerting/windows-clusters/",
+  "permalink": "/2.5/v2.5/en/monitoring-alerting/windows-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/windows-clusters/windows-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Windows Cluster Support for Monitoring V2",
+    "shortTitle": "Windows Support",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Role-based Access Control",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/rbac/"
+  },
+  "next": {
+    "title": "OPA Gatekeeper",
+    "permalink": "/2.5/v2.5/en/opa-gatekeper/"
+  }
+}

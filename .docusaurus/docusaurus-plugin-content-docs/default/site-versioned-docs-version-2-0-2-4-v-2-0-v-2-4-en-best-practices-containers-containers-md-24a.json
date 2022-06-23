@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.0-v2.4/en/best-practices/containers/containers",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/best-practices/containers/containers",
+  "title": "Tips for Setting Up Containers",
+  "description": "Running well-built containers can greatly impact the overall performance and security of your environment.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/best-practices/containers/containers.md",
+  "sourceDirName": "v2.0-v2.4/en/best-practices/containers",
+  "slug": "/v2.0-v2.4/en/best-practices/containers/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/best-practices/containers/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/best-practices/containers/containers.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tips for Setting Up Containers",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/best-practices/containers",
+      "/rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/containers",
+      "/rancher/v2.x/en/best-practices/v2.0-v2.4/containers/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Best Practices Guide",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/best-practices/"
+  },
+  "next": {
+    "title": "Rancher Deployment Strategies",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/best-practices/deployment-strategies/"
+  }
+}

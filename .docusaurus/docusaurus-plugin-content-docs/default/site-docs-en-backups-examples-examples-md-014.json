@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/backups/examples/examples",
+  "id": "en/backups/examples/examples",
+  "title": "Examples",
+  "description": "This section contains examples of Backup and Restore custom resources.",
+  "source": "@site/docs/en/backups/examples/examples.md",
+  "sourceDirName": "en/backups/examples",
+  "slug": "/en/backups/examples/",
+  "permalink": "/en/en/backups/examples/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/backups/examples/examples.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Examples",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restoring Backups—Docker Installs",
+    "permalink": "/en/en/backups/docker-installs/docker-restores/"
+  },
+  "next": {
+    "title": "Migrating Rancher to a New Cluster",
+    "permalink": "/en/en/backups/migrating-rancher/"
+  }
+}

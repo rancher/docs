@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/1.5-benchmark-2.5",
+  "id": "version-2.5/v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/1.5-benchmark-2.5",
+  "title": "CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5",
+  "description": "CIS v1.5 Kubernetes Benchmark - Rancher v2.5 with Kubernetes v1.15",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/1.5-benchmark-2.5.md",
+  "sourceDirName": "v2.5/en/security/rancher-2.5/1.5-benchmark-2.5",
+  "slug": "/v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/",
+  "permalink": "/2.5/v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/security/rancher-2.5/1.5-benchmark-2.5/1.5-benchmark-2.5.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CIS 1.5 Benchmark - Self-Assessment Guide - Rancher v2.5",
+    "weight": 201,
+    "aliases": [
+      "/rancher/v2.x/en/security/rancher-2.5/1.5-benchmark-2.5/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Self-Assessment and Hardening Guides for Rancher v2.5",
+    "permalink": "/2.5/v2.5/en/security/rancher-2.5/"
+  },
+  "next": {
+    "title": "Hardening Guide with CIS 1.5 Benchmark",
+    "permalink": "/2.5/v2.5/en/security/rancher-2.5/1.5-hardening-2.5/"
+  }
+}

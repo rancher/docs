@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/admin-settings/authentication/openldap/openldap-config/openldap-config",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/openldap/openldap-config/openldap-config",
+  "title": "OpenLDAP Configuration Reference",
+  "description": "This section is intended to be used as a reference when setting up an OpenLDAP authentication provider in Rancher.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/openldap/openldap-config/openldap-config.md",
+  "sourceDirName": "v2.0-v2.4/en/admin-settings/authentication/openldap/openldap-config",
+  "slug": "/v2.0-v2.4/en/admin-settings/authentication/openldap/openldap-config/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/openldap/openldap-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/openldap/openldap-config/openldap-config.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "OpenLDAP Configuration Reference",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring OpenLDAP",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/openldap/"
+  },
+  "next": {
+    "title": "Configuring PingIdentity (SAML)",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/ping-federate/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.6.5/en/admin-settings/authentication/github/github_index",
+  "id": "v2.6.5/en/admin-settings/authentication/github/github_index",
+  "title": "Configuring GitHub",
+  "description": "In environments using GitHub, you can configure Rancher to allow sign on using GitHub credentials.",
+  "source": "@site/docs/v2.6.5/en/admin-settings/authentication/github/github_index.md",
+  "sourceDirName": "v2.6.5/en/admin-settings/authentication/github",
+  "slug": "/v2.6.5/en/admin-settings/authentication/github/github_index",
+  "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/github/github_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6.5/en/admin-settings/authentication/github/github_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring GitHub",
+    "weight": 1116
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring FreeIPA",
+    "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/freeipa/freeipa_index"
+  },
+  "next": {
+    "title": "Configuring Google OAuth",
+    "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/google/google_index"
+  }
+}

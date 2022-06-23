@@ -1,0 +1,32 @@
+{
+  "unversionedId": "en/security/hardening-guides/rke-1.6-benchmark-2.6/rke-1.6-benchmark-2.6",
+  "id": "en/security/hardening-guides/rke-1.6-benchmark-2.6/rke-1.6-benchmark-2.6",
+  "title": "RKE CIS v1.6 Benchmark - Self-Assessment Guide - Rancher v2.6",
+  "description": "RKE CIS v1.6 Kubernetes Benchmark - Rancher v2.6 with Kubernetes v1.18 to v1.23",
+  "source": "@site/docs/en/security/hardening-guides/rke-1.6-benchmark-2.6/rke-1.6-benchmark-2.6.md",
+  "sourceDirName": "en/security/hardening-guides/rke-1.6-benchmark-2.6",
+  "slug": "/en/security/hardening-guides/rke-1.6-benchmark-2.6/",
+  "permalink": "/en/en/security/hardening-guides/rke-1.6-benchmark-2.6/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/security/hardening-guides/rke-1.6-benchmark-2.6/rke-1.6-benchmark-2.6.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE CIS v1.6 Benchmark - Self-Assessment Guide - Rancher v2.6",
+    "weight": 101,
+    "aliases": [
+      "/rancher/v2.6/en/security/hardening-guides/1.6-benchmark-2.6/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Self-Assessment and Hardening Guides for Rancher v2.6",
+    "permalink": "/en/en/security/hardening-guides/"
+  },
+  "next": {
+    "title": "RKE Hardening Guide with CIS v1.6 Benchmark",
+    "permalink": "/en/en/security/hardening-guides/rke-1.6-hardening-2.6/"
+  }
+}

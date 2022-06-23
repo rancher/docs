@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/install-rancher-on-k8s/upgrades/upgrades",
+  "id": "en/installation/install-rancher-on-k8s/upgrades/upgrades",
+  "title": "Upgrades",
+  "description": "The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.",
+  "source": "@site/docs/en/installation/install-rancher-on-k8s/upgrades/upgrades.md",
+  "sourceDirName": "en/installation/install-rancher-on-k8s/upgrades",
+  "slug": "/en/installation/install-rancher-on-k8s/upgrades/",
+  "permalink": "/en/en/installation/install-rancher-on-k8s/upgrades/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/install-rancher-on-k8s/upgrades/upgrades.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrades",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rollbacks",
+    "permalink": "/en/en/installation/install-rancher-on-k8s/rollbacks/"
+  },
+  "next": {
+    "title": "Rendering the Helm Template in an Air Gapped Environment",
+    "permalink": "/en/en/installation/install-rancher-on-k8s/upgrades/air-gap-upgrade/"
+  }
+}

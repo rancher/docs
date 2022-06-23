@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.6/en/admin-settings/rke-templates/creating-and-revising/creating-and-revising_index",
+  "id": "v2.6/en/admin-settings/rke-templates/creating-and-revising/creating-and-revising_index",
+  "title": "Creating and Revising RKE Templates",
+  "description": "This section describes how to manage RKE templates and revisions. You an create, share, update, and delete templates from the Cluster Management view under RKE1 Configuration > RKE Templates.",
+  "source": "@site/docs/v2.6/en/admin-settings/rke-templates/creating-and-revising/creating-and-revising_index.md",
+  "sourceDirName": "v2.6/en/admin-settings/rke-templates/creating-and-revising",
+  "slug": "/v2.6/en/admin-settings/rke-templates/creating-and-revising/creating-and-revising_index",
+  "permalink": "/v2.6/v2.6/en/admin-settings/rke-templates/creating-and-revising/creating-and-revising_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6/en/admin-settings/rke-templates/creating-and-revising/creating-and-revising_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating and Revising RKE Templates",
+    "weight": 32
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Applying Templates",
+    "permalink": "/v2.6/v2.6/en/admin-settings/rke-templates/applying-templates/applying-templates_index"
+  },
+  "next": {
+    "title": "Template Creator Permissions",
+    "permalink": "/v2.6/v2.6/en/admin-settings/rke-templates/creator-permissions/creator-permissions_index"
+  }
+}

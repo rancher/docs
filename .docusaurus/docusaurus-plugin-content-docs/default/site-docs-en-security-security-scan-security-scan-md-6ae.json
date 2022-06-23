@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/security/security-scan/security-scan",
+  "id": "en/security/security-scan/security-scan",
+  "title": "Security Scans",
+  "description": "The documentation about CIS security scans has moved here.",
+  "source": "@site/docs/en/security/security-scan/security-scan.md",
+  "sourceDirName": "en/security/security-scan",
+  "slug": "/en/security/security-scan/",
+  "permalink": "/en/en/security/security-scan/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/security/security-scan/security-scan.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security Scans",
+    "weight": 299
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE2 Hardening Guide with CIS v1.6 Benchmark",
+    "permalink": "/en/en/security/hardening-guides/rke2-1.6-hardening-2.6/"
+  },
+  "next": {
+    "title": "SELinux RPM",
+    "permalink": "/en/en/security/selinux/"
+  }
+}

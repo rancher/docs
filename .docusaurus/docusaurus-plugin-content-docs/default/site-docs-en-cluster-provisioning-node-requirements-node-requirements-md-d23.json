@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/node-requirements/node-requirements",
+  "id": "en/cluster-provisioning/node-requirements/node-requirements",
+  "title": "Node Requirements for Rancher Managed Clusters",
+  "description": "This page describes the requirements for the Rancher managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the three-node cluster running Rancher.",
+  "source": "@site/docs/en/cluster-provisioning/node-requirements/node-requirements.md",
+  "sourceDirName": "en/cluster-provisioning/node-requirements",
+  "slug": "/en/cluster-provisioning/node-requirements/",
+  "permalink": "/en/en/cluster-provisioning/node-requirements/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/node-requirements/node-requirements.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Node Requirements for Rancher Managed Clusters",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a Tencent TKE Cluster",
+    "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/tke/"
+  },
+  "next": {
+    "title": "Checklist for Production-Ready Clusters",
+    "permalink": "/en/en/cluster-provisioning/production/"
+  }
+}

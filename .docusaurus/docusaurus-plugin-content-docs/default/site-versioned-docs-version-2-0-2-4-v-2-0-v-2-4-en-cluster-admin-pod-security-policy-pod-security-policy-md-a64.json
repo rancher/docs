@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-admin/pod-security-policy/pod-security-policy",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-admin/pod-security-policy/pod-security-policy",
+  "title": "Adding a Pod Security Policy",
+  "description": "Prerequisite: The options below are available only for clusters that are launched using RKE.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/pod-security-policy/pod-security-policy.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-admin/pod-security-policy",
+  "slug": "/v2.0-v2.4/en/cluster-admin/pod-security-policy/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/pod-security-policy/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/pod-security-policy/pod-security-policy.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Adding a Pod Security Policy",
+    "weight": 80
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Nodes and Node Pools",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/nodes/"
+  },
+  "next": {
+    "title": "Projects and Kubernetes Namespaces with Rancher",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/projects-and-namespaces/"
+  }
+}

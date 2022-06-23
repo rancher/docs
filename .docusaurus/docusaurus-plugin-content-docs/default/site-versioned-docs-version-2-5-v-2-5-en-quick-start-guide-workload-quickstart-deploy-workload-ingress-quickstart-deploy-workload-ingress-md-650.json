@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/quickstart-deploy-workload-ingress",
+  "id": "version-2.5/v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/quickstart-deploy-workload-ingress",
+  "title": "Workload with Ingress Quick Start",
+  "description": "Prerequisite",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/quickstart-deploy-workload-ingress.md",
+  "sourceDirName": "v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-ingress",
+  "slug": "/v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/",
+  "permalink": "/2.5/v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/quickstart-deploy-workload-ingress.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Workload with Ingress Quick Start",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.x/en/quick-start-guide/workload/quickstart-deploy-workload-ingress/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Workloads",
+    "permalink": "/2.5/v2.5/en/quick-start-guide/workload/"
+  },
+  "next": {
+    "title": "Workload with NodePort Quick Start",
+    "permalink": "/2.5/v2.5/en/quick-start-guide/workload/quickstart-deploy-workload-nodeport/"
+  }
+}

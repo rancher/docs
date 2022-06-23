@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/istio/configuration-reference/configuration-reference",
+  "id": "version-2.5/v2.5/en/istio/configuration-reference/configuration-reference",
+  "title": "Configuration Options",
+  "description": "- Egress Support",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/istio/configuration-reference/configuration-reference.md",
+  "sourceDirName": "v2.5/en/istio/configuration-reference",
+  "slug": "/v2.5/en/istio/configuration-reference/",
+  "permalink": "/2.5/v2.5/en/istio/configuration-reference/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/istio/configuration-reference/configuration-reference.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuration Options",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.5/en/istio/v2.5/configuration-reference",
+      "/rancher/v2.x/en/istio/v2.5/configuration-reference/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Istio",
+    "permalink": "/2.5/v2.5/en/istio/"
+  },
+  "next": {
+    "title": "Additional Steps for Project Network Isolation",
+    "permalink": "/2.5/v2.5/en/istio/configuration-reference/canal-and-project-network/"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "unversionedId": "en/installation/requirements/ports/common-ports-table/common-ports-table",
+  "id": "en/installation/requirements/ports/common-ports-table/common-ports-table",
+  "title": "common-ports-table",
+  "description": "| Protocol \t|       Port       \t| Description                                     \t                                |",
+  "source": "@site/docs/en/installation/requirements/ports/common-ports-table/common-ports-table.md",
+  "sourceDirName": "en/installation/requirements/ports/common-ports-table",
+  "slug": "/en/installation/requirements/ports/common-ports-table/",
+  "permalink": "/en/en/installation/requirements/ports/common-ports-table/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/requirements/ports/common-ports-table/common-ports-table.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "headless": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Port Requirements",
+    "permalink": "/en/en/installation/requirements/ports/"
+  },
+  "next": {
+    "title": "Resources",
+    "permalink": "/en/en/installation/resources/"
+  }
+}

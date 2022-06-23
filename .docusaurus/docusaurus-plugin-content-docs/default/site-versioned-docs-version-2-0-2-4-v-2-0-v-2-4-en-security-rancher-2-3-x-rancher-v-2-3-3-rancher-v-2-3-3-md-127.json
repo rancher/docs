@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3/rancher-v2.3.3",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3/rancher-v2.3.3",
+  "title": "Rancher v2.3.3",
+  "description": "Self Assessment Guide",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3/rancher-v2.3.3.md",
+  "sourceDirName": "v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3",
+  "slug": "/v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3/rancher-v2.3.3.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher v2.3.3",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/security/rancher-2.3.x/rancher-v2.3.3/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Hardening Guide v2.3",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.0/hardening-2.3/"
+  },
+  "next": {
+    "title": "CIS Benchmark Rancher Self-Assessment Guide - Rancher v2.3.3",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/security/rancher-2.3.x/rancher-v2.3.3/benchmark-2.3.3/"
+  }
+}

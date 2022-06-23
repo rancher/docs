@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/troubleshooting/rancherha/rancherha",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/troubleshooting/rancherha/rancherha",
+  "title": "Rancher HA",
+  "description": "The commands/steps listed on this page can be used to check your Rancher Kubernetes Installation.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/troubleshooting/rancherha/rancherha.md",
+  "sourceDirName": "v2.0-v2.4/en/troubleshooting/rancherha",
+  "slug": "/v2.0-v2.4/en/troubleshooting/rancherha/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/troubleshooting/rancherha/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/troubleshooting/rancherha/rancherha.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher HA",
+    "weight": 104
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Networking",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/troubleshooting/networking/"
+  },
+  "next": {
+    "title": "User Settings",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/user-settings/"
+  }
+}

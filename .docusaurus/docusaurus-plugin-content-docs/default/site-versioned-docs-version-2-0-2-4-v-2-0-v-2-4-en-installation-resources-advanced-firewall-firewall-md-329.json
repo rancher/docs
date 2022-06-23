@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/advanced/firewall/firewall",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/firewall/firewall",
+  "title": "Opening Ports with firewalld",
+  "description": "We recommend disabling firewalld. For Kubernetes 1.19.x and higher, firewalld must be turned off.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/firewall/firewall.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/advanced/firewall",
+  "slug": "/v2.0-v2.4/en/installation/resources/advanced/firewall/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/firewall/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/firewall/firewall.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Opening Ports with firewalld",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tuning etcd for Large Installations",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/etcd/"
+  },
+  "next": {
+    "title": "Kubernetes Installation Using Helm 2",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/"
+  }
+}

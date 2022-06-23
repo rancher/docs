@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/istio/rbac/rbac",
+  "id": "en/istio/rbac/rbac",
+  "title": "Role-based Access Control",
+  "description": "This section describes the permissions required to access Istio features.",
+  "source": "@site/docs/en/istio/rbac/rbac.md",
+  "sourceDirName": "en/istio/rbac",
+  "slug": "/en/istio/rbac/",
+  "permalink": "/en/en/istio/rbac/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/istio/rbac/rbac.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Role-based Access Control",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Disabling Istio",
+    "permalink": "/en/en/istio/disabling-istio/"
+  },
+  "next": {
+    "title": "CPU and Memory Allocations",
+    "permalink": "/en/en/istio/resources/"
+  }
+}

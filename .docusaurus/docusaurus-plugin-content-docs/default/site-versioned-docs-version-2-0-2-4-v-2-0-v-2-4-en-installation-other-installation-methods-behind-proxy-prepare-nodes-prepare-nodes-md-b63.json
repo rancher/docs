@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes",
+  "title": "1. Set up Infrastructure",
+  "description": "In this section, you will provision the underlying infrastructure for your Rancher management server with internete access through a HTTP proxy.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes",
+  "slug": "/v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Set up Infrastructure",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Install Kubernetes",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/"
+  },
+  "next": {
+    "title": "Installing Rancher on a Single Node Using Docker",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/"
+  }
+}

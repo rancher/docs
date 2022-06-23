@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/overview/overview",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/overview/overview",
+  "title": "Overview",
+  "description": "Rancher is a container management platform built for organizations that deploy containers in production. Rancher makes it easy to run Kubernetes everywhere, meet IT requirements, and empower DevOps teams.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/overview/overview.md",
+  "sourceDirName": "v2.0-v2.4/en/overview",
+  "slug": "/v2.0-v2.4/en/overview/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/overview/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/overview/overview.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Overview",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading Workloads",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/k8s-in-rancher/workloads/upgrade-workloads/"
+  },
+  "next": {
+    "title": "Architecture",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/overview/architecture/"
+  }
+}

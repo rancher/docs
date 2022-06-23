@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.0-v2.4/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs",
+  "title": "Rancher GCP Quick Start Guide",
+  "description": "Read this step by step Rancher GCP guide to quickly deploy a Rancher Server with a single node cluster attached.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs.md",
+  "sourceDirName": "v2.0-v2.4/en/quick-start-guide/deployment/google-gcp-qs",
+  "slug": "/v2.0-v2.4/en/quick-start-guide/deployment/google-gcp-qs/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/google-gcp-qs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/google-gcp-qs/google-gcp-qs.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher GCP Quick Start Guide",
+    "description": "Read this step by step Rancher GCP guide to quickly deploy a Rancher Server with a single node cluster attached.",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher DigitalOcean Quick Start Guide",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/digital-ocean-qs/"
+  },
+  "next": {
+    "title": "Rancher Azure Quick Start Guide",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/quick-start-guide/deployment/microsoft-azure-qs/"
+  }
+}

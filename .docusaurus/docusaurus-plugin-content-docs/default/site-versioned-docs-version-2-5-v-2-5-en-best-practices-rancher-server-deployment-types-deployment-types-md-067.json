@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/best-practices/rancher-server/deployment-types/deployment-types",
+  "id": "version-2.5/v2.5/en/best-practices/rancher-server/deployment-types/deployment-types",
+  "title": "Tips for Running Rancher",
+  "description": "This guide is geared toward use cases where Rancher is used to manage downstream Kubernetes clusters. The high-availability setup is intended to prevent losing access to downstream clusters if the Rancher server is not available.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-server/deployment-types/deployment-types.md",
+  "sourceDirName": "v2.5/en/best-practices/rancher-server/deployment-types",
+  "slug": "/v2.5/en/best-practices/rancher-server/deployment-types/",
+  "permalink": "/2.5/v2.5/en/best-practices/rancher-server/deployment-types/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-server/deployment-types/deployment-types.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tips for Running Rancher",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.5/en/best-practices/deployment-types",
+      "/rancher/v2.5/en/best-practices/v2.5/rancher-server/deployment-types",
+      "/rancher/v2.x/en/best-practices/v2.5/rancher-server/deployment-types/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Deployment Strategy",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-server/deployment-strategies/"
+  },
+  "next": {
+    "title": "Installing Rancher in a vSphere Environment",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-server/rancher-in-vsphere/"
+  }
+}

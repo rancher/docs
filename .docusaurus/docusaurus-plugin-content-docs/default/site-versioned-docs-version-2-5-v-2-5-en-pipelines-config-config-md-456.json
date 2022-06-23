@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/pipelines/config/config",
+  "id": "version-2.5/v2.5/en/pipelines/config/config",
+  "title": "Pipeline Configuration Reference",
+  "description": "In this section, you'll learn how to configure pipelines.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/pipelines/config/config.md",
+  "sourceDirName": "v2.5/en/pipelines/config",
+  "slug": "/v2.5/en/pipelines/config/",
+  "permalink": "/2.5/v2.5/en/pipelines/config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/pipelines/config/config.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pipeline Configuration Reference",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/k8s-in-rancher/pipelines/config",
+      "/rancher/v2.x/en/pipelines/config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Concepts",
+    "permalink": "/2.5/v2.5/en/pipelines/concepts/"
+  },
+  "next": {
+    "title": "Example YAML File",
+    "permalink": "/2.5/v2.5/en/pipelines/example/"
+  }
+}

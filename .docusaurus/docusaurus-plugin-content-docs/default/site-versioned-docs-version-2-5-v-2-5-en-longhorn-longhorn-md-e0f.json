@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/longhorn/longhorn",
+  "id": "version-2.5/v2.5/en/longhorn/longhorn",
+  "title": "Longhorn - Cloud native distributed block storage for Kubernetes",
+  "description": "Longhorn is a lightweight, reliable and easy-to-use distributed block storage system for Kubernetes.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/longhorn/longhorn.md",
+  "sourceDirName": "v2.5/en/longhorn",
+  "slug": "/v2.5/en/longhorn/",
+  "permalink": "/2.5/v2.5/en/longhorn/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/longhorn/longhorn.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Longhorn - Cloud native distributed block storage for Kubernetes",
+    "shortTitle": "Longhorn Storage",
+    "weight": 19,
+    "aliases": [
+      "/rancher/v2.x/en/longhorn/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Working with Taints and Tolerations",
+    "permalink": "/2.5/v2.5/en/logging/taints-tolerations/"
+  },
+  "next": {
+    "title": "Monitoring and Alerting",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/"
+  }
+}

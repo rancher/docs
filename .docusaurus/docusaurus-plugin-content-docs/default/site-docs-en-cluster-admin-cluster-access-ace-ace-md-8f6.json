@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-admin/cluster-access/ace/ace",
+  "id": "en/cluster-admin/cluster-access/ace/ace",
+  "title": "How the Authorized Cluster Endpoint Works",
+  "description": "This section describes how the kubectl CLI, the kubeconfig file, and the authorized cluster endpoint work together to allow you to access a downstream Kubernetes cluster directly, without authenticating through the Rancher server. It is intended to provide background information and context to the instructions for how to set up kubectl to directly access a cluster.",
+  "source": "@site/docs/en/cluster-admin/cluster-access/ace/ace.md",
+  "sourceDirName": "en/cluster-admin/cluster-access/ace",
+  "slug": "/en/cluster-admin/cluster-access/ace/",
+  "permalink": "/en/en/cluster-admin/cluster-access/ace/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-admin/cluster-access/ace/ace.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "How the Authorized Cluster Endpoint Works",
+    "weight": 2015
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Access",
+    "permalink": "/en/en/cluster-admin/cluster-access/"
+  },
+  "next": {
+    "title": "Adding Users to Clusters",
+    "permalink": "/en/en/cluster-admin/cluster-access/cluster-members/"
+  }
+}

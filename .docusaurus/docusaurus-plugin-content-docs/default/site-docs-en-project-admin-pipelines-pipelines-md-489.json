@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/project-admin/pipelines/pipelines",
+  "id": "en/project-admin/pipelines/pipelines",
+  "title": "Rancher's CI/CD Pipelines",
+  "description": "Use Rancher’s CI/CD pipeline to automatically checkout code, run builds or scripts, publish Docker images, and deploy software to users",
+  "source": "@site/docs/en/project-admin/pipelines/pipelines.md",
+  "sourceDirName": "en/project-admin/pipelines",
+  "slug": "/en/project-admin/pipelines/",
+  "permalink": "/en/en/project-admin/pipelines/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/project-admin/pipelines/pipelines.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher's CI/CD Pipelines",
+    "description": "Use Rancher’s CI/CD pipeline to automatically checkout code, run builds or scripts, publish Docker images, and deploy software to users",
+    "weight": 4000
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Namespaces",
+    "permalink": "/en/en/project-admin/namespaces/"
+  },
+  "next": {
+    "title": "Pod Security Policies",
+    "permalink": "/en/en/project-admin/pod-security-policies/"
+  }
+}

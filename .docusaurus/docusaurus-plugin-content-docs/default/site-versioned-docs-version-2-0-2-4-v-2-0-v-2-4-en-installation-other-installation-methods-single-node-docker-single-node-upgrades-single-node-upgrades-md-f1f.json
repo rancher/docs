@@ -1,0 +1,36 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/single-node-upgrades",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/single-node-upgrades",
+  "title": "Upgrading Rancher Installed with Docker",
+  "description": "The following instructions will guide you through upgrading a Rancher server that was installed with Docker.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/single-node-upgrades.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades",
+  "slug": "/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/single-node-upgrades.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Rancher Installed with Docker",
+    "weight": 1010,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/single-node-upgrade/",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/single-node-air-gap-upgrade",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/single-node",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/single-node-upgrade/",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rolling Back Rancher Installed with Docker",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/"
+  },
+  "next": {
+    "title": "Certificate Troubleshooting",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/troubleshooting/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1/v2.0-v2.1",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1/v2.0-v2.1",
+  "title": "Rolling back to v2.0.0-v2.1.5",
+  "description": "Rolling back to Rancher v2.0-v2.1 is no longer supported. The instructions for rolling back to these versions are preserved here and are intended to be used only in cases where upgrading to Rancher v2.2+ is not feasible.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1/v2.0-v2.1.md",
+  "sourceDirName": "v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1",
+  "slug": "/v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/backups/restore/rke-restore/v2.0-v2.1/v2.0-v2.1.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rolling back to v2.0.0-v2.1.5",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/v2.0-v2.1/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restoring Backups—Kubernetes installs",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/restore/rke-restore/"
+  },
+  "next": {
+    "title": "Best Practices Guide",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/best-practices/"
+  }
+}

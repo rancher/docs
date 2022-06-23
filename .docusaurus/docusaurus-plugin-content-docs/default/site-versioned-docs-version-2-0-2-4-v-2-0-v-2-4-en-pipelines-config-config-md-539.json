@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/pipelines/config/config",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/pipelines/config/config",
+  "title": "Pipeline Configuration Reference",
+  "description": "In this section, you'll learn how to configure pipelines.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/pipelines/config/config.md",
+  "sourceDirName": "v2.0-v2.4/en/pipelines/config",
+  "slug": "/v2.0-v2.4/en/pipelines/config/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/pipelines/config/config.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pipeline Configuration Reference",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines/config"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Concepts",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/concepts/"
+  },
+  "next": {
+    "title": "v2.0.x Pipeline Documentation",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/docs-for-v2.0.x/"
+  }
+}

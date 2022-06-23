@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes",
+  "id": "version-2.5/v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes",
+  "title": "1. Set up Infrastructure",
+  "description": "In this section, you will provision the underlying infrastructure for your Rancher management server with internete access through a HTTP proxy.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes.md",
+  "sourceDirName": "v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes",
+  "slug": "/v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/",
+  "permalink": "/2.5/v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/prepare-nodes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Set up Infrastructure",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.x/en/installation/other-installation-methods/behind-proxy/prepare-nodes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Install Kubernetes",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/"
+  },
+  "next": {
+    "title": "Install/Upgrade Rancher with RancherD",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/install-rancher-on-linux/"
+  }
+}

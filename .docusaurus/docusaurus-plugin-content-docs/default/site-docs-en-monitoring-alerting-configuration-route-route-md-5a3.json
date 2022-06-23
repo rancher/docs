@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/monitoring-alerting/configuration/route/route",
+  "id": "en/monitoring-alerting/configuration/route/route",
+  "title": "Route Configuration",
+  "description": "The route configuration is the section of the Alertmanager custom resource that controls how the alerts fired by Prometheus are grouped and filtered before they reach the receiver.",
+  "source": "@site/docs/en/monitoring-alerting/configuration/route/route.md",
+  "sourceDirName": "en/monitoring-alerting/configuration/route",
+  "slug": "/en/monitoring-alerting/configuration/route/",
+  "permalink": "/en/en/monitoring-alerting/configuration/route/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/configuration/route/route.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Route Configuration",
+    "shortTitle": "Routes",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Receiver Configuration",
+    "permalink": "/en/en/monitoring-alerting/configuration/receiver/"
+  },
+  "next": {
+    "title": "ServiceMonitor and PodMonitor Configuration",
+    "permalink": "/en/en/monitoring-alerting/configuration/servicemonitor-podmonitor/"
+  }
+}

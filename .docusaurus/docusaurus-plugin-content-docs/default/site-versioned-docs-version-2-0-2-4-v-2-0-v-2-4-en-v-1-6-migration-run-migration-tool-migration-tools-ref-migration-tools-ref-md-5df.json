@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/v1.6-migration/run-migration-tool/migration-tools-ref/migration-tools-ref",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/run-migration-tool/migration-tools-ref/migration-tools-ref",
+  "title": "Migration Tools CLI Reference",
+  "description": "The migration-tools CLI includes multiple commands and options to assist your migration from Rancher v1.6 to Rancher v2.x.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/run-migration-tool/migration-tools-ref/migration-tools-ref.md",
+  "sourceDirName": "v2.0-v2.4/en/v1.6-migration/run-migration-tool/migration-tools-ref",
+  "slug": "/v2.0-v2.4/en/v1.6-migration/run-migration-tool/migration-tools-ref/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/run-migration-tool/migration-tools-ref/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/run-migration-tool/migration-tools-ref/migration-tools-ref.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migration Tools CLI Reference",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/run-migration-tool/migration-tools-ref/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Migrate Your Services",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/run-migration-tool/"
+  },
+  "next": {
+    "title": "5. Schedule Your Services",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/schedule-workloads/"
+  }
+}

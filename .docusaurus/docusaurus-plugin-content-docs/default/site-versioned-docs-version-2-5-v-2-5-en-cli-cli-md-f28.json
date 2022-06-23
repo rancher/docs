@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.5/en/cli/cli",
+  "id": "version-2.5/v2.5/en/cli/cli",
+  "title": "CLI with Rancher",
+  "description": "Interact with Rancher using command line interface (CLI) tools from your workstation.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cli/cli.md",
+  "sourceDirName": "v2.5/en/cli",
+  "slug": "/v2.5/en/cli/",
+  "permalink": "/2.5/v2.5/en/cli/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cli/cli.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CLI with Rancher",
+    "description": "Interact with Rancher using command line interface (CLI) tools from your workstation.",
+    "weight": 21
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Skipped and Not Applicable Tests",
+    "permalink": "/2.5/v2.5/en/cis-scans/skipped-tests/"
+  },
+  "next": {
+    "title": "Cluster Administration",
+    "permalink": "/2.5/v2.5/en/cluster-admin/"
+  }
+}

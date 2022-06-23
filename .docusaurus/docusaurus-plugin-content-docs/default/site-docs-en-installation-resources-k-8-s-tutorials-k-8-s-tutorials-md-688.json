@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/resources/k8s-tutorials/k8s-tutorials",
+  "id": "en/installation/resources/k8s-tutorials/k8s-tutorials",
+  "title": "Don't have a Kubernetes cluster? Try one of these tutorials.",
+  "description": "This section contains information on how to install a Kubernetes cluster that the Rancher server can be installed on.",
+  "source": "@site/docs/en/installation/resources/k8s-tutorials/k8s-tutorials.md",
+  "sourceDirName": "en/installation/resources/k8s-tutorials",
+  "slug": "/en/installation/resources/k8s-tutorials/",
+  "permalink": "/en/en/installation/resources/k8s-tutorials/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/resources/k8s-tutorials/k8s-tutorials.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Don't have a Kubernetes cluster? Try one of these tutorials.",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Helm Version Requirements",
+    "permalink": "/en/en/installation/resources/helm-version/"
+  },
+  "next": {
+    "title": "Setting up a High-availability RKE Kubernetes Cluster",
+    "permalink": "/en/en/installation/resources/k8s-tutorials/ha-RKE/"
+  }
+}

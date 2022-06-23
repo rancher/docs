@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/k8s-in-rancher/workloads/deploy-workloads/deploy-workloads",
+  "id": "en/k8s-in-rancher/workloads/deploy-workloads/deploy-workloads",
+  "title": "Deploying Workloads",
+  "description": "Read this step by step guide for deploying workloads. Deploy a workload to run an application in one or more containers.",
+  "source": "@site/docs/en/k8s-in-rancher/workloads/deploy-workloads/deploy-workloads.md",
+  "sourceDirName": "en/k8s-in-rancher/workloads/deploy-workloads",
+  "slug": "/en/k8s-in-rancher/workloads/deploy-workloads/",
+  "permalink": "/en/en/k8s-in-rancher/workloads/deploy-workloads/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/k8s-in-rancher/workloads/deploy-workloads/deploy-workloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Workloads",
+    "description": "Read this step by step guide for deploying workloads. Deploy a workload to run an application in one or more containers.",
+    "weight": 3026
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding a Sidecar",
+    "permalink": "/en/en/k8s-in-rancher/workloads/add-a-sidecar/"
+  },
+  "next": {
+    "title": "Rolling Back Workloads",
+    "permalink": "/en/en/k8s-in-rancher/workloads/rollback-workloads/"
+  }
+}

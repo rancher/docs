@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/troubleshooting/kubernetes-resources/kubernetes-resources",
+  "id": "en/troubleshooting/kubernetes-resources/kubernetes-resources",
+  "title": "Kubernetes resources",
+  "description": "The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to Rancher Launched Kubernetes clusters.",
+  "source": "@site/docs/en/troubleshooting/kubernetes-resources/kubernetes-resources.md",
+  "sourceDirName": "en/troubleshooting/kubernetes-resources",
+  "slug": "/en/troubleshooting/kubernetes-resources/",
+  "permalink": "/en/en/troubleshooting/kubernetes-resources/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/troubleshooting/kubernetes-resources/kubernetes-resources.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes resources",
+    "weight": 101
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting Worker Nodes and Generic Components",
+    "permalink": "/en/en/troubleshooting/kubernetes-components/worker-and-generic/"
+  },
+  "next": {
+    "title": "Logging",
+    "permalink": "/en/en/troubleshooting/logging/"
+  }
+}

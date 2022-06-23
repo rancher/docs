@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/logging/migrating/migrating",
+  "id": "en/logging/migrating/migrating",
+  "title": "Migrating to Rancher v2.5 Logging",
+  "description": "Starting in v2.5, the logging feature available within Rancher has been completely overhauled. The logging operator from Banzai Cloud has been adopted; Rancher configures this tooling for use when deploying logging.",
+  "source": "@site/docs/en/logging/migrating/migrating.md",
+  "sourceDirName": "en/logging/migrating",
+  "slug": "/en/logging/migrating/",
+  "permalink": "/en/en/logging/migrating/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/logging/migrating/migrating.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating to Rancher v2.5 Logging",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "rancher-logging Helm Chart Options",
+    "permalink": "/en/en/logging/helm-chart-options/"
+  },
+  "next": {
+    "title": "Role-based Access Control for Logging",
+    "permalink": "/en/en/logging/rbac/"
+  }
+}

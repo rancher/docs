@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/nodes/nodes",
+  "id": "version-2.5/v2.5/en/cluster-admin/nodes/nodes",
+  "title": "Nodes and Node Pools",
+  "description": "After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's Node tab. Depending on the option used to provision the cluster, there are different node options available.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/nodes/nodes.md",
+  "sourceDirName": "v2.5/en/cluster-admin/nodes",
+  "slug": "/v2.5/en/cluster-admin/nodes/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/nodes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/nodes/nodes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Nodes and Node Pools",
+    "weight": 2030,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/nodes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Syncing",
+    "permalink": "/2.5/v2.5/en/cluster-admin/editing-clusters/syncing/"
+  },
+  "next": {
+    "title": "Adding a Pod Security Policy",
+    "permalink": "/2.5/v2.5/en/cluster-admin/pod-security-policy/"
+  }
+}

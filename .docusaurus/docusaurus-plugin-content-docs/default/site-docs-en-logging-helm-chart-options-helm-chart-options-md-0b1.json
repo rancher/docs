@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/logging/helm-chart-options/helm-chart-options",
+  "id": "en/logging/helm-chart-options/helm-chart-options",
+  "title": "rancher-logging Helm Chart Options",
+  "description": "- Enable/Disable Windows Node Logging",
+  "source": "@site/docs/en/logging/helm-chart-options/helm-chart-options.md",
+  "sourceDirName": "en/logging/helm-chart-options",
+  "slug": "/en/logging/helm-chart-options/",
+  "permalink": "/en/en/logging/helm-chart-options/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/logging/helm-chart-options/helm-chart-options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "rancher-logging Helm Chart Options",
+    "shortTitle": "Helm Chart Options",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Outputs and ClusterOutputs",
+    "permalink": "/en/en/logging/custom-resource-config/outputs/"
+  },
+  "next": {
+    "title": "Migrating to Rancher v2.5 Logging",
+    "permalink": "/en/en/logging/migrating/"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/best-practices/rancher-server/rancher-server",
+  "id": "version-2.5/v2.5/en/best-practices/rancher-server/rancher-server",
+  "title": "Best Practices for the Rancher Server",
+  "description": "This guide contains our recommendations for running the Rancher server, and is intended to be used in situations in which Rancher manages downstream Kubernetes clusters.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-server/rancher-server.md",
+  "sourceDirName": "v2.5/en/best-practices/rancher-server",
+  "slug": "/v2.5/en/best-practices/rancher-server/",
+  "permalink": "/2.5/v2.5/en/best-practices/rancher-server/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/best-practices/rancher-server/rancher-server.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices for the Rancher Server",
+    "shortTitle": "Rancher Server",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/best-practices/v2.5/rancher-server",
+      "/rancher/v2.x/en/best-practices/v2.5/rancher-server/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Monitoring Best Practices",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-managed/monitoring/"
+  },
+  "next": {
+    "title": "Rancher Deployment Strategy",
+    "permalink": "/2.5/v2.5/en/best-practices/rancher-server/deployment-strategies/"
+  }
+}

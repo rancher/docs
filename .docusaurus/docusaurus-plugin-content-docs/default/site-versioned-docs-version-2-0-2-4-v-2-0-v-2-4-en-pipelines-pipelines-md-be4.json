@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/pipelines/pipelines",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/pipelines/pipelines",
+  "title": "Pipelines",
+  "description": "Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/pipelines/pipelines.md",
+  "sourceDirName": "v2.0-v2.4/en/pipelines",
+  "slug": "/v2.0-v2.4/en/pipelines/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/pipelines/pipelines.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pipelines",
+    "weight": 11,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Concepts",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/overview/concepts/"
+  },
+  "next": {
+    "title": "Concepts",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/concepts/"
+  }
+}

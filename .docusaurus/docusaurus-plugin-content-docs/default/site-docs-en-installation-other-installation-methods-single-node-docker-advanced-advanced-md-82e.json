@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/other-installation-methods/single-node-docker/advanced/advanced",
+  "id": "en/installation/other-installation-methods/single-node-docker/advanced/advanced",
+  "title": "Advanced Options for Docker Installs",
+  "description": "When installing Rancher, there are several advanced options that can be enabled:",
+  "source": "@site/docs/en/installation/other-installation-methods/single-node-docker/advanced/advanced.md",
+  "sourceDirName": "en/installation/other-installation-methods/single-node-docker/advanced",
+  "slug": "/en/installation/other-installation-methods/single-node-docker/advanced/",
+  "permalink": "/en/en/installation/other-installation-methods/single-node-docker/advanced/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/other-installation-methods/single-node-docker/advanced/advanced.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Advanced Options for Docker Installs",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Rancher on a Single Node Using Docker",
+    "permalink": "/en/en/installation/other-installation-methods/single-node-docker/"
+  },
+  "next": {
+    "title": "HTTP Proxy Configuration",
+    "permalink": "/en/en/installation/other-installation-methods/single-node-docker/proxy/"
+  }
+}

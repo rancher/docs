@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-admin/backing-up-etcd/backing-up-etcd",
+  "id": "en/cluster-admin/backing-up-etcd/backing-up-etcd",
+  "title": "Backing up a Cluster",
+  "description": "In the Rancher UI, etcd backup and recovery for Rancher launched Kubernetes clusters can be easily performed.",
+  "source": "@site/docs/en/cluster-admin/backing-up-etcd/backing-up-etcd.md",
+  "sourceDirName": "en/cluster-admin/backing-up-etcd",
+  "slug": "/en/cluster-admin/backing-up-etcd/",
+  "permalink": "/en/en/cluster-admin/backing-up-etcd/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-admin/backing-up-etcd/backing-up-etcd.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backing up a Cluster",
+    "weight": 2045
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Administration",
+    "permalink": "/en/en/cluster-admin/"
+  },
+  "next": {
+    "title": "Certificate Rotation",
+    "permalink": "/en/en/cluster-admin/certificate-rotation/"
+  }
+}

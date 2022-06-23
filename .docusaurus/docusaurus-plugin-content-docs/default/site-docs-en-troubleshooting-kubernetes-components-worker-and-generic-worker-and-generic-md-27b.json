@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/troubleshooting/kubernetes-components/worker-and-generic/worker-and-generic",
+  "id": "en/troubleshooting/kubernetes-components/worker-and-generic/worker-and-generic",
+  "title": "Troubleshooting Worker Nodes and Generic Components",
+  "description": "This section applies to every node as it includes components that run on nodes with any role.",
+  "source": "@site/docs/en/troubleshooting/kubernetes-components/worker-and-generic/worker-and-generic.md",
+  "sourceDirName": "en/troubleshooting/kubernetes-components/worker-and-generic",
+  "slug": "/en/troubleshooting/kubernetes-components/worker-and-generic/",
+  "permalink": "/en/en/troubleshooting/kubernetes-components/worker-and-generic/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/troubleshooting/kubernetes-components/worker-and-generic/worker-and-generic.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting Worker Nodes and Generic Components",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting nginx-proxy",
+    "permalink": "/en/en/troubleshooting/kubernetes-components/nginx-proxy/"
+  },
+  "next": {
+    "title": "Kubernetes resources",
+    "permalink": "/en/en/troubleshooting/kubernetes-resources/"
+  }
+}

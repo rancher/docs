@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works/how-ha-works",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works/how-ha-works",
+  "title": "About High-availability Installations",
+  "description": "We recommend using Helm, a Kubernetes package manager, to install Rancher on a dedicated Kubernetes cluster. This is called a high-availability Kubernetes installation because increased availability is achieved by running Rancher on multiple nodes.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works/how-ha-works.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works",
+  "slug": "/v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/how-ha-works/how-ha-works.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "About High-availability Installations",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up a High-availability K3s Kubernetes Cluster for Rancher",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/ha-with-external-db/"
+  },
+  "next": {
+    "title": "Don't have infrastructure for your Kubernetes cluster? Try one of these tutorials.",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/k8s-tutorials/infrastructure-tutorials/"
+  }
+}

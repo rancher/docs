@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/istio/istio",
+  "id": "version-2.5/v2.5/en/istio/istio",
+  "title": "Istio",
+  "description": "Istio is an open-source tool that makes it easier for DevOps teams to observe, secure, control, and troubleshoot the traffic within a complex network of microservices.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/istio/istio.md",
+  "sourceDirName": "v2.5/en/istio",
+  "slug": "/v2.5/en/istio/",
+  "permalink": "/2.5/v2.5/en/istio/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/istio/istio.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Istio",
+    "weight": 14,
+    "aliases": [
+      "/rancher/v2.5/en/dashboard/istio",
+      "/rancher/v2.x/en/istio/",
+      "/rancher/v2.x/en/istio/v2.5/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher 2.5",
+    "permalink": "/2.5/v2.5/en/introduction"
+  },
+  "next": {
+    "title": "Configuration Options",
+    "permalink": "/2.5/v2.5/en/istio/configuration-reference/"
+  }
+}

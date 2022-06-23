@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.6/en/admin-settings/rke-templates/creator-permissions/creator-permissions_index",
+  "id": "v2.6/en/admin-settings/rke-templates/creator-permissions/creator-permissions_index",
+  "title": "Template Creator Permissions",
+  "description": "Administrators have the permission to create RKE templates, and only administrators can give that permission to other users.",
+  "source": "@site/docs/v2.6/en/admin-settings/rke-templates/creator-permissions/creator-permissions_index.md",
+  "sourceDirName": "v2.6/en/admin-settings/rke-templates/creator-permissions",
+  "slug": "/v2.6/en/admin-settings/rke-templates/creator-permissions/creator-permissions_index",
+  "permalink": "/v2.6/v2.6/en/admin-settings/rke-templates/creator-permissions/creator-permissions_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6/en/admin-settings/rke-templates/creator-permissions/creator-permissions_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Template Creator Permissions",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating and Revising RKE Templates",
+    "permalink": "/v2.6/v2.6/en/admin-settings/rke-templates/creating-and-revising/creating-and-revising_index"
+  },
+  "next": {
+    "title": "Template Enforcement",
+    "permalink": "/v2.6/v2.6/en/admin-settings/rke-templates/enforcement/enforcement_index"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/cleaning-cluster-nodes/cleaning-cluster-nodes",
+  "id": "version-2.5/v2.5/en/cluster-admin/cleaning-cluster-nodes/cleaning-cluster-nodes",
+  "title": "Removing Kubernetes Components from Nodes",
+  "description": "Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/cleaning-cluster-nodes/cleaning-cluster-nodes.md",
+  "sourceDirName": "v2.5/en/cluster-admin/cleaning-cluster-nodes",
+  "slug": "/v2.5/en/cluster-admin/cleaning-cluster-nodes/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/cleaning-cluster-nodes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/cleaning-cluster-nodes/cleaning-cluster-nodes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Removing Kubernetes Components from Nodes",
+    "description": "Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually",
+    "weight": 2055,
+    "aliases": [
+      "/rancher/v2.5/en/faq/cleaning-cluster-nodes/",
+      "/rancher/v2.x/en/cluster-admin/cleaning-cluster-nodes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Certificate Rotation",
+    "permalink": "/2.5/v2.5/en/cluster-admin/certificate-rotation/"
+  },
+  "next": {
+    "title": "Cloning Clusters",
+    "permalink": "/2.5/v2.5/en/cluster-admin/cloning-clusters/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.5/en/monitoring-alerting/dashboards/dashboards",
+  "id": "version-2.5/v2.5/en/monitoring-alerting/dashboards/dashboards",
+  "title": "Built-in Dashboards",
+  "description": "- Grafana UI",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/dashboards/dashboards.md",
+  "sourceDirName": "v2.5/en/monitoring-alerting/dashboards",
+  "slug": "/v2.5/en/monitoring-alerting/dashboards/",
+  "permalink": "/2.5/v2.5/en/monitoring-alerting/dashboards/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/dashboards/dashboards.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Built-in Dashboards",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ServiceMonitor and PodMonitor Configuration",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/configuration/servicemonitor-podmonitor/"
+  },
+  "next": {
+    "title": "PromQL Expression Reference",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/expression/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-admin/volumes-and-storage/examples/examples",
+  "id": "en/cluster-admin/volumes-and-storage/examples/examples",
+  "title": "Provisioning Storage Examples",
+  "description": "Rancher supports persistent storage with a variety of volume plugins. However, before you use any of these plugins to bind persistent storage to your workloads, you have to configure the storage itself, whether its a cloud-based solution from a service-provider or an on-prem solution that you manage yourself.",
+  "source": "@site/docs/en/cluster-admin/volumes-and-storage/examples/examples.md",
+  "sourceDirName": "en/cluster-admin/volumes-and-storage/examples",
+  "slug": "/en/cluster-admin/volumes-and-storage/examples/",
+  "permalink": "/en/en/cluster-admin/volumes-and-storage/examples/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-admin/volumes-and-storage/examples/examples.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Provisioning Storage Examples",
+    "weight": 3053
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Using an External Ceph Driver",
+    "permalink": "/en/en/cluster-admin/volumes-and-storage/ceph/"
+  },
+  "next": {
+    "title": "Creating Persistent Storage in Amazon's EBS",
+    "permalink": "/en/en/cluster-admin/volumes-and-storage/examples/ebs/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure/azure",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure/azure",
+  "title": "Setting up the Azure Cloud Provider",
+  "description": "When using the Azure cloud provider, you can leverage the following capabilities:",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure/azure.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure/azure.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up the Azure Cloud Provider",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/azure/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up the Amazon Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/amazon/"
+  },
+  "next": {
+    "title": "Setting up the Google Compute Engine Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/"
+  }
+}

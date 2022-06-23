@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/azure-node-template-config",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/azure-node-template-config",
+  "title": "Azure Node Template Configuration",
+  "description": "For more information about Azure, refer to the official Azure documentation.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/azure-node-template-config.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/azure-node-template-config.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Azure Node Template Configuration",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/azure/azure-node-template-config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an Azure Cluster",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/azure/"
+  },
+  "next": {
+    "title": "Creating a DigitalOcean Cluster",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/"
+  }
+}

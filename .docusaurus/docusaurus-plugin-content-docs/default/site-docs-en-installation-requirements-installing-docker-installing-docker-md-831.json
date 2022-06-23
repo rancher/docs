@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/requirements/installing-docker/installing-docker",
+  "id": "en/installation/requirements/installing-docker/installing-docker",
+  "title": "Installing Docker",
+  "description": "Docker is required to be installed on nodes where the Rancher server will be installed with Helm or Docker.",
+  "source": "@site/docs/en/installation/requirements/installing-docker/installing-docker.md",
+  "sourceDirName": "en/installation/requirements/installing-docker",
+  "slug": "/en/installation/requirements/installing-docker/",
+  "permalink": "/en/en/installation/requirements/installing-docker/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/requirements/installing-docker/installing-docker.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Docker",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Dockershim",
+    "permalink": "/en/en/installation/requirements/dockershim/"
+  },
+  "next": {
+    "title": "Port Requirements",
+    "permalink": "/en/en/installation/requirements/ports/"
+  }
+}

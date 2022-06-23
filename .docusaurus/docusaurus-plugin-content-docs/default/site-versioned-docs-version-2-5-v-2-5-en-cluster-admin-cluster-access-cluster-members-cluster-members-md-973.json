@@ -1,0 +1,36 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/cluster-access/cluster-members/cluster-members",
+  "id": "version-2.5/v2.5/en/cluster-admin/cluster-access/cluster-members/cluster-members",
+  "title": "Adding Users to Clusters",
+  "description": "If you want to provide a user with access and permissions to all projects, nodes, and resources within a cluster, assign the user a cluster membership.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/cluster-access/cluster-members/cluster-members.md",
+  "sourceDirName": "v2.5/en/cluster-admin/cluster-access/cluster-members",
+  "slug": "/v2.5/en/cluster-admin/cluster-access/cluster-members/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/cluster-access/cluster-members/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/cluster-access/cluster-members/cluster-members.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Adding Users to Clusters",
+    "weight": 2020,
+    "aliases": [
+      "/rancher/v2.5/en/tasks/clusters/adding-managing-cluster-members/",
+      "/rancher/v2.5/en/k8s-in-rancher/cluster-members/",
+      "/rancher/v2.5/en/cluster-admin/cluster-members",
+      "/rancher/v2.5/en/cluster-provisioning/cluster-members/",
+      "/rancher/v2.x/en/cluster-admin/cluster-access/cluster-members/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How the Authorized Cluster Endpoint Works",
+    "permalink": "/2.5/v2.5/en/cluster-admin/cluster-access/ace/"
+  },
+  "next": {
+    "title": "Access a Cluster with Kubectl and kubeconfig",
+    "permalink": "/2.5/v2.5/en/cluster-admin/cluster-access/kubectl/"
+  }
+}

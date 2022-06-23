@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/k8s-in-rancher/load-balancers-and-ingress/ingress-config/ingress-config",
+  "id": "en/k8s-in-rancher/load-balancers-and-ingress/ingress-config/ingress-config",
+  "title": "Ingress Configuration",
+  "description": "Ingress configuration",
+  "source": "@site/docs/en/k8s-in-rancher/load-balancers-and-ingress/ingress-config/ingress-config.md",
+  "sourceDirName": "en/k8s-in-rancher/load-balancers-and-ingress/ingress-config",
+  "slug": "/en/k8s-in-rancher/load-balancers-and-ingress/ingress-config/",
+  "permalink": "/en/en/k8s-in-rancher/load-balancers-and-ingress/ingress-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/k8s-in-rancher/load-balancers-and-ingress/ingress-config/ingress-config.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Ingress Configuration",
+    "description": "Ingress configuration",
+    "weight": 9999
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Ingresses",
+    "permalink": "/en/en/k8s-in-rancher/load-balancers-and-ingress/ingress/"
+  },
+  "next": {
+    "title": "Layer 4 and Layer 7 Load Balancing",
+    "permalink": "/en/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/"
+  }
+}

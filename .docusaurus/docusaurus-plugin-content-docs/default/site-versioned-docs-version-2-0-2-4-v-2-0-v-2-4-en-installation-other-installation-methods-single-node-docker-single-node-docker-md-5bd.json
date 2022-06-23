@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-docker",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-docker",
+  "title": "Installing Rancher on a Single Node Using Docker",
+  "description": "For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-docker.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/other-installation-methods/single-node-docker",
+  "slug": "/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-docker.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Rancher on a Single Node Using Docker",
+    "description": "For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/single-node-install/",
+      "/rancher/v2.0-v2.4/en/installation/single-node",
+      "/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Set up Infrastructure",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/behind-proxy/prepare-nodes/"
+  },
+  "next": {
+    "title": "Advanced Options for Docker Installs",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/advanced/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/other-installation-methods/single-node-docker/proxy/proxy",
+  "id": "en/installation/other-installation-methods/single-node-docker/proxy/proxy",
+  "title": "HTTP Proxy Configuration",
+  "description": "If you operate Rancher behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.",
+  "source": "@site/docs/en/installation/other-installation-methods/single-node-docker/proxy/proxy.md",
+  "sourceDirName": "en/installation/other-installation-methods/single-node-docker/proxy",
+  "slug": "/en/installation/other-installation-methods/single-node-docker/proxy/",
+  "permalink": "/en/en/installation/other-installation-methods/single-node-docker/proxy/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/other-installation-methods/single-node-docker/proxy/proxy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "HTTP Proxy Configuration",
+    "weight": 251
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Advanced Options for Docker Installs",
+    "permalink": "/en/en/installation/other-installation-methods/single-node-docker/advanced/"
+  },
+  "next": {
+    "title": "Rolling Back Rancher Installed with Docker",
+    "permalink": "/en/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/"
+  }
+}

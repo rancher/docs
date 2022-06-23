@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.0-v2.4/en/admin-settings/config-private-registry/config-private-registry",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/admin-settings/config-private-registry/config-private-registry",
+  "title": "Configuring a Global Default Private Registry",
+  "description": "You might want to use a private container registry to share your custom base images within your organization. With a private registry, you can keep a private, consistent, and centralized source of truth for the container images that are used in your clusters.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/config-private-registry/config-private-registry.md",
+  "sourceDirName": "v2.0-v2.4/en/admin-settings/config-private-registry",
+  "slug": "/v2.0-v2.4/en/admin-settings/config-private-registry/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/config-private-registry/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/config-private-registry/config-private-registry.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring a Global Default Private Registry",
+    "weight": 400,
+    "aliases": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Users and Groups",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/user-groups/"
+  },
+  "next": {
+    "title": "Provisioning Drivers",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/drivers/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/upgrading-kubernetes/upgrading-kubernetes",
+  "id": "version-2.5/v2.5/en/cluster-admin/upgrading-kubernetes/upgrading-kubernetes",
+  "title": "Upgrading and Rolling Back Kubernetes",
+  "description": "Following an upgrade to the latest version of Rancher, downstream Kubernetes clusters can be upgraded to use the latest supported version of Kubernetes.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/upgrading-kubernetes/upgrading-kubernetes.md",
+  "sourceDirName": "v2.5/en/cluster-admin/upgrading-kubernetes",
+  "slug": "/v2.5/en/cluster-admin/upgrading-kubernetes/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/upgrading-kubernetes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/upgrading-kubernetes/upgrading-kubernetes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading and Rolling Back Kubernetes",
+    "weight": 70,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/upgrading-kubernetes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tools for Logging, Monitoring, and Visibility",
+    "permalink": "/2.5/v2.5/en/cluster-admin/tools/"
+  },
+  "next": {
+    "title": "Kubernetes Persistent Storage: Volumes and Storage Classes",
+    "permalink": "/2.5/v2.5/en/cluster-admin/volumes-and-storage/"
+  }
+}

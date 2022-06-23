@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/deploy-across-clusters/deploy-across-clusters",
+  "id": "en/deploy-across-clusters/deploy-across-clusters",
+  "title": "Deploying Applications across Clusters",
+  "description": "Fleet",
+  "source": "@site/docs/en/deploy-across-clusters/deploy-across-clusters.md",
+  "sourceDirName": "en/deploy-across-clusters",
+  "slug": "/en/deploy-across-clusters/",
+  "permalink": "/en/en/deploy-across-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/deploy-across-clusters/deploy-across-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Applications across Clusters",
+    "weight": 12
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contributing to Rancher",
+    "permalink": "/en/en/contributing/"
+  },
+  "next": {
+    "title": "Fleet - GitOps at Scale",
+    "permalink": "/en/en/deploy-across-clusters/fleet/"
+  }
+}

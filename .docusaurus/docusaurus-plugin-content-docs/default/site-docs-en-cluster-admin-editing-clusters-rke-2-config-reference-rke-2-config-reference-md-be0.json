@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/cluster-admin/editing-clusters/rke2-config-reference/rke2-config-reference",
+  "id": "en/cluster-admin/editing-clusters/rke2-config-reference/rke2-config-reference",
+  "title": "RKE2 Cluster Configuration Reference",
+  "description": "This section covers the configuration options that are available in Rancher for a new or existing RKE2 Kubernetes cluster.",
+  "source": "@site/docs/en/cluster-admin/editing-clusters/rke2-config-reference/rke2-config-reference.md",
+  "sourceDirName": "en/cluster-admin/editing-clusters/rke2-config-reference",
+  "slug": "/en/cluster-admin/editing-clusters/rke2-config-reference/",
+  "permalink": "/en/en/cluster-admin/editing-clusters/rke2-config-reference/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-admin/editing-clusters/rke2-config-reference/rke2-config-reference.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE2 Cluster Configuration Reference",
+    "shortTitle": "RKE2 Cluster Configuration",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE Cluster Configuration Reference",
+    "permalink": "/en/en/cluster-admin/editing-clusters/rke-config-reference/rke-config-references"
+  },
+  "next": {
+    "title": "Syncing",
+    "permalink": "/en/en/cluster-admin/editing-clusters/syncing/"
+  }
+}

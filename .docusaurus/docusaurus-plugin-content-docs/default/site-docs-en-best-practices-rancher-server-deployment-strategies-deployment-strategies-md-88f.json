@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/best-practices/rancher-server/deployment-strategies/deployment-strategies",
+  "id": "en/best-practices/rancher-server/deployment-strategies/deployment-strategies",
+  "title": "Rancher Deployment Strategy",
+  "description": "There are two recommended deployment strategies for a Rancher server that manages downstream Kubernetes clusters. Each one has its own pros and cons. Read more about which one would fit best for your use case:",
+  "source": "@site/docs/en/best-practices/rancher-server/deployment-strategies/deployment-strategies.md",
+  "sourceDirName": "en/best-practices/rancher-server/deployment-strategies",
+  "slug": "/en/best-practices/rancher-server/deployment-strategies/",
+  "permalink": "/en/en/best-practices/rancher-server/deployment-strategies/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/best-practices/rancher-server/deployment-strategies/deployment-strategies.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Deployment Strategy",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Best Practices for the Rancher Server",
+    "permalink": "/en/en/best-practices/rancher-server/"
+  },
+  "next": {
+    "title": "Tips for Running Rancher",
+    "permalink": "/en/en/best-practices/rancher-server/deployment-types/"
+  }
+}

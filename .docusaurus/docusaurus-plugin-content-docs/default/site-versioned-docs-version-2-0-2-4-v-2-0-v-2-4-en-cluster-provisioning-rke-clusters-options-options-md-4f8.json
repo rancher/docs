@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/options",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/options",
+  "title": "RKE Cluster Configuration Reference",
+  "description": "When Rancher installs Kubernetes, it uses RKE as the Kubernetes distribution.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/options.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-provisioning/rke-clusters/options",
+  "slug": "/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/options.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Cluster Configuration Reference",
+    "weight": 2250
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "vSphere Node Template Configuration in Rancher v2.3.3",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/v2.3.3/"
+  },
+  "next": {
+    "title": "Assigning Pod Security Policies",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/pod-security-policies/"
+  }
+}

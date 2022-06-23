@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/custom-nodes",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/custom-nodes",
+  "title": "Launching Kubernetes on Existing Custom Nodes",
+  "description": "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/custom-nodes.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes",
+  "slug": "/v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/custom-nodes.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes on Existing Custom Nodes",
+    "description": "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements",
+    "metaDescription": "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements",
+    "weight": 2225,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/clusters/creating-a-cluster/create-cluster-custom/",
+      "/rancher/v2.0-v2.4/en/cluster-provisioning/custom-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up the vSphere Cloud Provider",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/"
+  },
+  "next": {
+    "title": "Rancher Agent Options",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/"
+  }
+}

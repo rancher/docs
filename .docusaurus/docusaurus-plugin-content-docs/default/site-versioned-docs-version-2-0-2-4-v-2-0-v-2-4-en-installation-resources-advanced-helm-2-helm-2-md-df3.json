@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/advanced/helm2/helm2",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm2",
+  "title": "Kubernetes Installation Using Helm 2",
+  "description": "After Helm 3 was released, the Rancher installation instructions were updated to use Helm 3.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm2.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/advanced/helm2",
+  "slug": "/v2.0-v2.4/en/installation/resources/advanced/helm2/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm2.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Installation Using Helm 2",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Opening Ports with firewalld",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/firewall/"
+  },
+  "next": {
+    "title": "1. Create Nodes and Load Balancer",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/create-nodes-lb/"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.0-v2.4/en/helm-charts/catalog-config/catalog-config",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/helm-charts/catalog-config/catalog-config",
+  "title": "Custom Catalog Configuration Reference",
+  "description": "Any user can create custom catalogs to add into Rancher. Besides the content of the catalog, users must ensure their catalogs are able to be added into Rancher.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/helm-charts/catalog-config/catalog-config.md",
+  "sourceDirName": "v2.0-v2.4/en/helm-charts/catalog-config",
+  "slug": "/v2.0-v2.4/en/helm-charts/catalog-config/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/helm-charts/catalog-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/helm-charts/catalog-config/catalog-config.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Custom Catalog Configuration Reference",
+    "weight": 300,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/catalog/catalog-config",
+      "/rancher/v2.0-v2.4/en/catalog/catalog-config",
+      "/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/catalog-config"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enabling and Disabling Built-in Global Catalogs",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/helm-charts/built-in/"
+  },
+  "next": {
+    "title": "Creating Catalog Apps",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/helm-charts/creating-apps/"
+  }
+}

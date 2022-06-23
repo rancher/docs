@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/launch-kubernetes",
+  "id": "version-2.5/v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/launch-kubernetes",
+  "title": "2. Install Kubernetes",
+  "description": "Once the infrastructure is ready, you can continue with setting up an RKE cluster to install Rancher in.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/launch-kubernetes.md",
+  "sourceDirName": "v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes",
+  "slug": "/v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/",
+  "permalink": "/2.5/v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/launch-kubernetes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Install Kubernetes",
+    "weight": 200,
+    "aliases": [
+      "/rancher/v2.x/en/installation/other-installation-methods/behind-proxy/launch-kubernetes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3. Install Rancher",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/behind-proxy/install-rancher/"
+  },
+  "next": {
+    "title": "1. Set up Infrastructure",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/behind-proxy/prepare-nodes/"
+  }
+}

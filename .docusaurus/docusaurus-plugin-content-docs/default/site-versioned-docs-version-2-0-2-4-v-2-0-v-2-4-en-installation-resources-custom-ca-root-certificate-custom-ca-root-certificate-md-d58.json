@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/custom-ca-root-certificate/custom-ca-root-certificate",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/custom-ca-root-certificate/custom-ca-root-certificate",
+  "title": "About Custom CA Root Certificates",
+  "description": "If you're using Rancher in an internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/custom-ca-root-certificate/custom-ca-root-certificate.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/custom-ca-root-certificate",
+  "slug": "/v2.0-v2.4/en/installation/resources/custom-ca-root-certificate/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/custom-ca-root-certificate/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/custom-ca-root-certificate/custom-ca-root-certificate.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "About Custom CA Root Certificates",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/custom-ca-root-certificate/",
+      "/rancher/v2.0-v2.4/en/installation/resources/choosing-version/encryption/custom-ca-root-certificate"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Choosing a Rancher Version",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/choosing-version/"
+  },
+  "next": {
+    "title": "Enabling Experimental Features",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/feature-flags/"
+  }
+}

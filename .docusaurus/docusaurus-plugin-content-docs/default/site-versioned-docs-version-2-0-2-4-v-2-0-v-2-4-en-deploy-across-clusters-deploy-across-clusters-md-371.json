@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/deploy-across-clusters/deploy-across-clusters",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/deploy-across-clusters/deploy-across-clusters",
+  "title": "Deploying Applications across Clusters",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/deploy-across-clusters/deploy-across-clusters.md",
+  "sourceDirName": "v2.0-v2.4/en/deploy-across-clusters",
+  "slug": "/v2.0-v2.4/en/deploy-across-clusters/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/deploy-across-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/deploy-across-clusters/deploy-across-clusters.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Applications across Clusters",
+    "weight": 13,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/deploy-across-clusters/multi-cluster-apps"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contributing to Rancher",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/contributing/"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/"
+  }
+}

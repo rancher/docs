@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/monitoring-alerting/configuration/configuration",
+  "id": "en/monitoring-alerting/configuration/configuration",
+  "title": "Configuration",
+  "description": "This page captures some of the most important options for configuring Monitoring V2 in the Rancher UI.",
+  "source": "@site/docs/en/monitoring-alerting/configuration/configuration.md",
+  "sourceDirName": "en/monitoring-alerting/configuration",
+  "slug": "/en/monitoring-alerting/configuration/",
+  "permalink": "/en/en/monitoring-alerting/configuration/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/configuration/configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuration",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Monitoring and Alerting",
+    "permalink": "/en/en/monitoring-alerting/"
+  },
+  "next": {
+    "title": "Advanced Configuration",
+    "permalink": "/en/en/monitoring-alerting/configuration/advanced/"
+  }
+}

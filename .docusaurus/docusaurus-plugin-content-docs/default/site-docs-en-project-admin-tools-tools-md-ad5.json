@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/project-admin/tools/tools",
+  "id": "en/project-admin/tools/tools",
+  "title": "Tools for Logging, Monitoring, and Visibility",
+  "description": "Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:",
+  "source": "@site/docs/en/project-admin/tools/tools.md",
+  "sourceDirName": "en/project-admin/tools",
+  "slug": "/en/project-admin/tools/",
+  "permalink": "/en/en/project-admin/tools/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/project-admin/tools/tools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tools for Logging, Monitoring, and Visibility",
+    "weight": 2525
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How Resource Quotas Work in Rancher Projects",
+    "permalink": "/en/en/project-admin/resource-quotas/quotas-for-projects/"
+  },
+  "next": {
+    "title": "Rancher Deployment Quick Start Guides",
+    "permalink": "/en/en/quick-start-guide/"
+  }
+}

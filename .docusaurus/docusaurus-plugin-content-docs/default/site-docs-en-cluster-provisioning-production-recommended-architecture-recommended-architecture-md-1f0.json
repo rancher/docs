@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/production/recommended-architecture/recommended-architecture",
+  "id": "en/cluster-provisioning/production/recommended-architecture/recommended-architecture",
+  "title": "Recommended Cluster Architecture",
+  "description": "There are three roles that can be assigned to nodes: etcd, controlplane and worker.",
+  "source": "@site/docs/en/cluster-provisioning/production/recommended-architecture/recommended-architecture.md",
+  "sourceDirName": "en/cluster-provisioning/production/recommended-architecture",
+  "slug": "/en/cluster-provisioning/production/recommended-architecture/",
+  "permalink": "/en/en/cluster-provisioning/production/recommended-architecture/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/production/recommended-architecture/recommended-architecture.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Recommended Cluster Architecture",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Roles for Nodes in Kubernetes",
+    "permalink": "/en/en/cluster-provisioning/production/nodes-and-roles/"
+  },
+  "next": {
+    "title": "Registering Existing Clusters",
+    "permalink": "/en/en/cluster-provisioning/registered-clusters/"
+  }
+}

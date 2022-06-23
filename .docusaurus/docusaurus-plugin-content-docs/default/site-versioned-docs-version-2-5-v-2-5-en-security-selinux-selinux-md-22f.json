@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.5/en/security/selinux/selinux",
+  "id": "version-2.5/v2.5/en/security/selinux/selinux",
+  "title": "SELinux RPM",
+  "description": "Available as of v2.5.8",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/security/selinux/selinux.md",
+  "sourceDirName": "v2.5/en/security/selinux",
+  "slug": "/v2.5/en/security/selinux/",
+  "permalink": "/2.5/v2.5/en/security/selinux/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/security/selinux/selinux.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "SELinux RPM",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security Scans",
+    "permalink": "/2.5/v2.5/en/security/security-scan/"
+  },
+  "next": {
+    "title": "System Tools",
+    "permalink": "/2.5/v2.5/en/system-tools/"
+  }
+}

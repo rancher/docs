@@ -1,0 +1,39 @@
+{
+  "unversionedId": "v2.0-v2.4/en/backups/backup/k3s-backups/k3s-backups",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/backups/backup/k3s-backups/k3s-backups",
+  "title": "Backing up Rancher Installed on a K3s Kubernetes Cluster",
+  "description": "When Rancher is installed on a high-availability Kubernetes cluster, we recommend using an external database to store the cluster data.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/backups/backup/k3s-backups/k3s-backups.md",
+  "sourceDirName": "v2.0-v2.4/en/backups/backup/k3s-backups",
+  "slug": "/v2.0-v2.4/en/backups/backup/k3s-backups/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/backup/k3s-backups/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/backups/backup/k3s-backups/k3s-backups.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backing up Rancher Installed on a K3s Kubernetes Cluster",
+    "shortTitle": "K3s Installs",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/backups/backups/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/backups/k8s-backups/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/legacy/backup/k8s-backups/k3s-backups/",
+      "/rancher/v2.0-v2.4/en/backups/legacy/backups/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/legacy/backup/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/backup/k3s-backups",
+      "/rancher/v2.x/en/backups/v2.0.x-v2.4.x/backup/k3s-backups/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backing up Rancher Installed with Docker",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/backup/docker-backups/"
+  },
+  "next": {
+    "title": "Backing up Rancher Installed on an RKE Kubernetes Cluster",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/backups/backup/rke-backups/"
+  }
+}

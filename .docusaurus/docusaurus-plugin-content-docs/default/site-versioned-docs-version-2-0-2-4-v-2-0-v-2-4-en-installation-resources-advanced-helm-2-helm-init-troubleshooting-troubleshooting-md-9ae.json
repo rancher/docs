@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/troubleshooting/troubleshooting",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/troubleshooting/troubleshooting",
+  "title": "Troubleshooting",
+  "description": "Helm commands show forbidden",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/troubleshooting/troubleshooting.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/troubleshooting",
+  "slug": "/v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/troubleshooting/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/troubleshooting/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/troubleshooting/troubleshooting.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting",
+    "weight": 276,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/helm-init/troubleshooting",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/helm-init/troubleshooting/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Initialize Helm: Install the Tiller Service",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm-init/"
+  },
+  "next": {
+    "title": "4.  Install Rancher",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/helm2/helm-rancher/"
+  }
+}

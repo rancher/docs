@@ -1,0 +1,37 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-admin/tools/istio/istio",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/istio",
+  "title": "Istio",
+  "description": "Available as of v2.3.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/istio.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-admin/tools/istio",
+  "slug": "/v2.0-v2.4/en/cluster-admin/tools/istio/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/istio.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Istio",
+    "weight": 15,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/dashboard/istio",
+      "/rancher/v2.0-v2.4/en/project-admin/istio/configuring-resource-allocations/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/",
+      "/rancher/v2.0-v2.4/en/project-admin/istio",
+      "/rancher/v2.0-v2.4/en/istio/legacy/cluster-istio",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Viewing Metrics",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/cluster-monitoring/viewing-metrics/"
+  },
+  "next": {
+    "title": "Disabling Istio",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/istio/disabling-istio/"
+  }
+}

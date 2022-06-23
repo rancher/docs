@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config",
+  "title": "VSphere Node Template Configuration",
+  "description": "The following node template configuration reference applies to Rancher v2.3.3+.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "VSphere Node Template Configuration",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/node-template-reference",
+      "/rancher/v2.5/en/cluster-provisionin/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/enabling-uuids",
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Provisioning Kubernetes Clusters in vSphere",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/"
+  },
+  "next": {
+    "title": "RKE Cluster Configuration Reference",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/options/"
+  }
+}

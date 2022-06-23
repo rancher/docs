@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/admin-settings/rke-templates/overrides/overrides",
+  "id": "en/admin-settings/rke-templates/overrides/overrides",
+  "title": "Overriding Template Settings",
+  "description": "When a user creates an RKE template, each setting in the template has a switch in the Rancher UI that indicates if users can override the setting. This switch marks those settings as Allow User Override.",
+  "source": "@site/docs/en/admin-settings/rke-templates/overrides/overrides.md",
+  "sourceDirName": "en/admin-settings/rke-templates/overrides",
+  "slug": "/en/admin-settings/rke-templates/overrides/",
+  "permalink": "/en/en/admin-settings/rke-templates/overrides/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/admin-settings/rke-templates/overrides/overrides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Overriding Template Settings",
+    "weight": 33
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Example YAML",
+    "permalink": "/en/en/admin-settings/rke-templates/example-yaml/"
+  },
+  "next": {
+    "title": "RKE Templates and Infrastructure",
+    "permalink": "/en/en/admin-settings/rke-templates/rke-templates-and-hardware/"
+  }
+}

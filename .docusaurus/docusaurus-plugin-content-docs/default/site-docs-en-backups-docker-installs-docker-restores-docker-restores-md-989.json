@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/backups/docker-installs/docker-restores/docker-restores",
+  "id": "en/backups/docker-installs/docker-restores/docker-restores",
+  "title": "Restoring Backups—Docker Installs",
+  "description": "If you encounter a disaster scenario, you can restore your Rancher Server to your most recent backup.",
+  "source": "@site/docs/en/backups/docker-installs/docker-restores/docker-restores.md",
+  "sourceDirName": "en/backups/docker-installs/docker-restores",
+  "slug": "/en/backups/docker-installs/docker-restores/",
+  "permalink": "/en/en/backups/docker-installs/docker-restores/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/backups/docker-installs/docker-restores/docker-restores.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restoring Backups—Docker Installs",
+    "shortTitle": "Restores",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backing up Rancher Installed with Docker",
+    "permalink": "/en/en/backups/docker-installs/docker-backups/"
+  },
+  "next": {
+    "title": "Examples",
+    "permalink": "/en/en/backups/examples/"
+  }
+}

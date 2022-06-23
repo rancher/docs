@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/faq/deprecated-features/deprecated-features",
+  "id": "en/faq/deprecated-features/deprecated-features",
+  "title": "Deprecated Features in Rancher",
+  "description": "What is Rancher's Deprecation policy?",
+  "source": "@site/docs/en/faq/deprecated-features/deprecated-features.md",
+  "sourceDirName": "en/faq/deprecated-features",
+  "slug": "/en/faq/deprecated-features/",
+  "permalink": "/en/en/faq/deprecated-features/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/faq/deprecated-features/deprecated-features.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deprecated Features in Rancher",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/en/en/faq/"
+  },
+  "next": {
+    "title": "Dockershim",
+    "permalink": "/en/en/faq/dockershim/"
+  }
+}

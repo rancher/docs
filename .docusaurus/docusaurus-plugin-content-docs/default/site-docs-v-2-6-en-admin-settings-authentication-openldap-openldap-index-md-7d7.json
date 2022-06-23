@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.6/en/admin-settings/authentication/openldap/openldap_index",
+  "id": "v2.6/en/admin-settings/authentication/openldap/openldap_index",
+  "title": "Configuring OpenLDAP",
+  "description": "If your organization uses LDAP for user authentication, you can configure Rancher to communicate with an OpenLDAP server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the organisation's central user repository, while allowing end-users to authenticate with their LDAP credentials when logging in to the Rancher UI.",
+  "source": "@site/docs/v2.6/en/admin-settings/authentication/openldap/openldap_index.md",
+  "sourceDirName": "v2.6/en/admin-settings/authentication/openldap",
+  "slug": "/v2.6/en/admin-settings/authentication/openldap/openldap_index",
+  "permalink": "/v2.6/v2.6/en/admin-settings/authentication/openldap/openldap_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6/en/admin-settings/authentication/openldap/openldap_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring OpenLDAP",
+    "weight": 1113
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "OpenLDAP Configuration Reference",
+    "permalink": "/v2.6/v2.6/en/admin-settings/authentication/openldap/openldap-config/openldap-config_index"
+  },
+  "next": {
+    "title": "Configuring PingIdentity (SAML)",
+    "permalink": "/v2.6/v2.6/en/admin-settings/authentication/ping-federate/ping-federate_index"
+  }
+}

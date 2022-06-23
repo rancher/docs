@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs",
+  "title": "Configuring Microsoft Active Directory Federation Service (SAML)",
+  "description": "Available as of v2.0.7",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs.md",
+  "sourceDirName": "v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs",
+  "slug": "/v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Microsoft Active Directory Federation Service (SAML)",
+    "weight": 1205
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Local Authentication",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/local/"
+  },
+  "next": {
+    "title": "1. Configuring Microsoft AD FS for Rancher",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/nutanix-node-template-config",
+  "id": "en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/nutanix-node-template-config",
+  "title": "Nutanix Node Template Configuration",
+  "description": "- Account Access",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/nutanix-node-template-config.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config",
+  "slug": "/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/nutanix-node-template-config.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Nutanix Node Template Configuration",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a Nutanix AOS Cluster",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/nutanix/"
+  },
+  "next": {
+    "title": "Provisioning Kubernetes Clusters in Nutanix AOS",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/nutanix/provisioning-nutanix-clusters/providing-nutanix-clusters"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/choosing-version/choosing-version",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/choosing-version/choosing-version",
+  "title": "Choosing a Rancher Version",
+  "description": "This section describes how to choose a Rancher version.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/choosing-version/choosing-version.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/choosing-version",
+  "slug": "/v2.0-v2.4/en/installation/resources/choosing-version/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/choosing-version/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/choosing-version/choosing-version.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Choosing a Rancher Version",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/server-tags"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Helm Chart Options",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/chart-options/"
+  },
+  "next": {
+    "title": "About Custom CA Root Certificates",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/custom-ca-root-certificate/"
+  }
+}

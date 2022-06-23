@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/installation/requirements/ports/ports",
+  "id": "en/installation/requirements/ports/ports",
+  "title": "Port Requirements",
+  "description": "Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes",
+  "source": "@site/docs/en/installation/requirements/ports/ports.md",
+  "sourceDirName": "en/installation/requirements/ports",
+  "slug": "/en/installation/requirements/ports/",
+  "permalink": "/en/en/installation/requirements/ports/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/requirements/ports/ports.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Port Requirements",
+    "description": "Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes",
+    "weight": 300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Docker",
+    "permalink": "/en/en/installation/requirements/installing-docker/"
+  },
+  "next": {
+    "title": "common-ports-table",
+    "permalink": "/en/en/installation/requirements/ports/common-ports-table/"
+  }
+}

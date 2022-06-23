@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage/provisioning-new-storage",
+  "id": "version-2.5/v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage/provisioning-new-storage",
+  "title": "Dynamically Provisioning New Storage in Rancher",
+  "description": "This section describes how to provision new persistent storage for workloads in Rancher.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage/provisioning-new-storage.md",
+  "sourceDirName": "v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage",
+  "slug": "/v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/volumes-and-storage/provisioning-new-storage/provisioning-new-storage.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Dynamically Provisioning New Storage in Rancher",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/volumes-and-storage/provisioning-new-storage/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "iSCSI Volumes",
+    "permalink": "/2.5/v2.5/en/cluster-admin/volumes-and-storage/iscsi-volumes/"
+  },
+  "next": {
+    "title": "Setting up Kubernetes Clusters in Rancher",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/"
+  }
+}

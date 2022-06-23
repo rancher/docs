@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/gke",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/gke",
+  "title": "Managing GKE Clusters",
+  "description": "{{% tabs %}}",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/gke.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke",
+  "slug": "/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/gke.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Managing GKE Clusters",
+    "shortTitle": "Google Kubernetes Engine",
+    "weight": 2105,
+    "aliases": [
+      "/rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-gke/",
+      "/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke",
+      "/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/gke/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Minimum EKS Permissions",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions/"
+  },
+  "next": {
+    "title": "Creating a Tencent TKE Cluster",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/tke/"
+  }
+}

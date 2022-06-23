@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/node-externalssl-recognizedca/node-externalssl-recognizedca",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/node-externalssl-recognizedca/node-externalssl-recognizedca",
+  "title": "Template for an RKE Cluster with a Recognized CA Certificate and SSL Termination on Layer 7 Load Balancer",
+  "description": "RKE uses a cluster.yml file to install and configure your Kubernetes cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/3-node-externalssl-recognizedca/3-node-externalssl-recognizedca.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/3-node-externalssl-recognizedca",
+  "slug": "/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/node-externalssl-recognizedca/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/node-externalssl-recognizedca/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/3-node-externalssl-recognizedca/3-node-externalssl-recognizedca.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Template for an RKE Cluster with a Recognized CA Certificate and SSL Termination on Layer 7 Load Balancer",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/cluster-yml-templates/3-node-externalssl-recognizedca",
+      "/rancher/v2.x/en/installation/resources/advanced/cluster-yml-templates/3-node-externalssl-recognizedca/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Template for an RKE Cluster with a Self-signed Certificate and SSL Termination on Layer 7 Load Balancer",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/node-externalssl-certificate/"
+  },
+  "next": {
+    "title": "Tuning etcd for Large Installations",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/etcd/"
+  }
+}

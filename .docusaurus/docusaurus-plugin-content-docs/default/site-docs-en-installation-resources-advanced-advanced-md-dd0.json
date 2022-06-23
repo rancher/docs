@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/resources/advanced/advanced",
+  "id": "en/installation/resources/advanced/advanced",
+  "title": "Advanced",
+  "description": "The documents in this section contain resources for less common use cases.",
+  "source": "@site/docs/en/installation/resources/advanced/advanced.md",
+  "sourceDirName": "en/installation/resources/advanced",
+  "slug": "/en/installation/resources/advanced/",
+  "permalink": "/en/en/installation/resources/advanced/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/resources/advanced/advanced.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Advanced",
+    "weight": 1000
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Resources",
+    "permalink": "/en/en/installation/resources/"
+  },
+  "next": {
+    "title": "Enabling the API Audit Log to Record System Events",
+    "permalink": "/en/en/installation/resources/advanced/api-audit-log/"
+  }
+}

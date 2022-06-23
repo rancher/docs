@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/system-tools/system-tools",
+  "id": "en/system-tools/system-tools",
+  "title": "System Tools",
+  "description": "System Tools is a tool to perform operational tasks on Rancher Launched Kubernetes clusters or installations of Rancher on an RKE cluster. The tasks include:",
+  "source": "@site/docs/en/system-tools/system-tools.md",
+  "sourceDirName": "en/system-tools",
+  "slug": "/en/system-tools/",
+  "permalink": "/en/en/system-tools/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/system-tools/system-tools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "System Tools",
+    "weight": 22
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SELinux RPM",
+    "permalink": "/en/en/security/selinux/"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/en/en/troubleshooting/"
+  }
+}

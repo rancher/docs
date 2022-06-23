@@ -1,0 +1,28 @@
+{
+  "unversionedId": "en/cluster-provisioning/cluster-capabilities-table/index",
+  "id": "en/cluster-provisioning/cluster-capabilities-table/index",
+  "title": "index",
+  "description": "| Action | Rancher Launched Kubernetes Clusters |  EKS, GKE and AKS Clusters1 | Other Hosted Kubernetes Clusters | Non-EKS or GKE Registered Clusters |",
+  "source": "@site/docs/en/cluster-provisioning/cluster-capabilities-table/index.md",
+  "sourceDirName": "en/cluster-provisioning/cluster-capabilities-table",
+  "slug": "/en/cluster-provisioning/cluster-capabilities-table/",
+  "permalink": "/en/en/cluster-provisioning/cluster-capabilities-table/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/cluster-capabilities-table/index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "headless": true
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Skipped and Not Applicable Tests",
+    "permalink": "/en/en/cis-scans/skipped-tests/"
+  },
+  "next": {
+    "title": "index",
+    "permalink": "/en/en/installation/requirements/ports/common-ports-table/"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "unversionedId": "v2.6.5/en/introduction",
+  "id": "v2.6.5/en/introduction",
+  "title": "Rancher 2.6",
+  "description": "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+  "source": "@site/docs/v2.6.5/en/introduction.md",
+  "sourceDirName": "v2.6.5/en",
+  "slug": "/",
+  "permalink": "/v2.6.5/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6.5/en/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "slug": "/",
+    "weight": 1,
+    "title": "Rancher 2.6",
+    "shortTitle": "Rancher 2.6  (Latest)",
+    "description": "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+    "metaTitle": "Rancher 2.6 Docs: What is New?",
+    "metaDescription": "Rancher 2 adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+    "insertOneSix": false,
+    "ctaBanner": 0,
+    "aliases": [
+      "/rancher/v2.x/en/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "index",
+    "permalink": "/v2.6.5/v2.6.5/en/installation/requirements/ports/common-ports-table/"
+  },
+  "next": {
+    "title": "Rancher AWS Marketplace Quick Start",
+    "permalink": "/v2.6.5/v2.6.5/en/quick-start-guide/deployment/amazon-aws-marketplace-qs/amazon-aws-marketplace-qs_index"
+  }
+}

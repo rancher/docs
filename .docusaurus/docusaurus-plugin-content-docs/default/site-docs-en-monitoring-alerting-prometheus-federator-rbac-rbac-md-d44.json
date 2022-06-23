@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/monitoring-alerting/prometheus-federator/rbac/rbac",
+  "id": "en/monitoring-alerting/prometheus-federator/rbac/rbac",
+  "title": "Role-Based Access Control",
+  "description": "This section describes the expectations for Role-Based Access Control (RBAC) for Prometheus Federator.",
+  "source": "@site/docs/en/monitoring-alerting/prometheus-federator/rbac/rbac.md",
+  "sourceDirName": "en/monitoring-alerting/prometheus-federator/rbac",
+  "slug": "/en/monitoring-alerting/prometheus-federator/rbac/",
+  "permalink": "/en/en/monitoring-alerting/prometheus-federator/rbac/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/prometheus-federator/rbac/rbac.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Role-Based Access Control",
+    "shortTitle": "RBAC",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Uninstall Prometheus Federator",
+    "permalink": "/en/en/monitoring-alerting/prometheus-federator/guides/uninstall-prom-fed/"
+  },
+  "next": {
+    "title": "Role-based Access Control",
+    "permalink": "/en/en/monitoring-alerting/rbac/"
+  }
+}

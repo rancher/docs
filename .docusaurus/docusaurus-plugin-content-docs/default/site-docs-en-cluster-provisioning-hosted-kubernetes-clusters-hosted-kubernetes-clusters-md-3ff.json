@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/hosted-kubernetes-clusters/hosted-kubernetes-clusters",
+  "id": "en/cluster-provisioning/hosted-kubernetes-clusters/hosted-kubernetes-clusters",
+  "title": "Setting up Clusters from Hosted Kubernetes Providers",
+  "description": "In this scenario, Rancher does not provision Kubernetes because it is installed by providers such as Google Kubernetes Engine (GKE), Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.",
+  "source": "@site/docs/en/cluster-provisioning/hosted-kubernetes-clusters/hosted-kubernetes-clusters.md",
+  "sourceDirName": "en/cluster-provisioning/hosted-kubernetes-clusters",
+  "slug": "/en/cluster-provisioning/hosted-kubernetes-clusters/",
+  "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/hosted-kubernetes-clusters/hosted-kubernetes-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Clusters from Hosted Kubernetes Providers",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "cluster-capabilities-table",
+    "permalink": "/en/en/cluster-provisioning/cluster-capabilities-table/"
+  },
+  "next": {
+    "title": "Creating an Aliyun ACK Cluster",
+    "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/ack/"
+  }
+}

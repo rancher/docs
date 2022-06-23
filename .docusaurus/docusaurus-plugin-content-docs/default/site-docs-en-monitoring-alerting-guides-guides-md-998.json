@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/monitoring-alerting/guides/guides",
+  "id": "en/monitoring-alerting/guides/guides",
+  "title": "Monitoring Guides",
+  "description": "- Enable monitoring",
+  "source": "@site/docs/en/monitoring-alerting/guides/guides.md",
+  "sourceDirName": "en/monitoring-alerting/guides",
+  "slug": "/en/monitoring-alerting/guides/",
+  "permalink": "/en/en/monitoring-alerting/guides/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/guides/guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Monitoring Guides",
+    "shortTitle": "Guides",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "PromQL Expression Reference",
+    "permalink": "/en/en/monitoring-alerting/expression/"
+  },
+  "next": {
+    "title": "Customizing Grafana Dashboards",
+    "permalink": "/en/en/monitoring-alerting/guides/customize-grafana/"
+  }
+}

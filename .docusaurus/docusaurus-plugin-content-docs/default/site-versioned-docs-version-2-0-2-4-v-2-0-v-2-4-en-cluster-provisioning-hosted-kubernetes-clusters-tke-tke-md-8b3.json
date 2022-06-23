@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/tke/tke",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/tke/tke",
+  "title": "Creating a Tencent TKE Cluster",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/tke/tke.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/tke",
+  "slug": "/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/tke/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/tke/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/tke/tke.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a Tencent TKE Cluster",
+    "shortTitle": "Tencent Kubernetes Engine",
+    "weight": 2125
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a GKE Cluster",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/gke/"
+  },
+  "next": {
+    "title": "Importing Existing Clusters",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/imported-clusters/"
+  }
+}

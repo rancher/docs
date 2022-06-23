@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/cluster-yml-templates",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/cluster-yml-templates",
+  "title": "cluster.yml Templates for RKE add-on installs",
+  "description": "These templates are intended to be used for RKE add-on installs, which are only supported up to Rancher v2.0.8. Please use the Rancher Helm chart if you are installing a newer Rancher version.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/cluster-yml-templates.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates",
+  "slug": "/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/cluster-yml-templates.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "cluster.yml Templates for RKE add-on installs",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Running on ARM64 (Experimental)",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/arm64-platform/"
+  },
+  "next": {
+    "title": "Template for an RKE Cluster with a Self-signed Certificate and Layer 4 Load Balancer",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/resources/advanced/cluster-yml-templates/node-certificate/"
+  }
+}

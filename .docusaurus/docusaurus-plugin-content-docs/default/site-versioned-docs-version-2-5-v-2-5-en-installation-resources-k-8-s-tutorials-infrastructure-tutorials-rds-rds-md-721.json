@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/rds",
+  "id": "version-2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/rds",
+  "title": "Setting up a MySQL Database in Amazon RDS",
+  "description": "This tutorial describes how to set up a MySQL database in Amazon's RDS.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/rds.md",
+  "sourceDirName": "v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds",
+  "slug": "/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/",
+  "permalink": "/2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/rds.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up a MySQL Database in Amazon RDS",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/rds",
+      "/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/rds/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Amazon ELB Network Load Balancer",
+    "permalink": "/2.5/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nlb/"
+  },
+  "next": {
+    "title": "Setting up Local System Charts for Air Gapped Installations",
+    "permalink": "/2.5/v2.5/en/installation/resources/local-system-charts/"
+  }
+}

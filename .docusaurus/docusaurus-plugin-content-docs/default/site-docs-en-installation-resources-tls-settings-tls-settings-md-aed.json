@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/resources/tls-settings/tls-settings",
+  "id": "en/installation/resources/tls-settings/tls-settings",
+  "title": "TLS Settings",
+  "description": "Changing the default TLS settings depends on the chosen installation method.",
+  "source": "@site/docs/en/installation/resources/tls-settings/tls-settings.md",
+  "sourceDirName": "en/installation/resources/tls-settings",
+  "slug": "/en/installation/resources/tls-settings/",
+  "permalink": "/en/en/installation/resources/tls-settings/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/resources/tls-settings/tls-settings.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "TLS Settings",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding TLS Secrets",
+    "permalink": "/en/en/installation/resources/tls-secrets/"
+  },
+  "next": {
+    "title": "Troubleshooting the Rancher Server Kubernetes Cluster",
+    "permalink": "/en/en/installation/resources/troubleshooting/"
+  }
+}

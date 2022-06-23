@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/user-settings/node-templates/node-templates",
+  "id": "version-2.5/v2.5/en/user-settings/node-templates/node-templates",
+  "title": "Managing Node Templates",
+  "description": "When you provision a cluster hosted by an infrastructure provider, node templates are used to provision the cluster nodes. These templates use Docker Machine configuration options to define an operating system image and settings/parameters for the node. You can create node templates in two contexts:",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/user-settings/node-templates/node-templates.md",
+  "sourceDirName": "v2.5/en/user-settings/node-templates",
+  "slug": "/v2.5/en/user-settings/node-templates/",
+  "permalink": "/2.5/v2.5/en/user-settings/node-templates/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/user-settings/node-templates/node-templates.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Managing Node Templates",
+    "weight": 7010,
+    "aliases": [
+      "/rancher/v2.x/en/user-settings/node-templates/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Managing Cloud Credentials",
+    "permalink": "/2.5/v2.5/en/user-settings/cloud-credentials/"
+  },
+  "next": {
+    "title": "User Preferences",
+    "permalink": "/2.5/v2.5/en/user-settings/preferences/"
+  }
+}

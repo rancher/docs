@@ -1,0 +1,31 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2",
+  "id": "en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2",
+  "title": "Creating an Amazon EC2 Cluster",
+  "description": "Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using Rancher",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/node-pools/ec2",
+  "slug": "/en/cluster-provisioning/rke-clusters/node-pools/ec2/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/ec2/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating an Amazon EC2 Cluster",
+    "shortTitle": "Amazon EC2",
+    "description": "Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using Rancher",
+    "weight": 2210
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "DigitalOcean Node Template Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/"
+  },
+  "next": {
+    "title": "EC2 Machine Configuration Reference",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2-machine-config/"
+  }
+}

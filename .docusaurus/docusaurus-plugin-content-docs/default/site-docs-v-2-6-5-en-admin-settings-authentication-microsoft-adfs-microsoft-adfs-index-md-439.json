@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.6.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs_index",
+  "id": "v2.6.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs_index",
+  "title": "Configuring Microsoft Active Directory Federation Service (SAML)",
+  "description": "If your organization uses Microsoft Active Directory Federation Services (AD FS) for user authentication, you can configure Rancher to allow your users to log in using their AD FS credentials.",
+  "source": "@site/docs/v2.6.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs_index.md",
+  "sourceDirName": "v2.6.5/en/admin-settings/authentication/microsoft-adfs",
+  "slug": "/v2.6.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs_index",
+  "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Microsoft Active Directory Federation Service (SAML)",
+    "weight": 1205
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Configuring Microsoft AD FS for Rancher",
+    "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/microsoft-adfs-setup_index"
+  },
+  "next": {
+    "title": "2. Configuring Rancher for Microsoft AD FS",
+    "permalink": "/v2.6.5/v2.6.5/en/admin-settings/authentication/microsoft-adfs/rancher-adfs-setup/rancher-adfs-setup_index"
+  }
+}

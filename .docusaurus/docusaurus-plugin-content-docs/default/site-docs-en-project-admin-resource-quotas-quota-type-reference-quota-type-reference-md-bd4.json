@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/project-admin/resource-quotas/quota-type-reference/quota-type-reference",
+  "id": "en/project-admin/resource-quotas/quota-type-reference/quota-type-reference",
+  "title": "Resource Quota Type Reference",
+  "description": "When you create a resource quota, you are configuring the pool of resources available to the project. You can set the following resource limits for the following resource types.",
+  "source": "@site/docs/en/project-admin/resource-quotas/quota-type-reference/quota-type-reference.md",
+  "sourceDirName": "en/project-admin/resource-quotas/quota-type-reference",
+  "slug": "/en/project-admin/resource-quotas/quota-type-reference/",
+  "permalink": "/en/en/project-admin/resource-quotas/quota-type-reference/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/project-admin/resource-quotas/quota-type-reference/quota-type-reference.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Resource Quota Type Reference",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Overriding the Default Limit for a Namespace",
+    "permalink": "/en/en/project-admin/resource-quotas/override-namespace-default/"
+  },
+  "next": {
+    "title": "How Resource Quotas Work in Rancher Projects",
+    "permalink": "/en/en/project-admin/resource-quotas/quotas-for-projects/"
+  }
+}

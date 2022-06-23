@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/admin-settings/rke-templates/rke-templates",
+  "id": "version-2.5/v2.5/en/admin-settings/rke-templates/rke-templates",
+  "title": "RKE Templates",
+  "description": "RKE templates are designed to allow DevOps and security teams to standardize and simplify the creation of Kubernetes clusters.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/admin-settings/rke-templates/rke-templates.md",
+  "sourceDirName": "v2.5/en/admin-settings/rke-templates",
+  "slug": "/v2.5/en/admin-settings/rke-templates/",
+  "permalink": "/2.5/v2.5/en/admin-settings/rke-templates/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/admin-settings/rke-templates/rke-templates.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Templates",
+    "weight": 7010,
+    "aliases": [
+      "/rancher/v2.x/en/admin-settings/rke-templates/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Locked Roles",
+    "permalink": "/2.5/v2.5/en/admin-settings/rbac/locked-roles/"
+  },
+  "next": {
+    "title": "Applying Templates",
+    "permalink": "/2.5/v2.5/en/admin-settings/rke-templates/applying-templates/"
+  }
+}

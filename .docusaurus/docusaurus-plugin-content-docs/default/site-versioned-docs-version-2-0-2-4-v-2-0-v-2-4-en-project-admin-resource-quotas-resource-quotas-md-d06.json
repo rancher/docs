@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/project-admin/resource-quotas/resource-quotas",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/project-admin/resource-quotas/resource-quotas",
+  "title": "Project Resource Quotas",
+  "description": "Available as of v2.1.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/project-admin/resource-quotas/resource-quotas.md",
+  "sourceDirName": "v2.0-v2.4/en/project-admin/resource-quotas",
+  "slug": "/v2.0-v2.4/en/project-admin/resource-quotas/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/project-admin/resource-quotas/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/project-admin/resource-quotas/resource-quotas.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Resource Quotas",
+    "weight": 2515,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/resource-quotas"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Users to Projects",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/project-admin/project-members/"
+  },
+  "next": {
+    "title": "Setting Container Default Resource Limits",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/project-admin/resource-quotas/override-container-default/"
+  }
+}

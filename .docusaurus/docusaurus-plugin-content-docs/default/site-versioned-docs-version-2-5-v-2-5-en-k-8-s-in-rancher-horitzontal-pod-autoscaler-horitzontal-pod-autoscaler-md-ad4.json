@@ -1,0 +1,34 @@
+{
+  "unversionedId": "v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/horitzontal-pod-autoscaler",
+  "id": "version-2.5/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/horitzontal-pod-autoscaler",
+  "title": "The Horizontal Pod Autoscaler",
+  "description": "Learn about the horizontal pod autoscaler (HPA). How to manage HPAs and how to test them with a service deployment",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/horitzontal-pod-autoscaler.md",
+  "sourceDirName": "v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler",
+  "slug": "/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/",
+  "permalink": "/2.5/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/horitzontal-pod-autoscaler.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "The Horizontal Pod Autoscaler",
+    "description": "Learn about the horizontal pod autoscaler (HPA). How to manage HPAs and how to test them with a service deployment",
+    "weight": 3026,
+    "aliases": [
+      "/rancher/v2.5/en/k8s-in-rancher/horizontal-pod-autoscaler",
+      "/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ConfigMaps",
+    "permalink": "/2.5/v2.5/en/k8s-in-rancher/configmaps/"
+  },
+  "next": {
+    "title": "Background Information on HPAs",
+    "permalink": "/2.5/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-background/"
+  }
+}

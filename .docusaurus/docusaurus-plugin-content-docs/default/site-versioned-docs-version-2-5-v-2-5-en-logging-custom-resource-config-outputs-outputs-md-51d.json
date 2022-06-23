@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.5/en/logging/custom-resource-config/outputs/outputs",
+  "id": "version-2.5/v2.5/en/logging/custom-resource-config/outputs/outputs",
+  "title": "Outputs and ClusterOutputs",
+  "description": "For the full details on configuring Outputs and ClusterOutputs, see the Banzai Cloud Logging operator documentation.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/logging/custom-resource-config/outputs/outputs.md",
+  "sourceDirName": "v2.5/en/logging/custom-resource-config/outputs",
+  "slug": "/v2.5/en/logging/custom-resource-config/outputs/",
+  "permalink": "/2.5/v2.5/en/logging/custom-resource-config/outputs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/logging/custom-resource-config/outputs/outputs.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Outputs and ClusterOutputs",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Flows and ClusterFlows",
+    "permalink": "/2.5/v2.5/en/logging/custom-resource-config/flows/"
+  },
+  "next": {
+    "title": "rancher-logging Helm Chart Options",
+    "permalink": "/2.5/v2.5/en/logging/helm-chart-options/"
+  }
+}

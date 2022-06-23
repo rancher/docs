@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/installation/resources/advanced/firewall/firewall",
+  "id": "version-2.5/v2.5/en/installation/resources/advanced/firewall/firewall",
+  "title": "Opening Ports with firewalld",
+  "description": "We recommend disabling firewalld. For Kubernetes 1.19.x and higher, firewalld must be turned off.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/resources/advanced/firewall/firewall.md",
+  "sourceDirName": "v2.5/en/installation/resources/advanced/firewall",
+  "slug": "/v2.5/en/installation/resources/advanced/firewall/",
+  "permalink": "/2.5/v2.5/en/installation/resources/advanced/firewall/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/resources/advanced/firewall/firewall.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Opening Ports with firewalld",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/installation/resources/advanced/firewall/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tuning etcd for Large Installations",
+    "permalink": "/2.5/v2.5/en/installation/resources/advanced/etcd/"
+  },
+  "next": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "permalink": "/2.5/v2.5/en/installation/resources/advanced/single-node-install-external-lb/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/troubleshooting/logging/logging",
+  "id": "version-2.5/v2.5/en/troubleshooting/logging/logging",
+  "title": "Logging",
+  "description": "The following log levels are used in Rancher:",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/troubleshooting/logging/logging.md",
+  "sourceDirName": "v2.5/en/troubleshooting/logging",
+  "slug": "/v2.5/en/troubleshooting/logging/",
+  "permalink": "/2.5/v2.5/en/troubleshooting/logging/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/troubleshooting/logging/logging.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Logging",
+    "weight": 110,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/logging/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes resources",
+    "permalink": "/2.5/v2.5/en/troubleshooting/kubernetes-resources/"
+  },
+  "next": {
+    "title": "Networking",
+    "permalink": "/2.5/v2.5/en/troubleshooting/networking/"
+  }
+}

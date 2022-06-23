@@ -1,0 +1,36 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cli/cli",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cli/cli",
+  "title": "Using the Rancher Command Line Interface",
+  "description": "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cli/cli.md",
+  "sourceDirName": "v2.0-v2.4/en/cli",
+  "slug": "/v2.0-v2.4/en/cli/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cli/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cli/cli.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Using the Rancher Command Line Interface",
+    "description": "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI",
+    "metaTitle": "Using the Rancher Command Line Interface ",
+    "metaDescription": "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI",
+    "weight": 21,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/cluster-access/cli",
+      "/rancher/v2.x/en/cli/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tips for Scaling, Security and Reliability",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/best-practices/management/"
+  },
+  "next": {
+    "title": "Cluster Administration",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/"
+  }
+}

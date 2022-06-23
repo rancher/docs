@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/faq/faq",
+  "id": "version-2.5/v2.5/en/faq/faq",
+  "title": "FAQ",
+  "description": "This FAQ is a work in progress designed to answer the questions our users most frequently ask about Rancher v2.x.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/faq/faq.md",
+  "sourceDirName": "v2.5/en/faq",
+  "slug": "/v2.5/en/faq/",
+  "permalink": "/2.5/v2.5/en/faq/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/faq/faq.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "FAQ",
+    "weight": 25,
+    "aliases": [
+      "/rancher/v2.5/en/about/",
+      "/rancher/v2.x/en/faq/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Multi-cluster Apps",
+    "permalink": "/2.5/v2.5/en/deploy-across-clusters/multi-cluster-apps/"
+  },
+  "next": {
+    "title": "Deprecated Features in Rancher v2.5",
+    "permalink": "/2.5/v2.5/en/faq/deprecated-features-25x/"
+  }
+}

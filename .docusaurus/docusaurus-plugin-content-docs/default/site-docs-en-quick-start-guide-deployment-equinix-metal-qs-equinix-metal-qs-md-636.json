@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/quick-start-guide/deployment/equinix-metal-qs/equinix-metal-qs",
+  "id": "en/quick-start-guide/deployment/equinix-metal-qs/equinix-metal-qs",
+  "title": "Rancher Equinix Metal Quick Start",
+  "description": "This tutorial walks you through the following:",
+  "source": "@site/docs/en/quick-start-guide/deployment/equinix-metal-qs/equinix-metal-qs.md",
+  "sourceDirName": "en/quick-start-guide/deployment/equinix-metal-qs",
+  "slug": "/en/quick-start-guide/deployment/equinix-metal-qs/",
+  "permalink": "/en/en/quick-start-guide/deployment/equinix-metal-qs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/quick-start-guide/deployment/equinix-metal-qs/equinix-metal-qs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Equinix Metal Quick Start",
+    "weight": 250
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher DigitalOcean Quick Start Guide",
+    "permalink": "/en/en/quick-start-guide/deployment/digital-ocean-qs/"
+  },
+  "next": {
+    "title": "Rancher GCP Quick Start Guide",
+    "permalink": "/en/en/quick-start-guide/deployment/google-gcp-qs/"
+  }
+}

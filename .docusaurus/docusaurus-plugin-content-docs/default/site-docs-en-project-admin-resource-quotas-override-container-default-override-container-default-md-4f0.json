@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/project-admin/resource-quotas/override-container-default/override-container-default",
+  "id": "en/project-admin/resource-quotas/override-container-default/override-container-default",
+  "title": "Setting Container Default Resource Limits",
+  "description": "When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project / namespace, all containers will require a respective CPU or Memory field set during creation. See the Kubernetes documentation for more details on why this is required.",
+  "source": "@site/docs/en/project-admin/resource-quotas/override-container-default/override-container-default.md",
+  "sourceDirName": "en/project-admin/resource-quotas/override-container-default",
+  "slug": "/en/project-admin/resource-quotas/override-container-default/",
+  "permalink": "/en/en/project-admin/resource-quotas/override-container-default/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/project-admin/resource-quotas/override-container-default/override-container-default.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting Container Default Resource Limits",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Project Resource Quotas",
+    "permalink": "/en/en/project-admin/resource-quotas/"
+  },
+  "next": {
+    "title": "Overriding the Default Limit for a Namespace",
+    "permalink": "/en/en/project-admin/resource-quotas/override-namespace-default/"
+  }
+}

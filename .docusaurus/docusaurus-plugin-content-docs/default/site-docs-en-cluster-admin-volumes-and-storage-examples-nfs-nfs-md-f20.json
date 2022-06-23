@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-admin/volumes-and-storage/examples/nfs/nfs",
+  "id": "en/cluster-admin/volumes-and-storage/examples/nfs/nfs",
+  "title": "NFS Storage",
+  "description": "Before you can use the NFS storage volume plug-in with Rancher deployments, you need to provision an NFS server.",
+  "source": "@site/docs/en/cluster-admin/volumes-and-storage/examples/nfs/nfs.md",
+  "sourceDirName": "en/cluster-admin/volumes-and-storage/examples/nfs",
+  "slug": "/en/cluster-admin/volumes-and-storage/examples/nfs/",
+  "permalink": "/en/en/cluster-admin/volumes-and-storage/examples/nfs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-admin/volumes-and-storage/examples/nfs/nfs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "NFS Storage",
+    "weight": 3054
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating Persistent Storage in Amazon's EBS",
+    "permalink": "/en/en/cluster-admin/volumes-and-storage/examples/ebs/"
+  },
+  "next": {
+    "title": "vSphere Storage",
+    "permalink": "/en/en/cluster-admin/volumes-and-storage/examples/vsphere/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix",
+  "id": "en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix",
+  "title": "Creating a Nutanix AOS Cluster",
+  "description": "Use Rancher to create a Nutanix AOS (AHV) cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/node-pools/nutanix",
+  "slug": "/en/cluster-provisioning/rke-clusters/node-pools/nutanix/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/nutanix/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a Nutanix AOS Cluster",
+    "shortTitle": "Nutanix",
+    "description": "Use Rancher to create a Nutanix AOS (AHV) cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "metaDescription": "Use Rancher to create a Nutanix AOS (AHV) cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "weight": 2225
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "EC2 Node Template Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2-node-template-config/"
+  },
+  "next": {
+    "title": "Nutanix Node Template Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/nutanix/nutanix-node-template-config/"
+  }
+}

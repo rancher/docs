@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/vsphere-volume-migration",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/vsphere-volume-migration",
+  "title": "Migrating vSphere In-tree Volumes to CSI",
+  "description": "Available as of v2.5+",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/vsphere-volume-migration.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/vsphere-volume-migration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating vSphere In-tree Volumes to CSI",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/vsphere-volume-migration/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How to Configure Out-of-tree vSphere Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/out-of-tree/"
+  },
+  "next": {
+    "title": "Launching Kubernetes on Existing Custom Nodes",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-admin/cluster-admin",
+  "id": "version-2.5/v2.5/en/cluster-admin/cluster-admin",
+  "title": "Cluster Administration",
+  "description": "After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-admin/cluster-admin.md",
+  "sourceDirName": "v2.5/en/cluster-admin",
+  "slug": "/v2.5/en/cluster-admin/",
+  "permalink": "/2.5/v2.5/en/cluster-admin/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-admin/cluster-admin.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Administration",
+    "weight": 8,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CLI with Rancher",
+    "permalink": "/2.5/v2.5/en/cli/"
+  },
+  "next": {
+    "title": "Backing up a Cluster",
+    "permalink": "/2.5/v2.5/en/cluster-admin/backing-up-etcd/"
+  }
+}

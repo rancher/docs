@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/registered-clusters/registered-clusters",
+  "id": "en/cluster-provisioning/registered-clusters/registered-clusters",
+  "title": "Registering Existing Clusters",
+  "description": "The cluster registration feature replaced the feature to import clusters.",
+  "source": "@site/docs/en/cluster-provisioning/registered-clusters/registered-clusters.md",
+  "sourceDirName": "en/cluster-provisioning/registered-clusters",
+  "slug": "/en/cluster-provisioning/registered-clusters/",
+  "permalink": "/en/en/cluster-provisioning/registered-clusters/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/registered-clusters/registered-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Registering Existing Clusters",
+    "weight": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Recommended Cluster Architecture",
+    "permalink": "/en/en/cluster-provisioning/production/recommended-architecture/"
+  },
+  "next": {
+    "title": "Launching Kubernetes with Rancher",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/"
+  }
+}

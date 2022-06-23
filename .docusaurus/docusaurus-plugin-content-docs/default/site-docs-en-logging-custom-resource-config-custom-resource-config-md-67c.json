@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/logging/custom-resource-config/custom-resource-config",
+  "id": "en/logging/custom-resource-config/custom-resource-config",
+  "title": "Custom Resource Configuration",
+  "description": "The following Custom Resource Definitions are used to configure logging:",
+  "source": "@site/docs/en/logging/custom-resource-config/custom-resource-config.md",
+  "sourceDirName": "en/logging/custom-resource-config",
+  "slug": "/en/logging/custom-resource-config/",
+  "permalink": "/en/en/logging/custom-resource-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/logging/custom-resource-config/custom-resource-config.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Custom Resource Configuration",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Architecture",
+    "permalink": "/en/en/logging/architecture/"
+  },
+  "next": {
+    "title": "Flows and ClusterFlows",
+    "permalink": "/en/en/logging/custom-resource-config/flows/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/admin-settings/rbac/default-custom-roles/default-custom-roles",
+  "id": "en/admin-settings/rbac/default-custom-roles/default-custom-roles",
+  "title": "Custom Roles",
+  "description": "Within Rancher, roles determine what actions a user can make within a cluster or project.",
+  "source": "@site/docs/en/admin-settings/rbac/default-custom-roles/default-custom-roles.md",
+  "sourceDirName": "en/admin-settings/rbac/default-custom-roles",
+  "slug": "/en/admin-settings/rbac/default-custom-roles/",
+  "permalink": "/en/en/admin-settings/rbac/default-custom-roles/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/admin-settings/rbac/default-custom-roles/default-custom-roles.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Custom Roles",
+    "weight": 1128
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster and Project Roles",
+    "permalink": "/en/en/admin-settings/rbac/cluster-project-roles/"
+  },
+  "next": {
+    "title": "Global Permissions",
+    "permalink": "/en/en/admin-settings/rbac/global-permissions/"
+  }
+}

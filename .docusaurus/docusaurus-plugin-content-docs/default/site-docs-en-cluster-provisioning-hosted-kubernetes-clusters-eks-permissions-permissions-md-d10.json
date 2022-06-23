@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions/permissions",
+  "id": "en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions/permissions",
+  "title": "Minimum EKS Permissions",
+  "description": "Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in Rancher. Additional permissions are required for Rancher to provision the Service Role and VPC resources. Optionally these resources can be created before the cluster creation and will be selectable when defining the cluster configuration.",
+  "source": "@site/docs/en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions/permissions.md",
+  "sourceDirName": "en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions",
+  "slug": "/en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions/",
+  "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/hosted-kubernetes-clusters/eks/permissions/permissions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Minimum EKS Permissions",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an EKS Cluster",
+    "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/eks/"
+  },
+  "next": {
+    "title": "Managing GKE Clusters",
+    "permalink": "/en/en/cluster-provisioning/hosted-kubernetes-clusters/gke/"
+  }
+}

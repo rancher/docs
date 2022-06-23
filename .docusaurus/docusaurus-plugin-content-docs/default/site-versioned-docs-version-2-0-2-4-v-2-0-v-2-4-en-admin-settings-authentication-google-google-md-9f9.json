@@ -1,0 +1,28 @@
+{
+  "unversionedId": "v2.0-v2.4/en/admin-settings/authentication/google/google",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/google/google",
+  "title": "Configuring Google OAuth",
+  "description": "Available as of v2.3.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/google/google.md",
+  "sourceDirName": "v2.0-v2.4/en/admin-settings/authentication/google",
+  "slug": "/v2.0-v2.4/en/admin-settings/authentication/google/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/google/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/google/google.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Google OAuth"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring GitHub",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/github/"
+  },
+  "next": {
+    "title": "Configuring Keycloak (SAML)",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/admin-settings/authentication/keycloak/"
+  }
+}

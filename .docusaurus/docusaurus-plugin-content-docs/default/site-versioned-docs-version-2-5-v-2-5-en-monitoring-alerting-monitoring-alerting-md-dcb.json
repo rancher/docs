@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.5/en/monitoring-alerting/monitoring-alerting",
+  "id": "version-2.5/v2.5/en/monitoring-alerting/monitoring-alerting",
+  "title": "Monitoring and Alerting",
+  "description": "Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/monitoring-alerting.md",
+  "sourceDirName": "v2.5/en/monitoring-alerting",
+  "slug": "/v2.5/en/monitoring-alerting/",
+  "permalink": "/2.5/v2.5/en/monitoring-alerting/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/monitoring-alerting.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Monitoring and Alerting",
+    "shortTitle": "Monitoring/Alerting",
+    "description": "Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring",
+    "weight": 13,
+    "aliases": [
+      "/rancher/v2.x/en/monitoring-alerting/",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Longhorn - Cloud native distributed block storage for Kubernetes",
+    "permalink": "/2.5/v2.5/en/longhorn/"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/configuration/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/overview/overview",
+  "id": "en/overview/overview",
+  "title": "Overview",
+  "description": "Rancher is a container management platform built for organizations that deploy containers in production. Rancher makes it easy to run Kubernetes everywhere, meet IT requirements, and empower DevOps teams.",
+  "source": "@site/docs/en/overview/overview.md",
+  "sourceDirName": "en/overview",
+  "slug": "/en/overview/",
+  "permalink": "/en/en/overview/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/overview/overview.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Overview",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "OPA Gatekeeper",
+    "permalink": "/en/en/opa-gatekeper/opa-gatekeeper"
+  },
+  "next": {
+    "title": "Architecture",
+    "permalink": "/en/en/overview/architecture/"
+  }
+}

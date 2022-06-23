@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/admin-settings/rke-templates/creator-permissions/creator-permissions",
+  "id": "en/admin-settings/rke-templates/creator-permissions/creator-permissions",
+  "title": "Template Creator Permissions",
+  "description": "Administrators have the permission to create RKE templates, and only administrators can give that permission to other users.",
+  "source": "@site/docs/en/admin-settings/rke-templates/creator-permissions/creator-permissions.md",
+  "sourceDirName": "en/admin-settings/rke-templates/creator-permissions",
+  "slug": "/en/admin-settings/rke-templates/creator-permissions/",
+  "permalink": "/en/en/admin-settings/rke-templates/creator-permissions/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/admin-settings/rke-templates/creator-permissions/creator-permissions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Template Creator Permissions",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating and Revising RKE Templates",
+    "permalink": "/en/en/admin-settings/rke-templates/creating-and-revising/"
+  },
+  "next": {
+    "title": "Template Enforcement",
+    "permalink": "/en/en/admin-settings/rke-templates/enforcement/"
+  }
+}

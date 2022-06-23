@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/k8s-in-rancher/workloads/upgrade-workloads/upgrade-workloads",
+  "id": "en/k8s-in-rancher/workloads/upgrade-workloads/upgrade-workloads",
+  "title": "Upgrading Workloads",
+  "description": "When a new version of an application image is released on Docker Hub, you can upgrade any workloads running a previous version of the application to the new one.",
+  "source": "@site/docs/en/k8s-in-rancher/workloads/upgrade-workloads/upgrade-workloads.md",
+  "sourceDirName": "en/k8s-in-rancher/workloads/upgrade-workloads",
+  "slug": "/en/k8s-in-rancher/workloads/upgrade-workloads/",
+  "permalink": "/en/en/k8s-in-rancher/workloads/upgrade-workloads/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/k8s-in-rancher/workloads/upgrade-workloads/upgrade-workloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Workloads",
+    "weight": 3028
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rolling Back Workloads",
+    "permalink": "/en/en/k8s-in-rancher/workloads/rollback-workloads/"
+  },
+  "next": {
+    "title": "Rancher Integration with Logging Services",
+    "permalink": "/en/en/logging/"
+  }
+}

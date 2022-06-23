@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/gce",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/gce",
+  "title": "Setting up the Google Compute Engine Cloud Provider",
+  "description": "In this section, you'll learn how to enable the Google Compute Engine (GCE) cloud provider for custom clusters in Rancher. A custom cluster is one in which Rancher installs Kubernetes on existing nodes.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/gce.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/gce.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up the Google Compute Engine Cloud Provider",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/gce/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up the Azure Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/azure/"
+  },
+  "next": {
+    "title": "Setting up the vSphere Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/"
+  }
+}

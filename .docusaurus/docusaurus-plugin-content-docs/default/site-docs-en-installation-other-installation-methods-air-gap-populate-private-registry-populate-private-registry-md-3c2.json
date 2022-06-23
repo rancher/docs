@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/installation/other-installation-methods/air-gap/populate-private-registry/populate-private-registry",
+  "id": "en/installation/other-installation-methods/air-gap/populate-private-registry/populate-private-registry",
+  "title": "2. Collect and Publish Images to your Private Registry",
+  "description": "This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.",
+  "source": "@site/docs/en/installation/other-installation-methods/air-gap/populate-private-registry/populate-private-registry.md",
+  "sourceDirName": "en/installation/other-installation-methods/air-gap/populate-private-registry",
+  "slug": "/en/installation/other-installation-methods/air-gap/populate-private-registry/",
+  "permalink": "/en/en/installation/other-installation-methods/air-gap/populate-private-registry/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/installation/other-installation-methods/air-gap/populate-private-registry/populate-private-registry.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "weight": 200
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3. Install Kubernetes (Skip for Docker Installs)",
+    "permalink": "/en/en/installation/other-installation-methods/air-gap/launch-kubernetes/"
+  },
+  "next": {
+    "title": "1. Set up Infrastructure and Private Registry",
+    "permalink": "/en/en/installation/other-installation-methods/air-gap/prepare-nodes/"
+  }
+}

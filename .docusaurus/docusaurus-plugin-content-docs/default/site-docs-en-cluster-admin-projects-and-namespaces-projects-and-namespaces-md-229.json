@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/cluster-admin/projects-and-namespaces/projects-and-namespaces",
+  "id": "en/cluster-admin/projects-and-namespaces/projects-and-namespaces",
+  "title": "Projects and Kubernetes Namespaces with Rancher",
+  "description": "Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces",
+  "source": "@site/docs/en/cluster-admin/projects-and-namespaces/projects-and-namespaces.md",
+  "sourceDirName": "en/cluster-admin/projects-and-namespaces",
+  "slug": "/en/cluster-admin/projects-and-namespaces/",
+  "permalink": "/en/en/cluster-admin/projects-and-namespaces/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-admin/projects-and-namespaces/projects-and-namespaces.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Projects and Kubernetes Namespaces with Rancher",
+    "description": "Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces",
+    "weight": 2032
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding a Pod Security Policy",
+    "permalink": "/en/en/cluster-admin/pod-security-policy/"
+  },
+  "next": {
+    "title": "Restoring a Cluster from Backup",
+    "permalink": "/en/en/cluster-admin/restoring-etcd/"
+  }
+}

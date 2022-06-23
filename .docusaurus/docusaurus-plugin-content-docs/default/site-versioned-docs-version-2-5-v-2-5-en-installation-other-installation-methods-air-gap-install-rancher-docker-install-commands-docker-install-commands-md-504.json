@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/docker-install-commands",
+  "id": "version-2.5/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/docker-install-commands",
+  "title": "Docker Install Commands",
+  "description": "The Docker installation is for Rancher users who want to test out Rancher.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/docker-install-commands.md",
+  "sourceDirName": "v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands",
+  "slug": "/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/",
+  "permalink": "/2.5/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/docker-install-commands/docker-install-commands.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Docker Install Commands",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "4. Install Rancher",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/air-gap/install-rancher/"
+  },
+  "next": {
+    "title": "3. Install Kubernetes (Skip for Docker Installs)",
+    "permalink": "/2.5/v2.5/en/installation/other-installation-methods/air-gap/launch-kubernetes/"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "pluginId": "default",
+  "version": "2.6",
+  "label": "2.6",
+  "banner": "unmaintained",
+  "badge": true,
+  "className": "docs-version-2.6",
+  "isLast": false,
+  "docsSidebars": {
+    "tutorialSidebar": [
+      {
+        "type": "category",
+        "label": "v2.6",
+        "collapsible": true,
+        "collapsed": true,
+        "items": [
+          {
+            "type": "category",
+            "label": "en",
+            "collapsible": true,
+            "collapsed": true,
+            "items": [
+              {
+                "type": "category",
+                "label": "cluster-provisioning",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "link",
+                    "label": "index",
+                    "href": "/2.6/v2.6/en/cluster-provisioning/cluster-capabilities-table/",
+                    "docId": "v2.6/en/cluster-provisioning/cluster-capabilities-table/index"
+                  }
+                ]
+              },
+              {
+                "type": "category",
+                "label": "installation",
+                "collapsible": true,
+                "collapsed": true,
+                "items": [
+                  {
+                    "type": "category",
+                    "label": "requirements",
+                    "collapsible": true,
+                    "collapsed": true,
+                    "items": [
+                      {
+                        "type": "category",
+                        "label": "ports",
+                        "collapsible": true,
+                        "collapsed": true,
+                        "items": [
+                          {
+                            "type": "link",
+                            "label": "index",
+                            "href": "/2.6/v2.6/en/installation/requirements/ports/common-ports-table/",
+                            "docId": "v2.6/en/installation/requirements/ports/common-ports-table/index"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "link",
+                "label": "Rancher 2.6",
+                "href": "/2.6/",
+                "docId": "v2.6/en/introduction"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "docs": {
+    "v2.6/en/cluster-provisioning/cluster-capabilities-table/index": {
+      "id": "v2.6/en/cluster-provisioning/cluster-capabilities-table/index",
+      "title": "index",
+      "description": "| Action | Rancher Launched Kubernetes Clusters |  EKS, GKE and AKS Clusters1 | Other Hosted Kubernetes Clusters | Non-EKS or GKE Registered Clusters |",
+      "sidebar": "tutorialSidebar"
+    },
+    "v2.6/en/installation/requirements/ports/common-ports-table/index": {
+      "id": "v2.6/en/installation/requirements/ports/common-ports-table/index",
+      "title": "index",
+      "description": "| Protocol \t|       Port       \t| Description                                     \t                                |",
+      "sidebar": "tutorialSidebar"
+    },
+    "v2.6/en/introduction": {
+      "id": "v2.6/en/introduction",
+      "title": "Rancher 2.6",
+      "description": "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+      "sidebar": "tutorialSidebar"
+    }
+  }
+}

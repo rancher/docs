@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.0-v2.4/en/project-admin/project-admin",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/project-admin/project-admin",
+  "title": "Project Administration",
+  "description": "Projects are objects introduced in Rancher that help organize namespaces in your Kubernetes cluster. You can use projects to create multi-tenant clusters, which allows a group of users to share the same underlying resources without interacting with each other's applications.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/project-admin/project-admin.md",
+  "sourceDirName": "v2.0-v2.4/en/project-admin",
+  "slug": "/v2.0-v2.4/en/project-admin/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/project-admin/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/project-admin/project-admin.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Administration",
+    "weight": 9,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/editing-projects/",
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/editing-projects/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring Persistent Data for Pipeline Components",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/storage/"
+  },
+  "next": {
+    "title": "Namespaces",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/project-admin/namespaces/"
+  }
+}

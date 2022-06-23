@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/project-admin/resource-quotas/resource-quotas",
+  "id": "en/project-admin/resource-quotas/resource-quotas",
+  "title": "Project Resource Quotas",
+  "description": "In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a resource quota, which is a Rancher feature that limits the resources available to a project or namespace.",
+  "source": "@site/docs/en/project-admin/resource-quotas/resource-quotas.md",
+  "sourceDirName": "en/project-admin/resource-quotas",
+  "slug": "/en/project-admin/resource-quotas/",
+  "permalink": "/en/en/project-admin/resource-quotas/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/project-admin/resource-quotas/resource-quotas.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Resource Quotas",
+    "weight": 2515
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Users to Projects",
+    "permalink": "/en/en/project-admin/project-members/"
+  },
+  "next": {
+    "title": "Setting Container Default Resource Limits",
+    "permalink": "/en/en/project-admin/resource-quotas/override-container-default/"
+  }
+}

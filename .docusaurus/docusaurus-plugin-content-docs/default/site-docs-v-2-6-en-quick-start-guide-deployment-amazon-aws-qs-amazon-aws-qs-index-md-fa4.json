@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.6/en/quick-start-guide/deployment/amazon-aws-qs/amazon-aws-qs_index",
+  "id": "v2.6/en/quick-start-guide/deployment/amazon-aws-qs/amazon-aws-qs_index",
+  "title": "Rancher AWS Quick Start Guide",
+  "description": "Read this step by step Rancher AWS guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/docs/v2.6/en/quick-start-guide/deployment/amazon-aws-qs/amazon-aws-qs_index.md",
+  "sourceDirName": "v2.6/en/quick-start-guide/deployment/amazon-aws-qs",
+  "slug": "/v2.6/en/quick-start-guide/deployment/amazon-aws-qs/amazon-aws-qs_index",
+  "permalink": "/v2.6/v2.6/en/quick-start-guide/deployment/amazon-aws-qs/amazon-aws-qs_index",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/v2.6/en/quick-start-guide/deployment/amazon-aws-qs/amazon-aws-qs_index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher AWS Quick Start Guide",
+    "description": "Read this step by step Rancher AWS guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher AWS Marketplace Quick Start",
+    "permalink": "/v2.6/v2.6/en/quick-start-guide/deployment/amazon-aws-marketplace-qs/amazon-aws-marketplace-qs_index"
+  },
+  "next": {
+    "title": "Deploying Rancher Server",
+    "permalink": "/v2.6/v2.6/en/quick-start-guide/deployment/deployment_index"
+  }
+}

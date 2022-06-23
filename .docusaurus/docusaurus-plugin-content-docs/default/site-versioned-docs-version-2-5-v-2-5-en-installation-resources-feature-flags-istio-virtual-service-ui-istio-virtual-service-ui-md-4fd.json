@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.5/en/installation/resources/feature-flags/istio-virtual-service-ui/istio-virtual-service-ui",
+  "id": "version-2.5/v2.5/en/installation/resources/feature-flags/istio-virtual-service-ui/istio-virtual-service-ui",
+  "title": "UI for Istio Virtual Services and Destination Rules",
+  "description": "This feature enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/installation/resources/feature-flags/istio-virtual-service-ui/istio-virtual-service-ui.md",
+  "sourceDirName": "v2.5/en/installation/resources/feature-flags/istio-virtual-service-ui",
+  "slug": "/v2.5/en/installation/resources/feature-flags/istio-virtual-service-ui/",
+  "permalink": "/2.5/v2.5/en/installation/resources/feature-flags/istio-virtual-service-ui/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/installation/resources/feature-flags/istio-virtual-service-ui/istio-virtual-service-ui.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/feature-flags/istio-virtual-service-ui",
+      "/rancher/v2.x/en/installation/resources/feature-flags/istio-virtual-service-ui/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Allow Unsupported Storage Drivers",
+    "permalink": "/2.5/v2.5/en/installation/resources/feature-flags/enable-not-default-storage-drivers/"
+  },
+  "next": {
+    "title": "Helm Version Requirements",
+    "permalink": "/2.5/v2.5/en/installation/resources/helm-version/"
+  }
+}

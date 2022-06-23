@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.6/en/introduction",
+  "id": "version-2.6/v2.6/en/introduction",
+  "title": "Rancher 2.6",
+  "description": "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+  "source": "@site/versioned_docs/version-2.6/v2.6/en/introduction.md",
+  "sourceDirName": "v2.6/en",
+  "slug": "/",
+  "permalink": "/2.6/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.6/v2.6/en/introduction.md",
+  "tags": [],
+  "version": "2.6",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "slug": "/",
+    "weight": 1,
+    "title": "Rancher 2.6",
+    "shortTitle": "Rancher 2.6  (Latest)",
+    "description": "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+    "metaTitle": "Rancher 2.6 Docs: What is New?",
+    "metaDescription": "Rancher 2 adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+    "insertOneSix": false,
+    "ctaBanner": 0,
+    "aliases": [
+      "/rancher/v2.x/en/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "index",
+    "permalink": "/2.6/v2.6/en/installation/requirements/ports/common-ports-table/"
+  }
+}

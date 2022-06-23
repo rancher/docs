@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/host-gateway-requirements",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/host-gateway-requirements",
+  "title": "Networking Requirements for Host Gateway (L2bridge)",
+  "description": "This section describes how to configure custom Windows clusters that are using Host Gateway (L2bridge) mode.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/host-gateway-requirements.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements",
+  "slug": "/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/host-gateway-requirements.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Networking Requirements for Host Gateway (L2bridge)",
+    "weight": 1000
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "v2.1.x and v2.2.x Windows Documentation (Experimental)",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/docs-for-2.1-and-2.2/"
+  },
+  "next": {
+    "title": "Contributing to Rancher",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/contributing/"
+  }
+}

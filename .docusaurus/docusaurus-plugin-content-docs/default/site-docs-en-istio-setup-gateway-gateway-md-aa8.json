@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/istio/setup/gateway/gateway",
+  "id": "en/istio/setup/gateway/gateway",
+  "title": "4. Set up the Istio Gateway",
+  "description": "The gateway to each cluster can have its own port or load balancer, which is unrelated to a service mesh. By default, each Rancher-provisioned cluster has one NGINX ingress controller allowing traffic into the cluster.",
+  "source": "@site/docs/en/istio/setup/gateway/gateway.md",
+  "sourceDirName": "en/istio/setup/gateway",
+  "slug": "/en/istio/setup/gateway/",
+  "permalink": "/en/en/istio/setup/gateway/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/istio/setup/gateway/gateway.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "4. Set up the Istio Gateway",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Enable Istio in a Namespace",
+    "permalink": "/en/en/istio/setup/enable-istio-in-namespace/"
+  },
+  "next": {
+    "title": "5. Set up Istio's Components for Traffic Management",
+    "permalink": "/en/en/istio/setup/set-up-traffic-management/"
+  }
+}

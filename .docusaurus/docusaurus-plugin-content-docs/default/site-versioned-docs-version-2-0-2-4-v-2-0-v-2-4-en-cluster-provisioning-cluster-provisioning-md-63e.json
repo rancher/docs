@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-provisioning/cluster-provisioning",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/cluster-provisioning",
+  "title": "Setting up Kubernetes Clusters in Rancher",
+  "description": "Provisioning Kubernetes Clusters",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/cluster-provisioning.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-provisioning",
+  "slug": "/v2.0-v2.4/en/cluster-provisioning/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/cluster-provisioning.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Kubernetes Clusters in Rancher",
+    "description": "Provisioning Kubernetes Clusters",
+    "weight": 7,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/concepts/clusters/",
+      "/rancher/v2.0-v2.4/en/concepts/clusters/cluster-providers/",
+      "/rancher/v2.0-v2.4/en/tasks/clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Dynamically Provisioning New Storage in Rancher",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/volumes-and-storage/provisioning-new-storage/"
+  },
+  "next": {
+    "title": "index",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/cluster-capabilities-table/"
+  }
+}

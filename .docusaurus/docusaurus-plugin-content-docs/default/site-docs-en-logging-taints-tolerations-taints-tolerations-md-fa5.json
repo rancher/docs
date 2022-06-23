@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/logging/taints-tolerations/taints-tolerations",
+  "id": "en/logging/taints-tolerations/taints-tolerations",
+  "title": "Working with Taints and Tolerations",
+  "description": "\"Tainting\" a Kubernetes node causes pods to repel running on that node.",
+  "source": "@site/docs/en/logging/taints-tolerations/taints-tolerations.md",
+  "sourceDirName": "en/logging/taints-tolerations",
+  "slug": "/en/logging/taints-tolerations/",
+  "permalink": "/en/en/logging/taints-tolerations/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/logging/taints-tolerations/taints-tolerations.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Working with Taints and Tolerations",
+    "weight": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Role-based Access Control for Logging",
+    "permalink": "/en/en/logging/rbac/"
+  },
+  "next": {
+    "title": "Longhorn - Cloud native distributed block storage for Kubernetes",
+    "permalink": "/en/en/longhorn/"
+  }
+}

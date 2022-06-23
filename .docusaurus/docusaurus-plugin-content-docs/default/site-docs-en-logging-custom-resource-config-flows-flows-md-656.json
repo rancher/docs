@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/logging/custom-resource-config/flows/flows",
+  "id": "en/logging/custom-resource-config/flows/flows",
+  "title": "Flows and ClusterFlows",
+  "description": "For the full details on configuring Flows and ClusterFlows, see the Banzai Cloud Logging operator documentation.",
+  "source": "@site/docs/en/logging/custom-resource-config/flows/flows.md",
+  "sourceDirName": "en/logging/custom-resource-config/flows",
+  "slug": "/en/logging/custom-resource-config/flows/",
+  "permalink": "/en/en/logging/custom-resource-config/flows/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/logging/custom-resource-config/flows/flows.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Flows and ClusterFlows",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Custom Resource Configuration",
+    "permalink": "/en/en/logging/custom-resource-config/"
+  },
+  "next": {
+    "title": "Outputs and ClusterOutputs",
+    "permalink": "/en/en/logging/custom-resource-config/outputs/"
+  }
+}

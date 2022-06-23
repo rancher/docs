@@ -1,0 +1,30 @@
+{
+  "unversionedId": "en/backups/configuration/restore-config/restore-config",
+  "id": "en/backups/configuration/restore-config/restore-config",
+  "title": "Restore Configuration",
+  "description": "The Restore Create page lets you provide details of the backup to restore from",
+  "source": "@site/docs/en/backups/configuration/restore-config/restore-config.md",
+  "sourceDirName": "en/backups/configuration/restore-config",
+  "slug": "/en/backups/configuration/restore-config/",
+  "permalink": "/en/en/backups/configuration/restore-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/backups/configuration/restore-config/restore-config.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restore Configuration",
+    "shortTitle": "Restore",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backup Configuration",
+    "permalink": "/en/en/backups/configuration/backup-config/"
+  },
+  "next": {
+    "title": "Backup Storage Location Configuration",
+    "permalink": "/en/en/backups/configuration/storage-config/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/project-admin/pod-security-policies/pod-security-policies",
+  "id": "en/project-admin/pod-security-policies/pod-security-policies",
+  "title": "Pod Security Policies",
+  "description": "These cluster options are only available for clusters in which Rancher has launched Kubernetes.",
+  "source": "@site/docs/en/project-admin/pod-security-policies/pod-security-policies.md",
+  "sourceDirName": "en/project-admin/pod-security-policies",
+  "slug": "/en/project-admin/pod-security-policies/",
+  "permalink": "/en/en/project-admin/pod-security-policies/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/project-admin/pod-security-policies/pod-security-policies.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pod Security Policies",
+    "weight": 5600
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher's CI/CD Pipelines",
+    "permalink": "/en/en/project-admin/pipelines/"
+  },
+  "next": {
+    "title": "Adding Users to Projects",
+    "permalink": "/en/en/project-admin/project-members/"
+  }
+}

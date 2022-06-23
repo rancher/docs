@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/v1.6-migration/kub-intro/kub-intro",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/kub-intro/kub-intro",
+  "title": "Kubernetes Introduction",
+  "description": "Rancher v2.x is built on the Kubernetes container orchestrator. This shift in underlying technology for v2.x is a large departure from v1.6, which supported several popular container orchestrators. Since Rancher is now based entirely on Kubernetes, it's helpful to learn the Kubernetes basics.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/kub-intro/kub-intro.md",
+  "sourceDirName": "v2.0-v2.4/en/v1.6-migration/kub-intro",
+  "slug": "/v2.0-v2.4/en/v1.6-migration/kub-intro/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/kub-intro/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/v1.6-migration/kub-intro/kub-intro.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Introduction",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/kub-intro/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Get Started",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/get-started/"
+  },
+  "next": {
+    "title": "7. Load Balancing",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/v1.6-migration/load-balancing/"
+  }
+}

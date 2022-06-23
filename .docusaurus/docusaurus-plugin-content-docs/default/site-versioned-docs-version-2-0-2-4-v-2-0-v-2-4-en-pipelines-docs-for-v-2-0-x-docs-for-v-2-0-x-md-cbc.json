@@ -1,0 +1,35 @@
+{
+  "unversionedId": "v2.0-v2.4/en/pipelines/docs-for-v2.0.x/docs-for-v2.0.x",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/pipelines/docs-for-v2.0.x/docs-for-v2.0.x",
+  "title": "v2.0.x Pipeline Documentation",
+  "description": "Note: This section describes the pipeline feature as implemented in Rancher v2.0.x. If you are using Rancher v2.1 or later, where pipelines have been significantly improved, please refer to the new documentation for v2.1 or later.",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/pipelines/docs-for-v2.0.x/docs-for-v2.0.x.md",
+  "sourceDirName": "v2.0-v2.4/en/pipelines/docs-for-v2.0.x",
+  "slug": "/v2.0-v2.4/en/pipelines/docs-for-v2.0.x/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/docs-for-v2.0.x/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/pipelines/docs-for-v2.0.x/docs-for-v2.0.x.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "v2.0.x Pipeline Documentation",
+    "weight": 9000,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/pipelines/docs-for-v2.0.x",
+      "/rancher/v2.0-v2.4/en/project-admin/pipelines/docs-for-v2.0.x",
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines/docs-for-v2.0.x",
+      "/rancher/v2.x/en/pipelines/docs-for-v2.0.x/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Pipeline Configuration Reference",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/config/"
+  },
+  "next": {
+    "title": "Example YAML File",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/pipelines/example/"
+  }
+}

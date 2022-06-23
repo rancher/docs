@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/faq/removing-rancher/removing-rancher",
+  "id": "en/faq/removing-rancher/removing-rancher",
+  "title": "Rancher is No Longer Needed",
+  "description": "This page is intended to answer questions about what happens if you don't want Rancher anymore, if you don't want a cluster to be managed by Rancher anymore, or if the Rancher server is deleted.",
+  "source": "@site/docs/en/faq/removing-rancher/removing-rancher.md",
+  "sourceDirName": "en/faq/removing-rancher",
+  "slug": "/en/faq/removing-rancher/",
+  "permalink": "/en/en/faq/removing-rancher/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/faq/removing-rancher/removing-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher is No Longer Needed",
+    "weight": 8010
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Container Network Interface (CNI) Providers",
+    "permalink": "/en/en/faq/networking/cni-providers/"
+  },
+  "next": {
+    "title": "Security",
+    "permalink": "/en/en/faq/security/"
+  }
+}

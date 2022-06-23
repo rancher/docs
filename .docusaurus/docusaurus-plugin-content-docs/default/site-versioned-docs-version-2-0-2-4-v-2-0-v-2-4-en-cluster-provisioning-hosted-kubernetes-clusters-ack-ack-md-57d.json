@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/ack/ack",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/ack/ack",
+  "title": "Creating an Aliyun ACK Cluster",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/ack/ack.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/ack",
+  "slug": "/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/ack/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/ack/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/ack/ack.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating an Aliyun ACK Cluster",
+    "shortTitle": "Alibaba Cloud Container Service for Kubernetes",
+    "weight": 2120
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Clusters from Hosted Kubernetes Providers",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/"
+  },
+  "next": {
+    "title": "Creating an AKS Cluster",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/aks/"
+  }
+}

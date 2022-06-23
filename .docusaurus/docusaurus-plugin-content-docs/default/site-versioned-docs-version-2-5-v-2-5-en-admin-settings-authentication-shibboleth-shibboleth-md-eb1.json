@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/admin-settings/authentication/shibboleth/shibboleth",
+  "id": "version-2.5/v2.5/en/admin-settings/authentication/shibboleth/shibboleth",
+  "title": "Configuring Shibboleth (SAML)",
+  "description": "If your organization uses Shibboleth Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in to Rancher using their Shibboleth credentials.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/admin-settings/authentication/shibboleth/shibboleth.md",
+  "sourceDirName": "v2.5/en/admin-settings/authentication/shibboleth",
+  "slug": "/v2.5/en/admin-settings/authentication/shibboleth/",
+  "permalink": "/2.5/v2.5/en/admin-settings/authentication/shibboleth/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/admin-settings/authentication/shibboleth/shibboleth.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Shibboleth (SAML)",
+    "weight": 1210,
+    "aliases": [
+      "/rancher/v2.x/en/admin-settings/authentication/shibboleth/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring PingIdentity (SAML)",
+    "permalink": "/2.5/v2.5/en/admin-settings/authentication/ping-federate/"
+  },
+  "next": {
+    "title": "Group Permissions with Shibboleth and OpenLDAP",
+    "permalink": "/2.5/v2.5/en/admin-settings/authentication/shibboleth/about/"
+  }
+}

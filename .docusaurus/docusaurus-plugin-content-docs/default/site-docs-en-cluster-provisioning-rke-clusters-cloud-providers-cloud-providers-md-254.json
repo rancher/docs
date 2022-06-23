@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/cloud-providers/cloud-providers",
+  "id": "en/cluster-provisioning/rke-clusters/cloud-providers/cloud-providers",
+  "title": "Setting up Cloud Providers",
+  "description": "A cloud provider is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes.",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/cloud-providers/cloud-providers.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/cloud-providers",
+  "slug": "/en/cluster-provisioning/rke-clusters/cloud-providers/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/cloud-providers/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/cloud-providers/cloud-providers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Cloud Providers",
+    "weight": 2300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Behavior Differences Between RKE1 and RKE2",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/behavior-differences-between-rke1-and-rke2/"
+  },
+  "next": {
+    "title": "Setting up the Amazon Cloud Provider",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/cloud-providers/amazon/"
+  }
+}

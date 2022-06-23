@@ -1,0 +1,37 @@
+{
+  "unversionedId": "v2.5/en/monitoring-alerting/expression/expression",
+  "id": "version-2.5/v2.5/en/monitoring-alerting/expression/expression",
+  "title": "PromQL Expression Reference",
+  "description": "The PromQL expressions in this doc can be used to configure alerts.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/expression/expression.md",
+  "sourceDirName": "v2.5/en/monitoring-alerting/expression",
+  "slug": "/v2.5/en/monitoring-alerting/expression/",
+  "permalink": "/2.5/v2.5/en/monitoring-alerting/expression/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/expression/expression.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "PromQL Expression Reference",
+    "weight": 6,
+    "aliases": [
+      "/rancher/v2.5/en/project-admin/tools/monitoring/expression",
+      "/rancher/v2.5/en/cluster-admin/tools/monitoring/expression",
+      "/rancher/v2.5/en/monitoring-alerting/expression",
+      "/rancher/v2.5/en/monitoring-alerting/configuration/expression",
+      "/rancher/v2.5/en/monitoring/alerting/configuration/expression",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/expression/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Built-in Dashboards",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/dashboards/"
+  },
+  "next": {
+    "title": "Monitoring Guides",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/guides/"
+  }
+}

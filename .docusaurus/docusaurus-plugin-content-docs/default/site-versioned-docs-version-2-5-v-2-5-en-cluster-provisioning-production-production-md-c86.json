@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/production/production",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/production/production",
+  "title": "Checklist for Production-Ready Clusters",
+  "description": "In this section, we recommend best practices for creating the production-ready Kubernetes clusters that will run your apps and services.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/production/production.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/production",
+  "slug": "/v2.5/en/cluster-provisioning/production/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/production/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/production/production.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Checklist for Production-Ready Clusters",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/production/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Node Requirements for Rancher Managed Clusters",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/node-requirements/"
+  },
+  "next": {
+    "title": "Roles for Nodes in Kubernetes",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/production/nodes-and-roles/"
+  }
+}

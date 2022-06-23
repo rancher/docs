@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.5/en/monitoring-alerting/guides/monitoring-workloads/monitoring-workloads",
+  "id": "version-2.5/v2.5/en/monitoring-alerting/guides/monitoring-workloads/monitoring-workloads",
+  "title": "Setting up Monitoring for a Workload",
+  "description": "- Display CPU and Memory Metrics for a Workload",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/guides/monitoring-workloads/monitoring-workloads.md",
+  "sourceDirName": "v2.5/en/monitoring-alerting/guides/monitoring-workloads",
+  "slug": "/v2.5/en/monitoring-alerting/guides/monitoring-workloads/",
+  "permalink": "/2.5/v2.5/en/monitoring-alerting/guides/monitoring-workloads/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/monitoring-alerting/guides/monitoring-workloads/monitoring-workloads.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Monitoring for a Workload",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migrating to Rancher v2.5 Monitoring",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/guides/migrating/"
+  },
+  "next": {
+    "title": "Persistent Grafana Dashboards",
+    "permalink": "/2.5/v2.5/en/monitoring-alerting/guides/persist-grafana/"
+  }
+}

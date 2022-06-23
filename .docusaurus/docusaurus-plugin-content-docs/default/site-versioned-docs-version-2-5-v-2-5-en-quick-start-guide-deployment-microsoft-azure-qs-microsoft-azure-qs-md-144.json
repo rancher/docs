@@ -1,0 +1,30 @@
+{
+  "unversionedId": "v2.5/en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs",
+  "id": "version-2.5/v2.5/en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs",
+  "title": "Rancher Azure Quick Start Guide",
+  "description": "Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs.md",
+  "sourceDirName": "v2.5/en/quick-start-guide/deployment/microsoft-azure-qs",
+  "slug": "/v2.5/en/quick-start-guide/deployment/microsoft-azure-qs/",
+  "permalink": "/2.5/v2.5/en/quick-start-guide/deployment/microsoft-azure-qs/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/quick-start-guide/deployment/microsoft-azure-qs/microsoft-azure-qs.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Azure Quick Start Guide",
+    "description": "Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher GCP Quick Start Guide",
+    "permalink": "/2.5/v2.5/en/quick-start-guide/deployment/google-gcp-qs/"
+  },
+  "next": {
+    "title": "Manual Quick Start",
+    "permalink": "/2.5/v2.5/en/quick-start-guide/deployment/quickstart-manual-setup/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-admin/backing-up-etcd/backing-up-etcd",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-admin/backing-up-etcd/backing-up-etcd",
+  "title": "Backing up a Cluster",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/backing-up-etcd/backing-up-etcd.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-admin/backing-up-etcd",
+  "slug": "/v2.0-v2.4/en/cluster-admin/backing-up-etcd/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/backing-up-etcd/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/backing-up-etcd/backing-up-etcd.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backing up a Cluster",
+    "weight": 2045
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Administration",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/"
+  },
+  "next": {
+    "title": "Certificate Rotation",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/certificate-rotation/"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config",
+  "id": "en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config",
+  "title": "VSphere Node Template Configuration",
+  "description": "- Account Access",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config",
+  "slug": "/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/vsphere-node-template-config.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "VSphere Node Template Configuration",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a vSphere Cluster",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere"
+  },
+  "next": {
+    "title": "RKE Cluster Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/options/"
+  }
+}

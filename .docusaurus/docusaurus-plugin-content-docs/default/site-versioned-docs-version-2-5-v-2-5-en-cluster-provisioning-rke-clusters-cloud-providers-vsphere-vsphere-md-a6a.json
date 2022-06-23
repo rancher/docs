@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/vsphere",
+  "id": "version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/vsphere",
+  "title": "Setting up the vSphere Cloud Provider",
+  "description": "In this section, you'll learn how to set up a vSphere cloud provider for a Rancher managed RKE Kubernetes cluster in vSphere.",
+  "source": "@site/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/vsphere.md",
+  "sourceDirName": "v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere",
+  "slug": "/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/",
+  "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/vsphere.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up the vSphere Cloud Provider",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up the Google Compute Engine Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/gce/"
+  },
+  "next": {
+    "title": "How to Configure In-tree vSphere Cloud Provider",
+    "permalink": "/2.5/v2.5/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere/in-tree/"
+  }
+}

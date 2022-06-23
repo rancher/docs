@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/monitoring-alerting/guides/uninstall/uninstall",
+  "id": "en/monitoring-alerting/guides/uninstall/uninstall",
+  "title": "Uninstall Monitoring",
+  "description": "1.  Click ☰ > Cluster Management.",
+  "source": "@site/docs/en/monitoring-alerting/guides/uninstall/uninstall.md",
+  "sourceDirName": "en/monitoring-alerting/guides/uninstall",
+  "slug": "/en/monitoring-alerting/guides/uninstall/",
+  "permalink": "/en/en/monitoring-alerting/guides/uninstall/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/monitoring-alerting/guides/uninstall/uninstall.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Uninstall Monitoring",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Persistent Grafana Dashboards",
+    "permalink": "/en/en/monitoring-alerting/guides/persist-grafana/"
+  },
+  "next": {
+    "title": "How Monitoring Works",
+    "permalink": "/en/en/monitoring-alerting/how-monitoring-works/"
+  }
+}

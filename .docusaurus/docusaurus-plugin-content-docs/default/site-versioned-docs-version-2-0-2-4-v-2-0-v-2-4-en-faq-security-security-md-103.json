@@ -1,0 +1,29 @@
+{
+  "unversionedId": "v2.0-v2.4/en/faq/security/security",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/faq/security/security",
+  "title": "Security",
+  "description": "Is there a Hardening Guide?",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/faq/security/security.md",
+  "sourceDirName": "v2.0-v2.4/en/faq/security",
+  "slug": "/v2.0-v2.4/en/faq/security/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/security/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/faq/security/security.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security",
+    "weight": 8007
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher is No Longer Needed",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/removing-rancher/"
+  },
+  "next": {
+    "title": "Technical",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/faq/technical/"
+  }
+}

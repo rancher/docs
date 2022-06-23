@@ -1,0 +1,32 @@
+{
+  "unversionedId": "v2.0-v2.4/en/cluster-admin/tools/tools",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/tools",
+  "title": "Tools for Logging, Monitoring, and More",
+  "description": "Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/tools.md",
+  "sourceDirName": "v2.0-v2.4/en/cluster-admin/tools",
+  "slug": "/v2.0-v2.4/en/cluster-admin/tools/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/tools.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tools for Logging, Monitoring, and More",
+    "weight": 2033,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tools/notifiers-and-alerts/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restoring a Cluster from Backup",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/restoring-etcd/"
+  },
+  "next": {
+    "title": "CIS Scans",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/cluster-admin/tools/cis-scans/"
+  }
+}

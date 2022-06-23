@@ -1,0 +1,33 @@
+{
+  "unversionedId": "v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/single-node-rollbacks",
+  "id": "version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/single-node-rollbacks",
+  "title": "Rolling Back Rancher Installed with Docker",
+  "description": "If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before Docker Upgrade. Rolling back restores:",
+  "source": "@site/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/single-node-rollbacks.md",
+  "sourceDirName": "v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks",
+  "slug": "/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/",
+  "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/versioned_docs/version-2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-rollbacks/single-node-rollbacks.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rolling Back Rancher Installed with Docker",
+    "weight": 1015,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/single-node-rollbacks",
+      "/rancher/v2.0-v2.4/en/upgrades/rollbacks/single-node-rollbacks"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "HTTP Proxy Configuration",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/proxy/"
+  },
+  "next": {
+    "title": "Upgrading Rancher Installed with Docker",
+    "permalink": "/2.0-2.4/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/"
+  }
+}

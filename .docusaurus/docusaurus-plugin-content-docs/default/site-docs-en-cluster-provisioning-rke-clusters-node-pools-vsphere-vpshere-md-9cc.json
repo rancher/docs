@@ -1,0 +1,32 @@
+{
+  "unversionedId": "en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere",
+  "id": "en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere",
+  "title": "Creating a vSphere Cluster",
+  "description": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+  "source": "@site/docs/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere.md",
+  "sourceDirName": "en/cluster-provisioning/rke-clusters/node-pools/vsphere",
+  "slug": "/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere",
+  "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vpshere.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a vSphere Cluster",
+    "shortTitle": "vSphere",
+    "description": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "metaDescription": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "weight": 2225
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Provisioning Kubernetes Clusters in vSphere",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/"
+  },
+  "next": {
+    "title": "VSphere Node Template Configuration",
+    "permalink": "/en/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/"
+  }
+}

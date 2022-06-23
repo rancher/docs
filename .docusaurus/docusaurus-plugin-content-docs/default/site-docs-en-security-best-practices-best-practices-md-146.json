@@ -1,0 +1,29 @@
+{
+  "unversionedId": "en/security/best-practices/best-practices",
+  "id": "en/security/best-practices/best-practices",
+  "title": "Kubernetes Security Best Practices",
+  "description": "Restricting cloud metadata API access",
+  "source": "@site/docs/en/security/best-practices/best-practices.md",
+  "sourceDirName": "en/security/best-practices",
+  "slug": "/en/security/best-practices/",
+  "permalink": "/en/en/security/best-practices/",
+  "draft": false,
+  "editUrl": "https://github.com/kubewarden/docs/edit/main/docs/en/security/best-practices/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Security Best Practices",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/en/en/security/"
+  },
+  "next": {
+    "title": "Security Advisories and CVEs",
+    "permalink": "/en/en/security/cve/"
+  }
+}
