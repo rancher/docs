@@ -1,4 +1,0 @@
----
-title: RKE
-showBreadcrumb: false
----
