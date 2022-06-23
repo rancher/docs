@@ -481,7 +481,7 @@ openssl req -x509 -new -nodes -key request-header-ca.key -sha256 -days 3560 -out
 
 ## HashiCorp Vault
 
-This example uses an existing self-signed PKI infrastructure in [Hashicorp Vault](https://www.vaultproject.io/) to generate intermediate CAs.
+This example uses an existing self-signed PKI infrastructure in [HashiCorp Vault](https://www.vaultproject.io/) to generate intermediate CAs.
 
 ```
 export ROOT_DOMAIN="you-domain-here.com"
