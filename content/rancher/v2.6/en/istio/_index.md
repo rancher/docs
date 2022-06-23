@@ -138,6 +138,4 @@ In Rancher v2.6.x, Istio may be upgraded in an air-gapped environment.
 
 The Istio pod security policy is now enabled by default, and a new value, `installer.releaseMirror.enabled`, has been added to the rancher-istio chart to enable and disable the server that supports air-gapped upgrades. 
 
-><b>Important:</b> `installer.releaseMirror.enabled` is set to `false` by default. As such, you will need to set the value `installer.releaseMirror.enabled=true` in the values.yaml to allow for the upgrade.
-
-**_Please note that in 2.5.x, Istio cannot be upgraded in an air-gapped environment._** 
+>**Important:** `installer.releaseMirror.enabled` is set to `false` by default. As such, you will need to set the value `installer.releaseMirror.enabled=true` in the values.yaml to allow for the upgrade.
