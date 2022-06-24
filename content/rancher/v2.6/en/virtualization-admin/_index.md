@@ -8,13 +8,7 @@ Introduced in Rancher v2.6.1, [Harvester](https://docs.harvesterhci.io/) is an o
 ---
 **_New in v2.6.3_**
 
-- Support is available in an air-gapped environment for both the Harvester single cluster and the Rancher Harvester node driver.
-
-- One-click upgrade will be supported from v1.0.0 to future versions.
-
-    >**Note:** Upgrading from v1.0.0 to future versions might require shutting down the VMs during the upgrade process.
-
-- A manual upgrade process from v0.3.0 to v1.0.0 is currently being developed. The upgrade documentation will be released on the [docs website](https://docs.harvesterhci.io/) once it's ready.
+Harvester is GA. Please refer to the [Harvester release notes](https://github.com/harvester/harvester/releases) for all updates.
 
 ---
 ### Feature Flag
@@ -41,5 +35,10 @@ Click [here]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/#node-drivers)
 
 ### Limitations
 
+---
+**Applicable to Rancher v2.6.1 and v2.6.2 only:**
+
 - Harvester v0.3.0 doesn’t support air-gapped environment installation.
-- Harvester v0.3.0 doesn’t support upgrade from v0.2.0 nor upgrade to future v1.0.0.
+- Harvester v0.3.0 doesn’t support upgrade from v0.2.0 nor upgrade to v1.0.0.
+
+---
