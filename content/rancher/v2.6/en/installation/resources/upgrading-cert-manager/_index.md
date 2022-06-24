@@ -45,13 +45,13 @@ In order to upgrade cert-manager, follow these instructions:
     Delete the CustomResourceDefinition using the link to the version vX.Y.Z you installed
 
     ```plain
-    kubectl delete -f https://github.com/jetstack/cert-manager/releases/download/vX.Y.Z/cert-manager.crds.yaml
+    kubectl delete -f https://github.com/cert-manager/cert-manager/releases/download/vX.Y.Z/cert-manager.crds.yaml
     ```
 
 1. Install the CustomResourceDefinition resources separately
 
     ```plain
-    kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/vX.Y.Z/cert-manager.crds.yaml
+    kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/vX.Y.Z/cert-manager.crds.yaml
     ```
 
     > **Note:**
@@ -81,7 +81,7 @@ In order to upgrade cert-manager, follow these instructions:
     helm install \
       cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v0.12.0 
+      --version v0.12.0
     ```
 
 1. [Restore back up resources](https://cert-manager.io/docs/tutorials/backup/#restoring-resources)
@@ -109,7 +109,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     helm repo update
     ```
 
-1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
+1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://artifacthub.io/packages/helm/cert-manager/cert-manager).
 
     ```plain
     helm fetch jetstack/cert-manager --version v0.12.0
@@ -140,8 +140,8 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 1. Download the required CRD file for cert-manager (old and new)
 
     ```plain
-    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
-    curl -L -o cert-manager/cert-manager-crd-old.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-X.Y/deploy/manifests/00-crds.yaml
+    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/cert-manager/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
+    curl -L -o cert-manager/cert-manager-crd-old.yaml https://raw.githubusercontent.com/cert-manager/cert-manager/release-X.Y/deploy/manifests/00-crds.yaml
     ```
 
 ### Install cert-manager

@@ -22,16 +22,16 @@ To address these changes, this guide will do two things:
 
 > 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
 > 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
-> 3. Install the newer version of Rancher and cert-manager 
+> 3. Install the newer version of Rancher and cert-manager
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section. 
+> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section.
 
-## Upgrade Cert-Manager Only 
+## Upgrade Cert-Manager Only
 
 > **Note:**
-> These instructions are applied if you have no plan to upgrade Rancher. 
+> These instructions are applied if you have no plan to upgrade Rancher.
 
 The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
@@ -53,7 +53,7 @@ In order to upgrade cert-manager, follow these instructions:
 1. Install the CustomResourceDefinition resources separately
 
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
+    kubectl apply -f https://raw.githubusercontent.com/cert-manager/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     ```
 
 1. Add the Jetstack Helm repository
@@ -89,7 +89,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     helm repo update
     ```
 
-1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
+1. Fetch the latest cert-manager chart available from the [Helm chart repository](https://artifacthub.io/packages/helm/cert-manager/cert-manager).
 
     ```plain
     helm fetch jetstack/cert-manager --version v0.12.0
@@ -108,7 +108,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 1. Download the required CRD file for cert-manager
 
     ```plain
-    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
+    curl -L -o cert-manager/cert-manager-crd.yaml https://raw.githubusercontent.com/cert-manager/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
     ```
 
 ### Install cert-manager
