@@ -203,17 +203,24 @@ Before you can perform the upgrade, you must prepare your air gapped environment
 
 {{% accordion id="normal" label="Click to expand" %}}
 
-Previously, in order to upgrade cert-manager from a much older version, an uninstall and reinstall of Rancher was required. Using the method below, you may upgrade cert-manager without those additional steps in order to better preserve your production environment:
+Previously, in order to upgrade cert-manager from an older version, an uninstall and reinstall of Rancher was recommended. Using the method below, you may upgrade cert-manager without those additional steps in order to better preserve your production environment:
 
-1. Install the cert-manager CLI tool, `cmctl`, using [these docs](https://cert-manager.io/docs/usage/cmctl/#installation).
+1. Install `cmctl`, the cert-manager CLI tool, using [the installation guide](https://cert-manager.io/docs/usage/cmctl/#installation).
 
-2. Run `cmctl upgrade migrate-api-version` to ensure that all cert-manager CRs stored in etcd are v1. Refer to the [API version migration docs](https://cert-manager.io/docs/usage/cmctl/#migrate-api-version) for more. Please also see the [docs to upgrade from 1.5 to 1.6](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/) and the [docs to upgrade from 1.6. to 1.7](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/) if needed.
+1. Ensure that any cert-manager custom resources that may have been stored in etcd at a deprecated API version get migrated to v1:
 
-3. Upgrade cert-manager to v1.7.1 with a normal `helm upgrade`. You may go directly from version 1.5 to 1.7 if desired.
+    ```
+    cmctl upgrade migrate-api-version
+    ```
+    Refer to the [API version migration docs](https://cert-manager.io/docs/usage/cmctl/#migrate-api-version) for more information. Please also see the [docs to upgrade from 1.5 to 1.6](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/) and the [docs to upgrade from 1.6. to 1.7](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/) if needed.
 
-4. Follow the Helm tutorial to [update the API version of a release manifest](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest). You will use `release_name=rancher` and `release_namespace=cattle-system`. In the decoded file, search for `cert-manager.io/v1beta1` and **replace it** with `cert-manager.io/v1`.
+1. Upgrade cert-manager to v1.7.1 with a normal `helm upgrade`. You may go directly from version 1.5 to 1.7 if desired.
 
-5. Upgrade Rancher normally with `helm upgrade`.
+1. Follow the Helm tutorial to [update the API version of a release manifest](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest). The chart release name is `release_name=rancher` and the release namespace is `release_namespace=cattle-system`. 
+
+1. In the decoded file, search for `cert-manager.io/v1beta1` and **replace it** with `cert-manager.io/v1`.
+
+1. Upgrade Rancher normally with `helm upgrade`.
 
 {{% /accordion %}}
 
