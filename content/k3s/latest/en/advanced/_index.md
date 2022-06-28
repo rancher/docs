@@ -484,7 +484,7 @@ openssl req -x509 -new -nodes -key request-header-ca.key -sha256 -days 3560 -out
 This example uses an existing self-signed PKI infrastructure in [HashiCorp Vault](https://www.vaultproject.io/) to generate intermediate CAs.
 
 ```
-export ROOT_DOMAIN="you-domain-here.com"
+export ROOT_DOMAIN="example.com"
 for target in request-header-ca client-ca server-ca; do
      vault secrets enable -path=k3s-"${target}" pki
      vault secrets tune -max-lease-ttl=43800h k3s-"${target}"
