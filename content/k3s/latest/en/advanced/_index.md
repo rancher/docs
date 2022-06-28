@@ -462,7 +462,10 @@ If no K3S_TOKEN is defined, the first K3s server will generate a random one. The
 
 # Bring Your Own Intermediate CAs
 
-If you want to handle your own TLS chains, you can provide your own root or intermediate CA certificates to replace the default CAs which K3s generates on installation. You can find more discussions and references in [k3s#1868](https://github.com/k3s-io/k3s/issues/1868). It is important to be aware that you must perform these steps before installing K3s or it will not work.
+
+> It is important to perform these steps on the first server in the cluster before starting K3s for the first time. Making changes to cluster Root Certificate Authority certificates after the cluster has been brought up may render it unusable.
+
+If you want to use custom Certificate Authority data, you can provide your own root or intermediate CA certificates in place of the default CAs which K3s generates on installation. You can find more discussions and references in [k3s#1868](https://github.com/k3s-io/k3s/issues/1868). 
 
 ## OpenSSL
 
