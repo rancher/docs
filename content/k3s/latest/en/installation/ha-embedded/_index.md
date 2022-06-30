@@ -14,15 +14,25 @@ To run K3s in this mode, you must have an odd number of server nodes. We recomme
 
 To get started, first launch a server node with the `cluster-init` flag to enable clustering and a token that will be used as a shared secret to join additional servers to the cluster.
 ```
-curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init
+$ curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init
 ```
 
 After launching the first server, join the second and third servers to the cluster using the shared secret:
 ```
-K3S_TOKEN=SECRET k3s server --server https://<ip or hostname of server1>:6443
+$ curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --server https://<ip or hostname of server1>:6443
 ```
 
 Now you have a highly available control plane. Joining additional worker nodes to the cluster follows the same procedure as a single server cluster.
+
+Double check with: 
+```
+$ kubectl get nodes
+---
+NAME        STATUS   ROLES                       AGE   VERSION
+server1     Ready    control-plane,etcd,master   28m   vX.Y.Z
+server2     Ready    control-plane,etcd,master   13m   vX.Y.Z
+...
+```
 
 There are a few config flags that must be the same in all server nodes:         
 
