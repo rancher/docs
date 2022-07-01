@@ -36,7 +36,7 @@ The following steps will quickly deploy a Rancher server on Azure in a single-no
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
-See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Azure Quickstart Readme](https://github.com/rancher/quickstart/tree/master/azure) for more information.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Azure Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/azure) for more information.
 Suggestions include:
     - `azure_location` - Microsoft Azure region, choose the closest instead of the default (`East US`)
     - `prefix` - Prefix for all created resources
