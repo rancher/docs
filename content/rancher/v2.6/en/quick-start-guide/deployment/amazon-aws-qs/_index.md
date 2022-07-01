@@ -48,7 +48,7 @@ The AWS module just creates an EC2 KeyPair, an EC2 SecurityGroup and an EC2 inst
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
-See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [AWS Quickstart Readme](https://github.com/rancher/quickstart/tree/master/aws) for more information.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [AWS Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/aws) for more information.
 Suggestions include:
     - `aws_region` - Amazon AWS region, choose the closest instead of the default (`us-east-1`)
     - `prefix` - Prefix for all created resources
