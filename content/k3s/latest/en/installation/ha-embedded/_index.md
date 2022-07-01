@@ -22,7 +22,7 @@ After launching the first server, join the second and third servers to the clust
 K3S_TOKEN=SECRET k3s server --server https://<ip or hostname of server1>:6443
 ```
 
-Now you have a highly available control plane. Joining additional worker nodes to the cluster follows the same procedure as a single server cluster.
+Now you have a highly available control plane. Any successfully clustered servers can be used in the `--server` argument to join additional server and worker nodes. Joining additional worker nodes to the cluster follows the same procedure as a single server cluster.
 
 There are a few config flags that must be the same in all server nodes:         
 
@@ -34,3 +34,5 @@ There are a few config flags that must be the same in all server nodes:
 If you have an existing cluster using the default embedded SQLite database, you can convert it to etcd by simply restarting your K3s server with the `--cluster-init` flag. Once you've done that, you'll be able to add additional instances as described above.
 
 >**Important:** K3s v1.22.2 and newer support migration from SQLite to etcd. Older versions will create a new empty datastore if you add `--cluster-init` to an existing server.
+
+If an etcd datastore is found on disk either because that node has either initialized or joined a cluster already, the datastore arguments (`--cluster-init`, `--server`, `--datastore-endpoint`, etc) are ignored.
