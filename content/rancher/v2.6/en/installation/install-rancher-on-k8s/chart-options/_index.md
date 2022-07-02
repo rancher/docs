@@ -187,7 +187,7 @@ Your load balancer must support long lived websocket connections and will need t
 
 ### Configuring Ingress for External TLS when Using NGINX
 
-In the scenario that you are using external TLS termination configuration with NGINX, you must enable the `use-forwarded-headers` option for ingress:
+In a scenario in which you are using external TLS termination configuration with NGINX, you must enable the `use-forwarded-headers` option for ingress:
 
 Create a `/var/lib/rancher/rke2/server/manifests/rke2-ingress-nginx-config.yaml` file with the following contents on one of your RKE2 nodes:
 ```yaml
