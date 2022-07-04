@@ -16,6 +16,8 @@ K3s provides an installation script that is a convenient way to install it as a 
 curl -sfL https://get.k3s.io | sh -
 ```
 
+If the preceding command fails to install K3s, change `sh` to `bash`, and rerun it.
+
 After running this installation:
 
 * The K3s service will be configured to automatically restart after node reboots or if the process crashes or is killed
