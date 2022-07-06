@@ -9,10 +9,14 @@ If there are specific cluster drivers that you do not want to show your users, y
 
 ### Managing Cluster Drivers
 
->**Prerequisites:** To create, edit, or delete cluster drivers, you need _one_ of the following permissions:
->
->- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/)
->- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Cluster Drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) role assigned.
+:::note Prerequisites:
+
+To create, edit, or delete cluster drivers, you need _one_ of the following permissions:
+
+- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/)
+- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Cluster Drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) role assigned.
+
+:::
 
 ## Activating/Deactivating Cluster Drivers
 

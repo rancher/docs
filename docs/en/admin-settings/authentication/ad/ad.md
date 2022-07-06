@@ -21,15 +21,17 @@ Usually a (non-admin) **Domain User** account should be used for this purpose, a
 
 Note however, that in some locked-down Active Directory configurations this default behaviour may not apply. In such case you will need to ensure that the service account user has at least **Read** and **List Content** permissions granted either on the Base OU (enclosing users and groups) or globally for the domain.
 
-> **Using TLS?**
->
-> - If the certificate used by the AD server is self-signed or not from a recognized certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
->
-> - Upon an upgrade to v2.6.0, authenticating via Rancher against an active directory using TLS can fail if the certificates on the AD server do not support SAN attributes. This is a check enabled by default in Go v1.15. 
->
->    - The error received is "Error creating SSL connection: LDAP Result Code 200 "Network Error": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0". 
->
->    - To resolve the error, update or replace the certificates on the AD server with new ones that support the SAN attribute. Alternatively, this error can be ignored by setting `GODEBUG=x509ignoreCN=0` as an environment variable to Rancher server container.
+:::note Using TLS?
+
+- If the certificate used by the AD server is self-signed or not from a recognized certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
+
+- Upon an upgrade to v2.6.0, authenticating via Rancher against an active directory using TLS can fail if the certificates on the AD server do not support SAN attributes. This is a check enabled by default in Go v1.15. 
+
+   - The error received is "Error creating SSL connection: LDAP Result Code 200 "Network Error": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0". 
+
+   - To resolve the error, update or replace the certificates on the AD server with new ones that support the SAN attribute. Alternatively, this error can be ignored by setting `GODEBUG=x509ignoreCN=0` as an environment variable to Rancher server container.
+
+:::
 
 ## Configuration Steps
 ### Open Active Directory Configuration

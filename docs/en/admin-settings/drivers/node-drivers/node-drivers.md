@@ -9,10 +9,14 @@ If there are specific node drivers that you don't want to show to your users, yo
 
 #### Managing Node Drivers
 
->**Prerequisites:** To create, edit, or delete drivers, you need _one_ of the following permissions:
->
->- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/)
->- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Node Drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) role assigned.
+:::note Prerequisites:
+
+To create, edit, or delete drivers, you need _one_ of the following permissions:
+
+- [Administrator Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/)
+- [Custom Global Permissions]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/#custom-global-permissions) with the [Manage Node Drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/global-permissions/) role assigned.
+
+:::
 
 ## Activating/Deactivating Node Drivers
 
