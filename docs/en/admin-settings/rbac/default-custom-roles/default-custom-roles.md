@@ -7,7 +7,11 @@ Within Rancher, _roles_ determine what actions a user can make within a cluster 
 
 Note that _roles_ are different from _permissions_, which determine what clusters and projects you can access.
 
-> It is possible for a custom role to enable privilege escalation. For details, see [this section.](#privilege-escalation)
+:::tip
+
+It is possible for a custom role to enable privilege escalation. For details, see [this section.](#privilege-escalation)
+
+:::
 
 This section covers the following topics:
 
@@ -99,11 +103,15 @@ When a user in the group logs in, they get the built-in Standard User global rol
 
 If a user is removed from the external authentication provider group, they would lose their permissions from the custom role that was assigned to the group. They would continue to have their individual Standard User role.
 
-> **Prerequisites:** You can only assign a global role to a group if:
->
-> * You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-vs-local-authentication)
-> * The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/user-groups/)
-> * You have already set up at least one user group with the authentication provider
+:::note Prerequisites:
+
+You can only assign a global role to a group if:
+
+* You have set up an [external authentication provider]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-vs-local-authentication)
+* The external authentication provider supports [user groups]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/user-groups/)
+* You have already set up at least one user group with the authentication provider
+
+:::
 
 To assign a custom role to a group, follow these steps:
 

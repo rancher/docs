@@ -40,7 +40,11 @@ If a cluster was created from an RKE template, you can edit the cluster to updat
 
 An existing cluster's settings can be [saved as an RKE template.](#converting-an-existing-cluster-to-use-an-rke-template) In that situation, you can also edit the cluster to update the cluster to a new revision of the template.
 
-> **Note:** You can't change the cluster to use a different RKE template. You can only update the cluster to a new revision of the same template.
+:::note
+
+You can't change the cluster to use a different RKE template. You can only update the cluster to a new revision of the same template.
+
+:::
 
 ### Converting an Existing Cluster to Use an RKE Template
 
