@@ -10,19 +10,38 @@ Embedded etcd replaced experimental Dqlite in the K3s v1.19.1 release. This is a
 >**Warning:**
 Embedded etcd (HA) may have performance issues on slower disks such as Raspberry Pis running with SD cards.
 
+
+## New cluster
 To run K3s in this mode, you must have an odd number of server nodes. We recommend starting with three nodes.
 
 To get started, first launch a server node with the `cluster-init` flag to enable clustering and a token that will be used as a shared secret to join additional servers to the cluster.
-```
+```bash
 curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --cluster-init
 ```
 
 After launching the first server, join the second and third servers to the cluster using the shared secret:
-```
-K3S_TOKEN=SECRET k3s server --server https://<ip or hostname of server1>:6443
+```bash
+curl -sfL https://get.k3s.io | K3S_TOKEN=SECRET sh -s - server --server https://<ip or hostname of server1>:6443
 ```
 
 Now you have a highly available control plane. Any successfully clustered servers can be used in the `--server` argument to join additional server and worker nodes. Joining additional worker nodes to the cluster follows the same procedure as a single server cluster.
+
+### Validate:
+```bash
+kubectl get nodes
+```
+
+<details>
+    <summary>
+        <b>Output</b>
+    </summary>
+```bash
+NAME        STATUS   ROLES                       AGE   VERSION
+server1     Ready    control-plane,etcd,master   28m   vX.Y.Z
+server2     Ready    control-plane,etcd,master   13m   vX.Y.Z
+```
+</details>
+
 
 There are a few config flags that must be the same in all server nodes:         
 
