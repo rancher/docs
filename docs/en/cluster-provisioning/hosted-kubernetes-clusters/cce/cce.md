@@ -8,8 +8,11 @@ You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine 
 
 # Prerequisites in Huawei
 
->**Note**
->Deploying to CCE will incur charges.
+:::caution
+
+Deploying to CCE will incur charges.
+
+:::
 
 1. Find your project ID in Huawei CCE portal. See the CCE documentation on how to [manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
 
