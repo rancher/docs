@@ -43,7 +43,11 @@ The RKE2 provisioning feature also includes installing RKE2 on Windows clusters.
 
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
->**Important:** Rancher will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the `nodeSelector` in the chart to direct the pods to be placed onto a compatible Windows node. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for more information on how to use `nodeSelector` to assign pods to nodes.
+:::note
+
+Rancher will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the `nodeSelector` in the chart to direct the pods to be placed onto a compatible Windows node. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for more information on how to use `nodeSelector` to assign pods to nodes.
+
+:::
 
 # Requirements for Windows Clusters
 
@@ -85,7 +89,11 @@ For **VXLAN (Overlay)** networking, the [KB4489899](https://support.microsoft.co
 
 If you are configuring DHCP options sets for an AWS virtual private cloud, note that in the `domain-name` option field, only one domain name can be specified. According to the DHCP options [documentation:](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
 
-> Some Linux operating systems accept multiple domain names separated by spaces. However, other Linux operating systems and Windows treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name.
+:::note
+
+Some Linux operating systems accept multiple domain names separated by spaces. However, other Linux operating systems and Windows treat the value as a single domain, which results in unexpected behavior. If your DHCP options set is associated with a VPC that has instances with multiple operating systems, specify only one domain name.
+
+:::
 
 ### Rancher on vSphere with ESXi 6.7u2 and above
 
@@ -196,7 +204,11 @@ The instructions for creating a Windows cluster on existing nodes are very simil
 1. Optional: After you enable Windows support, you will be able to choose the Flannel backend. There are two network options: [**Host Gateway (L2bridge)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#host-gw) and [**VXLAN (Overlay)**](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan). The default option is **VXLAN (Overlay)** mode.
 1. Click **Next**.
 
-> **Important:** For <b>Host Gateway (L2bridge)</b> networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the [documentation on configuring cloud-hosted VM routes.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#cloud-hosted-vm-routes-configuration) You will also need to [disable private IP address checks]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#disabling-private-ip-address-checks) if you are using Amazon EC2, Google GCE, or Azure VM.
+:::note Important: 
+
+For <b>Host Gateway (L2bridge)</b> networking, it's best to use the same Layer 2 network for all nodes. Otherwise, you need to configure the route rules for them. For details, refer to the [documentation on configuring cloud-hosted VM routes.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#cloud-hosted-vm-routes-configuration) You will also need to [disable private IP address checks]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/host-gateway-requirements/#disabling-private-ip-address-checks) if you are using Amazon EC2, Google GCE, or Azure VM.
+
+:::
 
 # 3. Add Nodes to the Cluster
 
@@ -245,13 +257,17 @@ After the initial provisioning of your cluster, your cluster only has a single L
 
 **Result:** The **Worker** role is installed on your Linux host, and the node registers with Rancher. It may take a few minutes for the node to be registered in your cluster.
 
-> **Note:** Taints on Linux Worker Nodes
->
-> For each Linux worker node added into the cluster, the following taints will be added to Linux worker node. By adding this taint to the Linux worker node, any workloads added to the Windows cluster will be automatically scheduled to the Windows worker node. If you want to schedule workloads specifically onto the Linux worker node, you will need to add tolerations to those workloads.
+:::note 
 
-> | Taint Key      | Taint Value | Taint Effect |
-> | -------------- | ----------- | ------------ |
-> | `cattle.io/os` | `linux`     | `NoSchedule` |
+Taints on Linux Worker Nodes
+
+For each Linux worker node added into the cluster, the following taints will be added to Linux worker node. By adding this taint to the Linux worker node, any workloads added to the Windows cluster will be automatically scheduled to the Windows worker node. If you want to schedule workloads specifically onto the Linux worker node, you will need to add tolerations to those workloads.
+
+| Taint Key      | Taint Value | Taint Effect |
+| -------------- | ----------- | ------------ |
+| `cattle.io/os` | `linux`     | `NoSchedule` |
+
+:::
 
 ### Add a Windows Worker Node
 

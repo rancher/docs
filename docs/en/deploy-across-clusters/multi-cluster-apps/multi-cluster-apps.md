@@ -88,13 +88,21 @@ Rancher will let you select from two options for Roles, **Project** and **Cluste
 
 When launching the application, Rancher will confirm if you have these permissions in the target projects before launching the application.
 
-> **Note:** There are some applications like _Grafana_ or _Datadog_ that require access to specific cluster-scoped resources. These applications will require the _Cluster_ role. If you find out later that the application requires cluster roles, the multi-cluster application can be upgraded to update the roles.
+:::note
+
+There are some applications like _Grafana_ or _Datadog_ that require access to specific cluster-scoped resources. These applications will require the _Cluster_ role. If you find out later that the application requires cluster roles, the multi-cluster application can be upgraded to update the roles.
+
+:::
 
 # Application Configuration Options
 
 For each Helm chart, there are a list of desired answers that must be entered in order to successfully deploy the chart. When entering answers, you must format them using the syntax rules found in [Using Helm: The format and limitations of –set](https://helm.sh/docs/intro/using_helm/#the-format-and-limitations-of---set), as Rancher passes them as `--set` flags to Helm.
 
-> For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is required to wrap the values with double quotes (i.e., ``"abc, bcd"``).
+:::note Example
+
+When entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is required to wrap the values with double quotes (i.e., ``"abc, bcd"``).
+
+:::
 
 ### Using a questions.yml file
 
@@ -118,7 +126,11 @@ By default, multi-cluster applications can only be managed by the user who creat
 
     - **Read-only**: This access type cannot modify any configuration option for the multi-cluster application. Users can only view these applications.
 
-    > **Note:**  Please ensure only trusted users are given _Owner_ or _Member_ access as they will automatically be able to manage applications created for this multi-cluster application in target projects they might not have direct access to.
+    :::caution
+    
+    Please ensure only trusted users are given _Owner_ or _Member_ access as they will automatically be able to manage applications created for this multi-cluster application in target projects they might not have direct access to.
+
+    :::
 
 ### Overriding Application Configuration Options for Specific Projects
 
@@ -148,7 +160,11 @@ The creator and any users added with the access-type "owner" to a multi-cluster 
 
 One of the benefits of using a multi-cluster application as opposed to multiple individual applications of the same type, is the ease of management. Multi-cluster applications can be cloned, upgraded or rolled back.
 
-> **Prerequisite:** The `legacy` feature flag needs to be enabled.
+:::note Prerequisite:
+
+The `legacy` feature flag needs to be enabled.
+
+:::
 
 1. In the upper left corner, click **☰ > Multi-cluster Apps**.
 
@@ -160,10 +176,18 @@ One of the benefits of using a multi-cluster application as opposed to multiple 
 
 # Deleting a Multi-Cluster Application
 
-> **Prerequisite:** The `legacy` feature flag needs to be enabled.
+:::note Prerequisite:
+
+The `legacy` feature flag needs to be enabled.
+
+:::
 
 1. In the upper left corner, click **☰ > Multi-cluster Apps**.
 
 2. Choose the multi-cluster application you want to delete and click the **⋮ > Delete**. When deleting the multi-cluster application, all applications and namespaces are deleted in all of the target projects.
 
-   > **Note:** The applications in the target projects, that are created for a multi-cluster application, cannot be deleted individually. The applications can only be deleted when the multi-cluster application is deleted.
+   :::note
+   
+   The applications in the target projects, that are created for a multi-cluster application, cannot be deleted individually. The applications can only be deleted when the multi-cluster application is deleted.
+
+   ::: 

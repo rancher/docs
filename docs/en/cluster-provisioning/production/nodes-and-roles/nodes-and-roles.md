@@ -14,13 +14,21 @@ This diagram is applicable to Kubernetes clusters [launched with Rancher using R
 
 Nodes with the `etcd` role run etcd, which is a consistent and highly available key value store used as Kubernetes’ backing store for all cluster data. etcd replicates the data to each node.
 
->**Note:** Nodes with the `etcd` role are shown as `Unschedulable` in the UI, meaning no pods will be scheduled to these nodes by default.
+:::note
+
+Nodes with the `etcd` role are shown as `Unschedulable` in the UI, meaning no pods will be scheduled to these nodes by default.
+
+:::
 
 # controlplane
 
 Nodes with the `controlplane` role run the Kubernetes master components (excluding `etcd`, as it's a separate role). See [Kubernetes: Master Components](https://kubernetes.io/docs/concepts/overview/components/#master-components) for a detailed list of components.
 
->**Note:** Nodes with the `controlplane` role are shown as `Unschedulable` in the UI, meaning no pods will be scheduled to these nodes by default.
+:::note
+
+Nodes with the `controlplane` role are shown as `Unschedulable` in the UI, meaning no pods will be scheduled to these nodes by default.
+
+:::
 
 ### kube-apiserver
 
