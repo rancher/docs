@@ -50,7 +50,11 @@ Using a [backup]({{<baseurl>}}/rancher/v2.6/en/backups/docker-installs/docker-ba
 
 1. Enter the following command to delete your current state data and replace it with your backup data, replacing the placeholders. Don't forget to close the quotes.
 
-    >**Warning!** This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
+    :::danger
+    
+    This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
+
+    :::
 
     ```
     docker run  --volumes-from <RANCHER_CONTAINER_NAME> -v $PWD:/backup \

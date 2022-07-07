@@ -11,15 +11,21 @@ Because the nodes in a private cluster only have internal IP addresses, they wil
 
 #### Cloud NAT
 
->**Note**
->Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
+:::note
+
+Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
+
+:::
 
 If restricting outgoing internet access is not a concern for your organization, use Google's [Cloud NAT](https://cloud.google.com/nat/docs/using-nat) service to allow nodes in the private network to access the internet, enabling them to download the required images from Dockerhub and contact the Rancher management server. This is the simplest solution.
 
 #### Private registry
 
->**Note**
->This scenario is not officially supported, but is described for cases in which using the Cloud NAT service is not sufficient.
+:::note
+
+This scenario is not officially supported, but is described for cases in which using the Cloud NAT service is not sufficient.
+
+:::
 
 If restricting both incoming and outgoing traffic to nodes is a requirement, follow the air-gapped installation instructions to set up a private container image [registry](https://rancher.com/docs/rancher/v2.6/en/installation/other-installation-methods/air-gap/) on the VPC where the cluster is going to be, allowing the cluster nodes to access and download the images they need to run the cluster agent. If the control plane endpoint is also private, Rancher will need [direct access](#direct-access) to it.
 
@@ -29,8 +35,11 @@ If the cluster has a public endpoint exposed, Rancher will be able to reach the 
 
 #### Cloud NAT
 
->**Note**
->Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
+:::note
+
+Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
+
+:::
 
 As above, if restricting outgoing internet access to the nodes is not a concern, then Google's [Cloud NAT](https://cloud.google.com/nat/docs/using-nat) service can be used to allow the nodes to access the internet. While the cluster is provisioning, Rancher will provide a registration command to run on the cluster. Download the [kubeconfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl) for the new cluster and run the provided kubectl command on the cluster. Gaining access
 to the cluster in order to run this command can be done by creating a temporary node or using an existing node in the VPC, or by logging on to or creating an SSH tunnel through one of the cluster nodes.

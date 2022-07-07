@@ -15,7 +15,11 @@ You can configure the Kubernetes options one of two ways:
 
 # Configuration Options in the Rancher UI
 
-> Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the K3s cluster configuration file in YAML. For the complete reference of configurable options for K3s clusters in YAML, see the [K3s documentation.](https://rancher.com/docs/k3s/latest/en/installation/install-options/)
+:::tip
+
+Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the K3s cluster configuration file in YAML. For the complete reference of configurable options for K3s clusters in YAML, see the [K3s documentation.](https://rancher.com/docs/k3s/latest/en/installation/install-options/)
+
+:::
 
 ### Basics
 #### Kubernetes Version

@@ -47,7 +47,11 @@ $ sudo shutdown -r now
 
 When a node is unreachable and removed from the cluster, the automatic cleaning process can't be triggered because the node is unreachable. Please follow the steps below to manually remove the Rancher components.
 
->**Warning:** The commands listed below will remove data from the node. Make sure you have created a backup of files you want to keep before executing any of the commands as data will be lost.
+:::danger
+
+The commands listed below will remove data from the node. Make sure you have created a backup of files you want to keep before executing any of the commands as data will be lost.
+
+:::
 
 ### Removing Rancher Components from Registered Clusters
 
@@ -57,7 +61,11 @@ After the registered cluster is detached from Rancher, the cluster's workloads w
 
 {{% tabs %}}
 {{% tab "By UI / API" %}}
->**Warning:** This process will remove data from your cluster. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
+:::danger
+
+This process will remove data from your cluster. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
+
+:::
 
 After you initiate the removal of a registered cluster using the Rancher UI (or API), the following events occur.
 
@@ -73,9 +81,11 @@ After you initiate the removal of a registered cluster using the Rancher UI (or 
 {{% tab "By Script" %}}
 Rather than cleaning registered cluster nodes using the Rancher UI, you can run a script instead.
 
->**Prerequisite:**
->
->Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+:::note Prerequisite:
+
+Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+
+:::
 
 1. Open a web browser, navigate to [GitHub](https://github.com/rancher/rancher/blob/master/cleanup/user-cluster.sh), and download `user-cluster.sh`.
 
@@ -91,12 +101,14 @@ Rather than cleaning registered cluster nodes using the Rancher UI, you can run 
 
 1. From the same directory, run the script and provide the `rancher/rancher-agent` image version which should be equal to the version of Rancher used to manage the cluster. (`<RANCHER_VERSION>`):
 
-    >**Tip:**
-    >
-    >Add the `-dry-run` flag to preview the script's outcome without making changes.
+    :::tip
+    
+    Add the `-dry-run` flag to preview the script's outcome without making changes.
     ```
     ./user-cluster.sh rancher/rancher-agent:<RANCHER_VERSION>
     ```
+
+    :::
 
 **Result:** The script runs. All components listed for registered clusters in [What Gets Removed?](#what-gets-removed) are deleted.
 
@@ -149,7 +161,11 @@ for mount in $(mount | grep tmpfs | grep '/var/lib/kubelet' | awk '{ print $3 }'
 
 The following directories are used when adding a node to a cluster, and should be removed. You can remove a directory using `rm -rf /directory_name`.
 
->**Note:** Depending on the role you assigned to the node, some of the directories will or won't be present on the node.
+:::note
+
+Depending on the role you assigned to the node, some of the directories will or won't be present on the node.
+
+:::
 
 Directories |
 --------|
@@ -211,7 +227,11 @@ If you want to know more on (virtual) network interfaces or iptables rules, plea
 
 ### Network Interfaces
 
->**Note:** Depending on the network provider configured for the cluster the node was part of, some of the interfaces will or won't be present on the node.
+:::note
+
+Depending on the network provider configured for the cluster the node was part of, some of the interfaces will or won't be present on the node.
+
+:::
 
 Interfaces |
 --------|
@@ -239,7 +259,11 @@ ip link delete interface_name
 
 ### Iptables
 
->**Note:** Depending on the network provider configured for the cluster the node was part of, some of the chains will or won't be present on the node.
+:::note
+
+Depending on the network provider configured for the cluster the node was part of, some of the chains will or won't be present on the node.
+
+:::
 
 Iptables rules are used to route traffic from and to containers. The created rules are not persistent, so restarting the node will restore iptables to its original state.
 

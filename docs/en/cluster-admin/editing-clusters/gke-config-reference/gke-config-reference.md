@@ -103,13 +103,21 @@ The address range assigned to the services in the cluster. Must be a valid CIDR 
 
 _Mutable: no_
 
-> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/).
+:::caution
+
+Private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/).
+
+:::
 
 Assign nodes only internal IP addresses. Private cluster nodes cannot access the public internet unless additional networking steps are taken in GCP.
 
 ### Enable Private Endpoint
 
-> Warning: private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/).
+:::caution
+
+Private clusters require additional planning and configuration outside of Rancher. Refer to the [private cluster guide]({{< baseurl >}}/rancher/v2.6/en/cluster-admin/editing-clusters/gke-config-reference/private-clusters/).
+
+:::
 
 _Mutable: no_
 
@@ -192,9 +200,17 @@ _Mutable: yes_
 
 The node operating system image. For more information for the node image options that GKE offers for each OS, refer to [this page.](https://cloud.google.com/kubernetes-engine/docs/concepts/node-images#available_node_images)
 
-> Note: the default option is "Container-Optimized OS with Docker". The read-only filesystem on GCP's Container-Optimized OS is not compatible with the [legacy logging]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/logging) implementation in Rancher. If you need to use the legacy logging feature, select "Ubuntu with Docker" or "Ubuntu with Containerd". The [current logging feature]({{<baseurl>}}/rancher/v2.6/en/logging) is compatible with the Container-Optimized OS image.
+:::note
 
-> Note: if selecting "Windows Long Term Service Channel" or "Windows Semi-Annual Channel" for the node pool image type, you must also add at least one Container-Optimized OS or Ubuntu node pool.
+The default option is "Container-Optimized OS with Docker". The read-only filesystem on GCP's Container-Optimized OS is not compatible with the [legacy logging]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/logging) implementation in Rancher. If you need to use the legacy logging feature, select "Ubuntu with Docker" or "Ubuntu with Containerd". The [current logging feature]({{<baseurl>}}/rancher/v2.6/en/logging) is compatible with the Container-Optimized OS image.
+
+:::
+
+:::note
+
+If selecting "Windows Long Term Service Channel" or "Windows Semi-Annual Channel" for the node pool image type, you must also add at least one Container-Optimized OS or Ubuntu node pool.
+
+:::
 
 ### Machine Type
 

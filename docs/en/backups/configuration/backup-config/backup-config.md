@@ -36,8 +36,12 @@ The rancher-backup gathers resources by making calls to the kube-apiserver. Obje
 
 To avoid storing them in plaintext, you can use the same encryptionConfig file that was used for at-rest encryption, to encrypt certain resources in your backup.
 
-> **Important:** You must save the encryptionConfig file, because it won’t be saved by the rancher-backup operator.
+:::note Important:
+
+You must save the encryptionConfig file, because it won’t be saved by the rancher-backup operator.
 The same encryptionFile needs to be used when performing a restore.
+
+:::
 
 The operator consumes this encryptionConfig as a Kubernetes Secret, and the Secret must be in the operator’s namespace. Rancher installs the `rancher-backup` operator in the `cattle-resources-system` namespace, so create this encryptionConfig secret in that namespace.
 
