@@ -19,9 +19,11 @@ In order to provision vSphere volumes in a cluster created with the [Rancher Kub
 
 ### Creating a StorageClass
 
-> **Note:**
->
-> The following steps can also be performed using the `kubectl` command line tool. See [Kubernetes documentation on persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for details.
+:::tip
+
+The following steps can also be performed using the `kubectl` command line tool. See [Kubernetes documentation on persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) for details.
+
+:::
 
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster where you want to provide vSphere storage.

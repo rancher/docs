@@ -5,7 +5,11 @@ weight: 1
 
 This section describes how to set up existing persistent storage for workloads in Rancher.
 
-> This section assumes that you understand the Kubernetes concepts of persistent volumes and persistent volume claims. For more information, refer to the section on [how storage works.](../how-storage-works)
+:::note
+
+This section assumes that you understand the Kubernetes concepts of persistent volumes and persistent volume claims. For more information, refer to the section on [how storage works.](../how-storage-works)
+
+:::
 
 To set up storage, follow these steps:
 

@@ -47,7 +47,11 @@ For more information about the `extra_binds` directive, refer to [this section.]
 
 # Installing the ceph-csi driver on an RKE2 cluster
 
-> **Note:** These steps are needed for dynamic RBD provisioning only.
+:::note
+
+These steps are needed for dynamic RBD provisioning only.
+
+:::
 
 For more information about the `ceph-csi-rbd` chart, refer to [this page.](https://github.com/ceph/ceph-csi/blob/devel/charts/ceph-csi-rbd/README.md)
 

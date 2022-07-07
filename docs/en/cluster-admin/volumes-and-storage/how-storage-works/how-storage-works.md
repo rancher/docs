@@ -54,7 +54,11 @@ PVs can represent a physical disk or file system that you host on premise, or a 
 
 Creating a persistent volume in Rancher will not create a storage volume. It only creates a Kubernetes resource that maps to an existing volume. Therefore, before you can create a persistent volume as a Kubernetes resource, you must have storage provisioned.
 
-> **Important:** PVs are created at the cluster level, which means that in a multi-tenant cluster, teams with access to separate namespaces could have access to the same PV.
+:::note Important:
+
+PVs are created at the cluster level, which means that in a multi-tenant cluster, teams with access to separate namespaces could have access to the same PV.
+
+:::
 
 ### Binding PVs to PVCs
 
@@ -62,7 +66,7 @@ When pods are set up to use persistent storage, they mount a persistent volume c
 
 > Claims will remain unbound indefinitely if a matching volume does not exist. Claims will be bound as matching volumes become available. For example, a cluster provisioned with many 50Gi PVs would not match a PVC requesting 100Gi. The PVC can be bound when a 100Gi PV is added to the cluster.
 
-In other words, you can create unlimited PVCs, but they will only be bound to PVs if the Kubernetes master can find a sufficient PVs that has at least the amount of disk space required by the PVC.
+In other words, you can create unlimited PVCs, but they will only be bound to PVs if the Kubernetes master can find a sufficient PV that has at least the amount of disk space required by the PVC.
 
 To dynamically provision new storage, the PVC mounted in the pod would have to correspond to a storage class instead of a persistent volume.
 

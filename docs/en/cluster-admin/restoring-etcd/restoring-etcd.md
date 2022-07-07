@@ -36,7 +36,11 @@ Snapshots are composed of the cluster data in etcd, the Kubernetes version, and 
 
 When rolling back to a prior Kubernetes version, the [upgrade strategy options]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/upgrading-kubernetes/#configuring-the-upgrade-strategy) are ignored. Worker nodes are not cordoned or drained before being reverted to the older Kubernetes version, so that an unhealthy cluster can be more quickly restored to a healthy state.
 
-> **Prerequisite:** To restore snapshots from S3, the cluster needs to be configured to [take recurring snapshots on S3.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots)
+:::note Prerequisite:
+
+To restore snapshots from S3, the cluster needs to be configured to [take recurring snapshots on S3.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/backing-up-etcd/#configuring-recurring-snapshots)
+
+:::
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. In the **Clusters** page, go to the cluster where you want to view the snapshots and click the name of the cluster.
