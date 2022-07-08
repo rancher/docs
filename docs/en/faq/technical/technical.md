@@ -98,7 +98,11 @@ You can add additional arguments/binds/environment variables via the [Config Fil
 
 Use the `openssl verify` command to validate your certificate chain:
 
->**Note:** Configure `SSL_CERT_DIR` and `SSL_CERT_FILE` to a dummy location to make sure the OS installed certificates are not used when verifying manually.
+:::tip
+
+Configure `SSL_CERT_DIR` and `SSL_CERT_FILE` to a dummy location to make sure the OS-installed certificates are not used when verifying manually.
+
+:::
 
 ```
 SSL_CERT_DIR=/dummy SSL_CERT_FILE=/dummy openssl verify -CAfile ca.pem rancher.yourdomain.com.pem

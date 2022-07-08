@@ -11,7 +11,11 @@ Starting in Rancher v2.6.0, a new versioning scheme for Rancher feature charts w
 
 **Major Version:** The major version of the charts is tied to Rancher minor versions. When you upgrade to a new Rancher minor version, you should ensure that all of your **Apps & Marketplace** charts are also upgraded to the correct release line for the chart.
 
->**Note:** Any major versions that are less than the ones mentioned in the table below are meant for 2.5 and below only. For example, you are advised to not use <100.x.x versions of Monitoring in 2.6.x+.
+:::note
+
+Any major versions that are less than the ones mentioned in the table below are meant for 2.5 and below only. For example, you are advised to not use <100.x.x versions of Monitoring in 2.6.x+.
+
+:::
 
 **Feature Charts:**
 
@@ -54,7 +58,11 @@ The charts page contains all Rancher, Partner, and Custom Charts.
 
 All three types are deployed and managed in the same way.
 
-> Apps managed by the Cluster Manager (the global view in the legacy Rancher UI) should continue to be managed only by the Cluster Manager, and apps managed with <b>Apps & Marketplace</b> in the new UI must be managed only by <b>Apps & Marketplace</b>.
+:::note
+
+Apps managed by the Cluster Manager (the global view in the legacy Rancher UI) should continue to be managed only by the Cluster Manager, and apps managed with <b>Apps & Marketplace</b> in the new UI must be managed only by <b>Apps & Marketplace</b>.
+
+:::
 
 ### Repositories
 
@@ -88,18 +96,20 @@ To add a private CA for Helm Chart repositories:
     ```
 
 
-> **Note:** Helm chart repositories with authentication
->
-> As of Rancher v2.6.3, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL.
->
-> To use this feature for an existing Helm chart repository, click <b>⋮ > Edit YAML</b>. On the `spec` portion of the YAML file, add `disableSameOriginCheck` and set it to `true`.
->
-> ```yaml
+:::note Helm chart repositories with authentication
+
+As of Rancher v2.6.3, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL.
+
+To use this feature for an existing Helm chart repository, click <b>⋮ > Edit YAML</b>. On the `spec` portion of the YAML file, add `disableSameOriginCheck` and set it to `true`.
+
+```yaml
 [...]
 spec:
   disableSameOriginCheck: true
 [...]
 ```
+
+:::
 
 ### Helm Compatibility
 
@@ -116,11 +126,15 @@ After installing a chart, you can find it in the _"Installed Apps"_ tab. In this
 
 Most Rancher tools have additional pages located in the toolbar below the _"Apps & Marketplace"_ section to help manage and use the features. These pages include links to dashboards, forms to easily add Custom Resources, and additional information.
 
-> If you are upgrading your chart using _"Customize Helm options before upgrade"_ , please be aware that using the _"--force"_ option may result in errors if your chart has immutable fields. This is because some objects in Kubernetes cannot be changed once they are created. To ensure you do not get this error you can:
->
->  * use the default upgrade option ( i.e do not use _"--force"_ option )
->  * uninstall the existing chart and install the upgraded chart
->  * delete the resources with immutable fields from the cluster before performing the _"--force"_ upgrade
+:::caution
+
+If you are upgrading your chart using _"Customize Helm options before upgrade"_ , please be aware that using the _"--force"_ option may result in errors if your chart has immutable fields. This is because some objects in Kubernetes cannot be changed once they are created. To ensure you do not get this error you can:
+
+  * use the default upgrade option ( i.e do not use _"--force"_ option )
+  * uninstall the existing chart and install the upgraded chart
+  * delete the resources with immutable fields from the cluster before performing the _"--force"_ upgrade
+
+:::
 
 #### Changes in Rancher v2.6.3
 
