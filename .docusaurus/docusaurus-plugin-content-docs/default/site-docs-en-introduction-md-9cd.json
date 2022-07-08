@@ -29,11 +29,7 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Upgrading Cert-Manager",
-    "permalink": "/en/en/installation/resources/upgrading-cert-manager/"
-  },
-  "next": {
-    "title": "Istio",
-    "permalink": "/en/en/istio/"
+    "title": "Authentication, Permissions and Global Configuration",
+    "permalink": "/en/en/admin-settings/"
   }
 }

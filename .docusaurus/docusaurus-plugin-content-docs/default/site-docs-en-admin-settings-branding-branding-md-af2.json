@@ -19,8 +19,8 @@
   },
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "Users and Groups",
-    "permalink": "/en/en/admin-settings/authentication/user-groups/"
+    "title": "Authentication, Permissions and Global Configuration",
+    "permalink": "/en/en/admin-settings/"
   },
   "next": {
     "title": "Cluster Templates",
