@@ -1,10 +1,14 @@
 ---
-title: Rendering the Helm Template in an Air Gapped Environment
+title: Rendering the Helm Template in an Air-Gapped Environment
 shortTitle: Air Gap Upgrade
 weight: 1
 ---
 
-> These instructions assume you have already followed the instructions for a Kubernetes upgrade on [this page,]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades/) including the prerequisites, up until step 3. Upgrade Rancher.
+:::note
+
+These instructions assume you have already followed the instructions for a Kubernetes upgrade on [this page,]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades/) including the prerequisites, up until step 3. Upgrade Rancher.
+
+:::
 
 ### Rancher Helm Template Options
 
@@ -74,9 +78,13 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 Log into Rancher to confirm that the upgrade succeeded.
 
->**Having network issues following upgrade?**
->
-> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/namespace-migration).
+:::tip
+
+Having network issues following upgrade?
+
+See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/namespace-migration).
+
+:::
 
 # Known Upgrade Issues
 

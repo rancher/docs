@@ -1,5 +1,5 @@
 ---
-title: Air Gapped Helm CLI Install
+title: Air-Gapped Helm CLI Install
 weight: 1
 ---
 
@@ -11,7 +11,11 @@ For more information on each installation option, refer to [this page.]({{<baseu
 
 Throughout the installation instructions, there will be _tabs_ for each installation option.
 
-> **Important:** If you install Rancher following the Docker installation guide, there is no upgrade path to transition your Docker Installation to a Kubernetes Installation.
+:::note Important:
+
+If you install Rancher following the Docker installation guide, there is no upgrade path to transition your Docker Installation to a Kubernetes Installation.
+
+:::
 
 # Installation Outline
 

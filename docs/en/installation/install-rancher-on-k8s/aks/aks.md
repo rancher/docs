@@ -12,8 +12,11 @@ If you already have an AKS Kubernetes cluster, skip to the step about [installin
 
 # Prerequisites
 
->**Note**
->Deploying to Microsoft Azure will incur charges.
+:::caution
+
+Deploying to Microsoft Azure will incur charges.
+
+:::
 
 - [Microsoft Azure Account](https://azure.microsoft.com/en-us/free/): A Microsoft Azure Account is required to create resources for deploying Rancher and Kubernetes.
 - [Microsoft Azure Subscription](https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal): Use this link to follow a tutorial to create a Microsoft Azure subscription if you don't have one yet.

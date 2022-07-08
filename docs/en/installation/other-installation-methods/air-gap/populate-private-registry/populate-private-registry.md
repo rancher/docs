@@ -11,11 +11,13 @@ Populating the private registry with images is the same process for installing R
 
 The steps in this section differ depending on whether or not you are planning to use Rancher to provision a downstream cluster with Windows nodes or not. By default, we provide the steps of how to populate your private registry assuming that Rancher will provision downstream Kubernetes clusters with only Linux nodes. But if you plan on provisioning any [downstream Kubernetes clusters using Windows nodes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed.
 
-> **Prerequisites:**
->
-> You must have a [private registry](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry) available to use.
->
-> If the registry has certs, follow [this K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/) about adding a private registry. The certs and registry configuration files need to be mounted into the Rancher container.
+:::note Prerequisites:
+
+You must have a [private registry](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry) available to use.
+
+If the registry has certs, follow [this K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/) about adding a private registry. The certs and registry configuration files need to be mounted into the Rancher container.
+
+:::
 
 {{% tabs %}}
 {{% tab "Linux Only Clusters" %}}
@@ -47,7 +49,11 @@ If you will use ARM64 hosts, the registry must support manifests. As of April 20
 
 ### 2. Collect the cert-manager image
 
-> Skip this step if you are using your own certificates, or if you are terminating TLS on an external load balancer.
+:::note
+
+Skip this step if you are using your own certificates, or if you are terminating TLS on an external load balancer.
+
+:::
 
 In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. 
 
@@ -55,7 +61,11 @@ In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
-    > **Note:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
+    :::note
+    
+    Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
+
+    :::
 
     ```plain
     helm repo add jetstack https://charts.jetstack.io

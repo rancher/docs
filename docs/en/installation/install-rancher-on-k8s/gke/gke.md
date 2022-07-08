@@ -70,7 +70,7 @@ To install `gcloud` and `kubectl`, perform the following steps:
 - Using gcloud config, to individually set your project ID, zone, and region.
 
 {{% tabs %}}
-{{% tab "Using gloud init" %}}
+{{% tab "Using gcloud init" %}}
 
 1. Run gcloud init and follow the directions:
 

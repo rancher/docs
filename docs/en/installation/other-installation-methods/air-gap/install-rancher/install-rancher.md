@@ -52,7 +52,11 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 When Rancher is installed on an air gapped Kubernetes cluster, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
+:::note
+
+If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
+
+:::
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
@@ -78,8 +82,11 @@ Based on the choice your made in [2. Choose your SSL Configuration](#2-choose-yo
 
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
-> **Note:**
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
+:::note
+
+Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
+
+:::
 
 ### 1. Add the cert-manager repo
 
@@ -233,7 +240,11 @@ kubectl -n cattle-system apply -R -f ./rancher
 ```
 The installation is complete.
 
-> **Note:** If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.6/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
+:::caution
+
+If you don't intend to send telemetry data, opt out [telemetry]({{<baseurl>}}/rancher/v2.6/en/faq/telemetry/) during the initial login. Leaving this active in an air-gapped environment can cause issues if the sockets cannot be opened successfully.
+
+:::
 
 # Additional Resources
 
