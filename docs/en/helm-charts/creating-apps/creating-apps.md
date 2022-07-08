@@ -5,7 +5,11 @@ weight: 400
 
 Rancher's App Marketplace is based on Helm Repositories and Helm Charts. You can add HTTP based standard Helm Repositories as well as any Git Repository which contains charts.
 
-> For a complete walkthrough of developing charts, see the [Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) in the official Helm documentation.
+:::tip
+
+For a complete walkthrough of developing charts, see the [Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) in the official Helm documentation.
+
+:::
 
 - [Chart types](#chart-types)
   - [Helm charts](#helm-charts)
@@ -94,7 +98,11 @@ Inside the `questions.yml`, most of the content will be around the questions to 
 
 For each chart, you can add the minimum and/or maximum Rancher version, which determines whether or not this chart is available to be deployed from Rancher.
 
-> **Note:** Even though Rancher release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
+:::note
+
+Even though Rancher release versions are prefixed with a `v`, there is *no* prefix for the release version when using this option.
+
+:::
 
 ```
 rancher_min_version: 2.3.0
@@ -125,4 +133,8 @@ This reference contains variables that you can use in `questions.yml` nested und
 | 	show_if           | string      | false  | Show current variable if conditional variable is true. For example `show_if: "serviceType=Nodeport"` |
 | 	show\_subquestion_if |  string  | false     | Show subquestions if is true or equal to one of the options. for example `show_subquestion_if: "true"`|
 
->**Note:** `subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported.
+:::note
+
+`subquestions[]` cannot contain `subquestions` or `show_subquestions_if` keys, but all other keys in the above table are supported.
+
+:::
