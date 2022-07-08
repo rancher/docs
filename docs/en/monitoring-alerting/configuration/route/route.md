@@ -10,7 +10,11 @@ When a Route is changed, the Prometheus Operator regenerates the Alertmanager cu
 
 For more information about configuring routes, refer to the [official Alertmanager documentation.](https://www.prometheus.io/docs/alerting/latest/configuration/#route)
 
-> This section assumes familiarity with how monitoring components work together. For more information, see [this section.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/how-monitoring-works)
+:::note
+
+This section assumes familiarity with how monitoring components work together. For more information, see [this section.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/how-monitoring-works)
+
+:::
 
 - [Route Restrictions](#route-restrictions)
 - [Route Configuration](#route-configuration)
@@ -45,7 +49,11 @@ The route needs to refer to a [receiver](#receiver-configuration) that has alrea
 {{% tabs %}}
 {{% tab "Rancher v2.6.5+" %}}
 
-> **Note** As of Rancher v2.6.5 `Group By` now accepts a list of strings instead of key-value pairs. See the [upstream documentation](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#route) for details.
+:::note
+
+As of Rancher v2.6.5, `Group By` now accepts a list of strings instead of key-value pairs. See the [upstream documentation](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#route) for details.
+
+:::
 
 | Field |    Default | Description |
 |-------|--------------|---------|

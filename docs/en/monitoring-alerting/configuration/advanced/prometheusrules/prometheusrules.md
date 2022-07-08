@@ -5,12 +5,19 @@ weight: 3
 
 A PrometheusRule defines a group of Prometheus alerting and/or recording rules.
 
-> This section assumes familiarity with how monitoring components work together. For more information, see [this section.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/how-monitoring-works)
+:::note
 
+This section assumes familiarity with how monitoring components work together. For more information, see [this section.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/how-monitoring-works)
+
+:::
 
 ### Creating PrometheusRules in the Rancher UI
 
-> **Prerequisite:** The monitoring application needs to be installed.
+:::note Prerequisite:
+
+The monitoring application needs to be installed.
+
+:::
 
 To create rule groups in the Rancher UI,
 

@@ -9,7 +9,11 @@ Rancher logging has two roles, `logging-admin` and `logging-view`.
 - `logging-admin` gives users full access to namespaced `Flows` and `Outputs`
 - `logging-view` allows users to *view* namespaced `Flows` and `Outputs`, and `ClusterFlows` and `ClusterOutputs`
 
-> **Why choose one role over the other?** Edit access to `ClusterFlow` and `ClusterOutput` resources is powerful. Any user with it has edit access for all logs in the cluster.
+:::note Why choose one role over the other?
+
+Edit access to `ClusterFlow` and `ClusterOutput` resources is powerful. Any user with it has edit access for all logs in the cluster.
+
+:::
 
 In Rancher, the cluster administrator role is the only role with full access to all `rancher-logging` resources. Cluster members are not able to edit or read any logging resources. Project owners and members have the following privileges:
 

@@ -40,13 +40,21 @@ The following selector fields are recommended to have this value:
 
 Once this setting is turned on, you can always create ServiceMonitors or PodMonitors that are picked up by the Cluster Prometheus by adding the label `release: "rancher-monitoring"` to them, in which case they will be ignored by Project Monitoring Stacks automatically by default, even if the namespace in which those ServiceMonitors or PodMonitors reside in are not system namespaces.
 
-> Note: If you don't want to allow users to be able to create ServiceMonitors and PodMonitors that aggregate into the Cluster Prometheus in Project namespaces, you can additionally set the namespaceSelectors on the chart to only target system namespaces (which must contain `cattle-monitoring-system` and `cattle-dashboards`, where resources are deployed into by default by rancher-monitoring; you will also need to monitor the `default` namespace to get apiserver metrics or create a custom ServiceMonitor to scrape apiserver metrics from the Service residing in the default namespace) to limit your Cluster Prometheus from picking up other Prometheus Operator CRs. In that case, it would be recommended to turn `.Values.prometheus.prometheusSpec.ignoreNamespaceSelectors=true` to allow you to define ServiceMonitors that can monitor non-system namespaces from within a system namespace.
+:::note
+
+If you don't want to allow users to be able to create ServiceMonitors and PodMonitors that aggregate into the Cluster Prometheus in Project namespaces, you can additionally set the namespaceSelectors on the chart to only target system namespaces (which must contain `cattle-monitoring-system` and `cattle-dashboards`, where resources are deployed into by default by rancher-monitoring; you will also need to monitor the `default` namespace to get apiserver metrics or create a custom ServiceMonitor to scrape apiserver metrics from the Service residing in the default namespace) to limit your Cluster Prometheus from picking up other Prometheus Operator CRs. In that case, it would be recommended to turn `.Values.prometheus.prometheusSpec.ignoreNamespaceSelectors=true` to allow you to define ServiceMonitors that can monitor non-system namespaces from within a system namespace.
+
+:::
 
 ## Increase the CPU / memory limits of the Cluster Prometheus
 
 Depending on a cluster's setup, it's generally recommended to give a large amount of dedicated memory to the Cluster Prometheus to avoid restarts due to out-of-memory errors (OOMKilled) usually caused by churn created in the cluster that causes a large number of high cardinality metrics to be generated and ingested by Prometheus within one block of time. This is one of the reasons why the default Rancher Monitoring stack expects around 4GB of RAM to be able to operate in a normal-sized cluster. However, when introducing Project Monitoring Stacks that are all sending `/federate` requests to the same Cluster Prometheus and are reliant on the Cluster Prometheus being "up" to federate that system data on their namespaces, it's even more important that the Cluster Prometheus has an ample amount of CPU / memory assigned to it to prevent an outage that can cause data gaps across all Project Prometheis in the cluster.
 
-> Note: There are no specific recommendations on how much memory the Cluster Prometheus should be configured with since it depends entirely on the user's setup (namely the likelihood of encountering a high churn rate and the scale of metrics that could be generated at that time); it generally varies per setup.
+:::note
+
+There are no specific recommendations on how much memory the Cluster Prometheus should be configured with since it depends entirely on the user's setup (namely the likelihood of encountering a high churn rate and the scale of metrics that could be generated at that time); it generally varies per setup.
+
+:::
 
 # Install the Prometheus Federator Application
 

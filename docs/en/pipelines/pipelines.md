@@ -3,12 +3,15 @@ title: Pipelines
 weight: 10
 ---
 
-> As of Rancher v2.5, Git-based deployment pipelines are now deprecated. We recommend handling pipelines with Rancher Continuous Delivery powered by [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet). To get to Fleet in Rancher, click <b>☰ > Continuous Delivery</b>.
->
->**Notice:**
->
-> - Pipelines in Kubernetes 1.21+ are no longer supported.
-> - Fleet does not replace Rancher pipelines; the distinction is that Rancher pipelines are now powered by Fleet.
+:::note Notes
+
+- As of Rancher v2.5, Git-based deployment pipelines are now deprecated. We recommend handling pipelines with Rancher Continuous Delivery powered by [Fleet]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet). To get to Fleet in Rancher, click <b>☰ > Continuous Delivery</b>.
+
+- Pipelines in Kubernetes 1.21+ are no longer supported.
+
+- Fleet does not replace Rancher pipelines; the distinction is that Rancher pipelines are now powered by Fleet.
+
+:::
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
 
@@ -22,13 +25,17 @@ After configuring Rancher and GitHub, you can deploy containers running Jenkins 
 - Run unit tests.  
 - Run regression tests.
 
->**Note:** Rancher's pipeline provides a simple CI/CD experience, but it does not offer the full power and flexibility of and is not a replacement of enterprise-grade Jenkins or other CI tools your team uses.
+:::note
+
+Rancher's pipeline provides a simple CI/CD experience, but it does not offer the full power and flexibility of and is not a replacement of enterprise-grade Jenkins or other CI tools your team uses.
+
+:::
 
 This section covers the following topics:
 
 - [Concepts](#concepts)
 - [How Pipelines Work](#how-pipelines-work)
-- [Roles-based Access Control for Pipelines](#roles-based-access-control-for-pipelines)
+[Roles-based Access Control for Pipelines](#role-based-access-control-for-pipelines)
 - [Setting up Pipelines](#setting-up-pipelines)
   - [Configure version control providers](#1-configure-version-control-providers)
   - [Configure repositories](#2-configure-repositories)
@@ -56,7 +63,11 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
     The pipeline's build engine. Because project users do not directly interact with Jenkins, it's managed and locked.
 
-    >**Note:**  There is no option to use existing Jenkins deployments as the pipeline engine.
+    :::note
+    
+    There is no option to use existing Jenkins deployments as the pipeline engine.
+
+    :::
 
   - **Docker Registry:**
 
@@ -66,9 +77,13 @@ When you configure a pipeline in one of your projects, a namespace specifically 
 
     Minio storage is used to store the logs for pipeline executions.
 
-  >**Note:** The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, which is fine for most use cases. If you want to make sure pipeline logs can survive node failures, you can configure persistent volumes for them, as described in [data persistency for pipeline components]({{<baseurl>}}/rancher/v2.6/en/pipelines/storage).
+  :::note
+  
+  The managed Jenkins instance works statelessly, so don't worry about its data persistency. The Docker Registry and Minio instances use ephemeral volumes by default, which is fine for most use cases. If you want to make sure pipeline logs can survive node failures, you can configure persistent volumes for them, as described in [data persistency for pipeline components]({{<baseurl>}}/rancher/v2.6/en/pipelines/storage).
 
-# Roles-based Access Control for Pipelines
+  :::
+
+# Role-based Access Control for Pipelines
 
 If you can access a project, you can enable repositories to start building pipelines.
 
@@ -80,11 +95,15 @@ Project members can only configure repositories and pipelines.
 
 ### Prerequisite
 
-> **Prerequisite:** Because the pipelines app was deprecated in favor of Fleet, you will need to turn on the feature flag for legacy features before using pipelines. Note that pipelines in Kubernetes 1.21+ are no longer supported.
->
-> 1. In the upper left corner, click **☰ > Global Settings**.
-> 1. Click **Feature Flags**.
-> 1. Go to the `legacy` feature flag and click **⋮ > Activate**.
+:::note Legacy Feature Flag:
+
+Because the pipelines app was deprecated in favor of Fleet, you will need to turn on the feature flag for legacy features before using pipelines. Note that pipelines in Kubernetes 1.21+ are no longer supported.
+
+1. In the upper left corner, click **☰ > Global Settings**.
+1. Click **Feature Flags**.
+1. Go to the `legacy` feature flag and click **⋮ > Activate**.
+
+:::
 
 1. [Configure version control providers](#1-configure-version-control-providers)
 2. [Configure repositories](#2-configure-repositories)
@@ -127,9 +146,13 @@ Select your provider's tab below and follow the directions.
 1. If you're using GitLab for enterprise setup, select **Use a private gitlab enterprise installation**. Enter the host address of your GitLab installation.
 1. Click **Authenticate**.
 
->**Note:**
-> 1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.  
-> 2. If you use GitLab 10.7+ and your Rancher setup is in a local network, enable the **Allow requests to the local network from hooks and services** option in GitLab admin settings.
+:::note Notes:
+
+1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.  
+2. If you use GitLab 10.7+ and your Rancher setup is in a local network, enable the **Allow requests to the local network from hooks and services** option in GitLab admin settings.
+
+:::
+
 {{% /tab %}}
 {{% tab "Bitbucket Cloud" %}}
 
@@ -253,7 +276,11 @@ Available Events:
 * **Pull Request**: Whenever a pull request is made to the repository, the pipeline is triggered.
 * **Tag**: When a tag is created in the repository, the pipeline is triggered.
 
-> **Note:** This option doesn't exist for Rancher's [example repositories]({{<baseurl>}}/rancher/v2.6/en/pipelines/example-repos/).
+:::note
+
+This option doesn't exist for Rancher's [example repositories]({{<baseurl>}}/rancher/v2.6/en/pipelines/example-repos/).
+
+:::
 
 ### Modifying the Event Triggers for the Repository
 

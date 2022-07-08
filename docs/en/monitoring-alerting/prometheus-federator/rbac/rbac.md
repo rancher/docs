@@ -19,7 +19,11 @@ On observing a change to one of those types of bindings, the Helm Project Operat
 
 By default, these roleRefs will correspond to `admin`, `edit`, and `view` respectively, which are the [default Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
 
-> **Note** For Rancher RBAC users, these [default Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) directly correlate to the `Project Owner`, `Project Member`, and `Read-Only` default Project Role Templates.
+:::note
+
+For Rancher RBAC users, these [default Kubernetes user-facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) directly correlate to the `Project Owner`, `Project Member`, and `Read-Only` default Project Role Templates.
+
+:::
 
 If the `roleRef` matches, the Helm Project Operator will filter the `subjects` of the binding for all Users and Groups and use that to automatically construct a RoleBinding for each Role in the Project Release Namespace with the same name as the role and the following labels:
 

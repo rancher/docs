@@ -5,7 +5,11 @@ weight: 1
 
 It is usually not necessary to directly edit the Prometheus custom resource because the monitoring application automatically updates it based on changes to ServiceMonitors and PodMonitors.
 
-> This section assumes familiarity with how monitoring components work together. For more information, see [this section.](../../../how-monitoring-works/)
+:::note
+
+This section assumes familiarity with how monitoring components work together. For more information, see [this section.](../../../how-monitoring-works/)
+
+:::
 
 # About the Prometheus Custom Resource
 

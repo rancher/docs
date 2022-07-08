@@ -10,7 +10,11 @@ These configuration objects declaratively specify the endpoints that Prometheus 
 
 ServiceMonitors are more commonly used than PodMonitors, and we recommend them for most use cases.
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../how-monitoring-works/)
+:::note
+
+This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../how-monitoring-works/)
+
+:::
 
 ### ServiceMonitors
 

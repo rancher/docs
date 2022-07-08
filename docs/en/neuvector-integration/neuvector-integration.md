@@ -28,8 +28,12 @@ Some examples are as follows:
    - EKS: `docker` for v1.22 and below; `containerd` for v1.23 and up
    - GKE: `containerd` (see the [Google docs](https://cloud.google.com/kubernetes-engine/docs/concepts/using-containerd) for more)
 
-    >**Note:** Only one container runtime engine may be selected at a time during installation.
+    :::note
+    
+    Only one container runtime engine may be selected at a time during installation.
 
+    :::
+    
 **To navigate to and install the NeuVector chart through Cluster Tools:**
 
 1. Click **☰ > Cluster Management**.
