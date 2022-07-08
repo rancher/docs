@@ -13,8 +13,12 @@ ConfigMaps accept key value pairs in common string formats, like config files or
 1. Click **Create**.
 1. Enter a **Name** for the Config Map.
 
-    >**Note:** Kubernetes classifies ConfigMaps as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your ConfigMaps must have a unique name among the other certificates, registries, and secrets within your workspace.
+    :::note
+    
+    Kubernetes classifies ConfigMaps as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your ConfigMaps must have a unique name among the other certificates, registries, and secrets within your workspace.
 
+    :::
+    
 1. Select the **Namespace** you want to add Config Map to.
 
 1. On the **Data** tab, add a key-value pair to your ConfigMap. Add as many values as you need.  You can add multiple key value pairs to the ConfigMap by copying and pasting. Alternatively, use **Read from File** to add the data. Note: If you need to store sensitive data, [use a secret]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/), not a ConfigMap.

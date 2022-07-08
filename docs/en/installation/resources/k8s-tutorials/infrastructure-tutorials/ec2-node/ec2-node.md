@@ -56,7 +56,11 @@ sudo usermod -aG docker ubuntu
 ```
 1. Repeat these steps so that Docker is installed on each node that will eventually run the Rancher management server.
 
-> To find out whether a script is available for installing a certain Docker version, refer to this [GitHub repository,](https://github.com/rancher/install-docker) which contains all of Rancher’s Docker installation scripts.
+:::tip
+
+To find out whether a script is available for installing a certain Docker version, refer to this [GitHub repository,](https://github.com/rancher/install-docker) which contains all of Rancher’s Docker installation scripts.
+
+:::
 
 **Result:** You have set up Rancher server nodes that fulfill all the node requirements for OS, Docker, hardware and networking.
 

@@ -31,7 +31,12 @@ If you use this option, ingress routes requests for a hostname to the service or
 1. **Optional:** If you want specify a workload or service when a request is sent to a particular hostname path, add a **Path** for the target. For example, if you want requests for `www.mysite.com/contact-us` to be sent to a different service than `www.mysite.com`, enter `/contact-us` in the **Path** field. Typically, the first rule that you create does not include a path.
 1. Enter the **Port** number that each target operates on.
 ### Certificates
->**Note:** You must have an SSL certificate that the ingress can use to encrypt/decrypt communications. For more information see [Adding SSL Certificates]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/certificates/).
+
+:::note
+
+You must have an SSL certificate that the ingress can use to encrypt/decrypt communications. For more information see [Adding SSL Certificates]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/certificates/).
+
+:::
 
 1. When creating an ingress, click the **Certificates** tab.
 1. Click **Add Certificate**.

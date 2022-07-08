@@ -36,7 +36,11 @@ This option allows you to define which specific services or pods you would like 
 
 The usability tradeoff is that you have to create the service monitor or pod monitor per namespace since you cannot monitor across namespaces.
 
-> **Prerequisite:** Define a ServiceMonitor or PodMonitor for `<your namespace>`. An example ServiceMonitor is provided below. 
+:::note Prerequisite:
+
+Define a ServiceMonitor or PodMonitor for `<your namespace>`. An example ServiceMonitor is provided below. 
+
+:::
 
 1.  Click **☰ > Cluster Management**.
 1. Go to the cluster that you created and click **Explore**.

@@ -39,8 +39,11 @@ In order to upgrade cert-manager, follow these instructions:
     issuer,clusterissuer,certificates,certificaterequests > cert-manager-backup.yaml
     ```
 
-    > **Important:**
-    > If you are upgrading from a version older than 0.11.0, Update the apiVersion on all your backed up resources from `certmanager.k8s.io/v1alpha1` to `cert-manager.io/v1alpha2`. If you use any cert-manager annotations on any of your other resources, you will need to update them to reflect the new API group. For details, refer to the documentation on [additional annotation changes.](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/#additional-annotation-changes)
+    :::note Important:
+
+    If you are upgrading from a version older than 0.11.0, Update the apiVersion on all your backed up resources from `certmanager.k8s.io/v1alpha1` to `cert-manager.io/v1alpha2`. If you use any cert-manager annotations on any of your other resources, you will need to update them to reflect the new API group. For details, refer to the documentation on [additional annotation changes.](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/#additional-annotation-changes)
+
+    :::
 
 1. [Uninstall existing deployment](https://cert-manager.io/docs/installation/uninstall/kubernetes/#uninstalling-with-helm)
 
@@ -182,8 +185,11 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     kubectl apply -f cert-manager/cert-manager-crd.yaml
     ```
 
-    > **Note:**
-    > If you are running Kubernetes v1.15 or below, you will need to add the `--validate=false` flag to your `kubectl apply` command above. Otherwise, you will receive a validation error relating to the `x-kubernetes-preserve-unknown-fields` field in cert-manager’s CustomResourceDefinition resources. This is a benign error and occurs due to the way kubectl performs resource validation.
+    :::note Important:
+
+    If you are running Kubernetes v1.15 or below, you will need to add the `--validate=false` flag to your `kubectl apply` command above. Otherwise, you will receive a validation error relating to the `x-kubernetes-preserve-unknown-fields` field in cert-manager’s CustomResourceDefinition resources. This is a benign error and occurs due to the way kubectl performs resource validation.
+
+    :::
 
 1. Create the namespace for cert-manager
 

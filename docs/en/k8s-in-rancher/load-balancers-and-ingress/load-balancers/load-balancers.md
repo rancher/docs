@@ -11,7 +11,11 @@ Layer-4 load balancer (or the external load balancer) forwards traffic to Nodepo
 
 Often, the Layer-4 load balancer is supported by the underlying cloud provider, so when you deploy RKE clusters on bare-metal servers and vSphere clusters, Layer-4 load balancer is not supported. However, a single [globally managed config-map](https://kubernetes.github.io/ingress-nginx/user-guide/exposing-tcp-udp-services/) can be used to expose services on NGINX or third-party ingress.
 
-> **Note:** It is possible to deploy a cluster with a non-cloud load balancer, such as [MetalLB.](https://metallb.universe.tf/) However, that use case is more advanced than the Layer-4 load balancer supported by a cloud provider, and it is not configurable in Rancher or RKE.
+:::note
+
+It is possible to deploy a cluster with a non-cloud load balancer, such as [MetalLB.](https://metallb.universe.tf/) However, that use case is more advanced than the Layer-4 load balancer supported by a cloud provider, and it is not configurable in Rancher or RKE.
+
+:::
 
 ### Support for Layer-4 Load Balancing
 

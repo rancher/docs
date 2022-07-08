@@ -29,7 +29,11 @@ Rancher provides several different Helm chart repositories to choose from. We al
 <br/>
 Instructions on when to select these repos are available below in [Switching to a Different Helm Chart Repository](#switching-to-a-different-helm-chart-repository).
 
-> **Note:** All charts in the `rancher-stable` repository will correspond with any Rancher version tagged as `stable`.
+:::note
+
+All charts in the `rancher-stable` repository will correspond with any Rancher version tagged as `stable`.
+
+:::
 
 ### Helm Chart Versions
 
@@ -46,7 +50,11 @@ To fetch a specific version of your chosen repo, define the `--version` paramete
 
 After installing Rancher, if you want to change which Helm chart repository to install Rancher from, you will need to follow these steps.
 
-> **Note:** Because the rancher-alpha repository contains only alpha charts, switching between the rancher-alpha repository and the rancher-stable or rancher-latest repository for upgrades is not supported.
+:::note
+
+Because the rancher-alpha repository contains only alpha charts, switching between the rancher-alpha repository and the rancher-stable or rancher-latest repository for upgrades is not supported.
+
+:::
 
 {{< release-channel >}}
 
@@ -87,10 +95,12 @@ Rancher Server is distributed as a Docker image, which have tags attached to the
 | `rancher/rancher:stable`   | Our newest stable release. This tag is recommended for production.                                                                                              |
 | `rancher/rancher:<v2.X.X>` | You can install specific versions of Rancher by using the tag from a previous release. See what's available at DockerHub.                                       |
 
-> **Notes:**
->
-> - The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate. You should not use these tags, as these builds are not officially supported.
-> - Want to install an alpha review for preview? Install using one of the alpha tags listed on our [announcements page](https://forums.rancher.com/c/announcements) (e.g., `v2.2.0-alpha1`). Caveat: Alpha releases cannot be upgraded to or from any other release.
+:::note
+
+- The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate. You should not use these tags, as these builds are not officially supported.
+- Want to install an alpha review for preview? Install using one of the alpha tags listed on our [announcements page](https://forums.rancher.com/c/announcements) (e.g., `v2.2.0-alpha1`). Caveat: Alpha releases cannot be upgraded to or from any other release.
+
+:::
 
 {{% /tab %}} 
 {{% /tabs %}}

@@ -36,7 +36,11 @@ Regardless of whether an NGINX Ingress or Traefik Ingress controller is used, th
 1. Select **Services** and choose **EC2**, find the section **Load Balancing** and open **Target Groups**.
 1. Click **Create target group** to create the first target group, regarding TCP port 443.
 
-> **Note:** Health checks are handled differently based on the Ingress. For details, refer to [this section.](#health-check-paths-for-nginx-ingress-and-traefik-ingresses)
+:::note
+
+Health checks are handled differently based on the Ingress. For details, refer to [this section.](#health-check-paths-for-nginx-ingress-and-traefik-ingresses)
+
+:::
 
 ### Target Group (TCP port 443)
 

@@ -44,8 +44,11 @@ For an example showing how to set up an NGINX load balancer, refer to [this page
 
 For a how-to guide for setting up an Amazon ELB Network Load Balancer, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nlb/)
 
-> **Important:**
-> Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
+:::note Important:
+
+Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.
+
+:::
 
 ### 3. Set up the DNS Record
 

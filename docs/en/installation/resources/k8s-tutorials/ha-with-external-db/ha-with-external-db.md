@@ -8,12 +8,15 @@ This section describes how to install a Kubernetes cluster according to the [bes
 
 For systems without direct internet access, refer to the air gap installation instructions.
 
-> **Single-node Installation Tip:**
-> In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
->
-> To set up a single-node K3s cluster, run the Rancher server installation command on just one node instead of two nodes.
->
-> In both single-node setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
+:::tip Single-node Installation Tip:
+
+In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
+
+To set up a single-node K3s cluster, run the Rancher server installation command on just one node instead of two nodes.
+
+In both single-node setups, Rancher can be installed with Helm on the Kubernetes cluster in the same way that it would be installed on any other cluster.
+
+:::
 
 # Prerequisites
 

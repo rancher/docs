@@ -3,12 +3,14 @@ title: 1. Enable Istio in the Cluster
 weight: 1
 ---
 
->**Prerequisites:**
->
->- Only a user with the `cluster-admin` [Kubernetes default role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) assigned can configure and install Istio in a Kubernetes cluster.
->- If you have pod security policies, you will need to install Istio with the CNI enabled. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/enable-istio-with-psp)
->- To install Istio on an RKE2 cluster, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/rke2/)
->- To install Istio in a cluster where project network isolation is enabled, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/canal-and-project-network)
+:::note Prerequisites:
+
+- Only a user with the `cluster-admin` [Kubernetes default role](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) assigned can configure and install Istio in a Kubernetes cluster.
+- If you have pod security policies, you will need to install Istio with the CNI enabled. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/enable-istio-with-psp)
+- To install Istio on an RKE2 cluster, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/rke2/)
+- To install Istio in a cluster where project network isolation is enabled, additional steps are required. For details, see [this section.]({{<baseurl>}}/rancher/v2.6/en/istio/configuration-reference/canal-and-project-network)
+
+:::
 
 1.  Click **☰ > Cluster Management**.
 1. Go to the where you want to enable Istio and click **Explore**.

@@ -21,7 +21,11 @@ If you want to create HPAs that scale based on other metrics than CPU and memory
 
 1. Click **Create** to create the HPA.
 
-> **Result:** The HPA is deployed to the chosen namespace. You can view the HPA's status from the project's Resources > HPA view.
+:::note Result:
+
+The HPA is deployed to the chosen namespace. You can view the HPA's status from the project's Resources > HPA view.
+
+:::
 
 ## Get HPA Metrics and Status
 
@@ -41,4 +45,8 @@ For more detailed metrics and status of a specific HPA, click the name of the HP
 1. Find the HPA which you would like to delete and click **⋮ > Delete**.
 1. Click **Delete** to confirm.
 
-> **Result:** The HPA is deleted from the current cluster.
+:::note Result:
+
+The HPA is deleted from the current cluster.
+
+:::

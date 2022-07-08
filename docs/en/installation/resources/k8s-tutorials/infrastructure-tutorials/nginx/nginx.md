@@ -7,7 +7,11 @@ NGINX will be configured as Layer 4 load balancer (TCP) that forwards connection
 
 In this configuration, the load balancer is positioned in front of your nodes. The load balancer can be any host capable of running NGINX.
 
-One caveat: do not use one of your Rancher nodes as the load balancer.
+:::note
+
+Do not use one of your Rancher nodes as the load balancer.
+
+:::
 
 > These examples show the load balancer being configured to direct traffic to three Rancher server nodes. If Rancher is installed on an RKE Kubernetes cluster, three nodes are required. If Rancher is installed on a K3s Kubernetes cluster, only two nodes are required.
 
@@ -25,7 +29,11 @@ After installing NGINX, you need to update the NGINX configuration file, `nginx.
 
 2.  From `nginx.conf`, replace both occurrences (port 80 and port 443) of `<IP_NODE_1>`, `<IP_NODE_2>`, and `<IP_NODE_3>` with the IPs of your nodes.
 
-    > **Note:** See [NGINX Documentation: TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
+    :::note
+    
+    See [NGINX Documentation: TCP and UDP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/) for all configuration options.
+
+    :::
 
     <figcaption>Example NGINX config</figcaption>
     ```

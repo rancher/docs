@@ -7,12 +7,14 @@ If you have restrictive Pod Security Policies enabled, then Istio may not be abl
 
 The Istio CNI plugin removes the need for each application pod to have a privileged `NET_ADMIN` container. For further information, see the [Istio CNI Plugin docs](https://istio.io/docs/setup/additional-setup/cni). Please note that the [Istio CNI Plugin is in alpha](https://istio.io/about/feature-stages/).
 
-> **Prerequisites:**
->
-> - The cluster must be an RKE Kubernetes cluster.
-> - The cluster must have been created with a default PodSecurityPolicy. 
->
-> To enable pod security policy support when creating a Kubernetes cluster in the Rancher UI, go to <b>Advanced Options.</b> In the <b>Pod Security Policy Support</b> section, click <b>Enabled.</b> Then select a default pod security policy.
+:::note Prerequisites:
+
+- The cluster must be an RKE Kubernetes cluster.
+- The cluster must have been created with a default PodSecurityPolicy. 
+
+To enable pod security policy support when creating a Kubernetes cluster in the Rancher UI, go to <b>Advanced Options.</b> In the <b>Pod Security Policy Support</b> section, click <b>Enabled.</b> Then select a default pod security policy.
+
+:::
 
 1. [Set the PodSecurityPolicy to unrestricted](#1-set-the-podsecuritypolicy-to-unrestricted)
 2. [Enable the CNI](#2-enable-the-cni)

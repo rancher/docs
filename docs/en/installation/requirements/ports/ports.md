@@ -30,12 +30,14 @@ The port requirements differ based on the Rancher server architecture.
 
 Rancher can be installed on any Kubernetes cluster. For Rancher installs on a K3s, RKE, or RKE2 Kubernetes cluster, refer to the tabs below. For other Kubernetes distributions, refer to the distribution's documentation for the port requirements for cluster nodes.
 
-> **Notes:**
->
-> - Rancher nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
-> - Kubernetes recommends TCP 30000-32767 for node port services.
-> - For firewalls, traffic may need to be enabled within the cluster and pod CIDR.
-> - Rancher nodes may also need outbound access to an external S3 location which is used for storing cluster backups (Minio for example).
+:::note Notes:
+
+- Rancher nodes may also require additional outbound access for any external authentication provider which is configured (LDAP for example).
+- Kubernetes recommends TCP 30000-32767 for node port services.
+- For firewalls, traffic may need to be enabled within the cluster and pod CIDR.
+- Rancher nodes may also need outbound access to an external S3 location which is used for storing cluster backups (Minio for example).
+
+:::
 
 ### Ports for Rancher Server Nodes on K3s
 
@@ -47,7 +49,11 @@ The nodes need to be able to reach other nodes over UDP port 8472 when Flannel V
 
 If you wish to utilize the metrics server, you will need to open port 10250 on each node.
 
-> **Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
+:::note Important:
+
+The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
+
+:::
 
 The following tables break down the port requirements for inbound and outbound traffic:
 
@@ -127,7 +133,11 @@ All nodes need to be able to reach other nodes over UDP port 8472 when Flannel V
 
 If you wish to utilize the metrics server, you will need to open port 10250 on each node.
 
-**Important:** The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
+:::note Important: 
+
+The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
+
+:::
 
 <figcaption>Inbound Rules for RKE2 Server Nodes</figcaption>
 
@@ -183,9 +193,11 @@ The following diagram depicts the ports that are opened for each [cluster type](
 
 ![Basic Port Requirements]({{<baseurl>}}/img/rancher/port-communications.svg)
 
->**Tip:**
->
->If security isn't a large concern and you're okay with opening a few additional ports, you can use the table in [Commonly Used Ports](#commonly-used-ports) as your port reference instead of the comprehensive tables below.
+:::tip
+
+If security isn't a large concern and you're okay with opening a few additional ports, you can use the table in [Commonly Used Ports](#commonly-used-ports) as your port reference instead of the comprehensive tables below.
+
+:::
 
 ### Ports for Rancher Launched Kubernetes Clusters using Node Pools
 
@@ -193,8 +205,11 @@ The following diagram depicts the ports that are opened for each [cluster type](
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/).
 
->**Note:**
->The required ports are automatically opened by Rancher during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
+:::note
+
+The required ports are automatically opened by Rancher during creation of clusters in cloud providers like Amazon EC2 or DigitalOcean.
+
+:::
 
 {{< ports-iaas-nodes >}}
 

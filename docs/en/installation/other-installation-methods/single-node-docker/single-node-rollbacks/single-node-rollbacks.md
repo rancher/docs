@@ -37,7 +37,11 @@ You can obtain `<PRIOR_RANCHER_VERSION>` and `<RANCHER_CONTAINER_NAME>` by loggi
 
 If you have issues upgrading Rancher, roll it back to its latest known healthy state by pulling the last version you used and then restoring the backup you made before upgrade.
 
->**Warning!** Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
+:::danger
+
+Rolling back to a previous version of Rancher destroys any changes made to Rancher following the upgrade. Unrecoverable data loss may occur.
+
+:::
 
 1. Using a remote Terminal connection, log into the node running your Rancher Server.
 
@@ -78,7 +82,11 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
     ```
     Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
     
-    >**Note:** _Do not_ stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
+    :::note Important:
+    
+    **_Do not_** stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
+
+    :::
 
 1.  Wait a few moments and then open Rancher in a web browser. Confirm that the rollback succeeded and that your data is restored.
 

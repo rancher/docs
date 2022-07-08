@@ -9,7 +9,11 @@ The CPU and memory allocations for each component are [configurable.](#configuri
 
 Before enabling Istio, we recommend that you confirm that your Rancher worker nodes have enough CPU and memory to run all of the components of Istio.
 
-> **Tip:** In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster by adding a node selector for each Istio component.
+:::tip
+
+In larger deployments, it is strongly advised that the infrastructure be placed on dedicated nodes in the cluster by adding a node selector for each Istio component.
+
+:::
 
 The table below shows a summary of the minimum recommended resource requests and limits for the CPU and memory of each core Istio component.
 

@@ -21,7 +21,11 @@ Because the API sets the actual value and the command line sets the default valu
 
 For example, if you install Rancher, then set a feature flag to true with the Rancher API, then upgrade Rancher with a command that sets the feature flag to false, the default value will still be false, but the feature will still be enabled because it was set with the Rancher API. If you then deleted the set value (true) with the Rancher API, setting it to NULL, the default value (false) would take effect.
 
-> **Note:** There are some feature flags that may require a restart of the Rancher server container. These features that require a restart are marked in the table of these docs and in the UI.
+:::note
+
+There are some feature flags that may require a restart of the Rancher server container. These features that require a restart are marked in the table of these docs and in the UI.
+
+:::
 
 The following is a list of the feature flags available in Rancher:
 
@@ -59,7 +63,11 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 
 ### Enabling Features for Kubernetes Installs
 
-> **Note:** Values set from the Rancher API will override the value passed in through the command line.
+:::note
+
+Values set from the Rancher API will override the value passed in through the command line.
+
+:::
 
 When installing Rancher with a Helm chart, use the `--set` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 
