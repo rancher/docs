@@ -4,8 +4,8 @@
  * Modify the docusaurus.config.js file at your site's root instead.
  */
 export default {
-  "title": "Rancher Manager",
-  "tagline": "",
+  "title": "Rancher Documentation",
+  "tagline": "Find guides, tutorials and best practices for running Kubernetes everywhere.",
   "url": "https://rancher.com/docs/rancher",
   "baseUrl": "/",
   "onBrokenLinks": "throw",
@@ -15,6 +15,15 @@ export default {
   "projectName": "rancher-docs",
   "trailingSlash": false,
   "themeConfig": {
+    "algolia": {
+      "appId": "YOUR_APP_ID",
+      "apiKey": "YOUR_SEARCH_API_KEY",
+      "indexName": "YOUR_INDEX_NAME",
+      "contextualSearch": true,
+      "externalUrlRegex": "external\\.com|domain\\.com",
+      "searchParameters": {},
+      "searchPagePath": false
+    },
     "colorMode": {
       "defaultMode": "light",
       "disableSwitch": true,
@@ -173,19 +182,6 @@ export default {
       },
       "items": [
         {
-          "type": "doc",
-          "docId": "en/introduction",
-          "position": "right",
-          "label": "Docs",
-          "className": "navbar__docs"
-        },
-        {
-          "href": "https://github.com/kubewarden/",
-          "label": "GitHub",
-          "position": "right",
-          "className": "navbar__github btn btn-secondary icon-github"
-        },
-        {
           "type": "docsVersionDropdown",
           "position": "left",
           "dropdownItemsAfter": [
@@ -196,6 +192,23 @@ export default {
           ],
           "dropdownActiveClassDisabled": false,
           "dropdownItemsBefore": []
+        },
+        {
+          "href": "https://github.com/rancher/rancher",
+          "label": "GitHub",
+          "position": "right",
+          "className": "btn btn-primary icon-github"
+        },
+        {
+          "href": "https://rancher.com/pricing",
+          "label": "Pricing",
+          "position": "right",
+          "className": "btn btn-primary"
+        },
+        {
+          "type": "search",
+          "position": "right",
+          "className": "btn btn-primary"
         }
       ],
       "hideOnScroll": false

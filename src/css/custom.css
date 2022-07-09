@@ -12,8 +12,10 @@
   font-style: normal;
   font-weight: normal;
   src: local(''),
-       url('../fonts/poppins/poppins-regular.woff') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/poppins/poppins-regular.woff2') format('woff'), /* Modern Browsers */
+    url('../fonts/poppins/poppins-regular.woff') format('woff2'),
+      /* Super Modern Browsers */
+      url('../fonts/poppins/poppins-regular.woff2') format('woff'),
+      /* Modern Browsers */
 }
 
 /* Roboto-Mono */
@@ -22,8 +24,10 @@
   font-style: normal;
   font-weight: normal;
   src: local(''),
-       url('../fonts/roboto-mono/roboto-mono-regular.woff') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/roboto-mono/roboto-mono-regular.woff2') format('woff'), /* Modern Browsers */
+    url('../fonts/roboto-mono/roboto-mono-regular.woff') format('woff2'),
+      /* Super Modern Browsers */
+      url('../fonts/roboto-mono/roboto-mono-regular.woff2') format('woff'),
+      /* Modern Browsers */
 }
 
 /* Lato */
@@ -32,9 +36,12 @@
   font-style: normal;
   font-weight: normal;
   src: local(''),
-       url('../fonts/lato/lato-regular.woff') format('woff2'), /* Super Modern Browsers */
-       url('../fonts/lato/lato-regular.woff2') format('woff'), /* Modern Browsers */
+    url('../fonts/lato/lato-regular.woff') format('woff2'),
+      /* Super Modern Browsers */
+      url('../fonts/lato/lato-regular.woff2') format('woff'),
+      /* Modern Browsers */
 }
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary-lightest: #80bbe2;
@@ -46,12 +53,14 @@
   --ifm-color-primary-darkest: #236c9b;
   --ifm-code-font-size: 95%;
 }
+
 @media (max-width: 768px) {
   #theme-main h1 {
     font-size: 50px !important;
     line-height: 3rem !important;
     font-weight: 700
   }
+
   #theme-main .header-docs {
     margin-bottom: 20px;
   }
@@ -61,7 +70,12 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -70,7 +84,7 @@ code {
 }
 
 hr {
-  background-image: -webkit-linear-gradient(left,#f3f3f3,#adadb1,#f3f3f3);
+  background-image: -webkit-linear-gradient(left, #f3f3f3, #adadb1, #f3f3f3);
   margin: 0 auto;
 }
 
@@ -91,7 +105,7 @@ hr {
   font-size: 1rem;
   line-height: 1.66;
   border-radius: 3px;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 a.btn.navbar__github {
@@ -104,7 +118,7 @@ a.btn.navbar__github {
 }
 
 a.btn.navbar__github {
-  font-family: poppins,sans-serif;
+  font-family: poppins, sans-serif;
   text-decoration: none;
   align-items: center;
   border-radius: 3px;
@@ -126,13 +140,22 @@ a.btn.navbar__github::before {
   top: 10px;
 }
 
+.searchBarStyle {
+  margin: auto;
+  text-align: center;
+}
+
+.searchBarStyle button {
+  margin: auto;
+  width: 50%;
+}
 
 .icon-github.navbar__github {
   margin-left: 20px;
 }
 
 .btn-secondary.navbar__github {
-  color: #fff!important;
+  color: #fff !important;
   border-color: #384745;
   background-color: #384745;
   box-shadow: inset 0 1px rgb(255 255 255 / 15%), 0 1px 1px rgb(0 0 0 / 8%);
@@ -145,3 +168,105 @@ a.btn.navbar__github::before {
   padding: 0 var(--ifm-pre-padding);
 }
 
+.boxes {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.box {
+  text-align: left;
+  font-size: small;
+  border: 1px solid rgb(182, 181, 181);
+  width: 100%;
+  display: inline-flex;
+  border-radius: 7px;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+}
+
+.cardTitle {
+  margin-top: 1em;
+  font-weight: bold;
+  display: block;
+}
+
+.cardText {
+  display: block;
+  min-height: 5em;
+}
+
+.cardLink {
+  margin-bottom: 1em;
+}
+
+@media (min-width: 768px) {
+  .box {
+    width: 30%;
+  }
+}
+
+@media (min-width: 768px) {
+  .product-summary {
+    width: 31%;
+  }
+}
+@media (min-width: 1024px) {
+  .box {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .box {
+    width: 20%;
+  }
+
+}
+
+.landing-page-header {
+  text-align: center;
+  margin-top: 2em;
+}
+.product-summary {
+  text-align: left;
+  font-size: small;
+  display: inline-flex;
+  border-radius: 7px;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: .5em;
+  margin-right: .5em;
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+}
+
+.icon {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+}
+
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Add some padding inside the card container */
+.cardContainer {
+  padding: 2px 16px;
+}

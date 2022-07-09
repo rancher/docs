@@ -1,8 +1,8 @@
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'Rancher Manager',
-  tagline: '',
+  title: 'Rancher Documentation',
+  tagline: 'Find guides, tutorials and best practices for running Kubernetes everywhere.',
   url: 'https://rancher.com/docs/rancher',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -12,6 +12,29 @@ module.exports = {
   projectName: 'rancher-docs', // Usually your repo name.
   trailingSlash: false,
   themeConfig: {
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'YOUR_APP_ID',
+
+      // Public API key: it is safe to commit it
+      apiKey: 'YOUR_SEARCH_API_KEY',
+
+      indexName: 'YOUR_INDEX_NAME',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: false,
+
+      //... other Algolia params
+    },
     colorMode: {
       // "light" | "dark"
       defaultMode: "light",
@@ -32,24 +55,28 @@ module.exports = {
       },
       items: [
         {
-          type: 'doc',
-          docId: 'en/introduction',
-          position: 'right',
-          label: 'Docs',
-          className: 'navbar__docs',
-        },
-        {
-          href: 'https://github.com/kubewarden/',
-          label: 'GitHub',
-          position: 'right',
-          className: 'navbar__github btn btn-secondary icon-github',
-        },
-        {
           type: 'docsVersionDropdown',
           position: 'left',
           dropdownItemsAfter: [{to: '/versions', label: 'All versions'}],
           dropdownActiveClassDisabled: false,
         },
+        {
+          href: 'https://github.com/rancher/rancher',
+          label: 'GitHub',
+          position: 'right',
+          className: 'btn btn-primary icon-github',
+        },
+        {
+          href: 'https://rancher.com/pricing',
+          label: 'Pricing',
+          position: 'right',
+          className: 'btn btn-primary',
+        },
+        {
+          type: 'search',
+          position: 'right',
+          className: 'btn btn-primary',
+        }
       ],
     },
     footer: {
@@ -57,6 +84,7 @@ module.exports = {
       links: [],
       copyright: `Copyright © ${new Date().getFullYear()} SUSE Rancher. All Rights Reserved.`,
     },
+    
   },
   presets: [
     [

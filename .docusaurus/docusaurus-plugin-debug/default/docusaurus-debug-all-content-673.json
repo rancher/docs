@@ -125,6 +125,7 @@
   },
   "docusaurus-plugin-debug": {},
   "docusaurus-theme-classic": {},
+  "docusaurus-theme-search-algolia": {},
   "docusaurus-bootstrap-plugin": {},
   "docusaurus-mdx-fallback-plugin": {}
 }
