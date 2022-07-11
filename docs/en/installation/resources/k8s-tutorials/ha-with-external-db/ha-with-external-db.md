@@ -40,7 +40,12 @@ When running the command to start the K3s Kubernetes API server, you will pass i
   curl -sfL https://get.k3s.io |  INSTALL_K3S_VERSION=vX.Y.Z sh -s - server \
     --datastore-endpoint="mysql://username:password@tcp(hostname:3306)/database-name"
     ```
-  Note: The datastore endpoint can also be passed in using the environment variable `$K3S_DATASTORE_ENDPOINT`.
+  
+  :::note
+  
+  The datastore endpoint can also be passed in using the environment variable `$K3S_DATASTORE_ENDPOINT`.
+
+  :::
 
 1. Repeat the same command on your second K3s server node.
 

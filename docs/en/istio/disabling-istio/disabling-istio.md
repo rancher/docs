@@ -17,7 +17,11 @@ To uninstall Istio,
 
 **Result:** The `rancher-istio` app in the cluster gets removed. The Istio sidecar cannot be deployed on any workloads in the cluster. 
 
-**Note:** You can no longer disable and re-enable your Istio installation. If you would like to save your settings for a future install, view and save individual YAMLs to refer back to / reuse for future installations.
+:::note
+
+You can no longer disable and re-enable your Istio installation. If you would like to save your settings for a future install, view and save individual YAMLs to refer back to / reuse for future installations.
+
+:::
 
 **Troubleshooting Uninstall:** If you didn't follow the uninstall steps, you may encounter a warning during uninstall:
 

@@ -6,9 +6,13 @@ weight: 2
 aliases:
   - /rancher/v2.x/en/quick-start-guide/
 ---
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+:::note
 
-Howdy buckaroos! Use this section of the docs to jump start your deployment and testing of Rancher 2.x! It contains instructions for a simple Rancher setup and some common use cases. We plan on adding more content to this section in the future.
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
+:::
+
+Use this section of the docs to jump start your deployment and testing of Rancher 2.x. It contains instructions for a simple Rancher setup and some common use cases. We plan on adding more content to this section in the future.
 
 We have Quick Start Guides for:
 

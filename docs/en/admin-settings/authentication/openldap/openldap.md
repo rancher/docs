@@ -28,9 +28,11 @@ Configure the settings for the OpenLDAP server, groups and users. For help filli
 
 Once you have completed the configuration, proceed by testing  the connection to the OpenLDAP server. Authentication with OpenLDAP will be enabled implicitly if the test is successful.
 
-> **Note:**
->
-> The OpenLDAP user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which LDAP account you use to perform this step.
+:::note
+
+The OpenLDAP user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which LDAP account you use to perform this step.
+
+:::
 
 1. Enter the **username** and **password** for the OpenLDAP account that should be mapped to the local principal account.
 2. Click **Authenticate With OpenLDAP** to test the OpenLDAP connection and finalise the setup.
@@ -40,9 +42,11 @@ Once you have completed the configuration, proceed by testing  the connection to
 - OpenLDAP authentication is configured.
 - The LDAP user pertaining to the entered credentials is mapped to the local principal (administrative) account.
 
-> **Note:**
->
-> You will still be able to login using the locally configured `admin` account and password in case of a disruption of LDAP services.
+:::note
+
+You will still be able to login using the locally configured `admin` account and password in case of a disruption of LDAP services.
+
+:::
 
 ## Annex: Troubleshooting
 

@@ -179,12 +179,15 @@ Select your provider's tab below and follow the directions.
 1. Enter the host address of your Bitbucket server installation.
 1. Click **Authenticate**.
 
->**Note:**
-> Bitbucket server needs to do SSL verification when sending webhooks to Rancher. Please ensure that Rancher server's certificate is trusted by the Bitbucket server. There are two options:
->
-> 1. Setup Rancher server with a certificate from a trusted CA.
-> 1. If you're using self-signed certificates, import Rancher server's certificate to the Bitbucket server. For instructions, see the Bitbucket server documentation for [configuring self-signed certificates](https://confluence.atlassian.com/bitbucketserver/if-you-use-self-signed-certificates-938028692.html).
->
+:::note
+
+Bitbucket server needs to do SSL verification when sending webhooks to Rancher. Please ensure that Rancher server's certificate is trusted by the Bitbucket server. There are two options:
+
+1. Setup Rancher server with a certificate from a trusted CA.
+1. If you're using self-signed certificates, import Rancher server's certificate to the Bitbucket server. For instructions, see the Bitbucket server documentation for [configuring self-signed certificates](https://confluence.atlassian.com/bitbucketserver/if-you-use-self-signed-certificates-938028692.html).
+
+:::
+
 {{% /tab %}}
 {{% /tabs %}}
 

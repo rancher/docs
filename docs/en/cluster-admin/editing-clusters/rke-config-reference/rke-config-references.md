@@ -106,9 +106,11 @@ Out of the box, Rancher is compatible with the following network providers:
 - [Calico](https://docs.projectcalico.org/v3.11/introduction/)
 - [Weave](https://github.com/weaveworks/weave)
 
-**Notes on Weave:**
+:::note Notes on Weave:
 
 When Weave is selected as network provider, Rancher will automatically enable encryption by generating a random password. If you want to specify the password manually, please see how to configure your cluster using a [Config File]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/#cluster-config-file) and the [Weave Network Plug-in Options]({{<baseurl>}}/rke/latest/en/config-options/add-ons/network-plugins/#weave-network-plug-in-options).
+
+:::
 
 ### Project Network Isolation
 

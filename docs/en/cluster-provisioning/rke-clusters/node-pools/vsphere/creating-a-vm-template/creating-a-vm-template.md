@@ -18,7 +18,11 @@ In order to leverage the template to create new VMs, Rancher has some [specific 
 
 There is specific tooling required for both Linux and Windows VMs to be usable by the vSphere node driver. The most critical dependency is [cloud-init](https://cloud-init.io/) for Linux and [cloudbase-init](https://cloudbase.it/cloudbase-init/) for Windows. Both of these are used for provisioning the VMs by configuring the hostname and by setting up the SSH access and the default Rancher user. Users can add additional content to these as desired if other configuration is needed. In addition, other requirements are listed below for reference.
 
-**Note:** If you have any specific firewall rules or configuration, you will need to add this to the VM before creating a template.
+:::note
+
+If you have any specific firewall rules or configuration, you will need to add this to the VM before creating a template.
+
+:::
 
 ## Linux Dependencies
 
@@ -48,9 +52,12 @@ The list of packages that need to be installed on the template is as follows:
 * [cloudbase-init](https://cloudbase.it/cloudbase-init/#download)
 * [Docker EE](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-Server#install-docker) - RKE1 Only
 
-**Important to note: The configuration for Windows templates varies between RKE1 and RKE2:**
+:::note About the configuration for Windows templates varies between RKE1 and RKE2:
+
 - RKE1 leverages Docker, so any RKE1 templates need to have Docker EE pre-installed as well
 - RKE2 does not require Docker EE, and thus it does not need to be installed
+
+:::
 
 # Creating a Template
 

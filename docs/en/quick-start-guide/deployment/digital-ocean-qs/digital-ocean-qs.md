@@ -5,12 +5,19 @@ weight: 120
 ---
 The following steps will quickly deploy a Rancher server on DigitalOcean in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+:::note
+
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
+:::
 
 ## Prerequisites
 
->**Note**
->Deploying to DigitalOcean will incur charges.
+:::caution
+
+Deploying to DigitalOcean will incur charges.
+
+:::
 
 - [DigitalOcean Account](https://www.digitalocean.com): You will require an account on DigitalOcean as this is where the server and cluster will run.
 - [DigitalOcean Access Key](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key): Use this link to create a DigitalOcean Access Key if you don't have one.

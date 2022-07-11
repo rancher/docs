@@ -21,4 +21,8 @@ When you create a resource quota, you are configuring the pool of resources avai
 | Replications Controllers | The maximum number of replication controllers that can exist in the project/namespace.                                                                                                            |
 | Secrets                  | The maximum number of secrets that can exist in the project/namespace.                                                                                                                            |
 
->**<sup>*</sup>** When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project / namespace, all containers will require a respective CPU or Memory field set during creation. A container default resource limit can be set at the same time to avoid the need to explicitly set these limits for every workload. See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits) for more details on why this is required.
+:::note Important:
+
+When setting resource quotas, if you set anything related to CPU or Memory (i.e. limits or reservations) on a project / namespace, all containers will require a respective CPU or Memory field set during creation. A container default resource limit can be set at the same time to avoid the need to explicitly set these limits for every workload. See the [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas/#requests-vs-limits) for more details on why this is required.
+
+:::

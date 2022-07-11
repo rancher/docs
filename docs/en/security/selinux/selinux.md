@@ -39,7 +39,11 @@ For more information about installing RKE2 on SELinux-enabled hosts, see the [RK
 
 # Installing the rancher-selinux RPM
 
-> **Requirements:** The rancher-selinux RPM was tested with CentOS 7 and 8.
+:::note Requirement:
+
+The rancher-selinux RPM was tested with CentOS 7 and 8.
+
+:::
 
 ### 1. Set up the yum repo
 
@@ -80,7 +84,11 @@ yum -y install rancher-selinux
 
 # Configuring the Logging Application to Work with SELinux
 
-> **Requirements:** Logging v2 was tested with SELinux on RHEL/CentOS 7 and 8.
+:::note Requirement:
+
+Logging v2 was tested with SELinux on RHEL/CentOS 7 and 8.
+
+:::
 
 Applications do not automatically work once the `rancher-selinux` RPM is installed on the host. They need to be configured to run in an allowed SELinux container domain provided by the RPM. 
 

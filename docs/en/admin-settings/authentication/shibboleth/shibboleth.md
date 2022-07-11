@@ -65,8 +65,12 @@ If your organization uses Shibboleth for user authentication, you can configure 
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Shibboleth IdP to validate your Rancher Shibboleth configuration.
 
-    >**Note:** You may have to disable your popup blocker to see the IdP login page.
+    :::note
+    
+    You may have to disable your popup blocker to see the IdP login page.
 
+    :::
+    
 **Result:** Rancher is configured to work with Shibboleth. Your users can now sign into Rancher using their Shibboleth logins.
 
 ### SAML Provider Caveats

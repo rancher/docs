@@ -25,8 +25,12 @@ When you create a node template, it is bound to your user profile. Node template
 1. Click **RKE1 Configuration > Node Templates**.
 1. Choose the node template that you want to edit and click the **⋮ > Edit**.
 
-	   > **Note:** The default `active` [node drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/) and any node driver, that has fields marked as `password`, are required to use [cloud credentials]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#cloud-credentials).
+	   :::note
+	   
+	   The default `active` [node drivers]({{<baseurl>}}/rancher/v2.6/en/admin-settings/drivers/node-drivers/) and any node driver, that has fields marked as `password`, are required to use [cloud credentials]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#cloud-credentials).
 
+	   :::
+	   
 1. Edit the required information and click **Save**.
 
 **Result:** The node template is updated. All node pools using this node template will automatically use the updated information when new nodes are added.

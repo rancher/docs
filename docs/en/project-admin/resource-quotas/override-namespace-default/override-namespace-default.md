@@ -24,9 +24,11 @@ If there is a resource quota configured for a project, you can override the name
 
     For more information about each **Resource Type**, see [the type reference]({{<baseurl>}}/rancher/v2.6/en/project-admin/resource-quotas/quota-type-reference/).
 
-    >**Note:**
-    >
-    >- If a resource quota is not configured for the project, these options will not be available.
-    >- If you enter limits that exceed the configured project limits, Rancher will not let you save your edits.
+    :::note
+    
+    - If a resource quota is not configured for the project, these options will not be available.
+    - If you enter limits that exceed the configured project limits, Rancher will not let you save your edits.
 
+    :::
+    
 **Result:** Your override is applied to the namespace's resource quota.

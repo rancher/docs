@@ -44,8 +44,12 @@ To simplify the process of managing firewall rules, use NFSv4.
         /nfs <IP_ADDRESS1>(rw,sync,no_subtree_check) <IP_ADDRESS2>(rw,sync,no_subtree_check) <IP_ADDRESS3>(rw,sync,no_subtree_check)
         ```
 
-        **Tip:**  You can replace the IP addresses with a subnet. For example: `10.212.50.12&#47;24`
+        :::tip
+        
+        You can replace the IP addresses with a subnet. For example: `10.212.50.12&#47;24`
 
+        :::
+        
     1. Update the NFS table by entering the following command:
 
         ```

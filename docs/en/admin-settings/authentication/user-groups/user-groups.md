@@ -40,8 +40,11 @@ To change these settings,
 1. In the upper left corner, click **☰ > Global Settings**.
 1. Go to the setting you want to configure and click **⋮ > Edit Setting**.
 
-> **Note:** Since SAML does not support user lookup, SAML-based authentication providers do not support periodically refreshing user information. User information will only be refreshed when the user logs into the Rancher UI.
+:::note
 
+Since SAML does not support user lookup, SAML-based authentication providers do not support periodically refreshing user information. User information will only be refreshed when the user logs into the Rancher UI.
+
+:::
 ### Manually Refreshing User Information
 
 If you are not sure the last time Rancher performed an automatic refresh of user information, you can perform a manual refresh of all users.
@@ -51,8 +54,11 @@ If you are not sure the last time Rancher performed an automatic refresh of user
 
 **Results:** Rancher refreshes the user information for all users. Requesting this refresh will update which users can access Rancher as well as all the groups that each user belongs to.
 
->**Note:** Since SAML does not support user lookup, SAML-based authentication providers do not support the ability to manually refresh user information. User information will only be refreshed when the user logs into the Rancher UI.
+:::note
 
+Since SAML does not support user lookup, SAML-based authentication providers do not support the ability to manually refresh user information. User information will only be refreshed when the user logs into the Rancher UI.
+
+:::
 
 ## Session Length
 

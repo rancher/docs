@@ -10,7 +10,11 @@ weight: 250
 - Creation of your first cluster
 - Deployment of an application, Nginx
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. The Docker install is not recommended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+:::note
+
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. The Docker install is not recommended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
+:::
 
 ## Quick Start Outline
 
@@ -42,12 +46,14 @@ This Quick Start Guide is divided into different tasks for easier consumption.
   - [Equinix Metal Server Types](https://metal.equinix.com/developers/docs/servers/about/)
   - [Equinix Metal Pricing](https://metal.equinix.com/developers/docs/servers/server-specs/)
 
-  **Note:**
-  > When provisioning a new Equinix Metal Server via the CLI or API you will need to be able to provide the following information:  project-id, plan, metro, and the operating-system
-  > When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
-  > For a full list of port requirements, refer to [Docker Installation]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/).
-  > Provision the host according to our [Requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/).
+:::note Notes:
 
+- When provisioning a new Equinix Metal Server via the CLI or API you will need to be able to provide the following information:  project-id, plan, metro, and the operating-system
+- When using a cloud-hosted virtual machine you need to allow inbound TCP communication to ports 80 and 443.  Please see your cloud-host's documentation for information regarding port configuration.
+- For a full list of port requirements, refer to [Docker Installation]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/node-requirements/).
+- Provision the host according to our [Requirements]({{<baseurl>}}/rancher/v2.6/en/installation/requirements/).
+
+:::
 ### 2. Install Rancher
 
 To install Rancher on your Equinix Metal host, connect to it and then use a shell to install.

@@ -22,8 +22,11 @@ For details on configuring RKE Kubernetes clusters in Rancher, refer to the [clu
 
 The following sections describe the requirements for setting up Nutanix AOS so that Rancher can provision VMs and clusters.
 
-**Note:** The node templates are documented and tested with Nutanix AOS version 5.20.2 and 6.0.1.
+:::note
 
+The node templates are documented and tested with Nutanix AOS version 5.20.2 and 6.0.1.
+
+:::
 ### Create Credentials in Nutanix AOS
 
 Before proceeding to create a cluster, you must ensure that you have a [Nutanix Prism Central user account](https://portal.nutanix.com/page/documents/details?targetId=Nutanix-Security-Guide-v6_0:wc-user-create-wc-t.html) with admin permissions. When you set up a node template, the template will need to use these credentials.

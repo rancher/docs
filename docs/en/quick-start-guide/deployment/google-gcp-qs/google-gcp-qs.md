@@ -5,12 +5,19 @@ weight: 130
 ---
 The following steps will quickly deploy a Rancher server on GCP in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+:::note
+
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
+:::
 
 ## Prerequisites
 
->**Note**
->Deploying to Google GCP will incur charges.
+:::caution
+
+Deploying to Google GCP will incur charges.
+
+:::
 
 - [Google GCP Account](https://console.cloud.google.com/): A Google GCP Account is required to create resources for deploying Rancher and Kubernetes.
 - [Google GCP Project](https://cloud.google.com/appengine/docs/standard/nodejs/building-app/creating-project): Use this link to follow a tutorial to create a GCP Project if you don't have one yet.
