@@ -131,7 +131,7 @@ The following resources need to tagged with a `ClusterID`:
 - **Subnet**: The subnet used for your cluster.
 - **Security Group**: The security group used for your cluster.
 
-::note
+:::note
 
 Do not tag multiple security groups. Tagging multiple groups generates an error when creating an Elastic Load Balancer (ELB).
 
