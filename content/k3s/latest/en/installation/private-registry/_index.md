@@ -33,7 +33,7 @@ mirrors:
 Each mirror must have a name and set of endpoints. When pulling an image from a registry, containerd will try these endpoint URLs one by one, and use the first working one.
 
 #### Rewrites
-
+_Available as of v1.21.0+k3s1_
 Each mirror can have a set of rewrites. Rewrites can change the tag of an image based on a regular expression. This is useful if the organization/project structure in the mirror registry is different to the upstream one.
 
 For example, the following configuration would transparently pull the image `docker.io/rancher/coredns-coredns:1.6.3` from `registry.example.com:5000/mirrorproject/rancher-images/coredns-coredns:1.6.3`:
