@@ -99,7 +99,11 @@ When there are taints on the node pool and node template, if there is no conflic
 
 If a node is in a node pool, Rancher can automatically replace unreachable nodes. Rancher will use the existing node template for the given node pool to recreate the node if it becomes inactive for a specified number of minutes.
 
-> **Important:** Self-healing node pools are designed to help you replace worker nodes for <b>stateless</b> applications. It is not recommended to enable node auto-replace on a node pool of master nodes or nodes with persistent volumes attached, because VMs are treated ephemerally. When a node in a node pool loses connectivity with the cluster, its persistent volumes are destroyed, resulting in data loss for stateful applications.
+:::caution
+
+Self-healing node pools are designed to help you replace worker nodes for <b>stateless</b> applications. It is not recommended to enable node auto-replace on a node pool of master nodes or nodes with persistent volumes attached, because VMs are treated ephemerally. When a node in a node pool loses connectivity with the cluster, its persistent volumes are destroyed, resulting in data loss for stateful applications.
+
+:::
 
 Node auto-replace works on top of the Kubernetes node controller. The node controller periodically checks the status of all the nodes (configurable via the `--node-monitor-period` flag of the `kube-controller`). When a node is unreachable, the node controller will taint that node. When this occurs, Rancher will begin its deletion countdown. You can configure the amount of time Rancher waits to delete the node. If the taint is not removed before the deletion countdown ends, Rancher will proceed to delete the node object. Rancher will then provision a node in accordance with the set quantity of the node pool.
 
@@ -144,7 +148,11 @@ If you don't find the node driver that you want to use, you can see if it is ava
 
 Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters directly from the Rancher UI. RKE2, also known as RKE Government, is a fully conformant Kubernetes distribution that focuses on security and compliance within the U.S. Federal Government sector.
 
-> **Note:** For RKE2 cluster templates, please refer to [this page]({{<baseurl>}}/rancher/v2.6/en/admin-settings/cluster-templates/#rke2-cluster-template) for additional information. 
+:::note
+
+For RKE2 cluster templates, please refer to [this page]({{<baseurl>}}/rancher/v2.6/en/admin-settings/cluster-templates/#rke2-cluster-template) for additional information. 
+
+:::
 
 ### Node Roles
 

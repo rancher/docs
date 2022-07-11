@@ -7,7 +7,11 @@ aliases:
 
 This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.6. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-> This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
+:::note
+
+This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
+
+:::
 
 This hardening guide is intended to be used for RKE clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
 
@@ -115,7 +119,11 @@ Network Policies are namespace scoped. When a network policy is introduced to a 
 
 Once a CNI provider is enabled on a cluster a default network policy can be applied. For reference purposes a **permissive** example is provided below. If you want to allow all traffic to all pods in a namespace (even if policies are added that cause some pods to be treated as “isolated”), you can create a policy that explicitly allows all traffic in that namespace. Save the following configuration as `default-allow-all.yaml`. Additional [documentation](https://kubernetes.io/docs/concepts/services-networking/network-policies/) about network policies can be found on the Kubernetes site.
 
-> This `NetworkPolicy` is just an example and is not recommended for production use.
+:::note
+
+This `NetworkPolicy` is just an example and is not recommended for production use.
+
+:::
 
 ```yaml
 ---
@@ -150,7 +158,11 @@ Execute this script to apply the `default-allow-all.yaml` configuration with the
 
 The reference `cluster.yml` is used by the RKE CLI that provides the configuration needed to achieve a hardened install of Rancher Kubernetes Engine (RKE). RKE install [documentation]({{<baseurl>}}/rke/latest/en/installation/) is provided with additional details about the configuration items. This reference `cluster.yml` does not include the required **nodes** directive which will vary depending on your environment. Documentation for node configuration in RKE can be found [here]({{<baseurl>}}/rke/latest/en/config-options/nodes/).
 
-> For a Kubernetes v1.18 cluster, the configuration `spec.volumes: 'ephemeral'` should be removed from the `PodSecurityPolicy`, since it's not supported in this Kubernetes release.
+:::note Important:
+
+For a Kubernetes v1.18 cluster, the configuration `spec.volumes: 'ephemeral'` should be removed from the `PodSecurityPolicy`, since it's not supported in this Kubernetes release.
+
+:::
 
 ```yaml
 # If you intend to deploy Kubernetes in an air-gapped environment,

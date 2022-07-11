@@ -16,7 +16,11 @@ Currently, deployments pull the private registry credentials automatically only 
 
 # Creating a Registry in Namespaces
 
->**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
+:::note Prerequisite:
+
+You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
+
+:::
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. Go to the cluster where you want to add a registry and click **Explore**.
@@ -25,7 +29,11 @@ Currently, deployments pull the private registry credentials automatically only 
 1. Click **Registry**.
 1. Enter a **Name** for the registry.
 
-    >**Note:** Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
+    :::note
+    
+    Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
+
+    :::
 
 1. Select a namespace for the registry.
 1. Select the website that hosts your private registry. Then enter credentials that authenticate with the registry. For example, if you use DockerHub, provide your DockerHub username and password.
@@ -39,7 +47,11 @@ Currently, deployments pull the private registry credentials automatically only 
 
 # Creating a Registry in Projects
 
->**Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
+:::note Prerequisites: 
+
+You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
+
+:::
 
 Before v2.6, secrets were required to be in a project scope. Projects are no longer required, and you may use the namespace scope instead. As a result, the Rancher UI was updated to reflect this new functionality. However, you may still create a project-scoped registry if desired. Use the following steps to do so:
 
@@ -54,7 +66,11 @@ Before v2.6, secrets were required to be in a project scope. Projects are no lon
 1. In the top navigation bar, filter to see only one project.
 1. Enter a **Name** for the registry.
 
-    >**Note:** Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
+    :::note
+    
+    Kubernetes classifies secrets, certificates, and registries all as [secrets](https://kubernetes.io/docs/concepts/configuration/secret/), and no two secrets in a project or namespace can have duplicate names. Therefore, to prevent conflicts, your registry must have a unique name among all secrets within your workspace.
+
+    :::
 
 1. Select a namespace for the registry.
 1. Select the website that hosts your private registry. Then enter credentials that authenticate with the registry. For example, if you use DockerHub, provide your DockerHub username and password.
@@ -66,7 +82,11 @@ Before v2.6, secrets were required to be in a project scope. Projects are no lon
 - You can view the secret in the Rancher UI by clicking either **Storage > Secrets** or **More Resources > Core > Secrets**.
 - Any workload that you create in the Rancher UI will have the credentials to access the registry if the workload is within the registry's scope.
 
->**Note:** Project-scoped registries on the local cluster are only visible when a single project is selected.
+:::note
+
+Project-scoped registries on the local cluster are only visible when a single project is selected.
+
+:::
 
 # Using a Private Registry
 

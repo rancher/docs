@@ -31,7 +31,11 @@ Rancher and RKE install Kubernetes services via Docker containers. Configuration
 
 Where control audits differ from the original CIS benchmark, the audit commands specific to Rancher are provided for testing. When performing the tests, you will need access to the command line on the hosts of all RKE nodes. The commands also make use of the [kubectl](https://kubernetes.io/docs/tasks/tools/) (with a valid configuration file) and [jq](https://stedolan.github.io/jq/) tools, which are required in the testing and evaluation of test results.
 
-> NOTE: Only `automated` tests (previously called `scored`) are covered in this guide.
+:::note
+
+Only `automated` tests (previously called `scored`) are covered in this guide.
+
+:::
 
 ### Controls
 ## 1.1 Master Node Configuration Files

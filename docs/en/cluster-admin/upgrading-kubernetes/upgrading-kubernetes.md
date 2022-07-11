@@ -45,10 +45,12 @@ The restore operation will work on a cluster that is not in a healthy or active 
 
 # Upgrading the Kubernetes Version
 
-> **Prerequisites:**
->
-> - The options below are available only for [Rancher-launched RKE Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) and [Registered K3s Kubernetes clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#additional-features-for-registered-k3s-clusters)
-> - Before upgrading Kubernetes, [back up your cluster.]({{<baseurl>}}/rancher/v2.6/en/backups)
+:::note Prerequisites:
+
+- The options below are available only for [Rancher-launched RKE Kubernetes clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) and [Registered K3s Kubernetes clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#additional-features-for-registered-k3s-clusters)
+- Before upgrading Kubernetes, [back up your cluster.]({{<baseurl>}}/rancher/v2.6/en/backups)
+
+:::
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster you want to upgrade and click **⋮ > Edit Config**.
@@ -102,7 +104,11 @@ To enable draining each node during a cluster upgrade,
 
 **Result:** The cluster is updated to use the new upgrade strategy.
 
-> **Note:** As of Rancher v2.4.0, there is a [known issue](https://github.com/rancher/rancher/issues/25478) in which the Rancher UI doesn't show state of etcd and controlplane as drained, even though they are being drained.
+:::note
+
+As of Rancher v2.4.0, there is a [known issue](https://github.com/rancher/rancher/issues/25478) in which the Rancher UI doesn't show state of etcd and controlplane as drained, even though they are being drained.
+
+:::
 
 ### Maintaining Availability for Applications During Upgrades
 

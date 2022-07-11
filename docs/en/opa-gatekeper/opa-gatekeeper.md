@@ -24,9 +24,17 @@ OPA Gatekeeper is made available via Rancher's Helm system chart, and it is inst
 
 # Enabling OPA Gatekeeper in a Cluster
 
-> In Rancher v2.5, the OPA Gatekeeper application was improved. The Rancher v2.4 feature can't be upgraded to the new version in Rancher v2.5. If you installed OPA Gatekeeper in Rancher v2.4, you will need to uninstall OPA Gatekeeper and its CRDs from the old UI, then reinstall it in Rancher v2.5. To uninstall the CRDs run the following command in the kubectl console `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh`.
+:::note
 
-> **Prerequisite:** Only administrators and cluster owners can enable OPA Gatekeeper.
+In Rancher v2.5, the OPA Gatekeeper application was improved. The Rancher v2.4 feature can't be upgraded to the new version in Rancher v2.5. If you installed OPA Gatekeeper in Rancher v2.4, you will need to uninstall OPA Gatekeeper and its CRDs from the old UI, then reinstall it in Rancher v2.5. To uninstall the CRDs run the following command in the kubectl console `kubectl delete crd configs.config.gatekeeper.sh constrainttemplates.templates.gatekeeper.sh`.
+
+:::
+
+:::note Prerequisite:
+
+Only administrators and cluster owners can enable OPA Gatekeeper.
+
+:::
 
 The OPA Gatekeeper Helm chart can be installed from **Apps & Marketplace**.
 
@@ -54,7 +62,11 @@ Rancher also provides the ability to create your own constraint templates by imp
 
 [Constraints](https://github.com/open-policy-agent/gatekeeper#constraints) are Kubernetes custom resources that define the scope of objects to which a specific constraint template applies to. The complete policy is defined by constraint templates and constraints together.
 
-> **Prerequisites:** OPA Gatekeeper must be enabled in the cluster.
+:::note Prerequisite:
+
+OPA Gatekeeper must be enabled in the cluster.
+
+:::
 
 To list the constraints installed, go to the left side menu under OPA Gatekeeper, and click on **Constraints**.
 

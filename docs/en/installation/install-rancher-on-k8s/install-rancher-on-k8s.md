@@ -53,7 +53,11 @@ To choose a Rancher version to install, refer to [Choosing a Rancher Version.]({
 
 To choose a version of Helm to install Rancher with, refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.6/en/installation/resources/helm-version)
 
-> **Note:** The installation instructions assume you are using Helm 3.
+:::note
+
+The installation instructions assume you are using Helm 3.
+
+:::
 
 To set up Rancher,
 
@@ -87,7 +91,11 @@ kubectl create namespace cattle-system
 
 The Rancher management server is designed to be secure by default and requires SSL/TLS configuration.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
+:::note
+
+If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination).
+
+:::
 
 There are three recommended options for the source of the certificate used for TLS termination at the Rancher server:
 
@@ -104,7 +112,11 @@ There are three recommended options for the source of the certificate used for T
 
 ### 4. Install cert-manager
 
-**Note:** New in v2.6.4, cert-manager versions 1.6.2 and 1.7.1 are compatible. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022.
+:::note
+
+New in v2.6.4, cert-manager versions 1.6.2 and 1.7.1 are compatible. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022.
+
+:::
 
 > You should skip this step if you are bringing your own certificate files (option `ingress.tls.source=secret`), or if you use [TLS termination on an external load balancer]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#external-tls-termination). 
 
@@ -112,7 +124,11 @@ This step is only required to use certificates issued by Rancher's generated CA 
 
 {{% accordion id="cert-manager" label="Click to Expand" %}}
 
-> **Important:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
+:::note Important:
+
+Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/).
+
+:::
 
 These instructions are adapted from the [official cert-manager documentation](https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm).
 
@@ -152,7 +168,11 @@ The exact command to install Rancher differs depending on the certificate config
 
 However, irrespective of the certificate configuration, the name of the Rancher installation in the `cattle-system` namespace should always be `rancher`.
 
-> **Tip for testing and development:** This final command to install Rancher requires a domain name that forwards traffic to Rancher. If you are using the Helm CLI to set up a proof-of-concept, you can use a fake domain name when passing the `hostname` option. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`, which would expose Rancher on an IP where it is running. Production installs would require a real domain name.
+:::tip Testing and Development:
+
+This final command to install Rancher requires a domain name that forwards traffic to Rancher. If you are using the Helm CLI to set up a proof-of-concept, you can use a fake domain name when passing the `hostname` option. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`, which would expose Rancher on an IP where it is running. Production installs would require a real domain name.
+
+:::
 
 {{% tabs %}}
 {{% tab "Rancher-generated Certificates" %}}
@@ -187,7 +207,11 @@ deployment "rancher" successfully rolled out
 
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA.
 
->**Note:** You need to have port 80 open as the HTTP-01 challenge can only be done on port 80.
+:::note
+
+You need to have port 80 open as the HTTP-01 challenge can only be done on port 80.
+
+:::
 
 In the following command,
 
@@ -224,7 +248,11 @@ When you run this command, the `hostname` option must match the `Common Name` or
 
 Although an entry in the `Subject Alternative Names` is technically required, having a matching `Common Name` maximizes compatibility with older browsers and applications.
 
-> If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.6/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
+:::note
+
+If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.6/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
+
+:::
 
 - Set the `hostname`.
 - Set the `bootstrapPassword` to something unique for the `admin` user.

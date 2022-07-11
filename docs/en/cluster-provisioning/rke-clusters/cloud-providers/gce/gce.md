@@ -7,7 +7,11 @@ In this section, you'll learn how to enable the Google Compute Engine (GCE) clou
 
 The official Kubernetes documentation for the GCE cloud provider is [here.](https://kubernetes.io/docs/concepts/cluster-administration/cloud-providers/#gce)
 
-> **Prerequisites:** The service account of `Identity and API` access on GCE needs the `Computer Admin` permission.
+:::note Prerequisites:
+
+The service account of `Identity and API` access on GCE needs the `Computer Admin` permission.
+
+:::
 
 If you are using Calico,
 

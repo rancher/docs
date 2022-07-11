@@ -5,11 +5,13 @@ weight: 2
 
 This page outlines how to perform a restore with Rancher.
 
-> **Important**
->
-> * Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
-> * While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
-> * If you need to restore Rancher to a previous version after an upgrade, see the [rollback documentation.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/rollbacks/)
+:::note Important:
+
+* Follow the instructions from this page for restoring rancher on the same cluster where it was backed up from. In order to migrate rancher to a new cluster, follow the steps to [migrate rancher.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
+* While restoring rancher on the same setup, the operator will scale down the rancher deployment when restore starts, and it will scale back up the deployment once restore completes. So Rancher will be unavailable during the restore.
+* If you need to restore Rancher to a previous version after an upgrade, see the [rollback documentation.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/rollbacks/)
+
+:::
 
 ### Additional Steps for Rollbacks with Rancher v2.6.4+
 
@@ -17,7 +19,11 @@ In Rancher v2.6.4, the cluster-api module has been upgraded from v0.4.4 to v1.0.
 
 To avoid this, the Rancher resource cleanup scripts should be run **before** the restore or rollback is attempted. Specifically, two scripts have been created to assist you: one to clean up the cluster (`cleanup.sh`), and one to check for any Rancher-related resources in the cluster (`verify.sh`). Details on the cleanup script can be found in the [rancherlabs/support-tools repo](https://github.com/rancherlabs/support-tools/tree/master/rancher-cleanup).
 
-> **Caution** Rancher will be down as the `cleanup` script runs as it deletes the resources created by rancher.
+:::caution
+
+Rancher will be down as the `cleanup` script runs as it deletes the resources created by rancher.
+
+:::
 
 The additional preparations:
 

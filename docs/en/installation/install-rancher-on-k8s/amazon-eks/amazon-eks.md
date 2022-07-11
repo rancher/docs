@@ -45,11 +45,13 @@ Deploying this Quick Start for a new virtual private cloud (VPC) and new Amazon 
 
 In this section, you'll install an EKS cluster with an ingress by using command line tools. This guide may be useful if you want to use fewer resources while trying out Rancher on EKS.
 
-> **Prerequisites:**
->
-> - You should already have an AWS account.
-> - It is recommended to use an IAM user instead of the root AWS account. You will need the IAM user's access key and secret key to configure the AWS command line interface.
-> - The IAM user needs the minimum IAM policies described in the official [eksctl documentation.](https://eksctl.io/usage/minimum-iam-policies/)
+:::note Prerequisites:
+
+- You should already have an AWS account.
+- It is recommended to use an IAM user instead of the root AWS account. You will need the IAM user's access key and secret key to configure the AWS command line interface.
+- The IAM user needs the minimum IAM policies described in the official [eksctl documentation.](https://eksctl.io/usage/minimum-iam-policies/)
+
+:::
 
 ### 1. Prepare your Workstation
 

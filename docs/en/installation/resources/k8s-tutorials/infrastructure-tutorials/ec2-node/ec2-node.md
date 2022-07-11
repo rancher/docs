@@ -36,7 +36,11 @@ If the Rancher server is installed in a single Docker container, you only need o
 
 **Result:** You have created Rancher nodes that satisfy the requirements for OS, hardware, and networking.
 
-**Note:** If the nodes are being used for an RKE Kubernetes cluster, install Docker on each node in the next step. For a K3s Kubernetes cluster, the nodes are now ready to install K3s.
+:::note
+
+If the nodes are being used for an RKE Kubernetes cluster, install Docker on each node in the next step. For a K3s Kubernetes cluster, the nodes are now ready to install K3s.
+
+:::
 
 ### 3. Install Docker and Create User for RKE Kubernetes Cluster Nodes
 
@@ -56,7 +60,11 @@ sudo usermod -aG docker ubuntu
 ```
 1. Repeat these steps so that Docker is installed on each node that will eventually run the Rancher management server.
 
-> To find out whether a script is available for installing a certain Docker version, refer to this [GitHub repository,](https://github.com/rancher/install-docker) which contains all of Rancher’s Docker installation scripts.
+:::tip
+
+To find out whether a script is available for installing a certain Docker version, refer to this [GitHub repository,](https://github.com/rancher/install-docker) which contains all of Rancher’s Docker installation scripts.
+
+:::
 
 **Result:** You have set up Rancher server nodes that fulfill all the node requirements for OS, Docker, hardware and networking.
 

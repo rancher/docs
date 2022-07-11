@@ -31,22 +31,27 @@ Provision a single Linux host according to our [Requirements]({{<baseurl>}}/ranc
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
-> **Do you want to..**.
->
-> - Complete an Air Gap Installation?
-> - Record all transactions with the Rancher API?
->
-> See [Advanced Options](#advanced-options) below before continuing.
+:::note Do you want to..
+
+- Complete an Air Gap Installation?
+- Record all transactions with the Rancher API?
+
+See [Advanced Options](#advanced-options) below before continuing.
+
+:::
 
 Choose from the following options:
 
 {{% accordion id="option-a" label="Option A-Bring Your Own Certificate: Self-Signed" %}}
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate.
 
-> **Prerequisites:**
-> Create a self-signed certificate.
->
-> - The certificate files must be in PEM format.
+:::note Prerequisites:
+
+Create a self-signed certificate.
+
+- The certificate files must be in PEM format.
+
+:::
 
 **To Install Rancher Using a Self-Signed Cert:**
 
@@ -63,9 +68,11 @@ If you elect to use a self-signed certificate to encrypt communication, you must
 {{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Signed by Recognized CA" %}}
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
-> **Prerequisites:**
->
-> - The certificate files must be in PEM format.
+:::note Prerequisites:
+
+- The certificate files must be in PEM format.
+
+:::
 
 **To Install Rancher Using a Cert Signed by a Recognized CA:**
 
@@ -101,7 +108,11 @@ The load balancer or proxy has to be configured to support the following:
 
 This NGINX configuration is tested on NGINX 1.14.
 
-> **Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
+:::note
+
+This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - HTTP Load Balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/).
+
+:::
 
 - Replace `rancher-server` with the IP address or hostname of the node running the Rancher container.
 - Replace both occurrences of `FQDN` to the DNS name for Rancher.
@@ -205,7 +216,11 @@ As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/
 
 This layer 7 NGINX configuration is tested on NGINX version 1.13 (mainline) and 1.14 (stable).
 
-> **Note:** This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
+:::note 
+
+This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
+
+:::
 
 ```
 upstream rancher {

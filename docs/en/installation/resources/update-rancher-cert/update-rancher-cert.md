@@ -59,7 +59,11 @@ $ kubectl -n cattle-system create secret generic tls-ca \
 
 ## 3. Reconfigure the Rancher deployment
 
-> Before proceeding, generate an API token in the Rancher UI (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
+:::note
+
+Before proceeding, generate an API token in the Rancher UI (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
+
+:::
 
 This step is required if Rancher was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
 
@@ -157,7 +161,11 @@ Fleet agents in Rancher managed clusters store kubeconfig that is used to connec
 
 # Updating from a Private CA Certificate to a Common Certificate
 
->It is possible to perform the opposite procedure as shown above: you may change from a private certificate to a common, or non-private, certificate. The steps involved are outlined below.
+:::note
+
+It is possible to perform the opposite procedure as shown above: you may change from a private certificate to a common, or non-private, certificate. The steps involved are outlined below.
+
+:::
 
 ## 1. Create/update the certificate secret resource
 
@@ -198,7 +206,11 @@ kubectl -n cattle-system delete secret tls-ca
 
 ## 3. Reconfigure the Rancher deployment
 
-> Before proceeding, [generate an API token in the Rancher UI]({{<baseurl>}}/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) (<b>User > API & Keys</b>).
+:::note Important:
+
+Before proceeding, [generate an API token in the Rancher UI]({{<baseurl>}}/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) (<b>User > API & Keys</b>).
+
+:::
 
 This step is required if Rancher was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
 

@@ -78,7 +78,11 @@ For tags, all your vSphere tags will show up as options to select from in your n
 
 In the custom attributes, Rancher will let you select all the custom attributes you have already set up in vSphere. The custom attributes are keys and you can enter values for each one.
 
-> **Note:** Custom attributes are a legacy feature that will eventually be removed from vSphere.
+:::note
+
+Custom attributes are a legacy feature that will eventually be removed from vSphere.
+
+:::
 
 # cloud-init
 

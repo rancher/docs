@@ -20,14 +20,21 @@ Resources that you can assign directly to namespaces include:
 
 To manage permissions in a vanilla Kubernetes cluster, cluster admins configure role-based access policies for each namespace. With Rancher, user permissions are assigned on the project level instead, and permissions are automatically inherited by any namespace owned by the particular project.
 
-> **Note:** If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.6/en/project-admin/namespaces) to ensure that you will have permission to access the namespace.
+:::note
 
+If you create a namespace with `kubectl`, it may be unusable because `kubectl` doesn't require your new namespace to be scoped within a project that you have access to. If your permissions are restricted to the project level, it is better to [create a namespace through Rancher]({{<baseurl>}}/rancher/v2.6/en/project-admin/namespaces) to ensure that you will have permission to access the namespace.
+
+:::
 
 ### Creating Namespaces
 
 Create a new namespace to isolate apps and resources in a project.
 
->**Tip:** When working with project resources that you can assign to a namespace (i.e., [workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads/), [certificates]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/certificates/), [ConfigMaps]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/configmaps), etc.) you can create a namespace on the fly.
+:::tip
+
+When working with project resources that you can assign to a namespace (i.e., [workloads]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/workloads/deploy-workloads/), [certificates]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/certificates/), [ConfigMaps]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/configmaps), etc.) you can create a namespace on the fly.
+
+:::
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster where you want to create a namespace and click **Explore**.
@@ -51,11 +58,11 @@ Cluster admins and members may occasionally need to move a namespace to another 
 
 1. Select the namespace(s) that you want to move to a different project. Then click **Move**. You can move multiple namespaces at one.
 
-    >**Notes:**
-    >
-    >- Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
-    >- You cannot move a namespace into a project that already has a [resource quota]({{<baseurl>}}/rancher/v2.6/en/project-admin/resource-quotas)configured.
-    >- If you move a namespace from a project that has a quota set to a project with no quota set, the quota is removed from the namespace.
+    :::note Notes:
+    
+    - Don't move the namespaces in the `System` project. Moving these namespaces can adversely affect cluster networking.
+    - You cannot move a namespace into a project that already has a [resource quota]({{<baseurl>}}/rancher/v2.6/en/project-admin/resource-quotas)configured.
+    - If you move a namespace from a project that has a quota set to a project with no quota set, the quota is removed from the namespace.
 
 1. Choose a new project for the new namespace and then click **Move**. Alternatively, you can remove the namespace from all projects by selecting **None**.
 

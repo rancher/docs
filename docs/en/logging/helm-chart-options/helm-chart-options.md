@@ -20,7 +20,11 @@ By default, Windows node logging will be enabled if the Cluster Dashboard UI is 
 In this scenario, setting `global.cattle.windows.enabled` to `false` will disable Windows node logging on the cluster.
 When disabled, logs will still be collected from Linux nodes within the Windows cluster.
 
-> Note: Currently an [issue](https://github.com/rancher/rancher/issues/32325) exists where Windows nodeAgents are not deleted when performing a `helm upgrade` after disabling Windows logging in a Windows cluster. In this scenario, users may need to manually remove the Windows nodeAgents if they are already installed.
+:::note
+
+Currently an [issue](https://github.com/rancher/rancher/issues/32325) exists where Windows nodeAgents are not deleted when performing a `helm upgrade` after disabling Windows logging in a Windows cluster. In this scenario, users may need to manually remove the Windows nodeAgents if they are already installed.
+
+:::
 
 ### Working with a Custom Docker Root Directory
 
@@ -38,7 +42,11 @@ You can add your own `nodeSelector` settings and add `tolerations` for additiona
 
 ### Enabling the Logging Application to Work with SELinux
 
-> **Requirements:** Logging v2 was tested with SELinux on RHEL/CentOS 7 and 8.
+:::note Requirements:
+
+Logging v2 was tested with SELinux on RHEL/CentOS 7 and 8.
+
+:::
 
 [Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a security enhancement to Linux. After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
 
@@ -84,8 +92,12 @@ K3s and RKE2 Kubernetes distributions log to journald, which is the subsystem of
   * If `/var/log/journal` exists, then use `/var/log/journal`. 
   * If `/var/log/journal` does not exist, then use `/run/log/journal`. 
 
-> **Note:** If any value not described above is returned, Rancher Logging will not be able to collect control plane logs. To address this issue, you will need to perform the following actions on every control plane node:
+:::note Notes:
 
-> * Set `Storage=volatile` in  journald.conf.
-> * Reboot your machine.
-> * Set `systemdLogPath` to `/run/log/journal`. 
+If any value not described above is returned, Rancher Logging will not be able to collect control plane logs. To address this issue, you will need to perform the following actions on every control plane node:
+
+* Set `Storage=volatile` in  journald.conf.
+* Reboot your machine.
+* Set `systemdLogPath` to `/run/log/journal`.
+
+:::

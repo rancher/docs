@@ -9,7 +9,11 @@ The backup-restore operator needs to be installed in the local cluster, and only
 
 Note that the rancher-backup operator version 2.x.x is for Rancher v2.6.x.
 
-> When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made. The Kubernetes version should also be considered when restoring a backup, since the supported apiVersion in the cluster and in the backup file could be different.
+::: caution
+
+When restoring a backup into a new Rancher setup, the version of the new setup should be the same as the one where the backup is made. The Kubernetes version should also be considered when restoring a backup, since the supported apiVersion in the cluster and in the backup file could be different.
+
+:::
 
 ### Prerequisites
 
@@ -31,7 +35,11 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 1. Configure the default storage location. For help, refer to the [storage configuration section.](../configuration/storage-config)
 1. Click **Install**.
 
->**NOTE:** There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
+:::note
+
+There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
+
+:::
 
 ### 2. Perform a Backup
 
@@ -65,11 +73,20 @@ To perform a backup, a custom resource of type Backup must be created.
       retentionCount: 10
       ```
 
-    > **Note:** When creating the Backup resource using YAML editor, the `resourceSetName` must be set to `rancher-resource-set`
+    :::note
+    
+    When creating the Backup resource using YAML editor, the `resourceSetName` must be set to `rancher-resource-set`
 
-    For help configuring the Backup, refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup)    
+    :::
 
-    > **Important:** The `rancher-backup` operator doesn't save the EncryptionConfiguration file. The contents of the EncryptionConfiguration file must be saved when an encrypted backup is created, and the same file must be used when restoring from this backup.
+    For help configuring the Backup, refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup) 
+
+    :::caution
+
+    The `rancher-backup` operator doesn't save the EncryptionConfiguration file. The contents of the EncryptionConfiguration file must be saved when an encrypted backup is created, and the same file must be used when restoring from this backup.
+
+    :::
+    
 1. Click **Create**.
 
 **Result:** The backup file is created in the storage location configured in the Backup custom resource. The name of this file is used when performing a restore.

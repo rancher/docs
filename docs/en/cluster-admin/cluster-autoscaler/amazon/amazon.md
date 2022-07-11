@@ -516,7 +516,11 @@ Once the manifest file is prepared, deploy it in the Kubernetes cluster (Rancher
 kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
 ```
 
-**Note:** Cluster-autoscaler deployment can also be set up using [manual configuration](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/aws#manual-configuration)
+:::note
+
+Cluster-autoscaler deployment can also be set up using [manual configuration](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler/cloudprovider/aws#manual-configuration)
+
+:::
 
 # Testing
 

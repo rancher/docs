@@ -84,8 +84,11 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
     rancher-<CHART_REPO>	 https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-    > **Note:** If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{<baseurl>}}/rancher/v2.6/en/installation/resources/choosing-version/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
+    :::note
+    
+    If you want to switch to a different Helm chart repository, please follow the [steps on how to switch repositories]({{<baseurl>}}/rancher/v2.6/en/installation/resources/choosing-version/#switching-to-a-different-helm-chart-repository). If you switch repositories, make sure to list the repositories again before continuing onto Step 3 to ensure you have the correct one added.
 
+    :::
 
 1. Fetch the latest chart to install Rancher from the Helm chart repository.
 
@@ -104,7 +107,11 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
 
 This section describes how to upgrade normal (Internet-connected) or air gap installations of Rancher with Helm.
 
-> **Air Gap Instructions:** If you are installing Rancher in an air gapped environment, skip the rest of this page and render the Helm template by following the instructions on [this page.](./air-gap-upgrade)
+:::note Air Gap Instructions:
+
+If you are installing Rancher in an air gapped environment, skip the rest of this page and render the Helm template by following the instructions on [this page.](./air-gap-upgrade)
+
+:::
 
 
 Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
@@ -115,7 +122,12 @@ helm get values rancher -n cattle-system
 hostname: rancher.my.org
 ```
 
-> **Note:** There will be more values that are listed with this command. This is just an example of one of the values.
+:::note
+
+There will be more values that are listed with this command. This is just an example of one of the values.
+
+:::
+
 
 If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, follow [Option B: Reinstalling Rancher and cert-manager.](#option-b-reinstalling-rancher-and-cert-manager)
 
@@ -133,7 +145,11 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
   --set hostname=rancher.my.org
 ```
 
-> **Note:** The above is an example, there may be more values from the previous step that need to be appended.
+:::note
+
+The above is an example, there may be more values from the previous step that need to be appended.
+
+:::
 
 Alternatively, it's possible to export the current values to a file and reference that file during upgrade. For example, to only change the Rancher version:
 
@@ -176,9 +192,13 @@ If you are currently running the cert-manager whose version is 1.5 or below, and
 
 Log into Rancher to confirm that the upgrade succeeded.
 
->**Having network issues following upgrade?**
->
-> See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/namespace-migration).
+:::tip
+
+Having network issues following upgrade?
+
+See [Restoring Cluster Networking]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/namespace-migration).
+
+:::
 
 # Known Upgrade Issues
 

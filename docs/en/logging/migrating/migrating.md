@@ -27,7 +27,11 @@ To install logging in Rancher v2.5+, refer to the [installation instructions]({{
 
 In v2.5+, logging configuration in the **Cluster Dashboard**. To configure logging custom resources after the Logging application is installed, go to the left navigation bar and click **Logging**. It is from this menu option that logging for both cluster and namespace is configured. 
 
-> Note: Logging is installed on a per-cluster basis. You will need to navigate between clusters to configure logging for each cluster. 
+:::note
+
+Logging is installed on a per-cluster basis. You will need to navigate between clusters to configure logging for each cluster. 
+
+:::
 
 There are four key concepts to understand for v2.5+ logging:
 
@@ -51,7 +55,11 @@ There are four key concepts to understand for v2.5+ logging:
 
 To configure cluster-wide logging for v2.5+ logging, one needs to set up a `ClusterFlow`. This object defines the source of logs, any transformations or filters to be applied, and finally the `Output` (or `Outputs`) for the logs. 
 
-> Important: `ClusterFlows` must be defined within the `cattle-logging-system` namespace. `ClusterFlows` will not work if defined in any other namespace. 
+:::note Important:
+
+`ClusterFlows` must be defined within the `cattle-logging-system` namespace. `ClusterFlows` will not work if defined in any other namespace.
+
+:::
 
 In legacy logging, in order to collect logs from across the entire cluster, one only needed to enable cluster-level logging and define the desired `Output`. This basic approach remains in v2.5+ logging. To replicate legacy cluster-level logging, follow these steps:
 
@@ -77,7 +85,11 @@ To collect logs from a specific namespace, follow these steps:
 
 This will result in logs from all sources in the namespace (pods) being collected and sent to the `Output` (or `Outputs`) you defined in your `Flow`.
 
-> To collect logs from a project, repeat the above steps for every namespace within the project. Alternatively, you can label your project workloads with a common label (e.g. `project=my-project`) and use a `ClusterFlow` to collect logs from all pods matching this label. 
+:::note
+
+To collect logs from a project, repeat the above steps for every namespace within the project. Alternatively, you can label your project workloads with a common label (e.g. `project=my-project`) and use a `ClusterFlow` to collect logs from all pods matching this label.
+
+:::
 
 # Output Configuration
 In legacy logging, there are five logging destinations to choose from: Elasticsearch, Splunk, Kafka, Fluentd, and Syslog. With the exception of Syslog, all of these destinations are available in logging v2.5+. 

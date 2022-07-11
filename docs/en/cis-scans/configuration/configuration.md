@@ -32,7 +32,11 @@ spec:
 
 A profile contains the configuration for the CIS scan, which includes the benchmark version to use and any specific tests to skip in that benchmark.
 
-> By default, a few ClusterScanProfiles are installed as part of the `rancher-cis-benchmark` chart. If a user edits these default benchmarks or profiles, the next chart update will reset them back. So it is advisable for users to not edit the default  ClusterScanProfiles.
+:::caution
+
+By default, a few ClusterScanProfiles are installed as part of the `rancher-cis-benchmark` chart. If a user edits these default benchmarks or profiles, the next chart update will reset them back. So it is advisable for users to not edit the default  ClusterScanProfiles.
+
+:::
 
 Users can clone the ClusterScanProfiles to create custom profiles.
 
@@ -67,7 +71,11 @@ A `ClusterScanBenchmark` defines the CIS `BenchmarkVersion` name and test config
 
 By default, a few `BenchmarkVersion` names and test configurations are packaged as part of the CIS scan application. When this feature is enabled, these default BenchmarkVersions will be automatically installed and available for users to create a ClusterScanProfile.
 
-> If the default BenchmarkVersions are edited, the next chart update will reset them back. Therefore we don't recommend editing the default ClusterScanBenchmarks.
+:::caution
+
+If the default BenchmarkVersions are edited, the next chart update will reset them back. Therefore we don't recommend editing the default ClusterScanBenchmarks.
+
+:::
 
 A ClusterScanBenchmark consists of the fields:
 

@@ -45,8 +45,12 @@ Note that these URLs will not return valid data until the authentication configu
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Ping IdP to validate your Rancher PingIdentity configuration.
 
-    >**Note:** You may have to disable your popup blocker to see the IdP login page.
+    :::note
+    
+    You may have to disable your popup blocker to see the IdP login page.
 
+    :::
+    
 **Result:** Rancher is configured to work with PingIdentity. Your users can now sign into Rancher using their PingIdentity logins.
 
 {{< saml_caveats >}}

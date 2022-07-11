@@ -22,7 +22,11 @@ rkeEtcd:
     useLocalhost: true
 ```
 
-> **Note:** If you want to set up Alertmanager, Grafana or Ingress, it has to be done with the settings on the Helm chart deployment. It's problematic to create Ingress outside the deployment.
+:::note
+
+If you want to set up Alertmanager, Grafana or Ingress, it has to be done with the settings on the Helm chart deployment. It's problematic to create Ingress outside the deployment.
+
+:::
 
 # Setting Resource Limits and Requests
 

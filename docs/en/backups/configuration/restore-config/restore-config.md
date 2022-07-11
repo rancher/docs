@@ -57,8 +57,11 @@ The `Encryption Config Secret` dropdown will filter out and list only those Secr
 | ---------------- | ---------------- |
 | `encryptionConfigSecretName` |  Provide the name of the Secret from `cattle-resources-system` namespace, that contains the encryption config file.  |
 
-> **Important**
+:::note Important:
+
 This field should only be set if the backup was created with encryption enabled. Providing the incorrect encryption config will cause the restore to fail.
+
+:::
 
 # Prune During Restore
 

@@ -5,7 +5,11 @@ weight: 100
 
 This document provides prescriptive guidance for hardening a production installation of a RKE2 cluster to be provisioned with Rancher v2.6.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).
 
-> This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
+:::note
+
+This hardening guide describes how to secure the nodes in your cluster, and it is recommended to follow this guide before installing Kubernetes.
+
+:::
 
 This hardening guide is intended to be used for RKE2 clusters and associated with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
 
@@ -40,7 +44,11 @@ To help ensure these above requirements are met, RKE2 can be started with the `p
 1. Checks that host-level requirements have been met. If they haven't, RKE2 will exit with a fatal error describing the unmet requirements.
 2. Configures runtime pod security policies and network policies that allow the cluster to pass associated controls.
 
-> The profile's flag only valid values are `cis-1.5` or `cis-1.6`. It accepts a string value to allow for other profiles in the future.
+:::note
+
+The profile's flag only valid values are `cis-1.5` or `cis-1.6`. It accepts a string value to allow for other profiles in the future.
+
+:::
 
 The following section outlines the specific actions that are taken when the `profile` flag is set to `cis-1.6`.
 
@@ -54,7 +62,11 @@ This is a kubelet flag that will cause the kubelet to exit if the required kerne
 
 When the `profile` flag is set, RKE2 will set the flag to `true`.
 
-> `protect-kernel-defaults` is exposed as a configuration flag for RKE2. If you have set `profile` to "cis-1.x" and `protect-kernel-defaults` to `false` explicitly, RKE2 will exit with an error.
+:::caution
+
+`protect-kernel-defaults` is exposed as a configuration flag for RKE2. If you have set `profile` to "cis-1.x" and `protect-kernel-defaults` to `false` explicitly, RKE2 will exit with an error.
+
+:::
 
 RKE2 will also check the same kernel parameters that the kubelet does and exit with an error following the same rules as the kubelet. This is done as a convenience to help the operator more quickly and easily identify what kernel parameters are violating the kubelet defaults.
 
@@ -122,8 +134,11 @@ When ran with a valid "cis-1.x" profile, RKE2 will put `NetworkPolicies` in plac
 
 The `NetworkPolicy` used will only allow pods within the same namespace to talk to each other. The notable exception to this is that it allows DNS requests to be resolved.
 
-> Operators must manage network policies as normal for additional namespaces that are created.
+:::note
 
+Operators must manage network policies as normal for additional namespaces that are created.
+
+:::
 #### Configure `default` service account
 
 **Set `automountServiceAccountToken` to `false` for `default` service accounts**

@@ -151,8 +151,11 @@ default backend - 404
 
 ### Save Your Files
 
-> **Important**
-> The files mentioned below are needed to maintain, troubleshoot and upgrade your cluster.
+:::note Important:
+
+The files mentioned below are needed to maintain, troubleshoot and upgrade your cluster.
+
+:::
 
 Save a copy of the following files in a secure location:
 
@@ -160,7 +163,11 @@ Save a copy of the following files in a secure location:
 - `kube_config_cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
 - `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains the current state of the cluster including the RKE configuration and the certificates.
 
-> **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
+:::note
+
+The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
+
+:::
 
 ### Issues or errors?
 

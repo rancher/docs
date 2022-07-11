@@ -8,8 +8,11 @@ You can use Rancher to create a cluster hosted in Huawei Cloud Container Engine 
 
 # Prerequisites in Huawei
 
->**Note**
->Deploying to CCE will incur charges.
+:::caution
+
+Deploying to CCE will incur charges.
+
+:::
 
 1. Find your project ID in Huawei CCE portal. See the CCE documentation on how to [manage your projects](https://support.huaweicloud.com/en-us/usermanual-iam/en-us_topic_0066738518.html).
 
@@ -67,7 +70,11 @@ You can access your cluster after its state is updated to **Active**.
 | Cluster Label | The labels for the cluster. |
 | Highway Subnet | This option is only supported in `BareMetal` type. It requires you to select a VPC with high network speed for the bare metal machines. |
 
-**Note:** If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+:::note
+
+If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+
+:::
 
 # Node Configuration
 

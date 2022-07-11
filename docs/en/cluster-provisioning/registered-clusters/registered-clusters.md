@@ -67,8 +67,11 @@ EKS clusters must have at least one managed node group to be imported into Ranch
 - **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 
 
-> **Note:**
-> You can not re-register a cluster that is currently active in a Rancher setup.
+:::note
+
+You can not re-register a cluster that is currently active in a Rancher setup.
+
+:::
 
 ### Configuring a K3s Cluster to Enable Registration in Rancher
 
@@ -90,7 +93,11 @@ $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided.
 
->**Warning:** Even a small difference between the current EKS cluster and a user-provided config could have unexpected results.
+::caution
+
+Even a small difference between the current EKS cluster and a user-provided config could have unexpected results.
+
+:::
 
 The minimum config fields required by Rancher to import EKS clusters with Terraform using `eks_config_v2` are as follows:
 
@@ -155,7 +162,11 @@ The capabilities for registered clusters are listed in the table on [this page.]
 
 # Configuring K3s Cluster Upgrades
 
-> It is a Kubernetes best practice to back up the cluster before upgrading. When upgrading a high-availability K3s cluster with an external database, back up the database in whichever way is recommended by the relational database provider.
+:::tip
+
+It is a Kubernetes best practice to back up the cluster before upgrading. When upgrading a high-availability K3s cluster with an external database, back up the database in whichever way is recommended by the relational database provider.
+
+:::
 
 The **concurrency** is the maximum number of nodes that are permitted to be unavailable during an upgrade. If number of unavailable nodes is larger than the **concurrency,** the upgrade will fail. If an upgrade fails, you may need to repair or remove failed nodes before the upgrade can succeed.
 
@@ -194,13 +205,15 @@ _Available as of v2.6.3_
 
 Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and K3s clusters. This support includes manual steps you will perform on the downstream cluster to enable the ACE. For additional information on the authorized cluster endpoint, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/).
 
-> **Note:**
->
-> - These steps only need to be performed on the control plane nodes of the downstream cluster. You must configure each control plane node individually.
->
-> - The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
->
-> - These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of the ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
+:::note Notes:
+
+- These steps only need to be performed on the control plane nodes of the downstream cluster. You must configure each control plane node individually.
+
+- The following steps will work on both RKE2 and K3s clusters registered in v2.6.x as well as those registered (or imported) from a previous version of Rancher with an upgrade to v2.6.x.
+
+- These steps will alter the configuration of the downstream RKE2 and K3s clusters and deploy the `kube-api-authn-webhook`. If a future implementation of the ACE requires an update to the `kube-api-authn-webhook`, then this would also have to be done manually. For more information on this webhook, click [here]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/ace/#about-the-kube-api-auth-authentication-webhook).
+
+:::
 
 ###### **Manual steps to be taken on the control plane of each downstream cluster to enable ACE:**
 
@@ -236,7 +249,11 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
 
 1. Finally, you **must** go back to the Rancher UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.  
 
-      >**Note:** The <b>FQDN</b> field is optional, and if one is entered, it should point to the downstream cluster. Certificate information is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the <b>CA Certificates</b> field.
+      :::note 
+      
+      The <b>FQDN</b> field is optional, and if one is entered, it should point to the downstream cluster. Certificate information is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the <b>CA Certificates</b> field.
+
+      :::
 
 # Annotating Registered Clusters
 

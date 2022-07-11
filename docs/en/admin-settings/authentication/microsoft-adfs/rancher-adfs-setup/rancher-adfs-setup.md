@@ -5,11 +5,13 @@ weight: 1205
 
 After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/microsoft-adfs/microsoft-adfs-setup/), enter your AD FS information into Rancher to allow AD FS users to authenticate with Rancher.
 
->**Important Notes For Configuring Your ADFS Server:**
-> 
->- The SAML 2.0 WebSSO Protocol Service URL is: `https://<RANCHER_SERVER>/v1-saml/adfs/saml/acs`
->- The Relying Party Trust identifier URL is: `https://<RANCHER_SERVER>/v1-saml/adfs/saml/metadata`
->- You must export the `federationmetadata.xml` file from your AD FS server. This can be found at: `https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml`
+:::note Important Notes For Configuring Your ADFS Server:
+ 
+- The SAML 2.0 WebSSO Protocol Service URL is: `https://<RANCHER_SERVER>/v1-saml/adfs/saml/acs`
+- The Relying Party Trust identifier URL is: `https://<RANCHER_SERVER>/v1-saml/adfs/saml/metadata`
+- You must export the `federationmetadata.xml` file from your AD FS server. This can be found at: `https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml`
+
+:::
 
 1.	In the top left corner, click **☰ > Users & Authentication**.
 1. In the left navigation menu, click **Auth Provider**.
@@ -19,8 +21,12 @@ After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/ranch
 
     Rancher redirects you to the AD FS login page. Enter credentials that authenticate with Microsoft AD FS to validate your Rancher AD FS configuration.
 
-    >**Note:** You may have to disable your popup blocker to see the AD FS login page.
+    :::note 
+    
+    You may have to disable your popup blocker to see the AD FS login page.
 
+    :::
+    
 **Result:** Rancher is configured to work with MS FS. Your users can now sign into Rancher using their MS FS logins.
 
 # Configuration
@@ -38,8 +44,12 @@ After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/ranch
 
 <a id="cert-command"></a> 
 
-**Tip:** You can generate a certificate using an openssl command. For example:
+:::tip
+
+You can generate a certificate using an openssl command. For example:
 
 ```
 openssl req -x509 -newkey rsa:2048 -keyout myservice.key -out myservice.cert -days 365 -nodes -subj "/CN=myservice.example.com"
 ```
+
+:::

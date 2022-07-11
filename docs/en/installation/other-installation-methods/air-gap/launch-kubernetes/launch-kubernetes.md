@@ -3,7 +3,11 @@ title: '3. Install Kubernetes (Skip for Docker Installs)'
 weight: 300
 ---
 
-> Skip this section if you are installing Rancher on a single node with Docker.
+:::note
+
+Skip this section if you are installing Rancher on a single node with Docker.
+
+:::
 
 This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
 
@@ -86,7 +90,11 @@ INSTALL_K3S_SKIP_DOWNLOAD=true K3S_URL=https://myserver:6443 K3S_TOKEN=mynodetok
 Note, take care to ensure you replace `myserver` with the IP or valid DNS of the server and replace `mynodetoken` with the node-token from the server.
 The node-token is on the server at `/var/lib/rancher/k3s/server/node-token`
 
->**Note:** K3s additionally provides a `--resolv-conf` flag for kubelets, which may help with configuring DNS in air-gap networks.
+:::note
+
+K3s additionally provides a `--resolv-conf` flag for kubelets, which may help with configuring DNS in air-gapped networks.
+
+:::
 
 ### 4. Save and Start Using the kubeconfig File
 
@@ -151,7 +159,11 @@ This file is an RKE configuration file, which is a configuration for the cluster
 
 Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the three nodes you created.
 
-> **Tip:** For more details on the options available, see the RKE [Config Options]({{<baseurl>}}/rke/latest/en/config-options/).
+:::tip
+
+For more details on the options available, see the RKE [Config Options]({{<baseurl>}}/rke/latest/en/config-options/).
+
+:::
 
 <figcaption>RKE Options</figcaption>
 
@@ -200,8 +212,11 @@ rke up --config ./rancher-cluster.yml
 
 ### 4. Save Your Files
 
-> **Important**
-> The files mentioned below are needed to maintain, troubleshoot and upgrade your cluster.
+:::note Important:
+
+The files mentioned below are needed to maintain, troubleshoot, and upgrade your cluster.
+
+:::
 
 Save a copy of the following files in a secure location:
 
@@ -211,7 +226,11 @@ Save a copy of the following files in a secure location:
 {{% /tab %}}
 {{% /tabs %}}
 
-> **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
+:::note
+
+The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
+
+:::
 
 ### Issues or errors?
 

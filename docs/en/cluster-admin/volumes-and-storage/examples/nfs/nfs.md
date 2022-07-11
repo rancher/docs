@@ -5,13 +5,19 @@ weight: 3054
 
 Before you can use the NFS storage volume plug-in with Rancher deployments, you need to provision an NFS server.
 
->**Note:**
->
->- If you already have an NFS share, you don't need to provision a new NFS server to use the NFS volume plugin within Rancher. Instead, skip the rest of this procedure and complete [adding storage]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/).
->
->- This procedure demonstrates how to set up an NFS server using Ubuntu, although you should be able to use these instructions for other Linux distros (e.g. Debian, RHEL, Arch Linux, etc.). For official instruction on how to create an NFS server using another Linux distro, consult the distro's documentation.
+:::note
 
->**Recommended:** To simplify the process of managing firewall rules, use NFSv4.
+- If you already have an NFS share, you don't need to provision a new NFS server to use the NFS volume plugin within Rancher. Instead, skip the rest of this procedure and complete [adding storage]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/).
+
+- This procedure demonstrates how to set up an NFS server using Ubuntu, although you should be able to use these instructions for other Linux distros (e.g. Debian, RHEL, Arch Linux, etc.). For official instruction on how to create an NFS server using another Linux distro, consult the distro's documentation.
+
+:::
+
+:::note Recommended:
+
+To simplify the process of managing firewall rules, use NFSv4.
+
+:::
 
 1. Using a remote Terminal connection, log into the Ubuntu server that you intend to use for NFS storage.
 
@@ -38,8 +44,12 @@ Before you can use the NFS storage volume plug-in with Rancher deployments, you 
         /nfs <IP_ADDRESS1>(rw,sync,no_subtree_check) <IP_ADDRESS2>(rw,sync,no_subtree_check) <IP_ADDRESS3>(rw,sync,no_subtree_check)
         ```
 
-        **Tip:**  You can replace the IP addresses with a subnet. For example: `10.212.50.12&#47;24`
+        :::tip
+        
+        You can replace the IP addresses with a subnet. For example: `10.212.50.12&#47;24`
 
+        :::
+        
     1. Update the NFS table by entering the following command:
 
         ```

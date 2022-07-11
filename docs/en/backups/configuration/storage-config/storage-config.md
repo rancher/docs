@@ -40,17 +40,22 @@ Installing the `rancher-backup` chart by selecting the StorageClass option will 
 
 For information about creating storage classes refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/provisioning-new-storage/)
 
-> **Important**
+::: note Important:
+
 It is highly recommended to use a StorageClass with a reclaim policy of "Retain". Otherwise if the PVC created by the `rancher-backup` chart gets deleted (either during app upgrade, or accidentally), the PV will get deleted too, which means all backups saved in it will get deleted.  
 If no such StorageClass is available, after the PV is provisioned, make sure to edit its reclaim policy and set it to "Retain" before storing backups in it.
+
+:::
 
 ### Existing Persistent Volume
 
 Select an existing Persistent Volume (PV) that will be used to store your backups. For information about creating PersistentVolumes in Rancher, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/attaching-existing-storage/#2-add-a-persistent-volume-that-refers-to-the-persistent-storage)
 
-> **Important**
+:::note Important:
+
 It is highly recommended to use a Persistent Volume with a reclaim policy of "Retain". Otherwise if the PVC created by the `rancher-backup` chart gets deleted (either during app upgrade, or accidentally), the PV will get deleted too, which means all backups saved in it will get deleted.  
 
+:::
 
 # Example values.yaml for the rancher-backup Helm Chart
 

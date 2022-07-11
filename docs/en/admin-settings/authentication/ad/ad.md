@@ -7,9 +7,11 @@ If your organization uses Microsoft Active Directory as central user repository,
 
 Rancher uses LDAP to communicate with the Active Directory server. The authentication flow for Active Directory is therefore the same as for the [OpenLDAP authentication]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/openldap) integration.
 
-> **Note:**
->
-> Before you start, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
+:::note
+
+Before you start, please familiarise yourself with the concepts of [External Authentication Configuration and Principal Users]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/#external-authentication-configuration-and-principal-users).
+
+:::
 
 ## Prerequisites
 
@@ -19,15 +21,17 @@ Usually a (non-admin) **Domain User** account should be used for this purpose, a
 
 Note however, that in some locked-down Active Directory configurations this default behaviour may not apply. In such case you will need to ensure that the service account user has at least **Read** and **List Content** permissions granted either on the Base OU (enclosing users and groups) or globally for the domain.
 
-> **Using TLS?**
->
-> - If the certificate used by the AD server is self-signed or not from a recognized certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
->
-> - Upon an upgrade to v2.6.0, authenticating via Rancher against an active directory using TLS can fail if the certificates on the AD server do not support SAN attributes. This is a check enabled by default in Go v1.15. 
->
->    - The error received is "Error creating SSL connection: LDAP Result Code 200 "Network Error": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0". 
->
->    - To resolve the error, update or replace the certificates on the AD server with new ones that support the SAN attribute. Alternatively, this error can be ignored by setting `GODEBUG=x509ignoreCN=0` as an environment variable to Rancher server container.
+:::note Using TLS?
+
+- If the certificate used by the AD server is self-signed or not from a recognized certificate authority, make sure have at hand the CA certificate (concatenated with any intermediate certificates) in PEM format. You will have to paste in this certificate during the configuration so that Rancher is able to validate the certificate chain.
+
+- Upon an upgrade to v2.6.0, authenticating via Rancher against an active directory using TLS can fail if the certificates on the AD server do not support SAN attributes. This is a check enabled by default in Go v1.15. 
+
+   - The error received is "Error creating SSL connection: LDAP Result Code 200 "Network Error": x509: certificate relies on legacy Common Name field, use SANs or temporarily enable Common Name matching with GODEBUG=x509ignoreCN=0". 
+
+   - To resolve the error, update or replace the certificates on the AD server with new ones that support the SAN attribute. Alternatively, this error can be ignored by setting `GODEBUG=x509ignoreCN=0` as an environment variable to Rancher server container.
+
+:::
 
 ## Configuration Steps
 ### Open Active Directory Configuration
@@ -43,9 +47,11 @@ Note however, that in some locked-down Active Directory configurations this defa
 
 In the section titled `1. Configure an Active Directory server`,   complete the fields with the information specific to your Active Directory server. Please refer to the following table for detailed information on the required values for each parameter.
 
-> **Note:**
->
-> If you are unsure about the correct values to enter in the  user/group Search Base field, please refer to [Identify Search Base and Schema using ldapsearch](#annex-identify-search-base-and-schema-using-ldapsearch).
+:::note
+
+If you are unsure about the correct values to enter in the  user/group Search Base field, please refer to [Identify Search Base and Schema using ldapsearch](#annex-identify-search-base-and-schema-using-ldapsearch).
+
+:::
 
 **Table 1: AD Server parameters**
 
@@ -69,9 +75,11 @@ In the section titled `2. Customize Schema` you must provide Rancher with a corr
 
 Rancher uses LDAP queries to search for and retrieve information about users and groups within the Active Directory. The attribute mappings configured in this section are used to construct search filters and resolve group membership. It is therefore paramount that the provided settings reflect the reality of your AD domain.
 
-> **Note:**
->
-> If you are unfamiliar with the schema used in your Active Directory domain, please refer to [Identify Search Base and Schema using ldapsearch](#annex-identify-search-base-and-schema-using-ldapsearch) to determine the correct configuration values.
+:::note
+
+If you are unfamiliar with the schema used in your Active Directory domain, please refer to [Identify Search Base and Schema using ldapsearch](#annex-identify-search-base-and-schema-using-ldapsearch) to determine the correct configuration values.
+
+:::
 
 #### User Schema
 
@@ -115,9 +123,11 @@ The table below details the parameters for the group schema configuration.
 
 Once you have completed the configuration, proceed by testing the connection to the AD server **using your AD admin account**. If the test is successful, authentication with the configured Active Directory will be enabled implicitly with the account you test with set as admin.
 
-> **Note:**
->
-> The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which AD account you use to perform this step.
+:::note
+
+The AD user pertaining to the credentials entered in this step will be mapped to the local principal account and assigned administrator privileges in Rancher. You should therefore make a conscious decision on which AD account you use to perform this step.
+
+:::
 
 1. Enter the **username** and **password** for the AD account that should be mapped to the local principal account.
 2. Click **Authenticate with Active Directory** to finalise the setup.
@@ -127,9 +137,11 @@ Once you have completed the configuration, proceed by testing the connection to 
 - Active Directory authentication has been enabled.
 - You have been signed into Rancher as administrator using the provided AD credentials.
 
-> **Note:**
->
-> You will still be able to login using the locally configured `admin` account and password in case of a disruption of LDAP services.
+:::note
+
+You will still be able to login using the locally configured `admin` account and password in case of a disruption of LDAP services.
+
+:::
 
 ## Annex: Identify Search Base and Schema using ldapsearch
 
@@ -170,9 +182,11 @@ The output of the above `ldapsearch` query also allows to determine the correct 
 - `Login Attribute`: **sAMAccountName** [3]
 - `User Member Attribute`: **memberOf** [4]
 
-> **Note:**
->
-> If the AD users in our organization were to authenticate with their UPN (e.g. jdoe@acme.com) instead of the short logon name, then we would have to set the `Login Attribute` to **userPrincipalName** instead.
+:::note
+
+If the AD users in our organization were to authenticate with their UPN (e.g. jdoe@acme.com) instead of the short logon name, then we would have to set the `Login Attribute` to **userPrincipalName** instead.
+
+:::
 
 We'll also set the `Search Attribute` parameter to **sAMAccountName|name**. That way users can be added to clusters/projects in the Rancher UI either by entering their username or full name.
 

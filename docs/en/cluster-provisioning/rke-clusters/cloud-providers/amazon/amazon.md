@@ -131,7 +131,11 @@ The following resources need to tagged with a `ClusterID`:
 - **Subnet**: The subnet used for your cluster.
 - **Security Group**: The security group used for your cluster.
 
->**Note:** Do not tag multiple security groups. Tagging multiple groups generates an error when creating an Elastic Load Balancer (ELB).
+:::note
+
+Do not tag multiple security groups. Tagging multiple groups generates an error when creating an Elastic Load Balancer (ELB).
+
+:::
 
 When you create an [Amazon EC2 Cluster]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/ec2/), the `ClusterID` is automatically configured for the created nodes. Other resources still need to be tagged manually.
 

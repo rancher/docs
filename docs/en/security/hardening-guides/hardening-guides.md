@@ -39,9 +39,11 @@ These guides have been tested along with the Rancher v2.6 release. Each self-ass
 | ------------------ | --------------------- | --------------------- | ---------------- |
 | Kubernetes v1.18 up to v1.23 | CIS v1.6 | [Link]({{<baseurl>}}/rancher/v2.6/en/security/hardening-guides/rke-1.6-benchmark-2.6) | [Link]({{<baseurl>}}/rancher/v2.6/en/security/hardening-guides/rke-1.6-hardening-2.6) |
 
-> **Notes**
->
-> - CIS v1.20 benchmark version for Kubernetes v1.19 and v1.20 is not yet released as a profile in Rancher's CIS Benchmark chart.
+:::note
+
+- CIS v1.20 benchmark version for Kubernetes v1.19 and v1.20 is not yet released as a profile in Rancher's CIS Benchmark chart.
+
+:::
 
 ### RKE2 Guides
 

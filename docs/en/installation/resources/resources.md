@@ -9,7 +9,7 @@ The [single-node Docker installation]({{<baseurl>}}/rancher/v2.6/en/installation
 
 Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
 
-### Air Gapped Installations
+### Air-Gapped Installations
 
 Follow [these steps]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap) to install the Rancher server in an air gapped environment.
 

@@ -11,7 +11,11 @@ For a list of main features of the Rancher API server, refer to the [overview se
 
 For guidance about setting up the underlying infrastructure for the Rancher server, refer to the [architecture recommendations.]({{<baseurl>}}/rancher/v2.6/en/overview/architecture-recommendations)
 
-> This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.6/en/overview/concepts) page.
+:::note
+
+This section assumes a basic familiarity with Docker and Kubernetes. For a brief explanation of how Kubernetes components work together, refer to the [concepts]({{<baseurl>}}/rancher/v2.6/en/overview/concepts) page.
+
+:::
 
 This section covers the following topics:
 
@@ -107,9 +111,13 @@ The `cattle-node-agent` is deployed using a [DaemonSet](https://kubernetes.io/do
 
 An authorized cluster endpoint allows users to connect to the Kubernetes API server of a downstream cluster without having to route their requests through the Rancher authentication proxy.
 
-> The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) to provision the cluster. The ACE is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+:::note
 
-> The [ACE is available for registered RKE2 and K3s clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters) as of Rancher v2.6.3. 
+- The authorized cluster endpoint only works on Rancher-launched Kubernetes clusters. In other words, it only works in clusters where Rancher [used RKE]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters) to provision the cluster. The ACE is not available for clusters in a hosted Kubernetes provider, such as Amazon's EKS.
+
+- The [ACE is available for registered RKE2 and K3s clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/#authorized-cluster-endpoint-support-for-rke2-and-k3s-clusters) as of Rancher v2.6.3. 
+
+:::
 
 There are two main reasons why a user might need the authorized cluster endpoint:
 
@@ -120,7 +128,11 @@ The `kube-api-auth` microservice is deployed to provide the user authentication 
 
 Like the authorized cluster endpoint, the `kube-api-auth` authentication service is also only available for Rancher-launched Kubernetes clusters.
 
-> **Example scenario:** Let's say that the Rancher server is located in the United States, and User Cluster 1 is located in Australia. A user, Alice, also lives in Australia. Alice can manipulate resources in User Cluster 1 by using the Rancher UI, but her requests will have to be sent from Australia to the Rancher server in the United States, then be proxied back to Australia, where the downstream user cluster is. The geographical distance may cause significant latency, which Alice can reduce by using the authorized cluster endpoint.
+:::note Example scenario:
+
+Let's say that the Rancher server is located in the United States, and User Cluster 1 is located in Australia. A user, Alice, also lives in Australia. Alice can manipulate resources in User Cluster 1 by using the Rancher UI, but her requests will have to be sent from Australia to the Rancher server in the United States, then be proxied back to Australia, where the downstream user cluster is. The geographical distance may cause significant latency, which Alice can reduce by using the authorized cluster endpoint.
+
+:::
 
 With this endpoint enabled for the downstream cluster, Rancher generates an extra Kubernetes context in the kubeconfig file in order to connect directly to the cluster. This file has the credentials for `kubectl` and `helm`. 
 
@@ -134,7 +146,11 @@ The files mentioned below are needed to maintain, troubleshoot and upgrade your 
 - `kube_config_cluster.yml`: The Kubeconfig file for the cluster, this file contains credentials for full access to the cluster. You can use this file to authenticate with a Rancher-launched Kubernetes cluster if Rancher goes down.
 - `rancher-cluster.rkestate`: The Kubernetes cluster state file. This file contains credentials for full access to the cluster. Note: This state file is only created when using RKE v0.2.0 or higher.
 
-> **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
+:::note
+
+The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
+
+:::
 
 For more information on connecting to a cluster without the Rancher authentication proxy and other configuration options, refer to the [kubeconfig file]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/cluster-access/kubectl/) documentation.
 

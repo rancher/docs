@@ -7,9 +7,11 @@ The pipelines' internal Docker registry and the Minio workloads use ephemeral vo
 
 This section assumes that you understand how persistent storage works in Kubernetes. For more information, refer to the section on [how storage works.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/how-storage-works/)
 
->**Prerequisites (for both parts A and B):**
->
->[Persistent volumes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/) must be available for the cluster.
+:::note Prerequisites for both parts A and B:
+
+[Persistent volumes]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/) must be available for the cluster.
+
+:::
 
 ### A. Configuring Persistent Data for Docker Registry
 

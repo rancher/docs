@@ -5,7 +5,11 @@ weight: 2030
 
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/) to provision the cluster, there are different node options available.
 
-> If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.6/en/cluster-admin/editing-clusters).
+:::note
+
+If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.6/en/cluster-admin/editing-clusters).
+
+:::
 
 This section covers the following topics:
 
@@ -88,7 +92,11 @@ Use **Delete** to remove defective nodes from the cloud provider.
 
 When you the delete a defective node, Rancher can automatically replace it with an identically provisioned node if the node is in a node pool and [node auto-replace is enabled.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/#about-node-auto-replace)
 
->**Tip:** If your cluster is hosted by an infrastructure provider, and you want to scale your cluster down instead of deleting a defective node, [scale down](#scaling-nodes) rather than delete.
+:::tip
+
+If your cluster is hosted by an infrastructure provider, and you want to scale your cluster down instead of deleting a defective node, [scale down](#scaling-nodes) rather than delete.
+
+:::
 
 # Scaling Nodes
 
@@ -146,7 +154,11 @@ The timeout given to each pod for cleaning things up, so they will have chance t
 
 The amount of time drain should continue to wait before giving up.
 
->**Kubernetes Known Issue:** The [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) was not enforced while draining a node before Kubernetes 1.12.
+:::note Kubernetes Known Issue:
+
+The [timeout setting](https://github.com/kubernetes/kubernetes/pull/64378) was not enforced while draining a node before Kubernetes 1.12.
+
+:::
 
 ### Drained and Cordoned State
 
@@ -156,7 +168,7 @@ If the drain continues without error, the node enters a `draining` state. You'll
 
 Once drain successfully completes, the node will be in a state of `drained`. You can then power off or delete the node.
 
->**Want to know more about cordon and drain?** See the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#maintenance-on-a-node).
+**Want to know more about cordon and drain?** See the [Kubernetes documentation](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#maintenance-on-a-node).
 
 # Labeling a Node to be Ignored by Rancher
 
@@ -168,7 +180,11 @@ In that case, you may want to label the node to be ignored by Rancher so that Ra
 
 You can label nodes to be ignored by using a setting in the Rancher UI, or by using `kubectl`.
 
-> **Note:** There is an [open issue](https://github.com/rancher/rancher/issues/24172) in which nodes labeled to be ignored can get stuck in an updating state.
+:::note
+
+There is an [open issue](https://github.com/rancher/rancher/issues/24172) in which nodes labeled to be ignored can get stuck in an updating state.
+
+:::
 
 
 ### Labeling Nodes to be Ignored with kubectl

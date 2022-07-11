@@ -116,7 +116,11 @@ The following is an example process for Firefox, but will vary slightly for othe
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Keycloak IdP to validate your Rancher Keycloak configuration.
 
-    >**Note:** You may have to disable your popup blocker to see the IdP login page.
+    :::note
+    
+    You may have to disable your popup blocker to see the IdP login page.
+
+    :::
 
 **Result:** Rancher is configured to work with Keycloak. Your users can now sign into Rancher using their Keycloak logins.
 
@@ -135,9 +139,13 @@ The following is an example process for Firefox, but will vary slightly for othe
 | Private Key / Certificate | A key/certificate pair to create a secure shell between Rancher and your IdP.                                                                            |
 | IDP-metadata              | The `metadata.xml` file that you exported from your IdP server.                                                                                          |
 
->**Tip:** You can generate a key/certificate pair using an openssl command. For example:
->
->        openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout myservice.key -out myservice.cert
+:::tip
+
+You can generate a key/certificate pair using an openssl command. For example:
+
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout myservice.key -out myservice.cert
+
+:::
 
 ## Annex: Troubleshooting
 

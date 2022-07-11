@@ -7,7 +7,11 @@ It is usually not necessary to directly edit the Alertmanager custom resource. F
 
 When Receivers and Routes are updated, the monitoring application will automatically update the Alertmanager custom resource to be consistent with those changes.
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../../how-monitoring-works/#3-how-alertmanager-works)
+:::note
+
+This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../../how-monitoring-works/#3-how-alertmanager-works)
+
+:::
 
 # About the Alertmanager Custom Resource
 

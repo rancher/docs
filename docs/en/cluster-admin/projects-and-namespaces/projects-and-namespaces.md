@@ -8,7 +8,11 @@ A namespace is a Kubernetes concept that allows a virtual cluster within a clust
 
 A project is a group of namespaces, and it is a concept introduced by Rancher. Projects allow you to manage multiple namespaces as a group and perform Kubernetes operations in them. You can use projects to support multi-tenancy, so that a team can access a project within a cluster without having access to other projects in the same cluster.
 
->**Note:** As of Rancher v2.6, projects are de-emphasized on the UI because it is no longer required to create any Kubernetes resources within a project scope. However, resources such as [Secrets]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/#creating-secrets-in-projects) can still be created in a project scope if the legacy feature flag is enabled.
+:::note
+
+As of Rancher v2.6, projects are de-emphasized on the UI because it is no longer required to create any Kubernetes resources within a project scope. However, resources such as [Secrets]({{<baseurl>}}/rancher/v2.6/en/k8s-in-rancher/secrets/#creating-secrets-in-projects) can still be created in a project scope if the legacy feature flag is enabled.
+
+:::
 
 This section describes how projects and namespaces work with Rancher. It covers the following topics:
 
@@ -25,7 +29,11 @@ This section describes how projects and namespaces work with Rancher. It covers 
 
 A namespace is a concept introduced by Kubernetes. According to the [official Kubernetes documentation on namespaces,](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
 
-> Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces. [...] Namespaces are intended for use in environments with many users spread across multiple teams, or projects. For clusters with a few to tens of users, you should not need to create or think about namespaces at all.
+:::note
+
+Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces. [...] Namespaces are intended for use in environments with many users spread across multiple teams, or projects. For clusters with a few to tens of users, you should not need to create or think about namespaces at all.
+
+:::
 
 Namespaces provide the following functionality:
 
@@ -103,7 +111,11 @@ The `system` project:
 - Allows you to add more namespaces or move its namespaces to other projects.
 - Cannot be deleted because it's required for cluster operations.
 
->**Note:** In RKE clusters where the project network isolation option is enabled, the `system` project overrides the project network isolation option so that it can communicate with other projects, collect logs, and check health.
+:::note
+
+In RKE clusters where the project network isolation option is enabled, the `system` project overrides the project network isolation option so that it can communicate with other projects, collect logs, and check health.
+
+:::
 
 # Project Authorization
 
@@ -149,13 +161,15 @@ Use the **Members** section to provide other users with project access and roles
 
 By default, your user is added as the project `Owner`.
 
->**Notes on Permissions:**
->
->- Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `Owner` or `Member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
->
->- By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
->
->- Choose `Custom` to create a custom role on the fly: [Custom Project Roles]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
+:::note Notes on Permissions:
+
+- Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `Owner` or `Member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
+
+- By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
+
+- Choose `Custom` to create a custom role on the fly: [Custom Project Roles]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#custom-project-roles).
+
+:::
 
 To add members:
 

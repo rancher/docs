@@ -64,7 +64,11 @@ If you have an existing configuration using the SAML protocol and want to switch
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Keycloak IdP to validate your Rancher Keycloak configuration.
 
-    >**Note:** You may need to disable your popup blocker to see the IdP login page.
+    :::note
+    
+    You may need to disable your popup blocker to see the IdP login page.
+
+    :::
 
 **Result:** Rancher is configured to work with Keycloak using the OIDC protocol. Your users can now sign into Rancher using their Keycloak logins.
 
@@ -114,7 +118,11 @@ Before configuring Rancher to use Keycloak (OIDC), Keycloak (SAML) must be first
 
 Configure Rancher to use Keycloak (OIDC) by following the steps in [this section](#configuring-keycloak-in-rancher).
 
-> **Note:** After configuration is completed, Rancher user permissions will need to be reapplied as they are not automatically migrated.
+:::note
+
+After configuration is completed, Rancher user permissions will need to be reapplied as they are not automatically migrated.
+
+:::
 
 ## Annex: Troubleshooting
 

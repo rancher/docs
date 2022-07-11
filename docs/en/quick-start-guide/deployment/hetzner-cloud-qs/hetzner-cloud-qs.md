@@ -5,12 +5,19 @@ weight: 140
 ---
 The following steps will quickly deploy a Rancher server on Hetzner Cloud in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+:::caution
+
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
+:::
 
 ## Prerequisites
 
->**Note**
->Deploying to Hetzner Cloud will incur charges.
+:::caution
+
+Deploying to Hetzner Cloud will incur charges.
+
+:::
 
 - [Hetzner Cloud Account](https://www.hetzner.com): You will require an account on Hetzner as this is where the server and cluster will run.
 - [Hetzner API Access Key](https://docs.hetzner.cloud/#getting-started): Use these instructions to create a Hetzner Cloud API Key if you don't have one.

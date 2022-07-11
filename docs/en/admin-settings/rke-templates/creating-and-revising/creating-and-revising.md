@@ -140,8 +140,13 @@ To permanently delete a revision,
 
 ### Upgrading a Cluster to Use a New Template Revision
 
-> This section assumes that you already have a cluster that [has an RKE template applied.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/applying-templates)
-> This section also assumes that you have [updated the template that the cluster is using](#updating-a-template) so that a new template revision is available.
+:::note
+
+This section assumes that you already have a cluster that [has an RKE template applied.]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rke-templates/applying-templates)
+
+This section also assumes that you have [updated the template that the cluster is using](#updating-a-template) so that a new template revision is available.
+
+:::
 
 To upgrade a cluster to use a new template revision,
 

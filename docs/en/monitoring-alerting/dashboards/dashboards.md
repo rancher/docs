@@ -30,14 +30,21 @@ For information about role-based access control for Grafana, see [this section.]
 
 When `rancher-monitoring` is installed, the Prometheus Alertmanager UI is deployed, allowing you to view your alerts and the current Alertmanager configuration.
 
-> This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+:::note
 
+This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../how-monitoring-works/#how-alertmanager-works)
+
+:::
 
 ### Accessing the Alertmanager UI
 
 The Alertmanager UI lets you see the most recently fired alerts.
 
-> **Prerequisite:** The `rancher-monitoring` application must be installed.
+:::note Prerequisite:
+
+The `rancher-monitoring` application must be installed.
+
+:::
 
 To see the Alertmanager UI,
 

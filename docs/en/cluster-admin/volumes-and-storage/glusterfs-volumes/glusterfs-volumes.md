@@ -3,7 +3,11 @@ title: GlusterFS Volumes
 weight: 5000
 ---
 
-> This section only applies to [RKE clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/)
+:::note
+
+This section only applies to [RKE clusters.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/)
+
+:::
 
 In clusters that store data on GlusterFS volumes, you may experience an issue where pods fail to mount volumes after restarting the `kubelet`. The logging of the `kubelet` will show: `transport endpoint is not connected`. To prevent this from happening, you can configure your cluster to mount the `systemd-run` binary in the `kubelet` container. There are two requirements before you can change the cluster configuration:
 
@@ -14,9 +18,11 @@ In clusters that store data on GlusterFS volumes, you may experience an issue wh
 docker run -v /usr/bin/systemd-run:/usr/bin/systemd-run --entrypoint /usr/bin/systemd-run rancher/hyperkube:v1.16.2-rancher1 --version
 ```
 
->**Note:**
->
->Before updating your Kubernetes YAML to mount the `systemd-run` binary, make sure the `systemd` package is installed on your cluster nodes. If this package isn't installed _before_ the bind mounts are created in your Kubernetes YAML, Docker will automatically create the directories and files on each node and will not allow the package install to succeed.
+:::caution
+
+Before updating your Kubernetes YAML to mount the `systemd-run` binary, make sure the `systemd` package is installed on your cluster nodes. If this package isn't installed _before_ the bind mounts are created in your Kubernetes YAML, Docker will automatically create the directories and files on each node and will not allow the package install to succeed.
+
+:::
 
 ```
 services:

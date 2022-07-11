@@ -3,7 +3,11 @@ title: 3. Add Deployments and Services with the Istio Sidecar
 weight: 4
 ---
 
-> **Prerequisite:** To enable Istio for a workload, the cluster and namespace must have the Istio app installed.  
+:::note Prerequisite:
+
+To enable Istio for a workload, the cluster and namespace must have the Istio app installed.  
+
+:::
 
 Enabling Istio in a namespace only enables automatic sidecar injection for new workloads. To enable the Envoy sidecar for existing workloads, you need to enable it manually for each workload.
 

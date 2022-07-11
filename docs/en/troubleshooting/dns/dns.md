@@ -194,7 +194,11 @@ services:
       resolv-conf: "/run/resolvconf/resolv.conf"
 ```
 
-> **Note:** As the `kubelet` is running inside a container, the path for files located in `/etc` and `/usr` are in `/host/etc` and `/host/usr` inside the `kubelet` container.
+:::note
+
+As the `kubelet` is running inside a container, the path for files located in `/etc` and `/usr` are in `/host/etc` and `/host/usr` inside the `kubelet` container.
+
+:::
 
 See [Editing Cluster as YAML]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/#editing-clusters-with-yaml) how to apply this change. When the provisioning of the cluster has finished, you have to remove the kube-dns pod to activate the new setting in the pod:
 

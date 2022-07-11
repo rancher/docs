@@ -15,7 +15,11 @@ If the cattle-cluster-agent cannot connect to the configured `server-url`, the c
 
 #### cattle-node-agent
 
-> Note: cattle-node-agents are only present in clusters created in Rancher with RKE.
+:::note
+
+cattle-node-agents are only present in clusters created in Rancher with RKE.
+
+:::
 
 Check if the cattle-node-agent pods are present on each node, have status **Running** and don't have a high count of Restarts:
 

@@ -30,7 +30,11 @@ This section describes how to download your cluster's kubeconfig file, launch ku
 
 This alternative method of accessing the cluster allows you to authenticate with Rancher and manage your cluster without using the Rancher UI.
 
-> **Prerequisites:** These instructions assume that you have already created a Kubernetes cluster, and that kubectl is installed on your workstation. For help installing kubectl, refer to the official [Kubernetes documentation.](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+:::note Prerequisites:
+
+These instructions assume that you have already created a Kubernetes cluster, and that kubectl is installed on your workstation. For help installing kubectl, refer to the official [Kubernetes documentation.](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+:::
 
 1. Log into Rancher. Click **☰ > Cluster Management**.
 1. Go to the cluster that you want to access with kubectl and click **Explore**.
@@ -54,7 +58,11 @@ This method is only available for RKE clusters that have the [authorized cluster
 
 We recommend that as a best practice, you should set up this method to access your RKE cluster, so that just in case you can’t connect to Rancher, you can still access the cluster.
 
-> **Prerequisites:** The following steps assume that you have created a Kubernetes cluster and followed the steps to [connect to your cluster with kubectl from your workstation.](#accessing-clusters-with-kubectl-from-your-workstation)
+:::note Prerequisites:
+
+The following steps assume that you have created a Kubernetes cluster and followed the steps to [connect to your cluster with kubectl from your workstation.](#accessing-clusters-with-kubectl-from-your-workstation)
+
+:::
 
 To find the name of the context(s) in your downloaded kubeconfig file, run:
 

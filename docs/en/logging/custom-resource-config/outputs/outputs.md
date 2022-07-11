@@ -211,7 +211,11 @@ spec:
 
 For the final example, we create an `Output` to write logs to a destination that is not supported out of the box:
 
-> **Note on syslog** `syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
+:::note Note on syslog:
+
+`syslog` is a supported `Output`. However, this example still provides an overview on using unsupported plugins.
+
+:::
 
 ```yaml
 apiVersion: v1
