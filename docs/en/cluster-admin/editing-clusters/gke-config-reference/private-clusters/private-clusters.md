@@ -11,7 +11,7 @@ Because the nodes in a private cluster only have internal IP addresses, they wil
 
 #### Cloud NAT
 
-:::note
+:::caution
 
 Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
 
@@ -21,7 +21,7 @@ If restricting outgoing internet access is not a concern for your organization, 
 
 #### Private registry
 
-:::note
+:::caution
 
 This scenario is not officially supported, but is described for cases in which using the Cloud NAT service is not sufficient.
 

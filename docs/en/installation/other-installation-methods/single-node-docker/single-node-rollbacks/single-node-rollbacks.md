@@ -82,7 +82,7 @@ Rolling back to a previous version of Rancher destroys any changes made to Ranch
     ```
     Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
     
-    :::note Important:
+    :::danger
     
     **_Do not_** stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
 

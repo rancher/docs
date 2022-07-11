@@ -5,7 +5,7 @@ weight: 1010
 
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
 
-:::note Important:
+:::caution
 
 **Docker installs are not supported in production environments.** These instructions are provided for testing and development purposes only. If you have already deployed a Docker install in production and need to upgrade to a new Rancher version, we recommend [migrating to the Helm chart install]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher/) before upgrading.
 
@@ -116,7 +116,7 @@ docker pull rancher/rancher:<RANCHER_VERSION_TAG>
 
 Start a new Rancher server container using the data from the `rancher-data` container. Remember to pass in all the environment variables that you had used when you started the original container.
 
-:::note Important:
+:::danger
 
 **_Do not_** stop the upgrade after initiating it, even if the upgrade process seems longer than expected. Stopping the upgrade may result in database migration errors during future upgrades.
 

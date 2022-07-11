@@ -6,7 +6,7 @@ weight: 2
 aliases:
   - /rancher/v2.x/en/quick-start-guide/
 ---
-:::note
+:::caution
 
 The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
 
