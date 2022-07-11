@@ -311,7 +311,11 @@ You can enable notifications to any notifiers based on the build status of a pip
 
 1. If you don't have any existing notifiers, Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
 
-    > **Note:** Notifiers are configured at a cluster level and require a different level of permissions.
+    :::note
+    
+    Notifiers are configured at a cluster level and require a different level of permissions.
+
+    :::
 
 1. For each recipient, select which notifier type from the dropdown. Based on the type of notifier, you can use the default recipient or override the recipient with a different one. For example, if you have a notifier for _Slack_, you can update which channel to send the notification to. You can add additional notifiers by clicking **Add Recipient**.
 
@@ -504,7 +508,11 @@ If you need to use security-sensitive information in your pipeline scripts (like
 Create a secret in the same project as your pipeline, or explicitly in the namespace where pipeline build pods run.
 <br>
 
->**Note:** Secret injection is disabled on [pull request events](#triggers-and-trigger-rules).
+:::note
+
+Secret injection is disabled on [pull request events](#triggers-and-trigger-rules).
+
+:::
 
 ### Configuring Secrets by UI
 
@@ -560,11 +568,16 @@ After configuring a version control provider, there are several options that can
 
 ### Changing Pipeline Settings
 
-> **Prerequisite:** Because the pipelines app was deprecated in favor of Fleet, you will need to turn on the feature flag for legacy features before using pipelines. Note that pipelines in Kubernetes 1.21+ are no longer supported.
->
-> 1. In the upper left corner, click **☰ > Global Settings**.
-> 1. Click **Feature Flags**.
-> 1. Go to the `legacy` feature flag and click **⋮ > Activate**.
+:::note Prerequisite:
+
+Because the pipelines app was deprecated in favor of Fleet, you will need to turn on the feature flag for legacy 
+features before using pipelines. Note that pipelines in Kubernetes 1.21+ are no longer supported.
+
+1. In the upper left corner, click **☰ > Global Settings**.
+1. Click **Feature Flags**.
+1. Go to the `legacy` feature flag and click **⋮ > Activate**.
+
+:::
 
 To edit these settings:
 
@@ -620,7 +633,11 @@ stages:
       memoryLimit: 1Gi
 ```
 
->**Note:** Rancher sets default compute resources for pipeline steps except for `Build and Publish Images` and `Run Script` steps. You can override the default value by specifying compute resources in the same way.
+:::note
+
+Rancher sets default compute resources for pipeline steps except for `Build and Publish Images` and `Run Script` steps. You can override the default value by specifying compute resources in the same way.
+
+:::
 
 ### Custom CA  
 
