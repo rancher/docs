@@ -35,7 +35,7 @@ If the cluster has a public endpoint exposed, Rancher will be able to reach the 
 
 #### Cloud NAT
 
-:::note
+:::caution
 
 Cloud NAT will [incur charges](https://cloud.google.com/nat/pricing).
 
