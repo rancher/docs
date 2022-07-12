@@ -25,7 +25,9 @@ The capability to access a downstream cluster without Rancher depends on the typ
 
 ### What if I don't want Rancher anymore?
 
-If you [installed Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/) remove Rancher by using the [System Tools]({{<baseurl>}}/rancher/v2.6/en/system-tools/) with the `remove` subcommand.
+>**Note:** The previously recommended [System Tools]({{<baseurl>}}/rancher/v2.6/en/system-tools/) has been deprecated since June 2022.
+
+If you [installed Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/) remove Rancher by using the [Rancher Cleanup](https://github.com/rancher/rancher-cleanup) tool.
 
 As of Rancher v2.5.8, uninstalling Rancher in high-availability (HA) mode will also remove all `helm-operation-*` pods and the following apps:
 

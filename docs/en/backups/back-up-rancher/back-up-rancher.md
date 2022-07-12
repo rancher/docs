@@ -5,7 +5,7 @@ weight: 1
 
 In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer the instructions for [single node backups]({{<baseurl>}}/rancher/v2.6/en/backups/docker-installs/docker-backups)
 
-The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster. 
+The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
 Note that the rancher-backup operator version 2.x.x is for Rancher v2.6.x.
 
@@ -37,7 +37,7 @@ Backups are created as .tar.gz files. These files can be pushed to S3 or Minio, 
 
 :::note
 
-There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
+There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}/rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
 
 :::
 
@@ -74,19 +74,19 @@ To perform a backup, a custom resource of type Backup must be created.
       ```
 
     :::note
-    
+
     When creating the Backup resource using YAML editor, the `resourceSetName` must be set to `rancher-resource-set`
 
     :::
 
-    For help configuring the Backup, refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup) 
+    For help configuring the Backup, refer to the [configuration reference](../configuration/backup-config) and to the [examples.](../examples/#backup)
 
     :::caution
 
     The `rancher-backup` operator doesn't save the EncryptionConfiguration file. The contents of the EncryptionConfiguration file must be saved when an encrypted backup is created, and the same file must be used when restoring from this backup.
 
     :::
-    
+
 1. Click **Create**.
 
 **Result:** The backup file is created in the storage location configured in the Backup custom resource. The name of this file is used when performing a restore.

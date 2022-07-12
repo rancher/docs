@@ -13,6 +13,7 @@ Use one of the following guides to deploy and provision Rancher and a Kubernetes
 - [Hetzner Cloud](./hetzner-cloud-qs) (uses Terraform)
 - [Vagrant](./quickstart-vagrant)
 - [Equinix Metal](./equinix-metal-qs)
+- [Outscale](./outscale-qs) (uses Terraform)
 
 
 If you prefer, the following guide will take you through the same process in individual steps. Use this if you want to run Rancher in a different provider, on prem, or if you would just like to see how easy it is.

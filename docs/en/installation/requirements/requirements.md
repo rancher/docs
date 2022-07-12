@@ -26,8 +26,6 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
   - [RKE2 Kubernetes](#rke2-kubernetes)
   - [Docker](#docker)
 - [Ingress](#ingress)
-  - [Ingress for RKE2](#ingress-for-rke2)
-  - [Ingress for EKS](#ingress-for-eks)
 - [Disks](#disks)
 - [Networking Requirements](#networking-requirements)
   - [Node IP Addresses](#node-ip-addresses)
@@ -157,8 +155,9 @@ For RKE and K3s installations, you don't have to install the Ingress manually be
 
 For hosted Kubernetes clusters (EKS, GKE, AKS) and RKE2 Kubernetes installations, you will need to set up the ingress.
 
-### Ingress for EKS
-For an example of how to deploy an nginx-ingress-controller with a LoadBalancer service, refer to [this section.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/amazon-eks/#5-install-an-ingress)
+- **Amazon EKS:** For details on how to install Rancher on Amazon EKS, including how to install an ingress so that the Rancher server can be accessed, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/amazon-eks)
+- **AKS:** For details on how to install Rancher with Azure Kubernetes Service, including how to install an ingress so that the Rancher server can be accessed, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/aks)
+- **GKE:** For details on how to install Rancher with Google Kubernetes Engine, including how to install an ingress so that the Rancher server can be accessed, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/resources/k8s-tutorials/gke)
 
 # Disks
 
