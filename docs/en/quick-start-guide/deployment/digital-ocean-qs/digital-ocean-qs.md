@@ -28,7 +28,7 @@ Deploying to DigitalOcean will incur charges.
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the DigitalOcean folder containing the terraform files by executing `cd quickstart/do`.
+2. Go into the DigitalOcean folder containing the terraform files by executing `cd quickstart/rancher/do`.
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
@@ -37,7 +37,7 @@ Deploying to DigitalOcean will incur charges.
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
-See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [DO Quickstart Readme](https://github.com/rancher/quickstart/tree/master/do) for more information.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [DO Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/do) for more information.
 Suggestions include:
     - `do_region` - DigitalOcean region, choose the closest instead of the default (`nyc1`)
     - `prefix` - Prefix for all created resources
@@ -58,7 +58,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/do`.
+9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/do`.
 
 #### Result
 
@@ -70,6 +70,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/do` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/rancher/do` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.

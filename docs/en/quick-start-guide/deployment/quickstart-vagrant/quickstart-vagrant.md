@@ -27,7 +27,7 @@ The intent of these guides is to quickly launch a sandbox that you can use to ev
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the folder containing the Vagrantfile by executing `cd quickstart/vagrant`.
+2. Go into the folder containing the Vagrantfile by executing `cd quickstart/rancher/vagrant`.
 
 3. **Optional:** Edit `config.yaml` to:
 
@@ -46,6 +46,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/vagrant` folder execute `vagrant destroy -f`.
+1. From the `quickstart/rancher/vagrant` folder execute `vagrant destroy -f`.
 
 2. Wait for the confirmation that all resources have been destroyed.

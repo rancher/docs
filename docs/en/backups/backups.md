@@ -3,7 +3,7 @@ title: Backups and Disaster Recovery
 weight: 5
 ---
 
-In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster. 
+In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster.
 
 The `rancher-backup` operator is used to backup and restore Rancher on any Kubernetes cluster. This application is a Helm chart, and it can be deployed through the Rancher **Apps & Marketplace** page, or by using the Helm CLI. The `rancher-backup` Helm chart is [here.](https://github.com/rancher/charts/tree/release-v2.6/charts/rancher-backup)
 
