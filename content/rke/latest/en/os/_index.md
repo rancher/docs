@@ -2,6 +2,9 @@
 title: Requirements
 weight: 5
 ---
+
+> Firewalld conflicts with RKE1 when PNI is enabled. To avoid unexpected behavior, firewalld should be disabled on systems running RKE1.
+
 **In this section:** 
 
 <!-- TOC -->
@@ -33,7 +36,6 @@ weight: 5
   - [Etcd clusters](#etcd-clusters)  
 - [Ports](#ports)
   - [Opening port TCP/6443 using `iptables`](#opening-port-tcp-6443-using-iptables)
-  - [Opening port TCP/6443 using `firewalld`](#opening-port-tcp-6443-using-firewalld)
 - [SSH Server Configuration](#ssh-server-configuration)
 
 <!-- /TOC -->
@@ -154,12 +156,6 @@ If using Red Hat Enterprise Linux, Oracle Linux or CentOS, you cannot use the `r
    systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
    reboot
    ```
->
-> In addition, the default firewall settings of RHEL 8.4 prevent RKE1 pods from reaching out to Rancher to connect to the cluster agent. To allow Docker containers to reach out to the internet and connect to Rancher, make the following updates to the firewall settings:
-> ```
-  firewall-cmd --zone=public  --add-masquerade --permanent
-  firewall-cmd --reload
-  ```
 
 #### Using upstream Docker
 If you are using upstream Docker, the package name is `docker-ce` or `docker-ee`. You can check the installed package by executing:
@@ -324,21 +320,6 @@ iptables -A INPUT -p tcp --dport 6443 -j ACCEPT
 
 # Open TCP/6443 for one specific IP
 iptables -A INPUT -p tcp -s your_ip_here --dport 6443 -j ACCEPT
-```
-
-### Opening port TCP/6443 using `firewalld`
-
-```
-# Open TCP/6443 for all
-firewall-cmd --zone=public --add-port=6443/tcp --permanent
-firewall-cmd --reload
-
-# Open TCP/6443 for one specific IP
-firewall-cmd --permanent --zone=public --add-rich-rule='
-  rule family="ipv4"
-  source address="your_ip_here/32"
-  port protocol="tcp" port="6443" accept'
-firewall-cmd --reload
 ```
 
 ## SSH Server Configuration
