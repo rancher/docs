@@ -24,5 +24,7 @@ The options and settings available for an existing cluster change based on the m
 
 The following table summarizes the options and settings available for each cluster type:
 
-{{% include file="/rancher/v2.6/en/cluster-provisioning/cluster-capabilities-table" %}}
+import ClusterCapabilitiesTable from '/rancher/v2.6/en/shared-files/_cluster-capabilities-table.md';
+
+<ClusterCapabilitiesTable />
 

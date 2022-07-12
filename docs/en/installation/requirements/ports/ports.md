@@ -133,7 +133,7 @@ All nodes need to be able to reach other nodes over UDP port 8472 when Flannel V
 
 If you wish to utilize the metrics server, you will need to open port 10250 on each node.
 
-:::note Important: 
+:::note Important:
 
 The VXLAN port on nodes should not be exposed to the world as it opens up your cluster network to be accessed by anyone. Run your nodes behind a firewall/security group that disables access to port 8472.
 
@@ -258,7 +258,9 @@ The following table depicts the port requirements for [registered clusters]({{<b
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
-{{% include file="/rancher/v2.6/en/installation/requirements/ports/common-ports-table" %}}
+import CommonPortsTable from '/rancher/v2.6/en/shared-files/_common-ports-table.md';
+
+<CommonPortsTable />
 
 ----
 
