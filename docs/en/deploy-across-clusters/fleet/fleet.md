@@ -30,12 +30,12 @@ Follow the steps below to access Continuous Delivery in the Rancher UI:
 
 1. Click **☰ > Continuous Delivery**.
 
-1. Select your namespace at the top of the menu, noting the following: 
-    - By default,`fleet-default` is selected which includes all downstream clusters that are registered through Rancher. 
-    - You may switch to `fleet-local`, which only contains the `local` cluster, or you may create your own workspace to which you may assign and move clusters. 
+1. Select your namespace at the top of the menu, noting the following:
+    - By default,`fleet-default` is selected which includes all downstream clusters that are registered through Rancher.
+    - You may switch to `fleet-local`, which only contains the `local` cluster, or you may create your own workspace to which you may assign and move clusters.
     - You can then manage clusters by clicking on **Clusters** on the left navigation bar.
 
-1. Click on **Gitrepos** on the left navigation bar to deploy the gitrepo into your clusters in the current workspace. 
+1. Click on **Gitrepos** on the left navigation bar to deploy the gitrepo into your clusters in the current workspace.
 
 1. Select your [git repository](https://fleet.rancher.io/gitrepo-add/) and [target clusters/cluster group](https://fleet.rancher.io/gitrepo-structure/). You can also create the cluster group in the UI by clicking on **Cluster Groups** from the left navigation bar.
 
@@ -64,9 +64,9 @@ The Helm chart in the git repository must include its dependencies in the charts
 # Troubleshooting
 
 ---
-* **Known Issue:** clientSecretName and helmSecretName secrets for Fleet gitrepos are not included in the backup nor restore created by the [backup-restore-operator]({{<baseurl>}}/rancher/v2.6/en/backups/back-up-rancher/#1-install-the-rancher-backups-operator). We will update the community once a permanent solution is in place. 
+* **Known Issue:** clientSecretName and helmSecretName secrets for Fleet gitrepos are not included in the backup nor restore created by the [backup-restore-operator]({{<baseurl>}}/rancher/v2.6/en/backups/back-up-rancher/#1-install-the-rancher-backups-operator). We will update the community once a permanent solution is in place.
 
-* **Temporary Workaround:** </br>
+* **Temporary Workaround:** <br/>
 By default, user-defined secrets are not backed up in Fleet. It is necessary to recreate secrets if performing a disaster recovery restore or migration of Rancher into a fresh cluster. To modify resourceSet to include extra resources you want to backup, refer to docs [here](https://github.com/rancher/backup-restore-operator#user-flow).
 
 ---

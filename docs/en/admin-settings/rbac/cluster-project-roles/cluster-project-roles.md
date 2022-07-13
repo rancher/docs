@@ -16,7 +16,7 @@ The projects and clusters accessible to non-administrative users is determined b
 
 When you create a cluster or project, Rancher automatically assigns you as the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
 
-:::note 
+:::note
 
 Non-administrative users cannot access any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign the project and cluster membership.
 
@@ -131,7 +131,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
     These users can manage project-scoped resources like namespaces and workloads, but cannot manage other project members.
 
     :::note
-    
+
     By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
 
     :::
@@ -141,7 +141,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
     These users can view everything in the project but cannot create, update, or delete anything.
 
     :::note danger
-    
+
     Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `owner` or `member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
 
     :::
@@ -154,7 +154,7 @@ Rancher lets you assign _custom project roles_ to a standard user instead of the
 
 The following table lists each built-in custom project role available in Rancher and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
 
-| Built-in Project Role                | Owner         | Member<a id="proj-roles"><a/> | Read Only     |
+| Built-in Project Role                | Owner         | Member<a id="proj-roles"></a> | Read Only     |
 | ---------------------------------- | ------------- | ----------------------------- | ------------- |
 | Manage Project Members             | ✓             |                               |               |
 | Create Namespaces                  | ✓             | ✓                             |               |
