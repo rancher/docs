@@ -126,7 +126,8 @@ New in v2.6.4, cert-manager versions 1.6.2 and 1.7.1 are compatible. We recommen
 
 This step is only required to use certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) or to request Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`).
 
-{{% accordion id="cert-manager" label="Click to Expand" %}}
+<details id="cert-manager">
+  <summary>Click to Expand</summary>
 
 :::note Important:
 
@@ -164,7 +165,7 @@ cert-manager-cainjector-577f6d9fd7-tr77l   1/1     Running   0          2m
 cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 ```
 
-{{% /accordion %}}
+</details>
 
 ### 5. Install Rancher with Helm and Your Chosen Certificate Option
 

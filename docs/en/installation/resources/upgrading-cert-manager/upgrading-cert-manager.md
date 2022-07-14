@@ -25,7 +25,8 @@ In order to upgrade cert-manager, follow these instructions:
 
 ### Option A: Upgrade cert-manager with Internet Access
 
-{{% accordion id="normal" label="Click to expand" %}}
+<details id="normal" >
+  <summary>Click to expand</summary>
 1. [Back up existing resources](https://cert-manager.io/docs/tutorials/backup/) as a precaution
 
     ```plain
@@ -98,11 +99,12 @@ In order to upgrade cert-manager, follow these instructions:
     kubectl apply -f cert-manager-backup.yaml
     ```
 
-{{% /accordion %}}
+</details>
 
 ### Option B: Upgrade cert-manager in an Air-Gapped Environment
 
-{{% accordion id="airgap" label="Click to expand" %}}
+<details id="airgap" >
+  <summary>Click to expand</summary>
 
 ### Prerequisites
 
@@ -208,11 +210,12 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     kubectl apply -f cert-manager-backup.yaml
     ```
 
-{{% /accordion %}}
+</details>
 
 ### Option C: Upgrade cert-manager from Versions 1.5 and Below
 
-{{% accordion id="normal" label="Click to expand" %}}
+<details id="normal" >
+  <summary>Click to expand</summary>
 
 Previously, in order to upgrade cert-manager from an older version, an uninstall and reinstall of Rancher was recommended. Using the method below, you may upgrade cert-manager without those additional steps in order to better preserve your production environment:
 
@@ -233,7 +236,7 @@ Previously, in order to upgrade cert-manager from an older version, an uninstall
 
 1. Upgrade Rancher normally with `helm upgrade`.
 
-{{% /accordion %}}
+</details>
 
 ### Verify the Deployment
 

@@ -31,7 +31,7 @@ Visit [Azure portal](https://portal.azure.com), login and go to **Azure Active D
 
 If you want to use the Azure CLI, you can run the command `az account show` to get the information.
 
-### 2. Set up the Azure Client ID and Azure Client Secret 
+### 2. Set up the Azure Client ID and Azure Client Secret
 
 Visit [Azure portal](https://portal.azure.com), login and follow the steps below to create an **App Registration** and the corresponding **Azure Client ID** (aadClientId) and **Azure Client Secret** (aadClientSecret).
 
@@ -75,15 +75,15 @@ Only hosts expected to be load balancer back ends need to be in this group.
 
 1. Choose "Azure" from the Cloud Provider drop-down in the Cluster Configuration section.
 
-1. * Supply the Cloud Provider Configuration. Note that Rancher will automatically create a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster. 
+1. * Supply the Cloud Provider Configuration. Note that Rancher will automatically create a new Network Security Group, Resource Group, Availability Set, Subnet, and Virtual Network. If you already have some or all of these created, you will need to specify them before creating the cluster.
    * You can click on "Show Advanced" to see more of these automatically generated names and update them if
-   necessary. Your Cloud Provider Configuration **must** match the fields in the Machine Pools section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group. 
+   necessary. Your Cloud Provider Configuration **must** match the fields in the Machine Pools section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group.
    * An example is provided below. You will modify it as needed.
 
-    {{% accordion id="v2.6.0-cloud-provider-config-file" label="Example Cloud Provider Config" %}}
+    <details id="v2.6.0-cloud-provider-config-file" label="Example Cloud Provider Config" %}}
 
 ```yaml
-{   
+{
     "cloud":"AzurePublicCloud",
     "tenantId": "YOUR TENANTID HERE",
     "aadClientId": "YOUR AADCLIENTID HERE",
@@ -103,8 +103,8 @@ Only hosts expected to be load balancer back ends need to be in this group.
     "useInstanceMetadata": true
 }
 ```
-    {{% /accordion %}}
-    
+    </details>
+
 1. Under the **Cluster Configuration > Advanced** section, click **Add** under **Additional Controller Manager Args** and add this flag: `--configure-cloud-routes=false`
 
 1. Click the **Create** button to submit the form and create the cluster.
