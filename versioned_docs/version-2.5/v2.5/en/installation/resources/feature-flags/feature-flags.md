@@ -77,8 +77,8 @@ Here is an example of a command for passing in the feature flag names when rende
 
 The Helm 3 command is as follows:
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -92,8 +92,8 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].name=CATTLE_FEATURES'
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
 ```
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -106,8 +106,8 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].name=CATTLE_FEATURES'
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
 ```
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 The Helm 2 command is as follows:
 

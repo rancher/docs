@@ -46,8 +46,8 @@ The route needs to refer to a [receiver](#receiver-configuration) that has alrea
 
 ### Grouping
 
-{{% tabs %}}
-{{% tab "Rancher v2.6.5+" %}}
+<Tabs>
+<TabItem label="Rancher v2.6.5+">
 
 :::note
 
@@ -62,8 +62,8 @@ As of Rancher v2.6.5, `Group By` now accepts a list of strings instead of key-va
 | Group Interval | 5m | How long to wait before sending an alert that has been added to a group of alerts for which an initial notification has already been sent. |
 | Repeat Interval |  4h | How long to wait before re-sending a given alert that has already been sent. |
 
-{{% /tab %}}
-{{% tab "Rancher before v2.6.5" %}}
+</TabItem>
+<TabItem label="Rancher before v2.6.5">
 
 | Field |    Default | Description |
 |-------|--------------|---------|
@@ -72,8 +72,8 @@ As of Rancher v2.6.5, `Group By` now accepts a list of strings instead of key-va
 | Group Interval | 5m | How long to wait before sending an alert that has been added to a group of alerts for which an initial notification has already been sent. |
 | Repeat Interval |  4h | How long to wait before re-sending a given alert that has already been sent. |
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 
 

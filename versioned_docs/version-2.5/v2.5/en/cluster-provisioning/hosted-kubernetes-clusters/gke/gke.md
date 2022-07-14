@@ -8,8 +8,8 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/gke/
 ---
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 - [Prerequisites](#prerequisites)
 - [Provisioning a GKE Cluster](#provisioning-a-gke-cluster)
@@ -105,8 +105,8 @@ The GKE provisioner can synchronize the state of a GKE cluster between Rancher a
 For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
 
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 
 # Prerequisites
 
@@ -159,5 +159,5 @@ You can access your cluster after its state is updated to **Active.**
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

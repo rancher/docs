@@ -91,9 +91,9 @@ Configure probes by using the **Health Check** section while editing deployments
 
 While you create a workload using Rancher v2.x, we recommend configuring a check that monitors the health of the deployment's pods.
 
-{{% tabs %}}
+<Tabs>
 
-{{% tab "TCP Check" %}}
+<TabItem label="TCP Check">
 
 TCP checks monitor your deployment's health by attempting to open a connection to the pod over a specified port. If the probe can open the port, it's considered healthy. Failure to open it is considered unhealthy, which notifies Kubernetes that it should kill the pod and then replace it according to its [restart policy](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy). (this applies to Liveness probes, for Readiness probes, it will mark the pod as Unready).
 
@@ -129,9 +129,9 @@ When you configure a readiness check using Rancher v2.x, the `readinessProbe` di
 
 -->
 
-{{% /tab %}}
+</TabItem>
 
-{{% tab "HTTP Check" %}}
+<TabItem label="HTTP Check">
 
 HTTP checks monitor your deployment's health by sending an HTTP GET request to a specific URL path that you define. If the pod responds with a message range of `200`-`400`, the health check is considered successful. If the pod replies with any other value, the check is considered unsuccessful, so Kubernetes kills and replaces the pod according to its [restart policy](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy). (this applies to Liveness probes, for Readiness probes, it will mark the pod as Unready).
 
@@ -141,9 +141,9 @@ You can configure the probe along with values for specifying its behavior by sel
 
 When you configure a readiness check using Rancher v2.x, the `readinessProbe` directive and the values you've set are added to the deployment's Kubernetes manifest. Configuring a readiness check also automatically adds a liveness check (`livenessProbe`) to the deployment.
 
-{{% /tab %}}
+</TabItem>
 
-{{% /tabs %}}
+</Tabs>
 
 ### Configuring Separate Liveness Checks
 

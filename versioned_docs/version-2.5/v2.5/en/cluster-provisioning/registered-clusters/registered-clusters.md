@@ -20,8 +20,8 @@ The control that Rancher has to manage a registered cluster depends on the type 
 
 # Prerequisites
 
-{{% tabs %}}
-{{% tab "v2.5.9+" %}}
+<Tabs>
+<TabItem label="v2.5.9+">
 
 ### Kubernetes Node Roles
 
@@ -51,8 +51,8 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 
 EKS clusters must have at least one managed node group to be imported into Rancher or provisioned from Rancher successfully.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.9" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.9">
 
 ### Permissions
 
@@ -76,8 +76,8 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 
 EKS clusters must have at least one managed node group to be imported into Rancher or provisioned from Rancher successfully.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 # Registering a Cluster
 
@@ -151,8 +151,8 @@ resource "rancher2_cluster" "my-eks-to-import" {
 
 The control that Rancher has to manage a registered cluster depends on the type of cluster.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 - [Changes in v2.5.8](#changes-in-v2-5-8)
 - [Features for All Registered Clusters](#2-5-8-features-for-all-registered-clusters)
@@ -197,8 +197,8 @@ When you delete an EKS cluster or GKE cluster that was created in Rancher, the c
 The capabilities for registered clusters are listed in the table on [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/)
 
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 
 - [Features for All Registered Clusters](#before-2-5-8-features-for-all-registered-clusters)
 - [Additional Features for Registered K3s Clusters](#before-2-5-8-additional-features-for-registered-k3s-clusters)
@@ -236,8 +236,8 @@ Amazon EKS clusters can now be registered in Rancher. For the most part, registe
 When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
 
 The capabilities for registered EKS clusters are listed in the table on [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/)
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 
 

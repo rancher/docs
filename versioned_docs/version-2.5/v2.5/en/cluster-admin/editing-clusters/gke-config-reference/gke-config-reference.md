@@ -4,8 +4,8 @@ shortTitle: GKE Cluster Configuration
 weight: 3
 ---
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 # Changes in v2.5.8
 
@@ -302,8 +302,8 @@ The syncing interval can be changed by running `kubectl edit setting gke-refresh
 
 The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for GCP APIs.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 
 
 # Labels & Annotations
@@ -449,5 +449,5 @@ Access scopes are the legacy method of specifying permissions for your nodes.
 - **Set access for each API:** Alternatively, you can choose to set specific scopes that permit access to the particular API methods that the service will call.
 
 For more information, see the [section about enabling service accounts for a VM.](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances)
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

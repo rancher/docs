@@ -45,8 +45,8 @@ The creation of this service principal returns three pieces of identification in
 
 # Creating an Azure Cluster
 
-{{%tabs %}}
-{{% tab "Rancher v2.2.0+" %}}
+<Tabs>
+<TabItem label="Rancher v2.2.0+">
 
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials](#2-create-a-node-template-with-your-cloud-credentials)
@@ -94,8 +94,8 @@ You can access your cluster after its state is updated to **Active.**
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
-{{% /tab %}}
-{{% tab "Rancher before v2.2.0" %}}
+</TabItem>
+<TabItem label="Rancher before v2.2.0">
 
 Use Rancher to create a Kubernetes cluster in Azure.
 
@@ -118,8 +118,8 @@ You can access your cluster after its state is updated to **Active.**
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### Optional Next Steps
 

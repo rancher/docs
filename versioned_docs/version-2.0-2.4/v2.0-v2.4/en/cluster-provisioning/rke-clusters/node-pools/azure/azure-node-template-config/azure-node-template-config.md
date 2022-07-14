@@ -5,8 +5,8 @@ weight: 1
 
 For more information about Azure, refer to the official [Azure documentation.](https://docs.microsoft.com/en-us/azure/?product=featured)
 
-{{% tabs %}}
-{{% tab "Rancher v2.2.0+" %}}
+<Tabs>
+<TabItem label="Rancher v2.2.0+">
 
 Account access information is stored as a cloud credential. Cloud credentials are stored as Kubernetes secrets. Multiple node templates can use the same cloud credential. You can use an existing cloud credential or create a new one. 
 
@@ -21,8 +21,8 @@ The [Docker daemon](https://docs.docker.com/engine/docker-overview/#the-docker-d
 - **Registry mirrors:** Docker Registry mirror to be used by the Docker daemon
 - **Other advanced options:** Refer to the [Docker daemon option reference](https://docs.docker.com/engine/reference/commandline/dockerd/)
 
-{{% /tab %}}
-{{% tab "Rancher before v2.2.0" %}}
+</TabItem>
+<TabItem label="Rancher before v2.2.0">
 
 - **Account Access** stores your account information for authenticating with Azure. 
 - **Placement** sets the geographical region where your cluster is hosted and other location metadata.
@@ -35,5 +35,5 @@ The [Docker daemon](https://docs.docker.com/engine/docker-overview/#the-docker-d
 - **Docker Engine Install URL:** Determines what Docker version will be installed on the instance.
 - **Registry mirrors:** Docker Registry mirror to be used by the Docker daemon
 - **Other advanced options:** Refer to the [Docker daemon option reference](https://docs.docker.com/engine/reference/commandline/dockerd/)
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

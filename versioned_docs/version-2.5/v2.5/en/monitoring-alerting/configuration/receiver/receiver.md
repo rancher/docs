@@ -72,8 +72,8 @@ Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Ra
 
 Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 The following types of receivers can be configured in the Rancher UI:
 
@@ -229,8 +229,8 @@ url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
 
 <!-- https://github.com/messagebird/sachet -->
 
-{{% /tab %}}
-{{% tab "Rancher v2.5.4-2.5.7" %}}
+</TabItem>
+<TabItem label="Rancher v2.5.4-2.5.7">
 
 The following types of receivers can be configured in the Rancher UI:
 
@@ -305,11 +305,11 @@ Opsgenie Responders:
 
 The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
 
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.3" %}}
+</TabItem>
+<TabItem label="Rancher v2.5.0-2.5.3">
 The Alertmanager must be configured in YAML, as shown in these [examples.](#example-alertmanager-configs)
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 # Configuring Multiple Receivers
 

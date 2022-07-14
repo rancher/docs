@@ -36,8 +36,8 @@ Labels should be used for identifying information that can affect the routing of
 
 Annotations should be used for information that does not affect who receives the alert, such as a runbook url or error message.
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.4+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.4+">
 
 ### Receiver
 The route needs to refer to a [receiver](#receiver-configuration) that has already been configured.
@@ -67,8 +67,8 @@ match_re:
   [ <labelname>: <regex>, ... ]
 ```
 
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.3" %}}
+</TabItem>
+<TabItem label="Rancher v2.5.0-2.5.3">
 The Alertmanager must be configured in YAML, as shown in this [example.](../examples/#alertmanager-config)
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

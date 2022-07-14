@@ -25,8 +25,8 @@ This section assumes that you understand how persistent storage works in Kuberne
     - **Add Volume > Use an existing persistent volume (claim)**
 
 1.  Complete the form that displays to choose a persistent volume for the internal Docker registry.
-{{% tabs %}}
-{{% tab "Add a new persistent volume" %}}
+<Tabs>
+<TabItem label="Add a new persistent volume">
 <br/>
 1. Enter a **Name** for the volume claim.
 
@@ -39,9 +39,9 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 1. Click **Define**.
 
-{{% /tab %}}
+</TabItem>
 
-{{% tab "Use an existing persistent volume" %}}
+<TabItem label="Use an existing persistent volume">
 <br/>
 1. Enter a **Name** for the volume claim.
 
@@ -51,9 +51,9 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 1. Click **Define**.
 
-{{% /tab %}}
+</TabItem>
 
-{{% /tabs %}}
+</Tabs>
 
 1. From the **Mount Point** field, enter `/var/lib/registry`, which is the data storage path inside the Docker registry container.
 
@@ -72,9 +72,9 @@ This section assumes that you understand how persistent storage works in Kuberne
     - **Add Volume > Use an existing persistent volume (claim)**
 
 1.  Complete the form that displays to choose a persistent volume for the internal Docker registry.
-{{% tabs %}}
+<Tabs>
 
-{{% tab "Add a new persistent volume" %}}
+<TabItem label="Add a new persistent volume">
 <br/>
 1. Enter a **Name** for the volume claim.
 
@@ -87,8 +87,8 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 1. Click **Define**.
 
-{{% /tab %}}
-{{% tab "Use an existing persistent volume" %}}
+</TabItem>
+<TabItem label="Use an existing persistent volume">
 <br/>
 1. Enter a **Name** for the volume claim.
 
@@ -98,8 +98,8 @@ This section assumes that you understand how persistent storage works in Kuberne
 
 1. Click **Define**.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 1. From the **Mount Point** field, enter `/data`, which is the data storage path inside the Minio container.
 

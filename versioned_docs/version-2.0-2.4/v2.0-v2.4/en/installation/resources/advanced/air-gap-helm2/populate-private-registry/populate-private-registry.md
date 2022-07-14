@@ -21,8 +21,8 @@ This section describes how to set up your private registry so that when you inst
 
 By default, we provide the steps of how to populate your private registry assuming you are provisioning Linux only clusters, but if you plan on provisioning any [Windows clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed for a Windows cluster.
 
-{{% tabs %}}
-{{% tab "Linux Only Clusters" %}}
+<Tabs>
+<TabItem label="Linux Only Clusters">
 
 For Rancher servers that will only provision Linux clusters, these are the steps to populate your private registry.
 
@@ -100,8 +100,8 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
     ```plain
      ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
     ```
-{{% /tab %}}
-{{% tab "Linux and Windows Clusters" %}}
+</TabItem>
+<TabItem label="Linux and Windows Clusters">
 
 _Available as of v2.3.0_
 
@@ -268,8 +268,8 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
 
 {{% /accordion %}}
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### [Next: Kubernetes Installs - Launch a Kubernetes Cluster with RKE]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
 

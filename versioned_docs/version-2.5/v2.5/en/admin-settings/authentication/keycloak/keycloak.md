@@ -36,12 +36,12 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 
 ## Getting the IDP Metadata
 
-{{% tabs %}}
-{{% tab "Keycloak 5 and earlier" %}}
+<Tabs>
+<TabItem label="Keycloak 5 and earlier">
 To get the IDP metadata, export a `metadata.xml` file from your Keycloak client.
 From the **Installation** tab, choose the **SAML Metadata IDPSSODescriptor** format option and download your file.
-{{% /tab %}}
-{{% tab "Keycloak 6-13" %}}
+</TabItem>
+<TabItem label="Keycloak 6-13">
 
 1. From the **Configure** section, click the **Realm Settings** tab.
 1. Click the **General** tab.
@@ -79,8 +79,8 @@ You are left with something similar as the example below:
 </EntityDescriptor>
 ```
 
-{{% /tab %}}
-{{% tab "Keycloak 14+" %}}
+</TabItem>
+<TabItem label="Keycloak 14+">
 
 1. From the **Configure** section, click the **Realm Settings** tab.
 1. Click the **General** tab.
@@ -104,8 +104,8 @@ The following is an example process for Firefox, but will vary slightly for othe
 1. From the details pane, click the **Response** tab.
 1. Copy the raw response data.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ## Configuring Keycloak in Rancher
 

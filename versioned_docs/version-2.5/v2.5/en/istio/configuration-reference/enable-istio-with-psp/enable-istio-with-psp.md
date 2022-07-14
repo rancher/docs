@@ -15,8 +15,8 @@ The Istio CNI plugin removes the need for each application pod to have a privile
 
 The steps differ based on the Rancher version.
 
-{{% tabs %}}
-{{% tab "v2.5.4+" %}}
+<Tabs>
+<TabItem label="v2.5.4+">
 
 > **Prerequisites:**
 >
@@ -59,8 +59,8 @@ Istio should install successfully with the CNI enabled in the cluster.
 
 Verify that the CNI is working by deploying a [sample application](https://istio.io/latest/docs/examples/bookinfo/) or deploying one of your own applications.
 
-{{% /tab %}}
-{{% tab "v2.5.0-v2.5.3" %}}
+</TabItem>
+<TabItem label="v2.5.0-v2.5.3">
 
 > **Prerequisites:**
 >
@@ -107,5 +107,5 @@ Follow the [primary instructions]({{<baseurl>}}/rancher/v2.5/en/istio/setup/enab
 
 After Istio has finished installing, the Apps page in System Projects should show both istio and `istio-cni` applications deployed successfully. Sidecar injection will now be functional.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

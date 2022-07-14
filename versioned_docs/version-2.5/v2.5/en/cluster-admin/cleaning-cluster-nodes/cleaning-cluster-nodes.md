@@ -58,8 +58,8 @@ For registered clusters, the process for removing Rancher is a little different.
 
 After the registered cluster is detached from Rancher, the cluster's workloads will be unaffected and you can access the cluster using the same methods that you did before the cluster was registered into Rancher.
 
-{{% tabs %}}
-{{% tab "By UI / API" %}}
+<Tabs>
+<TabItem label="By UI / API">
 >**Warning:** This process will remove data from your cluster. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
 
 After you initiate the removal of a registered cluster using the Rancher UI (or API), the following events occur.
@@ -72,8 +72,8 @@ After you initiate the removal of a registered cluster using the Rancher UI (or 
 
 **Result:** All components listed for registered clusters in [What Gets Removed?](#what-gets-removed) are deleted.
 
-{{% /tab %}}
-{{% tab "By Script" %}}
+</TabItem>
+<TabItem label="By Script">
 Rather than cleaning registered cluster nodes using the Rancher UI, you can run a script instead.
 
 >**Prerequisite:**
@@ -103,8 +103,8 @@ Rather than cleaning registered cluster nodes using the Rancher UI, you can run 
 
 **Result:** The script runs. All components listed for registered clusters in [What Gets Removed?](#what-gets-removed) are deleted.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### Windows Nodes
 

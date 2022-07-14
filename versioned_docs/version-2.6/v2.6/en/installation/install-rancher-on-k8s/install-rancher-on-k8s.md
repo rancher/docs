@@ -154,8 +154,8 @@ However, irrespective of the certificate configuration, the name of the Rancher 
 
 > **Tip for testing and development:** This final command to install Rancher requires a domain name that forwards traffic to Rancher. If you are using the Helm CLI to set up a proof-of-concept, you can use a fake domain name when passing the `hostname` option. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`, which would expose Rancher on an IP where it is running. Production installs would require a real domain name.
 
-{{% tabs %}}
-{{% tab "Rancher-generated Certificates" %}}
+<Tabs>
+<TabItem label="Rancher-generated Certificates">
 
 
 The default is for Rancher to generate a CA and uses `cert-manager` to issue the certificate for access to the Rancher server interface.
@@ -182,8 +182,8 @@ Waiting for deployment "rancher" rollout to finish: 0 of 3 updated replicas are 
 deployment "rancher" successfully rolled out
 ```
 
-{{% /tab %}}
-{{% tab "Let's Encrypt" %}}
+</TabItem>
+<TabItem label="Let's Encrypt">
 
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA.
 
@@ -216,8 +216,8 @@ Waiting for deployment "rancher" rollout to finish: 0 of 3 updated replicas are 
 deployment "rancher" successfully rolled out
 ```
 
-{{% /tab %}}
-{{% tab "Certificates from Files" %}}
+</TabItem>
+<TabItem label="Certificates from Files">
 In this option, Kubernetes secrets are created from your own certificates for Rancher to use.
 
 When you run this command, the `hostname` option must match the `Common Name` or a `Subject Alternative Names` entry in the server certificate or the Ingress controller will fail to configure correctly.
@@ -251,8 +251,8 @@ helm install rancher rancher-<CHART_REPO>/rancher \
 ```
 
 Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.6/en/installation/resources/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 The Rancher chart configuration has many options for customizing the installation to suit your specific environment. Here are some common advanced scenarios.
 

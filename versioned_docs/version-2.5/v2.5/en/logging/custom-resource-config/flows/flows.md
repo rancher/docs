@@ -10,8 +10,8 @@ For the full details on configuring `Flows` and `ClusterFlows`, see the [Banzai 
 
 # Configuration
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 - [Flows](#flows-2-5-8)
   - [Matches](#matches-2-5-8)
@@ -73,8 +73,8 @@ Matches, filters and `Outputs` are configured for `ClusterFlows` in the same way
 
 After `ClusterFlow` selects logs from all namespaces in the cluster, logs from the cluster will be collected and logged to the selected `ClusterOutput`.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 
 - [Flows](#flows-2-5-0)
   - [Matches](#matches-2-5-0)
@@ -130,8 +130,8 @@ Matches, filters and `Outputs` are also configured for `ClusterFlows`. The only 
 
 `ClusterFlows` need to be defined in YAML.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 
 # YAML Example

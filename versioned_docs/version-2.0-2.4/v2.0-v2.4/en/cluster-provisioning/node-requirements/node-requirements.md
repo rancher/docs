@@ -38,8 +38,8 @@ SUSE Linux may have a firewall that blocks all ports by default. In that situati
 
 When [Launching Kubernetes with Rancher]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/) using Flatcar Container Linux nodes, it is required to use the following configuration in the [Cluster Config File]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/#cluster-config-file)
 
-{{% tabs %}}
-{{% tab "Canal"%}}
+<Tabs>
+<TabItem label="Canal">
 
 ```yaml
 rancher_kubernetes_engine_config:
@@ -54,9 +54,9 @@ rancher_kubernetes_engine_config:
       extra_args:
         flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
 ```
-{{% /tab %}}
+</TabItem>
 
-{{% tab "Calico"%}}
+<TabItem label="Calico">
 
 ```yaml
 rancher_kubernetes_engine_config:
@@ -71,8 +71,8 @@ rancher_kubernetes_engine_config:
       extra_args:
         flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
 ```
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 It is also required to enable the Docker service, you can enable the Docker service using the following command:
 

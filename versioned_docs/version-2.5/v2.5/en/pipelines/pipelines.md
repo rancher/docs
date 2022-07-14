@@ -94,8 +94,8 @@ Before you can start configuring a pipeline for your repository, you must config
 
 Select your provider's tab below and follow the directions.
 
-{{% tabs %}}
-{{% tab "GitHub" %}}
+<Tabs>
+<TabItem label="GitHub">
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
 1. Select **Tools > Pipelines** in the navigation bar.
@@ -108,8 +108,8 @@ Select your provider's tab below and follow the directions.
 
 1. Click **Authenticate**.
 
-{{% /tab %}}
-{{% tab "GitLab" %}}
+</TabItem>
+<TabItem label="GitLab">
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
@@ -126,8 +126,8 @@ Select your provider's tab below and follow the directions.
 >**Note:**
 > 1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.  
 > 2. If you use GitLab 10.7+ and your Rancher setup is in a local network, enable the **Allow requests to the local network from hooks and services** option in GitLab admin settings.
-{{% /tab %}}
-{{% tab "Bitbucket Cloud" %}}
+</TabItem>
+<TabItem label="Bitbucket Cloud">
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
@@ -141,8 +141,8 @@ Select your provider's tab below and follow the directions.
 
 1. Click **Authenticate**.
 
-{{% /tab %}}
-{{% tab "Bitbucket Server" %}}
+</TabItem>
+<TabItem label="Bitbucket Server">
 
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
@@ -162,8 +162,8 @@ Select your provider's tab below and follow the directions.
 > 1. Setup Rancher server with a certificate from a trusted CA.
 > 1. If you're using self-signed certificates, import Rancher server's certificate to the Bitbucket server. For instructions, see the Bitbucket server documentation for [configuring self-signed certificates](https://confluence.atlassian.com/bitbucketserver/if-you-use-self-signed-certificates-938028692.html).
 >
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 **Result:** After the version control provider is authenticated, you will be automatically re-directed to start configuring which repositories you want start using with a pipeline.
 

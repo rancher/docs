@@ -69,8 +69,8 @@ To install `gcloud` and `kubectl`, perform the following steps:
 - Using gcloud init, if you want to be walked through setting defaults.
 - Using gcloud config, to individually set your project ID, zone, and region.
 
-{{% tabs %}}
-{{% tab "Using gloud init" %}}
+<Tabs>
+<TabItem label="Using gloud init">
 
 1. Run gcloud init and follow the directions:
 
@@ -84,10 +84,10 @@ To install `gcloud` and `kubectl`, perform the following steps:
     ```
 2. Follow the instructions to authorize gcloud to use your Google Cloud account and select the new project that you created.
 
-{{% /tab %}}
-{{% tab "Using gcloud config" %}}
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+<TabItem label="Using gcloud config">
+</TabItem>
+</Tabs>
 
 # 4. Confirm that gcloud is configured correctly
 

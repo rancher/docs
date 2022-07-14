@@ -32,8 +32,8 @@ For more information about the default limits, see [this page.]({{<baseurl>}}/ra
 
 # Install the Monitoring Application
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8">
 
 ### Enable Monitoring for use without SSL
 
@@ -70,8 +70,8 @@ key.pfx=`base64-content`
 
 Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
 
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-2.5.7" %}}
+</TabItem>
+<TabItem label="Rancher v2.5.0-2.5.7">
 
 1. In the Rancher UI, go to the cluster where you want to install monitoring and click **Cluster Explorer.**
 1. Click **Apps.**
@@ -81,6 +81,6 @@ Then **Cert File Path** would be set to `/etc/alertmanager/secrets/cert.pem`.
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
-{{% /tab %}}
+</TabItem>
 
-{{% /tabs %}}
+</Tabs>
