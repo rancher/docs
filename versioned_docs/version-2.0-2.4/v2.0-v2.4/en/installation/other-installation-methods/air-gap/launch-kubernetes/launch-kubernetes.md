@@ -15,8 +15,8 @@ In Rancher v2.4, the Rancher management server can be installed on either an RKE
 
 The steps to set up an air-gapped Kubernetes cluster on RKE or K3s are shown below.
 
-{{% tabs %}}
-{{% tab "K3s" %}}
+<Tabs>
+<TabItem label="K3s">
 
 In this guide, we are assuming you have created your nodes in your air gapped environment and have a secure Docker private registry on your bastion server.
 
@@ -139,8 +139,8 @@ Upgrading an air-gap environment can be accomplished in the following manner:
 1. Download the new air-gap images (tar file) from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be upgrading to. Place the tar in the `/var/lib/rancher/k3s/agent/images/` directory on each node. Delete the old tar file.
 2. Copy and replace the old K3s binary in `/usr/local/bin` on each node. Copy over the install script at https://get.k3s.io (as it is possible it has changed since the last release). Run the script again just as you had done in the past with the same environment variables.
 3. Restart the K3s service (if not restarted automatically by installer).
-{{% /tab %}}
-{{% tab "RKE" %}}
+</TabItem>
+<TabItem label="RKE">
 We will create a Kubernetes cluster using Rancher Kubernetes Engine (RKE). Before being able to start your Kubernetes cluster, you’ll need to install RKE and create a RKE config file.
 
 ### 1. Install RKE
@@ -212,8 +212,8 @@ Save a copy of the following files in a secure location:
 - `rancher-cluster.yml`: The RKE cluster configuration file.
 - `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
 - `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains the current state of the cluster including the RKE configuration and the certificates.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 > **Note:** The "rancher-cluster" parts of the two latter file names are dependent on how you name the RKE cluster configuration file.
 

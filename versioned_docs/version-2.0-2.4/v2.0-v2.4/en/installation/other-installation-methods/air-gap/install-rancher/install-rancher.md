@@ -11,8 +11,8 @@ aliases:
 
 This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.
 
-{{% tabs %}}
-{{% tab "Kubernetes Install (Recommended)" %}}
+<Tabs>
+<TabItem label="Kubernetes Install (Recommended)">
 
 Rancher recommends installing Rancher on a Kubernetes cluster. A highly available Kubernetes install is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
 
@@ -229,8 +229,8 @@ These resources could be helpful when installing Rancher:
 - [Adding TLS secrets]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/encryption/tls-secrets/)
 - [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/troubleshooting/)
 
-{{% /tab %}}
-{{% tab "Docker Install" %}}
+</TabItem>
+<TabItem label="Docker Install">
 
 The Docker installation is for Rancher users who want to test out Rancher. 
 
@@ -354,5 +354,5 @@ If you are installing Rancher v2.3.0+, the installation is complete.
 
 If you are installing Rancher versions before v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/local-system-charts/).
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

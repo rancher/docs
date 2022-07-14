@@ -56,8 +56,8 @@ For each Helm chart, there are a list of desired answers that must be entered in
 
 > For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is required to wrap the values with double quotes (i.e., ``"abc, bcd"``).
 
-{{% tabs %}}
-{{% tab "UI" %}}
+<Tabs>
+<TabItem label="UI">
 
 ### Using a questions.yml file
 
@@ -67,8 +67,8 @@ If the Helm chart that you are deploying contains a `questions.yml` file, Ranche
 
 For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a [custom Helm chart repository]({{<baseurl>}}/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/catalog-config/#custom-helm-chart-repository)), answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
 
-{{% /tab %}}
-{{% tab "Editing YAML Files" %}}
+</TabItem>
+<TabItem label="Editing YAML Files">
 
 _Available as of v2.1.0_
 
@@ -101,5 +101,5 @@ servers[0].host=example
 _Available as of v2.2.0_
 
 You can directly paste that YAML formatted structure into the YAML editor. By allowing custom values to be set using a YAML formatted structure, Rancher has the ability to easily customize for more complicated input values (e.g. multi-lines, array and JSON objects).
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

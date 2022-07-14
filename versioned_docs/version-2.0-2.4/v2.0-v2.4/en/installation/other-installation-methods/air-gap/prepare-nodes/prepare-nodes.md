@@ -11,8 +11,8 @@ An air gapped environment is an environment where the Rancher server is installe
 
 The infrastructure depends on whether you are installing Rancher on a K3s Kubernetes cluster, an RKE Kubernetes cluster, or a single Docker container. For more information on each installation option, refer to [this page.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/)
 
-{{% tabs %}}
-{{% tab "K3s" %}}
+<Tabs>
+<TabItem label="K3s">
 We recommend setting up the following infrastructure for a high-availability installation:
 
 - **Two Linux nodes,** typically virtual machines, in the infrastructure provider of your choice.
@@ -82,8 +82,8 @@ Rancher supports air gap installs using a private registry. You must have your o
 In a later step, when you set up your K3s Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/k3s/latest/en/installation/private-registry/) with details from this registry.
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
-{{% /tab %}}
-{{% tab "RKE" %}}
+</TabItem>
+<TabItem label="RKE">
 
 To install the Rancher management server on a high-availability RKE cluster, we recommend setting up the following infrastructure:
 
@@ -146,8 +146,8 @@ In a later step, when you set up your RKE Kubernetes cluster, you will create a 
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
 
-{{% /tab %}}
-{{% tab "Docker" %}}
+</TabItem>
+<TabItem label="Docker">
 > The Docker installation is for Rancher users that are wanting to test out Rancher. Since there is only one node and a single Docker container, if the node goes down, you will lose all the data of your Rancher server.
 >
 > For Rancher v2.0-v2.4, there is no migration path from a Docker installation to a high-availability installation. Therefore, you may want to use a Kubernetes installation from the start.
@@ -166,7 +166,7 @@ Rancher supports air gap installs using a Docker private registry on your bastio
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/)
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### [Next: Collect and Publish Images to your Private Registry]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/air-gap/populate-private-registry/)

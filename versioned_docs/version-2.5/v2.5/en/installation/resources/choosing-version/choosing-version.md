@@ -16,8 +16,8 @@ The Helm chart version also applies to RancherD installs because RancherD instal
 
 > **Note:** RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.
 
-{{% tabs %}}
-{{% tab "Helm Charts" %}}
+<Tabs>
+<TabItem label="Helm Charts">
 
 When installing, upgrading, or rolling back Rancher Server when it is [installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/), Rancher server is installed using a Helm chart on a Kubernetes cluster. Therefore, as you prepare to install or upgrade a high availability Rancher configuration, you must add a Helm chart repository that contains the charts for installing Rancher.
 
@@ -80,8 +80,8 @@ After installing Rancher, if you want to change which Helm chart repository to i
     ```
 
 4. Continue to follow the steps to [upgrade Rancher]({{<baseurl>}}/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades/ha) from the new Helm chart repository.
-{{% /tab %}}
-{{% tab "Docker Images" %}}
+</TabItem>
+<TabItem label="Docker Images">
 When performing [Docker installs]({{<baseurl>}}/rancher/v2.5/en/installation/single-node), upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
 
 ### Server Tags
@@ -99,5 +99,5 @@ Rancher Server is distributed as a Docker image, which have tags attached to the
 > - The `master` tag or any tag with `-rc` or another suffix is meant for the Rancher testing team to validate. You should not use these tags, as these builds are not officially supported.
 > - Want to install an alpha review for preview? Install using one of the alpha tags listed on our [announcements page](https://forums.rancher.com/c/announcements) (e.g., `v2.2.0-alpha1`). Caveat: Alpha releases cannot be upgraded to or from any other release.
 
-{{% /tab %}} 
-{{% /tabs %}}
+</TabItem> 
+</Tabs>

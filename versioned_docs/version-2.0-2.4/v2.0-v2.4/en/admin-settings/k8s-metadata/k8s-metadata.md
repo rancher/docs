@@ -43,8 +43,8 @@ The RKE metadata config controls how often Rancher syncs metadata and where it d
 
 The way that the metadata is configured depends on the Rancher version.
 
-{{% tabs %}}
-{{% tab "Rancher v2.4+" %}}
+<Tabs>
+<TabItem label="Rancher v2.4+">
 To edit the metadata config in Rancher,
 
 1. Go to the **Global** view and click the **Settings** tab.
@@ -57,8 +57,8 @@ To edit the metadata config in Rancher,
 If you don't have an air gap setup, you don't need to specify the URL where Rancher gets the metadata, because the default setting is to pull from [Rancher's metadata Git repository.](https://github.com/rancher/kontainer-driver-metadata/blob/dev-v2.5/data/data.json)
 
 However, if you have an [air gap setup,](#air-gap-setups) you will need to mirror the Kubernetes metadata repository in a location available to Rancher. Then you need to change the URL to point to the new location of the JSON file. 
-{{% /tab %}}
-{{% tab "Rancher v2.3" %}}
+</TabItem>
+<TabItem label="Rancher v2.3">
 To edit the metadata config in Rancher,
 
 1. Go to the **Global** view and click the **Settings** tab.
@@ -72,8 +72,8 @@ To edit the metadata config in Rancher,
 If you don't have an air gap setup, you don't need to specify the URL or Git branch where Rancher gets the metadata, because the default setting is to pull from [Rancher's metadata Git repository.](https://github.com/rancher/kontainer-driver-metadata.git)
 
 However, if you have an [air gap setup,](#air-gap-setups) you will need to mirror the Kubernetes metadata repository in a location available to Rancher. Then you need to change the URL and Git branch in the `rke-metadata-config` settings to point to the new location of the repository.
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### Air Gap Setups
 

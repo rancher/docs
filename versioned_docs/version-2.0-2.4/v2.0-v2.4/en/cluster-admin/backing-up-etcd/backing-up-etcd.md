@@ -27,8 +27,8 @@ This section covers the following topics:
 
 # How Snapshots Work
 
-{{% tabs %}}
-{{% tab "Rancher v2.4.0+" %}}
+<Tabs>
+<TabItem label="Rancher v2.4.0+">
 
 ### Snapshot Components
 
@@ -84,8 +84,8 @@ On restore, the following process is used:
 4. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
 5.  The cluster is restored and post-restore actions will be done in the cluster.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.4.0" %}}
+</TabItem>
+<TabItem label="Rancher before v2.4.0">
 When Rancher creates a snapshot, only the etcd data is included in the snapshot.
 
 Because the Kubernetes version is not included in the snapshot, there is no option to restore a cluster to a different Kubernetes version.
@@ -128,8 +128,8 @@ On restore, the following process is used:
 4. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
 5.  The cluster is restored and post-restore actions will be done in the cluster.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 # Configuring Recurring Snapshots
 

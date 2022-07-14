@@ -25,8 +25,8 @@ Then you will create an EC2 cluster in Rancher, and when configuring the new clu
 
 The steps to create a cluster differ based on your Rancher version.
 
-{{% tabs %}}
-{{% tab "Rancher v2.2.0+" %}}
+<Tabs>
+<TabItem label="Rancher v2.2.0+">
 
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials and information from EC2](#2-create-a-node-template-with-your-cloud-credentials-and-information-from-ec2)
@@ -75,8 +75,8 @@ You can access your cluster after its state is updated to **Active.**
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
-{{% /tab %}}
-{{% tab "Rancher before v2.2.0" %}}
+</TabItem>
+<TabItem label="Rancher before v2.2.0">
 
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Amazon EC2**.
@@ -99,8 +99,8 @@ You can access your cluster after its state is updated to **Active.**
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 ### Optional Next Steps
 
 After creating your cluster, you can access it through the Rancher UI. As a best practice, we recommend setting up these alternate ways of accessing your cluster:

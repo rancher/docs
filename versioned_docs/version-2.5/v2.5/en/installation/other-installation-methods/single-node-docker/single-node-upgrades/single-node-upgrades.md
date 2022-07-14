@@ -130,8 +130,8 @@ To see the command to use when starting the new Rancher server container, choose
 - Docker Upgrade
 - Docker Upgrade for Air Gap Installs
 
-{{% tabs %}}
-{{% tab "Docker Upgrade" %}}
+<Tabs>
+<TabItem label="Docker Upgrade">
 
 Select which option you had installed Rancher server
 
@@ -248,8 +248,8 @@ As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.5/
 
 {{% /accordion %}}
 
-{{% /tab %}}
-{{% tab "Docker Air Gap Upgrade" %}}
+</TabItem>
+<TabItem label="Docker Air Gap Upgrade">
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
@@ -342,8 +342,8 @@ docker run -d --volumes-from rancher-data \
 ```
 As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
 {{% /accordion %}}
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 **Result:** You have upgraded Rancher. Data from your upgraded server is now saved to the `rancher-data` container for use in future upgrades.
 

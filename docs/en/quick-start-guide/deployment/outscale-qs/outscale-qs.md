@@ -5,12 +5,19 @@ weight: 140
 ---
 The following steps will quickly deploy a Rancher server on Outscale in a single-node K3s Kubernetes cluster, with a single-node downstream Kubernetes cluster attached.
 
->**Note:** The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+:::note
+
+The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see [Installation]({{<baseurl>}}/rancher/v2.6/en/installation/).
+
+:::
 
 ## Prerequisites
 
->**Note**
->Deploying to Outscale will incur charges.
+:::caution
+
+Deploying to Outscale will incur charges.
+
+:::
 
 - [Outscale Account](https://en.outscale.com/): You will require an account on Outscale as this is where the server and cluster will run.
 - [Outscale Access Key](https://docs.outscale.com/en/userguide/About-Access-Keys.html): Use these instructions to create an Outscale Access Key if you don't have one.

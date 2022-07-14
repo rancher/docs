@@ -9,8 +9,8 @@ First, you will set up your DigitalOcean cloud credentials in Rancher. Then you 
 
 Then you will create a DigitalOcean cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
-{{% tabs %}}
-{{% tab "RKE" %}}
+<Tabs>
+<TabItem label="RKE">
 
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials](#2-create-a-node-template-with-your-cloud-credentials)
@@ -48,8 +48,8 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rk
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Click **Create**.
 
-{{% /tab %}}
-{{% tab "RKE2" %}}
+</TabItem>
+<TabItem label="RKE2">
 
 ### 1. Create your cloud credentials
 
@@ -78,8 +78,8 @@ Use Rancher to create a Kubernetes cluster in DigitalOcean.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Click **Create**.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 **Result:**
 

@@ -5,8 +5,8 @@ weight: 1
 
 For more details about EC2, nodes, refer to the official documentation for the [EC2 Management Console](https://aws.amazon.com/ec2). 
 
-{{% tabs %}}
-{{% tab "Rancher v2.2.0+" %}}
+<Tabs>
+<TabItem label="Rancher v2.2.0+">
 
 ### Region
 
@@ -48,8 +48,8 @@ If you need to pass an **IAM Instance Profile Name** (not ARN), for example, whe
 
 In the **Engine Options** section of the node template, you can configure the Docker daemon. You may want to specify the docker version or a Docker registry mirror.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.2.0" %}}
+</TabItem>
+<TabItem label="Rancher before v2.2.0">
 
 ### Account Access
 
@@ -95,5 +95,5 @@ The [Docker daemon](https://docs.docker.com/engine/docker-overview/#the-docker-d
 - **Docker Engine Install URL:** Determines what Docker version will be installed on the instance.
 - **Registry mirrors:** Docker Registry mirror to be used by the Docker daemon
 - **Other advanced options:** Refer to the [Docker daemon option reference](https://docs.docker.com/engine/reference/commandline/dockerd/)
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

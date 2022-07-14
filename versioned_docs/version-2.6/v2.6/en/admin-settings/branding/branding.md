@@ -40,11 +40,11 @@ You can override the primary color used throughout the UI with a custom color of
 
 ### Fixed Banners
 
-{{% tabs %}}
-{{% tab "Rancher before v2.6.4"  %}}
+<Tabs>
+<TabItem label="Rancher before v2.6.4">
 Display a custom fixed banner in the header, footer, or both.
-{{% /tab %}}
-{{% tab "Rancher v2.6.4+" %}}
+</TabItem>
+<TabItem label="Rancher v2.6.4+">
 Display a custom fixed banner in the header, footer, or both.
 
 As of Rancher v2.6.4, configuration of fixed banners has moved from the **Branding** tab to the **Banners** tab.
@@ -53,8 +53,8 @@ To configure banner settings,
 
 1. Click **☰ > Global settings**.
 2. Click **Banners**.
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 # Custom Navigation Links
 

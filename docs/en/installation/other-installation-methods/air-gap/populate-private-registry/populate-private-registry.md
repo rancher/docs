@@ -19,8 +19,8 @@ If the registry has certs, follow [this K3s documentation](https://rancher.com/d
 
 :::
 
-{{% tabs %}}
-{{% tab "Linux Only Clusters" %}}
+<Tabs>
+<TabItem label="Linux Only Clusters">
 
 For Rancher servers that will only provision Linux clusters, these are the steps to populate your private registry.
 
@@ -119,8 +119,8 @@ The `rancher-images.txt` is expected to be on the workstation in the same direct
    ```plain
    ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
-{{% /tab %}}
-{{% tab "Linux and Windows Clusters" %}}
+</TabItem>
+<TabItem label="Linux and Windows Clusters">
 
 For Rancher servers that will provision Linux and Windows clusters, there are distinctive steps to populate your private registry for the Windows images and the Linux images. Since a Windows cluster is a mix of Linux and Windows nodes, the Linux images pushed into the private registry are manifests.
 
@@ -305,8 +305,8 @@ The image list, `rancher-images.txt` or `rancher-windows-images.txt`, is expecte
 ```
 
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### [Next step for Kubernetes Installs - Launch a Kubernetes Cluster]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/launch-kubernetes/)
 

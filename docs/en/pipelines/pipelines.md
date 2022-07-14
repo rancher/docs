@@ -119,8 +119,8 @@ Before you can start configuring a pipeline for your repository, you must config
 
 Select your provider's tab below and follow the directions.
 
-{{% tabs %}}
-{{% tab "GitHub" %}}
+<Tabs>
+<TabItem label="GitHub">
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. Go to the cluster where you want to configure pipelines and click **Explore**.
@@ -132,8 +132,8 @@ Select your provider's tab below and follow the directions.
 1. If you're using GitHub for enterprise, select **Use a private github enterprise installation**. Enter the host address of your GitHub installation.
 1. Click **Authenticate**.
 
-{{% /tab %}}
-{{% tab "GitLab" %}}
+</TabItem>
+<TabItem label="GitLab">
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. Go to the cluster where you want to configure pipelines and click **Explore**.
@@ -153,8 +153,8 @@ Select your provider's tab below and follow the directions.
 
 :::
 
-{{% /tab %}}
-{{% tab "Bitbucket Cloud" %}}
+</TabItem>
+<TabItem label="Bitbucket Cloud">
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. Go to the cluster where you want to configure pipelines and click **Explore**.
@@ -166,8 +166,8 @@ Select your provider's tab below and follow the directions.
 1. From Bitbucket, copy the consumer **Key** and **Secret**. Paste them into Rancher.
 1. Click **Authenticate**.
 
-{{% /tab %}}
-{{% tab "Bitbucket Server" %}}
+</TabItem>
+<TabItem label="Bitbucket Server">
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. Go to the cluster where you want to configure pipelines and click **Explore**.
@@ -188,8 +188,8 @@ Bitbucket server needs to do SSL verification when sending webhooks to Rancher. 
 
 :::
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 **Result:** After the version control provider is authenticated, you will be automatically re-directed to start configuring which repositories you want start using with a pipeline.
 

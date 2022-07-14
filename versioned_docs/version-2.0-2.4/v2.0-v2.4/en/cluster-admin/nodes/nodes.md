@@ -130,8 +130,8 @@ However, you can override the conditions draining when you initiate the drain. Y
 
 The node draining options are different based on your version of Rancher.
 
-{{% tabs %}}
-{{% tab "Rancher v2.2.x+" %}}
+<Tabs>
+<TabItem label="Rancher v2.2.x+">
 There are two drain modes: aggressive and safe.
 
 - **Aggressive Mode**
@@ -143,8 +143,8 @@ There are two drain modes: aggressive and safe.
 - **Safe Mode**
 
     If a node has standalone pods or ephemeral data it will be cordoned but not drained.
-{{% /tab %}}
-{{% tab "Rancher before v2.2.x" %}}
+</TabItem>
+<TabItem label="Rancher before v2.2.x">
 
 The following list describes each drain option:
 
@@ -159,8 +159,8 @@ The following list describes each drain option:
 - **Even if there are pods using emptyDir**
 
     If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Similar to the first option, Kubernetes expects the implementation to decide what to do with these pods. Choosing this option will delete these pods.
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### Grace Period
 

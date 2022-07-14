@@ -49,8 +49,8 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 
 > **Note:** Values set from the Rancher API will override the value passed in through the command line.
 
-{{% tabs %}}
-{{% tab "Kubernetes Install" %}}
+<Tabs>
+<TabItem label="Kubernetes Install">
 When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
 
 ```
@@ -99,8 +99,8 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
 ```
 
-{{% /tab %}}
-{{% tab "Docker Install" %}}
+</TabItem>
+<TabItem label="Docker Install">
 When installing Rancher with Docker, use the `--features` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 
 ```
@@ -110,8 +110,8 @@ docker run -d -p 80:80 -p 443:443 \
   --features=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true # Available as of v2.3.0
 ```
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 # Enabling Features with the Rancher UI
 

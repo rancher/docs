@@ -22,8 +22,8 @@ Placeholder | Description
 
 ### Option A: Default Self-signed Certificate
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -36,8 +36,8 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 	--set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 
  ```plain
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -49,16 +49,16 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
  --set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 
 
 ### Option B: Certificates from Files using Kubernetes Secrets
 
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 
 ```plain
@@ -86,8 +86,8 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 	--set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 
 
 ```plain
@@ -112,8 +112,8 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
 --set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 
 ### Apply the Rendered Templates

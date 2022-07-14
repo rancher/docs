@@ -44,8 +44,8 @@ In this section of the [RKE documentation,]({{<baseurl>}}/rke/latest/en/upgrades
 
 # Recommended Best Practice for Upgrades
 
-{{% tabs %}}
-{{% tab "Rancher v2.4+" %}}
+<Tabs>
+<TabItem label="Rancher v2.4+">
 When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 1. Take a snapshot.
@@ -53,8 +53,8 @@ When upgrading the Kubernetes version of a cluster, we recommend that you:
 1. If the upgrade fails, revert the cluster to the pre-upgrade Kubernetes version. This is achieved by selecting the **Restore etcd and Kubernetes version** option. This will return your cluster to the pre-upgrade kubernetes version before restoring the etcd snapshot.
 
 The restore operation will work on a cluster that is not in a healthy or active state.
-{{% /tab %}}
-{{% tab "Rancher before v2.4" %}}
+</TabItem>
+<TabItem label="Rancher before v2.4">
 When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 1. Take a snapshot.
@@ -62,8 +62,8 @@ When upgrading the Kubernetes version of a cluster, we recommend that you:
 1. If the upgrade fails, restore the cluster from the etcd snapshot.
 
 The cluster cannot be downgraded to a previous Kubernetes version.
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 # Upgrading the Kubernetes Version
 

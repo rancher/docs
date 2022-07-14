@@ -13,8 +13,8 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
 
 # Creating a Persistent Grafana Dashboard
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 > **Prerequisites:**
 > 
@@ -84,8 +84,8 @@ grafana.sidecar.dashboards.searchNamespace=ALL
 
 Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboards are still restricted to giving permissions for users to add dashboards in the namespace defined in `grafana.dashboards.namespace`, which defaults to `cattle-dashboards`.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.5.8" %}}
+</TabItem>
+<TabItem label="Rancher before v2.5.8">
 > **Prerequisites:**
 > 
 > - The monitoring application needs to be installed.
@@ -123,8 +123,8 @@ To prevent the persistent dashboard from being deleted when Monitoring v2 is uni
 helm.sh/resource-policy: "keep"
 ```
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 # Known Issues
 

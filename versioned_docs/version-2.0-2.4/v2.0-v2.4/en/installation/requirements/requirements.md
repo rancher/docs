@@ -63,8 +63,8 @@ This section describes the CPU, memory, and disk requirements for the nodes wher
 
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher in a single container with Docker, or if you are installing Rancher on a Kubernetes cluster.
 
-{{% tabs %}}
-{{% tab "RKE" %}}
+<Tabs>
+<TabItem label="RKE">
 
 These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/)
 
@@ -80,9 +80,9 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher before 
 
 Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
-{{% /tab %}}
+</TabItem>
 
-{{% tab "K3s" %}}
+<TabItem label="K3s">
 
 These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/)
 
@@ -96,9 +96,9 @@ These requirements apply to each host in a [K3s Kubernetes cluster where the Ran
 
 Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
-{{% /tab %}}
+</TabItem>
 
-{{% tab "Docker" %}}
+<TabItem label="Docker">
 
 These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
 
@@ -107,8 +107,8 @@ These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2
 | Small           | Up to 5  | Up to 50  | 1     | 4 GB |
 | Medium          | Up to 15 | Up to 200 | 2     | 8 GB |
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ### CPU and Memory for Rancher before v2.4.0
 

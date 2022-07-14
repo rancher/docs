@@ -38,8 +38,8 @@ This section assumes familiarity with how monitoring components work together. F
 
 To create notification receivers in the Rancher UI,
 
-{{% tabs %}}
-{{% tab "Rancher v2.6.5+" %}}
+<Tabs>
+<TabItem label="Rancher v2.6.5+">
 
 1. Go to the cluster where you want to create receivers. Click **Monitoring -> Alerting -> AlertManagerConfigs**.
 1. Ciick **Create**.
@@ -48,16 +48,16 @@ To create notification receivers in the Rancher UI,
 1. Configure one or more providers for the receiver. For help filling out the forms, refer to the configuration options below.
 1. Click **Create**.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.6.5" %}}
+</TabItem>
+<TabItem label="Rancher before v2.6.5">
 
 1. Go to the cluster where you want to create receivers. Click **Monitoring** and click **Receiver**.
 2. Enter a name for the receiver.
 3. Configure one or more providers for the receiver. For help filling out the forms, refer to the configuration options below.
 4. Click **Create**.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 **Result:** Alerts can be configured to send notifications to the receiver(s).
 

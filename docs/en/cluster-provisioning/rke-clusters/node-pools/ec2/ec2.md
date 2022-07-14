@@ -23,8 +23,8 @@ Then you will create an EC2 cluster in Rancher, and when configuring the new clu
 
 The steps to create a cluster differ based on your Rancher version.
 
-{{% tabs %}}
-{{% tab "RKE" %}}
+<Tabs>
+<TabItem label="RKE">
 
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials and information from EC2](#2-create-a-node-template-with-your-cloud-credentials-and-information-from-ec2)
@@ -78,8 +78,8 @@ Add one or more node pools to your cluster. For more information about node pool
     
 1. Click **Create**.
 
-{{% /tab %}}
-{{% tab "RKE2" %}}
+</TabItem>
+<TabItem label="RKE2">
 
 ### 1. Create your cloud credentials
 
@@ -110,8 +110,8 @@ If you already have a set of cloud credentials to use, skip this section.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Click **Create**.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 **Result:**
 

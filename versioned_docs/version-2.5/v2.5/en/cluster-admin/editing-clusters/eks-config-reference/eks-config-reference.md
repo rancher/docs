@@ -4,8 +4,8 @@ shortTitle: EKS Cluster Configuration
 weight: 2
 ---
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.6+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.6+">
 
 ### Account Access
 
@@ -152,8 +152,8 @@ The following settings are also configurable. All of these except for the "Node 
 | Tags | These are tags for the managed node group and do not propagate to any of the associated resources. |
 
 
-{{% /tab %}}
-{{% tab "Rancher v2.5.0-v2.5.5" %}}
+</TabItem>
+<TabItem label="Rancher v2.5.0-v2.5.5">
 
 ### Changes in Rancher v2.5
 
@@ -283,8 +283,8 @@ Amazon will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/u
 | Maximum ASG Size | The maximum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
 | Minimum ASG Size | The minimum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
 
-{{% /tab %}}
-{{% tab "Rancher prior to v2.5" %}}
+</TabItem>
+<TabItem label="Rancher prior to v2.5">
 
 
 ### Account Access
@@ -390,15 +390,15 @@ Custom AMI Override | If you want to use a custom [Amazon Machine Image](https:/
 Desired ASG Size | The number of instances that your cluster will provision.
 User Data | Custom commands can to be passed to perform automated configuration tasks **WARNING: Modifying this may cause your nodes to be unable to join the cluster.** _Note: Available as of v2.2.0_
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 
 
 ### Configuring the Refresh Interval
 
-{{% tabs %}}
-{{% tab "Rancher v2.5.8+" %}}
+<Tabs>
+<TabItem label="Rancher v2.5.8+">
 
 The `eks-refresh-cron` setting is deprecated. It has been migrated to the `eks-refresh` setting, which is an integer representing seconds.
 
@@ -410,12 +410,12 @@ If the `eks-refresh-cron` setting was previously set, the migration will happen 
 
 The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
 
-{{% /tab %}}
-{{% tab "Before v2.5.8" %}}
+</TabItem>
+<TabItem label="Before v2.5.8">
 
 It is possible to change the refresh interval through the setting `eks-refresh-cron`. This setting accepts values in the Cron format. The default is `*/5 * * * *`. 
 
 The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>

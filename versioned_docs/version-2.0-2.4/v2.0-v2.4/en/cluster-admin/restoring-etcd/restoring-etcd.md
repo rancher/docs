@@ -32,8 +32,8 @@ If your Kubernetes cluster is broken, you can restore the cluster from a snapsho
 
 Restores changed in Rancher v2.4.0.
 
-{{% tabs %}}
-{{% tab "Rancher v2.4.0+" %}}
+<Tabs>
+<TabItem label="Rancher v2.4.0+">
 
 Snapshots are composed of the cluster data in etcd, the Kubernetes version, and the cluster configuration in the `cluster.yml.` These components allow you to select from the following options when restoring a cluster from a snapshot:
 
@@ -57,8 +57,8 @@ When rolling back to a prior Kubernetes version, the [upgrade strategy options](
 
 **Result:** The cluster will go into `updating` state and the process of restoring the `etcd` nodes from the snapshot will start. The cluster is restored when it returns to an `active` state.
 
-{{% /tab %}}
-{{% tab "Rancher before v2.4.0" %}}
+</TabItem>
+<TabItem label="Rancher before v2.4.0">
 
 > **Prerequisites:** 
 >
@@ -75,8 +75,8 @@ When rolling back to a prior Kubernetes version, the [upgrade strategy options](
 
 **Result:** The cluster will go into `updating` state and the process of restoring the `etcd` nodes from the snapshot will start. The cluster is restored when it returns to an `active` state.
 
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 ## Recovering etcd without a Snapshot
 

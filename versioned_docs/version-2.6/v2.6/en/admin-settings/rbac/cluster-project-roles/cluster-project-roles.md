@@ -81,24 +81,24 @@ To assign a custom role to a new cluster member, you can use the Rancher UI. To 
 
 To assign the role to a new cluster member,
 
-{{% tabs %}}
-{{% tab "Rancher before v2.6.4"  %}}
+<Tabs>
+<TabItem label="Rancher before v2.6.4">
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster where you want to assign a role to a member and click **Explore**.
 1. Click **RBAC > Cluster Members**.
 1. Click **Add**.
 1. In the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
 1. Click **Create**.
-{{% /tab %}}
-{{% tab "Rancher v2.6.4+" %}}
+</TabItem>
+<TabItem label="Rancher v2.6.4+">
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster where you want to assign a role to a member and click **Explore**.
 1. Click **Cluster > Cluster Members**.
 1. Click **Add**.
 1. In the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
 1. Click **Create**.
-{{% /tab %}}
-{{% /tabs %}}
+</TabItem>
+</Tabs>
 
 **Result:** The member has the assigned role.
 
