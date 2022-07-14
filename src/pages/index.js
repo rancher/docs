@@ -6,6 +6,84 @@ import SearchBar from '@theme/SearchBar';
 
 import styles from './index.module.css';
 
+const docCards = () => {
+
+   const docCardData = [
+      {
+         title: 'Get started',
+         description: 'Install Rancher on Kubernetes',
+         link: 'https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/'
+      },
+      {
+         title: "Cluster Provisioning",
+         description: 'Launch downstream Kubernetes clusters with Rancher',
+         link: 'https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/'
+      },
+      {
+         title: "Best practices",
+         description: 'Learn about architecture and deployment strategies',
+         link: 'https://rancher.com/docs/rancher/v2.6/en/best-practices/'
+      },
+      {
+         title: "Authentication",
+         description: 'Add users to Rancher',
+         link: 'https://rancher.com/docs/rancher/v2.6/en/admin-settings/'
+      }
+   ];
+
+   return docCardData.map(docData => {
+      const { title, description, link } = docData
+      return (
+         <div className="box">
+            <div className="boxContent">
+               <p className="cardTitle">{title}</p>
+               <p className="cardText">{description}</p>
+               <p><a href={link} className="cardLink">Learn more</a></p>
+            </div>
+         </div>
+      )
+   })
+}
+
+const productSummaries = () => {
+
+   const productSummaryData = [
+      {
+         title: "Rancher 2 Terraform Provider",
+         description: "Automate Rancher with infrastructure-as-code.",
+         link: "https://registry.terraform.io/providers/rancher/rancher2/latest/docs"
+      },
+      {
+         title: "Hosted Rancher Service",
+         description: 'A hosted Rancher control plane with 99.9% uptime.',
+         link: 'https://www.suse.com/products/suse-rancher-hosted/'
+      },
+      {
+         title: "Rancher Desktop",
+         description: 'Kubernetes on your desktop.',
+         link: 'https://docs.rancherdesktop.io/'
+      }
+   ]
+   return productSummaryData.map(product => {
+      const { title, link, description } = product;
+      return (
+         <div className="product-summary">
+           <div className="boxContent">
+                  <p className="cardTitle">
+                     <a 
+                        target="_blank"
+                        href={link}
+                        >
+                     {title}
+                     </a>
+                  </p>
+                  <p className="cardText">{description}</p>
+            </div>
+         </div>
+         )
+   })
+}
+
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
 
@@ -27,88 +105,22 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-title={`Hello from ${siteConfig.title}`}
-description="Description will go into a meta tag in 
-<head />
-   ">
-   <HomepageHeader />
-   <div className="boxes">
-      <div className="box">
-         <div className="boxContent">
-            <p className="cardTitle">Get started</p>
-            <p className="cardText">Install Rancher on Kubernetes</p>
-            <p><a href="https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/" className="cardLink">Learn more</a></p>
+      title={`Hello from ${siteConfig.title}`}
+      description="Find guides, tutorials and best practices for running Kubernetes everywhere."
+    >
+       <HomepageHeader />
+       <div className="boxes">
+         {docCards()}
+       </div>
+       <hr/>
+      <div className="container">
+         <h1 className="landing-page-header">Related Products</h1>
+         <div className="boxes">
+            {productSummaries()}
          </div>
       </div>
-      <div className="box">
-         <div className="boxContent">
-            <p className="cardTitle">Cluster Provisioning</p>
-            <p className="cardText">Launch downstream Kubernetes clusters with Rancher</p>
-            <p><a className="cardLink" href="https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/">Learn more</a></p>
-         </div>
-      </div>
-      <div className="box">
-         <div className="boxContent">
-            <p className="cardTitle">Best practices</p>
-            <p className="cardText">Learn about architecture and deployment strategies</p>
-            <p><a href="https://rancher.com/docs/rancher/v2.6/en/best-practices/" className="cardLink">Learn more</a></p>
-         </div>
-      </div>
-      <div className="box">
-         <div className="boxContent">
-            <p className="cardTitle">Authentication</p>
-            <p className="cardText">Add users to Rancher</p>
-            <p><a className="cardLink" href="https://rancher.com/docs/rancher/v2.6/en/admin-settings/">Learn more</a></p>
-         </div>
-      </div>
-   </div>
-   <hr/>
-   <div className="container">
-      <h1 className="landing-page-header">Related Products</h1>
-      <div className="boxes">
-         <div className="product-summary">
-            <div className="boxContent">
-                     <p className="cardTitle">
-                        <a 
-                           target="_blank"
-                           href="https://registry.terraform.io/providers/rancher/rancher2/latest/docs"
-                           >
-                        Rancher 2 Terraform Provider
-                        </a>
-                     </p>
-                     <p className="cardText">Automate Rancher with infrastructure-as-code.</p>
-            </div>
-         </div>
-         <div className="product-summary">
-            <div className="boxContent">
-                     <p className="cardTitle">
-                        <a 
-                           target="_blank"
-                           href="https://www.suse.com/products/suse-rancher-hosted/"
-                           >
-                        Hosted Rancher Service
-                        </a>
-                     </p>
-                     <p className="cardText">A hosted Rancher control plane with 99.9% uptime.</p>
-            </div>
-         </div>
-         <div className="product-summary">
-            <div className="boxContent">
-                     <p className="cardTitle">
-                        <a 
-                           target="_blank"
-                           href="https://docs.rancherdesktop.io/"
-                           >
-                        Rancher Desktop
-                        </a>
-                     </p>
-                     <p className="cardText">Kubernetes on your desktop.</p>
-            </div>
-         </div>
-      </div>
-   </div>
-   <main>
-   </main>
+      <main>
+      </main>
    </Layout>
   );
 }
