@@ -25,7 +25,11 @@ The capability to access a downstream cluster without Rancher depends on the typ
 
 ### What if I don't want Rancher anymore?
 
->**Note:** The previously recommended [System Tools]({{<baseurl>}}/rancher/v2.6/en/system-tools/) has been deprecated since June 2022.
+:::note
+
+The previously recommended [System Tools]({{<baseurl>}}/rancher/v2.6/en/system-tools/) has been deprecated since June 2022.
+
+:::
 
 If you [installed Rancher on a Kubernetes cluster,]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/) remove Rancher by using the [Rancher Cleanup](https://github.com/rancher/rancher-cleanup) tool.
 

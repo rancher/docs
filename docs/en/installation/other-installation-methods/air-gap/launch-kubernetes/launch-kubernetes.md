@@ -177,7 +177,11 @@ tls-san:
 
 For more information, refer to the [RKE2 documentation](https://docs.rke2.io/install/ha/).
 
->**Note:** RKE2 additionally provides a `resolv-conf` option for kubelets, which may help with configuring DNS in air-gap networks.
+:::note
+
+RKE2 additionally provides a `resolv-conf` option for kubelets, which may help with configuring DNS in air-gap networks.
+
+:::
 
 ### 2. Create Registry YAML
 Create the registries.yaml file at `/etc/rancher/rke2/registries.yaml`. This will tell RKE2 the necessary details to connect to your private registry.

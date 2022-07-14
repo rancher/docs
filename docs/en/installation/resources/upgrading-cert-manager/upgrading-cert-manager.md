@@ -14,8 +14,11 @@ To address these changes, this guide will do two things:
 1. Document the procedure for upgrading cert-manager
 1. Explain the cert-manager API changes and link to cert-manager's official documentation for migrating your data
 
-> **Important:**
-> If you are upgrading cert-manager to the latest version from a version older than 1.5, follow the steps in [Option C](#option-c-upgrade-to-new-cert-manager-from-versions-15-and-below) below to do so. Note that you do not need to reinstall Rancher to perform this upgrade.
+:::note Important:
+
+If you are upgrading cert-manager to the latest version from a version older than 1.5, follow the steps in [Option C](#option-c-upgrade-to-new-cert-manager-from-versions-15-and-below) below to do so. Note that you do not need to reinstall Rancher to perform this upgrade.
+
+:::
 
 # Upgrade Cert-Manager
 
@@ -161,8 +164,11 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     issuer,clusterissuer,certificates,certificaterequests > cert-manager-backup.yaml
     ```
 
-    > **Important:**
-    > If you are upgrading from a version older than 0.11.0, Update the apiVersion on all your backed up resources from `certmanager.k8s.io/v1alpha1` to `cert-manager.io/v1alpha2`. If you use any cert-manager annotations on any of your other resources, you will need to update them to reflect the new API group. For details, refer to the documentation on [additional annotation changes.](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/#additional-annotation-changes)
+    :::note Important:
+
+    If you are upgrading from a version older than 0.11.0, Update the apiVersion on all your backed up resources from `certmanager.k8s.io/v1alpha1` to `cert-manager.io/v1alpha2`. If you use any cert-manager annotations on any of your other resources, you will need to update them to reflect the new API group. For details, refer to the documentation on [additional annotation changes.](https://cert-manager.io/docs/installation/upgrading/upgrading-0.10-0.11/#additional-annotation-changes)
+
+    :::
 
 1. Delete the existing cert-manager installation
 

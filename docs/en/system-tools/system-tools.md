@@ -3,8 +3,11 @@ title: System Tools
 weight: 22
 ---
 
->**Note:** System Tools has been deprecated since June 2022.
+:::note
 
+System Tools has been deprecated since June 2022.
+
+:::
 # Logs
 
 Please use [logs-collector](https://github.com/rancherlabs/support-tools/tree/master/collection/rancher/v2.x/logs-collector) to collect logs from your cluster.
@@ -13,7 +16,11 @@ Please use [logs-collector](https://github.com/rancherlabs/support-tools/tree/ma
 
 If you want to replicate the stats command, you can run the following command on your cluster nodes:
 
->**Note:** This command requires the package `sysstat` on the cluster node.
+:::note
+
+This command below requires the package `sysstat` on the cluster node.
+
+:::
 
 ```
 /usr/bin/sar -u -r -F 1 1
