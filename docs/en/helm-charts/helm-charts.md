@@ -38,7 +38,7 @@ Any major versions that are less than the ones mentioned in the table below are 
 | rancher-wins-upgrader | 0.0.100 | 100.0.0+up0.0.1 |
 | neuvector | 100.0.0+up2.2.0 | 100.0.0+up2.2.0 |
 
-</br>
+<br/>
 **Charts based on upstream:** For charts that are based on upstreams, the +up annotation should inform you of what upstream version the Rancher chart is tracking. Check the upstream version compatibility with Rancher during upgrades also.
 
 - As an example, `100.x.x+up16.6.0` for Monitoring tracks upstream kube-prometheus-stack `16.6.0` with some Rancher patches added to it.
@@ -72,7 +72,7 @@ These items represent helm repositories, and can be either traditional helm endp
 
 To add a private CA for Helm Chart repositories:
 
-- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:</br>
+- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:<br/>
     ```
     [...]
     spec:
@@ -84,7 +84,7 @@ To add a private CA for Helm Chart repositories:
     ```
 
 
-- **Git-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:</br>
+- **Git-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:<br/>
     ```
     [...]
     spec:

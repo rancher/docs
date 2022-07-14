@@ -114,7 +114,7 @@ For [nodes hosted by an infrastructure provider]({{<baseurl>}}/rancher/v2.6/en/c
 1. Enter the following command:
 
     ```
-    ssh -i id_rsa root@<IP_OF_HOST>
+    ssh -i id_rsa root@&lt;IP_OF_HOST&gt;
     ```
 
 # Cordoning a Node
@@ -197,7 +197,7 @@ cattle.rancher.io/node-status: ignore
 
 **Result:** If you add the node to a cluster, Rancher will not attempt to sync with this node. The node can still be part of the cluster and can be listed with `kubectl`.
 
-If the label is added before the node is added to the cluster, the node will not be shown in the Rancher UI. 
+If the label is added before the node is added to the cluster, the node will not be shown in the Rancher UI.
 
 If the label is added after the node is added to a Rancher cluster, the node will not be removed from the UI.
 

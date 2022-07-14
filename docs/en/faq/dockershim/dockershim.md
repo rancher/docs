@@ -22,7 +22,7 @@ Q. Do I have to upgrade Rancher to get Rancher’s support of the upstream Docke
 
 The upstream support of Dockershim begins for RKE in Kubernetes 1.21. You will need to be on Rancher 2.6 or above to have support for RKE with Kubernetes 1.21. See our [support matrix](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.6.0/) for details.
 
-<br>
+<br/>
 
 Q. I am currently on RKE with Kubernetes 1.20. Do I need to upgrade to RKE with Kubernetes 1.21 sooner to avoid being out of support for Dockershim?
 

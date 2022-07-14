@@ -33,12 +33,12 @@ From a system that has access to the internet, fetch the latest Helm chart and c
 2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/chart-options/#helm-chart-repositories).
   {{< release-channel >}}
     ```
-    helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
+    helm repo add rancher-&lt;CHART_REPO&gt; https://releases.rancher.com/server-charts/&lt;CHART_REPO&gt;
     ```
 
 3. Fetch the latest Rancher chart. This will pull down the chart and save it in the current directory as a `.tgz` file.
     ```plain
-    helm fetch rancher-<CHART_REPO>/rancher
+    helm fetch rancher-&lt;CHART_REPO&gt;/rancher
     ```
 
     If you require a specific version of Rancher, you can fetch this with the Helm `--version` parameter like in the following example:
@@ -60,8 +60,8 @@ If you want terminate SSL/TLS externally, see [TLS termination on an External Lo
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| Rancher Generated Self-Signed Certificates | `ingress.tls.source=rancher` | Use certificates issued by Rancher's generated CA (self signed)<br> This is the **default** and does not need to be added when rendering the Helm template. | yes                   |
-| Certificates from Files                    | `ingress.tls.source=secret`  | Use your own certificate files by creating Kubernetes Secret(s). <br> This option must be passed when rendering the Rancher Helm template.                  | no                    |
+| Rancher Generated Self-Signed Certificates | `ingress.tls.source=rancher` | Use certificates issued by Rancher's generated CA (self signed)<br/> This is the **default** and does not need to be added when rendering the Helm template. | yes                   |
+| Certificates from Files                    | `ingress.tls.source=secret`  | Use your own certificate files by creating Kubernetes Secret(s). <br/> This option must be passed when rendering the Rancher Helm template.                  | no                    |
 
 # Helm Chart Options for Air Gap Installations
 
@@ -69,8 +69,8 @@ When setting up the Rancher Helm template, there are several options in the Helm
 
 | Chart Option            | Chart Value                      | Description   |
 | ----------------------- | -------------------------------- | ---- |
-| `certmanager.version` | "<version>" | Configure proper Rancher TLS issuer depending of running cert-manager version. |
-| `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
+| `certmanager.version` | "&lt;version&gt;" | Configure proper Rancher TLS issuer depending of running cert-manager version. |
+| `systemDefaultRegistry` | `&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
 | `useBundledSystemChart` | `true`                           | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. |
 
 # 3. Render the Rancher Helm Template
@@ -118,10 +118,10 @@ Render the cert-manager template with the options you would like to use to insta
 ```plain
 helm template cert-manager ./cert-manager-v1.7.1.tgz --output-dir . \
     --namespace cert-manager \
-    --set image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-controller \
-    --set webhook.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-webhook \
-    --set cainjector.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-cainjector \
-    --set startupapicheck.image.repository=<REGISTRY.YOURDOMAIN.COM:PORT>/quay.io/jetstack/cert-manager-ctl
+    --set image.repository=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/quay.io/jetstack/cert-manager-controller \
+    --set webhook.image.repository=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/quay.io/jetstack/cert-manager-webhook \
+    --set cainjector.image.repository=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/quay.io/jetstack/cert-manager-cainjector \
+    --set startupapicheck.image.repository=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/quay.io/jetstack/cert-manager-ctl
 ```
 
 ### 4. Download the cert-manager CRD
@@ -138,19 +138,19 @@ Render the Rancher template, declaring your chosen options. Use the reference ta
 
 Placeholder | Description
 ------------|-------------
-`<VERSION>` | The version number of the output tarball.
-`<RANCHER.YOURDOMAIN.COM>` | The DNS name you pointed at your load balancer.
-`<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
-`<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
+`&lt;VERSION&gt;` | The version number of the output tarball.
+`&lt;RANCHER.YOURDOMAIN.COM&gt;` | The DNS name you pointed at your load balancer.
+`&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;` | The DNS name for your private registry.
+`&lt;CERTMANAGER_VERSION&gt;` | Cert-manager version running on k8s cluster.
 
 ```plain
-helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+helm template rancher ./rancher-&lt;VERSION&gt;.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
     --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set certmanager.version=<CERTMANAGER_VERSION> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
+    --set hostname=&lt;RANCHER.YOURDOMAIN.COM&gt; \
+    --set certmanager.version=&lt;CERTMANAGER_VERSION&gt; \
+    --set rancherImage=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/rancher/rancher \
+    --set systemDefaultRegistry=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt; \ # Set a default private registry to be used in Rancher
     --set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 
@@ -169,32 +169,32 @@ Render the Rancher template, declaring your chosen options. Use the reference ta
 
 | Placeholder                      | Description                                     |
 | -------------------------------- | ----------------------------------------------- |
-| `<VERSION>`                      | The version number of the output tarball.       |
-| `<RANCHER.YOURDOMAIN.COM>`       | The DNS name you pointed at your load balancer. |
-| `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
+| `&lt;VERSION&gt;`                      | The version number of the output tarball.       |
+| `&lt;RANCHER.YOURDOMAIN.COM&gt;`       | The DNS name you pointed at your load balancer. |
+| `&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;` | The DNS name for your private registry.         |
 
 ```plain
-   helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+   helm template rancher ./rancher-&lt;VERSION&gt;.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
     --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+    --set hostname=&lt;RANCHER.YOURDOMAIN.COM&gt; \
+    --set rancherImage=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/rancher/rancher \
     --set ingress.tls.source=secret \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
+    --set systemDefaultRegistry=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt; \ # Set a default private registry to be used in Rancher
     --set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 
 If you are using a Private CA signed cert, add `--set privateCA=true` following `--set ingress.tls.source=secret`:
 
 ```plain
-   helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
+   helm template rancher ./rancher-&lt;VERSION&gt;.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
     --namespace cattle-system \
-    --set hostname=<RANCHER.YOURDOMAIN.COM> \
-    --set rancherImage=<REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher \
+    --set hostname=&lt;RANCHER.YOURDOMAIN.COM&gt; \
+    --set rancherImage=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/rancher/rancher \
     --set ingress.tls.source=secret \
     --set privateCA=true \
-    --set systemDefaultRegistry=<REGISTRY.YOURDOMAIN.COM:PORT> \ # Set a default private registry to be used in Rancher
+    --set systemDefaultRegistry=&lt;REGISTRY.YOURDOMAIN.COM:PORT&gt; \ # Set a default private registry to be used in Rancher
     --set useBundledSystemChart=true # Use the packaged Rancher system charts
 ```
 

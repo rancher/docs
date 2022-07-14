@@ -271,12 +271,12 @@ root:root
 **Remediation:**
 Run the below command (based on the file location on your system) on the master node.
 For example,
-chmod 644 <path/to/cni/files>
+chmod 644 &lt;path/to/cni/files&gt;
 
 **Audit:**
 
 ```bash
-stat -c %a <path/to/cni/files>
+stat -c %a &lt;path/to/cni/files&gt;
 ```
 
 ### 1.1.10 Ensure that the Container Network Interface file ownership is set to root:root (Manual)
@@ -287,12 +287,12 @@ stat -c %a <path/to/cni/files>
 **Remediation:**
 Run the below command (based on the file location on your system) on the master node.
 For example,
-chown root:root <path/to/cni/files>
+chown root:root &lt;path/to/cni/files&gt;
 
 **Audit:**
 
 ```bash
-stat -c %U:%G <path/to/cni/files>
+stat -c %U:%G &lt;path/to/cni/files&gt;
 ```
 
 ### 1.1.11 Ensure that the etcd data directory permissions are set to 700 or more restrictive (Automated)
@@ -620,7 +620,7 @@ while read -r fileInfo; do
       exit
     fi
   fi
-done <<< "${FILES_PERMISSIONS}"
+done &lt;&lt;&lt; "${FILES_PERMISSIONS}"
 
 
 echo "true"
@@ -703,7 +703,7 @@ while read -r fileInfo; do
       exit
     fi
   fi
-done <<< "${FILES_PERMISSIONS}"
+done &lt;&lt;&lt; "${FILES_PERMISSIONS}"
 
 
 echo "true"
@@ -754,7 +754,7 @@ on the master node and set the below parameter.
 **Remediation:**
 Follow the documentation and configure alternate mechanisms for authentication. Then,
 edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
-on the master node and remove the --basic-auth-file=<filename> parameter.
+on the master node and remove the --basic-auth-file=&lt;filename&gt; parameter.
 
 **Audit:**
 
@@ -782,7 +782,7 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 **Remediation:**
 Follow the documentation and configure alternate mechanisms for authentication. Then,
 edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
-on the master node and remove the --token-auth-file=<filename> parameter.
+on the master node and remove the --token-auth-file=&lt;filename&gt; parameter.
 
 **Audit:**
 
@@ -839,8 +839,8 @@ Follow the Kubernetes documentation and set up the TLS connection between the
 apiserver and kubelets. Then, edit API server pod specification file
 /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml on the master node and set the
 kubelet client certificate and key parameters as below.
---kubelet-client-certificate=<path/to/client-certificate-file>
---kubelet-client-key=<path/to/client-key-file>
+--kubelet-client-certificate=&lt;path/to/client-certificate-file&gt;
+--kubelet-client-key=&lt;path/to/client-key-file&gt;
 
 **Audit:**
 
@@ -870,7 +870,7 @@ Follow the Kubernetes documentation and setup the TLS connection between
 the apiserver and kubelets. Then, edit the API server pod specification file
 /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml on the master node and set the
 --kubelet-certificate-authority parameter to the path to the cert file for the certificate authority.
---kubelet-certificate-authority=<ca-string>
+--kubelet-certificate-authority=&lt;ca-string&gt;
 
 **Audit:**
 
@@ -986,7 +986,7 @@ Follow the Kubernetes documentation and set the desired limits in a configuratio
 Then, edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
 and set the below parameters.
 --enable-admission-plugins=...,EventRateLimit,...
---admission-control-config-file=<path/to/configuration/file>
+--admission-control-config-file=&lt;path/to/configuration/file&gt;
 
 **Audit:**
 
@@ -1468,7 +1468,7 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 Edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
 on the master node and set the --service-account-key-file parameter
 to the public key file for service accounts:
---service-account-key-file=<filename>
+--service-account-key-file=&lt;filename&gt;
 
 **Audit:**
 
@@ -1497,8 +1497,8 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 Follow the Kubernetes documentation and set up the TLS connection between the apiserver and etcd.
 Then, edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
 on the master node and set the etcd certificate and key file parameters.
---etcd-certfile=<path/to/client-certificate-file>
---etcd-keyfile=<path/to/client-key-file>
+--etcd-certfile=&lt;path/to/client-certificate-file&gt;
+--etcd-keyfile=&lt;path/to/client-key-file&gt;
 
 **Audit:**
 
@@ -1527,8 +1527,8 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 Follow the Kubernetes documentation and set up the TLS connection on the apiserver.
 Then, edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
 on the master node and set the TLS certificate and private key file parameters.
---tls-cert-file=<path/to/tls-certificate-file>
---tls-private-key-file=<path/to/tls-key-file>
+--tls-cert-file=&lt;path/to/tls-certificate-file&gt;
+--tls-private-key-file=&lt;path/to/tls-key-file&gt;
 
 **Audit:**
 
@@ -1557,7 +1557,7 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 Follow the Kubernetes documentation and set up the TLS connection on the apiserver.
 Then, edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
 on the master node and set the client certificate authority file.
---client-ca-file=<path/to/client-ca-file>
+--client-ca-file=&lt;path/to/client-ca-file&gt;
 
 **Audit:**
 
@@ -1586,7 +1586,7 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 Follow the Kubernetes documentation and set up the TLS connection between the apiserver and etcd.
 Then, edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
 on the master node and set the etcd certificate authority file parameter.
---etcd-cafile=<path/to/ca-file>
+--etcd-cafile=&lt;path/to/ca-file&gt;
 
 **Audit:**
 
@@ -1614,7 +1614,7 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 **Remediation:**
 Follow the Kubernetes documentation and configure a EncryptionConfig file.
 Then, edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
-on the master node and set the --encryption-provider-config parameter to the path of that file: --encryption-provider-config=</path/to/EncryptionConfig/File>
+on the master node and set the --encryption-provider-config parameter to the path of that file: --encryption-provider-config=&lt;/path/to/EncryptionConfig/File&gt;
 
 **Audit:**
 
@@ -1787,7 +1787,7 @@ root 5522 5416 3 14:58 ? 00:00:16 kube-controller-manager --flex-volume-plugin-d
 Edit the Controller Manager pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-controller-manager.yaml
 on the master node and set the --service-account-private-key-file parameter
 to the private key file for service accounts.
---service-account-private-key-file=<filename>
+--service-account-private-key-file=&lt;filename&gt;
 
 **Audit:**
 
@@ -1815,7 +1815,7 @@ root 5522 5416 3 14:58 ? 00:00:16 kube-controller-manager --flex-volume-plugin-d
 **Remediation:**
 Edit the Controller Manager pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-controller-manager.yaml
 on the master node and set the --root-ca-file parameter to the certificate bundle file`.
---root-ca-file=<path/to/file>
+--root-ca-file=&lt;path/to/file&gt;
 
 **Audit:**
 
@@ -1938,8 +1938,8 @@ root 5533 5414 0 14:58 ? 00:00:02 kube-scheduler --permit-port-sharing=true --ad
 Follow the etcd service documentation and configure TLS encryption.
 Then, edit the etcd pod specification file /etc/kubernetes/manifests/etcd.yaml
 on the master node and set the below parameters.
---cert-file=</path/to/ca-file>
---key-file=</path/to/key-file>
+--cert-file=&lt;/path/to/ca-file&gt;
+--key-file=&lt;/path/to/key-file&gt;
 
 ### 2.2 Ensure that the --client-cert-auth argument is set to true (Automated)
 
@@ -1989,8 +1989,8 @@ Follow the etcd service documentation and configure peer TLS encryption as appro
 for your etcd cluster.
 Then, edit the etcd pod specification file /var/lib/rancher/rke2/agent/pod-manifests/etcd.yaml on the
 master node and set the below parameters.
---peer-client-file=</path/to/peer-cert-file>
---peer-key-file=</path/to/peer-key-file>
+--peer-client-file=&lt;/path/to/peer-cert-file&gt;
+--peer-key-file=&lt;/path/to/peer-key-file&gt;
 
 ### 2.5 Ensure that the --peer-client-cert-auth argument is set to true (Automated)
 
@@ -2041,7 +2041,7 @@ Follow the etcd documentation and create a dedicated certificate authority setup
 etcd service.
 Then, edit the etcd pod specification file /var/lib/rancher/rke2/agent/pod-manifests/etcd.yaml on the
 master node and set the below parameter.
---trusted-ca-file=</path/to/ca-file>
+--trusted-ca-file=&lt;/path/to/ca-file&gt;
 
 **Audit:**
 
@@ -2258,7 +2258,7 @@ root:root
 
 **Remediation:**
 Run the following command to modify the file permissions of the
---client-ca-file chmod 644 <filename>
+--client-ca-file chmod 644 &lt;filename&gt;
 
 **Audit:**
 
@@ -2273,7 +2273,7 @@ stat -c %a /var/lib/rancher/rke2/server/tls/server-ca.crt
 
 **Remediation:**
 Run the following command to modify the ownership of the --client-ca-file.
-chown root:roset: trueot <filename>
+chown root:roset: trueot &lt;filename&gt;
 
 **Audit:**
 
@@ -2385,7 +2385,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow (Automated)
@@ -2438,7 +2438,7 @@ the location of the client CA file.
 If using command line arguments, edit the kubelet service file
 /etc/systemd/system/kubelet.service.d/10-kubeadm.conf on each worker node and
 set the below parameter in KUBELET_AUTHZ_ARGS variable.
---client-ca-file=<path/to/client-ca-file>
+--client-ca-file=&lt;path/to/client-ca-file&gt;
 Based on your system, restart the kubelet service. For example:
 systemctl daemon-reload
 systemctl restart kubelet.service
@@ -2503,7 +2503,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0 (Automated)
@@ -2543,7 +2543,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.6 Ensure that the --protect-kernel-defaults argument is set to true (Automated)
@@ -2621,7 +2621,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.8 Ensure that the --hostname-override argument is not set (Manual)
@@ -2678,7 +2678,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.10 Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate (Automated)
@@ -2693,8 +2693,8 @@ to the location of the corresponding private key file.
 If using command line arguments, edit the kubelet service file
 /etc/systemd/system/kubelet.service.d/10-kubeadm.conf on each worker node and
 set the below parameters in KUBELET_CERTIFICATE_ARGS variable.
---tls-cert-file=<path/to/tls-certificate-file>
---tls-private-key-file=<path/to/tls-key-file>
+--tls-cert-file=&lt;path/to/tls-certificate-file&gt;
+--tls-private-key-file=&lt;path/to/tls-key-file&gt;
 Based on your system, restart the kubelet service. For example:
 systemctl daemon-reload
 systemctl restart kubelet.service
@@ -2720,7 +2720,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.11 Ensure that the --rotate-certificates argument is not set to false (Manual)
@@ -2760,7 +2760,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.12 Verify that the RotateKubeletServerCertificate argument is set to true (Manual)
@@ -2797,7 +2797,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ### 4.2.13 Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers (Manual)
@@ -2838,7 +2838,7 @@ systemctl restart kubelet.service
 **Returned Value**:
 
 ```console
-UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available<5%,nodefs.available<5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=<node_ip> --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
+UID PID PPID C STIME TTY TIME CMD root 4785 4751 3 14:58 ? 00:00:21 kubelet --volume-plugin-dir=/var/lib/kubelet/volumeplugins --file-check-frequency=5s --sync-frequency=30s --address=0.0.0.0 --alsologtostderr=false --anonymous-auth=false --authentication-token-webhook=true --authorization-mode=Webhook --cgroup-driver=cgroupfs --client-ca-file=/var/lib/rancher/rke2/agent/client-ca.crt --cloud-provider=external --cluster-dns=10.43.0.10 --cluster-domain=cluster.local --container-runtime-endpoint=unix:///run/k3s/containerd/containerd.sock --container-runtime=remote --containerd=/run/k3s/containerd/containerd.sock --eviction-hard=imagefs.available&lt;5%,nodefs.available&lt;5% --eviction-minimum-reclaim=imagefs.available=10%,nodefs.available=10% --fail-swap-on=false --healthz-bind-address=127.0.0.1 --hostname-override=&lt;node_ip&gt; --kubeconfig=/var/lib/rancher/rke2/agent/kubelet.kubeconfig --log-file-max-size=50 --log-file=/var/lib/rancher/rke2/agent/logs/kubelet.log --logtostderr=false --node-labels=cattle.io/os=linux,rke.cattle.io/machine=7c32844c-359f-45f7-88c5-a7173d27690a --pod-manifest-path=/var/lib/rancher/rke2/agent/pod-manifests --protect-kernel-defaults=true --read-only-port=0 --resolv-conf=/run/systemd/resolve/resolv.conf --serialize-image-pulls=false --stderrthreshold=FATAL --tls-cert-file=/var/lib/rancher/rke2/agent/serving-kubelet.crt --tls-private-key-file=/var/lib/rancher/rke2/agent/serving-kubelet.key
 ```
 
 ## 5.1 RBAC and Service Accounts
@@ -2913,7 +2913,7 @@ for ns in $(kubectl get ns --no-headers -o custom-columns=":metadata.name")
 do
     for result in $(kubectl get clusterrolebinding,rolebinding -n $ns -o json | jq -r '.items[] | select((.subjects[].kind=="ServiceAccount" and .subjects[].name=="default") or (.subjects[].kind=="Group" and .subjects[].name=="system:serviceaccounts"))' | jq -r '"\(.roleRef.kind),\(.roleRef.name)"')
     do
-        read kind name <<<$(IFS=","; echo $result)
+        read kind name &lt;&lt;&lt;$(IFS=","; echo $result)
         resource_count=$(kubectl get $kind $name -n $ns -o json | jq -r '.rules[] | select(.resources[] != "podsecuritypolicies")' | wc -l)
         if [[ ${resource_count} -gt 0 ]]; then
             echo "false"
@@ -2929,7 +2929,7 @@ echo "true"
 **Audit Execution:**
 
 ```bash
-./check_for_default_sa.sh 
+./check_for_default_sa.sh
 ```
 
 **Expected Result**:
@@ -3228,7 +3228,7 @@ echo "true"
 **Audit Execution:**
 
 ```bash
-./check_for_rke2_network_policies.sh 
+./check_for_rke2_network_policies.sh
 ```
 
 **Expected Result**:
