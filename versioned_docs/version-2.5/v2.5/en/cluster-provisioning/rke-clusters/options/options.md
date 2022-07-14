@@ -5,6 +5,9 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/rke-clusters/options/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 When Rancher installs Kubernetes, it uses [RKE]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/) as the Kubernetes distribution.
 
 This section covers the configuration options that are available in Rancher for a new or existing RKE Kubernetes cluster.
@@ -71,12 +74,12 @@ When Weave is selected as network provider, Rancher will automatically enable en
 Project network isolation is used to enable or disable communication between pods in different projects.
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 To enable project network isolation as a cluster option, you will need to use any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 To enable project network isolation as a cluster option, you will need to use Canal as the CNI.
 
@@ -294,7 +297,7 @@ Option to enable or disable [Cluster Monitoring]({{<baseurl>}}/rancher/v2.5/en/m
 
 Option to enable or disable Project Network Isolation.
 
-Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE. 
+Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE.
 
 In v2.5.8+, project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 

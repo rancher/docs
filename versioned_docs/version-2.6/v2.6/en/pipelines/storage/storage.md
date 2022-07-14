@@ -3,6 +3,9 @@ title: Configuring Persistent Data for Pipeline Components
 weight: 600
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The pipelines' internal Docker registry and the Minio workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
 
 This section assumes that you understand how persistent storage works in Kubernetes. For more information, refer to the section on [how storage works.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/volumes-and-storage/how-storage-works/)
@@ -25,35 +28,26 @@ This section assumes that you understand how persistent storage works in Kuberne
     - **Add Volume > Use an existing persistent volume (claim)**
 
 1.  Complete the form that displays to choose a persistent volume for the internal Docker registry.
-<Tabs>
-<TabItem label="Add a new persistent volume">
-<br/>
-1. Enter a **Name** for the volume claim.
+    <Tabs>
+      <TabItem value="Add a new persistent volume">
 
-1. Select a volume claim **Source**:
+        1. Enter a **Name** for the volume claim.
+        1. Select a volume claim **Source**:
+            - If you select **Use a Storage Class to provision a new persistent volume**, select a storage class and enter a **Capacity**.
+            - If you select **Use an existing persistent volume**, choose a **Persistent Volume** from the drop-down.
+        1. From the **Customize** section, choose the read/write access for the volume.
+        1. Click **Define**.
 
-    - If you select **Use a Storage Class to provision a new persistent volume**, select a storage class and enter a **Capacity**.
+      </TabItem>
+      <TabItem value="Use an existing persistent volume">
 
-    - If you select **Use an existing persistent volume**, choose a **Persistent Volume** from the drop-down.
-1. From the **Customize** section, choose the read/write access for the volume.
+        1. Enter a **Name** for the volume claim.
+        1. Choose a **Persistent Volume Claim** from the dropdown.
+        1. From the **Customize** section, choose the read/write access for the volume.
+        1. Click **Define**.
 
-1. Click **Define**.
-
-</TabItem>
-
-<TabItem label="Use an existing persistent volume">
-<br/>
-1. Enter a **Name** for the volume claim.
-
-1. Choose a **Persistent Volume Claim** from the dropdown.
-
-1. From the **Customize** section, choose the read/write access for the volume.
-
-1. Click **Define**.
-
-</TabItem>
-
-</Tabs>
+      </TabItem>
+    </Tabs>
 
 1. From the **Mount Point** field, enter `/var/lib/registry`, which is the data storage path inside the Docker registry container.
 
@@ -72,34 +66,26 @@ This section assumes that you understand how persistent storage works in Kuberne
     - **Add Volume > Use an existing persistent volume (claim)**
 
 1.  Complete the form that displays to choose a persistent volume for the internal Docker registry.
-<Tabs>
+    <Tabs>
+      <TabItem value="Add a new persistent volume">
 
-<TabItem label="Add a new persistent volume">
-<br/>
-1. Enter a **Name** for the volume claim.
+        1. Enter a **Name** for the volume claim.
+        1. Select a volume claim **Source**:
+            - If you select **Use a Storage Class to provision a new persistent volume**, select a storage class and enter a **Capacity**.
+            - If you select **Use an existing persistent volume**, choose a **Persistent Volume** from the drop-down.
+        1. From the **Customize** section, choose the read/write access for the volume.
+        1. Click **Define**.
 
-1. Select a volume claim **Source**:
+      </TabItem>
+      <TabItem value="Use an existing persistent volume">
 
-    - If you select **Use a Storage Class to provision a new persistent volume**, select a storage class and enter a **Capacity**.
+        1. Enter a **Name** for the volume claim.
+        1. Choose a **Persistent Volume Claim** from the drop-down.
+        1. From the **Customize** section, choose the read/write access for the volume.
+        1. Click **Define**.
 
-    - If you select **Use an existing persistent volume**, choose a **Persistent Volume** from the drop-down.
-1. From the **Customize** section, choose the read/write access for the volume.
-
-1. Click **Define**.
-
-</TabItem>
-<TabItem label="Use an existing persistent volume">
-<br/>
-1. Enter a **Name** for the volume claim.
-
-1. Choose a **Persistent Volume Claim** from the drop-down.
-
-1. From the **Customize** section, choose the read/write access for the volume.
-
-1. Click **Define**.
-
-</TabItem>
-</Tabs>
+      </TabItem>
+    </Tabs>
 
 1. From the **Mount Point** field, enter `/data`, which is the data storage path inside the Minio container.
 

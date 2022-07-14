@@ -3,6 +3,9 @@ title: Helm CLI Quick Start
 weight: 300
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 These instructions capture a quick way to set up a proof-of-concept Rancher installation.
 
 These instructions assume you have a Linux virtual machine that you will communicate with from your local workstation. Rancher will be installed on the Linux machine. You will need to retrieve the IP address of that machine so that you can access Rancher from your local workstation. Rancher is designed to manage Kubernetes clusters remotely, so any Kubernetes cluster that Rancher manages in the future will also need to be able to reach this IP address.
@@ -29,14 +32,14 @@ Save the IP of the Linux machine.
 The kubeconfig file is important for accessing the Kubernetes cluster. Copy the file at `/etc/rancher/k3s/k3s.yaml` from the Linux machine and save it to your local workstation in the directory `~/.kube/config`. One way to do this is by using the `scp` tool and run this command on your local machine:
 
 <Tabs>
-<TabItem label="Mac and Linux">
+<TabItem value="Mac and Linux">
 
 ```
 scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml ~/.kube/config
 ```
 
 </TabItem>
-<TabItem label="Windows">
+<TabItem value="Windows">
 
 By default, "scp" is not a recognized command, so we need to install a module first.
 
@@ -58,7 +61,7 @@ scp root@<IP_OF_LINUX_MACHINE>:/etc/rancher/k3s/k3s.yaml $env:USERPROFILE\.kube\
 In the kubeconfig file, you will need to change the value of the `server` field to `<IP_OF_LINUX_NODE>:6443`. The Kubernetes API server will be reached at port 6443, while the Rancher server will be reached at ports 80 and 443. This edit is needed so that when you run Helm or kubectl commands from your local workstation, you will be able to communicate with the Kubernetes cluster that Rancher will be installed on.
 
 <Tabs>
-<TabItem label="Mac and Linux">
+<TabItem value="Mac and Linux">
 
 One way to open the kubeconfig file for editing is to use Vim:
 
@@ -69,7 +72,7 @@ vi ~/.kube/config
 Press `i` to put Vim in insert mode. To save your work, press `Esc`. Then press `:wq` and press `Enter`.
 
 </TabItem>
-<TabItem label="Windows">
+<TabItem value="Windows">
 
 In Windows Powershell, you can use `notepad.exe` for editing the kubeconfig file:
 
@@ -78,7 +81,6 @@ notepad.exe $env:USERPROFILE\.kube\config
 ```
 
 Once edited, either press `ctrl+s` or go to `File > Save` to save your work.
-
 
 </TabItem>
 </Tabs>

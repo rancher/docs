@@ -9,19 +9,22 @@ aliases:
   - /rancher/v2.x/en/istio/v2.5/configuration-reference/enable-istio-with-psp/
 ---
 
-If you have restrictive Pod Security Policies enabled, then Istio may not be able to function correctly, because it needs certain permissions in order to install itself and manage pod infrastructure. In this section, we will configure a cluster with PSPs enabled for an Istio install, and also set up the Istio CNI plugin. 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+If you have restrictive Pod Security Policies enabled, then Istio may not be able to function correctly, because it needs certain permissions in order to install itself and manage pod infrastructure. In this section, we will configure a cluster with PSPs enabled for an Istio install, and also set up the Istio CNI plugin.
 
 The Istio CNI plugin removes the need for each application pod to have a privileged `NET_ADMIN` container. For further information, see the [Istio CNI Plugin docs](https://istio.io/docs/setup/additional-setup/cni). Please note that the [Istio CNI Plugin is in alpha](https://istio.io/about/feature-stages/).
 
 The steps differ based on the Rancher version.
 
 <Tabs>
-<TabItem label="v2.5.4+">
+<TabItem value="v2.5.4+">
 
 > **Prerequisites:**
 >
 > - The cluster must be an RKE Kubernetes cluster.
-> - The cluster must have been created with a default PodSecurityPolicy. 
+> - The cluster must have been created with a default PodSecurityPolicy.
 >
 > To enable pod security policy support when creating a Kubernetes cluster in the Rancher UI, go to <b>Advanced Options.</b> In the <b>Pod Security Policy Support</b> section, click <b>Enabled.</b> Then select a default pod security policy.
 
@@ -60,12 +63,12 @@ Istio should install successfully with the CNI enabled in the cluster.
 Verify that the CNI is working by deploying a [sample application](https://istio.io/latest/docs/examples/bookinfo/) or deploying one of your own applications.
 
 </TabItem>
-<TabItem label="v2.5.0-v2.5.3">
+<TabItem value="v2.5.0-v2.5.3">
 
 > **Prerequisites:**
 >
 > - The cluster must be an RKE Kubernetes cluster.
-> - The cluster must have been created with a default PodSecurityPolicy. 
+> - The cluster must have been created with a default PodSecurityPolicy.
 >
 > To enable pod security policy support when creating a Kubernetes cluster in the Rancher UI, go to <b>Advanced Options.</b> In the <b>Pod Security Policy Support</b> section, click <b>Enabled.</b> Then select a default pod security policy.
 

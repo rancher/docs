@@ -6,6 +6,9 @@ aliases:
   - /rancher/v2.x/en/admin-settings/authentication/keycloak/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 If your organization uses Keycloak Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in using their IdP credentials.
 
 ## Prerequisites
@@ -37,11 +40,13 @@ If your organization uses Keycloak Identity Provider (IdP) for user authenticati
 ## Getting the IDP Metadata
 
 <Tabs>
-<TabItem label="Keycloak 5 and earlier">
+<TabItem value="Keycloak 5 and earlier">
+
 To get the IDP metadata, export a `metadata.xml` file from your Keycloak client.
 From the **Installation** tab, choose the **SAML Metadata IDPSSODescriptor** format option and download your file.
+
 </TabItem>
-<TabItem label="Keycloak 6-13">
+<TabItem value="Keycloak 6-13">
 
 1. From the **Configure** section, click the **Realm Settings** tab.
 1. Click the **General** tab.
@@ -80,7 +85,7 @@ You are left with something similar as the example below:
 ```
 
 </TabItem>
-<TabItem label="Keycloak 14+">
+<TabItem value="Keycloak 14+">
 
 1. From the **Configure** section, click the **Realm Settings** tab.
 1. Click the **General** tab.

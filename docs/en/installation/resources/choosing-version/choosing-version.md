@@ -3,6 +3,9 @@ title: Choosing a Rancher Version
 weight: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section describes how to choose a Rancher version.
 
 For a high-availability installation of Rancher, which is recommended for production, the Rancher server is installed using a **Helm chart** on a Kubernetes cluster. Refer to the [Helm version requirements]({{<baseurl>}}/rancher/v2.6/en/installation/resources/helm-version) to choose a version of Helm to install Rancher.
@@ -10,7 +13,7 @@ For a high-availability installation of Rancher, which is recommended for produc
 For Docker installations of Rancher, which is used for development and testing, you will install Rancher as a **Docker image**.
 
 <Tabs>
-<TabItem label="Helm Charts">
+<TabItem value="Helm Charts">
 
 When installing, upgrading, or rolling back Rancher Server when it is [installed on a Kubernetes cluster]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/), Rancher server is installed using a Helm chart on a Kubernetes cluster. Therefore, as you prepare to install or upgrade a high availability Rancher configuration, you must add a Helm chart repository that contains the charts for installing Rancher.
 
@@ -81,8 +84,9 @@ Because the rancher-alpha repository contains only alpha charts, switching betwe
     ```
 
 4. Continue to follow the steps to [upgrade Rancher]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/upgrades) from the new Helm chart repository.
+
 </TabItem>
-<TabItem label="Docker Images">
+<TabItem value="Docker Images">
 When performing [Docker installs]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker), upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
 
 ### Server Tags
@@ -102,5 +106,5 @@ Rancher Server is distributed as a Docker image, which have tags attached to the
 
 :::
 
-</TabItem> 
+</TabItem>
 </Tabs>

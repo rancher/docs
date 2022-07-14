@@ -6,6 +6,10 @@ aliases:
   - /rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/launching-apps
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Within a project, when you want to deploy applications from catalogs, the applications available in your project will be based on the [scope of the catalogs]({{<baseurl>}}/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/#catalog-scopes).
 
 If your application is using ingresses, you can program the ingress hostname to an external DNS by setting up a [Global DNS entry]({{<baseurl>}}/rancher/v2.0-v2.4/en/helm-charts/globaldns/).
@@ -57,7 +61,7 @@ For each Helm chart, there are a list of desired answers that must be entered in
 > For example, when entering an answer that includes two values separated by a comma (i.e. `abc, bcd`), it is required to wrap the values with double quotes (i.e., ``"abc, bcd"``).
 
 <Tabs>
-<TabItem label="UI">
+<TabItem value="UI">
 
 ### Using a questions.yml file
 
@@ -68,7 +72,7 @@ If the Helm chart that you are deploying contains a `questions.yml` file, Ranche
 For native Helm charts (i.e., charts from the **Helm Stable** or **Helm Incubator** catalogs or a [custom Helm chart repository]({{<baseurl>}}/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/catalog-config/#custom-helm-chart-repository)), answers are provided as key value pairs in the **Answers** section. These answers are used to override the default values.
 
 </TabItem>
-<TabItem label="Editing YAML Files">
+<TabItem value="Editing YAML Files">
 
 _Available as of v2.1.0_
 
@@ -101,5 +105,6 @@ servers[0].host=example
 _Available as of v2.2.0_
 
 You can directly paste that YAML formatted structure into the YAML editor. By allowing custom values to be set using a YAML formatted structure, Rancher has the ability to easily customize for more complicated input values (e.g. multi-lines, array and JSON objects).
+
 </TabItem>
 </Tabs>

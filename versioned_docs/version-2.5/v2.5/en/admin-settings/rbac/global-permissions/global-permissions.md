@@ -5,6 +5,9 @@ aliases:
   - /rancher/v2.x/en/admin-settings/rbac/global-permissions/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 _Permissions_ are individual access rights that you can assign when selecting a custom permission for a user.
 
 Global Permissions define user authorization outside the scope of any particular cluster. Out-of-the-box, there are three default global permissions: `Administrator`, `Standard User` and `User-base`.
@@ -48,7 +51,7 @@ CATTLE_RESTRICTED_DEFAULT_ADMIN=true
 The permissions for the `restricted-admin` role differ based on the Rancher version.
 
 <Tabs>
-<TabItem label="v2.5.7+">
+<TabItem value="v2.5.7+">
 
 The `restricted-admin` permissions are as follows:
 
@@ -57,7 +60,7 @@ The `restricted-admin` permissions are as follows:
 - Can create other restricted admins.
 
 </TabItem>
-<TabItem label="v2.5.0-v2.5.6">
+<TabItem value="v2.5.0-v2.5.6">
 
 The `restricted-admin` permissions are as follows:
 

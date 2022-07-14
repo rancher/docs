@@ -3,19 +3,22 @@ title: API
 weight: 24
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ## How to use the API
 
 The API has its own user interface accessible from a web browser.  This is an easy way to see resources, perform actions, and see the equivalent cURL or HTTP request & response.  To access it:
 
 <Tabs>
-<TabItem label="Rancher v2.6.4+">
+<TabItem value="Rancher v2.6.4+">
 
-1. Click on your user avatar in the upper right corner. 
+1. Click on your user avatar in the upper right corner.
 1. Click  **Account & API Keys**.
 1. Under the **API Keys** section, find the **API Endpoint** field and click the link. The link will look something like `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your Rancher deployment.
 
 </TabItem>
-<TabItem label="Rancher before v2.6.4">
+<TabItem value="Rancher before v2.6.4">
 
 Go to the URL endpoint at `https://<RANCHER_FQDN>/v3`, where `<RANCHER_FQDN>` is the fully qualified domain name of your Rancher deployment.
 

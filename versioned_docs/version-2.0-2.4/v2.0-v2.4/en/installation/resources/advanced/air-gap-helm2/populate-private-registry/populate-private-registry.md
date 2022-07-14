@@ -11,6 +11,9 @@ aliases:
   - /rancher/v2.x/en/installation/resources/advanced/air-gap-helm2/populate-private-registry/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 > **Prerequisites:** You must have a [private registry](https://docs.docker.com/registry/deploying/) available to use.
 >
 > **Note:** Populating the private registry with images is the same process for HA and Docker installations, the differences in this section is based on whether or not you are planning to provision a Windows cluster or not.
@@ -22,7 +25,7 @@ This section describes how to set up your private registry so that when you inst
 By default, we provide the steps of how to populate your private registry assuming you are provisioning Linux only clusters, but if you plan on provisioning any [Windows clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/windows-clusters/), there are separate instructions to support the images needed for a Windows cluster.
 
 <Tabs>
-<TabItem label="Linux Only Clusters">
+<TabItem value="Linux Only Clusters">
 
 For Rancher servers that will only provision Linux clusters, these are the steps to populate your private registry.
 
@@ -100,8 +103,9 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
     ```plain
      ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
     ```
+
 </TabItem>
-<TabItem label="Linux and Windows Clusters">
+<TabItem value="Linux and Windows Clusters">
 
 _Available as of v2.3.0_
 

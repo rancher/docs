@@ -5,18 +5,21 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/air-gap-high-availability/install-kube
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 > Skip this section if you are installing Rancher on a single node with Docker.
 
 This section describes how to install a Kubernetes cluster according to our [best practices for the Rancher server environment.]({{<baseurl>}}/rancher/v2.0-v2.4/en/overview/architecture-recommendations/#environment-for-kubernetes-installations) This cluster should be dedicated to run only the Rancher server.
 
 For Rancher before v2.4, Rancher should be installed on an [RKE]({{<baseurl>}}/rke/latest/en/) (Rancher Kubernetes Engine) Kubernetes cluster. RKE is a CNCF-certified Kubernetes distribution that runs entirely within Docker containers.
 
-In Rancher v2.4, the Rancher management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by Rancher, but is newer than RKE. We recommend installing Rancher on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. The Rancher management server can only be run on a Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported. Note: After Rancher is installed on an RKE cluster, there is no migration path to a K3s setup at this time. 
+In Rancher v2.4, the Rancher management server can be installed on either an RKE cluster or a K3s Kubernetes cluster. K3s is also a fully certified Kubernetes distribution released by Rancher, but is newer than RKE. We recommend installing Rancher on K3s because K3s is easier to use, and more lightweight, with a binary size of less than 100 MB. The Rancher management server can only be run on a Kubernetes cluster in an infrastructure provider where Kubernetes is installed using RKE or K3s. Use of Rancher on hosted Kubernetes providers, such as EKS, is not supported. Note: After Rancher is installed on an RKE cluster, there is no migration path to a K3s setup at this time.
 
 The steps to set up an air-gapped Kubernetes cluster on RKE or K3s are shown below.
 
 <Tabs>
-<TabItem label="K3s">
+<TabItem value="K3s">
 
 In this guide, we are assuming you have created your nodes in your air gapped environment and have a secure Docker private registry on your bastion server.
 
@@ -96,7 +99,7 @@ The node-token is on the server at `/var/lib/rancher/k3s/server/node-token`
 
 When you installed K3s on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
-To use this `kubeconfig` file, 
+To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/k3s/k3s.yaml` and save it to the directory `~/.kube/config` on your local machine.
@@ -139,8 +142,10 @@ Upgrading an air-gap environment can be accomplished in the following manner:
 1. Download the new air-gap images (tar file) from the [releases](https://github.com/rancher/k3s/releases) page for the version of K3s you will be upgrading to. Place the tar in the `/var/lib/rancher/k3s/agent/images/` directory on each node. Delete the old tar file.
 2. Copy and replace the old K3s binary in `/usr/local/bin` on each node. Copy over the install script at https://get.k3s.io (as it is possible it has changed since the last release). Run the script again just as you had done in the past with the same environment variables.
 3. Restart the K3s service (if not restarted automatically by installer).
+
 </TabItem>
-<TabItem label="RKE">
+<TabItem value="RKE">
+
 We will create a Kubernetes cluster using Rancher Kubernetes Engine (RKE). Before being able to start your Kubernetes cluster, you’ll need to install RKE and create a RKE config file.
 
 ### 1. Install RKE
@@ -212,6 +217,7 @@ Save a copy of the following files in a secure location:
 - `rancher-cluster.yml`: The RKE cluster configuration file.
 - `kube_config_rancher-cluster.yml`: The [Kubeconfig file]({{<baseurl>}}/rke/latest/en/kubeconfig/) for the cluster, this file contains credentials for full access to the cluster.
 - `rancher-cluster.rkestate`: The [Kubernetes Cluster State file]({{<baseurl>}}/rke/latest/en/installation/#kubernetes-cluster-state), this file contains the current state of the cluster including the RKE configuration and the certificates.<br/><br/>_The Kubernetes Cluster State file is only created when using RKE v0.2.0 or higher._
+
 </TabItem>
 </Tabs>
 

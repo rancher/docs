@@ -3,6 +3,9 @@ title: Outputs and ClusterOutputs
 weight: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 For the full details on configuring `Outputs` and `ClusterOutputs`, see the [Banzai Cloud Logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/output/)
 
 - [Configuration](#configuration)
@@ -15,7 +18,7 @@ For the full details on configuring `Outputs` and `ClusterOutputs`, see the [Ban
 # Configuration
 
 <Tabs>
-<TabItem label="v2.5.8+">
+<TabItem value="v2.5.8+">
 
 - [Outputs](#outputs-2-5-8)
 - [ClusterOutputs](#clusteroutputs-2-5-8)
@@ -32,7 +35,7 @@ The `Output` resource defines where your `Flows` can send the log messages. `Out
 
 The `Output` is a namespaced resource, which means only a `Flow` within the same namespace can access it.
 
-You can use secrets in these definitions, but they must also be in the same namespace. 
+You can use secrets in these definitions, but they must also be in the same namespace.
 
 For the details of `Output` custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
 
@@ -69,8 +72,7 @@ For example configuration for each logging plugin supported by the logging opera
 For the details of the `ClusterOutput` custom resource, see [ClusterOutput.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/clusteroutput_types/)
 
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
-
+<TabItem value="Rancher before v2.5.8">
 
 - [Outputs](#outputs-2-5-0)
 - [ClusterOutputs](#clusteroutputs-2-5-0)
@@ -81,9 +83,9 @@ For the details of the `ClusterOutput` custom resource, see [ClusterOutput.](htt
 
 The `Output` resource defines where your `Flows` can send the log messages. `Outputs` are the final stage for a logging `Flow`.
 
-The `Output` is a namespaced resource, which means only a `Flow` within the same namespace can access it. 
+The `Output` is a namespaced resource, which means only a `Flow` within the same namespace can access it.
 
-You can use secrets in these definitions, but they must also be in the same namespace. 
+You can use secrets in these definitions, but they must also be in the same namespace.
 
 `Outputs` are configured in YAML. For the details of `Output` custom resource, see [OutputSpec.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/crds/v1beta1/output_types/)
 

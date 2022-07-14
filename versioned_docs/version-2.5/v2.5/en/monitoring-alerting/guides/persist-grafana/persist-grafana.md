@@ -6,6 +6,9 @@ aliases:
   - /rancher/v2.x/en/monitoring-alerting/v2.5/persist-grafana/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 To allow the Grafana dashboard to persist after the Grafana instance restarts, add the dashboard configuration JSON into a ConfigMap. ConfigMaps also allow the dashboards to be deployed with a GitOps or CD based approach. This allows the dashboard to be put under version control.
 
 - [Creating a Persistent Grafana Dashboard](#creating-a-persistent-grafana-dashboard)
@@ -14,10 +17,10 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
 # Creating a Persistent Grafana Dashboard
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 > **Prerequisites:**
-> 
+>
 > - The monitoring application needs to be installed.
 > - To create the persistent dashboard, you must have at least the **Manage Config Maps** Rancher RBAC permissions assigned to you in the project or namespace that contains the Grafana Dashboards. This correlates to the `monitoring-dashboard-edit` or `monitoring-dashboard-admin` Kubernetes native RBAC Roles exposed by the Monitoring chart.
 > - To see the links to the external monitoring UIs, including Grafana dashboards, you will need at least a [project-member role.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/rbac/#users-with-rancher-cluster-manager-based-permissions)
@@ -39,7 +42,7 @@ To use your own dashboard:
 
 ### 2. Create a ConfigMap using the Grafana JSON model
 
-Create a ConfigMap in the namespace that contains your Grafana Dashboards (e.g. cattle-dashboards by default). 
+Create a ConfigMap in the namespace that contains your Grafana Dashboards (e.g. cattle-dashboards by default).
 
 The ConfigMap should look like this:
 
@@ -85,9 +88,10 @@ grafana.sidecar.dashboards.searchNamespace=ALL
 Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboards are still restricted to giving permissions for users to add dashboards in the namespace defined in `grafana.dashboards.namespace`, which defaults to `cattle-dashboards`.
 
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
+
 > **Prerequisites:**
-> 
+>
 > - The monitoring application needs to be installed.
 > - You must have the cluster-admin ClusterRole permission.
 

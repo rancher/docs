@@ -4,6 +4,9 @@ shortTitle: Routes
 weight: 5
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The route configuration is the section of the Alertmanager custom resource that controls how the alerts fired by Prometheus are grouped and filtered before they reach the receiver.
 
 When a Route is changed, the Prometheus Operator regenerates the Alertmanager custom resource to reflect the changes.
@@ -43,7 +46,7 @@ The route needs to refer to a [receiver](#receiver-configuration) that has alrea
 ### Grouping
 
 <Tabs>
-<TabItem label="Rancher v2.6.5+">
+<TabItem value="Rancher v2.6.5+">
 
 > **Note** As of Rancher v2.6.5 `Group By` now accepts a list of strings instead of key-value pairs. See the [upstream documentation](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#route) for details.
 
@@ -55,7 +58,7 @@ The route needs to refer to a [receiver](#receiver-configuration) that has alrea
 | Repeat Interval |  4h | How long to wait before re-sending a given alert that has already been sent. |
 
 </TabItem>
-<TabItem label="Rancher before v2.6.5">
+<TabItem value="Rancher before v2.6.5">
 
 | Field |    Default | Description |
 |-------|--------------|---------|
@@ -66,8 +69,6 @@ The route needs to refer to a [receiver](#receiver-configuration) that has alrea
 
 </TabItem>
 </Tabs>
-
-
 
 ### Matching
 

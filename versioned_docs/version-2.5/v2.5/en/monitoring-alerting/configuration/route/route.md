@@ -4,6 +4,9 @@ shortTitle: Routes
 weight: 5
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The route configuration is the section of the Alertmanager custom resource that controls how the alerts fired by Prometheus are grouped and filtered before they reach the receiver.
 
 When a Route is changed, the Prometheus Operator regenerates the Alertmanager custom resource to reflect the changes.
@@ -37,7 +40,7 @@ Labels should be used for identifying information that can affect the routing of
 Annotations should be used for information that does not affect who receives the alert, such as a runbook url or error message.
 
 <Tabs>
-<TabItem label="Rancher v2.5.4+">
+<TabItem value="Rancher v2.5.4+">
 
 ### Receiver
 The route needs to refer to a [receiver](#receiver-configuration) that has already been configured.
@@ -68,7 +71,9 @@ match_re:
 ```
 
 </TabItem>
-<TabItem label="Rancher v2.5.0-2.5.3">
+<TabItem value="Rancher v2.5.0-2.5.3">
+
 The Alertmanager must be configured in YAML, as shown in this [example.](../examples/#alertmanager-config)
+
 </TabItem>
 </Tabs>

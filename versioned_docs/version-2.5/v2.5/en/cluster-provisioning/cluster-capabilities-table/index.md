@@ -2,8 +2,11 @@
 headless: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 | Action | Rancher Launched Kubernetes Clusters |  EKS and GKE Clusters<sup>1</sup> | Other Hosted Kubernetes Clusters | Non-EKS or GKE Registered Clusters |
 | --- | --- | ---| ---|----|
@@ -32,7 +35,7 @@ headless: true
 4. For registered clusters using etcd as a control plane, snapshots must be taken manually outside of the Rancher UI to use for backup and recovery.
 
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 | Action | Rancher Launched Kubernetes Clusters | Hosted Kubernetes Clusters | Registered EKS Clusters | All Other Registered Clusters |
 | --- | --- | ---| ---|----|
@@ -57,7 +60,6 @@ headless: true
 2. For registered cluster nodes, the Rancher UI exposes the ability to cordon, drain, and edit the node.
 
 3. For registered clusters using etcd as a control plane, snapshots must be taken manually outside of the Rancher UI to use for backup and recovery.
-
 
 </TabItem>
 </Tabs>

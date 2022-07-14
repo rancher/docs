@@ -3,6 +3,9 @@ title: Certificate Rotation
 weight: 2040
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::caution
 
 Rotating Kubernetes certificates may result in your cluster being temporarily unavailable as components are restarted. For production environments, it's recommended to perform this action during a maintenance window.
@@ -14,7 +17,7 @@ By default, Kubernetes clusters require certificates and Rancher launched Kubern
 Certificates can be rotated for the following services:
 
 <Tabs>
-<TabItem label="RKE">
+<TabItem value="RKE">
 
 - etcd
 - kubelet (node certificate)
@@ -25,7 +28,7 @@ Certificates can be rotated for the following services:
 - kube-controller-manager
 
 </TabItem>
-<TabItem label="RKE2">
+<TabItem value="RKE2">
 
 - admin
 - api-server
@@ -66,12 +69,12 @@ Rancher launched Kubernetes clusters have the ability to rotate the auto-generat
 ### Additional Notes
 
 <Tabs>
-<TabItem label="RKE">
+<TabItem value="RKE">
 
 Even though the RKE CLI can use custom certificates for the Kubernetes cluster components, Rancher currently doesn't allow the ability to upload these in Rancher launched Kubernetes clusters.
 
 </TabItem>
-<TabItem label="RKE2">
+<TabItem value="RKE2">
 
 In RKE2, both etcd and control plane nodes are treated as the same `server` concept. As such, when rotating certificates of services specific to either of these components will result in certificates being rotated on both. The certificates will only change for the specified service, but you will see nodes for both components go into an updating state. You may also see worker only nodes go into an updating state. This is to restart the workers after a certificate change to ensure they get the latest client certs.
 

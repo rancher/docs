@@ -4,8 +4,11 @@ shortTitle: GKE Cluster Configuration
 weight: 3
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 # Changes in v2.5.8
 
@@ -303,8 +306,7 @@ The syncing interval can be changed by running `kubectl edit setting gke-refresh
 The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for GCP APIs.
 
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
-
+<TabItem value="Rancher before v2.5.8">
 
 # Labels & Annotations
 
@@ -315,7 +317,7 @@ Invalid labels can prevent upgrades or can prevent Rancher from starting. For de
 # Kubernetes Options
 
 ### Location Type
-Zonal or Regional. With GKE, you can create a cluster tailored to the availability requirements of your workload and your budget. By default, a cluster's nodes run in a single compute zone. When multiple zones are selected, the cluster's nodes will span multiple compute zones, while the controlplane is located in a single zone. Regional clusters increase the availability of the controlplane as well. For help choosing the type of cluster availability, refer to [these docs.](https://cloud.google.com/kubernetes-engine/docs/best-practices/scalability#choosing_a_regional_or_zonal_control_plane) 
+Zonal or Regional. With GKE, you can create a cluster tailored to the availability requirements of your workload and your budget. By default, a cluster's nodes run in a single compute zone. When multiple zones are selected, the cluster's nodes will span multiple compute zones, while the controlplane is located in a single zone. Regional clusters increase the availability of the controlplane as well. For help choosing the type of cluster availability, refer to [these docs.](https://cloud.google.com/kubernetes-engine/docs/best-practices/scalability#choosing_a_regional_or_zonal_control_plane)
 
 For [regional clusters,](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters#regional_clusters) you can select a region. For more information about available regions and zones, refer to [this section](https://cloud.google.com/compute/docs/regions-zones#available). The first part of each zone name is the name of the region.
 
@@ -327,7 +329,7 @@ Each region in Compute engine contains a number of zones.
 For more information about available regions and zones, refer to [these docs.](https://cloud.google.com/compute/docs/regions-zones#available)
 
 ### Additional Zones
-For zonal clusters, you can select additional zones to create a [multi-zone cluster.](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters#multi-zonal_clusters) 
+For zonal clusters, you can select additional zones to create a [multi-zone cluster.](https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters#multi-zonal_clusters)
 
 ### Kubernetes Version
 Link to list of GKE kubernetes versions
@@ -405,7 +407,7 @@ Standard persistent disks are backed by standard hard disk drives (HDD), while S
 The size in GB of the [root disk.](https://cloud.google.com/compute/docs/disks)
 
 ### Local SSD disks
-Configure each node's local SSD disk storage in GB. 
+Configure each node's local SSD disk storage in GB.
 
 Local SSDs are physically attached to the server that hosts your VM instance. Local SSDs have higher throughput and lower latency than standard persistent disks or SSD persistent disks. The data that you store on a local SSD persists only until the instance is stopped or deleted. For more information, see [this section.](https://cloud.google.com/compute/docs/disks#localssds)
 
@@ -449,5 +451,6 @@ Access scopes are the legacy method of specifying permissions for your nodes.
 - **Set access for each API:** Alternatively, you can choose to set specific scopes that permit access to the particular API methods that the service will call.
 
 For more information, see the [section about enabling service accounts for a VM.](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances)
+
 </TabItem>
 </Tabs>

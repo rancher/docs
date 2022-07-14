@@ -3,11 +3,14 @@ title: Working with Taints and Tolerations
 weight: 6
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 "Tainting" a Kubernetes node causes pods to repel running on that node.
 
 Unless the pods have a `toleration` for that node's taint, they will run on other nodes in the cluster.
 
-[Taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) can work in conjunction with the `nodeSelector` [field](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) within the `PodSpec`, which enables the *opposite* effect of a taint. 
+[Taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) can work in conjunction with the `nodeSelector` [field](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) within the `PodSpec`, which enables the *opposite* effect of a taint.
 
 Using `nodeSelector` gives pods an affinity towards certain nodes.
 
@@ -20,13 +23,16 @@ Both provide choice for the what node(s) the pod will run on.
 ### Default Implementation in Rancher's Logging Stack
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
+
 By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
 The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
 Moreover, most logging stack pods run on Linux only and have a `nodeSelector` added to ensure they run on Linux nodes.
 
+
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
+
 By default, Rancher taints all Linux nodes with `cattle.io/os=linux`, and does not taint Windows nodes.
 The logging stack pods have `tolerations` for this taint, which enables them to run on Linux nodes.
 Moreover, we can populate the `nodeSelector` to ensure that our pods *only* run on Linux nodes.

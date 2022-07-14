@@ -3,6 +3,9 @@ title: Node Requirements for Rancher Managed Clusters
 weight: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This page describes the requirements for the Rancher managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the three-node cluster running Rancher.
 
 :::note
@@ -37,7 +40,7 @@ Some distributions of Linux derived from RHEL, including Oracle Linux, may have 
 :::note
 
 In RHEL 8.4, two extra services are included on the NetworkManager: `nm-cloud-setup.service` and `nm-cloud-setup.timer`. These services add a routing table that interferes with the CNI plugin's configuration. If these services are enabled, you must disable them using the command below, and then reboot the node to restore connectivity:
-  
+
    ```
    systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
    reboot
@@ -54,7 +57,7 @@ SUSE Linux may have a firewall that blocks all ports by default. In that situati
 When [Launching Kubernetes with Rancher]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) using Flatcar Container Linux nodes, it is required to use the following configuration in the [Cluster Config File]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options/#cluster-config-file)
 
 <Tabs>
-<TabItem label="Canal">
+<TabItem value="Canal">
 
 ```yaml
 rancher_kubernetes_engine_config:
@@ -69,9 +72,9 @@ rancher_kubernetes_engine_config:
       extra_args:
         flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
 ```
-</TabItem>
 
-<TabItem label="Calico">
+</TabItem>
+<TabItem value="Calico">
 
 ```yaml
 rancher_kubernetes_engine_config:
@@ -86,6 +89,7 @@ rancher_kubernetes_engine_config:
       extra_args:
         flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
 ```
+
 </TabItem>
 </Tabs>
 

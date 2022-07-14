@@ -7,6 +7,9 @@ aliases:
   - /rancher/v2.x/en/cis-scans/v2.5/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark.
 
 The `rancher-cis-benchmark` app leverages <a href="https://github.com/aquasecurity/kube-bench" target="_blank">kube-bench,</a> an open-source tool from Aqua Security, to check clusters for CIS Kubernetes Benchmark compliance. Also, to generate a cluster-wide report, the application utilizes <a href="https://github.com/vmware-tanzu/sonobuoy" target="_blank">Sonobuoy</a> for report aggregation.
@@ -42,7 +45,8 @@ Support for alerting for the cluster scan results is now also available from Ran
 In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5.0 and in v2.5.4, more profiles were included.
 
 <Tabs>
-<TabItem label="Profiles in v2.5.4">
+<TabItem value="Profiles in v2.5.4">
+
 - Generic CIS 1.5
 - Generic CIS 1.6
 - RKE permissive 1.5
@@ -53,13 +57,16 @@ In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5
 - GKE
 - RKE2 permissive 1.5
 - RKE2 permissive 1.5
+
 </TabItem>
-<TabItem label="Profiles in v2.5.0-v2.5.3">
+<TabItem value="Profiles in v2.5.0-v2.5.3">
+
 - Generic CIS 1.5
 - RKE permissive
 - RKE hardened
 - EKS
 - GKE
+
 </TabItem>
 </Tabs>
 <br/>
@@ -68,7 +75,7 @@ In Rancher v2.4, permissive and hardened profiles were included. In Rancher v2.5
 The default profile and the supported CIS benchmark version depends on the type of cluster that will be scanned and the Rancher version:
 
 <Tabs>
-<TabItem label="v2.5.4">
+<TabItem value="v2.5.4">
 
 The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
 
@@ -78,7 +85,7 @@ The `rancher-cis-benchmark` supports the CIS 1.6 Benchmark version.
 - For cluster types other than RKE, RKE2, EKS and GKE, the Generic CIS 1.5 profile will be used by default.
 
 </TabItem>
-<TabItem label="v2.5.0-v2.5.3">
+<TabItem value="v2.5.0-v2.5.3">
 
 The `rancher-cis-benchmark` supports the CIS 1.5 Benchmark version.
 
@@ -97,7 +104,7 @@ The Center for Internet Security is a 501(c\)(3) non-profit organization, formed
 
 CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
 
-The official Benchmark documents are available through the CIS website. The sign-up form to access the documents is 
+The official Benchmark documents are available through the CIS website. The sign-up form to access the documents is
 <a href="https://learn.cisecurity.org/benchmarks" target="_blank">here.</a>
 
 # About the Generated Report
@@ -136,7 +143,8 @@ Refer to <a href="{{<baseurl>}}/rancher/v2.5/en/security/" target="_blank">the t
 The following profiles are available:
 
 <Tabs>
-<TabItem label="Profiles in v2.5.4">
+<TabItem value="Profiles in v2.5.4">
+
 - Generic CIS 1.5
 - Generic CIS 1.6
 - RKE permissive 1.5
@@ -147,13 +155,16 @@ The following profiles are available:
 - GKE
 - RKE2 permissive 1.5
 - RKE2 permissive 1.5
+
 </TabItem>
-<TabItem label="Profiles in v2.5.0-v2.5.3">
+<TabItem value="Profiles in v2.5.0-v2.5.3">
+
 - Generic CIS 1.5
 - RKE permissive
 - RKE hardened
 - EKS
 - GKE
+
 </TabItem>
 </Tabs>
 
@@ -242,7 +253,7 @@ To run a ClusterScan on a schedule,
 1. Choose a **Retention** count, which indicates the number of reports maintained for this recurring scan. By default this count is 3. When this retention limit is reached, older reports will get purged.
 1. Click **Create.**
 
-**Result:** The scan runs and reschedules to run according to the cron schedule provided. The **Next Scan** value indicates the next time this scan will run again. 
+**Result:** The scan runs and reschedules to run according to the cron schedule provided. The **Next Scan** value indicates the next time this scan will run again.
 
 A report is generated with the scan results every time the scan runs. To see the latest results, click the name of the scan that appears.
 
@@ -294,7 +305,7 @@ _Available as of v2.5.4_
 
 Alerts can be configured to be sent out for a scan that runs on a schedule.
 
-> **Prerequisite:** 
+> **Prerequisite:**
 >
 > Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/)
 >
@@ -321,7 +332,7 @@ The `rancher-cis-benchmark` application supports two types of alerts:
 - Alert on scan completion: This alert is sent out when the scan run finishes. The alert includes details including the ClusterScan's name and the ClusterScanProfile name.
 - Alert on scan failure: This alert is sent out if there are some test failures in the scan run or if the scan is in a `Fail` state.
 
-> **Prerequisite:** 
+> **Prerequisite:**
 >
 > Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager/)
 >
@@ -343,9 +354,9 @@ To configure alerts for a scan that runs on a schedule,
 
 A report is generated with the scan results every time the scan runs. To see the latest results, click the name of the scan that appears.
 
-### Creating a Custom Benchmark Version for Running a Cluster Scan 
+### Creating a Custom Benchmark Version for Running a Cluster Scan
 _Available as of v2.5.4_
- 
+
 There could be some Kubernetes cluster setups that require custom configurations of the Benchmark tests. For example, the path to the Kubernetes config files or certs might be different than the standard location where the upstream CIS Benchmarks look for them.
 
 It is now possible to create a custom Benchmark Version for running a cluster scan using the `rancher-cis-benchmark` application.

@@ -11,13 +11,16 @@ aliases:
   - /rancher/v2.x/en/installation/other-installation-methods/air-gap/install-rancher/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section is about how to deploy Rancher for your air gapped environment in a high-availability Kubernetes installation. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.
 
 ### Privileged Access for Rancher v2.5+
 
 When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container for Rancher to use. Because many features of Rancher run as deployments, and privileged mode is required to run containers within containers, you will need to install Rancher with the `--privileged` option.
 
-# Docker Instructions 
+# Docker Instructions
 
 If you want to continue the air gapped installation using Docker commands, skip the rest of this page and follow the instructions on [this page.](./docker-install-commands)
 
@@ -139,7 +142,8 @@ Placeholder | Description
 `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
+
 ```plain
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
     --no-hooks \ # prevent files for Helm hooks from being generated
@@ -152,8 +156,9 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 ```
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.8`
+
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 ```plain
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -166,6 +171,7 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
 ```
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.5.6`
+
 </TabItem>
 </Tabs>
 
@@ -189,7 +195,7 @@ Render the Rancher template, declaring your chosen options. Use the reference ta
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.         |
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 ```plain
    helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -219,8 +225,9 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
 Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 
 ```plain
@@ -249,6 +256,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
 Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+
 </TabItem>
 </Tabs>
 

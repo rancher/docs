@@ -3,6 +3,9 @@ title: Persistent Grafana Dashboards
 weight: 6
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 To allow the Grafana dashboard to persist after the Grafana instance restarts, add the dashboard configuration JSON into a ConfigMap. ConfigMaps also allow the dashboards to be deployed with a GitOps or CD based approach. This allows the dashboard to be put under version control.
 
 - [Creating a Persistent Grafana Dashboard](#creating-a-persistent-grafana-dashboard)
@@ -11,7 +14,7 @@ To allow the Grafana dashboard to persist after the Grafana instance restarts, a
 # Creating a Persistent Grafana Dashboard
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 :::note Prerequisites:
 
@@ -33,7 +36,7 @@ To use your own dashboard:
 1. Log in to Grafana. Note: The default Admin username and password for the Grafana instance is `admin/prom-operator`. Alternative credentials can also be supplied on deploying or upgrading the chart.
 
     :::note
-    
+
     Regardless of who has the password, in order to access the Grafana instance, you still need at least the <b>Manage Services</b> or <b>View Monitoring</b> permissions in the project that Rancher Monitoring is deployed into. Alternative credentials can also be supplied on deploying or upgrading the chart.
 
     :::
@@ -43,7 +46,7 @@ To use your own dashboard:
 
 ### 2. Create a ConfigMap using the Grafana JSON model
 
-Create a ConfigMap in the namespace that contains your Grafana Dashboards (e.g. cattle-dashboards by default). 
+Create a ConfigMap in the namespace that contains your Grafana Dashboards (e.g. cattle-dashboards by default).
 
 The ConfigMap should look like this:
 
@@ -90,10 +93,10 @@ grafana.sidecar.dashboards.searchNamespace=ALL
 Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboards are still restricted to giving permissions for users to add dashboards in the namespace defined in `grafana.dashboards.namespace`, which defaults to `cattle-dashboards`.
 
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 :::note Prerequisites:
- 
+
 - The monitoring application needs to be installed.
 - You must have the cluster-admin ClusterRole permission.
 
@@ -106,11 +109,11 @@ Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboar
 1. Log in to Grafana. Note: The default Admin username and password for the Grafana instance is `admin/prom-operator`. Alternative credentials can also be supplied on deploying or upgrading the chart.
 
     :::note
-    
+
     Regardless of who has the password, cluster administrator permission in Rancher is still required to access the Grafana instance.
 
     :::
-    
+
 1. Go to the dashboard that you want to persist. In the top navigation menu, go to the dashboard settings by clicking the gear icon.
 1. In the left navigation menu, click **JSON Model**.
 1. Copy the JSON data structure that appears.

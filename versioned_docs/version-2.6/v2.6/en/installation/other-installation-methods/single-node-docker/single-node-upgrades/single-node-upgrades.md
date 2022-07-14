@@ -3,6 +3,9 @@ title: Upgrading Rancher Installed with Docker
 weight: 1010
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
 
 > **Docker installs are not supported in production environments.** These instructions are provided for testing and development purposes only. If you have already deployed a Docker install in production and need to upgrade to a new Rancher version, we recommend [migrating to the Helm chart install]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher/) before upgrading.
@@ -126,7 +129,7 @@ To see the command to use when starting the new Rancher server container, choose
 - Docker Upgrade for Air Gap Installs
 
 <Tabs>
-<TabItem label="Docker Upgrade">
+<TabItem value="Docker Upgrade">
 
 Select which option you had installed Rancher server
 
@@ -244,7 +247,7 @@ Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/othe
 {{% /accordion %}}
 
 </TabItem>
-<TabItem label="Docker Air Gap Upgrade">
+<TabItem value="Docker Air Gap Upgrade">
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
@@ -337,6 +340,7 @@ docker run -d --volumes-from rancher-data \
 ```
 privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
 {{% /accordion %}}
+
 </TabItem>
 </Tabs>
 

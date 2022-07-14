@@ -6,6 +6,9 @@ aliases:
   - /rancher/v2.x/en/installation/other-installation-methods/air-gap/prepare-nodes/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 In this section, you will provision the underlying infrastructure for your Rancher management server in an air gapped environment. You will also set up the private Docker registry that must be available to your Rancher node(s).
 
 An air gapped environment is an environment where the Rancher server is installed offline or behind a firewall.
@@ -15,7 +18,8 @@ The infrastructure depends on whether you are installing Rancher on a K3s Kubern
 As of Rancher v2.5, Rancher can be installed on any Kubernetes cluster. The RKE and K3s Kubernetes infrastructure tutorials below are still included for convenience.
 
 <Tabs>
-<TabItem label="K3s">
+<TabItem value="K3s">
+
 We recommend setting up the following infrastructure for a high-availability installation:
 
 - **Two Linux nodes,** typically virtual machines, in the infrastructure provider of your choice.
@@ -85,8 +89,9 @@ Rancher supports air gap installs using a private registry. You must have your o
 In a later step, when you set up your K3s Kubernetes cluster, you will create a [private registries configuration file]({{<baseurl>}}/k3s/latest/en/installation/private-registry/) with details from this registry.
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
+
 </TabItem>
-<TabItem label="RKE">
+<TabItem value="RKE">
 
 To install the Rancher management server on a high-availability RKE cluster, we recommend setting up the following infrastructure:
 
@@ -149,8 +154,10 @@ In a later step, when you set up your RKE Kubernetes cluster, you will create a 
 
 If you need help with creating a private registry, please refer to the [official Docker documentation.](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry)
 
+
 </TabItem>
-<TabItem label="Docker">
+<TabItem value="Docker">
+
 > The Docker installation is for Rancher users that are wanting to test out Rancher. Since there is only one node and a single Docker container, if the node goes down, you will lose all the data of your Rancher server.
 >
 > As of Rancher v2.5, the Rancher backup operator can be used to migrate Rancher from the single Docker container install to an installation on a high-availability Kubernetes cluster. For details, refer to the documentation on [migrating Rancher to a new cluster.]({{<baseurl>}}/rancher/v2.5/en/backups/migrating-rancher)

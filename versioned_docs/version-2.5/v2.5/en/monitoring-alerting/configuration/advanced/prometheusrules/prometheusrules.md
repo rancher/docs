@@ -5,6 +5,9 @@ aliases:
   - /rancher/v2.x/en/monitoring-alerting/v2.5/configuration/prometheusrules/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 A PrometheusRule defines a group of Prometheus alerting and/or recording rules.
 
 > This section assumes familiarity with how monitoring components work together. For more information, see [this section.]({{<baseurl>}}/rancher/v2.5/en/monitoring-alerting/how-monitoring-works)
@@ -17,7 +20,7 @@ _Available as of v2.5.4_
 
 To create rule groups in the Rancher UI,
 
-1. Click **Cluster Explorer > Monitoring** and click **Prometheus Rules.** 
+1. Click **Cluster Explorer > Monitoring** and click **Prometheus Rules.**
 1. Click **Create.**
 1. Enter a **Group Name.**
 1. Configure the rules. In Rancher's UI, we expect a rule group to contain either alert rules or recording rules, but not both. For help filling out the forms, refer to the configuration options below.
@@ -45,7 +48,8 @@ For examples, refer to the Prometheus documentation on [recording rules](https:/
 # Configuration
 
 <Tabs>
-<TabItem label="Rancher v2.5.4">
+<TabItem value="Rancher v2.5.4">
+
 Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling out forms in the Rancher UI.
 
 
@@ -73,7 +77,7 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 
 ### Recording Rules
 
-[Recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#recording-rules) allow you to precompute frequently needed or computationally expensive PromQL (Prometheus Query Language) expressions and save their result as a new set of time series. 
+[Recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/#recording-rules) allow you to precompute frequently needed or computationally expensive PromQL (Prometheus Query Language) expressions and save their result as a new set of time series.
 
 | Field | Description |
 |-------|----------------|
@@ -82,7 +86,9 @@ Rancher v2.5.4 introduced the capability to configure PrometheusRules by filling
 | Labels |   Labels to add or overwrite before storing the result.     |
 
 </TabItem>
-<TabItem label="Rancher v2.5.0-v2.5.3">
+<TabItem value="Rancher v2.5.0-v2.5.3">
+
 For Rancher v2.5.0-v2.5.3, PrometheusRules must be configured in YAML. For examples, refer to the Prometheus documentation on [recording rules](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/) and [alerting rules.](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+
 </TabItem>
 </Tabs>

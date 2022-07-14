@@ -11,6 +11,9 @@ aliases:
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 In this section, you'll learn how to deploy Rancher on a Kubernetes cluster using the Helm CLI.
 
 - [Prerequisites](#prerequisites)
@@ -160,8 +163,7 @@ The exact command to install Rancher differs depending on the certificate config
 However, irrespective of the certificate configuration, the name of the Rancher installation in the `cattle-system` namespace should always be `rancher`.
 
 <Tabs>
-<TabItem label="Rancher-generated Certificates">
-
+<TabItem value="Rancher-generated Certificates">
 
 The default is for Rancher to generate a self-signed CA, and uses `cert-manager` to issue the certificate for access to the Rancher server interface.
 
@@ -188,7 +190,7 @@ deployment "rancher" successfully rolled out
 ```
 
 </TabItem>
-<TabItem label="Let's Encrypt">
+<TabItem value="Let's Encrypt">
 
 This option uses `cert-manager` to automatically request and renew [Let's Encrypt](https://letsencrypt.org/) certificates. This is a free service that provides you with a valid certificate as Let's Encrypt is a trusted CA.
 
@@ -223,7 +225,7 @@ deployment "rancher" successfully rolled out
 ```
 
 </TabItem>
-<TabItem label="Certificates from Files">
+<TabItem value="Certificates from Files">
 In this option, Kubernetes secrets are created from your own certificates for Rancher to use.
 
 When you run this command, the `hostname` option must match the `Common Name` or a `Subject Alternative Names` entry in the server certificate, or the Ingress controller will fail to configure correctly.
@@ -257,6 +259,7 @@ helm install rancher rancher-<CHART_REPO>/rancher \
 ```
 
 Now that Rancher is deployed, see [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.5/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the Ingress controller can use them.
+
 </TabItem>
 </Tabs>
 

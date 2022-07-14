@@ -5,6 +5,9 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/rke-clusters/windows-clusters/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 When provisioning a [custom cluster]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/custom-nodes) using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to install Kubernetes on your existing nodes.
 
 In a Windows cluster provisioned with Rancher, the cluster must contain both Linux and Windows nodes. The Kubernetes controlplane can only run on Linux nodes, and the Windows nodes can only have the worker role. Windows nodes can only be used for deploying workloads.
@@ -36,13 +39,15 @@ The general node requirements for networking, operating systems, and Docker are 
 ### OS and Docker Requirements
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 Our support for Windows Server and Windows containers match the Microsoft official lifecycle for LTSC (Long-Term Servicing Channel) and SAC (Semi-Annual Channel).
 
 For the support lifecycle dates for Windows Server, see the [Microsoft Documentation.](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)
+
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
+
 In order to add Windows worker nodes to a cluster, the node must be running one of the following Windows Server versions and the corresponding version of Docker Engine - Enterprise Edition (EE):
 
 - Nodes with Windows Server core version 1809 should use Docker EE-basic 18.09 or Docker EE-basic 19.03.
@@ -52,6 +57,7 @@ In order to add Windows worker nodes to a cluster, the node must be running one 
 >
 > - If you are using AWS, Rancher recommends _Microsoft Windows Server 2019 Base with Containers_ as the Amazon Machine Image (AMI).
 > - If you are using GCE, Rancher recommends _Windows Server 2019 Datacenter for Containers_ as the OS image.
+
 </TabItem>
 </Tabs>
 
@@ -214,13 +220,13 @@ The first node in your cluster should be a Linux host has both the **Control Pla
 1. SSH into your Linux host and run the command that you copied to your clipboard.
 1. When you are finished provisioning your Linux node(s), select **Done**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
