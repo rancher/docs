@@ -80,7 +80,8 @@ Only hosts expected to be load balancer back ends need to be in this group.
    necessary. Your Cloud Provider Configuration **must** match the fields in the Machine Pools section. If you have multiple pools, they must all use the same Resource Group, Availability Set, Subnet, Virtual Network, and Network Security Group.
    * An example is provided below. You will modify it as needed.
 
-    <details id="v2.6.0-cloud-provider-config-file" label="Example Cloud Provider Config" %}}
+<details id="v2.6.0-cloud-provider-config-file">
+    <summary>Example Cloud Provider Config</summary>
 
 ```yaml
 {
@@ -103,7 +104,8 @@ Only hosts expected to be load balancer back ends need to be in this group.
     "useInstanceMetadata": true
 }
 ```
-    </details>
+
+</details>
 
 1. Under the **Cluster Configuration > Advanced** section, click **Add** under **Additional Controller Manager Args** and add this flag: `--configure-cloud-routes=false`
 

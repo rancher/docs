@@ -212,7 +212,8 @@ If you choose to use self-signed certificates in [B. Choose your SSL Configurati
 
 ### For Self-Signed Certificate Installs, Install Cert-manager
 
-<details id="install-cert-manager" label="Click to expand" %}}
+<details id="install-cert-manager">
+  <summary>Click to expand</summary>
 
 If you are using self-signed certificates, install cert-manager:
 

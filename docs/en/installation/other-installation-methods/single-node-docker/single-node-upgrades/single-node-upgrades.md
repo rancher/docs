@@ -229,6 +229,7 @@ docker run -d --volumes-from rancher-data \
 ```
 
 Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
+
 </details>
 
 ### Option D: Let's Encrypt Certificate
@@ -299,6 +300,7 @@ Placeholder | Description
 ```
 
 Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
+
 </details>
 
 ### Option B: Bring Your Own Certificate: Self-Signed
@@ -335,6 +337,7 @@ docker run -d --restart=unless-stopped \
     &lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/rancher/rancher:&lt;CA_CERTS.pem&gt;
 ```
 Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
+
 </details>
 
 ### Option C: Bring Your Own Certificate: Signed by Recognized CA
@@ -377,6 +380,7 @@ docker run -d --volumes-from rancher-data \
      &lt;REGISTRY.YOURDOMAIN.COM:PORT&gt;/rancher/rancher:&lt;CA_CERTS.pem&gt;
 ```
 privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
+
 </details>
 {{% /tab %}}
 {{% /tabs %}}

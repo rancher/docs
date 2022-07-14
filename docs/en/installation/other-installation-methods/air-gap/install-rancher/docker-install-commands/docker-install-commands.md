@@ -98,7 +98,7 @@ docker run -d --restart=unless-stopped \
 ### Option C: Bring Your Own Certificate: Signed by Recognized CA
 
 <details id="option-c" >
-<summary>Click to expand</summary>
+  <summary>Click to expand</summary>
 
 In development or testing environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 

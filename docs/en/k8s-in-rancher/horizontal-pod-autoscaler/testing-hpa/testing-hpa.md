@@ -12,6 +12,7 @@ For HPA to work correctly, service deployments should have resources request def
 2. Copy the `hello-world` deployment manifest below.
 <details id="hello-world">
   <summary>Hello World Manifest</summary>
+
 ```
 apiVersion: apps/v1beta2
 kind: Deployment
@@ -61,6 +62,7 @@ spec:
   selector:
     app: hello-world
 ```
+
 </details>
 
 1. Deploy it to your cluster.
@@ -95,6 +97,7 @@ spec:
       name: memory
       targetAverageValue: 1000Mi
 ```
+
 </details>
 <details id="service-deployment-custom-metrics">
   <summary>Hello World HPA: Custom Metrics</summary>
@@ -125,6 +128,7 @@ spec:
       metricName: cpu_system
       targetAverageValue: 20m
 ```
+
 </details>
 
 1. View the HPA info and description. Confirm that metric data is shown.
@@ -155,6 +159,7 @@ spec:
       ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
     Events:           <none>
     ```
+
     </details>
     <details id="hpa-info-custom-metrics">
       <summary>Custom Metrics</summary>
@@ -184,6 +189,7 @@ spec:
       ScalingLimited  False   DesiredWithinRange  the desired count is within the acceptable range
     Events:           <none>
     ```
+
     </details>
 
 
@@ -233,6 +239,7 @@ Use your load testing tool to scale up to two pods based on CPU Usage.
       hello-world-54764dfbf8-k8ph2                             1/1       Running   0          1m
       hello-world-54764dfbf8-q6l4v                             1/1       Running   0          3h
    ```
+
   </details>
   <details id="observe-upscale-3-pods-cpu-cooldown">
     <summary>Upscale to 3 pods: CPU Usage Up to Target</summary>
@@ -278,6 +285,7 @@ Use your load testing tool to upscale to 3 pods based on CPU usage with `horizon
       hello-world-54764dfbf8-k8ph2                             1/1       Running   0          5m
       hello-world-54764dfbf8-q6l4v                             1/1       Running   0          3h
       ```
+
   </details>
   <details id="observe-downscale-1-pod">
     <summary>Downscale to 1 Pod: All Metrics Below Target</summary>
@@ -313,6 +321,7 @@ Use your load testing to scale down to 1 pod when all metrics are below target f
         Normal  SuccessfulRescale  6m    horizontal-pod-autoscaler  New size: 3; reason: cpu resource utilization (percentage of request) above target
         Normal  SuccessfulRescale  1s    horizontal-pod-autoscaler  New size: 1; reason: All metrics below target
   ```
+
   </details>
 <br/>
 **To Test Autoscaling Using Custom Metrics:**
@@ -359,6 +368,7 @@ Use your load testing tool to upscale two pods based on CPU usage.
         hello-world-54764dfbf8-5pfdr   1/1       Running   0          3s
         hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
   ```
+
   </details>
 <details id="observe-upscale-3-pods-cpu-cooldown-2">
   <summary>Upscale to 3 Pods: CPU Usage Up to Target</summary>
@@ -406,6 +416,7 @@ Use your load testing tool to scale up to three pods when the cpu_system usage l
       hello-world-54764dfbf8-m2hrl   1/1       Running   0          1s
       hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
    ```
+
 </details>
 <details id="observe-upscale-4-pods">
   <summary>Upscale to 4 Pods: CPU Usage Up to Target</summary>
@@ -454,6 +465,7 @@ Use your load testing tool to upscale to four pods based on CPU usage. `horizont
       hello-world-54764dfbf8-m2hrl   1/1       Running   0          1s
       hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
     ```
+
 </details>
 <details id="custom-metrics-observe-downscale-1-pod">
   <summary>Downscale to 1 Pod: All Metrics Below Target</summary>
@@ -500,4 +512,5 @@ Use your load testing tool to scale down to one pod when all metrics below targe
         NAME                           READY     STATUS    RESTARTS   AGE
         hello-world-54764dfbf8-q6l82   1/1       Running   0          6h
     ```
+
 </details>

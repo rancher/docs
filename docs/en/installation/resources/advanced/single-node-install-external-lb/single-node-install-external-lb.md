@@ -88,7 +88,7 @@ If you use a certificate signed by a recognized CA, installing your certificate 
         rancher/rancher:latest --no-cacerts
         ```
 
-    </details>
+</details>
 
 ## 3. Configure Load Balancer
 
