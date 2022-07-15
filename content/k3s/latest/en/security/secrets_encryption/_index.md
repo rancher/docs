@@ -6,7 +6,7 @@ weight: 26
 # Secrets Encryption Config
 _Available as of v1.17.4+k3s1_
 
-K3s supports enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server; this flag will do the following automatically:
+K3s supports enabling secrets encryption at rest by passing the flag `--secrets-encryption` on a server (this can be done with the `INSTALL_K3S_EXEC` variable when [installing](/docs/k3s/latest/en/installation/install-options/)); this flag will do the following automatically:
 
 - Generate an AES-CBC key
 - Generate an encryption config file with the generated key
