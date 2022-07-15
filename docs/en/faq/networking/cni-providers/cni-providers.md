@@ -111,7 +111,7 @@ Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if
 
 :::note Important:
 
-In Rancher v2.6.3, Calico probes fail on Windows nodes upon RKE2 installation. <b>Note that this issue is resolved in v2.6.4.<b>
+In Rancher v2.6.3, Calico probes fail on Windows nodes upon RKE2 installation. <b>Note that this issue is resolved in v2.6.4.</b>
 
 - To work around this issue, first navigate to `https://<rancherserverurl>/v3/settings/windows-rke2-install-script`.
 
