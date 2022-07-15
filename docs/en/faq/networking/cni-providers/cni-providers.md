@@ -46,7 +46,7 @@ CNI network providers using this network model include Calico and Cilium. Cilium
 
 ### RKE Kubernetes clusters
 
-Out-of-the-box, Rancher provides the following CNI network providers for RKE Kubernetes clusters: Canal, Flannel, and Weave. 
+Out-of-the-box, Rancher provides the following CNI network providers for RKE Kubernetes clusters: Canal, Flannel, and Weave.
 
 You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
 
@@ -95,7 +95,7 @@ For more information, see the following pages:
 
 ### RKE2 Kubernetes clusters
 
-Out-of-the-box, Rancher provides the following CNI network providers for RKE2 Kubernetes clusters: [Canal](#canal) (see above section), Calico, and Cilium. 
+Out-of-the-box, Rancher provides the following CNI network providers for RKE2 Kubernetes clusters: [Canal](#canal) (see above section), Calico, and Cilium.
 
 You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
 
@@ -113,7 +113,7 @@ Kubernetes workers should open TCP port `179` if using BGP or UDP port `4789` if
 
 In Rancher v2.6.3, Calico probes fail on Windows nodes upon RKE2 installation. <b>Note that this issue is resolved in v2.6.4.<b>
 
-- To work around this issue, first navigate to `https://<rancherserverurl>/v3/settings/windows-rke2-install-script`. 
+- To work around this issue, first navigate to `https://<rancherserverurl>/v3/settings/windows-rke2-install-script`.
 
 - There, change the current setting: `https://raw.githubusercontent.com/rancher/wins/v0.1.3/install.ps1` to this new setting: `https://raw.githubusercontent.com/rancher/rke2/master/windows/rke2-install.ps1`.
 
@@ -130,12 +130,12 @@ For more information, see the following pages:
 
 ![Cilium Logo]({{<baseurl>}}/img/rancher/cilium-logo.png)
 
-Cilium enables networking and network policies (L3, L4, and L7) in Kubernetes. By default, Cilium uses eBPF technologies to route packets inside the node and VXLAN to send packets to other nodes. Unencapsulated techniques can also be configured. 
+Cilium enables networking and network policies (L3, L4, and L7) in Kubernetes. By default, Cilium uses eBPF technologies to route packets inside the node and VXLAN to send packets to other nodes. Unencapsulated techniques can also be configured.
 
 Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4240` for health checks. In addition, ICMP 8/0 must be enabled for health checks. For more information, check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements).
 
 ##### Ingress Routing Across Nodes in Cilium
-<br>
+<br/>
 By default, Cilium does not allow pods to contact pods on other nodes. To work around this, enable the ingress controller to route requests across nodes with a `CiliumNetworkPolicy`.
 
 After selecting the Cilium CNI and enabling Project Network Isolation for your new cluster, configure as follows:
@@ -147,7 +147,7 @@ metadata:
   name: hn-nodes
   namespace: default
 spec:
-  endpointSelector: {} 
+  endpointSelector: {}
   ingress:
     - fromEntities:
       - remote-node

@@ -106,7 +106,7 @@ Rancher lets you assign _custom project roles_ to a standard user instead of the
 
 The following table lists each built-in custom project role available in Rancher and whether it is also granted by the `Owner`, `Member`, or `Read Only` role.
 
-| Built-in Project Role                | Owner         | Member<a id="proj-roles"><a/> | Read Only     |
+| Built-in Project Role                | Owner         | Member<a id="proj-roles"></a> | Read Only     |
 | ---------------------------------- | ------------- | ----------------------------- | ------------- |
 | Manage Project Members             | ✓             |                               |               |
 | Create Namespaces                  | ✓             | ✓                             |               |

@@ -52,7 +52,7 @@ These items represent helm repositories, and can be either traditional helm endp
 
 To add a private CA for Helm Chart repositories:
 
-- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:</br>
+- **HTTP-based chart repositories**: You must add a base64 encoded copy of the CA certificate in DER format to the spec.caBundle field of the chart repo, such as `openssl x509 -outform der -in ca.pem | base64 -w0`. Click **Edit YAML** for the chart repo and set, as in the following example:<br/>
     ```
     [...]
     spec:
@@ -63,7 +63,7 @@ To add a private CA for Helm Chart repositories:
     [...]
     ```
 
-- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click **Edit YAML** for the chart repo, and add the key/value pair as follows: 
+- **Git-based chart repositories**: It is not currently possible to add a private CA. For git-based chart repositories with a certificate signed by a private CA, you must disable TLS verification. Click **Edit YAML** for the chart repo, and add the key/value pair as follows:
     ```
     [...]
     spec:
@@ -73,7 +73,7 @@ To add a private CA for Helm Chart repositories:
 
 > **Note:** Helm chart repositories with authentication
 >
-> As of Rancher v2.5.12, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL. 
+> As of Rancher v2.5.12, a new value `disableSameOriginCheck` has been added to the Repo.Spec. This allows users to bypass the same origin checks, sending the repository Authentication information as a Basic Auth Header with all API calls. This is not recommended but can be used as a temporary solution in cases of non-standard Helm chart repositories such as those that have redirects to a different origin URL.
 >
 > To use this feature for an existing Helm chart repository, click <b>⋮ > Edit YAML</b>. On the `spec` portion of the YAML file, add `disableSameOriginCheck` and set it to `true`.
 >
@@ -82,7 +82,7 @@ To add a private CA for Helm Chart repositories:
 spec:
   disableSameOriginCheck: true
 [...]
-```    
+```
 
 ### Helm Compatibility
 
