@@ -3,9 +3,13 @@ title: Provisioning Kubernetes Clusters in vSphere
 weight: 1
 ---
 
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 In this section, you'll learn how to use Rancher to install an [RKE]({{<baseurl>}}/rke/latest/en/)  Kubernetes cluster in vSphere.
 
-First, you will set up your vSphere cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision nodes in vSphere. 
+First, you will set up your vSphere cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision nodes in vSphere.
 
 Then you will create a vSphere cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
@@ -51,7 +55,8 @@ If you have a cluster with DRS enabled, setting up [VM-VM Affinity Rules](https:
 The a vSphere cluster is created in Rancher depends on the Rancher version.
 
 <Tabs>
-<TabItem label="Rancher v2.2.0+">
+<TabItem value="Rancher v2.2.0+">
+
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials](#2-create-a-node-template-with-your-cloud-credentials)
 3. [Create a cluster with node pools using the node template](#3-create-a-cluster-with-node-pools-using-the-node-template)
@@ -65,7 +70,7 @@ The a vSphere cluster is created in Rancher depends on the Rancher version.
 1. Enter your vSphere credentials. For help, refer to **Account Access** in the [configuration reference for your Rancher version.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/)
 1. Click **Create.**
 
-**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters. 
+**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters.
 
 ### 2. Create a node template with your cloud credentials
 
@@ -91,18 +96,19 @@ Use Rancher to create a Kubernetes cluster in vSphere.
 1. Add one or more node pools to your cluster. Each node pool uses a node template to provision new nodes. For more information about node pools, including best practices for assigning Kubernetes roles to the nodes, see [this section.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/#node-pools)
 1. Review your options to confirm they're correct. Then click **Create**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
+
 </TabItem>
-<TabItem label="Rancher before v2.2.0">
+<TabItem value="Rancher before v2.2.0">
 
 Use Rancher to create a Kubernetes cluster in vSphere.
 
@@ -116,16 +122,16 @@ For Rancher versions before v2.0.4, when you create the cluster, you will also n
 1. If you want to dynamically provision persistent storage or other infrastructure later, you will need to enable the vSphere cloud provider by modifying the cluster YAML file. For details, refer to [this section.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/cloud-providers/vsphere)
 1. Add one or more [node pools]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/#node-pools) to your cluster. Each node pool uses a node template to provision new nodes. To create a node template, click **Add Node Template** and complete the **vSphere Options** form. For help filling out the form, refer to the vSphere node template configuration reference. Refer to the newest version of the configuration reference that is less than or equal to your Rancher version:
     - [v2.0.4]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/v2.0.4)
-    - [before v2.0.4]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/prior-to-2.0.4) 
+    - [before v2.0.4]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/prior-to-2.0.4)
 1. Review your options to confirm they're correct. Then click **Create** to start provisioning the VMs and Kubernetes services.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

@@ -8,6 +8,9 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/air-gap-high-availability/config-rancher-for-private-reg/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.
 
 By default, all images used to [provision Kubernetes clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/) or launch any [tools]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/) in Rancher, e.g. monitoring, pipelines, alerts, are pulled from Docker Hub. In an air gapped installation of Rancher, you will need a private registry that is located somewhere accessible by your Rancher server. Then, you will load the registry with all the images.
@@ -23,7 +26,7 @@ The steps in this section differ depending on whether or not you are planning to
 > If the registry has certs, follow [this K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/) about adding a private registry. The certs and registry configuration files need to be mounted into the Rancher container.
 
 <Tabs>
-<TabItem label="Linux Only Clusters">
+<TabItem value="Linux Only Clusters">
 
 For Rancher servers that will only provision Linux clusters, these are the steps to populate your private registry.
 
@@ -54,7 +57,7 @@ If you will use ARM64 hosts, the registry must support manifests. As of April 20
 
 > Skip this step if you are using your own certificates, or if you are terminating TLS on an external load balancer.
 
-In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well. 
+In a Kubernetes Install, if you elect to use the Rancher default self-signed TLS certificates, you must add the [`cert-manager`](https://hub.helm.sh/charts/jetstack/cert-manager) image to `rancher-images.txt` as well.
 
 1.  Fetch the latest `cert-manager` Helm chart and parse the template for image details:
 
@@ -107,8 +110,9 @@ The `rancher-images.txt` is expected to be on the workstation in the same direct
    ```plain
    ./rancher-load-images.sh --image-list ./rancher-images.txt --registry <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
+
 </TabItem>
-<TabItem label="Linux and Windows Clusters">
+<TabItem value="Linux and Windows Clusters">
 
 _Available as of v2.3.0_
 
@@ -288,7 +292,6 @@ chmod +x rancher-load-images.sh
    --windows-image-list ./rancher-windows-images.txt \
    --registry <REGISTRY.YOURDOMAIN.COM:PORT>
 ```
-
 
 </TabItem>
 </Tabs>

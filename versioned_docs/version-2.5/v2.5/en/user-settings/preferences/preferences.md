@@ -5,12 +5,16 @@ aliases:
   - /rancher/v2.x/en/user-settings/preferences/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Each user can choose preferences to personalize their Rancher experience. To change preference settings, open the **User Settings** menu and then select **Preferences**.
 
 The preferences available will differ depending on whether the **User Settings** menu was accessed while on the Cluster Manager UI or the Cluster Explorer UI.
 
 <Tabs>
-<TabItem label="Cluster Manager">
+<TabItem value="Cluster Manager">
+
 ## Theme
 
 Choose your background color for the Rancher UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.
@@ -23,8 +27,10 @@ This section displays the **Name** (your display name) and **Username** (your lo
 
 On pages that display system objects like clusters or deployments in a table, you can set the number of objects that display on the page before you must paginate. The default setting is `50`.
 
+
 </TabItem>
-<TabItem label="Cluster Explorer">
+<TabItem value="Cluster Explorer">
+
 ## Theme
 
 Choose your background color for the Rancher UI. If you choose **Auto**, the background color changes from light to dark at 6 PM, and then changes back at 6 AM.

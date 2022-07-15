@@ -6,6 +6,10 @@ aliases:
   - /rancher/v2.5/en/admin-settings/feature-flags/
   - /rancher/v2.x/en/installation/resources/feature-flags/
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.5/en/installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
 The features can be enabled in three ways:
@@ -78,7 +82,7 @@ Here is an example of a command for passing in the feature flag names when rende
 The Helm 3 command is as follows:
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -92,8 +96,9 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].name=CATTLE_FEATURES'
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
 ```
+
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 ```
 helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
@@ -106,6 +111,7 @@ helm template rancher ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].name=CATTLE_FEATURES'
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true'
 ```
+
 </TabItem>
 </Tabs>
 

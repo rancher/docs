@@ -4,8 +4,11 @@ shortTitle: EKS Cluster Configuration
 weight: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <Tabs>
-<TabItem label="Rancher v2.5.6+">
+<TabItem value="Rancher v2.5.6+">
 
 ### Account Access
 
@@ -101,7 +104,7 @@ For more information on EKS control plane logging, refer to the official [docume
 
 <a id="managed-node-groups-2-5-6"></a>
 
-Amazon EKS managed node groups automate the provisioning and lifecycle management of nodes (Amazon EC2 instances) for Amazon EKS Kubernetes clusters. 
+Amazon EKS managed node groups automate the provisioning and lifecycle management of nodes (Amazon EC2 instances) for Amazon EKS Kubernetes clusters.
 
 For more information about how node groups work and how they are configured, refer to the [EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
 
@@ -151,9 +154,8 @@ The following settings are also configurable. All of these except for the "Node 
 | Labels | Kubernetes labels applied to the nodes in the managed node group. Note: Invalid labels can prevent upgrades or can prevent Rancher from starting. For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set) |
 | Tags | These are tags for the managed node group and do not propagate to any of the associated resources. |
 
-
 </TabItem>
-<TabItem label="Rancher v2.5.0-v2.5.5">
+<TabItem value="Rancher v2.5.0-v2.5.5">
 
 ### Changes in Rancher v2.5
 
@@ -271,7 +273,7 @@ For more information on EKS control plane logging, refer to the official [docume
 
 <a id="managed-node-groups-2-5"></a>
 
-Amazon EKS managed node groups automate the provisioning and lifecycle management of nodes (Amazon EC2 instances) for Amazon EKS Kubernetes clusters. 
+Amazon EKS managed node groups automate the provisioning and lifecycle management of nodes (Amazon EC2 instances) for Amazon EKS Kubernetes clusters.
 
 For more information about how node groups work and how they are configured, refer to the [EKS documentation.](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
 
@@ -284,8 +286,7 @@ Amazon will use the [EKS-optimized AMI](https://docs.aws.amazon.com/eks/latest/u
 | Minimum ASG Size | The minimum number of instances. This setting won't take effect until the [Cluster Autoscaler](https://docs.aws.amazon.com/eks/latest/userguide/cluster-autoscaler.html) is installed. |
 
 </TabItem>
-<TabItem label="Rancher prior to v2.5">
-
+<TabItem value="Rancher prior to v2.5">
 
 ### Account Access
 
@@ -393,12 +394,10 @@ User Data | Custom commands can to be passed to perform automated configuration 
 </TabItem>
 </Tabs>
 
-
-
 ### Configuring the Refresh Interval
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 The `eks-refresh-cron` setting is deprecated. It has been migrated to the `eks-refresh` setting, which is an integer representing seconds.
 
@@ -411,9 +410,9 @@ If the `eks-refresh-cron` setting was previously set, the migration will happen 
 The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
 
 </TabItem>
-<TabItem label="Before v2.5.8">
+<TabItem value="Before v2.5.8">
 
-It is possible to change the refresh interval through the setting `eks-refresh-cron`. This setting accepts values in the Cron format. The default is `*/5 * * * *`. 
+It is possible to change the refresh interval through the setting `eks-refresh-cron`. This setting accepts values in the Cron format. The default is `*/5 * * * *`.
 
 The shorter the refresh window, the less likely any race conditions will occur, but it does increase the likelihood of encountering request limits that may be in place for AWS APIs.
 

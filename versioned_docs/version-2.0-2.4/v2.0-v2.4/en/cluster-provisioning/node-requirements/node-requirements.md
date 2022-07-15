@@ -3,6 +3,9 @@ title: Node Requirements for Rancher Managed Clusters
 weight: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This page describes the requirements for the Rancher managed Kubernetes clusters where your apps and services will be installed. These downstream clusters should be separate from the three-node cluster running Rancher.
 
 > If Rancher is installed on a high-availability Kubernetes cluster, the Rancher server three-node cluster and downstream clusters have different requirements. For Rancher installation requirements, refer to the node requirements in the [installation section.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/requirements/)
@@ -39,7 +42,7 @@ SUSE Linux may have a firewall that blocks all ports by default. In that situati
 When [Launching Kubernetes with Rancher]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/) using Flatcar Container Linux nodes, it is required to use the following configuration in the [Cluster Config File]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/options/#cluster-config-file)
 
 <Tabs>
-<TabItem label="Canal">
+<TabItem value="Canal">
 
 ```yaml
 rancher_kubernetes_engine_config:
@@ -54,9 +57,9 @@ rancher_kubernetes_engine_config:
       extra_args:
         flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
 ```
-</TabItem>
 
-<TabItem label="Calico">
+</TabItem>
+<TabItem value="Calico">
 
 ```yaml
 rancher_kubernetes_engine_config:
@@ -71,6 +74,7 @@ rancher_kubernetes_engine_config:
       extra_args:
         flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
 ```
+
 </TabItem>
 </Tabs>
 

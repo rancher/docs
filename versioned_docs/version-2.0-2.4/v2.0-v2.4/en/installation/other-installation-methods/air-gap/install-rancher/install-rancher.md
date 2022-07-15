@@ -9,10 +9,13 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/air-gap-high-availability/install-rancher/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are _tabs_ for either a high availability (recommended) or a Docker installation.
 
 <Tabs>
-<TabItem label="Kubernetes Install (Recommended)">
+<TabItem value="Kubernetes Install (Recommended)">
 
 Rancher recommends installing Rancher on a Kubernetes cluster. A highly available Kubernetes install is comprised of three nodes running the Rancher server components on a Kubernetes cluster. The persistence layer (etcd) is also replicated on these three nodes, providing redundancy and data duplication in case one of the nodes fails.
 
@@ -230,11 +233,11 @@ These resources could be helpful when installing Rancher:
 - [Troubleshooting Rancher Kubernetes Installations]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/troubleshooting/)
 
 </TabItem>
-<TabItem label="Docker Install">
+<TabItem value="Docker Install">
 
-The Docker installation is for Rancher users who want to test out Rancher. 
+The Docker installation is for Rancher users who want to test out Rancher.
 
-Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. 
+Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
 
 > **Important:** There is no upgrade path to transition your Docker installation to a Kubernetes Installation.** Instead of running the single node installation, you have the option to follow the Kubernetes Install guide, but only use one node to install Rancher. Afterwards, you can scale up the etcd nodes in your Kubernetes cluster to make it a Kubernetes Installation.
 

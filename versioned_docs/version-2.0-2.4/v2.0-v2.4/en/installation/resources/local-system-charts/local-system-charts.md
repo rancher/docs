@@ -7,6 +7,9 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/options/local-system-charts
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The [System Charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.
 
 In an air gapped installation of Rancher, you will need to configure Rancher to use a local copy of the system charts. This section describes how to use local system charts using a CLI flag in Rancher v2.3.0, and using a Git mirror for Rancher versions before v2.3.0.
@@ -30,7 +33,7 @@ Refer to the release notes in the `system-charts` repository to see which branch
 Rancher needs to be configured to use your Git mirror of the `system-charts` repository. You can configure the system charts repository either from the Rancher UI or from Rancher's API view.
 
 <Tabs>
-<TabItem label="Rancher UI">
+<TabItem value="Rancher UI">
 
 In the catalog management page in the Rancher UI, follow these steps:
 
@@ -47,7 +50,7 @@ In the catalog management page in the Rancher UI, follow these steps:
 **Result:** Rancher is configured to download all the required catalog items from your `system-charts` repository.
 
 </TabItem>
-<TabItem label="Rancher API">
+<TabItem value="Rancher API">
 
 1. Log into Rancher.
 

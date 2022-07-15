@@ -3,6 +3,9 @@ title: Flows and ClusterFlows
 weight: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 For the full details on configuring `Flows` and `ClusterFlows`, see the [Banzai Cloud Logging operator documentation.](https://banzaicloud.com/docs/one-eye/logging-operator/configuration/output/)
 
 - [Configuration](#configuration)
@@ -11,7 +14,7 @@ For the full details on configuring `Flows` and `ClusterFlows`, see the [Banzai 
 # Configuration
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 - [Flows](#flows-2-5-8)
   - [Matches](#matches-2-5-8)
@@ -73,8 +76,9 @@ Matches, filters and `Outputs` are configured for `ClusterFlows` in the same way
 
 After `ClusterFlow` selects logs from all namespaces in the cluster, logs from the cluster will be collected and logged to the selected `ClusterOutput`.
 
+
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 - [Flows](#flows-2-5-0)
   - [Matches](#matches-2-5-0)

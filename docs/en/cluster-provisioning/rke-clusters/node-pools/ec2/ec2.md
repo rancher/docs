@@ -4,6 +4,10 @@ shortTitle: Amazon EC2
 description: Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using Rancher
 weight: 2210
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
 
 First, you will set up your EC2 cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in EC2.
@@ -24,7 +28,7 @@ Then you will create an EC2 cluster in Rancher, and when configuring the new clu
 The steps to create a cluster differ based on your Rancher version.
 
 <Tabs>
-<TabItem label="RKE">
+<TabItem value="RKE">
 
 1. [Create your cloud credentials](#1-create-your-cloud-credentials)
 2. [Create a node template with your cloud credentials and information from EC2](#2-create-a-node-template-with-your-cloud-credentials-and-information-from-ec2)
@@ -54,7 +58,7 @@ Creating a [node template]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rk
 1. Click **Create**.
 
     :::note
-    
+
     If you want to use the [dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/) feature, there are additional [requirements]({{<baseurl>}}/rke//latest/en/config-options/dual-stack#requirements) that must be taken into consideration.
 
     :::
@@ -71,15 +75,15 @@ Add one or more node pools to your cluster. For more information about node pool
 1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. Refer to [Selecting Cloud Providers]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/cloud-providers/) to configure the Kubernetes Cloud Provider. For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/options)
 
     :::note
-    
+
     If you want to use the [dual-stack](https://kubernetes.io/docs/concepts/services-networking/dual-stack/) feature, there are additional [requirements]({{<baseurl>}}/rke//latest/en/config-options/dual-stack#requirements) that must be taken into consideration.
 
     :::
-    
+
 1. Click **Create**.
 
 </TabItem>
-<TabItem label="RKE2">
+<TabItem value="RKE2">
 
 ### 1. Create your cloud credentials
 

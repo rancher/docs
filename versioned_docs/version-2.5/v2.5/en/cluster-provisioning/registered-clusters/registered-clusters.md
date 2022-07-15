@@ -7,6 +7,9 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/registered-clusters/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The cluster registration feature replaced the feature to import clusters.
 
 The control that Rancher has to manage a registered cluster depends on the type of cluster. For details, see [Management Capabilities for Registered Clusters.](#management-capabilities-for-registered-clusters)
@@ -21,7 +24,7 @@ The control that Rancher has to manage a registered cluster depends on the type 
 # Prerequisites
 
 <Tabs>
-<TabItem label="v2.5.9+">
+<TabItem value="v2.5.9+">
 
 ### Kubernetes Node Roles
 
@@ -52,7 +55,7 @@ If you are registering a K3s cluster, make sure the `cluster.yml` is readable. I
 EKS clusters must have at least one managed node group to be imported into Rancher or provisioned from Rancher successfully.
 
 </TabItem>
-<TabItem label="Rancher before v2.5.9">
+<TabItem value="Rancher before v2.5.9">
 
 ### Permissions
 
@@ -121,7 +124,7 @@ $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 ### Configuring an Imported EKS Cluster with Terraform
 
-You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided. 
+You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided.
 
 >**Warning:** Even a small difference between the current EKS cluster and a user-provided config could have unexpected results.
 
@@ -152,7 +155,7 @@ resource "rancher2_cluster" "my-eks-to-import" {
 The control that Rancher has to manage a registered cluster depends on the type of cluster.
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 - [Changes in v2.5.8](#changes-in-v2-5-8)
 - [Features for All Registered Clusters](#2-5-8-features-for-all-registered-clusters)
@@ -196,9 +199,8 @@ When you delete an EKS cluster or GKE cluster that was created in Rancher, the c
 
 The capabilities for registered clusters are listed in the table on [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/)
 
-
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 - [Features for All Registered Clusters](#before-2-5-8-features-for-all-registered-clusters)
 - [Additional Features for Registered K3s Clusters](#before-2-5-8-additional-features-for-registered-k3s-clusters)
@@ -236,10 +238,9 @@ Amazon EKS clusters can now be registered in Rancher. For the most part, registe
 When you delete an EKS cluster that was created in Rancher, the cluster is destroyed. When you delete an EKS cluster that was registered in Rancher, it is disconnected from the Rancher server, but it still exists and you can still access it in the same way you did before it was registered in Rancher.
 
 The capabilities for registered EKS clusters are listed in the table on [this page.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/)
+
 </TabItem>
 </Tabs>
-
-
 
 # Configuring K3s Cluster Upgrades
 
@@ -256,7 +257,7 @@ Also in the K3s documentation, nodes with the worker role are called agent nodes
 
 # Debug Logging and Troubleshooting for Registered K3s Clusters
 
-Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes. 
+Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes.
 
 To enable debug logging on the system upgrade controller deployment, edit the [configmap](https://github.com/rancher/system-upgrade-controller/blob/50a4c8975543d75f1d76a8290001d87dc298bdb4/manifests/system-upgrade-controller.yaml#L32) to set the debug environment variable to true. Then restart the `system-upgrade-controller` pod.
 
@@ -298,7 +299,7 @@ This example annotation indicates that a pod security policy is enabled:
 The following annotation indicates Ingress capabilities. Note that that the values of non-primitive objects need to be JSON encoded, with quotations escaped.
 
 ```
-"capabilities.cattle.io/ingressCapabilities": "[  
+"capabilities.cattle.io/ingressCapabilities": "[
   {
     "customDefaultBackend":true,
     "ingressProvider":"asdf"

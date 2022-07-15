@@ -4,6 +4,9 @@ shortTitle: Receivers
 weight: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
 :::note
@@ -39,7 +42,7 @@ This section assumes familiarity with how monitoring components work together. F
 To create notification receivers in the Rancher UI,
 
 <Tabs>
-<TabItem label="Rancher v2.6.5+">
+<TabItem value="Rancher v2.6.5+">
 
 1. Go to the cluster where you want to create receivers. Click **Monitoring -> Alerting -> AlertManagerConfigs**.
 1. Ciick **Create**.
@@ -49,7 +52,7 @@ To create notification receivers in the Rancher UI,
 1. Click **Create**.
 
 </TabItem>
-<TabItem label="Rancher before v2.6.5">
+<TabItem value="Rancher before v2.6.5">
 
 1. Go to the cluster where you want to create receivers. Click **Monitoring** and click **Receiver**.
 2. Enter a name for the receiver.

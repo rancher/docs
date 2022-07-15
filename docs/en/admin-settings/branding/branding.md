@@ -3,6 +3,9 @@ title: Custom Branding
 weight: 90
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Rancher v2.6 introduced the ability to customize Rancher’s branding and navigation links.
 
 - [Changing Brand Settings](#changing-brand-settings)
@@ -19,7 +22,7 @@ You will need to have at least cluster member permissions.
 
 :::
 
-To configure the brand settings, 
+To configure the brand settings,
 
 1. Click **☰ > Global settings**.
 2. Click **Branding**.
@@ -45,10 +48,13 @@ You can override the primary color used throughout the UI with a custom color of
 ### Fixed Banners
 
 <Tabs>
-<TabItem label="Rancher before v2.6.4">
+<TabItem value="Rancher before v2.6.4">
+
 Display a custom fixed banner in the header, footer, or both.
+
 </TabItem>
-<TabItem label="Rancher v2.6.4+">
+<TabItem value="Rancher v2.6.4+">
+
 Display a custom fixed banner in the header, footer, or both.
 
 As of Rancher v2.6.4, configuration of fixed banners has moved from the **Branding** tab to the **Banners** tab.
@@ -57,12 +63,13 @@ To configure banner settings,
 
 1. Click **☰ > Global settings**.
 2. Click **Banners**.
+
 </TabItem>
 </Tabs>
 
 # Custom Navigation Links
 
-In this section, you'll learn how to configure the links in the left navigation bar of the **Cluster Dashboard**. To get to the cluster dashboard, 
+In this section, you'll learn how to configure the links in the left navigation bar of the **Cluster Dashboard**. To get to the cluster dashboard,
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster where you want custom navigation links and click **Explore**.
@@ -96,7 +103,7 @@ You will need to have at least cluster member or project member permissions.
 
 # Link Configuration
 
-### `name` 
+### `name`
 
 Display name for the link. Required.
 
@@ -124,7 +131,7 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAgAElEQVR4Ae
 
 A Kubernetes annotation for the NavLink custom resource.
 
-### `label` 
+### `label`
 
 A Kubernetes label for the NavLink custom resource.
 

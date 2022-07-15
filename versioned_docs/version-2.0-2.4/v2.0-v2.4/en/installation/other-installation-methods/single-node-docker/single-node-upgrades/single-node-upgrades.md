@@ -9,6 +9,9 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The following instructions will guide you through upgrading a Rancher server that was installed with Docker.
 
 # Prerequisites
@@ -130,7 +133,7 @@ To see the command to use when starting the new Rancher server container, choose
 - Docker Upgrade for Air Gap Installs
 
 <Tabs>
-<TabItem label="Docker Upgrade">
+<TabItem value="Docker Upgrade">
 
 Select which option you had installed Rancher server
 
@@ -238,7 +241,7 @@ docker run -d --volumes-from rancher-data \
 {{% /accordion %}}
 
 </TabItem>
-<TabItem label="Docker Air Gap Upgrade">
+<TabItem value="Docker Air Gap Upgrade">
 
 For security purposes, SSL (Secure Sockets Layer) is required when using Rancher. SSL secures all Rancher network communication, like when you login or interact with a cluster.
 
@@ -328,6 +331,7 @@ docker run -d --volumes-from rancher-data \
 ```
 
 {{% /accordion %}}
+
 </TabItem>
 </Tabs>
 

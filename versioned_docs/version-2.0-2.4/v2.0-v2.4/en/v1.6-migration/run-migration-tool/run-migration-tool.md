@@ -5,6 +5,9 @@ aliases:
   - /rancher/v2.x/en/v1.6-migration/run-migration-tool/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Although your services from v1.6 won't work in Rancher v2.x by default, that doesn't mean you have to start again from square one, manually rebuilding your applications in v2.x. To help with migration from v1.6 to v2.x, Rancher has developed a migration tool. The migration-tools CLI is a utility that helps you recreate your applications in Rancher v2.x. This tool exports your Rancher v1.6 services as Compose files and converts them to a Kubernetes manifest that Rancher v2.x can consume.
 
 Additionally, for each Rancher v1.6-specific Compose directive that cannot be consumed by Kubernetes, migration-tools CLI provides instructions on how to manually recreate them in Rancher v2.x.
@@ -122,7 +125,7 @@ File | Description
 The following tabs display the contents of each parsed file. We've omitted `webLB-deployment.yaml` and `webLB-service.yaml` because we aren't migrating them to v2.x.
 
 <Tabs>
-<TabItem label="web-deployment.yaml">
+<TabItem value="web-deployment.yaml">
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -160,7 +163,7 @@ status: {}
 ```
 
 </TabItem>
-<TabItem label="web-service.yaml">
+<TabItem value="web-service.yaml">
 
 ```YAML
 apiVersion: v1
@@ -188,7 +191,7 @@ status:
 ```
 
 </TabItem>
-<TabItem label="database-deployment.yaml">
+<TabItem value="database-deployment.yaml">
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -225,8 +228,6 @@ status: {}
 ```
 
 </TabItem>
-
-
 </Tabs>
 
 -->
@@ -236,7 +237,7 @@ status: {}
 >**Note:** Although these instructions deploy your v1.6 services in Rancher v2.x, they will not work correctly until you adjust their Kubernetes manifests.
 
 <Tabs>
-<TabItem label="Rancher UI">
+<TabItem value="Rancher UI">
 
 You can deploy the Kubernetes manifests created by migration-tools by importing them into Rancher v2.x.
 
@@ -249,8 +250,7 @@ You can deploy the Kubernetes manifests created by migration-tools by importing 
 ![Deploy Services]({{<baseurl>}}/img/rancher/deploy-service.gif)
 
 </TabItem>
-<TabItem label="Rancher CLI">
-
+<TabItem value="Rancher CLI">
 
 >**Prerequisite:** [Install Rancher CLI]({{<baseurl>}}/rancher/v2.0-v2.4/en/cli/) for Rancher v2.x.
 

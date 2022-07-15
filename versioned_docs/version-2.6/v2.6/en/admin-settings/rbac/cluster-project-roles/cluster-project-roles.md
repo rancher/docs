@@ -3,6 +3,9 @@ title: Cluster and Project Roles
 weight: 1127
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Cluster and project roles define user authorization inside a cluster or project.
 
 To manage these roles,
@@ -82,21 +85,25 @@ To assign a custom role to a new cluster member, you can use the Rancher UI. To 
 To assign the role to a new cluster member,
 
 <Tabs>
-<TabItem label="Rancher before v2.6.4">
+<TabItem value="Rancher before v2.6.4">
+
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster where you want to assign a role to a member and click **Explore**.
 1. Click **RBAC > Cluster Members**.
 1. Click **Add**.
 1. In the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
 1. Click **Create**.
+
 </TabItem>
-<TabItem label="Rancher v2.6.4+">
+<TabItem value="Rancher v2.6.4+">
+
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster where you want to assign a role to a member and click **Explore**.
 1. Click **Cluster > Cluster Members**.
 1. Click **Add**.
 1. In the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
 1. Click **Create**.
+
 </TabItem>
 </Tabs>
 

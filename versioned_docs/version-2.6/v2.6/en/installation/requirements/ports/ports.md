@@ -4,6 +4,9 @@ description: Read about port requirements needed in order for Rancher to operate
 weight: 300
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 To operate properly, Rancher requires a number of ports to be open on Rancher nodes and on downstream Kubernetes cluster nodes.
 
 - [Rancher Nodes](#rancher-nodes)
@@ -280,7 +283,8 @@ When using the [AWS EC2 node driver]({{<baseurl>}}/rancher/v2.6/en/cluster-provi
 SUSE Linux may have a firewall that blocks all ports by default. To open the ports needed for adding the host to a custom cluster,
 
 <Tabs>
-<TabItem label="SLES 15 / openSUSE Leap 15">
+<TabItem value="SLES 15 / openSUSE Leap 15">
+
 1. SSH into the instance.
 1. Start YaST in text mode:
 ```
@@ -298,8 +302,10 @@ UDP Ports
 
 1. When all required ports are enter, select **Accept**.
 
+
 </TabItem>
-<TabItem label="SLES 12 / openSUSE Leap 42">
+<TabItem value="SLES 12 / openSUSE Leap 42">
+
 1. SSH into the instance.
 1. Edit /`etc/sysconfig/SuSEfirewall2` and open the required ports. In this example, ports 9796 and 10250 are also opened for monitoring:
   ```
@@ -311,6 +317,7 @@ UDP Ports
   ```
   SuSEfirewall2
   ```
+
 </TabItem>
 </Tabs>
 

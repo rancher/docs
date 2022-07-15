@@ -3,8 +3,11 @@ title: DigitalOcean Node Template Configuration
 weight: 1
 ----
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <Tabs>
-<TabItem label="Rancher v2.2.0+">
+<TabItem value="Rancher v2.2.0+">
 
 Account access information is stored as a cloud credential. Cloud credentials are stored as Kubernetes secrets. Multiple node templates can use the same cloud credential. You can use an existing cloud credential or create a new one.
 
@@ -20,8 +23,9 @@ The [Docker daemon](https://docs.docker.com/engine/docker-overview/#the-docker-d
 - **Docker Engine Install URL:** Determines what Docker version will be installed on the instance.
 - **Registry mirrors:** Docker Registry mirror to be used by the Docker daemon
 - **Other advanced options:** Refer to the [Docker daemon option reference](https://docs.docker.com/engine/reference/commandline/dockerd/)
+
 </TabItem>
-<TabItem label="Rancher before v2.2.0">
+<TabItem value="Rancher before v2.2.0">
 
 ### Access Token
 
@@ -39,5 +43,6 @@ The [Docker daemon](https://docs.docker.com/engine/docker-overview/#the-docker-d
 - **Docker Engine Install URL:** Determines what Docker version will be installed on the instance.
 - **Registry mirrors:** Docker Registry mirror to be used by the Docker daemon
 - **Other advanced options:** Refer to the [Docker daemon option reference](https://docs.docker.com/engine/reference/commandline/dockerd/)
+
 </TabItem>
 </Tabs>

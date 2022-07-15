@@ -4,6 +4,9 @@ shortTitle: GKE
 weight: 5
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 In this section, you'll learn how to install Rancher using Google Kubernetes Engine.
 
 If you already have a GKE Kubernetes cluster, skip to the step about [installing an ingress.](#7-install-an-ingress) Then install the Rancher Helm chart following the instructions on [this page.]({{<baseurl>}}/rancher/v2.5/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart)
@@ -59,8 +62,8 @@ To install `gcloud` and `kubectl`, perform the following steps:
     ```
     source ~/.bash_profile
     ```
-    
-   
+
+
 
 # 3. Configure the gcloud CLI
 
@@ -70,7 +73,7 @@ To install `gcloud` and `kubectl`, perform the following steps:
 - Using gcloud config, to individually set your project ID, zone, and region.
 
 <Tabs>
-<TabItem label="Using gloud init">
+<TabItem value="Using gloud init">
 
 1. Run gcloud init and follow the directions:
 
@@ -85,7 +88,8 @@ To install `gcloud` and `kubectl`, perform the following steps:
 2. Follow the instructions to authorize gcloud to use your Google Cloud account and select the new project that you created.
 
 </TabItem>
-<TabItem label="Using gcloud config">
+<TabItem value="Using gcloud config">
+
 </TabItem>
 </Tabs>
 

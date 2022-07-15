@@ -3,6 +3,9 @@ title: Upgrading and Rolling Back Kubernetes
 weight: 70
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Following an upgrade to the latest version of Rancher, downstream Kubernetes clusters can be upgraded to use the latest supported version of Kubernetes.
 
 Rancher calls RKE (Rancher Kubernetes Engine) as a library when provisioning and editing RKE clusters. For more information on configuring the upgrade strategy for RKE clusters, refer to the [RKE documentation]({{<baseurl>}}/rke/latest/en/).
@@ -45,7 +48,8 @@ In this section of the [RKE documentation,]({{<baseurl>}}/rke/latest/en/upgrades
 # Recommended Best Practice for Upgrades
 
 <Tabs>
-<TabItem label="Rancher v2.4+">
+<TabItem value="Rancher v2.4+">
+
 When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 1. Take a snapshot.
@@ -53,8 +57,10 @@ When upgrading the Kubernetes version of a cluster, we recommend that you:
 1. If the upgrade fails, revert the cluster to the pre-upgrade Kubernetes version. This is achieved by selecting the **Restore etcd and Kubernetes version** option. This will return your cluster to the pre-upgrade kubernetes version before restoring the etcd snapshot.
 
 The restore operation will work on a cluster that is not in a healthy or active state.
+
 </TabItem>
-<TabItem label="Rancher before v2.4">
+<TabItem value="Rancher before v2.4">
+
 When upgrading the Kubernetes version of a cluster, we recommend that you:
 
 1. Take a snapshot.
@@ -62,6 +68,7 @@ When upgrading the Kubernetes version of a cluster, we recommend that you:
 1. If the upgrade fails, restore the cluster from the etcd snapshot.
 
 The cluster cannot be downgraded to a previous Kubernetes version.
+
 </TabItem>
 </Tabs>
 

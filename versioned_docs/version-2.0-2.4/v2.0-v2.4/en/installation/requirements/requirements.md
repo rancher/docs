@@ -4,6 +4,9 @@ description: Learn the node requirements for each node running Rancher server wh
 weight: 1
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This page describes the software, hardware, and networking requirements for the nodes where the Rancher server will be installed. The Rancher server can be installed on a single node or a high-availability Kubernetes cluster.
 
 > It is important to note that if you install Rancher on a Kubernetes cluster, requirements are different from the [node requirements for downstream user clusters,]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/node-requirements/) which will run your apps and services.
@@ -64,7 +67,7 @@ This section describes the CPU, memory, and disk requirements for the nodes wher
 Hardware requirements scale based on the size of your Rancher deployment. Provision each individual node according to the requirements. The requirements are different depending on if you are installing Rancher in a single container with Docker, or if you are installing Rancher on a Kubernetes cluster.
 
 <Tabs>
-<TabItem label="RKE">
+<TabItem value="RKE">
 
 These requirements apply to each host in an [RKE Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/)
 
@@ -80,9 +83,9 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher before 
 
 Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
-</TabItem>
 
-<TabItem label="K3s">
+</TabItem>
+<TabItem value="K3s">
 
 These requirements apply to each host in a [K3s Kubernetes cluster where the Rancher server is installed.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/)
 
@@ -96,9 +99,9 @@ These requirements apply to each host in a [K3s Kubernetes cluster where the Ran
 
 Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
 
-</TabItem>
 
-<TabItem label="Docker">
+</TabItem>
+<TabItem value="Docker">
 
 These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker) installation of Rancher.
 
@@ -106,6 +109,7 @@ These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2
 | --------------- | -------- | --------- | ----- | ---- |
 | Small           | Up to 5  | Up to 50  | 1     | 4 GB |
 | Medium          | Up to 15 | Up to 200 | 2     | 8 GB |
+
 
 </TabItem>
 </Tabs>

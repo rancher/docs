@@ -3,6 +3,9 @@ title: Cluster and Project Roles
 weight: 1127
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Cluster and project roles define user authorization inside a cluster or project.
 
 To manage these roles,
@@ -16,7 +19,7 @@ The projects and clusters accessible to non-administrative users is determined b
 
 When you create a cluster or project, Rancher automatically assigns you as the `Owner` for it. Users assigned the `Owner` role can assign other users roles in the cluster or project.
 
-:::note 
+:::note
 
 Non-administrative users cannot access any existing projects/clusters by default. A user with appropriate permissions (typically the owner) must explicitly assign the project and cluster membership.
 
@@ -89,21 +92,25 @@ To assign a custom role to a new cluster member, you can use the Rancher UI. To 
 To assign the role to a new cluster member,
 
 <Tabs>
-<TabItem label="Rancher before v2.6.4">
+<TabItem value="Rancher before v2.6.4">
+
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster where you want to assign a role to a member and click **Explore**.
 1. Click **RBAC > Cluster Members**.
 1. Click **Add**.
 1. In the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
 1. Click **Create**.
+
 </TabItem>
-<TabItem label="Rancher v2.6.4+">
+<TabItem value="Rancher v2.6.4+">
+
 1. Click **☰ > Cluster Management**.
 1. Go to the cluster where you want to assign a role to a member and click **Explore**.
 1. Click **Cluster > Cluster Members**.
 1. Click **Add**.
 1. In the **Cluster Permissions** section, choose the custom cluster role that should be assigned to the member.
 1. Click **Create**.
+
 </TabItem>
 </Tabs>
 
@@ -131,7 +138,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
     These users can manage project-scoped resources like namespaces and workloads, but cannot manage other project members.
 
     :::note
-    
+
     By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
 
     :::
@@ -141,7 +148,7 @@ _Project roles_ are roles that can be used to grant users access to a project. T
     These users can view everything in the project but cannot create, update, or delete anything.
 
     :::note danger
-    
+
     Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `owner` or `member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
 
     :::

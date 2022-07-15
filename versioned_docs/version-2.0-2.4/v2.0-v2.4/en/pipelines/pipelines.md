@@ -2,8 +2,11 @@
 title: Pipelines
 weight: 11
 aliases:
-  - /rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines  
+  - /rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.
 
@@ -14,7 +17,7 @@ After configuring Rancher and GitHub, you can deploy containers running Jenkins 
 - Build your application from code to image.
 - Validate your builds.
 - Deploy your build images to your cluster.
-- Run unit tests.  
+- Run unit tests.
 - Run regression tests.
 
 >**Notes:**
@@ -96,7 +99,8 @@ Before you can start configuring a pipeline for your repository, you must config
 Select your provider's tab below and follow the directions.
 
 <Tabs>
-<TabItem label="GitHub">
+<TabItem value="GitHub">
+
 1. From the **Global** view, navigate to the project that you want to configure pipelines.
 
 1. Select **Tools > Pipelines** in the navigation bar. In versions before v2.2.0, you can select **Resources > Pipelines**.
@@ -109,8 +113,9 @@ Select your provider's tab below and follow the directions.
 
 1. Click **Authenticate**.
 
+
 </TabItem>
-<TabItem label="GitLab">
+<TabItem value="GitLab">
 
 _Available as of v2.1.0_
 
@@ -127,10 +132,11 @@ _Available as of v2.1.0_
 1. Click **Authenticate**.
 
 >**Note:**
-> 1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.  
+> 1. Pipeline uses Gitlab [v4 API](https://docs.gitlab.com/ee/api/v3_to_v4.html) and the supported Gitlab version is 9.0+.
 > 2. If you use GitLab 10.7+ and your Rancher setup is in a local network, enable the **Allow requests to the local network from hooks and services** option in GitLab admin settings.
+
 </TabItem>
-<TabItem label="Bitbucket Cloud">
+<TabItem value="Bitbucket Cloud">
 
 _Available as of v2.2.0_
 
@@ -146,8 +152,9 @@ _Available as of v2.2.0_
 
 1. Click **Authenticate**.
 
+
 </TabItem>
-<TabItem label="Bitbucket Server">
+<TabItem value="Bitbucket Server">
 
 _Available as of v2.2.0_
 
@@ -169,6 +176,7 @@ _Available as of v2.2.0_
 > 1. Setup Rancher server with a certificate from a trusted CA.
 > 1. If you're using self-signed certificates, import Rancher server's certificate to the Bitbucket server. For instructions, see the Bitbucket server documentation for [configuring self-signed certificates](https://confluence.atlassian.com/bitbucketserver/if-you-use-self-signed-certificates-938028692.html).
 >
+
 </TabItem>
 </Tabs>
 
@@ -213,7 +221,7 @@ Now that repositories are added to your project, you can start configuring the p
 
 1. Set up the trigger rules for the pipeline.
 
-1. Enter a **Timeout** for the pipeline. 
+1. Enter a **Timeout** for the pipeline.
 
 1. When all the stages and steps are configured, click **Done**.
 

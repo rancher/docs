@@ -7,6 +7,10 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/namespace-migration
   - /rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/namespace-migration/
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 >This section applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.
 
 In Rancher v2.0.6 and prior, system namespaces crucial for Rancher and Kubernetes operations were not assigned to any Rancher project by default. Instead, these namespaces existed independently from all Rancher projects, but you could move these namespaces into any project without affecting cluster operations.
@@ -72,7 +76,8 @@ Reset the cluster nodes' network policies to restore connectivity.
 >Download and setup [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 <Tabs>
-<TabItem label="Kubernetes Install">
+<TabItem value="Kubernetes Install">
+
 1. From **Terminal**, change directories to your kubectl file that's generated during Rancher install, `kube_config_rancher-cluster.yml`. This file is usually in the directory where you ran RKE during Rancher installation.
 
 1. Before repairing networking, run the following two commands to make sure that your nodes have a status of `Ready` and that your cluster components are `Healthy`.
@@ -172,8 +177,8 @@ Reset the cluster nodes' network policies to restore connectivity.
 1. Log into the Rancher UI and view your clusters. Created clusters will show errors from attempting to contact Rancher while it was unavailable. However, these errors should resolve automatically.
 
 </TabItem>
-<TabItem label="Rancher Launched Kubernetes">
-<br/>
+<TabItem value="Rancher Launched Kubernetes">
+
 If you can access Rancher, but one or more of the clusters that you launched using Rancher has no networking, you can repair them by moving them:
 
 - Using the cluster's [embedded kubectl shell]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/kubectl/).

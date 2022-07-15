@@ -8,8 +8,11 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/gke/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 - [Prerequisites](#prerequisites)
 - [Provisioning a GKE Cluster](#provisioning-a-gke-cluster)
@@ -30,7 +33,7 @@ The service account requires the following roles:
 
 - **Compute Viewer:** `roles/compute.viewer`
 - **Project Viewer:** `roles/viewer`
-- **Kubernetes Engine Admin:** `roles/container.admin` 
+- **Kubernetes Engine Admin:** `roles/container.admin`
 - **Service Account User:** `roles/iam.serviceAccountUser`
 
 [Google Documentation: Creating and Enabling Service Accounts](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances)
@@ -79,7 +82,7 @@ Your cluster is created and assigned a state of **Provisioning.** Rancher is sta
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
@@ -104,9 +107,8 @@ The GKE provisioner can synchronize the state of a GKE cluster between Rancher a
 
 For information on configuring the refresh interval, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-admin/editing-clusters/gke-config-reference/#configuring-the-refresh-interval)
 
-
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
 
 # Prerequisites
 
@@ -120,7 +122,7 @@ The service account requires the following roles:
 
 - **Compute Viewer:** `roles/compute.viewer`
 - **Project Viewer:** `roles/viewer`
-- **Kubernetes Engine Admin:** `roles/container.admin` 
+- **Kubernetes Engine Admin:** `roles/container.admin`
 - **Service Account User:** `roles/iam.serviceAccountUser`
 
 [Google Documentation: Creating and Enabling Service Accounts](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances)
@@ -145,7 +147,7 @@ Use Rancher to set up and configure your Kubernetes cluster.
 
 	>**Note:** After submitting your private key, you may have to enable the Google Kubernetes Engine API. If prompted, browse to the URL displayed in the Rancher UI to enable the API.
 
-6. Select your cluster options, node options and security options. For help, refer to the [GKE Cluster Configuration Reference.](#gke-before-v2-5-8) 
+6. Select your cluster options, node options and security options. For help, refer to the [GKE Cluster Configuration Reference.](#gke-before-v2-5-8)
 9. Review your options to confirm they're correct. Then click **Create**.
 
 **Result:** You have successfully deployed a GKE cluster.
@@ -154,7 +156,7 @@ Your cluster is created and assigned a state of **Provisioning.** Rancher is sta
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

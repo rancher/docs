@@ -10,6 +10,9 @@ aliases:
   - /rancher/v2.5/en/monitoring-alerting/configuration/alertmanager
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The [Alertmanager Config](https://prometheus.io/docs/alerting/latest/configuration/#configuration-file) Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.
 
 > This section assumes familiarity with how monitoring components work together. For more information about Alertmanager, see [this section.](../../how-monitoring-works/#3-how-alertmanager-works)
@@ -43,7 +46,7 @@ _Available as of v2.5.4_
 
 To create notification receivers in the Rancher UI,
 
-1. Click **Cluster Explorer > Monitoring** and click **Receiver.** 
+1. Click **Cluster Explorer > Monitoring** and click **Receiver.**
 2. Enter a name for the receiver.
 3. Configure one or more providers for the receiver. For help filling out the forms, refer to the configuration options below.
 4. Click **Create.**
@@ -73,7 +76,7 @@ Rancher v2.5.8 added Microsoft Teams and SMS as configurable receivers in the Ra
 Rancher v2.5.4 introduced the capability to configure receivers by filling out forms in the Rancher UI.
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
 
 The following types of receivers can be configured in the Rancher UI:
 
@@ -93,7 +96,7 @@ The custom receiver option can be used to configure any receiver in YAML that ca
 | Field | Type | Description |
 |------|--------------|------|
 | URL | String   |  Enter your Slack webhook URL. For instructions to create a Slack webhook, see the [Slack documentation.](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack)  |
-| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. | 
+| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. |
 | Proxy URL   |    String    |  Proxy for the webhook notifications.  |
 | Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
@@ -102,7 +105,7 @@ The custom receiver option can be used to configure any receiver in YAML that ca
 | Field | Type | Description |
 |------|--------------|------|
 | Default Recipient Address |   String    |   The email address that will receive notifications.    |
-| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
 SMTP options:
 
@@ -121,7 +124,7 @@ SMTP options:
 | Integration Type | String | `Events API v2` or `Prometheus`. |
 | Default Integration Key | String |  For instructions to get an integration key, see the [PagerDuty documentation.](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/)  |
 | Proxy URL | String |  Proxy for the PagerDuty notifications.  |
-| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
 # Opsgenie
 
@@ -230,7 +233,7 @@ url http://rancher-alerting-drivers-sachet.ns-1.svc:9876/alert
 <!-- https://github.com/messagebird/sachet -->
 
 </TabItem>
-<TabItem label="Rancher v2.5.4-2.5.7">
+<TabItem value="Rancher v2.5.4-2.5.7">
 
 The following types of receivers can be configured in the Rancher UI:
 
@@ -248,7 +251,7 @@ The custom receiver option can be used to configure any receiver in YAML that ca
 | Field | Type | Description |
 |------|--------------|------|
 | URL | String   |  Enter your Slack webhook URL. For instructions to create a Slack webhook, see the [Slack documentation.](https://get.slack.help/hc/en-us/articles/115005265063-Incoming-WebHooks-for-Slack)  |
-| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. | 
+| Default Channel |  String   |  Enter the name of the channel that you want to send alert notifications in the following format: `#<channelname>`. |
 | Proxy URL   |    String    |  Proxy for the webhook notifications.  |
 | Enable Send Resolved Alerts |   Bool    |  Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
@@ -257,7 +260,7 @@ The custom receiver option can be used to configure any receiver in YAML that ca
 | Field | Type | Description |
 |------|--------------|------|
 | Default Recipient Address |   String    |   The email address that will receive notifications.    |
-| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
 SMTP options:
 
@@ -276,7 +279,7 @@ SMTP options:
 | Integration Type | String | `Events API v2` or `Prometheus`. |
 | Default Integration Key | String |  For instructions to get an integration key, see the [PagerDuty documentation.](https://www.pagerduty.com/docs/guides/prometheus-integration-guide/)  |
 | Proxy URL | String |  Proxy for the PagerDuty notifications.  |
-| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). | 
+| Enable Send Resolved Alerts |  Bool    |   Whether to send a follow-up notification if an alert has been resolved (e.g. [Resolved] High CPU Usage). |
 
 ### Opsgenie {#opsgenie-254-257}
 
@@ -306,8 +309,9 @@ Opsgenie Responders:
 The YAML provided here will be directly appended to your receiver within the Alertmanager Config Secret.
 
 </TabItem>
-<TabItem label="Rancher v2.5.0-2.5.3">
+<TabItem value="Rancher v2.5.0-2.5.3">
 The Alertmanager must be configured in YAML, as shown in these [examples.](#example-alertmanager-configs)
+
 </TabItem>
 </Tabs>
 
@@ -326,11 +330,11 @@ You can also set up multiple receivers by using the `continue` option for a rout
 To set up notifications via Slack, the following Alertmanager Config YAML can be placed into the `alertmanager.yaml` key of the Alertmanager Config Secret, where the `api_url` should be updated to use your Webhook URL from Slack:
 
 ```yaml
-route:  
+route:
   group_by: ['job']
   group_wait: 30s
   group_interval: 5m
-  repeat_interval: 3h 
+  repeat_interval: 3h
   receiver: 'slack-notifications'
 receivers:
 - name: 'slack-notifications'

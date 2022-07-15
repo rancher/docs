@@ -3,6 +3,9 @@ title: Nodes and Node Pools
 weight: 2030
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's **Node** tab. Depending on the [option used]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/) to provision the cluster, there are different node options available.
 
 > If you want to manage the _cluster_ and not individual nodes, see [Editing Clusters]({{< baseurl >}}/rancher/v2.0-v2.4/en/cluster-admin/editing-clusters/#editing-clusters-with-yaml).
@@ -131,7 +134,8 @@ However, you can override the conditions draining when you initiate the drain. Y
 The node draining options are different based on your version of Rancher.
 
 <Tabs>
-<TabItem label="Rancher v2.2.x+">
+<TabItem value="Rancher v2.2.x+">
+
 There are two drain modes: aggressive and safe.
 
 - **Aggressive Mode**
@@ -143,8 +147,9 @@ There are two drain modes: aggressive and safe.
 - **Safe Mode**
 
     If a node has standalone pods or ephemeral data it will be cordoned but not drained.
+
 </TabItem>
-<TabItem label="Rancher before v2.2.x">
+<TabItem value="Rancher before v2.2.x">
 
 The following list describes each drain option:
 
@@ -159,6 +164,7 @@ The following list describes each drain option:
 - **Even if there are pods using emptyDir**
 
     If a pod uses emptyDir to store local data, you might not be able to safely delete it, since the data in the emptyDir will be deleted once the pod is removed from the node. Similar to the first option, Kubernetes expects the implementation to decide what to do with these pods. Choosing this option will delete these pods.
+
 </TabItem>
 </Tabs>
 
@@ -219,7 +225,7 @@ cattle.rancher.io/node-status: ignore
 
 **Result:** If you add the node to a cluster, Rancher will not attempt to sync with this node. The node can still be part of the cluster and can be listed with `kubectl`.
 
-If the label is added before the node is added to the cluster, the node will not be shown in the Rancher UI. 
+If the label is added before the node is added to the cluster, the node will not be shown in the Rancher UI.
 
 If the label is added after the node is added to a Rancher cluster, the node will not be removed from the UI.
 

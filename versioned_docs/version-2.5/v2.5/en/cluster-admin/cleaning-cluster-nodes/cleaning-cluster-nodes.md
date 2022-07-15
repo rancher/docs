@@ -7,6 +7,9 @@ aliases:
   - /rancher/v2.x/en/cluster-admin/cleaning-cluster-nodes/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section describes how to disconnect a node from a Rancher-launched Kubernetes cluster and remove all of the Kubernetes components from the node. This process allows you to use the node for other purposes.
 
 When you use Rancher to install Kubernetes on new nodes in an infrastructure provider, resources (containers/virtual network interfaces) and configuration items (certificates/configuration files) are created.
@@ -59,7 +62,8 @@ For registered clusters, the process for removing Rancher is a little different.
 After the registered cluster is detached from Rancher, the cluster's workloads will be unaffected and you can access the cluster using the same methods that you did before the cluster was registered into Rancher.
 
 <Tabs>
-<TabItem label="By UI / API">
+<TabItem value="By UI / API">
+
 >**Warning:** This process will remove data from your cluster. Make sure you have created a backup of files you want to keep before executing the command, as data will be lost.
 
 After you initiate the removal of a registered cluster using the Rancher UI (or API), the following events occur.
@@ -72,8 +76,10 @@ After you initiate the removal of a registered cluster using the Rancher UI (or 
 
 **Result:** All components listed for registered clusters in [What Gets Removed?](#what-gets-removed) are deleted.
 
+
 </TabItem>
-<TabItem label="By Script">
+<TabItem value="By Script">
+
 Rather than cleaning registered cluster nodes using the Rancher UI, you can run a script instead.
 
 >**Prerequisite:**

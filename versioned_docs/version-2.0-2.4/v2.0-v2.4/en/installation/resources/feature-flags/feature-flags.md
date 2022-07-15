@@ -5,6 +5,10 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/options/feature-flags/
   - /rancher/v2.0-v2.4/en/admin-settings/feature-flags/
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
 The features can be enabled in three ways:
@@ -50,7 +54,8 @@ When you install Rancher, enable the feature you want with a feature flag. The c
 > **Note:** Values set from the Rancher API will override the value passed in through the command line.
 
 <Tabs>
-<TabItem label="Kubernetes Install">
+<TabItem value="Kubernetes Install">
+
 When installing Rancher with a Helm chart, use the `--features` option. In the below example, two features are enabled by passing the feature flag names names in a comma separated list:
 
 ```
@@ -99,8 +104,10 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
   --set 'extraEnv[0].value=<FEATURE-FLAG-NAME-1>=true,<FEATURE-FLAG-NAME-2>=true' # Available as of v2.3.0
 ```
 
+
 </TabItem>
-<TabItem label="Docker Install">
+<TabItem value="Docker Install">
+
 When installing Rancher with Docker, use the `--features` option. In the below example, two features are enabled by passing the feature flag names in a comma separated list:
 
 ```

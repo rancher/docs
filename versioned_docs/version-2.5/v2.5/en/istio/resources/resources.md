@@ -9,6 +9,9 @@ aliases:
   - /rancher/v2.x/en/istio/v2.5/resources/
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This section describes the minimum recommended computing resources for the Istio components in a cluster.
 
 The CPU and memory allocations for each component are [configurable.](#configuring-resource-allocations)
@@ -22,7 +25,7 @@ The table below shows a summary of the minimum recommended resource requests and
 In Kubernetes, the resource request indicates that the workload will not be deployed on a node unless the node has at least the specified amount of memory and CPU available. If the workload surpasses the limit for CPU or memory, it can be terminated or evicted from the node. For more information on managing resource limits for containers, refer to the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/)
 
 <Tabs>
-<TabItem label="v2.5.6+">
+<TabItem value="v2.5.6+">
 
 | Workload   | CPU - Request  | Memory - Request  |  CPU - Limit  |  Memory - Limit |
 |----------------------|---------------|------------|-----------------|-------------------|
@@ -33,7 +36,7 @@ In Kubernetes, the resource request indicates that the workload will not be depl
 | **Totals:** | **710m** | **2314Mi** | **6000m** | **3072Mi** |
 
 </TabItem>
-<TabItem label="v2.5.0-v2.5.5">
+<TabItem value="v2.5.0-v2.5.5">
 
 Workload | CPU - Request | Memory - Request | CPU - Limit | Mem - Limit | Configurable
 ---------:|---------------:|---------------:|-------------:|-------------:|-------------:
@@ -45,9 +48,6 @@ Totals: | 1710m | 3304Mi | >8800m | >6048Mi | -
 
 </TabItem>
 </Tabs>
-
-
-
 
 # Configuring Resource Allocations
 

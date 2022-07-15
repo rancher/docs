@@ -7,10 +7,13 @@ weight: 15
 aliases:
   - /rancher/v2.5/en/dashboard/logging
   - /rancher/v2.5/en/logging/v2.5
-  - /rancher/v2.5/en/cluster-admin/tools/logging 
+  - /rancher/v2.5/en/cluster-admin/tools/logging
   - /rancher/v2.x/en/logging/
   - /rancher/v2.x/en/logging/v2.5/
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
 
@@ -81,17 +84,21 @@ For a list of options that can be configured when the logging application is ins
 ### Windows Support
 
 <Tabs>
-<TabItem label="Rancher v2.5.8+">
+<TabItem value="Rancher v2.5.8+">
+
 As of Rancher v2.5.8, logging support for Windows clusters has been added and logs can be collected from Windows nodes.
 
 For details on how to enable or disable Windows node logging, see [this section.](./helm-chart-options/#enable-disable-windows-node-logging)
 
+
 </TabItem>
-<TabItem label="Rancher before v2.5.8">
+<TabItem value="Rancher before v2.5.8">
+
 Clusters with Windows workers support exporting logs from Linux nodes, but Windows node logs are currently unable to be exported.
 Only Linux node logs are able to be exported.
 
 To allow the logging pods to be scheduled on Linux nodes, tolerations must be added to the pods. Refer to the [Working with Taints and Tolerations]({{<baseurl>}}/rancher/v2.5/en/logging/taints-tolerations/) section for details and an example.
+
 </TabItem>
 </Tabs>
 

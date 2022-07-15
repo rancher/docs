@@ -16,6 +16,10 @@ aliases:
   - /rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/
   - /rancher/v2.0-v2.4/en/upgrades/
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
 
 For the instructions to upgrade Rancher installed with Docker, refer to [this page.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-upgrades)
@@ -35,7 +39,7 @@ If you installed Rancher using the RKE Add-on yaml, follow the directions to [mi
 
 Helm should be run from the same location as your kubeconfig file, or the same location where you run your kubectl commands from.
 
-If you installed Kubernetes with RKE, the config will have been created in the directory you ran `rke up` in. 
+If you installed Kubernetes with RKE, the config will have been created in the directory you ran `rke up` in.
 
 The kubeconfig can also be manually targeted for the intended cluster with the `--kubeconfig` tag (see: https://helm.sh/docs/helm/helm/)
 
@@ -115,7 +119,7 @@ You'll use the backup as a restoration point if something goes wrong during upgr
     helm fetch rancher-<CHART_REPO>/rancher
     ```
     You can fetch the chart for the specific version you are upgrading to by adding in the `--version=` tag.  For example:
-    
+
     ```plain
     helm fetch rancher-<CHART_REPO>/rancher --version=v2.4.11
     ```
@@ -125,7 +129,7 @@ You'll use the backup as a restoration point if something goes wrong during upgr
 This section describes how to upgrade normal (Internet-connected) or air gap installations of Rancher with Helm.
 
 <Tabs>
-<TabItem label="Kubernetes Upgrade">
+<TabItem value="Kubernetes Upgrade">
 
 Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
 
@@ -168,7 +172,7 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
 
 ### Option B: Reinstalling Rancher and cert-manager
 
-If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11. 
+If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11.
 
 1. Uninstall Rancher
 
@@ -186,9 +190,9 @@ If you are currently running the cert-manager whose version is older than v0.11,
     --set hostname=rancher.my.org
     ```
 
-</TabItem>
 
-<TabItem label="Kubernetes Air Gap Upgrade">
+</TabItem>
+<TabItem value="Kubernetes Air Gap Upgrade">
 
 Render the Rancher template using the same chosen options that were used when installing Rancher. Use the reference table below to replace each placeholder. Rancher needs to be configured to use the private registry in order to provision any Rancher launched Kubernetes clusters or Rancher tools.
 

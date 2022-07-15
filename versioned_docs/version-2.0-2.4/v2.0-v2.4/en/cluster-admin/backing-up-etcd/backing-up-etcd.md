@@ -3,6 +3,9 @@ title: Backing up a Cluster
 weight: 2045
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 _Available as of v2.2.0_
 
 In the Rancher UI, etcd backup and recovery for [Rancher launched Kubernetes clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/) can be easily performed.
@@ -28,11 +31,11 @@ This section covers the following topics:
 # How Snapshots Work
 
 <Tabs>
-<TabItem label="Rancher v2.4.0+">
+<TabItem value="Rancher v2.4.0+">
 
 ### Snapshot Components
 
-When Rancher creates a snapshot, it includes three components: 
+When Rancher creates a snapshot, it includes three components:
 
 - The cluster data in etcd
 - The Kubernetes version
@@ -85,7 +88,8 @@ On restore, the following process is used:
 5.  The cluster is restored and post-restore actions will be done in the cluster.
 
 </TabItem>
-<TabItem label="Rancher before v2.4.0">
+<TabItem value="Rancher before v2.4.0">
+
 When Rancher creates a snapshot, only the etcd data is included in the snapshot.
 
 Because the Kubernetes version is not included in the snapshot, there is no option to restore a cluster to a different Kubernetes version.
@@ -127,6 +131,7 @@ On restore, the following process is used:
 3. One of the etcd nodes in the cluster serves that snapshot file to the other nodes.
 4. The other etcd nodes download the snapshot and validate the checksum so that they all use the same snapshot for the restore.
 5.  The cluster is restored and post-restore actions will be done in the cluster.
+
 
 </TabItem>
 </Tabs>
