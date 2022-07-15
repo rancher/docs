@@ -12,10 +12,10 @@ The following table lists the permissions required for the vSphere user account:
 
 | Privilege Group       | Operations  |
 |:----------------------|:-----------------------------------------------------------------------|
-| Datastore             | AllocateSpace </br> Browse </br> FileManagement (Low level file operations) </br> UpdateVirtualMachineFiles </br> UpdateVirtualMachineMetadata |
+| Datastore             | AllocateSpace <br/> Browse <br/> FileManagement (Low level file operations) <br/> UpdateVirtualMachineFiles <br/> UpdateVirtualMachineMetadata |
 | Network               | Assign |
 | Resource              | AssignVMToPool |
-| Virtual Machine       | Config (All) </br> GuestOperations (All) </br> Interact (All) </br> Inventory (All) </br> Provisioning (All) |
+| Virtual Machine       | Config (All) <br/> GuestOperations (All) <br/> Interact (All) <br/> Inventory (All) <br/> Provisioning (All) |
 
 The following steps create a role with the required privileges and then assign it to a new user in the vSphere console:
 
@@ -38,7 +38,7 @@ The following steps create a role with the required privileges and then assign i
 7. Create a new Global Permission. Add the user you created earlier and assign it the role you created earlier. Click **OK**.
 
     {{< img "/img/rancher/globalpermissionuser.png" "image" >}}
-    
+
     {{< img "/img/rancher/globalpermissionrole.png" "image" >}}
 
 **Result:** You now have credentials that Rancher can use to manipulate vSphere resources.

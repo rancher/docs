@@ -9,7 +9,7 @@ aliases:
 
 The Hardening Guide is now located in the main [Security]({{<baseurl>}}/rancher/v2.5/en/security/) section.
 
-<br>
+<br/>
 
 **What are the results of Rancher's Kubernetes cluster when it is CIS benchmarked?**
 

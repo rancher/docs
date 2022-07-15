@@ -51,8 +51,8 @@ EKS clusters must have at least one managed node group to be imported into Ranch
 1. On the **Clusters** page, **Import Existing**.
 1. Choose the type of cluster.
 1. Use **Member Roles** to configure user authorization for the cluster. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
-1. If you are importing a generic Kubernetes cluster in Rancher, perform the following steps for setup:</br>
-  a. Click **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.</br>
+1. If you are importing a generic Kubernetes cluster in Rancher, perform the following steps for setup:<br/>
+  a. Click **Agent Environment Variables** under **Cluster Options** to set environment variables for [rancher cluster agent]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. If rancher agent requires use of proxy to communicate with Rancher server, `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` environment variables can be set using agent environment variables.<br/>
   b. Enable Project Network Isolation to ensure the cluster supports Kubernetes `NetworkPolicy` resources. Users can select the **Project Network Isolation** option under the **Advanced Options** dropdown to do so.
 1. Click **Create**.
 1. The prerequisite for `cluster-admin` privileges is shown (see **Prerequisites** above), including an example command to fulfil the prerequisite.
@@ -62,7 +62,7 @@ EKS clusters must have at least one managed node group to be imported into Ranch
 
 **Result:**
 
-- Your cluster is registered and assigned a state of **Pending**. Rancher is deploying resources to manage your cluster.</li>
+- Your cluster is registered and assigned a state of **Pending**. Rancher is deploying resources to manage your cluster.
 - You can access your cluster after its state is updated to **Active**.
 - **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 
@@ -247,10 +247,10 @@ Authorized Cluster Endpoint (ACE) support has been added for registered RKE2 and
         sudo systemctl stop {rke2,k3s}-server
         sudo systemctl start {rke2,k3s}-server
 
-1. Finally, you **must** go back to the Rancher UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.  
+1. Finally, you **must** go back to the Rancher UI and edit the imported cluster there to complete the ACE enablement. Click on **⋮ > Edit Config**, then click the **Networking** tab under Cluster Configuration. Finally, click the **Enabled** button for **Authorized Endpoint**. Once the ACE is enabled, you then have the option of entering a fully qualified domain name (FQDN) and certificate information.
 
-      :::note 
-      
+      :::note
+
       The <b>FQDN</b> field is optional, and if one is entered, it should point to the downstream cluster. Certificate information is only needed if there is a load balancer in front of the downstream cluster that is using an untrusted certificate. If you have a valid certificate, then nothing needs to be added to the <b>CA Certificates</b> field.
 
       :::
@@ -274,7 +274,7 @@ This example annotation indicates that a pod security policy is enabled:
 The following annotation indicates Ingress capabilities. Note that that the values of non-primitive objects need to be JSON encoded, with quotations escaped.
 
 ```
-"capabilities.cattle.io/ingressCapabilities": "[  
+"capabilities.cattle.io/ingressCapabilities": "[
   {
     "customDefaultBackend":true,
     "ingressProvider":"asdf"

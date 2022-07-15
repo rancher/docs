@@ -130,7 +130,7 @@ PLUGIN_MIRROR           | Docker daemon registry mirror
 PLUGIN_INSECURE         | Docker daemon allows insecure registries
 PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 
-<br>
+<br/>
 
 ```yaml
 # This example shows an environment variable being used
@@ -312,7 +312,7 @@ You can enable notifications to any notifiers based on the build status of a pip
 1. If you don't have any existing notifiers, Rancher will provide a warning that no notifiers are set up and provide a link to be able to go to the notifiers page. Follow the [instructions]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/tools/notifiers) to add a notifier. If you  already have notifiers, you can add them to the notification by clicking the **Add Recipient** button.
 
     :::note
-    
+
     Notifiers are configured at a cluster level and require a different level of permissions.
 
     :::
@@ -506,7 +506,7 @@ If you need to use security-sensitive information in your pipeline scripts (like
 
 ### Prerequisite
 Create a secret in the same project as your pipeline, or explicitly in the namespace where pipeline build pods run.
-<br>
+<br/>
 
 :::note
 
@@ -564,13 +564,13 @@ Variable Name           | Description
 
 # Global Pipeline Execution Settings
 
-After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in Rancher. 
+After configuring a version control provider, there are several options that can be configured globally on how pipelines are executed in Rancher.
 
 ### Changing Pipeline Settings
 
 :::note Prerequisite:
 
-Because the pipelines app was deprecated in favor of Fleet, you will need to turn on the feature flag for legacy 
+Because the pipelines app was deprecated in favor of Fleet, you will need to turn on the feature flag for legacy
 features before using pipelines. Note that pipelines in Kubernetes 1.21+ are no longer supported.
 
 1. In the upper left corner, click **☰ > Global Settings**.
@@ -639,7 +639,7 @@ Rancher sets default compute resources for pipeline steps except for `Build and 
 
 :::
 
-### Custom CA  
+### Custom CA
 
 If you want to use a version control provider with a certificate from a custom/internal CA root, the CA root certificates need to be added as part of the version control provider configuration in order for the pipeline build pods to succeed.
 

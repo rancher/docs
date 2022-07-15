@@ -134,7 +134,7 @@ PLUGIN_MIRROR           | Docker daemon registry mirror
 PLUGIN_INSECURE         | Docker daemon allows insecure registries
 PLUGIN_BUILD_ARGS       | Docker build args, a comma separated list
 
-<br>
+<br/>
 
 ```yaml
 # This example shows an environment variable being used
@@ -526,7 +526,7 @@ If you need to use security-sensitive information in your pipeline scripts (like
 
 ### Prerequisite
 Create a secret in the same project as your pipeline, or explicitly in the namespace where pipeline build pods run.
-<br>
+<br/>
 
 >**Note:** Secret injection is disabled on [pull request events](#triggers-and-trigger-rules).
 
@@ -637,7 +637,7 @@ stages:
 
 >**Note:** Rancher sets default compute resources for pipeline steps except for `Build and Publish Images` and `Run Script` steps. You can override the default value by specifying compute resources in the same way.
 
-### Custom CA  
+### Custom CA
 
 _Available as of v2.2.0_
 

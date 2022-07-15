@@ -98,7 +98,7 @@ EKS clusters must have at least one managed node group to be imported into Ranch
 
 **Result:**
 
-- Your cluster is registered and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.</li>
+- Your cluster is registered and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.
 - You can access your cluster after its state is updated to **Active.**
 - **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 

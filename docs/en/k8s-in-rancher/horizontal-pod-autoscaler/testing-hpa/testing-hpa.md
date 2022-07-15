@@ -184,7 +184,7 @@ spec:
 
 1. Generate a load for the service to test that your pods autoscale as intended. You can use any load-testing tool (Hey, Gatling, etc.), but we're using [Hey](https://github.com/rakyll/hey).
 
-1. Test that pod autoscaling works as intended.<br/></br>
+1. Test that pod autoscaling works as intended.<br/><br/>
   **To Test Autoscaling Using Resource Metrics:**
   {{% accordion id="observe-upscale-2-pods-cpu" label="Upscale to 2 Pods: CPU Usage Up to Target" %}}
 Use your load testing tool to scale up to two pods based on CPU Usage.
