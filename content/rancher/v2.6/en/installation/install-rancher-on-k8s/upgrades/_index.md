@@ -97,7 +97,7 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
     You can fetch the chart for the specific version you are upgrading to by adding in the `--version=` tag.  For example:
     
     ```plain
-    helm fetch rancher-<CHART_REPO>/rancher --version=v2.4.11
+    helm fetch rancher-<CHART_REPO>/rancher --version=v2.6.6
     ```
 
 # 3. Upgrade Rancher
@@ -141,7 +141,7 @@ helm get values rancher -n cattle-system -o yaml > values.yaml
 helm upgrade rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   -f values.yaml \
-  --version=2.4.5
+  --version=v2.6.6
 ```
 
 # 4. Verify the Upgrade
