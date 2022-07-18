@@ -21,6 +21,7 @@ In this command, `<RANCHER_CONTAINER_NAME>` and `<RANCHER_VERSION>-<DATE>` are e
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the procedure below.
 
 <sup>Terminal `docker ps` Command, Displaying Where to Find `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>`</sup>
+
 ![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref.png)
 
 | Placeholder                | Example                    | Description                                               |
