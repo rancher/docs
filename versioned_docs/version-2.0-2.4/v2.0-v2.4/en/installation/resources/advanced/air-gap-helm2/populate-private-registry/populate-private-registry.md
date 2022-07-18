@@ -29,9 +29,9 @@ By default, we provide the steps of how to populate your private registry assumi
 
 For Rancher servers that will only provision Linux clusters, these are the steps to populate your private registry.
 
-A. Find the required assets for your Rancher version <br>
-B. Collect all the required images <br>
-C. Save the images to your workstation <br>
+A. Find the required assets for your Rancher version <br/>
+B. Collect all the required images <br/>
+C. Save the images to your workstation <br/>
 D. Populate the private registry
 
 ### Prerequisites
@@ -115,9 +115,9 @@ For Rancher servers that will provision Linux and Windows clusters, there are di
 
 The Windows images need to be collected and pushed from a Windows server workstation.
 
-A. Find the required assets for your Rancher version <br>
-B. Save the images to your Windows Server workstation <br>
-C. Prepare the Docker daemon <br>
+A. Find the required assets for your Rancher version <br/>
+B. Save the images to your Windows Server workstation <br/>
+C. Prepare the Docker daemon <br/>
 D. Populate the private registry
 
 {{% accordion label="Collecting and Populating Windows Images into the Private Registry"%}}
@@ -189,9 +189,9 @@ Move the images in the `rancher-windows-images.tar.gz` to your private registry 
 
 The Linux images needs to be collected and pushed from a Linux host, but _must be done after_ populating the Windows images into the private registry. These step are different from the Linux only steps as the Linux images that are pushed will actually manifests that support Windows and Linux images.
 
-A. Find the required assets for your Rancher version <br>
-B. Collect all the required images <br>
-C. Save the images to your Linux workstation <br>
+A. Find the required assets for your Rancher version <br/>
+B. Collect all the required images <br/>
+C. Save the images to your Linux workstation <br/>
 D. Populate the private registry
 
 {{% accordion label="Collecting and Populating Linux Images into the Private Registry" %}}

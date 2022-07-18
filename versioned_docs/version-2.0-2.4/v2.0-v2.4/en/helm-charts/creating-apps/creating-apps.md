@@ -117,7 +117,7 @@ This reference contains variables that you can use in `questions.yml` nested und
 | 	max_length        | int     | false      | Max character length.|
 | 	min               | int     | false      |  Min integer length. |
 | 	max               | int     | false      |  Max integer length. |
-| 	options           | []string | false     |  Specify the options when the variable type is `enum`, for example: options:<br> - "ClusterIP" <br> - "NodePort" <br> - "LoadBalancer"|
+| 	options           | []string | false     |  Specify the options when the variable type is `enum`, for example: options:<br/> - "ClusterIP" <br/> - "NodePort" <br/> - "LoadBalancer"|
 | 	valid_chars       | string   | false     |  Regular expression for input chars validation. |
 | 	invalid_chars     | string   | false     |  Regular expression for invalid input chars validation.|
 | 	subquestions      | []subquestion | false|  Add an array of subquestions.|
