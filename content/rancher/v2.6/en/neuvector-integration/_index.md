@@ -113,12 +113,13 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 ```
 kubectl patch deploy neuvector-manager-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}' 
 kubectl patch deploy neuvector-scanner-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}'
+kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '{"spec":{"jobTemplate":{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}}}'
 ```
 
 {{% /tab %}}
 {{% /tabs %}}
 </br>
-### RKE2 SELinux-enabled Cluster Support - Calico and Canal
+### SELinux-enabled Cluster Support - Calico and Canal
 
 - NeuVector components Controller and Enforcer are deployable if PSP is set to true.
 
@@ -127,6 +128,7 @@ kubectl patch deploy neuvector-scanner-pod -n cattle-neuvector-system --patch '{
 ```
 kubectl patch deploy neuvector-manager-pod --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}'
 kubectl patch deploy neuvector-scanner-pod --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}'
+kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '{"spec":{"jobTemplate":{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}}}'
 ```
 
 ### Cluster Support in an Air-Gapped Environment
