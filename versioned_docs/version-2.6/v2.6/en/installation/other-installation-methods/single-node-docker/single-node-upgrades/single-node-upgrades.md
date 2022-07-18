@@ -37,7 +37,7 @@ docker ps
 
 Write down or copy this information before starting the upgrade.
 
-<sup>Terminal `docker ps` Command, Displaying Where to Find `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>`</sup>
+<sup>Terminal <code>docker ps</code> Command, Displaying Where to Find <code>&lt;RANCHER_CONTAINER_TAG&gt;</code> and <code>&lt;RANCHER_CONTAINER_NAME&gt;</code></sup>
 
 ![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref.png)
 
@@ -80,7 +80,7 @@ During upgrade, you create a copy of the data from your current Rancher containe
 
 # 2. Create a backup tarball
 
-1. <a id="tarball"></a>From the data container that you just created (`rancher-data`), create a backup tarball (`rancher-data-backup-<RANCHER_VERSION>-<DATE>.tar.gz`).
+1. <a id="tarball"></a>From the data container that you just created (<code>rancher-data</code>), create a backup tarball (<code>rancher-data-backup-&lt;RANCHER_VERSION&gt;-&lt;DATE&gt;.tar.gz</code>).
 
     This tarball will serve as a rollback point if something goes wrong during upgrade. Use the following command, replacing each placeholder.
 
