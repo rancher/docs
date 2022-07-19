@@ -39,7 +39,7 @@ When performing the tests, you will need access to the Docker command line on th
 
 ---
 ## 1 Master Node Security Configuration
-### 1.1 Master Node Configuration Files 
+### 1.1 Master Node Configuration Files
 
 #### 1.1.1 Ensure that the API server pod specification file permissions are set to `644` or more restrictive (Scored)
 
@@ -155,7 +155,7 @@ Run the below command (based on the etcd data directory found above).
 For example,
 ``` bash
 chown etcd:etcd /var/lib/etcd
-``` 
+```
 
 **Audit Script:** 1.1.12.sh
 
@@ -189,7 +189,7 @@ docker inspect etcd | jq -r '.[].HostConfig.Binds[]' | grep "${test_dir}" | cut 
 RKE does not store the kubernetes default kubeconfig credentials file on the nodes. It’s presented to user where RKE is run.
 We recommend that this `kube_config_cluster.yml` file be kept in secure store.
 
-#### 1.1.14 Ensure that the admin.conf file ownership is set to `root:root` (Scored) 
+#### 1.1.14 Ensure that the admin.conf file ownership is set to `root:root` (Scored)
 
 **Result:** Not Applicable
 
@@ -249,7 +249,7 @@ stat -c %U:%G /etc/kubernetes/ssl
 'root:root' is present
 ```
 
-#### 1.1.20 Ensure that the Kubernetes PKI certificate file permissions are set to `644` or more restrictive (Scored) 
+#### 1.1.20 Ensure that the Kubernetes PKI certificate file permissions are set to `644` or more restrictive (Scored)
 
 **Result:** PASS
 
@@ -732,7 +732,7 @@ on the master node and set the below parameter.
 '0' is equal to '0'
 ```
 
-#### 1.2.20 Ensure that the `--secure-port` argument is not set to `0` (Scored) 
+#### 1.2.20 Ensure that the `--secure-port` argument is not set to `0` (Scored)
 
 **Result:** PASS
 
@@ -938,7 +938,7 @@ on the master node and set the `--service-account-key-file` parameter
 to the public key file for service accounts:
 
 ``` bash
---service-account-key-file=<filename>
+`--service-account-key-file=<filename>`
 ```
 
 **Audit:**
@@ -953,7 +953,7 @@ to the public key file for service accounts:
 '--service-account-key-file' is present
 ```
 
-#### 1.2.29 Ensure that the `--etcd-certfile` and `--etcd-keyfile` arguments are set as appropriate (Scored) 
+#### 1.2.29 Ensure that the `--etcd-certfile` and `--etcd-keyfile` arguments are set as appropriate (Scored)
 
 **Result:** PASS
 
@@ -963,8 +963,8 @@ Then, edit the API server pod specification file `/etc/kubernetes/manifests/kube
 on the master node and set the **etcd** certificate and **key** file parameters.
 
 ``` bash
---etcd-certfile=<path/to/client-certificate-file>
---etcd-keyfile=<path/to/client-key-file>
+`--etcd-certfile=<path/to/client-certificate-file>`
+`--etcd-keyfile=<path/to/client-key-file>`
 ```
 
 **Audit:**
@@ -989,8 +989,8 @@ Then, edit the API server pod specification file `/etc/kubernetes/manifests/kube
 on the master node and set the TLS certificate and private key file parameters.
 
 ``` bash
---tls-cert-file=<path/to/tls-certificate-file>
---tls-private-key-file=<path/to/tls-key-file>
+`--tls-cert-file=<path/to/tls-certificate-file>`
+`--tls-private-key-file=<path/to/tls-key-file>`
 ```
 
 **Audit:**
@@ -1015,7 +1015,7 @@ Then, edit the API server pod specification file `/etc/kubernetes/manifests/kube
 on the master node and set the client certificate authority file.
 
 ``` bash
---client-ca-file=<path/to/client-ca-file>
+`--client-ca-file=<path/to/client-ca-file>`
 ```
 
 **Audit:**
@@ -1040,7 +1040,7 @@ Then, edit the API server pod specification file `/etc/kubernetes/manifests/kube
 on the master node and set the etcd certificate authority file parameter.
 
 ``` bash
---etcd-cafile=<path/to/ca-file>
+`--etcd-cafile=<path/to/ca-file>`
 ```
 
 **Audit:**
@@ -1202,7 +1202,7 @@ on the master node and set the `--service-account-private-key-file` parameter
 to the private key file for service accounts.
 
 ``` bash
---service-account-private-key-file=<filename>
+`--service-account-private-key-file=<filename>`
 ```
 
 **Audit:**
@@ -1226,7 +1226,7 @@ Edit the Controller Manager pod specification file `/etc/kubernetes/manifests/ku
 on the master node and set the `--root-ca-file` parameter to the certificate bundle file`.
 
 ``` bash
---root-ca-file=<path/to/file>
+`--root-ca-file=<path/to/file>`
 ```
 
 **Audit:**
@@ -1311,7 +1311,7 @@ on the master node and set the below parameter.
 'false' is equal to 'false'
 ```
 
-#### 1.4.2 Ensure that the `--bind-address` argument is set to `127.0.0.1` (Scored) 
+#### 1.4.2 Ensure that the `--bind-address` argument is set to `127.0.0.1` (Scored)
 
 **Result:** PASS
 
@@ -1344,8 +1344,8 @@ Then, edit the etcd pod specification file `/etc/kubernetes/manifests/etcd.yaml`
 on the master node and set the below parameters.
 
 ``` bash
---cert-file=</path/to/ca-file>
---key-file=</path/to/key-file>
+`--cert-file=</path/to/ca-file>`
+`--key-file=</path/to/key-file>`
 ```
 
 **Audit:**
@@ -1418,8 +1418,8 @@ for your etcd cluster. Then, edit the etcd pod specification file `/etc/kubernet
 master node and set the below parameters.
 
 ``` bash
---peer-client-file=</path/to/peer-cert-file>
---peer-key-file=</path/to/peer-key-file>
+`--peer-client-file=</path/to/peer-cert-file>`
+`--peer-key-file=</path/to/peer-key-file>`
 ```
 
 **Audit:**
@@ -1485,7 +1485,7 @@ node and either remove the `--peer-auto-tls` parameter or set it to `false`.
 ## 3 Control Plane Configuration
 ### 3.2 Logging
 
-#### 3.2.1 Ensure that a minimal audit policy is created (Scored) 
+#### 3.2.1 Ensure that a minimal audit policy is created (Scored)
 
 **Result:** PASS
 
@@ -1546,7 +1546,7 @@ chmod 644 /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi'
 ```
 
 **Expected result**:
@@ -1561,7 +1561,7 @@ chmod 644 /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 
 **Remediation:**
 Run the below command (based on the file location on your system) on the each worker node.
-For example, 
+For example,
 
 ``` bash
 chown root:root /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
@@ -1570,7 +1570,7 @@ chown root:root /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-proxy.yaml; fi'
 ```
 
 **Expected result**:
@@ -1594,7 +1594,7 @@ chmod 644 /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %a /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi'
 ```
 
 **Expected result**:
@@ -1618,7 +1618,7 @@ chown root:root /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kubecfg-kube-node.yaml; then stat -c %U:%G /etc/kubernetes/ssl/kubecfg-kube-node.yaml; fi'
 ```
 
 **Expected result**:
@@ -1635,7 +1635,7 @@ chown root:root /etc/kubernetes/ssl/kubecfg-kube-node.yaml
 Run the following command to modify the file permissions of the
 
 ``` bash
---client-ca-file chmod 644 <filename>
+`--client-ca-file chmod 644 <filename>`
 ```
 
 **Audit:**
@@ -1664,7 +1664,7 @@ chown root:root <filename>
 **Audit:**
 
 ```
-/bin/sh -c 'if test -e /etc/kubernetes/ssl/kube-ca.pem; then stat -c %U:%G /etc/kubernetes/ssl/kube-ca.pem; fi' 
+/bin/sh -c 'if test -e /etc/kubernetes/ssl/kube-ca.pem; then stat -c %U:%G /etc/kubernetes/ssl/kube-ca.pem; fi'
 ```
 
 **Expected result**:
@@ -1703,7 +1703,7 @@ set the below parameter in `KUBELET_SYSTEM_PODS_ARGS` variable.
 ``` bash
 --anonymous-auth=false
 ```
- 
+
 Based on your system, restart the kubelet service. For example:
 
 ``` bash
@@ -1780,7 +1780,7 @@ If using command line arguments, edit the kubelet service file
 set the below parameter in `KUBELET_AUTHZ_ARGS` variable.
 
 ``` bash
---client-ca-file=<path/to/client-ca-file>
+`--client-ca-file=<path/to/client-ca-file>`
 ```
 
 Based on your system, restart the kubelet service. For example:
@@ -1926,7 +1926,7 @@ systemctl restart kubelet.service
 'true' is equal to 'true'
 ```
 
-#### 4.2.7 Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored) 
+#### 4.2.7 Ensure that the `--make-iptables-util-chains` argument is set to `true` (Scored)
 
 **Result:** PASS
 
@@ -1938,7 +1938,7 @@ remove the `--make-iptables-util-chains` argument from the
 `KUBELET_SYSTEM_PODS_ARGS` variable.
 Based on your system, restart the kubelet service. For example:
 
-```bash 
+```bash
 systemctl daemon-reload
 systemctl restart kubelet.service
 ```
@@ -2091,7 +2091,7 @@ exit 0
 **Audit Execution:**
 
 ```
-./5.1.5.sh 
+./5.1.5.sh
 ```
 
 **Expected result**:
@@ -2218,7 +2218,7 @@ echo "pass"
 **Audit Execution:**
 
 ```
-./5.3.2.sh 
+./5.3.2.sh
 ```
 
 **Expected result**:
@@ -2258,7 +2258,7 @@ echo "--count=${default_resources}"
 **Audit Execution:**
 
 ```
-./5.6.4.sh 
+./5.6.4.sh
 ```
 
 **Expected result**:
