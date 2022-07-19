@@ -562,7 +562,7 @@ root 121142 121120 7 12:27 ? 00:06:27 kube-apiserver --audit-log-maxsize=100 --e
 **Remediation:**
 Follow the documentation and configure alternate mechanisms for authentication. Then,
 edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml
-on the master node and remove the --basic-auth-file=<filename> parameter.
+on the master node and remove the `--basic-auth-file=<filename>` parameter.
 
 **Audit:**
 
@@ -590,7 +590,7 @@ root 121142 121120 7 12:27 ? 00:06:27 kube-apiserver --audit-log-maxsize=100 --e
 **Remediation:**
 Follow the documentation and configure alternate mechanisms for authentication. Then,
 edit the API server pod specification file /etc/kubernetes/manifests/kube-apiserver.yaml
-on the master node and remove the --token-auth-file=<filename> parameter.
+on the master node and remove the `--token-auth-file=<filename>` parameter.
 
 **Audit:**
 
@@ -2177,7 +2177,7 @@ if test -e $CAFILE; then stat -c permissions=%a $CAFILE; fi
 
 **Remediation:**
 Run the following command to modify the ownership of the --client-ca-file.
-chown root:root <filename>
+`chown root:root <filename>`
 
 **Audit Script:** `check_cafile_ownership.sh`
 

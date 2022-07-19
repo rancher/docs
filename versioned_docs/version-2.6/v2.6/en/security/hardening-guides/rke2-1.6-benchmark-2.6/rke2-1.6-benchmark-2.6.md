@@ -750,7 +750,7 @@ on the master node and set the below parameter.
 **Remediation:**
 Follow the documentation and configure alternate mechanisms for authentication. Then,
 edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
-on the master node and remove the --basic-auth-file=<filename> parameter.
+on the master node and remove the `--basic-auth-file=<filename>` parameter.
 
 **Audit:**
 
@@ -778,7 +778,7 @@ root 5275 5222 15 14:58 ? 00:01:26 kube-apiserver --audit-policy-file=/etc/ranch
 **Remediation:**
 Follow the documentation and configure alternate mechanisms for authentication. Then,
 edit the API server pod specification file /var/lib/rancher/rke2/agent/pod-manifests/kube-apiserver.yaml
-on the master node and remove the --token-auth-file=<filename> parameter.
+on the master node and remove the `--token-auth-file=<filename>` parameter.
 
 **Audit:**
 
@@ -2269,7 +2269,7 @@ stat -c %a /var/lib/rancher/rke2/server/tls/server-ca.crt
 
 **Remediation:**
 Run the following command to modify the ownership of the --client-ca-file.
-chown root:roset: trueot <filename>
+`chown root:roset: trueot <filename>`
 
 **Audit:**
 
