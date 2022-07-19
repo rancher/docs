@@ -212,7 +212,8 @@ If you choose to use self-signed certificates in [B. Choose your SSL Configurati
 
 ### For Self-Signed Certificate Installs, Install Cert-manager
 
-{{% accordion id="install-cert-manager" label="Click to expand" %}}
+<details id="install-cert-manager">
+  <summary>Click to expand</summary>
 
 If you are using self-signed certificates, install cert-manager:
 
@@ -237,7 +238,7 @@ kubectl apply -f cert-manager/cert-manager-crd.yaml
 kubectl apply -R -f ./cert-manager
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Install Rancher with kubectl
 

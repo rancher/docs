@@ -59,7 +59,7 @@ Out of the box, Rancher is compatible with the following network providers:
 - [Weave](https://github.com/weaveworks/weave) (Available as of v2.2.0)
 
 **Notes on Canal:**
-  
+
 In v2.0.0 - v2.0.4 and v2.0.6, this was the default option for these clusters was Canal with network isolation. With the network isolation automatically enabled, it prevented any pod communication between [projects]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/).
 
 As of v2.0.7, if you use Canal, you also have the option of using **Project Network Isolation**, which will enable or disable communication between pods in different [projects]({{<baseurl>}}/rancher/v2.0-v2.4/en/k8s-in-rancher/projects-and-namespaces/).
@@ -169,7 +169,8 @@ The structure of the config file is different depending on your version of Ranch
 
 RKE (Rancher Kubernetes Engine) is the tool that Rancher uses to provision Kubernetes clusters. Rancher's cluster config files used to have the same structure as [RKE config files,]({{<baseurl>}}/rke/latest/en/example-yamls/) but the structure changed so that in Rancher, RKE cluster config items are separated from non-RKE config items. Therefore, configuration for your cluster needs to be nested under the `rancher_kubernetes_engine_config` directive in the cluster config file. Cluster config files created with earlier versions of Rancher will need to be updated for this format. An example cluster config file is included below.
 
-{{% accordion id="v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.3.0+" %}}
+<details id="v2.3.0-cluster-config-file">
+  <summary>Example Cluster Config File for Rancher v2.3.0+</summary>
 
 ```yaml
 #
@@ -261,13 +262,15 @@ rancher_kubernetes_engine_config: # Your RKE template config goes here.
   ssh_agent_auth: false
 windows_prefered_cluster: false
 ```
-{{% /accordion %}}
+</details>
 
 ### Config File Structure in Rancher v2.0.0-v2.2.x
 
 An example cluster config file is included below.
 
-{{% accordion id="before-v2.3.0-cluster-config-file" label="Example Cluster Config File for Rancher v2.0.0-v2.2.x" %}}
+<details id="before-v2.3.0-cluster-config-file">
+  <summary>Example Cluster Config File for Rancher v2.0.0-v2.2.x</summary>
+
 ```yaml
 addon_job_timeout: 30
 authentication:
@@ -344,7 +347,7 @@ services:
     service_node_port_range: 30000-32767
 ssh_agent_auth: false
 ```
-{{% /accordion %}}
+</details>
 
 ### Default DNS provider
 

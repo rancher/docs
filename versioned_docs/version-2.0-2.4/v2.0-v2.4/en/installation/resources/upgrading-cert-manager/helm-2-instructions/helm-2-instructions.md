@@ -23,22 +23,23 @@ To address these changes, this guide will do two things:
 
 > 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
 > 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
-> 3. Install the newer version of Rancher and cert-manager 
+> 3. Install the newer version of Rancher and cert-manager
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section. 
+> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section.
 
-## Upgrade Cert-Manager Only 
+## Upgrade Cert-Manager Only
 
 > **Note:**
-> These instructions are applied if you have no plan to upgrade Rancher. 
+> These instructions are applied if you have no plan to upgrade Rancher.
 
 The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
 In order to upgrade cert-manager, follow these instructions:
 
-{{% accordion id="normal" label="Upgrading cert-manager with Internet access" %}}
+<details id="normal">
+  <summary>Upgrading cert-manager with Internet access</summary>
 1. Back up existing resources as a precaution
 
     ```plain
@@ -74,9 +75,11 @@ In order to upgrade cert-manager, follow these instructions:
     ```plain
     helm install --version 0.12.0 --name cert-manager --namespace kube-system jetstack/cert-manager
     ```
-{{% /accordion %}}
+</details>
 
-{{% accordion id="airgap" label="Upgrading cert-manager in an airgapped environment" %}}
+<details id="airgap">
+  <summary>Upgrading cert-manager in an airgapped environment</summary>
+
 ### Prerequisites
 
 Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
@@ -138,7 +141,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     ```plain
     kubectl -n kube-system apply -R -f ./cert-manager
     ```
-{{% /accordion %}}
+</details>
 
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the kube-system namespace for running pods:

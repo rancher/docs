@@ -49,7 +49,7 @@ The Rancher API server is built on top of an embedded Kubernetes API server and 
 ### Cluster Visibility
 
 - **Logging:** Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters.
-- **Monitoring:** Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with Prometheus, a leading open-source monitoring solution. 
+- **Monitoring:** Using Rancher, you can monitor the state and processes of your cluster nodes, Kubernetes components, and software deployments through integration with Prometheus, a leading open-source monitoring solution.
 - **Alerting:** To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned.
 
 # Editing Downstream Clusters with Rancher
@@ -60,4 +60,4 @@ After a cluster is created with Rancher, a cluster administrator can manage clus
 
 The following table summarizes the options and settings available for each cluster type:
 
-{{% include file="/rancher/v2.0-v2.4/en/cluster-provisioning/cluster-capabilities-table" %}}
+{{% include file="/rancher/v2.0-v2.4/en/cluster-provisioning/cluster-capabilities-table</summary>

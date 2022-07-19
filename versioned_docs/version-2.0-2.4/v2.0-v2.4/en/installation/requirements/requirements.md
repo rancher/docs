@@ -116,7 +116,9 @@ These requirements apply to a host with a [single-node]({{<baseurl>}}/rancher/v2
 
 ### CPU and Memory for Rancher before v2.4.0
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
+
 These requirements apply to installing Rancher on an RKE Kubernetes cluster before Rancher v2.4.0:
 
 | Deployment Size | Clusters  | Nodes      | vCPUs                                           | RAM                                             |
@@ -126,7 +128,7 @@ These requirements apply to installing Rancher on an RKE Kubernetes cluster befo
 | Large           | Up to 50  | Up to 500  | 8                                               | 32 GB                                           |
 | X-Large         | Up to 100 | Up to 1000 | 32                                              | 128 GB                                          |
 | XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
-{{% /accordion %}}
+</details>
 
 ### Disks
 

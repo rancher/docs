@@ -80,7 +80,10 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
     # kubectl -n kube-system logs metrics-server-6fbfb84cdd-t2fk9
     ```
     Then review the log to confirm that the `metrics-server` package is running.
-    {{% accordion id="metrics-server-run-check" label="Metrics Server Log Output" %}}
+
+    <details id="metrics-server-run-check">
+  <summary>Metrics Server Log Output</summary>
+
     I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
     I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
     I0723 08:09:56.194480       1 configs.go:61] Using Kubernetes client with master "https://10.43.0.1:443" and version
@@ -91,7 +94,7 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
     [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
     [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
     I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
-    {{% /accordion %}}
+    </details>
 
 
 1. Check that the metrics api is accessible from `kubectl`.
@@ -124,7 +127,10 @@ To do it, follow these steps:
 1. Configure `kubectl` to connect to your cluster.
 
 1. Copy the ClusterRole and ClusterRoleBinding manifest for the type of metrics you're using for your HPA.
-  {{% accordion id="cluster-role-resource-metrics" label="Resource Metrics: ApiGroups resource.metrics.k8s.io" %}}
+
+  <details id="cluster-role-resource-metrics">
+  <summary>Resource Metrics: ApiGroups resource.metrics.k8s.io</summary>
+
         apiVersion: rbac.authorization.k8s.io/v1
         kind: ClusterRole
         metadata:
@@ -152,8 +158,9 @@ To do it, follow these steps:
           - apiGroup: rbac.authorization.k8s.io
             kind: User
             name: system:anonymous
-    {{% /accordion %}}
-{{% accordion id="cluster-role-custom-resources" label="Custom Metrics: ApiGroups custom.metrics.k8s.io" %}}
+    </details>
+<details id="cluster-role-custom-resources">
+  <summary>Custom Metrics: ApiGroups custom.metrics.k8s.io</summary>
 
   ```
   apiVersion: rbac.authorization.k8s.io/v1
@@ -183,7 +190,7 @@ To do it, follow these steps:
       kind: User
       name: system:anonymous
   ```
-{{% /accordion %}}
+</details>
 1. Create them in your cluster using one of the follow commands, depending on the metrics you're using.
  ```
   # kubectl create -f <RESOURCE_METRICS_MANIFEST>

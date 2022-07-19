@@ -120,7 +120,8 @@ B. Save the images to your Windows Server workstation <br/>
 C. Prepare the Docker daemon <br/>
 D. Populate the private registry
 
-{{% accordion label="Collecting and Populating Windows Images into the Private Registry"%}}
+<details>
+  <summary>Collecting and Populating Windows Images into the Private Registry"%}}
 
 ### Prerequisites
 
@@ -183,7 +184,7 @@ Move the images in the `rancher-windows-images.tar.gz` to your private registry 
    ./rancher-load-images.ps1 --registry <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
 
-{{% /accordion %}}
+</details>
 
 ### Linux Steps
 
@@ -194,7 +195,8 @@ B. Collect all the required images <br/>
 C. Save the images to your Linux workstation <br/>
 D. Populate the private registry
 
-{{% accordion label="Collecting and Populating Linux Images into the Private Registry" %}}
+<details>
+  <summary>Collecting and Populating Linux Images into the Private Registry</summary>
 
 ### Prerequisites
 
@@ -270,7 +272,7 @@ Move the images in the `rancher-images.tar.gz` to your private registry using th
      --registry <REGISTRY.YOURDOMAIN.COM:PORT>
    ```
 
-{{% /accordion %}}
+</details>
 
 </TabItem>
 </Tabs>

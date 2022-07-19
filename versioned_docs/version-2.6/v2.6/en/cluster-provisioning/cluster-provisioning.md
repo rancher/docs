@@ -28,7 +28,7 @@ This section covers the following topics:
 
 The following table summarizes the options and settings available for each cluster type:
 
-{{% include file="/rancher/v2.6/en/cluster-provisioning/cluster-capabilities-table" %}}
+{{% include file="/rancher/v2.6/en/cluster-provisioning/cluster-capabilities-table</summary>
 
 # Setting up Clusters in a Hosted Kubernetes Provider
 

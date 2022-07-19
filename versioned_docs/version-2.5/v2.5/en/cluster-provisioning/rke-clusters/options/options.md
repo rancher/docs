@@ -177,7 +177,8 @@ Instead of using the Rancher UI to choose Kubernetes options for the cluster, ad
 
 RKE (Rancher Kubernetes Engine) is the tool that Rancher uses to provision Kubernetes clusters. Rancher's cluster config files used to have the same structure as [RKE config files,]({{<baseurl>}}/rke/latest/en/example-yamls/) but the structure changed so that in Rancher, RKE cluster config items are separated from non-RKE config items. Therefore, configuration for your cluster needs to be nested under the `rancher_kubernetes_engine_config` directive in the cluster config file. Cluster config files created with earlier versions of Rancher will need to be updated for this format. An example cluster config file is included below.
 
-{{% accordion id="v2.3.0-cluster-config-file" label="Example Cluster Config File" %}}
+<details id="v2.3.0-cluster-config-file">
+  <summary>Example Cluster Config File</summary>
 
 ```yaml
 #
@@ -269,7 +270,7 @@ rancher_kubernetes_engine_config: # Your RKE template config goes here.
   ssh_agent_auth: false
 windows_prefered_cluster: false
 ```
-{{% /accordion %}}
+</details>
 
 ### Default DNS provider
 

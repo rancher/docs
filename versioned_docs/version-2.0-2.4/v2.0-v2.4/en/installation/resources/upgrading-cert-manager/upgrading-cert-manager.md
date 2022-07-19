@@ -23,11 +23,11 @@ To address these changes, this guide will do two things:
 
 > 1. Take a one-time snapshot of your Kubernetes cluster running Rancher server
 > 2. Uninstall Rancher, cert-manager, and the CustomResourceDefinition for cert-manager
-> 3. Install the newer version of Rancher and cert-manager 
+> 3. Install the newer version of Rancher and cert-manager
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section. 
+> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section.
 
 # Upgrade Cert-Manager
 
@@ -39,7 +39,8 @@ In order to upgrade cert-manager, follow these instructions:
 
 ### Option A: Upgrade cert-manager with Internet Access
 
-{{% accordion id="normal" label="Click to expand" %}}
+<details id="normal">
+  <summary>Click to expand</summary>
 1. [Back up existing resources](https://cert-manager.io/docs/tutorials/backup/) as a precaution
 
     ```plain
@@ -95,7 +96,7 @@ In order to upgrade cert-manager, follow these instructions:
     helm install \
       cert-manager jetstack/cert-manager \
       --namespace cert-manager \
-      --version v0.12.0 
+      --version v0.12.0
     ```
 
 1. [Restore back up resources](https://cert-manager.io/docs/tutorials/backup/#restoring-resources)
@@ -104,11 +105,12 @@ In order to upgrade cert-manager, follow these instructions:
     kubectl apply -f cert-manager-backup.yaml
     ```
 
-{{% /accordion %}}
+</details>
 
 ### Option B: Upgrade cert-manager in an Air Gap Environment
 
-{{% accordion id="airgap" label="Click to expand" %}}
+<details id="airgap">
+  <summary>Click to expand</summary>
 
 ### Prerequisites
 
@@ -211,9 +213,9 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     kubectl apply -f cert-manager-backup.yaml
     ```
 
-{{% /accordion %}}
+</details>
 
-### Verify the Deployment 
+### Verify the Deployment
 
 Once you’ve installed cert-manager, you can verify it is deployed correctly by checking the kube-system namespace for running pods:
 
