@@ -180,11 +180,11 @@ Enter the values that you copied to your [text file](#tip).
 1.	In the top left corner, click **☰ > Users & Authentication**.
 1. In the left navigation menu, click **Auth Provider**.
 1. Click **AzureAD**.
-1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#5-copy-azure-application-data).
+1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#4-copy-azure-application-data).
 
     >**Important:** When entering your Graph Endpoint, remove the tenant ID from the URL, like below.
     >
-    ><code>http<span>s://g</span>raph.windows.net/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del></code>
+    ><code>http<span>s://g</span>raph.microsoft.com/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del></code>
 
     The following table maps the values you copied in the Azure portal to the fields in Rancher.
 
@@ -194,7 +194,7 @@ Enter the values that you copied to your [text file](#tip).
     | Application ID     | Application ID                        |
     | Application Secret | Key Value                             |
     | Endpoint           | https://login.microsoftonline.com/    |
-    | Graph Endpoint     | Microsoft Azure AD Graph API Endpoint |
+    | Graph Endpoint     | Microsoft Graph API Endpoint          |
     | Token Endpoint     | OAuth 2.0 Token Endpoint              |
     | Auth Endpoint      | OAuth 2.0 Authorization Endpoint      |
 
@@ -202,9 +202,55 @@ Enter the values that you copied to your [text file](#tip).
 
 **Result:** Azure Active Directory authentication is configured.
 
-### Existing User Migration Steps
 
-The steps below will assist you in upgrading Rancher in order to user the new API.
+### Migrating from Azure AD Graph API to Microsoft Graph API
+
+1. Admins must first do the following:
+
+  - Edit the authconfig resources named `azuread` and specify the endpoints as stipulated in the tables below.
+  - Remove the `auth.cattle.io/azuread-endpoint-migrated` annotation.
+
+#### Global:
+   
+Rancher Field    | Deprecated Endpoints               
+-----------------| -------------------------------------------------------------
+Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/authorize
+Endpoint         | https://login.microsoftonline.com/ 
+Graph Endpoint   | https://graph.windows.net/    
+Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/token   
+---
+
+Rancher Field     | New Endpoints
+----------------- | ------------------------------------------------------------------ 
+Auth Endpoint     | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize 
+Endpoint          | https://login.microsoftonline.com/
+Graph Endpoint    | https://graph.microsoft.com
+Token Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/token
+
+#### China:
+
+Rancher Field     | Deprecated Endpoints
+----------------- | ----------------------------------------------------------
+Auth Endpoint     | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize 
+Endpoint          | https://login.chinacloudapi.cn/
+Graph Endpoint    | https://graph.chinacloudapi.cn/
+Token Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/token 
+---
+
+Rancher Field     | New Endpoints  
+----------------- | -------------------------------------------------------------------------
+Auth Endpoint     | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize 
+Endpoint          | https://login.partner.microsoftonline.cn/
+Graph Endpoint    | https://microsoftgraph.chinacloudapi.cn
+Token Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/token 
+
+
+2. Admins must ensure that they are properly specified as Rancher does not make assumptions about Custom endpoints.
+
+3. Azure app owners who want to rotate the Application Secret will need to also rotate it in Rancher as Rancher does not automatically update the Application Secret when it is changed in Azure. To do so in Rancher, note that it is stored in a Kubernetes secret called `azureadconfig-applicationsecret` which is in the `cattle-global-data` namespace.
+
+>**Caution:** If admins upgrade to Rancher v2.6.7 with an existing Azure AD setup and choose to disable the auth provider, they won't be able to restore the previous setup and will need to register anew with the new auth flow. Since there won't be a way to explicitly set up Azure AD using the old flow, Rancher will use the new Graph API and, therefore, users need set up the [proper permissions in the Azure portal](#3-set-required-permissions-for-rancher).
+
 
 {{% /tab %}}
 {{% /tabs %}}
