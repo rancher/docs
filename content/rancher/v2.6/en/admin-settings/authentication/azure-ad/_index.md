@@ -12,13 +12,17 @@ weight: 1115
 >
 > Rancher now uses the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api) as the new flow to set up Azure AD as an external auth provider in Rancher.
 >
-> New users (and existing users who wish to migrate) should refer to the new flow instructions [here](#microsoft-graph-api){:target="_Rancher 2.6.7+ tab"}.
+> New users (and existing users who wish to migrate) should refer to the new flow instructions [here]({{<baseurl>}}/rancher/v2.6/en/admin-settings/authentication/azure-ad/#microsoft-graph-api).
 
 
 {{% /tab %}}
 {{% tab "Rancher 2.6.7+" %}}
 
 ## Microsoft Graph API 
+
+Microsoft Graph API is now the flow through which you will set up Azure AD. The below sections will assist [new users](#new-user-setup) in configuring Azure AD with a new instance as well as assist existing Azure app owners in [migrating to the new flow](#existing-user-migration-steps).
+
+### New User Setup
 
 If you have an instance of Active Directory (AD) hosted in Azure, you can configure Rancher to allow your users to log in using their AD accounts. Configuration of Azure AD external authentication requires you to make configurations in both Azure and Rancher.
 
@@ -29,10 +33,9 @@ If you have an instance of Active Directory (AD) hosted in Azure, you can config
 >- Azure AD integration only supports Service Provider initiated logins.
 >- Most of this procedure takes place from the [Microsoft Azure Portal](https://portal.azure.com/).
 
-## Azure Active Directory Configuration Outline
+#### Azure Active Directory Configuration Outline
 
 Configuring Rancher to allow your users to authenticate with their Azure AD accounts involves multiple procedures. Review the outline below before getting started.
-
 <a id="tip"></a>
 
 >**Tip:** Before you start, we recommend creating an empty text file. You can use this file to copy values from Azure that you'll paste into Rancher later.
@@ -42,13 +45,12 @@ Configuring Rancher to allow your users to authenticate with their Azure AD acco
 - [1. Register Rancher with Azure](#1-register-rancher-with-azure)
 - [2. Create a new client secret](#2-create-a-new-client-secret)
 - [3. Set Required Permissions for Rancher](#3-set-required-permissions-for-rancher)
-- [4. Add a Reply URL](#4-add-a-reply-url)
-- [5. Copy Azure Application Data](#5-copy-azure-application-data)
-- [6. Configure Azure AD in Rancher](#6-configure-azure-ad-in-rancher)
+- [4. Copy Azure Application Data](#5-copy-azure-application-data)
+- [5. Configure Azure AD in Rancher](#6-configure-azure-ad-in-rancher)
 
 <!-- /TOC -->
 
-### 1. Register Rancher with Azure
+#### 1. Register Rancher with Azure
 
 Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
@@ -66,15 +68,17 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
     3.2. From **Supported account types**, select "Accounts in this organizational directory only (AzureADTest only - Single tenant)" This corresponds to the legacy app registration options.
 
-    3.3. In the **Redirect URI** section, make sure **Web** is selected from the dropdown and enter the URL of your Rancher Server in the text box next to the dropdown. This Rancher server URL should be appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
+    >**Important:** In the updated Azure portal, Redirect URIs are synonymous with Reply URLs. In order to use Azure AD with Rancher, you must whitelist Rancher with Azure (previously done through Reply URLs). Therefore, you must ensure to fill in the Redirect URI with your Rancher server URL, to include the verification path as listed below.
+    
+    3.3. In the [**Redirect URI**](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url) section, make sure **Web** is selected from the dropdown and enter the URL of your Rancher Server in the text box next to the dropdown. This Rancher server URL should be appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
 
-        >**Tip:** You can find your personalized Azure reply URL in Rancher on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
+    >**Tip:** You can find your personalized Azure Redirect URI (reply URL) in Rancher on the Azure AD Authentication page (Global View > Authentication > Web).
 
     3.4. Click **Register**.
 
 >**Important to Note:** It can take up to five minutes for this change to take affect, so don't be alarmed if you can't authenticate immediately after Azure AD configuration.
 
-### 2. Create a new client secret
+#### 2. Create a new client secret
 
 From the Azure portal, create a client secret. Rancher will use this key to authenticate with Azure AD.
 
@@ -101,7 +105,7 @@ From the Azure portal, create a client secret. Rancher will use this key to auth
 
     You won't be able to access the key value again within the Azure UI.
 
-### 3. Set Required Permissions for Rancher
+#### 3. Set Required Permissions for Rancher
 
 Next, set API permissions for Rancher within Azure.
 
@@ -111,86 +115,62 @@ Next, set API permissions for Rancher within Azure.
 
 1. Click **Add a permission**.
 
-1. From the **Azure Active Directory Graph**, select the following **Delegated Permissions**:
+1. From the **Microsoft Graph**, select the following **Application Permissions**: 
+    - `Group.Read.All`
+    - `User.Read.All`
 
-    ![Select API Permissions]({{< baseurl >}}/img/rancher/select-required-permissions-2.png)
 
-    <br/>
-    <br/>
-    - **Access the directory as the signed-in user**
-    - **Read directory data**
-    - **Read all groups**
-    - **Read all users' full profiles**
-    - **Read all users' basic profiles**
-    - **Sign in and read user profile**
+    ![Select API Permissions]({{< baseurl >}}/img/rancher/api-permissions.png)
 
-1. Click **Add permissions**.
 
-1. From **API permissions**, click **Grant admin consent**. Then click **Yes**.
+1. Return to **API permissions** in the left nav bar. From there, click **Grant admin consent**. Then click **Yes**.
 
     >**Note:** You must be signed in as an Azure administrator to successfully save your permission settings.
 
 
-### 4. Add a Reply URL
-
-To use Azure AD with Rancher you must whitelist Rancher with Azure. You can complete this whitelisting by providing Azure with a reply URL for Rancher, which is your Rancher Server URL followed with a verification path.
-
-
-1. From the **Setting** blade, select **Reply URLs**.
-
-    ![Azure: Enter Reply URL]({{<baseurl>}}/img/rancher/enter-azure-reply-url.png)
-
-1. From the **Reply URLs** blade, enter the URL of your Rancher Server, appended with the verification path: `<MY_RANCHER_URL>/verify-auth-azure`.
-
-       >**Tip:** You can find your personalized Azure reply URL in Rancher on the Azure AD Authentication page (Global View > Security Authentication > Azure AD).
-
-1. Click **Save**.
-
-**Result:** Your reply URL is saved.
-
->**Note:** It can take up to five minutes for this change to take affect, so don't be alarmed if you can't authenticate immediately after Azure AD configuration.
-
-### 5. Copy Azure Application Data
+#### 4. Copy Azure Application Data
 
 As your final step in Azure, copy the data that you'll use to configure Rancher for Azure AD authentication and paste it into an empty text file.
 
 1. Obtain your Rancher **Tenant ID**.
 
-    1.1. Use search to open the **Azure Active Directory** service.
+    1.1. Use search to open **App registrations**.
 
-         ![Open Azure Active Directory]({{<baseurl>}}/img/rancher/search-azure-ad.png)
+    ![Open App Registrations]({{<baseurl>}}/img/rancher/search-app-registrations.png)
 
-    1.2. From the left navigation pane, open **Overview**.
+    1.2. Find the entry you created for Rancher.
 
     1.3. Copy the **Directory ID** and paste it into your [text file](#tip).
 
-        You'll paste this value into Rancher as your **Tenant ID**.
+    ![Tenant ID]({{<baseurl>}}/img/rancher/tenant-id.png)
+
+    - You'll paste this value into Rancher as your **Tenant ID**.
 
 1. Obtain your Rancher **Application ID**.
 
-    2.1. Use search to open **App registrations**.
-
-         ![Open App Registrations]({{<baseurl>}}/img/rancher/search-app-registrations.png)
+    2.1. Use search to open **App registrations** (if not already there).
 
     2.2. Find the entry you created for Rancher.
 
     2.3. Copy the **Application ID** and paste it to your [text file](#tip).
 
+    ![Application ID]({{<baseurl>}}/img/rancher/application-id.png)
+
 1. Obtain your Rancher **Graph Endpoint**, **Token Endpoint**, and **Auth Endpoint**.
 
     3.1. From **App registrations**, click **Endpoints**.
 
-        ![Click Endpoints]({{<baseurl>}}/img/rancher/click-endpoints.png)
+    ![Click Endpoints]({{<baseurl>}}/img/rancher/endpoints.png)
 
     3.2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
     
-        - **Microsoft Graph API endpoint** (Graph Endpoint)
-        - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
-        - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
+    - **Microsoft Graph API endpoint** (Graph Endpoint)
+    - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
+    - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
         
->**Note:** Copy the v1 version of the endpoints
+>**Note:** Copy the v1 version of the endpoints.
 
-### 6. Configure Azure AD in Rancher
+#### 5. Configure Azure AD in Rancher
 
 From the Rancher UI, enter information about your AD instance hosted in Azure to complete configuration.
 
@@ -222,7 +202,7 @@ Enter the values that you copied to your [text file](#tip).
 
 **Result:** Azure Active Directory authentication is configured.
 
-## Migration of Deprecated Steps
+### Existing User Migration Steps
 
 The steps below will assist you in upgrading Rancher in order to user the new API.
 
