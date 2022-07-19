@@ -68,7 +68,7 @@ When setting up the Rancher Helm template, there are several options in the Helm
 
 | Chart Option            | Chart Value                      | Description   |
 | ----------------------- | -------------------------------- | ---- |
-| `certmanager.version` | "<version>" | Configure proper Rancher TLS issuer depending of running cert-manager version. |
+| `certmanager.version` | `<version>` | Configure proper Rancher TLS issuer depending of running cert-manager version. |
 | `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
 | `useBundledSystemChart` | `true`                           | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. _Available as of v2.3.0_ |
 
@@ -76,7 +76,8 @@ Based on the choice your made in [B. Choose your SSL Configuration](#b-choose-yo
 
 ### Option A: Default Self-Signed Certificate
 
-{{% accordion id="k8s-1" label="Click to expand" %}}
+<details id="k8s-1">
+  <summary>Click to expand</summary>
 
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
@@ -131,11 +132,12 @@ By default, Rancher generates a CA and uses cert-manager to issue the certificat
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
-{{% /accordion %}}
+</details>
 
 ### Option B: Certificates From Files using Kubernetes Secrets
 
-{{% accordion id="k8s-2" label="Click to expand" %}}
+<details id="k8s-2">
+  <summary>Click to expand</summary>
 
 Create Kubernetes secrets from your own certificates for Rancher to use. The common name for the cert will need to match the `hostname` option in the command below, or the ingress controller will fail to provision the site for Rancher.
 
@@ -174,7 +176,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 
 Then refer to [Adding TLS Secrets]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
 
-{{% /accordion %}}
+</details>
 
 # 4. Install Rancher
 
@@ -186,7 +188,8 @@ If you choose to use self-signed certificates in [B. Choose your SSL Configurati
 
 ### For Self-Signed Certificate Installs, Install Cert-manager
 
-{{% accordion id="install-cert-manager" label="Click to expand" %}}
+<details id="install-cert-manager">
+  <summary>Click to expand</summary>
 
 If you are using self-signed certificates, install cert-manager:
 
@@ -208,7 +211,7 @@ kubectl apply -f cert-manager/cert-manager-crd.yaml
 kubectl apply -R -f ./cert-manager
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Install Rancher with kubectl
 
@@ -259,7 +262,8 @@ Choose from the following options:
 
 ### Option A: Default Self-Signed Certificate
 
-{{% accordion id="option-a" label="Click to expand" %}}
+<details id="option-a">
+  <summary>Click to expand</summary>
 
 If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
@@ -278,11 +282,12 @@ docker run -d --restart=unless-stopped \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Option B: Bring Your Own Certificate: Self-Signed
 
-{{% accordion id="option-b" label="Click to expand" %}}
+<details id="option-b">
+  <summary>Click to expand</summary>
 
 In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
 
@@ -316,11 +321,12 @@ docker run -d --restart=unless-stopped \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Option C: Bring Your Own Certificate: Signed by Recognized CA
 
-{{% accordion id="option-c" label="Click to expand" %}}
+<details id="option-c">
+  <summary>Click to expand</summary>
 
 In development or testing environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
@@ -349,7 +355,7 @@ docker run -d --restart=unless-stopped \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-{{% /accordion %}}
+</details>
 
 If you are installing Rancher v2.3.0+, the installation is complete.
 

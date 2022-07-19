@@ -76,7 +76,7 @@ When setting up the Rancher Helm template, there are several options in the Helm
 
 | Chart Option            | Chart Value                      | Description   |
 | ----------------------- | -------------------------------- | ---- |
-| `certmanager.version` | "<version>" | Configure proper Rancher TLS issuer depending of running cert-manager version. |
+| `certmanager.version` | `<version>` | Configure proper Rancher TLS issuer depending of running cert-manager version. |
 | `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
 | `useBundledSystemChart` | `true`                           | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. |
 
@@ -272,7 +272,8 @@ If you choose to use self-signed certificates in [B. Choose your SSL Configurati
 
 ### For Self-Signed Certificate Installs, Install Cert-manager
 
-{{% accordion id="install-cert-manager" label="Click to expand" %}}
+<details id="install-cert-manager">
+  <summary>Click to expand</summary>
 
 If you are using self-signed certificates, install cert-manager:
 
@@ -294,7 +295,7 @@ kubectl apply -f cert-manager/cert-manager-crd.yaml
 kubectl apply -R -f ./cert-manager
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Install Rancher with kubectl
 

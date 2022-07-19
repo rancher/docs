@@ -20,7 +20,8 @@ In this command, `<RANCHER_CONTAINER_NAME>` and `<RANCHER_VERSION>-<DATE>` are e
 
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the procedure below.
 
-<sup>Terminal `docker ps` Command, Displaying Where to Find `<RANCHER_CONTAINER_TAG>` and `<RANCHER_CONTAINER_NAME>`</sup>
+<sup>Terminal <code>docker ps</code> Command, Displaying Where to Find <code>&lt;RANCHER_CONTAINER_TAG&gt;</code> and <code>&lt;RANCHER_CONTAINER_NAME&gt;</code></sup>
+
 ![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref.png)
 
 | Placeholder                | Example                    | Description                                               |
@@ -51,7 +52,7 @@ Using a [backup]({{<baseurl>}}/rancher/v2.6/en/backups/docker-installs/docker-ba
 1. Enter the following command to delete your current state data and replace it with your backup data, replacing the placeholders. Don't forget to close the quotes.
 
     :::danger
-    
+
     This command deletes all current state data from your Rancher Server container. Any changes saved after your backup tarball was created will be lost.
 
     :::

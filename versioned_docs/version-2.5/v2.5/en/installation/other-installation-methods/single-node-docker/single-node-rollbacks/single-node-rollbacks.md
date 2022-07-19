@@ -24,8 +24,7 @@ In this command, `<PRIOR_RANCHER_VERSION>` is the version of Rancher you were ru
 
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the procedure below.
 
-<sup>Terminal `docker ps` Command, Displaying Where to Find `<PRIOR_RANCHER_VERSION>` and `<RANCHER_CONTAINER_NAME>`</sup>
-![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref-2.png)
+<sup>Terminal <code>docker ps</code> Command, Displaying Where to Find <code>&lt;PRIOR_RANCHER_VERSION&gt;</code> and <code>&lt;RANCHER_CONTAINER_NAME&gt;</code></sup>![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref-2.png)
 
 | Placeholder                | Example                    | Description                                             |
 | -------------------------- | -------------------------- | ------------------------------------------------------- |
@@ -81,7 +80,7 @@ If you have issues upgrading Rancher, roll it back to its latest known healthy s
     rancher/rancher:<PRIOR_RANCHER_VERSION>
     ```
     As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.5/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher-v2-5)
-    
+
     >**Note:** _Do not_ stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
 
 1.  Wait a few moments and then open Rancher in a web browser. Confirm that the rollback succeeded and that your data is restored.

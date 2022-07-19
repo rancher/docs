@@ -20,8 +20,7 @@ In this command, `<PRIOR_RANCHER_VERSION>` is the version of Rancher you were ru
 
 Cross reference the image and reference table below to learn how to obtain this placeholder data. Write down or copy this information before starting the procedure below.
 
-<sup>Terminal `docker ps` Command, Displaying Where to Find `<PRIOR_RANCHER_VERSION>` and `<RANCHER_CONTAINER_NAME>`</sup>
-![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref-2.png)
+<sup>Terminal <code>docker ps</code> Command, Displaying Where to Find <code>&lt;PRIOR_RANCHER_VERSION&gt;</code> and <code>&lt;RANCHER_CONTAINER_NAME&gt;</code></sup>![Placeholder Reference]({{<baseurl>}}/img/rancher/placeholder-ref-2.png)
 
 | Placeholder                | Example                    | Description                                             |
 | -------------------------- | -------------------------- | ------------------------------------------------------- |
@@ -81,9 +80,9 @@ Rolling back to a previous version of Rancher destroys any changes made to Ranch
     rancher/rancher:<PRIOR_RANCHER_VERSION>
     ```
     Privileged access is [required.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/#privileged-access-for-rancher)
-    
+
     :::danger
-    
+
     **_Do not_** stop the rollback after initiating it, even if the rollback process seems longer than expected. Stopping the rollback may result in database issues during future upgrades.
 
     :::

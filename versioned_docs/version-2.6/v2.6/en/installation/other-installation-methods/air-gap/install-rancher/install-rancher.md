@@ -9,7 +9,7 @@ This section is about how to deploy Rancher for your air gapped environment in a
 
 When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container for Rancher to use. Because many features of Rancher run as deployments, and privileged mode is required to run containers within containers, you will need to install Rancher with the `--privileged` option.
 
-# Docker Instructions 
+# Docker Instructions
 
 If you want to continue the air gapped installation using Docker commands, skip the rest of this page and follow the instructions on [this page.](./docker-install-commands)
 
@@ -56,8 +56,8 @@ When Rancher is installed on an air gapped Kubernetes cluster, there are two rec
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| Rancher Generated Self-Signed Certificates | `ingress.tls.source=rancher` | Use certificates issued by Rancher's generated CA (self signed)<br> This is the **default** and does not need to be added when rendering the Helm template. | yes                   |
-| Certificates from Files                    | `ingress.tls.source=secret`  | Use your own certificate files by creating Kubernetes Secret(s). <br> This option must be passed when rendering the Rancher Helm template.                  | no                    |
+| Rancher Generated Self-Signed Certificates | `ingress.tls.source=rancher` | Use certificates issued by Rancher's generated CA (self signed)<br/> This is the **default** and does not need to be added when rendering the Helm template. | yes                   |
+| Certificates from Files                    | `ingress.tls.source=secret`  | Use your own certificate files by creating Kubernetes Secret(s). <br/> This option must be passed when rendering the Rancher Helm template.                  | no                    |
 
 # Helm Chart Options for Air Gap Installations
 
@@ -65,7 +65,7 @@ When setting up the Rancher Helm template, there are several options in the Helm
 
 | Chart Option            | Chart Value                      | Description   |
 | ----------------------- | -------------------------------- | ---- |
-| `certmanager.version` | "<version>" | Configure proper Rancher TLS issuer depending of running cert-manager version. |
+| `certmanager.version` | `<version>` | Configure proper Rancher TLS issuer depending of running cert-manager version. |
 | `systemDefaultRegistry` | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Configure Rancher server to always pull from your private registry when provisioning clusters.  |
 | `useBundledSystemChart` | `true`                           | Configure Rancher server to use the packaged copy of Helm system charts. The [system charts](https://github.com/rancher/system-charts) repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS. These [Helm charts](https://github.com/rancher/system-charts) are located in GitHub, but since you are in an air gapped environment, using the charts that are bundled within Rancher is much easier than setting up a Git mirror. |
 
@@ -201,7 +201,8 @@ If you choose to use self-signed certificates in [B. Choose your SSL Configurati
 
 ### For Self-Signed Certificate Installs, Install Cert-manager
 
-{{% accordion id="install-cert-manager" label="Click to expand" %}}
+<details id="install-cert-manager">
+  <summary>Click to expand</summary>
 
 If you are using self-signed certificates, install cert-manager:
 
@@ -223,7 +224,7 @@ kubectl apply -f cert-manager/cert-manager-crd.yaml
 kubectl apply -R -f ./cert-manager
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Install Rancher with kubectl
 

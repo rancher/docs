@@ -42,7 +42,9 @@ See [Advanced Options](#advanced-options) below before continuing.
 
 Choose from the following options:
 
-{{% accordion id="option-a" label="Option A-Bring Your Own Certificate: Self-Signed" %}}
+<details id="option-a">
+  <summary>Option A-Bring Your Own Certificate: Self-Signed</summary>
+
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate.
 
 :::note Prerequisites:
@@ -64,8 +66,10 @@ Create a self-signed certificate.
      rancher/rancher:latest
    ```
 
-{{% /accordion %}}
-{{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Signed by Recognized CA" %}}
+</details>
+<details id="option-b">
+  <summary>Option B-Bring Your Own Certificate: Signed by Recognized CA</summary>
+
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
 :::note Prerequisites:
@@ -86,7 +90,7 @@ If you use a certificate signed by a recognized CA, installing your certificate 
         rancher/rancher:latest --no-cacerts
         ```
 
-    {{% /accordion %}}
+</details>
 
 ## 3. Configure Load Balancer
 
@@ -216,7 +220,7 @@ As of Rancher v2.5, privileged access is [required.]({{<baseurl>}}/rancher/v2.6/
 
 This layer 7 NGINX configuration is tested on NGINX version 1.13 (mainline) and 1.14 (stable).
 
-:::note 
+:::note
 
 This NGINX configuration is only an example and may not suit your environment. For complete documentation, see [NGINX Load Balancing - TCP and UDP Load Balancer](https://docs.nginx.com/nginx/admin-guide/load-balancer/tcp-udp-load-balancer/).
 

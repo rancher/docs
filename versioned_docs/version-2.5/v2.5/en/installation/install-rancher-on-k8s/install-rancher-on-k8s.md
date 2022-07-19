@@ -120,7 +120,8 @@ There are three recommended options for the source of the certificate used for T
 
 This step is only required to use certificates issued by Rancher's generated CA (`ingress.tls.source=rancher`) or to request Let's Encrypt issued certificates (`ingress.tls.source=letsEncrypt`).
 
-{{% accordion id="cert-manager" label="Click to Expand" %}}
+<details id="cert-manager">
+  <summary>Click to Expand</summary>
 
 > **Important:** Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.5/en/installation/options/upgrading-cert-manager/).
 
@@ -154,7 +155,7 @@ cert-manager-cainjector-577f6d9fd7-tr77l   1/1     Running   0          2m
 cert-manager-webhook-787858fcdb-nlzsq      1/1     Running   0          2m
 ```
 
-{{% /accordion %}}
+</details>
 
 ### 5. Install Rancher with Helm and Your Chosen Certificate Option
 

@@ -102,7 +102,8 @@ hostname: rancher.my.org
 
 If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, follow `Option B: Reinstalling Rancher`. Otherwise, follow `Option A: Upgrading Rancher`.
 
-{{% accordion label="Option A: Upgrading Rancher" %}}
+<details>
+  <summary>Option A: Upgrading Rancher</summary>
 
 Upgrade Rancher to the latest version with all your settings.
 
@@ -113,9 +114,10 @@ helm upgrade --install rancher rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org
 ```
-{{% /accordion %}}
+</details>
 
-{{% accordion label="Option B: Reinstalling Rancher chart" %}}
+<details>
+  <summary>Option B: Reinstalling Rancher chart</summary>
 
 If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11.
 
@@ -137,7 +139,7 @@ If you are currently running the cert-manager whose version is older than v0.11,
     --set hostname=rancher.my.org
     ```
 
-{{% /accordion %}}
+</details>
 
 </TabItem>
 <TabItem value="Kubernetes Air Gap Upgrade">
@@ -153,7 +155,8 @@ If you are currently running the cert-manager whose version is older than v0.11,
     `<REGISTRY.YOURDOMAIN.COM:PORT>` | The DNS name for your private registry.
     `<CERTMANAGER_VERSION>` | Cert-manager version running on k8s cluster.
 
-{{% accordion id="self-signed" label="Option A-Default Self-Signed Certificate" %}}
+<details id="self-signed">
+  <summary>Option A-Default Self-Signed Certificate</summary>
 
  ```plain
 helm template ./rancher-<VERSION>.tgz --output-dir . \
@@ -166,8 +169,9 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
  --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
 
-{{% /accordion %}}
-{{% accordion id="secret" label="Option B: Certificates From Files using Kubernetes Secrets" %}}
+</details>
+<details id="secret">
+  <summary>Option B: Certificates From Files using Kubernetes Secrets</summary>
 
 ```plain
 helm template ./rancher-<VERSION>.tgz --output-dir . \
@@ -194,7 +198,7 @@ helm template ./rancher-<VERSION>.tgz --output-dir . \
 --set useBundledSystemChart=true # Available as of v2.3.0, use the packaged Rancher system charts
 ```
 
-{{% /accordion %}}
+</details>
 
 2. Copy the rendered manifest directories to a system with access to the Rancher server cluster and apply the rendered templates.
 

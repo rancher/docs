@@ -32,18 +32,18 @@ ServiceMonitors and PodMonitors declaratively specify targets, such as Services 
 - Certain internal Kubernetes components are scraped via a proxy deployed as part of Monitoring V2 called **PushProx**. The Kubernetes components that expose metrics to Prometheus through PushProx are the following:
 `kube-controller-manager`, `kube-scheduler`, `etcd`, and `kube-proxy`.
 
-- For each PushProx exporter, we deploy one PushProx client onto all target nodes. For example, a PushProx client is deployed onto all controlplane nodes for kube-controller-manager, all etcd nodes for kube-etcd, and all nodes for kubelet. 
-    
+- For each PushProx exporter, we deploy one PushProx client onto all target nodes. For example, a PushProx client is deployed onto all controlplane nodes for kube-controller-manager, all etcd nodes for kube-etcd, and all nodes for kubelet.
+
 - We deploy exactly one PushProx proxy per exporter. The process for exporting metrics is as follows:
 
-1. The PushProx Client establishes an outbound connection with the PushProx Proxy.    
+1. The PushProx Client establishes an outbound connection with the PushProx Proxy.
 1. The client then polls the proxy for scrape requests that have come into the proxy.
 1. When the proxy receives a scrape request from Prometheus, the client sees it as a result of the poll.
 1. The client scrapes the internal component.
 1. The internal component responds by pushing metrics back to the proxy.
-    
 
-<figcaption><br>Process for Exporting Metrics with PushProx:</br></figcaption>
+
+<figcaption><br/>Process for Exporting Metrics with PushProx:<br/></figcaption>
 
 ![Process for Exporting Metrics with PushProx]({{<baseurl>}}/img/rancher/pushprox-process.svg)
 
@@ -126,7 +126,7 @@ The Alertmanager handles alerts sent by client applications such as the Promethe
 ### Alerts Forwarded by alertingDrivers
 
 When alertingDrivers are installed, this creates a `Service` that can be used as the receiver's URL for Teams or SMS, based on the alertingDriver's configuration. The URL in the Receiver points to the alertingDrivers; so the Alertmanager sends alert first to alertingDriver, then alertingDriver forwards or sends alert to the proper destination.
-    
+
 ### Routing Alerts to Receivers
 
 Alertmanager coordinates where alerts are sent. It allows you to group alerts based on labels and fire them based on whether certain labels are matched. One top-level route accepts all alerts. From there, Alertmanager continues routing alerts to receivers based on whether they match the conditions of the next route.

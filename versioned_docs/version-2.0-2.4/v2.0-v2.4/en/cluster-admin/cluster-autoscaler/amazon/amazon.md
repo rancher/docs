@@ -5,7 +5,7 @@ weight: 1
 
 This guide will show you how to install and use [Kubernetes cluster-autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/) on Rancher custom clusters using AWS EC2 Auto Scaling Groups.
 
-We are going to install a Rancher RKE custom cluster with a fixed number of nodes with the etcd and controlplane roles, and a variable nodes with the worker role, managed by `cluster-autoscaler`. 
+We are going to install a Rancher RKE custom cluster with a fixed number of nodes with the etcd and controlplane roles, and a variable nodes with the worker role, managed by `cluster-autoscaler`.
 
 - [Prerequisites](#prerequisites)
 - [1. Create a Custom Cluster](#1-create-a-custom-cluster)
@@ -68,7 +68,7 @@ On AWS EC2, we should create a few objects to configure our system. We've define
       }
       ```
 
-2. Master group: Nodes that will be part of the Kubernetes etcd and/or control planes. This will be out of the ASG. 
+2. Master group: Nodes that will be part of the Kubernetes etcd and/or control planes. This will be out of the ASG.
   * IAM profile: Required by the Kubernetes cloud_provider integration. Optionally, `AWS_ACCESS_KEY` and `AWS_SECRET_KEY` can be used instead [using-aws-credentials.](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/aws/README.md#using-aws-credentials) This profile is called `K8sMasterProfile`.
 
       ```json
@@ -211,7 +211,7 @@ On AWS EC2, we should create a few objects to configure our system. We've define
     * `kubernetes.io/cluster/<clusterID>: owned`
     * `k8s.io/cluster-autoscaler/<clusterName>: true`
     * `k8s.io/cluster-autoscaler/enabled: true`
-  * User data: `K8sWorkerUserData` Ubuntu 18.04(ami-0e11cbb34015ff725), installs docker and add worker node to the k8s cluster 
+  * User data: `K8sWorkerUserData` Ubuntu 18.04(ami-0e11cbb34015ff725), installs docker and add worker node to the k8s cluster
 
       ```sh
       #!/bin/bash -x
@@ -246,7 +246,7 @@ Once we've configured AWS, let's create VMs to bootstrap our cluster:
 * master (etcd+controlplane): Depending your needs, deploy three master instances with proper size. More info is at [the recommendations for production-ready clusters.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/production/)
   * IAM role: `K8sMasterRole`
   * Security group: `K8sMasterSg`
-  * Tags: 
+  * Tags:
     * `kubernetes.io/cluster/<clusterID>: owned`
   * User data: `K8sMasterUserData`
 
@@ -254,7 +254,7 @@ Once we've configured AWS, let's create VMs to bootstrap our cluster:
   * Name: `K8sWorkerAsg`
   * IAM role: `K8sWorkerRole`
   * Security group: `K8sWorkerSg`
-  * Tags: 
+  * Tags:
     * `kubernetes.io/cluster/<clusterID>: owned`
     * `k8s.io/cluster-autoscaler/<clusterName>: true`
     * `k8s.io/cluster-autoscaler/enabled: true`
@@ -268,7 +268,7 @@ Once the VMs are deployed, you should have a Rancher custom cluster up and runni
 
 ### 4. Install Cluster-autoscaler
 
-At this point, we should have rancher cluster up and running. We are going to install cluster-autoscaler on master nodes and `kube-system` namespace, following cluster-autoscaler recommendation. 
+At this point, we should have rancher cluster up and running. We are going to install cluster-autoscaler on master nodes and `kube-system` namespace, following cluster-autoscaler recommendation.
 
 #### Parameters
 
@@ -296,9 +296,9 @@ This table shows cluster-autoscaler parameters for fine tuning:
 |node-deletion-delay-timeout|"2m"|Maximum time CA waits for removing delay-deletion.cluster-autoscaler.kubernetes.io/ annotations before deleting the node|
 |scan-interval|"10s"|How often cluster is reevaluated for scale up or down|
 |max-nodes-total|0|Maximum number of nodes in all node groups. Cluster autoscaler will not grow the cluster beyond this number|
-|cores-total|"0:320000"|Minimum and maximum number of cores in cluster, in the format <min>:<max>. Cluster autoscaler will not scale the cluster beyond these numbers|
-|memory-total|"0:6400000"|Minimum and maximum number of gigabytes of memory in cluster, in the format <min>:<max>. Cluster autoscaler will not scale the cluster beyond these numbers|
-cloud-provider|-|Cloud provider type| 
+|cores-total|"0:320000"|Minimum and maximum number of cores in cluster, in the format `<min>:<max>.` Cluster autoscaler will not scale the cluster beyond these numbers|
+|memory-total|"0:6400000"|Minimum and maximum number of gigabytes of memory in cluster, in the format `<min>:<max>.` Cluster autoscaler will not scale the cluster beyond these numbers|
+cloud-provider|-|Cloud provider type|
 |max-bulk-soft-taint-count|10|Maximum number of nodes that can be tainted/untainted PreferNoSchedule at the same time. Set to 0 to turn off such tainting|
 |max-bulk-soft-taint-time|"3s"|Maximum duration of tainting/untainting nodes as PreferNoSchedule at the same time|
 |max-empty-bulk-delete|10|Maximum number of empty nodes that can be deleted at the same time|
@@ -307,7 +307,7 @@ cloud-provider|-|Cloud provider type|
 |ok-total-unready-count|3|Number of allowed unready nodes, irrespective of max-total-unready-percentage|
 |scale-up-from-zero|true|Should CA scale up when there 0 ready nodes|
 |max-node-provision-time|"15m"|Maximum time CA waits for node to be provisioned|
-|nodes|-|sets min,max size and other configuration data for a node group in a format accepted by cloud provider. Can be used multiple times. Format: <min>:<max>:<other...>|
+|nodes|-|sets min,max size and other configuration data for a node group in a format accepted by cloud provider. Can be used multiple times. Format: `<min>:<max>:<other...>`|
 |node-group-auto-discovery|-|One or more definition(s) of node group auto-discovery. A definition is expressed `<name of discoverer>:[<key>[=<value>]]`|
 |estimator|-|"binpacking"|Type of resource estimator to be used in scale up. Available values: ["binpacking"]|
 |expander|"random"|Type of node group expander to be used in scale up. Available values: `["random","most-pods","least-waste","price","priority"]`|
@@ -520,7 +520,7 @@ kubectl -n kube-system apply -f cluster-autoscaler-deployment.yaml
 
 # Testing
 
-At this point, we should have a cluster-scaler up and running in our Rancher custom cluster. Cluster-scale should manage `K8sWorkerAsg` ASG to scale up and down between 2 and 10 nodes, when one of the following conditions is true: 
+At this point, we should have a cluster-scaler up and running in our Rancher custom cluster. Cluster-scale should manage `K8sWorkerAsg` ASG to scale up and down between 2 and 10 nodes, when one of the following conditions is true:
 
 * There are pods that failed to run in the cluster due to insufficient resources. In this case, the cluster is scaled up.
 * There are nodes in the cluster that have been underutilized for an extended period of time and their pods can be placed on other existing nodes. In this case, the cluster is scaled down.

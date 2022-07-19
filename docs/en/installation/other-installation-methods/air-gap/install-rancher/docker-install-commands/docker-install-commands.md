@@ -3,9 +3,9 @@ title: Docker Install Commands
 weight: 1
 ---
 
-The Docker installation is for Rancher users who want to test out Rancher. 
+The Docker installation is for Rancher users who want to test out Rancher.
 
-Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server. 
+Instead of running on a Kubernetes cluster, you install the Rancher server component on a single node using a `docker run` command. Since there is only one node and a single Docker container, if the node goes down, there is no copy of the etcd data available on other nodes and you will lose all the data of your Rancher server.
 
 The backup application can be used to migrate the Rancher server from a Docker install to a Kubernetes install using [these steps.]({{<baseurl>}}/rancher/v2.6/en/backups/migrating-rancher)
 
@@ -27,7 +27,8 @@ Choose from the following options:
 
 ### Option A: Default Self-Signed Certificate
 
-{{% accordion id="option-a" label="Click to expand" %}}
+<details id="option-a">
+  <summary>Click to expand</summary>
 
 If you are installing Rancher in a development or testing environment where identity verification isn't a concern, install Rancher using the self-signed certificate that it generates. This installation option omits the hassle of generating a certificate yourself.
 
@@ -49,11 +50,12 @@ docker run -d --restart=unless-stopped \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Option B: Bring Your Own Certificate: Self-Signed
 
-{{% accordion id="option-b" label="Click to expand" %}}
+<details id="option-b">
+  <summary>Click to expand</summary>
 
 In development or testing environments where your team will access your Rancher server, create a self-signed certificate for use with your install so that your team can verify they're connecting to your instance of Rancher.
 
@@ -91,11 +93,12 @@ docker run -d --restart=unless-stopped \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-{{% /accordion %}}
+</details>
 
 ### Option C: Bring Your Own Certificate: Signed by Recognized CA
 
-{{% accordion id="option-c" label="Click to expand" %}}
+<details id="option-c">
+  <summary>Click to expand</summary>
 
 In development or testing environments where you're exposing an app publicly, use a certificate signed by a recognized CA so that your user base doesn't encounter security warnings.
 
@@ -135,7 +138,7 @@ docker run -d --restart=unless-stopped \
     <REGISTRY.YOURDOMAIN.COM:PORT>/rancher/rancher:<RANCHER_VERSION_TAG>
 ```
 
-{{% /accordion %}}
+</details>
 
 
 

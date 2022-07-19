@@ -165,14 +165,21 @@ You can change the cluster or project role(s) that are automatically assigned to
 1. Find the custom or individual role that you want to use as default. Then edit the role by selecting **&#8942; > Edit**.
 
 1. Enable the role as default.
-{{% accordion id="cluster" label="For Clusters" %}}
+
+<details id="cluster">
+  <summary>For Clusters</summary>
+
 1. From **Cluster Creator Default**, choose **Yes: Default role for new cluster creation**.
 1. Click **Save**.
-{{% /accordion %}}
-{{% accordion id="project" label="For Projects" %}}
+
+</details>
+<details id="project">
+
+  <summary>For Projects</summary>
 1. From **Project Creator Default**, choose **Yes: Default role for new project creation**.
 1. Click **Save**.
-{{% /accordion %}}
+
+</details>
 
 1. If you want to remove a default role, edit the permission and select **No** from the default roles option.
 

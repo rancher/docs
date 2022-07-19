@@ -42,7 +42,8 @@ Rancher can be installed on any Kubernetes cluster. For Rancher installs on a K3
 
 ### Ports for Rancher Server Nodes on K3s
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The K3s server needs port 6443 to be accessible by the nodes.
 
@@ -73,11 +74,12 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Rancher Server Nodes on RKE
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 Typically Rancher is installed on three RKE nodes that all have the etcd, control plane and worker roles.
 
@@ -118,11 +120,12 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 | TCP | Provider dependent | Port of the Kubernetes API endpoint in hosted cluster | Kubernetes API |
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Rancher Server Nodes on RKE2
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The RKE2 server needs port 6443 and 9345 to be accessible by other nodes in the cluster.
 
@@ -148,11 +151,13 @@ If you wish to utilize the metrics server, you will need to open port 10250 on e
 | HTTPS | 8443 | <ul><li>hosted/registered Kubernetes</li><li>any source that needs to be able to use the Rancher UI or API</li></ul> | Rancher agent, Rancher UI/API, kubectl. Not needed if you have LB doing TLS termination. |
 
 Typically all outbound traffic is allowed.
-{{% /accordion %}}
+
+</details>
 
 ### Ports for Rancher Server in Docker
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following tables break down the port requirements for Rancher nodes, for inbound and outbound traffic:
 
@@ -172,7 +177,7 @@ The following tables break down the port requirements for Rancher nodes, for inb
 | TCP | 2376 | Any node IP from a node created using a node driver | Docker daemon TLS port used by Docker Machine |
 | TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
 
-{{% /accordion %}}
+</details>
 
 # Downstream Kubernetes Cluster Nodes
 
@@ -192,7 +197,8 @@ The following diagram depicts the ports that are opened for each [cluster type](
 
 ### Ports for Rancher Launched Kubernetes Clusters using Node Pools
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/node-pools/).
 
@@ -201,39 +207,42 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 {{< ports-iaas-nodes >}}
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Rancher Launched Kubernetes Clusters using Custom Nodes
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/) with [Custom Nodes]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/rke-clusters/custom-nodes/).
 
 {{< ports-custom-nodes >}}
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Hosted Kubernetes Clusters
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [hosted clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/hosted-kubernetes-clusters).
 
 {{< ports-imported-hosted >}}
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Registered Clusters
 
 Note: Registered clusters were called imported clusters before Rancher v2.5.
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [registered clusters]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/registered-clusters/).
 
 {{< ports-imported-hosted >}}
 
-{{% /accordion %}}
+</details>
 
 
 # Other Port Considerations
@@ -242,7 +251,7 @@ The following table depicts the port requirements for [registered clusters]({{<b
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
-{{% include file="/rancher/v2.6/en/installation/requirements/ports/common-ports-table" %}}
+{{% include file="/rancher/v2.6/en/installation/requirements/ports/common-ports-table</summary>
 
 ----
 

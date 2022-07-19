@@ -35,7 +35,8 @@ The port requirements differ based on the Rancher server architecture.
 
 ### Ports for Rancher Server Nodes on K3s
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The K3s server needs port 6443 to be accessible by the nodes.
 
@@ -66,11 +67,12 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP      | 2376 | Any node IP from a node created using Node driver        | Docker daemon TLS port used by Docker Machine |
 | TCP      | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Rancher Server Nodes on RKE
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 Typically Rancher is installed on three RKE nodes that all have the etcd, control plane and worker roles.
 
@@ -110,11 +112,12 @@ The following tables break down the port requirements for inbound and outbound t
 | TCP | 6443 | Hosted/Imported Kubernetes API                           | Kubernetes API server                         |
 | TCP | Provider dependent | Port of the Kubernetes API endpoint in hosted cluster | Kubernetes API |
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Rancher Server in Docker
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following tables break down the port requirements for Rancher nodes, for inbound and outbound traffic:
 
@@ -134,7 +137,7 @@ The following tables break down the port requirements for Rancher nodes, for inb
 | TCP | 2376 | Any node IP from a node created using a node driver | Docker daemon TLS port used by Docker Machine |
 | TCP | 6443 | Hosted/Imported Kubernetes API | Kubernetes API server |
 
-{{% /accordion %}}
+</details>
 
 # Downstream Kubernetes Cluster Nodes
 
@@ -154,7 +157,8 @@ The following diagram depicts the ports that are opened for each [cluster type](
 
 ### Ports for Rancher Launched Kubernetes Clusters using Node Pools
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/) with nodes created in an [Infrastructure Provider]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/).
 
@@ -163,38 +167,41 @@ The following table depicts the port requirements for [Rancher Launched Kubernet
 
 {{< ports-iaas-nodes >}}
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Rancher Launched Kubernetes Clusters using Custom Nodes
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [Rancher Launched Kubernetes]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/) with [Custom Nodes]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/custom-nodes/).
 
 {{< ports-custom-nodes >}}
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Hosted Kubernetes Clusters
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [hosted clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters).
 
 {{< ports-imported-hosted >}}
 
-{{% /accordion %}}
+</details>
 
 ### Ports for Imported Clusters
 
 
-{{% accordion label="Click to expand" %}}
+<details>
+  <summary>Click to expand</summary>
 
 The following table depicts the port requirements for [imported clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/imported-clusters/).
 
 {{< ports-imported-hosted >}}
 
-{{% /accordion %}}
+</details>
 
 
 # Other Port Considerations
@@ -203,7 +210,7 @@ The following table depicts the port requirements for [imported clusters]({{<bas
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
-{{% include file="/rancher/v2.0-v2.4/en/installation/requirements/ports/common-ports-table" %}}
+{{% include file="/rancher/v2.0-v2.4/en/installation/requirements/ports/common-ports-table</summary>
 
 ----
 

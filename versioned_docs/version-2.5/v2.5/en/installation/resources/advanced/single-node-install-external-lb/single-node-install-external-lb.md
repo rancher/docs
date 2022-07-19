@@ -49,7 +49,9 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 Choose from the following options:
 
-{{% accordion id="option-a" label="Option A-Bring Your Own Certificate: Self-Signed" %}}
+<details id="option-a">
+  <summary>Option A-Bring Your Own Certificate: Self-Signed</summary>
+
 If you elect to use a self-signed certificate to encrypt communication, you must install the certificate on your load balancer (which you'll do later) and your Rancher container. Run the Docker command to deploy Rancher, pointing it toward your certificate.
 
 > **Prerequisites:**
@@ -68,8 +70,10 @@ If you elect to use a self-signed certificate to encrypt communication, you must
      rancher/rancher:latest
    ```
 
-{{% /accordion %}}
-{{% accordion id="option-b" label="Option B-Bring Your Own Certificate: Signed by Recognized CA" %}}
+</details>
+<details id="option-b">
+  <summary>Option B-Bring Your Own Certificate: Signed by Recognized CA</summary>
+
 If your cluster is public facing, it's best to use a certificate signed by a recognized CA.
 
 > **Prerequisites:**
@@ -88,7 +92,7 @@ If you use a certificate signed by a recognized CA, installing your certificate 
         rancher/rancher:latest --no-cacerts
         ```
 
-    {{% /accordion %}}
+</details>
 
 ## 3. Configure Load Balancer
 
