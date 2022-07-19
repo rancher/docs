@@ -39,7 +39,7 @@ module.exports = {
           className: 'navbar__docs',
         },
         {
-          href: 'https://github.com/kubewarden/',
+          href: 'https://github.com/rancher/',
           label: 'GitHub',
           position: 'right',
           className: 'navbar__github btn btn-secondary icon-github',
@@ -67,7 +67,7 @@ module.exports = {
           /* other docs plugin options */
           sidebarPath: require.resolve('./sidebars.js'),
           showLastUpdateTime: true,
-          editUrl: 'https://github.com/kubewarden/docs/edit/main/',
+          editUrl: 'https://github.com/rancher/docs/edit/master/',
           lastVersion: 'current',
           versions: {
             current: {
@@ -83,5 +83,5 @@ module.exports = {
         },
       },
     ],
-  ], 
+  ],
 };
