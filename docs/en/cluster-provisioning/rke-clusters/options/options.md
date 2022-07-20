@@ -3,4 +3,4 @@ title: RKE Cluster Configuration
 weight: 2300
 ---
 
-This page has moved [here.]({{<baseurl>}}/rancher/v2.6/en/cluster-admin/editing-clusters/rke-config-reference)
+This page has moved [here.](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md)
