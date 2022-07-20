@@ -270,3 +270,7 @@ a.btn.navbar__github::before {
 .cardContainer {
   padding: 2px 16px;
 }
+.hero__title {
+  font-size: 2.5rem;
+  color: black;
+}

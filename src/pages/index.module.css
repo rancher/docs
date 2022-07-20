@@ -7,16 +7,18 @@
   padding-top: 4rem;
   text-align: center;
   background-image: url("/static/img/landingpage/head.svg");
-    /* background-repeat: no-repeat; */
+    background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
   color: black;
+  width: 100vw;
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
   }
+    
 }
 
 .buttons {
