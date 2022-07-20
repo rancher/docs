@@ -15,7 +15,6 @@ weight: 1115
 > New users (and existing users who wish to migrate) should refer to the new flow instructions on the <a href="https://rancher.com/docs/rancher/v2.6/en/admin-settings/authentication/azure-ad/#microsoft-graph-api/" target="_blank">Rancher v2.6.7+</a> tab.
 
 
-
 {{% /tab %}}
 {{% tab "Rancher v2.6.7+" %}}
 
@@ -207,21 +206,45 @@ Enter the values that you copied to your [text file](#tip).
 
 ### Migrating from Azure AD Graph API to Microsoft Graph API
 
-1. Admins must be aware of the endpoint update process in Rancher:
+Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview) was deprecated in June 2022 and will be retired at the end of 2022, users should update their Azure AD App to use the new [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api) in Rancher.
 
-  - Edit the authconfig resources named `azuread` and specify the endpoints as stipulated in the [tables](#global) below.
+#### Updating Endpoints in the Rancher UI
 
-  - Remove the `auth.cattle.io/azuread-endpoint-migrated` annotation.
+1. Log into Rancher.
 
-  - Before agreeing to commit to the endpoint update, admins should ensure that their Azure app has a new set of permissions as the old permissions would no longer be needed.
+1. In the Rancher UI homepage, make note of the banner at the top of screen that advises users to update their Azure AD authentication. Click on the link provided to do so.
 
-  - Admins must ensure that they are properly specified as Rancher does not make assumptions about Custom endpoints.
+    ![Rancher UI Banner]({{<baseurl>}}/img/rancher/rancher-ui-azure-update.png)
+
+1. When you receive the popup message, click **Update**. 
+
+    ![Azure Update Popup]({{<baseurl>}}/img/rancher/azure-update-popup.png)
+
+1. To complete the move to the new Microsoft Graph API, click **Update Endpoint**.
+
+    **Note:** Ensure that your Azure app has a [new set of permissions](#3-set-required-permissions-for-rancher) before agreeing to commit to the endpoint update, as the old permissions would no longer be needed.
+
+    ![Update Endpoint]({{<baseurl>}}/img/rancher/rancher-button-to-update.png)
+
+1. Refer to the [tables](#global) below for the full list of endpoint changes that Rancher performs. Admins do not need to do this manually.
+
+#### Air-Gapped Environments
+
+In air-gapped environments, admins should ensure that their endpoints are [whitelisted](#3.2) since the Graph Endpoint URL is changing.
+
+#### Reverting the Migration
+
+If you need to roll back your migration, please note the following:
+
+1. Admins must edit the authconfig resources named `azuread` and specify the endpoints according to the [tables](#global) below. 
+
+1. Admins must also remove the `auth.cattle.io/azuread-endpoint-migrated` annotation.
+
+    >**Note:** Ensure that Custom endpoints are properly specified as Rancher does not make assumptions about them.
 
 1. Azure app owners who want to rotate the Application Secret will need to also rotate it in Rancher as Rancher does not automatically update the Application Secret when it is changed in Azure. In Rancher, note that it is stored in a Kubernetes secret called `azureadconfig-applicationsecret` which is in the `cattle-global-data` namespace.
 
-1. If admins upgrade to Rancher v2.6.7 with an existing Azure AD setup and choose to disable the auth provider, they won't be able to restore the previous setup and also will not be able to set up Azure AD anew using the old flow. Admins will then need to register again with the new auth flow. Rancher now uses the new Graph API and, therefore, users need set up the [proper permissions in the Azure portal](#3-set-required-permissions-for-rancher).
-
-1. In air-gapped environments, admins should ensure that their endpoints are [whitelisted](#3.2) since the Graph Endpoint URL is changing.
+1. **Caution:** If admins upgrade to Rancher v2.6.7 with an existing Azure AD setup and choose to disable the auth provider, they won't be able to restore the previous setup and also will not be able to set up Azure AD anew using the old flow. Admins will then need to register again with the new auth flow. Rancher now uses the new Graph API and, therefore, users need set up the [proper permissions in the Azure portal](#3-set-required-permissions-for-rancher).
 
 #### Global:
    
