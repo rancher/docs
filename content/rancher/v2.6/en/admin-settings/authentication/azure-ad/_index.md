@@ -83,7 +83,7 @@ Before enabling Azure AD within Rancher, you must register Rancher with Azure.
 
     3.4. Click **Register**.
 
->**Important to Note:** It can take up to five minutes for this change to take affect, so don't be alarmed if you can't authenticate immediately after Azure AD configuration.
+>**Important:** It can take up to five minutes for this change to take affect, so don't be alarmed if you can't authenticate immediately after Azure AD configuration.
 
 #### 2. Create a new client secret
 
