@@ -31,16 +31,16 @@ Now you have a highly available control plane. Any successfully clustered server
 kubectl get nodes
 ```
 
-<details>
-    <summary>
-        <b>Output</b>
-    </summary>
+{{% accordion label="Output" %}} 
+
 ```bash
 NAME        STATUS   ROLES                       AGE   VERSION
 server1     Ready    control-plane,etcd,master   28m   vX.Y.Z
 server2     Ready    control-plane,etcd,master   13m   vX.Y.Z
 ```
-</details>
+
+{{% /accordion %}} 
+
 
 
 There are a few config flags that must be the same in all server nodes:         
