@@ -163,19 +163,21 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     ![Application ID]({{<baseurl>}}/img/rancher/application-id.png)
 
-1. Obtain your Rancher **Graph Endpoint**, **Token Endpoint**, and **Auth Endpoint**.
-
-    3.1. From **App registrations**, click **Endpoints**.
-
-    ![Click Endpoints]({{<baseurl>}}/img/rancher/endpoints.png)
-
-    3.2. Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values).
+1. Your endpoint options will typically be [Standard](#global) and [China](#china). With these options, you need only enter the **Tenant ID**, **Application ID**, and **Application Secret** (Rancher will take care of the rest). 
     
-    - **Microsoft Graph API endpoint** (Graph Endpoint)
-    - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
-    - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
+
+    >**For Custom Endpoints:** You will need to also manually enter the Graph, Token, and Auth Endpoints. 
+    >
+    >- From <b>App registrations</b>, click <b>Endpoints</b>:
+    >
+    >![Click Endpoints]({{<baseurl>}}/img/rancher/endpoints.png)
+    >
+    >- Copy the following endpoints to your clipboard and paste them into your [text file](#tip) (these values will be your Rancher endpoint values). Make sure to copy the v1 version of the endpoints.
+    >
+    >   - **Microsoft Graph API endpoint** (Graph Endpoint)
+    >   - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
+    >   - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
         
->**Note:** Copy the v1 version of the endpoints.
 
 #### 5. Configure Azure AD in Rancher
 
@@ -188,12 +190,11 @@ Enter the values that you copied to your [text file](#tip).
 1. In the left navigation menu, click **Auth Provider**.
 1. Click **AzureAD**.
 1. Complete the **Configure Azure AD Account** form using the information you copied while completing [Copy Azure Application Data](#4-copy-azure-application-data).
+<br/>
+<br/>
 
-    >**Important:** When entering your Graph Endpoint, remove the tenant ID from the URL, like below.
-    >
-    ><code>http<span>s://g</span>raph.microsoft.com/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del></code>
 
-    The following table maps the values you copied in the Azure portal to the fields in Rancher.
+    The following table maps the values you copied in the Azure portal to the fields in Rancher:
 
     | Rancher Field      | Azure Value                           |
     | ------------------ | ------------------------------------- |
@@ -201,9 +202,11 @@ Enter the values that you copied to your [text file](#tip).
     | Application ID     | Application ID                        |
     | Application Secret | Key Value                             |
     | Endpoint           | https://login.microsoftonline.com/    |
-    | Graph Endpoint     | Microsoft Graph API Endpoint          |
-    | Token Endpoint     | OAuth 2.0 Token Endpoint              |
-    | Auth Endpoint      | OAuth 2.0 Authorization Endpoint      |
+    
+
+    >**For Custom Endpoints:** When entering the Graph Endpoint in a custom config, remove the tenant ID from the URL, like below:
+    >
+    ><code>http<span>s://g</span>raph.microsoft.com/<del>abb5adde-bee8-4821-8b03-e63efdc7701c</del></code>
 
 1. Click **Enable**.
 
