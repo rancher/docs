@@ -168,7 +168,11 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 ![Standard Endpoint Options]({{<baseurl>}}/img/rancher/tenant-application-id-secret.png)
     
 
-    >**For Custom Endpoints:** You will need to also manually enter the Graph, Token, and Auth Endpoints. 
+    >**For Custom Endpoints:** 
+    >
+    >**Warning:** Custom Endpoints are not supported nor fully tested by Rancher.
+    >
+    > You will need to also manually enter the Graph, Token, and Auth Endpoints. 
     >
     >- From <b>App registrations</b>, click <b>Endpoints</b>:
     >
@@ -254,6 +258,8 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 In air-gapped environments, admins should ensure that their endpoints are [whitelisted](#3.2) since the Graph Endpoint URL is changing.
 
 #### Reverting the Migration
+
+**Warning:** Reverting this migration is not recommended and should only be attempted in extenuating circumstances. Directions must be followed exactly to avoid service interruptions.
 
 If you need to roll back your migration, please note the following:
 
