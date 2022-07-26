@@ -5,7 +5,7 @@ weight: 120
 
 For Rancher versions that have `rancher-webhook` installed, certain versions created certificates that will expire after one year. It will be necessary for you to rotate your webhook certificate if the certificate did not renew. 
 
-New and existing rancher-webhook deployments will automatically renew its TLS certificate when it is 30 or fewer days within expiration date. If an older version is in use, there are two methods to work around this issue:
+In Rancher v2.6.3 and up, rancher-webhook deployments will automatically renew their TLS certificate when it is within 30 or fewer days of its expiration date. If you are using v2.6.2 or below, there are two methods to work around this issue:
 
 ##### 1. Users with cluster access, run the following commands:
 ```
