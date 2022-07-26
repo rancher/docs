@@ -163,7 +163,9 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     ![Application ID]({{<baseurl>}}/img/rancher/application-id.png)
 
-1. Your endpoint options will typically be [Standard](#global) and [China](#china). With these options, you need only enter the **Tenant ID**, **Application ID**, and **Application Secret** (Rancher will take care of the rest). 
+1. Your endpoint options will typically be [Standard](#global) and [China](#china). With these options, you need only enter the **Tenant ID**, **Application ID**, and **Application Secret** (Rancher will take care of the rest).
+
+![Standard Endpoint Options]({{<baseurl>}}/img/rancher/tenant-application-id-secret.png)
     
 
     >**For Custom Endpoints:** You will need to also manually enter the Graph, Token, and Auth Endpoints. 
