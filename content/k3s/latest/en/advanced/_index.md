@@ -283,6 +283,11 @@ sudo reboot
 
 Standard Raspberry Pi OS installations do not start with `cgroups` enabled. **K3S** needs `cgroups` to start the systemd service. `cgroups`can be enabled by appending `cgroup_memory=1 cgroup_enable=memory` to `/boot/cmdline.txt`.
 
+### Example of /boot/cmdline.txt
+```
+console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait cgroup_memory=1 cgroup_enable=memory
+```
+
 # Enabling vxlan on Ubuntu 21.10+ on Raspberry Pi
 
 Starting with Ubuntu 21.10, vxlan support on Raspberry Pi has been moved into a seperate kernel module. 
@@ -324,12 +329,6 @@ Alternatively the `docker run` command can also be used:
       -e K3S_URL=${SERVER_URL} \
       -e K3S_TOKEN=${NODE_TOKEN} \
       --privileged rancher/k3s:vX.Y.Z
-
-
-### example of /boot/cmdline.txt
-```
-console=serial0,115200 console=tty1 root=PARTUUID=58b06195-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait cgroup_memory=1 cgroup_enable=memory
-```
 
 # SELinux Support
 
