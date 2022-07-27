@@ -259,7 +259,7 @@ In air-gapped environments, admins should ensure that their endpoints are [white
 
 #### Reverting the Migration
 
-**Warning:** Reverting this migration is not recommended and should only be attempted in extenuating circumstances. Directions must be followed exactly to avoid service interruptions.
+>**Warning:** Reverting this migration is not recommended and should only be attempted in extenuating circumstances. Directions must be followed exactly to avoid service interruptions.
 
 If you need to roll back your migration, please note the following:
 
