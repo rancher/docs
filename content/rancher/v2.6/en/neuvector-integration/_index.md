@@ -109,7 +109,7 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 - NeuVector components Controller and Enforcer are deployable if PSP is set to true.
 
 
-**Applicable to Rancher v2.6.5 and v2.6.6 only:**
+**Applicable to NeuVector chart version 100.0.0+up2.2.0:**
 
 - For Manager, Scanner, and Updater components, additional configuration is required as shown below:
 
@@ -130,7 +130,7 @@ To enable SELinux on RKE2 clusters, follow the steps below:
 - NeuVector components Controller and Enforcer are deployable if PSP is set to true.
 
 
-**Applicable to Rancher v2.6.5 and v2.6.6 only:**
+**Applicable to NeuVector chart version 100.0.0+up2.2.0:**
 
 - For Manager, Scanner, and Updater components, additional configuration is required as shown below:
 
