@@ -3,7 +3,6 @@ title: Security
 weight: 20
 aliases:
   - /rancher/v2.x/en/security/rancher-2.5/
-  - /rancher/v2.x/en/security/
 ---
 
 <table width="100%">
@@ -14,7 +13,7 @@ aliases:
 </td>
 <td width="30%" style="border: none;">
 <h4>Reporting process</h4>
-<p style="padding: 8px">Please submit possible security issues by emailing <a href="mailto:security@rancher.com">security@rancher.com</a></p>
+<p style="padding: 8px">Please submit possible security issues by emailing <a href="mailto:security-rancher@suse.com">security-rancher@suse.com</a> .</p>
 </td>
 <td width="30%" style="border: none;">
 <h4>Announcements</h4>
@@ -25,23 +24,23 @@ aliases:
 
 Security is at the heart of all Rancher features. From integrating with all the popular authentication tools and services, to an enterprise grade [RBAC capability,]({{<baseurl>}}/rancher/v2.5/en/admin-settings/rbac) Rancher makes your Kubernetes clusters even more secure.
 
-On this page, we provide security-related documentation along with resources to help you secure your Rancher installation and your downstream Kubernetes clusters:
+On this page, we provide security related documentation along with resources to help you secure your Rancher installation and your downstream Kubernetes clusters:
 
 - [Running a CIS security scan on a Kubernetes cluster](#running-a-cis-security-scan-on-a-kubernetes-cluster)
 - [SELinux RPM](#selinux-rpm)
 - [Guide to hardening Rancher installations](#rancher-hardening-guide)
 - [The CIS Benchmark and self-assessment](#the-cis-benchmark-and-self-assessment)
 - [Third-party penetration test reports](#third-party-penetration-test-reports)
-- [Rancher CVEs and resolutions](#rancher-cves-and-resolutions)
+- [Rancher Security Advisories and CVEs](#rancher-security-advisories-and-cves)
 - [Kubernetes Security Best Practices](#kubernetes-security-best-practices)
 
 ### Running a CIS Security Scan on a Kubernetes Cluster
 
-Rancher leverages [kube-bench](https://github.com/aquasecurity/kube-bench) to run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS (Center for Internet Security) Kubernetes Benchmark.
+Rancher leverages [kube-bench](https://github.com/aquasecurity/kube-bench) to run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the [CIS](https://www.cisecurity.org/cis-benchmarks/) (Center for Internet Security) Kubernetes Benchmark.
 
 The CIS Kubernetes Benchmark is a reference document that can be used to establish a secure configuration baseline for Kubernetes.
 
-The Center for Internet Security (CIS) is a 501(c\)(3) non-profit organization, formed in October 2000, with a mission to "identify, develop, validate, promote, and sustain best practice solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace."
+The Center for Internet Security (CIS) is a 501(c\)(3) non-profit organization, formed in October 2000, with a mission to "identify, develop, validate, promote, and sustain best practice solutions for cyber defense and build and lead communities to enable an environment of trust in cyberspace".
 
 CIS Benchmarks are best practices for the secure configuration of a target system. CIS Benchmarks are developed through the generous volunteer efforts of subject matter experts, technology vendors, public and private community members, and the CIS Benchmark Development team.
 
@@ -49,13 +48,13 @@ The Benchmark provides recommendations of two types: Automated and Manual. We ru
 
 When Rancher runs a CIS security scan on a cluster, it generates a report showing the results of each test, including a summary with the number of passed, skipped and failed tests. The report also includes remediation steps for any failed tests.
 
-For details, refer to the section on [security scans.]({{<baseurl>}}/rancher/v2.5/en/cis-scans)
+For details, refer to the section on [security scans]({{<baseurl>}}/rancher/v2.5/en/cis-scans).
 
 ### SELinux RPM
 
 [Security-Enhanced Linux (SELinux)](https://en.wikipedia.org/wiki/Security-Enhanced_Linux) is a security enhancement to Linux. After being historically used by government agencies, SELinux is now industry standard and is enabled by default on CentOS 7 and 8.
 
-We provide two RPMs (Red Hat packages) that enable Rancher products to function properly on SELinux-enforcing hosts: `rancher-selinux` and `rke2-selinux`. For details, see [this page.]({{<baseurl>}}/rancher/v2.5/en/security/selinux)
+We provide two RPMs (Red Hat packages) that enable Rancher products to function properly on SELinux-enforcing hosts: `rancher-selinux` and `rke2-selinux`. For details, see [this page]({{<baseurl>}}/rancher/v2.5/en/security/selinux).
 
 ### Rancher Hardening Guide
 
@@ -81,13 +80,13 @@ Rancher periodically hires third parties to perform security audits and penetrat
 
 Results:
 
-- [Cure53 Pen Test - 7/2019](https://releases.rancher.com/documents/security/pen-tests/2019/RAN-01-cure53-report.final.pdf)
-- [Untamed Theory Pen Test- 3/2019](https://releases.rancher.com/documents/security/pen-tests/2019/UntamedTheory-Rancher_SecurityAssessment-20190712_v5.pdf)
+- [Cure53 Pen Test - July 2019](https://releases.rancher.com/documents/security/pen-tests/2019/RAN-01-cure53-report.final.pdf)
+- [Untamed Theory Pen Test - March 2019](https://releases.rancher.com/documents/security/pen-tests/2019/UntamedTheory-Rancher_SecurityAssessment-20190712_v5.pdf)
 
-### Rancher CVEs and Resolutions
+### Rancher Security Advisories and CVEs
 
 Rancher is committed to informing the community of security issues in our products. For the list of CVEs (Common Vulnerabilities and Exposures) for issues we have resolved, refer to [this page.](./cve)
 
 ### Kubernetes Security Best Practices
 
-For recommendations on securing your Kubernetes cluster, refer to the [Best Practices](./best-practices) guide.
+For recommendations on securing your Kubernetes cluster, refer to the [Kubernetes Security Best Practices](./best-practices) guide.

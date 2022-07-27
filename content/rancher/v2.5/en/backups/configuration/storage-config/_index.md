@@ -57,59 +57,6 @@ It is highly recommended to use a Persistent Volume with a reclaim policy of "Re
 
 # Example values.yaml for the rancher-backup Helm Chart
 
-
-This values.yaml file can be used to configure `rancher-backup` operator when the Helm CLI is used to install it.
+The documented `values.yaml` file that can be used to configure `rancher-backup` operator when the Helm CLI is used can be found in the [backup-restore-operator repository.](https://github.com/rancher/backup-restore-operator/blob/release/v1.0/charts/rancher-backup/values.yaml)
 
 For more information about `values.yaml` files and configuring Helm charts during installation, refer to the [Helm documentation.](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing)
-
-```yaml
-image:
-  repository: rancher/rancher-backup
-  tag: v0.0.1-rc10
-
-## Default s3 bucket for storing all backup files created by the rancher-backup operator
-s3:
-  enabled: false
-  ## credentialSecretName if set, should be the name of the Secret containing AWS credentials.
-  ## To use IAM Role, don't set this field
-  credentialSecretName: creds 
-  credentialSecretNamespace: ""
-  region: us-west-2
-  bucketName: rancherbackups
-  folder: base folder
-  endpoint: s3.us-west-2.amazonaws.com
-  endpointCA: base64 encoded CA cert
-  # insecureTLSSkipVerify: optional
-
-## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
-## If persistence is enabled, operator will create a PVC with mountPath /var/lib/backups
-persistence: 
-  enabled: false
-
-  ## If defined, storageClassName: <storageClass>
-  ## If set to "-", storageClassName: "", which disables dynamic provisioning
-  ## If undefined (the default) or set to null, no storageClassName spec is
-  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-  ##   GKE, AWS & OpenStack). 
-  ## Refer to https://kubernetes.io/docs/concepts/storage/persistent-volumes/#class-1
-  ##
-  storageClass: "-"
-
-  ## If you want to disable dynamic provisioning by setting storageClass to "-" above, 
-  ## and want to target a particular PV, provide name of the target volume 
-  volumeName: ""
-
-  ## Only certain StorageClasses allow resizing PVs; Refer to https://kubernetes.io/blog/2018/07/12/resizing-persistent-volumes-using-kubernetes/
-  size: 2Gi
-
-
-global:
-  cattle:
-    systemDefaultRegistry: ""
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-```

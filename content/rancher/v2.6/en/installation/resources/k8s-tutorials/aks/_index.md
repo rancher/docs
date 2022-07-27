@@ -1,7 +1,7 @@
 ---
 title: Installing Rancher on Azure Kubernetes Service
 shortTitle: AKS
-weight: 4
+weight: 3
 ---
 
 This page covers how to install Rancher on Microsoft's Azure Kubernetes Service (AKS).
@@ -47,11 +47,13 @@ az group create --name rancher-rg --location eastus
 
 To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
+**Note:** If the version of Kubernetes is updated to v1.22 or later, the version of ingress-nginx would also need to be [updated](https://kubernetes.github.io/ingress-nginx/#faq-migration-to-apiversion-networkingk8siov1).
+
 ```
 az aks create \
   --resource-group rancher-rg \
   --name rancher-server \
-  --kubernetes-version 1.20.7 \
+  --kubernetes-version <VERSION> \
   --node-count 3 \
   --node-vm-size Standard_D2_v3
 ```

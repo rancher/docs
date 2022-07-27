@@ -14,6 +14,13 @@ You can enable monitoring with or without SSL.
 - Make sure that you are allowing traffic on port 9796 for each of your nodes because Prometheus will scrape metrics from here.
 - Make sure your cluster fulfills the resource requirements. The cluster should have at least 1950Mi memory available, 2700m CPU, and 50Gi storage. A breakdown of the resource limits and requests is [here.]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration/helm-chart-options/#configuring-resource-limits-and-requests)
 - When installing monitoring on an RKE cluster using RancherOS or Flatcar Linux nodes, change the etcd node certificate directory to `/opt/rke/etc/kubernetes/ssl`.
+- For clusters provisioned with the RKE CLI and the address is set to a hostname instead of an IP address, set `rkeEtcd.clients.useLocalhost` to `true` during the Values configuration step of the installation. The YAML snippet will look like the following:
+
+```yaml
+rkeEtcd:
+  clients:
+    useLocalhost: true
+```
 
 > **Note:** If you want to set up Alertmanager, Grafana or Ingress, it has to be done with the settings on the Helm chart deployment. It's problematic to create Ingress outside the deployment.
 
@@ -48,7 +55,7 @@ For more information about the default limits, see [this page.]({{<baseurl>}}/ra
 1. Check the box for **Customize Helm options before install** and click **Next**.
 1. Click **Alerting**.
 1. In the **Additional Secrets** field, add the secrets created earlier.
- 
+
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
 When [creating a receiver,]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/configuration/advanced/alertmanager/#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.

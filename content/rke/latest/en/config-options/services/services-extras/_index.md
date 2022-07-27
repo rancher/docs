@@ -3,7 +3,7 @@ title: Extra Args, Extra Binds, and Extra Environment Variables
 weight: 231
 ---
 
-RKE supports additional service arguments, volume binds and environment variables.
+RKE supports additional service arguments, volume binds, and environment variables.
 
 ### Extra Args
 
@@ -25,6 +25,14 @@ services:
       extra_args:
         cluster-name: "mycluster"
 ```
+
+#### Lack of Additional Logic in Additional Arguments
+
+- RKE will add additional arguments to the Kubernetes cluster components **without** any additional logic. 
+
+- Because no additional logic is added when `extra_args` are added to services, users **must** perform any additional steps necessary manually to ensure these changes are compatible with RKE.
+
+- **Example:** Kubelet `cpu-manager-policy` arguments require the removal of the `cpu_manager_state` file if they are changed. This action is not performed automatically by RKE and thus will require manual user intervention to remove the file from the cluster nodes. See the [upstream documentation](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#changing-the-cpu-manager-policy) for more information on this topic. 
 
 ### Extra Binds
 

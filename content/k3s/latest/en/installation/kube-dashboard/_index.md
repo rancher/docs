@@ -52,6 +52,12 @@ sudo k3s kubectl create -f dashboard.admin-user.yml -f dashboard.admin-user-role
 
 ### Obtain the Bearer Token
 
+_On v1.24+_
+```bash
+sudo k3s kubectl -n kubernetes-dashboard create token admin-user
+```
+
+_On v1.23 and older_
 ```bash
 sudo k3s kubectl -n kubernetes-dashboard describe secret admin-user-token | grep '^token'
 ```

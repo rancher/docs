@@ -96,6 +96,49 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 \* Minimum 1GB of memory total required for Controller, Manager, and Scanner containers combined.
 
 
+### Hardened Cluster Support - Calico and Canal
+
+{{% tabs %}}
+{{% tab "RKE1" %}}
+
+- All NeuVector components are deployable if PSP is set to true.
+
+{{% /tab %}}
+{{% tab "RKE2" %}}
+
+- NeuVector components Controller and Enforcer are deployable if PSP is set to true.
+
+- For Manager, Scanner, and Updater components, additional configuration is required as shown below:
+
+```
+kubectl patch deploy neuvector-manager-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}' 
+kubectl patch deploy neuvector-scanner-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}'
+kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '{"spec":{"jobTemplate":{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}}}'
+```
+
+{{% /tab %}}
+{{% /tabs %}}
+
+
+### SELinux-enabled Cluster Support - Calico and Canal
+
+To enable SELinux on RKE2 clusters, follow the steps below:
+
+- NeuVector components Controller and Enforcer are deployable if PSP is set to true.
+
+- For Manager, Scanner, and Updater components, additional configuration is required as shown below:
+
+```
+kubectl patch deploy neuvector-manager-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}'
+kubectl patch deploy neuvector-scanner-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}'
+kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '{"spec":{"jobTemplate":{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}}}'
+```
+
+### Cluster Support in an Air-Gapped Environment
+
+- All NeuVector components are deployable on a cluster in an air-gapped environment without any additional configuration needed.
+
+
 ### Support Limitations
 
 * Only admins and cluster owners are currently supported.
@@ -104,11 +147,6 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 
 * NeuVector is not supported on a Windows cluster.
 
-* NeuVector installation is not supported on hardened clusters.
-
-* NeuVector installation is not supported on SELinux clusters.
-
-* NeuVector installation is not supported on clusters in an air-gapped environment.
 
 ### Other Limitations
 

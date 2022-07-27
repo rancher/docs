@@ -13,7 +13,7 @@ See [kubectl Installation](https://kubernetes.io/docs/tasks/tools/install-kubect
 
 When you create a Kubernetes cluster with RKE, RKE creates a `kube_config_cluster.yml` in the local directory that contains credentials to connect to your new cluster with tools like `kubectl` or `helm`.
 
-You can copy this file to `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_cluster.yml`.
+You can copy this file as `$HOME/.kube/config` or if you are working with multiple Kubernetes clusters, set the `KUBECONFIG` environmental variable to the path of `kube_config_cluster.yml`.
 
 ```
 export KUBECONFIG=$(pwd)/kube_config_cluster.yml

@@ -24,7 +24,7 @@ The following steps will quickly deploy a Rancher server on Azure in a single-no
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the Azure folder containing the terraform files by executing `cd quickstart/azure`.
+2. Go into the Azure folder containing the terraform files by executing `cd quickstart/rancher/azure`.
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
@@ -36,7 +36,7 @@ The following steps will quickly deploy a Rancher server on Azure in a single-no
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
-See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Azure Quickstart Readme](https://github.com/rancher/quickstart/tree/master/azure) for more information.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Azure Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/azure) for more information.
 Suggestions include:
     - `azure_location` - Microsoft Azure region, choose the closest instead of the default (`East US`)
     - `prefix` - Prefix for all created resources
@@ -59,7 +59,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/azure`.
+9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/azure`.
 
 #### Result
 
@@ -71,6 +71,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/azure` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/rancher/azure` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.
