@@ -17,7 +17,7 @@ This section is about how to deploy Rancher for your air gapped environment in a
 
 When the Rancher server is deployed in the Docker container, a local Kubernetes cluster is installed within the container for Rancher to use. Because many features of Rancher run as deployments, and privileged mode is required to run containers within containers, you will need to install Rancher with the `--privileged` option.
 
-# Docker Instructions 
+# Docker Instructions
 
 If you want to continue the air gapped installation using Docker commands, skip the rest of this page and follow the instructions on [this page.](./docker-install-commands)
 
@@ -100,7 +100,7 @@ helm repo update
 
 ### 2. Fetch the cert-manager chart
 
-Fetch the latest cert-manager chart available from the [Helm chart repository](https://hub.helm.sh/charts/jetstack/cert-manager).
+Fetch the latest cert-manager chart available from the [Helm chart repository](https://artifacthub.io/packages/helm/cert-manager/cert-manager).
 
 ```plain
 helm fetch jetstack/cert-manager --version v1.5.1
@@ -123,7 +123,7 @@ helm template cert-manager ./cert-manager-v1.5.1.tgz --output-dir . \
 
 Download the required CRD file for cert-manager:
    ```plain
-   curl -L -o cert-manager/cert-manager-crd.yaml https://github.com/jetstack/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
+   curl -L -o cert-manager/cert-manager-crd.yaml https://github.com/cert-manager/cert-manager/releases/download/v1.5.1/cert-manager.crds.yaml
    ```
 
 ### 5. Render the Rancher template

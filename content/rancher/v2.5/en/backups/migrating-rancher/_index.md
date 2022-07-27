@@ -45,7 +45,7 @@ kind: Secret
 metadata:
   name: s3-creds
 type: Opaque
-stringData:
+data:
   accessKey: <Enter your base64-encoded access key>
   secretKey: <Enter your base64-encoded secret key>
 ```

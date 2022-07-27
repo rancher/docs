@@ -2,7 +2,7 @@
 title: Upgrades
 weight: 2
 ---
-The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.
+The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air-gapped installs with Helm.
 
 For the instructions to upgrade Rancher installed with Docker, refer to [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/single-node-docker/single-node-upgrades)
 
@@ -35,9 +35,9 @@ The upgrade instructions assume you are using Helm 3.
 
 For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) The [Helm 2 upgrade page here]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/helm2)provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
-### For air gap installs: Populate private registry
+### For air-gapped installs: Populate private registry
 
-For [air gap installs only,]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version. Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
+For [air-gapped installs only,]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap) collect and populate images for the new Rancher server version. Follow the guide to [populate your private registry]({{<baseurl>}}/rancher/v2.6/en/installation/other-installation-methods/air-gap/populate-private-registry/) with the images for the Rancher version that you want to upgrade to.
 
 ### For upgrades from a Rancher server with a hidden local cluster
 
@@ -102,9 +102,9 @@ You'll use the backup as a restore point if something goes wrong during upgrade.
 
 # 3. Upgrade Rancher
 
-This section describes how to upgrade normal (Internet-connected) or air gap installations of Rancher with Helm.
+This section describes how to upgrade normal (Internet-connected) or air-gapped installations of Rancher with Helm.
 
-> **Air Gap Instructions:** If you are installing Rancher in an air gapped environment, skip the rest of this page and render the Helm template by following the instructions on [this page.](./air-gap-upgrade)
+> **Air Gap Instructions:** If you are installing Rancher in an air-gapped environment, skip the rest of this page and render the Helm template by following the instructions on [this page.](./air-gap-upgrade)
 
 
 Get the values, which were passed with `--set`, from the current Rancher Helm chart that is installed.
@@ -117,11 +117,9 @@ hostname: rancher.my.org
 
 > **Note:** There will be more values that are listed with this command. This is just an example of one of the values.
 
-If you are also upgrading cert-manager to the latest version from a version older than 0.11.0, follow [Option B: Reinstalling Rancher and cert-manager.](#option-b-reinstalling-rancher-and-cert-manager)
+If you are upgrading cert-manager to the latest version from v1.5 or below, follow the [cert-manager upgrade docs]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager/#option-c-upgrade-cert-manager-from-versions-1-5-and-below) to learn how to upgrade cert-manager without needing to perform an uninstall or reinstall of Rancher. Otherwise, follow the [steps to upgrade Rancher](#steps-to-upgrade-rancher) below.
 
-Otherwise, follow [Option A: Upgrading Rancher.](#option-a-upgrading-rancher)
-
-### Option A: Upgrading Rancher
+### Steps to Upgrade Rancher
 
 Upgrade Rancher to the latest version with all your settings.
 
@@ -145,32 +143,6 @@ helm upgrade rancher rancher-<CHART_REPO>/rancher \
   -f values.yaml \
   --version=2.4.5
 ```
-
-### Option B: Reinstalling Rancher and cert-manager
-
-If you are currently running the cert-manager whose version is 1.5 or below, and want to upgrade both Rancher and cert-manager to a new version (1.6+ in the case of cert-manager), then you need to re-install both Rancher and cert-manager due to the API change in cert-manager 1.6. This will also be necessary if you are upgrading from a version of cert manager below 0.11 to a version of cert-manager above 0.11.
-
->**Important:** 
->
->- New in v2.6.4, cert-manager versions 1.6.2 and 1.7.1 are compatible. We recommend v1.7.x because v 1.6.x will reach end-of-life on March 30, 2022.
->
->- Note that if you are below version 1.5 and want to go to 1.7, you should first upgrade to 1.6 as an intermediate step. Follow the cert-manager docs [here](https://cert-manager.io/docs/installation/upgrading/upgrading-1.5-1.6/) to do a 1.5 to 1.6 upgrade, and [here](https://cert-manager.io/docs/installation/upgrading/upgrading-1.6-1.7/) to then do a 1.6 to 1.7 upgrade. For more details on upgrading cert-manager, refer to our [documentation]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager).
-
-1. Uninstall Rancher
-
-    ```
-    helm delete rancher -n cattle-system
-    ```
-
-2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager]({{<baseurl>}}/rancher/v2.6/en/installation/resources/upgrading-cert-manager) page.
-
-3. Reinstall Rancher to the latest version with all your settings. Take all the values from the step 1 and append them to the command using `--set key=value`. Note: There will be many more options from the step 1 that need to be appended.
-
-    ```
-    helm install rancher rancher-<CHART_REPO>/rancher \
-    --namespace cattle-system \
-    --set hostname=rancher.my.org
-    ```
 
 # 4. Verify the Upgrade
 

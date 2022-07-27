@@ -1,7 +1,7 @@
 ---
 title: Installing Rancher on a Google Kubernetes Engine Cluster
 shortTitle: GKE
-weight: 5
+weight: 3
 ---
 
 In this section, you'll learn how to install Rancher using Google Kubernetes Engine.
@@ -119,8 +119,10 @@ Replace `cluster-name` with the name of your new cluster.
 
 When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
+**Note:** If the version of Kubernetes is updated to v1.22 or later, the version of ingress-nginx would also need to be [updated](https://kubernetes.github.io/ingress-nginx/#faq-migration-to-apiversion-networkingk8siov1).
+
 ```
-gcloud container clusters create cluster-name --num-nodes=3 --cluster-version=1.20.8-gke.900
+gcloud container clusters create cluster-name --num-nodes=3 --cluster-version=<VERSION>
 ```
 
 # 6. Get Authentication Credentials

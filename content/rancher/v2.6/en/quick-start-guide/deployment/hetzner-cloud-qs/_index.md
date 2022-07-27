@@ -21,7 +21,7 @@ The following steps will quickly deploy a Rancher server on Hetzner Cloud in a s
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the Hetzner folder containing the terraform files by executing `cd quickstart/hcloud`.
+2. Go into the Hetzner folder containing the terraform files by executing `cd quickstart/rancher/hcloud`.
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
@@ -30,7 +30,7 @@ The following steps will quickly deploy a Rancher server on Hetzner Cloud in a s
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
-See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Hetzner Quickstart Readme](https://github.com/rancher/quickstart/tree/master/hcloud) for more information.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [Hetzner Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/hcloud) for more information.
 Suggestions include:
     - `prefix` - Prefix for all created resources
     - `instance_type` - Instance type, minimum required is `cx21`
@@ -51,7 +51,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/hcloud`.
+9. ssh to the Rancher Server using the `id_rsa` key generated in `quickstart/rancher/hcloud`.
 
 #### Result
 
@@ -63,6 +63,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/hcloud` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/rancher/hcloud` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.

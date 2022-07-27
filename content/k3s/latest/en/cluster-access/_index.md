@@ -22,4 +22,4 @@ helm --kubeconfig /etc/rancher/k3s/k3s.yaml ls --all-namespaces
 
 ### Accessing the Cluster from Outside with kubectl
 
-Copy `/etc/rancher/k3s/k3s.yaml` on your machine located outside the cluster as `~/.kube/config`. Then replace "localhost" with the IP or name of your K3s server. `kubectl` can now manage your K3s cluster.
+Copy `/etc/rancher/k3s/k3s.yaml` on your machine located outside the cluster as `~/.kube/config`. Then replace the value of the `server` field with the IP or name of your K3s server. `kubectl` can now manage your K3s cluster.

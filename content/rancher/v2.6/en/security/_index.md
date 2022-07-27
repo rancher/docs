@@ -1,6 +1,8 @@
 ---
 title: Security
 weight: 20
+aliases:
+  - /rancher/v2.x/en/security/
 ---
 
 <table width="100%">
@@ -86,7 +88,7 @@ Rancher periodically hires third parties to perform security audits and penetrat
 Results:
 
 - [Cure53 Pen Test - July 2019](https://releases.rancher.com/documents/security/pen-tests/2019/RAN-01-cure53-report.final.pdf)
-- [Untamed Theory Pen Test- March 2019](https://releases.rancher.com/documents/security/pen-tests/2019/UntamedTheory-Rancher_SecurityAssessment-20190712_v5.pdf)
+- [Untamed Theory Pen Test - March 2019](https://releases.rancher.com/documents/security/pen-tests/2019/UntamedTheory-Rancher_SecurityAssessment-20190712_v5.pdf)
 
 ### Rancher Security Advisories and CVEs
 

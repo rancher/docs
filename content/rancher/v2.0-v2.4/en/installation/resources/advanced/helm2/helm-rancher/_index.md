@@ -47,14 +47,14 @@ There are three recommended options for the source of the certificate.
 
 > Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.12.0, please see our [upgrade documentation]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/upgrading-cert-manager/).
 
-Rancher relies on [cert-manager](https://github.com/jetstack/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
+Rancher relies on [cert-manager](https://github.com/cert-manager/cert-manager) to issue certificates from Rancher's own generated CA or to request Let's Encrypt certificates.
 
 These instructions are adapted from the [official cert-manager documentation](https://docs.cert-manager.io/en/latest/getting-started/install/kubernetes.html#installing-with-helm).
 
 
 1. Install the CustomResourceDefinition resources separately
     ```plain
-    kubectl apply -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
+    kubectl apply -f https://raw.githubusercontent.com/cert-manager/cert-manager/release-0.9/deploy/manifests/00-crds.yaml
     ```
 
 1. Create the namespace for cert-manager
@@ -108,7 +108,7 @@ If the ‘webhook’ pod (2nd line) is in a ContainerCreating state, it may stil
 The default is for Rancher to generate a CA and uses `cert-manager` to issue the certificate for access to the Rancher server interface. Because `rancher` is the default option for `ingress.tls.source`, we are not specifying `ingress.tls.source` when running the `helm install` command.
 
 - Set the `hostname` to the DNS name you pointed at your load balancer.
-- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
@@ -137,7 +137,7 @@ In the following command,
 - Set `ingress.tls.source` to `letsEncrypt`.
 - Set `letsEncrypt.email` to the email address used for communication about your certificate (for example, expiry notices).
 - Set `letsEncrypt.ingress.class` to whatever your ingress controller is, e.g., `traefik`, `nginx`, `haproxy`, etc.
-- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
 
 ```
 helm install rancher-<CHART_REPO>/rancher \
@@ -145,7 +145,7 @@ helm install rancher-<CHART_REPO>/rancher \
   --namespace cattle-system \
   --set hostname=rancher.my.org \
   --set ingress.tls.source=letsEncrypt \
-  --set letsEncrypt.email=me@example.org \ 
+  --set letsEncrypt.email=me@example.org \
   --set letsEncrypt.ingress.class=nginx
 ```
 
@@ -165,7 +165,7 @@ Create Kubernetes secrets from your own certificates for Rancher to use.
 > **Note:** The `Common Name` or a `Subject Alternative Names` entry in the server certificate must match the `hostname` option, or the ingress controller will fail to configure correctly. Although an entry in the `Subject Alternative Names` is technically required, having a matching `Common Name` maximizes compatibility with older browsers/applications. If you want to check if your certificates are correct, see [How do I check Common Name and Subject Alternative Names in my server certificate?]({{<baseurl>}}/rancher/v2.0-v2.4/en/faq/technical/#how-do-i-check-common-name-and-subject-alternative-names-in-my-server-certificate)
 
 - Set `hostname` and set `ingress.tls.source` to `secret`.
-- If you are installing an alpha version, Helm requires adding the `--devel` option to the command. 
+- If you are installing an alpha version, Helm requires adding the `--devel` option to the command.
 
 ```
 helm install rancher-<CHART_REPO>/rancher \

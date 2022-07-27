@@ -14,14 +14,31 @@ The following steps will quickly deploy a Rancher server on AWS in a single-node
 
 - [Amazon AWS Account](https://aws.amazon.com/account/): An Amazon AWS Account is required to create resources for deploying Rancher and Kubernetes.
 - [Amazon AWS Access Key](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html): Use this link to follow a tutorial to create an Amazon AWS Access Key if you don't have one yet.
+- [IAM Policy created](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-start): Defines the permissions an account attached with this policy has.
 - Install [Terraform](https://www.terraform.io/downloads.html): Used to provision the server and cluster in Amazon AWS.
 
+### Example IAM Policy
+
+The AWS module just creates an EC2 KeyPair, an EC2 SecurityGroup and an EC2 instance. A simple policy would be:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "ec2:*",
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## Getting Started
 
 1. Clone [Rancher Quickstart](https://github.com/rancher/quickstart) to a folder using `git clone https://github.com/rancher/quickstart`.
 
-2. Go into the AWS folder containing the terraform files by executing `cd quickstart/aws`.
+2. Go into the AWS folder containing the terraform files by executing `cd quickstart/rancher/aws`.
 
 3. Rename the `terraform.tfvars.example` file to `terraform.tfvars`.
 
@@ -31,7 +48,7 @@ The following steps will quickly deploy a Rancher server on AWS in a single-node
     - `rancher_server_admin_password` - Admin password for created Rancher server
 
 5. **Optional:** Modify optional variables within `terraform.tfvars`.
-See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [AWS Quickstart Readme](https://github.com/rancher/quickstart/tree/master/aws) for more information.
+See the [Quickstart Readme](https://github.com/rancher/quickstart) and the [AWS Quickstart Readme](https://github.com/rancher/quickstart/tree/master/rancher/aws) for more information.
 Suggestions include:
     - `aws_region` - Amazon AWS region, choose the closest instead of the default (`us-east-1`)
     - `prefix` - Prefix for all created resources
@@ -53,7 +70,7 @@ Suggestions include:
     ```
 
 8. Paste the `rancher_server_url` from the output above into the browser. Log in when prompted (default username is `admin`, use the password set in `rancher_server_admin_password`).
-9. ssh to the Rancher server using the `id_rsa` key generated in `quickstart/aws`.
+9. ssh to the Rancher server using the `id_rsa` key generated in `quickstart/rancher/aws`.
 
 #### Result
 
@@ -65,6 +82,6 @@ Use Rancher to create a deployment. For more information, see [Creating Deployme
 
 ## Destroying the Environment
 
-1. From the `quickstart/aws` folder, execute `terraform destroy --auto-approve`.
+1. From the `quickstart/rancher/aws` folder, execute `terraform destroy --auto-approve`.
 
 2. Wait for confirmation that all resources have been destroyed.
