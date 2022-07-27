@@ -119,3 +119,15 @@ There are many valid ways to set up the DNS. For help, refer to the [Azure DNS d
 Next, install the Rancher Helm chart by following the instructions on [this page.]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart) The Helm instructions are the same for installing Rancher on any Kubernetes distribution.
 
 Use that DNS name from the previous step as the Rancher server URL when you install Rancher. It can be passed in as a Helm option. For example, if the DNS name is `rancher.my.org`, you could run the Helm installation command with the option `--set hostname=rancher.my.org`.
+<br/>
+<br/>
+
+**_New in v2.6.7_**
+
+When installing Rancher on top of this setup, you will also need to pass the value below into the Rancher helm install command in order to set the name of the ingress controller to be used with Rancher's ingress resource:
+
+```
+--set ingress.ingressClassName=nginx
+```
+
+Refer [here for your cert options]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/#5-install-rancher-with-helm-and-your-chosen-certificate-option).
