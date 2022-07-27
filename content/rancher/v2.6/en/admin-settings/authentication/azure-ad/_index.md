@@ -272,36 +272,36 @@ If you need to roll back your migration, please note the following:
 #### Global:
    
 Rancher Field    | Deprecated Endpoints               
------------------| -------------------------------------------------------------
+---------------- | -------------------------------------------------------------
 Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/authorize
 Endpoint         | https://login.microsoftonline.com/ 
 Graph Endpoint   | https://graph.windows.net/    
 Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/token   
 ---
 
-Rancher Field     | New Endpoints
------------------ | ------------------------------------------------------------------ 
-Auth Endpoint     | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize 
-Endpoint          | https://login.microsoftonline.com/
-Graph Endpoint    | https://graph.microsoft.com
-Token Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/token
+Rancher Field    | New Endpoints
+---------------- | ------------------------------------------------------------------ 
+Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize 
+Endpoint         | https://login.microsoftonline.com/
+Graph Endpoint   | https://graph.microsoft.com
+Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/token
 
 #### China:
 
-Rancher Field     | Deprecated Endpoints
------------------ | ----------------------------------------------------------
-Auth Endpoint     | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize 
-Endpoint          | https://login.chinacloudapi.cn/
-Graph Endpoint    | https://graph.chinacloudapi.cn/
-Token Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/token 
+Rancher Field    | Deprecated Endpoints
+---------------- | ----------------------------------------------------------
+Auth Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize 
+Endpoint         | https://login.chinacloudapi.cn/
+Graph Endpoint   | https://graph.chinacloudapi.cn/
+Token Endpoint   | https://login.chinacloudapi.cn/{tenantID}/oauth2/token 
 ---
 
-Rancher Field     | New Endpoints  
------------------ | -------------------------------------------------------------------------
-Auth Endpoint     | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize 
-Endpoint          | https://login.partner.microsoftonline.cn/
-Graph Endpoint    | https://microsoftgraph.chinacloudapi.cn
-Token Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/token 
+Rancher Field    | New Endpoints  
+---------------- | -------------------------------------------------------------------------
+Auth Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize 
+Endpoint         | https://login.partner.microsoftonline.cn/
+Graph Endpoint   | https://microsoftgraph.chinacloudapi.cn
+Token Endpoint   | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/token 
 
 
 {{% /tab %}}
