@@ -128,7 +128,7 @@ helm upgrade --install \
   ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx \
   --set controller.service.type=LoadBalancer \
-  --version 3.12.0 \
+  --version 4.0.18 \
   --create-namespace
 ```
 
