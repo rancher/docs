@@ -235,6 +235,8 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
 #### Updating Endpoints in the Rancher UI
 
+>**Important:** Admins should create a [backup]({{<baseurl>}}/rancher/v2.6/en/backups/back-up-rancher/) right before they commit to the endpoint migration in Step 4 below.
+
 1. Log into Rancher.
 
 1. In the Rancher UI homepage, make note of the banner at the top of screen that advises users to update their Azure AD authentication. Click on the link provided to do so.
@@ -257,17 +259,11 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
 In air-gapped environments, admins should ensure that their endpoints are [whitelisted](#3.2) since the Graph Endpoint URL is changing.
 
-#### Reverting the Migration
-
->**Warning:** Reverting this migration is not recommended and should only be attempted in extenuating circumstances. Directions must be followed exactly to avoid service interruptions.
+#### Rolling Back the Migration
 
 If you need to roll back your migration, please note the following:
 
-1. Admins must edit the authconfig resources named `azuread` and specify the endpoints according to the [tables](#global) below. 
-
-1. Admins must also remove the `auth.cattle.io/azuread-endpoint-migrated` annotation.
-
-    >**Note:** Ensure that Custom endpoints are properly specified as Rancher does not make assumptions about them.
+1. Admins are encouraged to use the proper restore process if they want to go back. Please see [backup docs]({{<baseurl>}}/rancher/v2.6/en/backups/back-up-rancher/), [restore docs]({{<baseurl>}}/rancher/v2.6/en/backups/restoring-rancher/), and [examples]({{<baseurl>}}/rancher/v2.6/en/backups/examples/) for reference.
 
 1. Azure app owners who want to rotate the Application Secret will need to also rotate it in Rancher as Rancher does not automatically update the Application Secret when it is changed in Azure. In Rancher, note that it is stored in a Kubernetes secret called `azureadconfig-applicationsecret` which is in the `cattle-global-data` namespace.
 
