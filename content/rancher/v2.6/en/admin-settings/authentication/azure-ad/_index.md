@@ -243,15 +243,15 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
     ![Rancher UI Banner]({{<baseurl>}}/img/rancher/rancher-ui-azure-update.png)
 
-1. When you receive the popup message, click **Update**. 
-
-    ![Azure Update Popup]({{<baseurl>}}/img/rancher/azure-update-popup.png)
-
 1. To complete the move to the new Microsoft Graph API, click **Update Endpoint**.
 
     **Note:** Ensure that your Azure app has a [new set of permissions](#3-set-required-permissions-for-rancher) before agreeing to commit to the endpoint update, as the old permissions would no longer be needed.
 
     ![Update Endpoint]({{<baseurl>}}/img/rancher/rancher-button-to-update.png)
+
+1. When you receive the pop-up warning message, click **Update**. 
+
+    ![Azure Update Pop-up]({{<baseurl>}}/img/rancher/azure-update-popup.png)
 
 1. Refer to the [tables](#global) below for the full list of endpoint changes that Rancher performs. Admins do not need to do this manually.
 

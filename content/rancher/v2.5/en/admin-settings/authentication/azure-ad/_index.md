@@ -163,9 +163,12 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     ![Application ID]({{<baseurl>}}/img/rancher/application-id.png)
 
-1. Your endpoint options will typically be [Standard](#global) and [China](#china). With these options, you need only enter the **Tenant ID**, **Application ID**, and **Application Secret** (Rancher will take care of the rest).
+1. Your endpoint options will typically be [Standard](#global) and [China](#china). With the Standard option, perform the steps below and Rancher will take care of the rest.
 
-![Standard Endpoint Options]({{<baseurl>}}/img/rancher/tenant-application-id-secret.png)
+    - Enter the **Tenant ID**, **Application ID**, and **Application Secret**
+    - Click **Enable**
+
+![Standard Endpoint Options]({{<baseurl>}}/img/rancher/tenant-application-id-secret2.png)
     
 
 >**For Custom Endpoints:** 
@@ -243,15 +246,15 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
     ![Rancher UI Banner]({{<baseurl>}}/img/rancher/rancher-ui-azure-update.png)
 
-1. When you receive the popup message, click **Update**. 
-
-    ![Azure Update Popup]({{<baseurl>}}/img/rancher/azure-update-popup.png)
-
-1. To complete the move to the new Microsoft Graph API, click **Update Endpoint**.
+1. To complete the move to the new Microsoft Graph API, click **Update Endpoint**, then click **Save**.
 
     **Note:** Ensure that your Azure app has a [new set of permissions](#3-set-required-permissions-for-rancher) before agreeing to commit to the endpoint update, as the old permissions would no longer be needed.
 
-    ![Update Endpoint]({{<baseurl>}}/img/rancher/rancher-button-to-update.png)
+    ![Update Endpoint]({{<baseurl>}}/img/rancher/rancher-button-to-update2.png)
+
+1. When you receive the pop-up warning message, click **Update**. 
+
+    ![Azure Update Pop-up]({{<baseurl>}}/img/rancher/azure-update-popup2.png)
 
 1. Refer to the [tables](#global) below for the full list of endpoint changes that Rancher performs. Admins do not need to do this manually.
 
@@ -272,36 +275,36 @@ If you need to roll back your migration, please note the following:
 #### Global:
    
 Rancher Field    | Deprecated Endpoints               
------------------| -------------------------------------------------------------
+---------------- | -------------------------------------------------------------
 Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/authorize
 Endpoint         | https://login.microsoftonline.com/ 
 Graph Endpoint   | https://graph.windows.net/    
 Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/token   
 ---
 
-Rancher Field     | New Endpoints
------------------ | ------------------------------------------------------------------ 
-Auth Endpoint     | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize 
-Endpoint          | https://login.microsoftonline.com/
-Graph Endpoint    | https://graph.microsoft.com
-Token Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/token
+Rancher Field    | New Endpoints
+---------------- | ------------------------------------------------------------------ 
+Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize 
+Endpoint         | https://login.microsoftonline.com/
+Graph Endpoint   | https://graph.microsoft.com
+Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/token
 
 #### China:
 
-Rancher Field     | Deprecated Endpoints
------------------ | ----------------------------------------------------------
-Auth Endpoint     | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize 
-Endpoint          | https://login.chinacloudapi.cn/
-Graph Endpoint    | https://graph.chinacloudapi.cn/
-Token Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/token 
+Rancher Field    | Deprecated Endpoints
+---------------- | ----------------------------------------------------------
+Auth Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize 
+Endpoint         | https://login.chinacloudapi.cn/
+Graph Endpoint   | https://graph.chinacloudapi.cn/
+Token Endpoint   | https://login.chinacloudapi.cn/{tenantID}/oauth2/token 
 ---
 
-Rancher Field     | New Endpoints  
------------------ | -------------------------------------------------------------------------
-Auth Endpoint     | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize 
-Endpoint          | https://login.partner.microsoftonline.cn/
-Graph Endpoint    | https://microsoftgraph.chinacloudapi.cn
-Token Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/token 
+Rancher Field    | New Endpoints  
+---------------- | -------------------------------------------------------------------------
+Auth Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize 
+Endpoint         | https://login.partner.microsoftonline.cn/
+Graph Endpoint   | https://microsoftgraph.chinacloudapi.cn
+Token Endpoint   | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/token 
 
 
 {{% /tab %}}
