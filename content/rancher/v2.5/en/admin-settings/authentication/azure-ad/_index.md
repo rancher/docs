@@ -153,15 +153,15 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     - You'll paste this value into Rancher as your **Tenant ID**.
 
-1. Obtain your Rancher **Application ID**.
+1. Obtain your Rancher **Application (client) ID**.
 
     2.1. Use search to open **App registrations** (if not already there).
 
     2.2. Find the entry you created for Rancher.
 
-    2.3. Copy the **Application ID** and paste it to your [text file](#tip).
+    2.3. Copy the **Application (client) ID** and paste it to your [text file](#tip).
 
-    ![Application ID]({{<baseurl>}}/img/rancher/application-id.png)
+    ![Application ID]({{<baseurl>}}/img/rancher/application-client-id.png)
 
 1. Your endpoint options will typically be [Standard](#global) and [China](#china). With the Standard option, perform the steps below and Rancher will take care of the rest.
 
@@ -244,7 +244,7 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
 1. In the Rancher UI homepage, make note of the banner at the top of screen that advises users to update their Azure AD authentication. Click on the link provided to do so.
 
-    ![Rancher UI Banner]({{<baseurl>}}/img/rancher/rancher-ui-azure-update.png)
+    ![Rancher UI Banner]({{<baseurl>}}/img/rancher/rancher-ui-azure-update2.png)
 
 1. To complete the move to the new Microsoft Graph API, click **Update Endpoint**, then click **Save**.
 
