@@ -5,7 +5,6 @@ weight: 9999
 ---
 
 - [NGINX Ingress controller changes in Kubernetes v1.21](#nginx-ingress-controller-changes-in-Kubernetes-v1-21)
-- [Automatically generate a xip.io hostname](#automatically-generate-a-xip-io-hostname)
 - [Specify a hostname to use](#specify-a-hostname-to-use)
 - [Use as the default backend](#use-as-the-default-backend)
 - [Certificates](#certificates)
