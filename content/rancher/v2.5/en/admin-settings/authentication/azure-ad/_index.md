@@ -153,13 +153,13 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     - You'll paste this value into Rancher as your **Tenant ID**.
 
-1. Obtain your Rancher **Application (client) ID**.
+1. Obtain your Rancher **Application (Client) ID**.
 
     2.1. Use search to open **App registrations** (if not already there).
 
     2.2. Find the entry you created for Rancher.
 
-    2.3. Copy the **Application (client) ID** and paste it to your [text file](#tip).
+    2.3. Copy the **Application (Client) ID** and paste it to your [text file](#tip).
 
     ![Application ID]({{<baseurl>}}/img/rancher/application-client-id.png)
 
