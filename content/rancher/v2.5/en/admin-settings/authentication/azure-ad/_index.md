@@ -157,7 +157,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 
     2.1. Use search to open **App registrations** (if not already there).
 
-    2.2. Find the entry you created for Rancher.
+    2.2. In **Overview**, find the entry you created for Rancher.
 
     2.3. Copy the **Application (Client) ID** and paste it to your [text file](#tip).
 
