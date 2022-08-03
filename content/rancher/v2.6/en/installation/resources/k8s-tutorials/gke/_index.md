@@ -187,10 +187,10 @@ Use the DNS name from the previous step as the Rancher server URL when you insta
 
 **_New in v2.6.7_**
 
-When installing Rancher on top of this setup, you will also need to pass the value below into the Rancher helm install command in order to set the name of the ingress controller to be used with Rancher's ingress resource:
+When installing Rancher on top of this setup, you will also need to pass the value below into the Rancher Helm install command in order to set the name of the ingress controller to be used with Rancher's ingress resource:
 
 ```
 --set ingress.ingressClassName=nginx
 ```
 
-Refer [here for your cert options]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/#5-install-rancher-with-helm-and-your-chosen-certificate-option).
+Refer [here for the Helm install command]({{<baseurl>}}/rancher/v2.6/en/installation/install-rancher-on-k8s/#5-install-rancher-with-helm-and-your-chosen-certificate-option) for your chosen certificate option.
