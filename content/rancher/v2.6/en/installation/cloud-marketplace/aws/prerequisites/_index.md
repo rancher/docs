@@ -8,7 +8,7 @@ weight: 1
 First, complete the [first step](https://docs.aws.amazon.com/license-manager/latest/userguide/getting-started.html) of the license manager one-time setup.
 Next, go to the AWS Marketplace. Locate the "Rancher Premium Support Billing Container Starter Pack". Purchase at least one entitlement.
 
-If you have installed Rancher using the "Rancher Setup" AWS Marketplace offering, skip to [Step 4](#create-an-oidc-provider).
+If you have installed Rancher using the "Rancher Setup" AWS Marketplace offering, skip to [Step 4](#4-create-an-oidc-provider).
 
 > **Note:** Each entitlement grants access to support for a certain amount of nodes. You can purchase more licenses as necessary later on.
 
