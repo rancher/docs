@@ -48,26 +48,6 @@ As a Project Operator based on [rancher/helm-project-operator](https://github.co
 
     > **Note:** If `.Values.projectReleaseNamespaces.enabled` is false, the Project Release Namespace will be the same as the Project Registration Namespace.
 
-## Enable Project Monitoring V2 in Rancher
-
-1. [Monitoring V2](#requirements) is required to be set up first in order for you to add Project Monitoring as it contains the CRDs and the Prometheus Operator needed in order to make Project Monitoring V2 work. You should ensure that monitoring is in the `system` project for security. For more information on the Promethus Operator's security model and how to move your namespace if need be, please refer [here]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/prometheus-federator/guides/enable-prom-fed/#ensure-the-cattle-monitoring-system-namespace-is-placed-into-the-system-project-or-a-similarly-locked-down-project-that-has-access-to-other-projects-in-the-cluster).
-
-1. Install the [Prometheus Federator]({{<baseurl>}}/rancher/v2.6/en/monitoring-alerting/prometheus-federator/) app. 
-
-1. Install **Project Monitors** in each project where you want to enable project monitoring.
-
-    3.1. Click **☰ > Cluster Management**.
-
-    3.2. On the **Clusters** page, go to the cluster where you want to enable monitoring and click **Explore**.
-
-    3.3. Click **Monitoring > Project Monitors** on the left nav bar. Then click **Create** in the upper right.
-
-    ![Project Monitors]({{<baseurl>}}/img/rancher/project-monitors.png)
-
-    3.4. Select your project from the drop-down menu, then click **Create** again.
-
-    ![Create Project Monitors]({{<baseurl>}}/img/rancher/create-project-monitors.png)
-
 ### Helm Resources (HelmChart, HelmRelease)
 
 On deploying a ProjectHelmChart, the Prometheus Federator will automatically create and manage two child custom resources that manage the underlying Helm resources in turn:
