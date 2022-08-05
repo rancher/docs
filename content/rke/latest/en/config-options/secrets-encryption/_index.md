@@ -82,6 +82,7 @@ Once encryption is disabled in `cluster.yml`, RKE will perform the following [ac
 - Update `kube-apiserver` arguments to remove the encryption provider configuration and restart the `kube-apiserver`.
 - Remove the provider configuration file.
 
+
 # Key Rotation
 Sometimes there is a need to rotate encryption config in your cluster. For example, the key is compromised. There are two ways to rotate the keys: with an RKE CLI command, or by disabling and re-enabling encryption in `cluster.yml`.
 
