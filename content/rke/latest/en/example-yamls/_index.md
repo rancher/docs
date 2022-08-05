@@ -262,6 +262,8 @@ services:
         # https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
         cluster-signing-cert-file: "/etc/kubernetes/ssl/kube-ca.pem"
         cluster-signing-key-file: "/etc/kubernetes/ssl/kube-ca-key.pem"
+        # Change the per-node pod subnet size for more or larger nodes, default is /24
+        node-cidr-mask-size: '24'
     kubelet:
       # Base domain for the cluster
       cluster_domain: cluster.local
