@@ -29,7 +29,9 @@ These elements are required to follow this guide:
 
 ### 1. Create a Custom Cluster
 
-On Rancher server, we should create a custom k8s cluster v1.18.x. Be sure that cloud_provider name is set to `amazonec2`. Once cluster is created we need to get:
+On Rancher server, we should create a custom k8s cluster. Refer [here](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/) to check for version compatibility.
+
+Be sure that cloud_provider name is set to `amazonec2`. Once cluster is created we need to get:
 
 * clusterID: `c-xxxxx` will be used on EC2 `kubernetes.io/cluster/<clusterID>` instance tag
 * clusterName: will be used on EC2 `k8s.io/cluster-autoscaler/<clusterName>` instance tag
@@ -483,7 +485,7 @@ spec:
       nodeSelector:
         node-role.kubernetes.io/controlplane: "true"
       containers:
-        - image: eu.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:v1.18.1
+        - image: eu.gcr.io/k8s-artifacts-prod/autoscaling/cluster-autoscaler:<VERSION>
           name: cluster-autoscaler
           resources:
             limits:
