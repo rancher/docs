@@ -82,7 +82,6 @@ Once encryption is disabled in `cluster.yml`, RKE will perform the following [ac
 - Update `kube-apiserver` arguments to remove the encryption provider configuration and restart the `kube-apiserver`.
 - Remove the provider configuration file.
 
-
 # Key Rotation
 Sometimes there is a need to rotate encryption config in your cluster. For example, the key is compromised. There are two ways to rotate the keys: with an RKE CLI command, or by disabling and re-enabling encryption in `cluster.yml`.
 
@@ -114,52 +113,6 @@ This command will perform the following actions:
 ### Rotating Keys by Disabling and Re-enabling Encryption in cluster.yml
 
 For a cluster with encryption enabled, you can rotate the encryption keys by updating `cluster.yml`. If you disable and re-enable the data encryption in the `cluster.yml`, RKE will not reuse old keys. Instead, it will generate new keys every time, yielding the same result as a key rotation with the RKE CLI.
-
-# RKE1 Encryption Key Rotation in Rancher
-
-1. Enable encryption key rotation with either of the following two options:
-
-    1.1. Select the `Enabled` radio button in the Rancher UI under **Cluster Options > Advanced Options > Secrets Encryption**:
-
-    ![Enable Encryption Key Rotation]({{< baseurl >}}/img/rancher/rke1-enable-secrets-encryption.png)
-
-    1.2. Apply the following YAML:
-
-    ```
-    rancher_kubernetes_engine_config:
-      services:
-        kube_api:
-          secrets_encryption_config:
-            enabled: true
-    ```        
-
-2. Rotate keys in the Rancher UI:
-
-    2.1. Click **☰ > Cluster Management**.
-
-    2.2. Select **⋮ > Rotate Encryption Keys** on the far right of the screen next to your chosen cluster:
-
-    ![Encryption Key Rotation]({{< baseurl >}}/img/rancher/rke1-encryption-key.png)
-
-   
-
-# RKE2 Encryption Key Rotation in Rancher
-
-_**New in v2.6.7**_
-
->Encryption key rotation is enabled by default and cannot be disabled. 
-
-To rotate keys in the Rancher UI:
-
-- Click **☰ > Cluster Management**.
-
-- Select **⋮ > Rotate Encryption Keys** on the far right of the screen next to your chosen cluster:
-
-    ![Encryption Key Rotation]({{< baseurl >}}/img/rancher/rke2-encryption-key.png)
-
-
->**Note:** For more information on RKE2 secrets encryption config, please see the [RKE2 docs](https://docs.rke2.io/security/secrets_encryption/).
-
 
 # Custom At-Rest Data Encryption Configuration
 With managed configuration, RKE provides the user with a very simple way to enable and disable encryption with minimal interaction and configuration. However, it doesn't allow for any customization to the configuration.
