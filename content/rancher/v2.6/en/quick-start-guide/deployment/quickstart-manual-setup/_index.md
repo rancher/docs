@@ -19,8 +19,12 @@ The full installation requirements are [here]({{<baseurl>}}/rancher/v2.6/en/inst
 Install a K3s cluster by running this command on the Linux machine:
 
 ```
-curl -sfL https://get.k3s.io | sh -s - server
+curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="***" sh -s - server --cluster-init
 ```
+
+Rancher needs to be installed on a supported Kubernetes version. To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script. Refer to the [support maintenance terms](https://rancher.com/support-maintenance-terms/).
+
+Using `--cluster-init` allows K3s to use embedded etcd as the datastore and has the ability to convert to an HA setup. Refer to [High Availability with Embedded DB]({{<baseurl>}}/k3s/latest/en/installation/ha-embedded/).
 
 Save the IP of the Linux machine.
 
@@ -92,7 +96,7 @@ helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
 
 kubectl create namespace cattle-system
 
-kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.2/cert-manager.crds.yaml
+kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.7.1/cert-manager.crds.yaml
 
 helm repo add jetstack https://charts.jetstack.io
 
@@ -112,6 +116,8 @@ helm install cert-manager jetstack/cert-manager `
 
 The final command to install Rancher is below. The command requires a domain name that forwards traffic to the Linux machine. For the sake of simplicity in this tutorial, you can use a fake domain name to create your proof-of-concept. An example of a fake domain name would be `<IP_OF_LINUX_NODE>.sslip.io`.
 
+To install a specific Rancher version, use the `--version` flag (e.g., `--version 2.6.6`). Otherwise, the latest Rancher is installed by default. Refer to [Choosing a Rancher Version]({{<baseurl>}}/rancher/v2.6/en/installation/resources/choosing-version/).
+
 ```
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
@@ -125,7 +131,6 @@ helm install rancher rancher-latest/rancher `
   --set hostname=<IP_OF_LINUX_NODE>.sslip.io `
   --set replicas=1 `
   --set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
-```
 ```
 
 Now if you navigate to `<IP_OF_LINUX_NODE>.sslip.io` in a web browser, you should see the Rancher UI.
