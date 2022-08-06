@@ -237,7 +237,7 @@ export default {
       {
         "docs": {
           "routeBasePath": "/",
-          "sidebarPath": "/Users/catherineluse/Documents/rancher-docs/rancher-docusaurus/docs/sidebars.js",
+          "sidebarPath": "/Users/catherineluse/Documents/rancher-docs/docs/sidebars.js",
           "showLastUpdateTime": true,
           "editUrl": "https://github.com/kubewarden/docs/edit/main/",
           "lastVersion": "current",
@@ -251,7 +251,7 @@ export default {
         "blog": false,
         "theme": {
           "customCss": [
-            "/Users/catherineluse/Documents/rancher-docs/rancher-docusaurus/docs/src/css/custom.css"
+            "/Users/catherineluse/Documents/rancher-docs/docs/src/css/custom.css"
           ]
         }
       }

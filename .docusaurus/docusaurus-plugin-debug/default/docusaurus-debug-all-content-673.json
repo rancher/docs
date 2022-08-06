@@ -13,9 +13,9 @@
           "editUrl": "https://github.com/kubewarden/docs/edit/main/docs",
           "editUrlLocalized": "https://github.com/kubewarden/docs/edit/main/i18n/en/docusaurus-plugin-content-docs/current",
           "isLast": true,
-          "sidebarFilePath": "/Users/catherineluse/Documents/rancher-docs/rancher-docusaurus/docs/sidebars.js",
-          "contentPath": "/Users/catherineluse/Documents/rancher-docs/rancher-docusaurus/docs/docs",
-          "contentPathLocalized": "/Users/catherineluse/Documents/rancher-docs/rancher-docusaurus/docs/i18n/en/docusaurus-plugin-content-docs/current",
+          "sidebarFilePath": "/Users/catherineluse/Documents/rancher-docs/docs/sidebars.js",
+          "contentPath": "/Users/catherineluse/Documents/rancher-docs/docs/docs",
+          "contentPathLocalized": "/Users/catherineluse/Documents/rancher-docs/docs/i18n/en/docusaurus-plugin-content-docs/current",
           "docs": [
             {
               "unversionedId": "en/admin-settings/admin-settings",

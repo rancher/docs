@@ -31,10 +31,10 @@ const docCards = () => {
       }
    ];
 
-   return docCardData.map(docData => {
+   return docCardData.map((docData, i) => {
       const { title, description, link } = docData
       return (
-         <div className="box">
+         <div className="box" key={i}>
             <div className="boxContent">
                <p className="cardTitle">{title}</p>
                <p className="cardText">{description}</p>
@@ -55,7 +55,7 @@ const productSummaries = () => {
       },
       {
          title: "Hosted Rancher Service",
-         description: 'A hosted Rancher control plane with 99.9% uptime.',
+         description: 'A hosted Rancher control plane.',
          link: 'https://www.suse.com/products/suse-rancher-hosted/'
       },
       {
@@ -64,10 +64,10 @@ const productSummaries = () => {
          link: 'https://docs.rancherdesktop.io/'
       }
    ]
-   return productSummaryData.map(product => {
+   return productSummaryData.map((product, i) => {
       const { title, link, description } = product;
       return (
-         <div className="product-summary">
+         <div className="product-summary" key={i}>
            <div className="boxContent">
                   <p className="cardTitle">
                      <a 
