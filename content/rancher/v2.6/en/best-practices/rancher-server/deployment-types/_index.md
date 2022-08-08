@@ -14,7 +14,7 @@ When you set up your high-availability Rancher installation, consider the follow
 ### Run Rancher on a Separate Cluster
 Don't run other workloads or microservices in the Kubernetes cluster that Rancher is installed on.
 
-### Make sure nodes are configured correctly for Kubernetes ###
+### Make sure nodes are configured correctly for Kubernetes
 It's important to follow K8s and etcd best practices when deploying your nodes, including disabling swap, double checking you have full network connectivity between all machines in the cluster, using unique hostnames, MAC addresses, and product_uuids for every node, checking that all correct ports are opened, and deploying with ssd backed etcd. More details can be found in the [kubernetes docs](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#before-you-begin) and [etcd's performance op guide](https://etcd.io/docs/v3.4/op-guide/performance/).
 
 ### When using RKE: Back up the Statefile

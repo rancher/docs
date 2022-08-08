@@ -1,7 +1,7 @@
 ---
 title: DigitalOcean Node Template Configuration
 weight: 1
-----
+---
 
 Account access information is stored as a cloud credential. Cloud credentials are stored as Kubernetes secrets. Multiple node templates can use the same cloud credential. You can use an existing cloud credential or create a new one.
 
