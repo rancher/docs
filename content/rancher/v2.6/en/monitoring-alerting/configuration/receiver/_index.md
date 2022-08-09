@@ -36,7 +36,7 @@ To create notification receivers in the Rancher UI,
 {{% tab "Rancher v2.6.5+" %}}
 
 1. Go to the cluster where you want to create receivers. Click **Monitoring -> Alerting -> AlertManagerConfigs**.
-1. Ciick **Create**.
+1. Click **Create**.
 1. Click **Add Receiver**.
 1. Enter a **Name** for the receiver.
 1. Configure one or more providers for the receiver. For help filling out the forms, refer to the configuration options below.
