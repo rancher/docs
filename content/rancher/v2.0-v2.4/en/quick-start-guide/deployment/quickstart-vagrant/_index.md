@@ -28,7 +28,7 @@ The following steps quickly deploy a Rancher Server with a single node cluster a
 3. **Optional:** Edit `config.yaml` to:
 
     - Change the number of nodes and the memory allocations, if required. (`node.count`, `node.cpus`, `node.memory`)
-    - Change the password of the `admin` user for logging into Rancher. (`default_password`)
+    - Change the password of the `admin` user for logging into Rancher. (`admin_password`)
 
 4. To initiate the creation of the environment run, `vagrant up --provider=virtualbox`.
 
