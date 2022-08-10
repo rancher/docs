@@ -24,15 +24,15 @@ The default configuration should already be compatible with your rancher-monitor
 
 Prometheus Operator's security model expects that the namespace it is deployed into (e.g., `cattle-monitoring-system`) has limited access for anyone except Cluster Admins to avoid privilege escalation via execing into Pods (such as the Jobs executing Helm operations). In addition, deploying Prometheus Federator and all Project Prometheus stacks into the System Project ensures that each Project Prometheus is able to reach out to scrape workloads across all Projects, even if Network Policies are defined via Project Network Isolation. It also provides limited access for Project Owners, Project Members, and other users so that they're unable to access data that they shouldn't have access to (i.e., being allowed to exec into pods, set up the ability to scrape namespaces outside of a given Project, etc.).
 
-1. Open the `system` project to check your namespaces:
+1. Open the `System` project to check your namespaces:
 
-    Click **Cluster > Projects/Namespaces** in the Rancher UI. This will display all of the namespaces in the `system` project:
+    Click **Cluster > Projects/Namespaces** in the Rancher UI. This will display all of the namespaces in the `System` project:
 
     ![Select Projects-Namespaces]({{<baseurl>}}/img/rancher/cattle-monitoring-system.png)
 
-1. If you have an existing monitoring V2 installation in which `cattle-monitoring-system` is not in the `system` project, you may move the `cattle-monitoring-system` namespace into the `system` project or into another project of limited access. To do so, you may either:
+1. If you have an existing Monitoring V2 installation within the `cattle-monitoring-system` namespace, but that namespace is not in the `System` project, you may move the `cattle-monitoring-system` namespace into the `System` project or into another project of limited access. To do so, you may either:
 
-    - Drag and drop the namespace into the `system` project or
+    - Drag and drop the namespace into the `System` project or
     - Select **⋮** to the right of the namespace, click **Move**, then choose `System` from the **Target Project** dropdown
 
         ![Move to a New Project]({{<baseurl>}}/img/rancher/move-to-new-project.png)
