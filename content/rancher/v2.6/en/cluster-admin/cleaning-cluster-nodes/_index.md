@@ -167,7 +167,7 @@ curl https://raw.githubusercontent.com/rancher/system-agent/main/system-agent-un
 
 ### Removing RKE2
 
-To remove the RKE2 installation, run the `rke2-uninstall` script, that is already present on the node:
+To remove the RKE2 installation, run the `rke2-uninstall` script that is already present on the node:
 
 ```
 sudo rke2-uninstall.sh
