@@ -31,6 +31,8 @@ Encrypted backups can only be restored if the Restore custom resource uses the s
 
 This section contains example Backup custom resources.
 
+>**Note:** Refer to the [backup config reference page]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/backup-config/) for more information on configuring the options below.
+
 ### Backup in the Default Location with Encryption
 
 ```yaml
@@ -84,7 +86,7 @@ spec:
       credentialSecretNamespace: default
       bucketName: rancherbackups
       endpoint: minio.xip.io
-      endpointCA: LS0tLS1CRUdJTi3VUFNQkl5UUT.....pbEpWaVzNkRS0tLS0t
+      endpointCA: <base64-encoded-cert>
   resourceSetName: rancher-resource-set
   encryptionConfigSecretName: encryptionconfig
 ```
@@ -155,6 +157,8 @@ spec:
 
 This section contains example Restore custom resources.
 
+>**Note:** Refer to the [restore config reference page]({{<baseurl>}}/rancher/v2.6/en/backups/configuration/restore-config/) for more information on configuring the options below.
+
 ### Restore Using the Default Backup File Location
 
 ```yaml
@@ -213,7 +217,7 @@ spec:
       credentialSecretNamespace: default
       bucketName: rancherbackups
       endpoint: minio.xip.io
-      endpointCA: LS0tLS1CRUdJTi3VUFNQkl5UUT.....pbEpWaVzNkRS0tLS0t
+      endpointCA: <base64-encoded-cert>
   encryptionConfigSecretName: test-encryptionconfig
 ```
 
