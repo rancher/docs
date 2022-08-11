@@ -70,3 +70,42 @@ In some cases, after restoring the backup, Rancher logs will show errors similar
 This happens because one of the resources that was just restored has finalizers but the related resources have been deleted so the handler cannot find it.
 
 To eliminate the errors, we need to find and delete the resource that causes the error. See more information [here](https://github.com/rancher/rancher/issues/35050#issuecomment-937968556)
+
+In Rancher 2.5, under certain circumstances after restoring the backup, Rancher creates two default-tokens in each namespace:
+
+```
+kubectl get secret -A|grep default-token
+c-gt5hn default-token-jmck8 kubernetes.io/service-account-token 3 85m
+c-gt5hn default-token-ss54l kubernetes.io/service-account-token 3 85m
+c-plt7m default-token-qnwxt kubernetes.io/service-account-token 3 85m
+c-plt7m default-token-v75f7 kubernetes.io/service-account-token 3 85m
+```
+
+This has been fixed in Rancher 2.6.4. See more information [here]
+(https://github.com/rancher/backup-restore-operator/issues/165#issuecomment-1079475984)
+
+As a workound, you can use the following script, which removes the redundant restored default-token- secrets from restored Namespaces.
+
+```bash
+#!/bin/bash
+#Get namespace list
+namespaces=$(kubectl get namespaces --no-headers=true -o custom-columns=":metadata.name")
+#For namespace in list
+for namespace in $namespaces; do
+  #Get default-token- secrets
+  defaultTokens=$(kubectl -n $namespace get secrets --field-selector type=kubernetes.io/service-account-token --no-headers=true -o custom-columns=":metadata.name" | grep default-token)
+  #Get default service account tokens
+  defaultServiceAccountTokens=$(kubectl -n $namespace get serviceaccount default -o jsonpath={.secrets} | jq -r .[].name)
+  #For secret in default-token- secret list
+  for token in $defaultTokens; do
+    #if secret not in default service account tokens
+    if ! grep -q "$token" <<< $defaultServiceAccountTokens; then
+      # delete service account token
+      echo "Deleting $token in $namespace"
+      kubectl -n $namespace delete secret $token
+    fi
+  done
+done
+```
+
+
