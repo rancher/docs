@@ -191,7 +191,7 @@ curl https://raw.githubusercontent.com/rancher/system-agent/main/system-agent-un
 
 ### Removing K3s
 
-To remove the K3s installation, run the `k3s-uninstall` script, that is already present on the node:
+To remove the K3s installation, run the `k3s-uninstall` script that is already present on the node:
 
 ```
 sudo k3s-uninstall.sh
