@@ -46,7 +46,7 @@ CNI network providers using this network model include Calico and Romana.
 
 ### What CNI Providers are Provided by Rancher?
 
-Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave. You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
+Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico, and Weave. You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
 
 #### Canal
 

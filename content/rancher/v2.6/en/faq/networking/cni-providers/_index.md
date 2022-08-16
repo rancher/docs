@@ -46,7 +46,7 @@ CNI network providers using this network model include Calico and Cilium. Cilium
 
 ### RKE Kubernetes clusters
 
-Out-of-the-box, Rancher provides the following CNI network providers for RKE Kubernetes clusters: Canal, Flannel, and Weave. 
+Out-of-the-box, Rancher provides the following CNI network providers for RKE Kubernetes clusters: Canal, Flannel, Calico, and Weave. 
 
 You can choose your CNI network provider when you create new Kubernetes clusters from Rancher.
 
