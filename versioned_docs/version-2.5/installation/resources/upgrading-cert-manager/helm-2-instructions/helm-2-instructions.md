@@ -75,6 +75,7 @@ In order to upgrade cert-manager, follow these instructions:
     ```plain
     helm install --version 0.12.0 --name cert-manager --namespace kube-system jetstack/cert-manager
     ```
+
 </details>
 
 <details id="airgap">
@@ -141,6 +142,7 @@ Before you can perform the upgrade, you must prepare your air gapped environment
     ```plain
     kubectl -n kube-system apply -R -f ./cert-manager
     ```
+
 </details>
 
 
