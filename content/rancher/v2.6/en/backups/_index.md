@@ -13,7 +13,6 @@ The backup-restore operator needs to be installed in the local cluster, and only
 - [How Backups and Restores Work](#how-backups-and-restores-work)
 - [Installing the rancher-backup Operator](#installing-the-rancher-backup-operator)
   - [Installing rancher-backup with the Rancher UI](#installing-rancher-backup-with-the-rancher-ui)
-  - [Installing rancher-backup with the Helm CLI](#installing-rancher-backup-with-the-helm-cli)
   - [RBAC](#rbac)
 - [Backing up Rancher](#backing-up-rancher)
 - [Restoring Rancher](#restoring-rancher)
