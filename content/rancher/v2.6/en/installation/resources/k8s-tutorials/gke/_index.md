@@ -119,8 +119,6 @@ Replace `cluster-name` with the name of your new cluster.
 
 When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
-**Note:** If the version of Kubernetes is updated to v1.22 or later, the version of ingress-nginx would also need to be [updated](https://kubernetes.github.io/ingress-nginx/#faq-migration-to-apiversion-networkingk8siov1).
-
 ```
 gcloud container clusters create cluster-name --num-nodes=3 --cluster-version=<VERSION>
 ```
@@ -139,7 +137,7 @@ This command configures `kubectl` to use the cluster you created.
 
 The cluster needs an Ingress so that Rancher can be accessed from outside the cluster.
 
-The following command installs an `nginx-ingress-controller` with a LoadBalancer service:
+The following command installs an `nginx-ingress-controller` with a LoadBalancer service on a Kubernetes cluster version of >= 1.22:
 
 ```
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -148,7 +146,7 @@ helm upgrade --install \
   ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx \
   --set controller.service.type=LoadBalancer \
-  --version 3.12.0 \
+  --version 4.1.0 \
   --create-namespace
 ```
 
