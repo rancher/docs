@@ -97,12 +97,12 @@ Select the target group named **rancher-tcp-443**, click the tab **Targets** and
 
 Select the instances (Linux nodes) you want to add, and click **Add to registered**.
 
-<hr>
+***
 **Screenshot Add targets to target group TCP port 443**<br/>
 
 {{< img "/img/rancher/ha/nlb/add-targets-targetgroup-443.png" "Add targets to target group 443">}}
 
-<hr>
+***
 **Screenshot Added targets to target group TCP port 443**<br/>
 
 {{< img "/img/rancher/ha/nlb/added-targets-targetgroup-443.png" "Added targets to target group 443">}}
@@ -171,7 +171,7 @@ After AWS creates the NLB, click **Close**.
 
 K3s and RKE Kubernetes clusters handle health checks differently because they use different Ingresses by default.
 
-For RKE Kubernetes clusters, NGINX Ingress is used by default, whereas for K3s Kubernetes clusters, Traefik is the default Ingress. 
+For RKE Kubernetes clusters, NGINX Ingress is used by default, whereas for K3s Kubernetes clusters, Traefik is the default Ingress.
 
 - **Traefik:** The health check path is `/ping`. By default `/ping` is always matched (regardless of Host), and a response from [Traefik itself](https://docs.traefik.io/operations/ping/) is always served.
 - **NGINX Ingress:** The default backend of the NGINX Ingress controller has a `/healthz` endpoint. By default `/healthz` is always matched (regardless of Host), and a response from [`ingress-nginx` itself](https://github.com/kubernetes/ingress-nginx/blob/0cbe783f43a9313c9c26136e888324b1ee91a72f/charts/ingress-nginx/values.yaml#L212) is always served.

@@ -62,15 +62,15 @@ Timeout (Advanced)                    | `6 seconds`
 Interval (Advanced)                   | `10 second`
 Success codes                         | `200-399`
 
-<hr>
+***
 **Screenshot Target group TCP port 443 settings**<br/>
 {{< img "/img/rancher/ha/nlb/create-targetgroup-443.png" "Target group 443">}}
 
-<hr>
+***
 **Screenshot Target group TCP port 443 Advanced settings**<br/>
 {{< img "/img/rancher/ha/nlb/create-targetgroup-443-advanced.png" "Target group 443 Advanced">}}
 
-<hr>
+***
 
 Click **Create target group** to create the second target group, regarding TCP port 80.
 
@@ -94,15 +94,15 @@ Timeout (Advanced)                    | `6 seconds`
 Interval (Advanced)                   | `10 second`
 Success codes                         | `200-399`
 
-<hr>
+***
 **Screenshot Target group TCP port 80 settings**<br/>
 {{< img "/img/rancher/ha/nlb/create-targetgroup-80.png" "Target group 80">}}
 
-<hr>
+***
 **Screenshot Target group TCP port 80 Advanced settings**<br/>
 {{< img "/img/rancher/ha/nlb/create-targetgroup-80-advanced.png" "Target group 80 Advanced">}}
 
-<hr>
+***
 
 ## Register Targets
 
@@ -114,12 +114,12 @@ Select the target group named **rancher-tcp-443**, click the tab **Targets** and
 
 Select the instances (Linux nodes) you want to add, and click **Add to registered**.
 
-<hr>
+***
 **Screenshot Add targets to target group TCP port 443**<br/>
 
 {{< img "/img/rancher/ha/nlb/add-targets-targetgroup-443.png" "Add targets to target group 443">}}
 
-<hr>
+***
 **Screenshot Added targets to target group TCP port 443**<br/>
 
 {{< img "/img/rancher/ha/nlb/added-targets-targetgroup-443.png" "Added targets to target group 443">}}
