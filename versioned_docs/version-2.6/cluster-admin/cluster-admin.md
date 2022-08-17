@@ -17,7 +17,9 @@ This page covers the following topics:
 
 After clusters have been [provisioned into Rancher]({{<baseurl>}}/rancher/v2.6/en/cluster-provisioning/), [cluster owners]({{<baseurl>}}/rancher/v2.6/en/admin-settings/rbac/cluster-project-roles/#cluster-roles) will need to manage these clusters. There are many different options of how to manage your cluster.
 
-{{% include file="/rancher/v2.6/en/cluster-provisioning/cluster-capabilities-table</summary>
+import ClusterCapabilitiesTable from '/rancher/v2.6/en/shared-files/_cluster-capabilities-table.md';
+
+<ClusterCapabilitiesTable />
 
 ## Configuring Tools
 

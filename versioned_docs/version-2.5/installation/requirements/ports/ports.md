@@ -251,7 +251,9 @@ The following table depicts the port requirements for [registered clusters]({{<b
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
-{{% include file="/rancher/v2.5/en/installation/requirements/ports/common-ports-table</summary>
+import CommonPortsTable from '/rancher/v2.5/en/shared-files/_common-ports-table.md';
+
+<CommonPortsTable />
 
 ----
 
