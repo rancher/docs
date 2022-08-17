@@ -59,6 +59,8 @@ For the below instructions, replace `$MY_ACC_NUM` with your AWS account number a
 
 > **Note:** If you use shell variables, do not specify quotation marks. For example, MY_ACC_NUM=123456789012 will work, but MY_ACC_NUM="123456789012" will fail.
 
+> **Note:** Accounts using the AWS Marketplace listing for Europe, the Middle East, and Africa (EMEA) will need to specify an additional `--set image.repository=rancher/rancher-csp-adapter-eu` option. To see if your account needs this option when installing the adapter, refer to the usage instructions of the marketplace listing.
+
 {{% tabs %}}
 {{% tab "Let's Encrypt/ Public Certificate Authority" %}}
 
