@@ -188,9 +188,9 @@ Refer to [this page](./troubleshooting) for frequently asked questions and troub
 
 ### Known Issues
 
-Newer operating systems switched to [cgroups v2](https://docs.kernel.org/admin-guide/cgroup-v2.html) instead of the older cgroups v1, which will make the rancher/rancher container crash.
+Newer operating systems have switched to [cgroups v2](https://docs.kernel.org/admin-guide/cgroup-v2.html), which will make the rancher/rancher container crash.
 
-To see wether your system is effected, check for the existence of the cgroup.controller:
+To see whether your system is affected, check for the existence of the cgroup.controller:
 
 ```bash
 $ cat /sys/fs/cgroup/cgroup.controllers
@@ -198,7 +198,7 @@ $ cat /sys/fs/cgroup/cgroup.controllers
 cpuset cpu io memory hugetlb pids rdma
 ```
 
-In this case it is recommend to use a local single node k3s Kubernetes cluster ([k3s](https://rancher.com/docs/k3s/latest/en/installation/install-options/) + [helm](https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/))
+In this case, it is recommend to use a local single node K3s Kubernetes cluster ([K3s](https://rancher.com/docs/k3s/latest/en/installation/install-options/) + [Helm](https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/)).
 
 ## What's Next?
 
