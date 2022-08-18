@@ -77,6 +77,23 @@ Admins should use these roles to provide more fine-grained access to users:
 | monitoring-dashboard-edit | Allow admins to assign roles to users to be able to edit / view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 | monitoring-dashboard-view | Allow admins to assign roles to users to be able to view ConfigMaps within the cattle-dashboards namespace. ConfigMaps in this namespace will correspond to Grafana Dashboards that are persisted onto the cluster. |
 
+### Assigning Monitoring Roles through Custom Roles
+
+**_New in v2.6.7_**
+
+Admins may assign custom roles in the Rancher UI for admin, editing, and viewing monitoring. These "roles" are created by default when the monitoring app is installed. Additionally, these roles are also deployed to the corresponding Kubernetes roles: admin, edit, and view `ClusterRoles`.
+
+>**Important:** The UI will not offer `monitoring-admin`, `monitoring-edit`, and `monitoring-view` options when users are being added to a cluster. These monitoring roles can only be assigned by manually creating a custom role that inherits from Project Owner and Project Monitoring View roles. 
+
+1. Ensure that Monitoring V2 and Prometheus Federator are both installed.
+1. Create a custom role such as `View Monitoring`, `Edit Monitoring`, or `Admin Monitoring`.
+1. 
+1. Create a project monitor in the default project.
+1. Add a user to the default project and assign that user the new role. 
+
+**Result:** User should now be able to log in and view (or edit) the various monitoring roles.
+
+
 ### Additional Monitoring ClusterRoles
 
 Monitoring also creates additional `ClusterRoles` that are not assigned to users by default but are created within the cluster.  They are not aggregated by default but can be bound to a namespace by deploying a `RoleBinding` or `ClusterRoleBinding` that references it. To define a `RoleBinding` with `kubectl` instead of through Rancher, click [here](#assigning-roles-and-clusterroles-with-kubectl).
