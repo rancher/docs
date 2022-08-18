@@ -188,7 +188,7 @@ Refer to [this page](./troubleshooting) for frequently asked questions and troub
 
 ### Known Issues
 
-Newer operating systems have switched to [cgroups v2](https://docs.kernel.org/admin-guide/cgroup-v2.html), which will make the rancher/rancher container crash.
+Newer operating systems have switched to [cgroups v2](https://docs.kernel.org/admin-guide/cgroup-v2.html) which will make the rancher/rancher container crash.
 
 To see whether your system is affected, check for the existence of the cgroup.controller:
 
