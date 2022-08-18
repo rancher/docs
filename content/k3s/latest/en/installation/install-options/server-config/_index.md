@@ -147,6 +147,7 @@ the agent options are there because the server has the agent process embedded wi
 |  `--cluster-dns` value   | "10.43.0.10"         | Cluster IP for coredns service. Should be in your service-cidr range |
 |  `--cluster-domain` value  | "cluster.local"        | Cluster Domain       | 
 |  `--flannel-backend` value   | "vxlan"      | One of 'none', 'vxlan', 'ipsec', 'host-gw', or 'wireguard'       |
+|  `--egress-selector-mode`   | "pod"      | One of 'agent', cluster', 'pod', 'disabled' |
 
 ### Customized Flags
 
@@ -231,6 +232,8 @@ OPTIONS:
    --cluster-dns value                        (networking) Cluster IP for coredns service. Should be in your service-cidr range (default: 10.43.0.10)
    --cluster-domain value                     (networking) Cluster Domain (default: "cluster.local")
    --flannel-backend value                    (networking) One of 'none', 'vxlan', 'ipsec', 'host-gw', or 'wireguard' (default: "vxlan")
+   --flannel-ipv6-masq                        (networking) Enable IPv6 masquerading for pod
+   --egress-selector-mode value               (networking) One of 'agent', 'cluster', 'pod', 'disabled' (default: "agent")
    --token value, -t value                    (cluster) Shared secret used to join a server or agent to a cluster [$K3S_TOKEN]
    --token-file value                         (cluster) File containing the cluster-secret/token [$K3S_TOKEN_FILE]
    --write-kubeconfig value, -o value         (client) Write kubeconfig for admin client to this file [$K3S_KUBECONFIG_OUTPUT]
