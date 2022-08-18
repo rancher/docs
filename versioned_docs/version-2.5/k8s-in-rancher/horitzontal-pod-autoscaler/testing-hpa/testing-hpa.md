@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/testing-hpa/
 ---
 
-This document describes how to check the status of your HPAs after scaling them up or down with your load testing tool. For information on how to check the status from the Rancher UI (at least version 2.3.x), refer to [Managing HPAs with the Rancher UI]({{<baseurl>}}/rancher/v2.5/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/).
+This document describes how to check the status of your HPAs after scaling them up or down with your load testing tool. For information on how to check the status from the Rancher UI (at least version 2.3.x), refer to [Managing HPAs with the Rancher UI](manage-hpas-with-kubectl.md).
 
 For HPA to work correctly, service deployments should have resources request definitions for containers. Follow this hello-world example to test if HPA is working correctly.
 
@@ -67,7 +67,7 @@ For HPA to work correctly, service deployments should have resources request def
          app: hello-world
      ```
 
-</details>
+   </details>
 
 1. Deploy it to your cluster.
 
@@ -205,7 +205,7 @@ For HPA to work correctly, service deployments should have resources request def
 1. Generate a load for the service to test that your pods autoscale as intended. You can use any load-testing tool (Hey, Gatling, etc.), but we're using [Hey](https://github.com/rakyll/hey).
 
 1. Test that pod autoscaling works as intended.<br/><br/>
-  **To Test Autoscaling Using Resource Metrics:**
+   **To Test Autoscaling Using Resource Metrics:**
 
    <details id="observe-upscale-2-pods-cpu">
      <summary>Upscale to 2 Pods: CPU Usage Up to Target</summary>

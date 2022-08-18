@@ -344,17 +344,17 @@ If you choose to assign a public IP address to your cluster's worker nodes, you 
 <details id="yes">
   <summary>Click to expand</summary>
 
-If you're using **Custom: Choose from your existing VPC and Subnets**:
+    If you're using **Custom: Choose from your existing VPC and Subnets**:
 
-(If you're using **Standard**, skip to the [instance options.)](#select-instance-options-2-4)
+    (If you're using **Standard**, skip to the [instance options.)](#select-instance-options-2-4)
 
-1. Make sure **Custom: Choose from your existing VPC and Subnets** is selected.
+    1. Make sure **Custom: Choose from your existing VPC and Subnets** is selected.
 
-1. From the drop-down that displays, choose a VPC.
+    1. From the drop-down that displays, choose a VPC.
 
-1. Click **Next: Select Subnets**. Then choose one of the **Subnets** that displays.
+    1. Click **Next: Select Subnets**. Then choose one of the **Subnets** that displays.
 
-1. Click **Next: Select Security Group**.
+    1. Click **Next: Select Security Group**.
 </details>
 
 If your worker nodes have Private IPs only, you must also choose a **VPC & Subnet** that allow your instances to access the internet. This access is required so that your worker nodes can connect to the Kubernetes control plane.

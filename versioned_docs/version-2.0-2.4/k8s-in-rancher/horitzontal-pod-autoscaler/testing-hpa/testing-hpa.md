@@ -205,7 +205,7 @@ For HPA to work correctly, service deployments should have resources request def
 1. Generate a load for the service to test that your pods autoscale as intended. You can use any load-testing tool (Hey, Gatling, etc.), but we're using [Hey](https://github.com/rakyll/hey).
 
 1. Test that pod autoscaling works as intended.<br/><br/>
-  **To Test Autoscaling Using Resource Metrics:**
+    **To Test Autoscaling Using Resource Metrics:**
 
    <details id="observe-upscale-2-pods-cpu">
      <summary>Upscale to 2 Pods: CPU Usage Up to Target</summary>
