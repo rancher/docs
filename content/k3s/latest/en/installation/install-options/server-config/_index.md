@@ -147,7 +147,7 @@ the agent options are there because the server has the agent process embedded wi
 |  `--cluster-dns` value   | "10.43.0.10"         | Cluster IP for coredns service. Should be in your service-cidr range |
 |  `--cluster-domain` value  | "cluster.local"        | Cluster Domain       | 
 |  `--flannel-backend` value   | "vxlan"      | One of 'none', 'vxlan', 'ipsec', 'host-gw', or 'wireguard'       |
-|  `--egress-selector-mode`   | "pod"      | One of 'agent', cluster', 'pod', 'disabled' |
+|  `--egress-selector-mode` value   | "pod"      | One of 'agent', cluster', 'pod', 'disabled' |
 
 ### Customized Flags
 
