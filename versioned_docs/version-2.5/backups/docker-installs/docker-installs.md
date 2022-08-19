@@ -8,5 +8,5 @@ aliases:
   - /rancher/v2.x/en/backups/v2.5/docker-installs/
 ---
 
-- [Backups](./docker-backups)
-- [Restores](./docker-restores)
+- [Backups](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md)
+- [Restores](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md)
