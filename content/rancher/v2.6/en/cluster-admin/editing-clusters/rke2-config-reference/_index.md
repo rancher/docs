@@ -6,16 +6,82 @@ weight: 5
 
 This section covers the configuration options that are available in Rancher for a new or existing RKE2 Kubernetes cluster.
 
+- [Overview](#overview)
+- [Editing Clusters with a Form in the Rancher UI](#editing-clusters-with-a-form-in-the-rancher-ui)
+- [Editing Clusters with YAML](#editing-clusters-with-yaml)
+- [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui)
+- [Cluster Config File Reference](#cluster-config-file-reference)
+
 # Overview
 
 You can configure the Kubernetes options in one of the two following ways:
 
 - [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
+- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set many additional [options](https://docs.rke2.io/install/install_options/install_options) available for an RKE2 installation.
+
+# Editing Clusters with a Form in the Rancher UI
+
+To edit your cluster,
+
+1. In the upper left corner, click **☰ > Cluster Management**.
+1. Go to the cluster you want to configure and click **⋮ > Edit Config**.
+
+# Editing Clusters with YAML
+
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the options available in an RKE2 installation by specifying them in YAML.
+
+To edit an RKE2 config file directly from the Rancher UI,
+
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster you want to configure and click **⋮ > Edit as YAML**.
+1. Edit the RKE options under the `rkeConfig` directive.
 
 # Configuration Options in the Rancher UI
 
 > Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the RKE2 cluster configuration file in YAML. For the complete reference of configurable options for RKE2 Kubernetes clusters in YAML, see the [RKE2 documentation.](https://docs.rke2.io/install/install_options/install_options/)
+
+## Machine Pool
+
+This subsection covers the generic machine pool configurations. For infrastructure provider specific, configurations refer to the following pages:
+
+- [Azure](/cluster-provisioning/rke-clusters/node-pools/azure/azure-machine-config)
+- [DigitalOcean](/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-machine-config)
+- [EC2](/cluster-provisioning/rke-clusters/node-pools/ec2/ec2-machine-config)
+- [vSphere](/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-machine-config)
+
+### Pool Name
+
+The name of the machine pool.
+
+### Machine Count
+
+The number of machines in the pool.
+
+### Roles
+
+Option to assign etcd, control plane, and worker roles to nodes.
+
+### Advanced
+
+#### Auto Replace
+
+The duration nodes can be unreachable before they are automatically deleted and replaced.
+
+#### Drain Before Delete
+
+Enables draining nodes by evicting all pods before the node is deleted.
+
+#### Kubernetes Node Labels
+
+Add [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) to nodes to help with organization and object selection.
+
+For details on label syntax requirements, see the [Kubernetes documentation.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set)
+
+#### Taints
+
+Add [taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/) to nodes, which can be used to prevent pods from being scheduled to or executed on nodes, unless the pods have matching tolerations.
+
+## Cluster Configuration
 
 ### Basics
 #### Kubernetes Version
@@ -68,10 +134,6 @@ Select a [CIS benchmark]({{<baseurl>}}/rancher/v2.6/en/cis-scans/) to validate t
 If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication.
 
 Project network isolation is available if you are using any RKE2 network plugin that supports the enforcement of Kubernetes network policies, such as Canal.
-
-#### SELinux
-
-Option to enable or disable [SELinux](https://docs.rke2.io/security/selinux) support.
 
 #### CoreDNS
 
@@ -181,8 +243,103 @@ Option to remove all pods from the node prior to upgrading.
 
 Option to set kubelet options for different nodes. For available options, refer to the [Kubernetes documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/).
 
-# Cluster Config File
+# Cluster Config File Reference
 
-Instead of using the Rancher UI forms to choose Kubernetes options for the cluster, advanced users can create an RKE2 config file. Using a config file allows you to set any of the [options](https://docs.rke2.io/install/install_options/install_options) available in an RKE2 installation.
+Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a config file. Using a config file allows you to set the [options available](https://docs.rke2.io/install/install_options/server_config/) in an RKE2 installation, including those already listed in [Configuration Options in the Rancher UI](#configuration-options-in-the-rancher-ui), as well as Rancher-specific parameters.
 
-To edit an RKE2 config file directly from the Rancher UI, click **Edit as YAML**.
+{{% accordion id="rke2-cluster-config-file" label="Example Cluster Config File Snippet" %}}
+
+```yaml
+spec:
+  cloudCredentialSecretName: cattle-global-data:cc-s879v
+  kubernetesVersion: v1.23.6+rke2r2
+  localClusterAuthEndpoint: {}
+  rkeConfig:
+    chartValues:
+      rke2-calico: {}
+    etcd:
+      snapshotRetention: 5
+      snapshotScheduleCron: 0 */5 * * *
+    machineGlobalConfig:
+      cni: calico
+      disable-kube-proxy: false
+      etcd-expose-metrics: false
+      profile: null
+    machinePools:
+    - controlPlaneRole: true
+      etcdRole: true
+      machineConfigRef:
+        kind: Amazonec2Config
+        name: nc-test-pool1-pwl5h
+      name: pool1
+      quantity: 1
+      unhealthyNodeTimeout: 0s
+      workerRole: true
+    machineSelectorConfig:
+    - config:
+        protect-kernel-defaults: false
+    registries: {}
+    upgradeStrategy:
+      controlPlaneConcurrency: "1"
+      controlPlaneDrainOptions:
+        deleteEmptyDirData: true
+        enabled: true
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        timeout: 120
+      workerConcurrency: "1"
+      workerDrainOptions:
+        deleteEmptyDirData: true
+        enabled: true
+        gracePeriod: -1
+        ignoreDaemonSets: true
+        timeout: 120
+```
+
+### chartValues
+
+Option to specify the values for the system charts installed by RKE2/k3s.
+
+Example:
+
+```yaml
+chartValues:
+    chart-name:
+        key: value
+```
+### machineGlobalConfig
+
+The RKE2/K3s configurations are nested under the `machineGlobalConfig` directive. Any configuration change made here will apply to every node. The configuration options available in the [standalone version of RKE2](https://docs.rke2.io/install/install_options/server_config/) can be applied here.
+
+Example:
+
+```yaml
+machineGlobalConfig:
+    etcd-arg:
+        - key1=value1
+        - key2=value2
+```
+
+### machineSelectorConfig
+
+This is the same as [`machineGlobalConfig`](#machineglobalconfig) except that a [label](#kubernetes-node-labels) selector can be specified with the configuration. The configuration will only be applied to nodes that match the provided label selector.
+
+Multiple `config` entries are allowed, each specifying their own `machineLabelSelector`. A user can specify `matchExpressions`, `matchLabels`, both, or neither. Omitting the `machineLabelSelector` section of this has the same effect as putting the config in the `machineGlobalConfig` section.
+
+Example:
+
+```yaml
+machineSelectorConfig
+  - config:
+      config-key: config-value
+    machineLabelSelector:
+      matchExpressions:
+        - key: example-key
+          operator: string # Valid operators are In, NotIn, Exists and DoesNotExist.
+          values:
+            - example-value1
+            - example-value2
+      matchLabels:
+        key1: value1
+        key2: value2
+```

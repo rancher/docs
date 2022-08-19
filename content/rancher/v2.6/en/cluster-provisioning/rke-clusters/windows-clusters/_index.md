@@ -34,6 +34,8 @@ Rancher v2.6 introduces provisioning for [RKE2](https://docs.rke2.io/) clusters 
 
 As of Rancher v2.6.5, provisioning for RKE2 is GA.
 
+### RKE2 Windows
+
 The RKE2 provisioning feature also includes installing RKE2 on Windows clusters. Windows features for RKE2 include:
 
 - Windows Containers with RKE2 powered by containerd
@@ -44,6 +46,10 @@ The RKE2 provisioning feature also includes installing RKE2 on Windows clusters.
 Windows Support for RKE2 Custom Clusters requires choosing Calico as the CNI.
 
 >**Important:** Rancher will allow Windows workload pods to deploy on both Windows and Linux worker nodes by default. When creating mixed clusters in RKE2, you must edit the `nodeSelector` in the chart to direct the pods to be placed onto a compatible Windows node. Refer to the [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for more information on how to use `nodeSelector` to assign pods to nodes.
+
+**_New in Rancher v2.6.7_**
+
+- HostProcess containers in Windows RKE2 are supported in Kubernetes v1.24.1 and up. See [the upstream documentation](https://kubernetes.io/docs/tasks/configure-pod-container/create-hostprocess-pod/) for more information.
 
 # Requirements for Windows Clusters
 

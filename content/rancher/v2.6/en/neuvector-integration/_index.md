@@ -103,6 +103,22 @@ Below are the minimum recommended computing resources for the NeuVector chart in
 
 - All NeuVector components are deployable if PSP is set to true.
 
+**_New in v2.6.7_**
+
+You will need to set additional configuration for your hardened cluster environment as follows:
+
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Apps & Marketplace**.
+1. Install (or upgrade to) NeuVector version `100.0.1+up2.2.2`.
+
+   - Under **Edit Options** > **Other Configuration**, enable **Pod Security Policy** by checking the box (no other config needed):
+
+     ![Enable PSP for RKE1 Hardened Cluster]({{<baseurl>}}/img/rancher/psp-nv-rke.png)
+
+1. Click **Install** at the bottom-right to complete.
+
+
 {{% /tab %}}
 {{% tab "RKE2" %}}
 
@@ -118,6 +134,24 @@ kubectl patch deploy neuvector-manager-pod -n cattle-neuvector-system --patch '{
 kubectl patch deploy neuvector-scanner-pod -n cattle-neuvector-system --patch '{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}'
 kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '{"spec":{"jobTemplate":{"spec":{"template":{"spec":{"securityContext":{"runAsUser": 5400}}}}}}}'
 ```
+<br/>
+
+**_New in v2.6.7_**
+
+You will need to set additional configuration for your hardened cluster environment.
+
+>**Note:** You must update your config in both RKE2 and K3s hardened clusters as shown below.
+
+1. Click **☰ > Cluster Management**.
+1. Go to the cluster that you created and click **Explore**.
+1. In the left navigation bar, click **Apps & Marketplace**.
+1. Install (or upgrade to) NeuVector version `100.0.1+up2.2.2`.
+
+   - Under **Edit Options** > **Other Configuration**, enable **Pod Security Policy** by checking the box. Note that you must also enter a value greater than `zero` for `Manager runAsUser ID`, `Scanner runAsUser ID`, and `Updater runAsUser ID`:
+
+     ![Enable PSP for RKE2 and K3s Hardened Clusters]({{<baseurl>}}/img/rancher/psp-nv-rke2.png)
+
+1. Click **Install** at the bottom-right to complete.   
 
 {{% /tab %}}
 {{% /tabs %}}
