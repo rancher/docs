@@ -144,6 +144,18 @@
                           "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-kubernetes",
                           "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-rancher"
                            ]
+                  },
+                  {
+                    "type": "category",
+                    "label": "Install/Upgrade Rancher with RancherD",
+                    "link": {
+                      "type": "doc",
+                      "id": "pages-for-subheaders/install-rancher-on-linux"
+                    },
+                    "items": [
+                      "getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/roll-back-rancherd",
+                      "getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd"
+                    ]
                   }
                 ]
             },
@@ -861,7 +873,7 @@
                       },
                       "items": [
                         "reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters"
-                  ]
+                      ]
               },
               {
                   "type": "category",
@@ -873,8 +885,9 @@
                   "items": [
                     "reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options"
                    ]
-          },
-                "reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters"
+              },
+                "reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters",
+                "reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference"
                       ]
                   },
             {
