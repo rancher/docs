@@ -251,7 +251,7 @@ The following table depicts the port requirements for [registered clusters](../.
 
 These ports are typically opened on your Kubernetes nodes, regardless of what type of cluster it is.
 
-import CommonPortsTable from 'shared-files/_common-ports-table.md';
+import CommonPortsTable from '../../../shared-files/_common-ports-table.md';
 
 <CommonPortsTable />
 
