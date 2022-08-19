@@ -64,7 +64,7 @@ spec:
 ```
 <br/>
 
-- Aligning with best practices, any end-user workloads being ran on Linux nodes would be scheduled on those with the worker role only:
+- Aligning with best practices, any end-user workloads being run on Linux nodes would be scheduled on those with the worker role only:
 
 ```yml
 apiVersion: apps/v1
@@ -290,15 +290,15 @@ For more information, please see the following references:
 
 ## Guiding Migrations of Workloads to RKE2 Windows
 <br/>
-Referencing the tables in [Rancher 2.5 vs. Rancher 2.6 Support Matrix for Windows Clusters](#rancher-25-vs-rancher-26-support-matrix-for-windows-clusters) and [Rancher 2.5 vs Rancher 2.6 Supported Kubernetes Versions for Provisioning RKE1 and RKE2 Windows Clusters](#rancher-25-vs-rancher-26-supported-kubernetes-versions-for-provisioning-rke1-and-rke2-windows-clusters), you will find the overlap in Kubernetes versions between RKE1 and RKE2 occurs in 1.22. This will be the base version required to migrate RKE1 Windows workloads when following the Rancher recommended approach.
+Referencing the tables in [Rancher 2.5 vs. Rancher 2.6 Support Matrix for Windows Clusters](#rancher-25-vs-rancher-26-support-matrix-for-windows-clusters) and [Rancher 2.5 vs. Rancher 2.6 Supported Kubernetes Versions for Provisioning RKE1 and RKE2 Windows Clusters](#rancher-25-vs-rancher-26-supported-kubernetes-versions-for-provisioning-rke1-and-rke2-windows-clusters), you will find the overlap in Kubernetes versions between RKE1 and RKE2 occurs in 1.22. This will be the base version required to migrate RKE1 Windows workloads when following the Rancher recommended approach.
 
 ### In-Place Upgrade of Rancher 2.5
 
-1. Upgrade the Rancher version to v2.6.5+
-1. Upgrade the RKE1 Windows downstream cluster(s) to RKE1 v1.22 using the latest available patch version
-1. Provision a new RKE2 Windows downstream cluster using RKE2 v1.22 using the matching patch version that the RKE1 Windows cluster is at
-1. Begin the migration of the Windows workloads from RKE1 to RKE2 clusters
-1. Perform validation tests to ensure that there has been no functionality loss or change when migrating your application from RKE1 to RKE2
+1. Upgrade the Rancher version to v2.6.5+.
+1. Upgrade the RKE1 Windows downstream cluster(s) to RKE1 v1.22 using the latest available patch version.
+1. Provision a new RKE2 Windows downstream cluster using RKE2 v1.22 using the matching patch version that the RKE1 Windows cluster is at.
+1. Begin the migration of the Windows workloads from RKE1 to RKE2 clusters.
+1. Perform validation tests to ensure that there has been no functionality loss or change when migrating your application from RKE1 to RKE2.
 1. After successful validation tests have occurred, you can opt to upgrade your RKE2 1.22.x cluster to a new minor version such as 1.23 or 1.24.
 
 
@@ -306,16 +306,16 @@ Referencing the tables in [Rancher 2.5 vs. Rancher 2.6 Support Matrix for Window
 
 >**Important:** To perform either of the following options requires Rancher v2.6.5 or above.
 
-**When using matching Kubernetes patch versions for RKE and RKE2:**
+**When using matching Kubernetes patch versions for RKE1 and RKE2:**
 
-1. Provision a new RKE2 Windows downstream cluster using RKE2 v1.22 using the matching patch version that the RKE1 Windows cluster is at
-1. Begin the migration of the Windows workloads from RKE1 to RKE2 clusters
-1. Perform validation tests to ensure that there has been no functionality loss or change when migrating your application from RKE1 to RKE2
+1. Provision a new RKE2 Windows downstream cluster using RKE2 v1.22 using the matching patch version that the RKE1 Windows cluster is at.
+1. Begin the migration of the Windows workloads from RKE1 to RKE2 clusters.
+1. Perform validation tests to ensure that there has been no functionality loss or change when migrating your application from RKE1 to RKE2.
 1. After successful validation tests have occurred, you can opt to upgrade your RKE2 1.22.x cluster to a new minor version such as 1.23 or 1.24.
 
 
 **When using a newer Kubernetes patch version for RKE2:**
 
-1. Provision a new RKE2 Windows downstream cluster using RKE2 v1.23 or v1.24
-1. Begin the migration of the Windows workloads from RKE1 to RKE2 clusters
-1. Perform validation tests to ensure that there has been no functionality loss or change when migrating your application from RKE1 to RKE2
+1. Provision a new RKE2 Windows downstream cluster using RKE2 v1.23 or v1.24.
+1. Begin the migration of the Windows workloads from RKE1 to RKE2 clusters.
+1. Perform validation tests to ensure that there has been no functionality loss or change when migrating your application from RKE1 to RKE2.
