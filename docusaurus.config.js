@@ -74,6 +74,9 @@ module.exports = {
               label: 'v2.6',
               path: 'docs',
             },
+            2.5: {
+              label: 'v2.5'
+            }
           },
         },
         blog: false, // Optional: disable the blog plugin
