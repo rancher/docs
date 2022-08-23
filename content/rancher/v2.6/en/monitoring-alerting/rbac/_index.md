@@ -90,7 +90,7 @@ Admins may assign custom roles in the Rancher UI for admin, editing, and viewing
 
 >**Note:** Ensure that Monitoring V2 and Prometheus Federator are both installed before proceeding.
 
-1. Click **☰ > Users & Authentication > Roles.**
+1. Click **☰ > Users & Authentication > Roles**.
 1. Select the **Cluster** tab, the click **Create Cluster Role**.
 1. In the **Name** field, create a custom role such as `View Monitoring`, `Edit Monitoring`, or `Admin Monitoring`.
 1. Click **Inherit From > Add Resource**, then select the Kubernetes role, as applicable, from the dropdown.
