@@ -80,26 +80,38 @@ Admins should use these roles to provide more fine-grained access to users:
 
 ### Assigning Monitoring Roles through Custom Roles
 
-**_New in v2.6.7_**
-
 Admins may assign custom roles in the Rancher UI for admin, editing, and viewing monitoring. These "roles" are created by default when the monitoring app is installed. Additionally, these roles are also deployed to the corresponding Kubernetes roles: admin, edit, and view `ClusterRoles`.
 
 >**Important:** The UI will not offer `monitoring-admin`, `monitoring-edit`, and `monitoring-view` options when users are being added to a cluster. These monitoring roles can only be assigned by manually creating a custom role that inherits from Project Owner and Project Monitoring View roles. 
+>
+>**Note:** Ensure that Monitoring V2 is installed before proceeding.
 
-**To create monitoring roles through custom roles:**
+  1. Create the custom role:
 
->**Note:** Ensure that Monitoring V2 and Prometheus Federator are both installed before proceeding.
+    1.1 Click **☰ > Users & Authentication > Roles**.
 
-1. Click **☰ > Users & Authentication > Roles**.
-1. Select the **Cluster** tab, the click **Create Cluster Role**.
-1. In the **Name** field, create a custom role such as `View Monitoring`, `Edit Monitoring`, or `Admin Monitoring`.
-1. Click **Inherit From > Add Resource**, then select the Kubernetes role, as applicable, from the dropdown.
-1. Click **Create**.
-1. Click **☰ > Cluster Management**.
-1. Click **Cluster > Cluster Members > Add Resource**. The custom role you've created will now appear as an option under **Cluster Permissions**.
-1. Assign the new custom role to the newly added user, then click **Create**. 
+    1.2 Select the appropriate tab, e.g., **Cluster** role. Then click **Create Cluster Role**.
 
-**Result:** User should now be able to log in and see the monitoring tools.
+    1.3 In the **Name** field, create a custom role such as `View Monitoring`, `Edit Monitoring`, or `Admin Monitoring`.
+
+    1.4 Click **Inherit From > Add Resource**, then select the Kubernetes role, as applicable, from the dropdown.
+
+    1.5 Click **Create**.
+    
+    <br/>
+
+  2. Create a new user as an admin, then do the following:
+
+    2.1 Click **☰ > Cluster Management > Cluster Explore > Cluster > Cluster Members > Add**.
+
+    2.2 Pick your new user name from **Select Member** dropdown.
+
+    2.3 Assign the new custom role from **Cluster Permissions** to the new user.
+
+    2.4 Click **Create**.
+
+
+**Result:** The new user should now be able to see the monitoring tools.
 
 
 ### Additional Monitoring ClusterRoles
