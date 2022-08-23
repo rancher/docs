@@ -87,6 +87,12 @@ Note that you can choose whatever `cluster-cidr` and `service-cidr` value, howev
 
 If you are using a custom cni plugin, i.e. a cni plugin different from flannel, the previous configuration might not be enough to enable dual-stack in the cni plugin. Please check how to enable dual-stack in its documentation and verify if network policies can be enabled.
 
+> **Warning:** Kubernetes 1.24 and 1.25 includes a bug that ignores the node ipv6 addresses if you have a dual-stack environment and you are not using the default NIC for the cluster traffic. To avoid this bug, add the following flag to both k3s servers and agents:
+```
+--kubelet-arg "--node-ip=0.0.0.0" # If you want to prioritize IPv6 traffic, use "--node-ip=::" instead of "--node-ip=0.0.0.0"
+```
+
+
 ### IPv6 only installation
 
 IPv6 only setup is supported on k3s v1.22 or above
