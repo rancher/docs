@@ -96,7 +96,7 @@ Admins may assign custom roles in the Rancher UI for admin, editing, and viewing
 1. Click **Inherit From > Add Resource**, then select the Kubernetes role, as applicable, from the dropdown.
 1. Click **Create**.
 1. Click **☰ > Cluster Management**.
-1. Click **Cluster > Cluster Members > Add**. The custom role you've created will now appear as an option under **Cluster Permissions**.
+1. Click **Cluster > Cluster Members > Add Resource**. The custom role you've created will now appear as an option under **Cluster Permissions**.
 1. Assign the new custom role to the newly added user, then click **Create**. 
 
 **Result:** User should now be able to log in and see the monitoring tools.
