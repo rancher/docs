@@ -1,8 +1,3 @@
----
-headless: true
----
-
-
 | Action | Rancher Launched Kubernetes Clusters |  EKS, GKE and AKS Clusters<sup>1</sup> | Other Hosted Kubernetes Clusters | Non-EKS or GKE Registered Clusters |
 | --- | --- | ---| ---|----|
 | [Using kubectl and a kubeconfig file to Access a Cluster](../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md) | ✓ | ✓ | ✓ | ✓ |

@@ -1,6 +1,3 @@
----
-headless: true
----
 | Action | [Rancher launched Kubernetes Clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/) | [Hosted Kubernetes Clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/hosted-kubernetes-clusters/) | [Imported Clusters]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/imported-clusters) |
 | --- | --- | ---| ---|
 | [Using kubectl and a kubeconfig file to Access a Cluster]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/cluster-access/kubectl/) | ✓ | ✓ | ✓ |
