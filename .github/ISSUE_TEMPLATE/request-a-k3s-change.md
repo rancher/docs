@@ -7,8 +7,4 @@ assignees: ''
 
 ---
 
-**Request Summary:**
-<!-- Briefly describe what you would like to change in K3s documentation below this line. This can include any type of change such as deleting something from a section, a whole page, or adding a new section or page, or any updates/additions. -->
-
-**Details:**
-<!-- If you have specific content you want changed, please indicate this below this line. -->
+The K3s documentation is moving. Please file any issues or pull requests at https://github.com/k3s-io/docs instead.
