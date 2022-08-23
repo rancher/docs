@@ -10,6 +10,7 @@ This section describes the expectations for RBAC for Rancher Monitoring.
   - [Users with Kubernetes Admin/Edit Permissions](#users-with-kubernetes-admin-edit-permissions)
   - [Users with Kubernetes View Permissions](#users-with-kubernetes-view-permissions)
   - [Additional Monitoring Roles](#additional-monitoring-roles)
+  - [Assigning Monitoring Roles through Custom Roles](#assigning-monitoring-roles-through-custom-roles)
   - [Additional Monitoring ClusterRoles](#additional-monitoring-clusterroles)
 - [Users with Rancher Based Permissions](#users-with-rancher-based-permissions)
   - [Differences in 2.5.x](#differences-in-2-5-x)
@@ -85,13 +86,20 @@ Admins may assign custom roles in the Rancher UI for admin, editing, and viewing
 
 >**Important:** The UI will not offer `monitoring-admin`, `monitoring-edit`, and `monitoring-view` options when users are being added to a cluster. These monitoring roles can only be assigned by manually creating a custom role that inherits from Project Owner and Project Monitoring View roles. 
 
-1. Ensure that Monitoring V2 and Prometheus Federator are both installed.
-1. Create a custom role such as `View Monitoring`, `Edit Monitoring`, or `Admin Monitoring`.
-1. 
-1. Create a project monitor in the default project.
-1. Add a user to the default project and assign that user the new role. 
+**To create monitoring roles through custom roles:**
 
-**Result:** User should now be able to log in and view (or edit) the various monitoring roles.
+>**Note:** Ensure that Monitoring V2 and Prometheus Federator are both installed before proceeding.
+
+1. Click **☰ > Users & Authentication > Roles.**
+1. Select the **Cluster** tab, the click **Create Cluster Role**.
+1. In the **Name** field, create a custom role such as `View Monitoring`, `Edit Monitoring`, or `Admin Monitoring`.
+1. Click **Inherit From > Add Resource**, then select the Kubernetes role, as applicable, from the dropdown.
+1. Click **Create**.
+1. Click **☰ > Cluster Management**.
+1. Click **Cluster > Cluster Members > Add**. The custom role you've created will now appear as an option under **Cluster Permissions**.
+1. Assign the new custom role to the newly added user, then click **Create**. 
+
+**Result:** User should now be able to log in and see the monitoring tools.
 
 
 ### Additional Monitoring ClusterRoles
