@@ -29,6 +29,7 @@
             "id": "pages-for-subheaders/quick-start-guides"
           },
           "items": [
+            "getting-started/quick-start-guides/cli",
             {
               "type": "category",
               "label": "Deploy Rancher Manager",
@@ -342,7 +343,8 @@
                               "items": [
                                 "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/azure-storageclass-configuration",
                                 "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/windows-linux-cluster-feature-parity",
-                                "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/network-requirements-for-host-gateway"
+                                "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/network-requirements-for-host-gateway",
+                                "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/v2.1-v2.2"
                                     ]
                       },
                       {
@@ -384,7 +386,7 @@
                           "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/about-rancher-agents"
                      ]
                   },
-                  "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters"
+                  "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters"
                 ]
               },
               {
@@ -417,6 +419,7 @@
                       "id": "pages-for-subheaders/horizontal-pod-autoscaler"
                     },
                     "items": [
+                          "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/hpa-for-rancher-before-2.0.7",
                           "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/about-hpas",
                           "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-ui",
                           "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-kubectl",
@@ -461,7 +464,6 @@
                   "id": "pages-for-subheaders/deploy-apps-across-clusters"
                 },
                 "items": [
-                      "how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
                       "how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps"
                           ]
               },
@@ -478,9 +480,30 @@
                   "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster",
                   "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher",
                   "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher",
+                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher",
+                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-k3s-installed-rancher",
                   "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters",
-                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup"
+                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup/roll-back-to-v2.0-v2.1"
                 ]
+              },
+              {
+                "type": "category",
+                "label": "Migrating from v1.6 to v2.x",
+                "link": {
+                  "type": "doc",
+                  "id": "pages-for-subheaders/migrate-from-v1.6-v2.x"
+                          },
+                "items": [
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/kubernetes-introduction",
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/install-and-configure-rancher",
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services",
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services",
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps",
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services",
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services",
+                    "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing"
+                       ]
               }
             ]
         },
@@ -804,34 +827,11 @@
             "id": "pages-for-subheaders/best-practices"
                 },
           "items": [
-            {
-              "type": "category",
-              "label": "Rancher Server",
-              "link": {
-                "type": "doc",
-                "id": "pages-for-subheaders/rancher-server"
-                    },
-              "items": [
-                    "reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere",
-                    "reference-guides/best-practices/rancher-server/rancher-deployment-strategy",
-                    "reference-guides/best-practices/rancher-server/tips-for-running-rancher"
-                    ]
-            },
-            {
-              "type": "category",
-              "label": "Rancher-Managed Clusters",
-              "link": {
-                "type": "doc",
-                "id": "pages-for-subheaders/rancher-managed-clusters"
-              },
-              "items": [
-                    "reference-guides/best-practices/rancher-managed-clusters/logging-best-practices",
-                    "reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices",
-                    "reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers",
-                    "reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere"
-                    ]
-                  }
-                ]
+            "reference-guides/best-practices/containers",
+            "reference-guides/best-practices/deployment-strategies",
+            "reference-guides/best-practices/deployment-types",
+            "reference-guides/best-practices/management"
+          ]
            },
            {
               "type": "category",
@@ -909,8 +909,22 @@
                     "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2",
                     "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean",
                     "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/azure",
-                    "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere"
-                          ]
+                    {
+                      "type": "category",
+                      "label": "Creating a vSphere Cluster",
+                      "link": {
+                        "type": "doc",
+                        "id": "pages-for-subheaders/creating-a-vsphere-cluster"
+                            },
+                      "items": [
+                            "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.3.3",
+                            "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.3.0",
+                            "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.2.0",
+                            "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.0.4",
+                            "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/prior-to-v2.0.4"
+                            ]
+                    }
+                  ]
                 }
                       ]
                     }
@@ -1031,7 +1045,18 @@
                   ]
           },
               "reference-guides/rancher-cluster-tools",
-              "reference-guides/rancher-project-tools",
+              {
+                "type": "category",
+                "label": "Project Tools",
+                "link": {
+                  "type": "doc",
+                  "id": "pages-for-subheaders/project-tools"
+                },
+                "items": [
+                  "reference-guides/rancher-project-tools/project-alerts",
+                  "reference-guides/rancher-project-tools/project-logging"
+                ]
+              },
               "reference-guides/system-tools",
               "reference-guides/rke1-template-example-yaml",
           {
@@ -1046,8 +1071,9 @@
               "reference-guides/pipelines/pipeline-configuration",
               "reference-guides/pipelines/configure-persistent-data",
               "reference-guides/pipelines/example-repositories",
-              "reference-guides/pipelines/example-yaml"
-                  ]
+              "reference-guides/pipelines/example-yaml",
+              "reference-guides/pipelines/v2.0.x"
+            ]
           },
           {
             "type": "category",
@@ -1059,16 +1085,54 @@
           "items": [
             {
               "type": "category",
-              "label": "Rancher v2.6 Hardening Guides",
+              "label": "Rancher v2.1 Hardening Guides",
               "link": {
                 "type": "doc",
-                "id": "pages-for-subheaders/rancher-v2.5-hardening-guides"
+                "id": "pages-for-subheaders/rancher-v2.1-hardening-guides"
               },
               "items": [
-                "reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.6-benchmark",
-                "reference-guides/rancher-security/rancher-v2.5-hardening-guides/self-assessment-guide-with-cis-v1.6-benchmark",
-                "reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.6-benchmark",
-                "reference-guides/rancher-security/rancher-v2.5-hardening-guides/self-assessment-guide-with-cis-v1.6-benchmark"
+                "reference-guides/rancher-security/rancher-v2.1-hardening-guides/self-assessment-guide-with-cis-v1.3-benchmark",
+                "reference-guides/rancher-security/rancher-v2.1-hardening-guides/hardening-guide-with-cis-v1.3-benchmark"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Rancher v2.2 Hardening Guides",
+              "link": {
+                "type": "doc",
+                "id": "pages-for-subheaders/rancher-v2.2-hardening-guides"
+              },
+              "items": [
+                "reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark",
+                "reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Rancher v2.3 Hardening Guides",
+              "link": {
+                "type": "doc",
+                "id": "pages-for-subheaders/rancher-v2.3-hardening-guides"
+              },
+              "items": [
+                "reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.0-self-assessment-guide-with-cis-v1.4.1-benchmark",
+                "reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.0-hardening-guide-with-cis-v1.4.1-benchmark",
+                "reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.3-self-assessment-guide-with-cis-v1.4.1-benchmark",
+                "reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.3-hardening-guide-with-cis-v1.4.1-benchmark",
+                "reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.5-self-assessment-guide-with-cis-v1.5-benchmark",
+                "reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.5-hardening-guide-with-cis-v1.5-benchmark"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Rancher v2.4 Hardening Guides",
+              "link": {
+                "type": "doc",
+                "id": "pages-for-subheaders/rancher-v2.4-hardening-guides"
+              },
+              "items": [
+                "reference-guides/rancher-security/rancher-v2.4-hardening-guides/self-assessment-guide-with-cis-v1.5-benchmark",
+                "reference-guides/rancher-security/rancher-v2.4-hardening-guides/hardening-guide-with-cis-v1.5-benchmark"
               ]
             },
             {
@@ -1086,8 +1150,9 @@
                 "reference-guides/rancher-security/kubernetes-security-best-practices",
                 "reference-guides/rancher-security/security-advisories-and-cves"
                   ]
-                }
-              ]
+                },
+        "reference-guides/v1.6-migration/migration-tools-cli-reference"
+      ]
     },
     {
       "type": "category",
@@ -1113,11 +1178,8 @@
               "id": "pages-for-subheaders/cis-scans"
                   },
             "items": [
-                "explanations/integrations-in-rancher/cis-scans/configuration-reference",
-                "explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans",
-                "explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests",
-                "explanations/integrations-in-rancher/cis-scans/custom-benchmark"
-                   ]
+                "explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests"
+            ]
             },
             {
             "type": "category",
@@ -1165,42 +1227,42 @@
             "label": "Logging",
             "link": {
               "type": "doc",
-              "id": "pages-for-subheaders/logging"
+              "id": "pages-for-subheaders/cluster-logging"
                   },
                 "items": [
-                  "explanations/integrations-in-rancher/logging/logging-architecture",
-                  "explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging",
-                  "explanations/integrations-in-rancher/logging/rbac-for-logging",
-                  "explanations/integrations-in-rancher/logging/logging-helm-chart-options",
-                  "explanations/integrations-in-rancher/logging/taints-and-tolerations",
-                    {
-                      "type": "category",
-                      "label": "Custom Resource Configuration",
-                      "link": {
-                        "type": "doc",
-                        "id": "pages-for-subheaders/custom-resource-configuration"
-                            },
-                      "items": [
-                            "explanations/integrations-in-rancher/logging/custom-resource-configuration/flows-and-clusterflows",
-                            "explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs"
-                      ]
-                    }
-                  ]
+                  "explanations/integrations-in-rancher/cluster-logging/elasticsearch",
+                  "explanations/integrations-in-rancher/cluster-logging/fluentd",
+                  "explanations/integrations-in-rancher/cluster-logging/kafka",
+                  "explanations/integrations-in-rancher/cluster-logging/splunk",
+                  "explanations/integrations-in-rancher/cluster-logging/syslog"
+                ]
             },
             {
             "type": "category",
-            "label": "Monitoring and Alerting",
+            "label": "Alerting",
             "link": {
               "type": "doc",
-              "id": "pages-for-subheaders/monitoring-and-alerting"
+              "id": "pages-for-subheaders/cluster-alerts"
                   },
             "items": [
-              "explanations/integrations-in-rancher/monitoring-and-alerting/how-monitoring-works",
-              "explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring",
-              "explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards",
-              "explanations/integrations-in-rancher/monitoring-and-alerting/windows-support",
-              "explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions"
+              "explanations/integrations-in-rancher/cluster-alerts/elasticsearch"
                   ]
+            },
+            {
+              "type": "category",
+              "label": "Monitoring",
+              "link": {
+                "type": "doc",
+                "id": "pages-for-subheaders/cluster-monitoring"
+                    },
+              "items": [
+                "explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics",
+                "explanations/integrations-in-rancher/cluster-monitoring/custom-metrics",
+                "explanations/integrations-in-rancher/cluster-monitoring/expression",
+                "explanations/integrations-in-rancher/cluster-monitoring/project-monitoring",
+                "explanations/integrations-in-rancher/cluster-monitoring/prometheus",
+                "explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics"
+                    ]
             },
               "explanations/integrations-in-rancher/opa-gatekeeper"
                   ]
@@ -1215,11 +1277,12 @@
         "id": "faq"
       },
       "items": [
-        "faq/deprecated-features-in-v2.5",
         "faq/install-and-configure-kubectl",
         "faq/technical-items",
         "faq/security",
         "faq/telemetry",
+        "faq/upgrades-to-2x",
+        "faq/networking",
         "faq/container-network-interface-providers",
         "faq/rancher-is-no-longer-needed"
              ]
