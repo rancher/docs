@@ -181,8 +181,6 @@ kubectl patch cronjob neuvector-updater-pod -n cattle-neuvector-system --patch '
 
 ### Support Limitations
 
-* Only admins and cluster owners are currently supported.
-
 * Fleet multi-cluster deployment is not supported.
 
 * NeuVector is not supported on a Windows cluster.
