@@ -26,7 +26,7 @@ In the **Account Access** section, enter the vCenter FQDN or IP address and the 
 
 # Scheduling
 
-Choose what hypervisor the virtual machine will be scheduled to. 
+Choose what hypervisor the virtual machine will be scheduled to.
 
 | Parameter                | Required | Description |
 |:------------------------|:--------:|:------------------------------------------------------------|
@@ -65,7 +65,7 @@ To enable disk UUIDs for all VMs created for a cluster,
 3. Under **Instance Options** click on **Add Parameter**.
 4. Enter `disk.enableUUID` as key with a value of **TRUE**.
 
-    ![](/img/rke/vsphere-nodedriver-enable-uuid.png)
+    ![](/img/vsphere-nodedriver-enable-uuid.png)
 
 5. Click **Create** or **Save**.
 
@@ -81,7 +81,7 @@ Optionally, you can:
 - Assign labels to the VMs that can be used as a base for scheduling rules in the cluster.
 - Customize the configuration of the Docker daemon on the VMs that will be created.
 
-> **Note:** Custom attributes are a legacy feature that will eventually be removed from vSphere. 
+> **Note:** Custom attributes are a legacy feature that will eventually be removed from vSphere.
 
 # Cloud Init
 

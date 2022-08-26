@@ -28,7 +28,7 @@ This section covers the following topics:
 
 The following table summarizes the options and settings available for each cluster type:
 
-import ClusterCapabilitiesTable from 'shared-files/_cluster-capabilities-table.md';
+import ClusterCapabilitiesTable from '../shared-files/_cluster-capabilities-table.md';
 
 <ClusterCapabilitiesTable />
 
