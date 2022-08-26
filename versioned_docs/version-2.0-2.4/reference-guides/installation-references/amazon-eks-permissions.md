@@ -153,6 +153,7 @@ If you're using **Custom: Choose from your existing VPC and Subnets**:
 1. Click **Next: Select Subnets**. Then choose one of the **Subnets** that displays.
 
 1. Click **Next: Select Security Group**.
+
 </details>
 
 If your worker nodes have Private IPs only, you must also choose a **VPC & Subnet** that allow your instances to access the internet. This access is required so that your worker nodes can connect to the Kubernetes control plane.

@@ -72,7 +72,7 @@ By default, GKE users are not given this privilege, so you will need to run the 
 
 **Result:**
 
-- Your cluster is imported and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.</li>
+- Your cluster is imported and assigned a state of **Pending.** Rancher is deploying resources to manage your cluster.
 - You can access your cluster after its state is updated to **Active.**
 - **Active** clusters are assigned two Projects: `Default` (containing the namespace `default`) and `System` (containing the namespaces `cattle-system`, `ingress-nginx`, `kube-public` and `kube-system`, if present).
 
@@ -124,7 +124,7 @@ $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 ### Debug Logging and Troubleshooting for Imported K3s Clusters
 
-Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes. 
+Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes.
 
 To enable debug logging on the system upgrade controller deployment, edit the [configmap](https://github.com/rancher/system-upgrade-controller/blob/50a4c8975543d75f1d76a8290001d87dc298bdb4/manifests/system-upgrade-controller.yaml#L32) to set the debug environment variable to true. Then restart the `system-upgrade-controller` pod.
 
@@ -163,7 +163,7 @@ This example annotation indicates that a pod security policy is enabled:
 The following annotation indicates Ingress capabilities. Note that that the values of non-primitive objects need to be JSON encoded, with quotations escaped.
 
 ```
-"capabilities.cattle.io/ingressCapabilities": "[  
+"capabilities.cattle.io/ingressCapabilities": "[
   {
     "customDefaultBackend":true,
     "ingressProvider":"asdf"

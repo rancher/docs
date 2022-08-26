@@ -121,7 +121,7 @@ C. Prepare the Docker daemon <br/>
 D. Populate the private registry
 
 <details>
-  <summary>Collecting and Populating Windows Images into the Private Registry"%}}
+  <summary>Collecting and Populating Windows Images into the Private Registry"%}}</summary>
 
 ### Prerequisites
 

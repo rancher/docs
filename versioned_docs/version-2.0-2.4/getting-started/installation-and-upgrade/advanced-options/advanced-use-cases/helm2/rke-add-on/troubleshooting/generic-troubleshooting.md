@@ -45,7 +45,7 @@ If a pod is not in **Running** state, you can dig into the root cause by running
 kubectl --kubeconfig kube_config_rancher-cluster.yml describe pod POD_NAME -n NAMESPACE
 ```
 
-#### Pod container logs</h3>
+#### Pod container logs
 
 ```
 kubectl --kubeconfig kube_config_rancher-cluster.yml logs POD_NAME -n NAMESPACE

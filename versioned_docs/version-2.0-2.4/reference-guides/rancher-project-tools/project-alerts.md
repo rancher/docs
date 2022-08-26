@@ -109,7 +109,7 @@ Select a pod status that triggers an alert:
 
 - **Not Running**
 - **Not Scheduled**
-- **Restarted <x> times within the last <x> Minutes**
+- **Restarted &lt;x&gt; times within the last &lt;x&gt; Minutes**
 
 ### Send a
 
@@ -123,7 +123,7 @@ Select the urgency level of the alert based on pod state. For example, select **
 
 ### Advanced Options
 
-By default, the below options will apply to all alert rules within the group. 
+By default, the below options will apply to all alert rules within the group.
 
 You can disable these advanced options when configuring a specific rule.
 
@@ -157,7 +157,7 @@ Select the urgency level of the alert based on the percentage you choose and the
 
 ### Advanced Options
 
-By default, the below options will apply to all alert rules within the group. 
+By default, the below options will apply to all alert rules within the group.
 
 You can disable these advanced options when configuring a specific rule.
 

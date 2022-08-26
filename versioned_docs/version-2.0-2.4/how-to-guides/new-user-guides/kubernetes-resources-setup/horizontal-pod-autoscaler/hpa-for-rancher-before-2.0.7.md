@@ -82,8 +82,9 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
     Then review the log to confirm that the `metrics-server` package is running.
 
     <details id="metrics-server-run-check">
-  <summary>Metrics Server Log Output</summary>
+      <summary>Metrics Server Log Output</summary>
 
+    ```
     I0723 08:09:56.193136       1 heapster.go:71] /metrics-server --source=kubernetes.summary_api:''
     I0723 08:09:56.193574       1 heapster.go:72] Metrics Server version v0.2.1
     I0723 08:09:56.194480       1 configs.go:61] Using Kubernetes client with master "https://10.43.0.1:443" and version
@@ -94,6 +95,8 @@ To create HPA resources based on resource metrics such as CPU and memory use, yo
     [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] listing is available at https:///swaggerapi
     [restful] 2018/07/23 08:09:57 log.go:33: [restful/swagger] https:///swaggerui/ is mapped to folder /swagger-ui/
     I0723 08:09:57.394080       1 serve.go:85] Serving securely on 0.0.0.0:443
+    ```
+
     </details>
 
 
@@ -129,68 +132,73 @@ To do it, follow these steps:
 1. Copy the ClusterRole and ClusterRoleBinding manifest for the type of metrics you're using for your HPA.
 
   <details id="cluster-role-resource-metrics">
-  <summary>Resource Metrics: ApiGroups resource.metrics.k8s.io</summary>
+    <summary>Resource Metrics: ApiGroups resource.metrics.k8s.io</summary>
 
-        apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRole
-        metadata:
-          name: view-resource-metrics
-        rules:
-        - apiGroups:
-            - metrics.k8s.io
-          resources:
-            - pods
-            - nodes
-          verbs:
-            - get
-            - list
-            - watch
-        ---
-        apiVersion: rbac.authorization.k8s.io/v1
-        kind: ClusterRoleBinding
-        metadata:
-          name: view-resource-metrics
-        roleRef:
-          apiGroup: rbac.authorization.k8s.io
-          kind: ClusterRole
-          name: view-resource-metrics
-        subjects:
-          - apiGroup: rbac.authorization.k8s.io
-            kind: User
-            name: system:anonymous
-    </details>
-<details id="cluster-role-custom-resources">
-  <summary>Custom Metrics: ApiGroups custom.metrics.k8s.io</summary>
-
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    name: view-custom-metrics
-  rules:
-  - apiGroups:
-      - custom.metrics.k8s.io
-    resources:
-      - "*"
-    verbs:
-      - get
-      - list
-      - watch
-  ---
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-    name: view-custom-metrics
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
+    ```
+    apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
-    name: view-custom-metrics
-  subjects:
-    - apiGroup: rbac.authorization.k8s.io
-      kind: User
-      name: system:anonymous
-  ```
-</details>
+    metadata:
+      name: view-resource-metrics
+    rules:
+    - apiGroups:
+        - metrics.k8s.io
+      resources:
+        - pods
+        - nodes
+      verbs:
+        - get
+        - list
+        - watch
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: view-resource-metrics
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: view-resource-metrics
+    subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: User
+        name: system:anonymous
+    ```
+
+  </details>
+  <details id="cluster-role-custom-resources">
+    <summary>Custom Metrics: ApiGroups custom.metrics.k8s.io</summary>
+
+    ```
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: view-custom-metrics
+    rules:
+    - apiGroups:
+        - custom.metrics.k8s.io
+      resources:
+        - "*"
+      verbs:
+        - get
+        - list
+        - watch
+    ---
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: view-custom-metrics
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: view-custom-metrics
+    subjects:
+      - apiGroup: rbac.authorization.k8s.io
+        kind: User
+        name: system:anonymous
+    ```
+
+  </details>
+
 1. Create them in your cluster using one of the follow commands, depending on the metrics you're using.
  ```
   # kubectl create -f <RESOURCE_METRICS_MANIFEST>
