@@ -7,7 +7,7 @@ aliases:
 
 ### Self Assessment Guide
 
-This [guide](./benchmark-2.3) corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
+This [guide](../../../reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.0-self-assessment-guide-with-cis-v1.4.1-benchmark.md) corresponds to specific versions of the hardening guide, Rancher, Kubernetes, and the CIS Benchmark:
 
 Self Assessment Guide Version | Rancher Version | Hardening Guide Version | Kubernetes Version | CIS Benchmark Version
 ---------------------------|----------|---------|-------|-----
@@ -15,7 +15,7 @@ Self Assessment Guide v2.3 | Rancher v2.3.0-2.3.2 | Hardening Guide v2.3 | Kuber
 
 ### Hardening Guide
 
-This hardening [guide](./hardening-2.3) is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
+This hardening [guide](../../../reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.0-hardening-guide-with-cis-v1.4.1-benchmark.md) is intended to be used with specific versions of the CIS Kubernetes Benchmark, Kubernetes, and Rancher:
 
 Hardening Guide Version | Rancher Version | CIS Benchmark Version | Kubernetes Version
 ------------------------|----------------|-----------------------|------------------

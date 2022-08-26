@@ -13,10 +13,10 @@ aliases:
 This section contains information about how to create backups of your Rancher data and how to restore them in a disaster scenario.
 
   - Rancher server backups:
-    - [Rancher installed on a K3s Kubernetes cluster](./k3s-backups)
-    - [Rancher installed on an RKE Kubernetes cluster](./rke-backups)
-    - [Rancher installed with Docker](./docker-backups)
+    - [Rancher installed on a K3s Kubernetes cluster](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher.md)
+    - [Rancher installed on an RKE Kubernetes cluster](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md)
+    - [Rancher installed with Docker](../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md)
 
-For information on backing up Rancher launched Kubernetes clusters, refer to [this section.]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/backing-up-etcd/)
+For information on backing up Rancher launched Kubernetes clusters, refer to [this section.](../../how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd.md)
 
-If you are looking to back up your [Rancher launched Kubernetes cluster]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/), please refer [here]({{<baseurl>}}/rancher/v2.0-v2.4/en/cluster-admin/backing-up-etcd/).
+If you are looking to back up your [Rancher launched Kubernetes cluster](../../pages-for-subheaders/launch-kubernetes-with-rancher.md), please refer [here](../../how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd.md).
