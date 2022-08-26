@@ -5,7 +5,7 @@ module.exports = {
   tagline: '',
   url: 'https://rancher.com/docs/rancher',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.png',
   organizationName: 'rancher', // Usually your GitHub org/user name.
@@ -28,12 +28,12 @@ module.exports = {
       logo: {
         alt: 'logo',
         src: 'img/rancher-logo-horiz-color.svg',
-        href: 'en',
+        // href: 'en',
       },
       items: [
         {
           type: 'doc',
-          docId: 'en/introduction',
+          docId: 'rancher-manager',
           position: 'right',
           label: 'Docs',
           className: 'navbar__docs',
@@ -72,7 +72,13 @@ module.exports = {
           versions: {
             current: {
               label: 'v2.6',
-              path: 'en',
+              path: 'docs',
+            },
+            2.5: {
+              label: 'v2.5'
+            },
+            '2.0-2.4': {
+              label: 'v2.0-v2.4'
             },
           },
         },
