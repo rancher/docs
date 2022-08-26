@@ -1,6 +1,6 @@
 {
   "tutorialSidebar": [
-      "rancher-manager",
+    "rancher-manager",
     {
       "type": "category",
       "label": "Getting Started",
@@ -19,7 +19,7 @@
           "items": [
             "getting-started/introduction/overview",
             "getting-started/introduction/what-are-divio-docs"
-                 ]
+          ]
         },
         {
           "type": "category",
@@ -38,12 +38,12 @@
                 "id": "pages-for-subheaders/deploy-rancher-manager"
              },
               "items": [
-                    "getting-started/quick-start-guides/deploy-rancher-manager/aws",
-                    "getting-started/quick-start-guides/deploy-rancher-manager/azure",
-                    "getting-started/quick-start-guides/deploy-rancher-manager/digitalocean",
-                    "getting-started/quick-start-guides/deploy-rancher-manager/gcp",
-                    "getting-started/quick-start-guides/deploy-rancher-manager/vagrant",
-                    "getting-started/quick-start-guides/deploy-rancher-manager/helm-cli"
+                "getting-started/quick-start-guides/deploy-rancher-manager/aws",
+                "getting-started/quick-start-guides/deploy-rancher-manager/azure",
+                "getting-started/quick-start-guides/deploy-rancher-manager/digitalocean",
+                "getting-started/quick-start-guides/deploy-rancher-manager/gcp",
+                "getting-started/quick-start-guides/deploy-rancher-manager/vagrant",
+                "getting-started/quick-start-guides/deploy-rancher-manager/helm-cli"
               ]
             },
             {
@@ -54,11 +54,11 @@
                 "id": "pages-for-subheaders/deploy-rancher-workloads"
               },
               "items": [
-                    "getting-started/quick-start-guides/deploy-workloads/workload-ingress",
-                    "getting-started/quick-start-guides/deploy-workloads/nodeports"
-                     ]
-                  }
+                "getting-started/quick-start-guides/deploy-workloads/workload-ingress",
+                "getting-started/quick-start-guides/deploy-workloads/nodeports"
               ]
+            }
+          ]
         },
         {
           "type": "category",
@@ -66,8 +66,8 @@
           "link": {
             "type": "doc",
             "id": "pages-for-subheaders/installation-and-upgrade"
-                },
-            "items": [
+          },
+          "items": [
             {
               "type": "category",
               "label": "Installation Requirements",
@@ -76,9 +76,9 @@
                 "id": "pages-for-subheaders/installation-requirements"
                     },
               "items": [
-                    "getting-started/installation-and-upgrade/installation-requirements/install-docker",
-                    "getting-started/installation-and-upgrade/installation-requirements/port-requirements"
-                     ]
+                "getting-started/installation-and-upgrade/installation-requirements/install-docker",
+                "getting-started/installation-and-upgrade/installation-requirements/port-requirements"
+              ]
             },
             {
               "type": "category",
@@ -86,16 +86,24 @@
               "link": {
                 "type": "doc",
                 "id": "pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster"
-                    },
+              },
               "items": [
-                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks",
-                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
-                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/air-gapped-upgrades",
-                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks",
-                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-aks",
-                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke",
-                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting"
-                    ]
+                "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks",
+                "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+                {
+                  "type": "category",
+                  "label": "Upgrades",
+                  "link": {
+                    "type": "doc",
+                    "id": "pages-for-subheaders/upgrades"
+                        },
+                  "items": [
+                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on",
+                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration",
+                    "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2"
+                  ]
+                }
+              ]
             },
             {
               "type": "category",
@@ -105,60 +113,47 @@
                 "id": "pages-for-subheaders/other-installation-methods"
               },
               "items": [
-                  {
-                    "type": "category",
-                    "label": "Air-Gapped Helm CLI Install",
-                    "link": {
-                      "type": "doc",
-                      "id": "pages-for-subheaders/air-gapped-helm-cli-install"
-                    },
-                    "items": [
-                          "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry",
-                          "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images",
-                          "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes",
-                          "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha",
-                          "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/docker-install-commands"
-                           ]
+                {
+                  "type": "category",
+                  "label": "Air-Gapped Helm CLI Install",
+                  "link": {
+                    "type": "doc",
+                    "id": "pages-for-subheaders/air-gapped-helm-cli-install"
                   },
-                  {
-                    "type": "category",
-                    "label": "Rancher on a Single Node with Docker",
-                    "link": {
-                      "type": "doc",
-                      "id": "pages-for-subheaders/rancher-on-a-single-node-with-docker"
-                          },
-                    "items": [
-                          "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher",
-                          "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher",
-                          "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting"
-                           ]
+                  "items": [
+                    "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry",
+                    "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images",
+                    "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes",
+                    "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha"
+                  ]
+                },
+                {
+                  "type": "category",
+                  "label": "Rancher on a Single Node with Docker",
+                  "link": {
+                    "type": "doc",
+                    "id": "pages-for-subheaders/rancher-on-a-single-node-with-docker"
+                        },
+                  "items": [
+                    "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher",
+                    "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher",
+                    "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting"
+                  ]
+                },
+                {
+                  "type": "category",
+                  "label": "Rancher Behind an HTTP Proxy",
+                  "link": {
+                    "type": "doc",
+                    "id": "pages-for-subheaders/rancher-behind-an-http-proxy"
                   },
-                  {
-                    "type": "category",
-                    "label": "Rancher Behind an HTTP Proxy",
-                    "link": {
-                      "type": "doc",
-                      "id": "pages-for-subheaders/rancher-behind-an-http-proxy"
-                    },
-                    "items": [
-                          "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/set-up-infrastructure",
-                          "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-kubernetes",
-                          "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-rancher"
-                           ]
-                  },
-                  {
-                    "type": "category",
-                    "label": "Install/Upgrade Rancher with RancherD",
-                    "link": {
-                      "type": "doc",
-                      "id": "pages-for-subheaders/install-rancher-on-linux"
-                    },
-                    "items": [
-                      "getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/roll-back-rancherd",
-                      "getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd"
-                    ]
-                  }
-                ]
+                  "items": [
+                    "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/set-up-infrastructure",
+                    "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-kubernetes",
+                    "getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-rancher"
+                  ]
+                }
+              ]
             },
             {
               "type": "category",
@@ -168,18 +163,18 @@
                 "id": "pages-for-subheaders/resources"
               },
               "items": [
-                    "getting-started/installation-and-upgrade/resources/choose-a-rancher-version",
-                    "getting-started/installation-and-upgrade/resources/helm-version-requirements",
-                    "getting-started/installation-and-upgrade/resources/add-tls-secrets",
-                    "getting-started/installation-and-upgrade/resources/custom-ca-root-certificates",
-                    "getting-started/installation-and-upgrade/resources/upgrade-cert-manager",
-                    "getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2",
-                    "getting-started/installation-and-upgrade/resources/update-rancher-certificate",
-                    "getting-started/installation-and-upgrade/resources/local-system-charts"
-                     ]
+                "getting-started/installation-and-upgrade/resources/choose-a-rancher-version",
+                "getting-started/installation-and-upgrade/resources/helm-version-requirements",
+                "getting-started/installation-and-upgrade/resources/add-tls-secrets",
+                "getting-started/installation-and-upgrade/resources/custom-ca-root-certificates",
+                "getting-started/installation-and-upgrade/resources/upgrade-cert-manager",
+                "getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2",
+                "getting-started/installation-and-upgrade/resources/update-rancher-certificate",
+                "getting-started/installation-and-upgrade/resources/local-system-charts"
+              ]
             },
-                    "getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes",
-                    "getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+            "getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes",
+            "getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
             {
               "type": "category",
               "label": "Advanced Options",
@@ -189,34 +184,179 @@
               },
               "items": [
                 {
-                    "type": "category",
-                    "label": "Enable Experimental Features",
-                    "link": {
-                      "type": "doc",
-                      "id": "pages-for-subheaders/enable-experimental-features"
-                    },
-                    "items": [
-                          "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64",
-                          "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
-                          "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features"
-                           ]
+                  "type": "category",
+                  "label": "Enable Experimental Features",
+                  "link": {
+                    "type": "doc",
+                    "id": "pages-for-subheaders/enable-experimental-features"
+                  },
+                  "items": [
+                    "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64",
+                    "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+                    "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features"
+                  ]
                 },
                 {
-                    "type": "category",
-                    "label": "Advanced Use Cases",
-                    "items": [
-                          "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
-                          "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs",
-                          "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log",
-                          "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer"
-                           ]
+                  "type": "category",
+                  "label": "Advanced Use Cases",
+                  "items": [
+                    {
+                      "type": "category",
+                      "label": "Kubernetes Installation Using Helm 2",
+                      "link": {
+                        "type": "doc",
+                        "id": "pages-for-subheaders/helm2"
+                      },
+                      "items": [
+                        {
+                          "type": "category",
+                          "label": "Create Nodes and Load Balancer",
+                          "link": {
+                            "type": "doc",
+                            "id": "pages-for-subheaders/helm2-create-nodes-lb"
+                          },
+                          "items": [
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nginx",
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb"
+                          ]
+                        },
+                        {
+                          "type": "category",
+                          "label": "Install Kubernetes with RKE",
+                          "link": {
+                            "type": "doc",
+                            "id": "pages-for-subheaders/helm2-kubernetes-rke"
+                          },
+                          "items": [
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/kubernetes-rke/troubleshooting"
+                          ]
+                        },
+                        {
+                          "type": "category",
+                          "label": "Initialize Helm: Install the Tiller Service",
+                          "link": {
+                            "type": "doc",
+                            "id": "pages-for-subheaders/helm2-helm-init"
+                          },
+                          "items": [
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/helm-init/troubleshooting"
+                          ]
+                        },
+                        {
+                          "type": "category",
+                          "label": "Install Rancher",
+                          "link": {
+                            "type": "doc",
+                            "id": "pages-for-subheaders/helm-rancher"
+                          },
+                          "items": [
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/helm-rancher/tls-secrets",
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/helm-rancher/chart-options",
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/helm-rancher/troubleshooting"
+                          ]
+                        },
+                        {
+                          "type": "category",
+                          "label": "RKE Add-On Install",
+                          "link": {
+                            "type": "doc",
+                            "id": "pages-for-subheaders/helm2-rke-add-on"
+                                },
+                          "items": [
+                            {
+                              "type": "category",
+                              "label": "Kubernetes Install with External Load Balancer (TCP/Layer 4)",
+                              "link": {
+                                "type": "doc",
+                                "id": "pages-for-subheaders/helm2-rke-add-on-layer-4-lb"
+                              },
+                              "items": [
+                                "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-4-lb/nlb"
+                              ]
+                            },
+                            {
+                              "type": "category",
+                              "label": "Kubernetes Install with External Load Balancer (HTTPS/Layer 7)",
+                              "link": {
+                                "type": "doc",
+                                "id": "pages-for-subheaders/helm2-rke-add-on-layer-7-lb"
+                                    },
+                              "items": [
+                                "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb",
+                                "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/nginx"
+                              ]
+                            },
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/proxy",
+                            "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/api-auditing",
+                            {
+                              "type": "category",
+                              "label": "Troubleshooting HA RKE Add-On Install",
+                              "link": {
+                                "type": "doc",
+                                "id": "pages-for-subheaders/helm2-rke-add-on-troubleshooting"
+                              },
+                              "items": [
+                                "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/generic-troubleshooting",
+                                "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/job-complete-status",
+                                "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/default-backend-404"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "category",
+                      "label": "Installing Rancher in an Air Gapped Environment with Helm 2",
+                      "link": {
+                        "type": "doc",
+                        "id": "pages-for-subheaders/air-gap-helm2"
+                            },
+                      "items": [
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/prepare-nodes",
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry",
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes",
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/install-rancher"
+                      ]
+                    },
+                    "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+                    "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs",
+                    "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log",
+                    {
+                      "type": "category",
+                      "label": "cluster.yml Templates for RKE add-on installs",
+                      "link": {
+                        "type": "doc",
+                        "id": "pages-for-subheaders/cluster-yml"
+                            },
+                      "items": [
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-certificate",
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-certificate-recognizedca",
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate",
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca"
+                      ]
+                    },
+                    "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+                    {
+                      "type": "category",
+                      "label": "RKE Add-On",
+                      "link": {
+                        "type": "doc",
+                        "id": "pages-for-subheaders/rke-add-on"
+                            },
+                      "items": [
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb",
+                        "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-7-lb"
+                      ]
+                    }
+                  ]
                 }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "type": "category",
       "label": "How-to Guides",
@@ -243,8 +383,7 @@
                 "items": [
                     "how-to-guides/new-user-guides/kubernetes-cluster-setup/high-availability-installs",
                     "how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher",
-                    "how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher",
-                    "how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher"
+                    "how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher"
                        ]
               },
               {
@@ -257,7 +396,6 @@
                   "items": [
                      "how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster",
                      "how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster",
-                     "how-to-guides/new-user-guides/infrastructure-setup/ha-rke2-kubernetes-cluster",
                      "how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2",
                      "how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds",
                      "how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer",
@@ -342,7 +480,6 @@
                               },
                               "items": [
                                 "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/azure-storageclass-configuration",
-                                "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/windows-linux-cluster-feature-parity",
                                 "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/network-requirements-for-host-gateway",
                                 "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/v2.1-v2.2"
                                     ]
@@ -365,23 +502,11 @@
                                     "items": [
                                       "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/other-cloud-providers/amazon",
                                       "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/other-cloud-providers/azure",
-                                      "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/other-cloud-providers/google-compute-engine"
-                                          ]
-                                  },
-                                  {
-                                    "type": "category",
-                                    "label": "vSphere",
-                                    "link": {
-                                      "type": "doc",
-                                      "id": "pages-for-subheaders/vsphere-cloud-provider"
-                                    },
-                                    "items": [
-                                      "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/vsphere/configure-in-tree-vsphere",
-                                      "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/vsphere/configure-out-of-tree-vsphere",
-                                      "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/vsphere/migrate-from-in-tree-to-out-of-tree"
-                                          ]
+                                      "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/other-cloud-providers/google-compute-engine",
+                                      "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/other-cloud-providers/vsphere"
+                                    ]
                                   }
-                                     ]
+                                ]
                       },
                           "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/about-rancher-agents"
                      ]
@@ -453,20 +578,18 @@
                   "id": "pages-for-subheaders/helm-charts-in-rancher"
                 },
                 "items": [
-
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/built-in",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/adding-catalogs",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/catalog-config",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/creating-apps",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial",
+                  "how-to-guides/new-user-guides/helm-charts-in-rancher/globaldns"
                 ]
               },
-              {
-                "type": "category",
-                "label": "Deploy Apps Across Clusters",
-                "link": {
-                  "type": "doc",
-                  "id": "pages-for-subheaders/deploy-apps-across-clusters"
-                },
-                "items": [
-                      "how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps"
-                          ]
-              },
+              "how-to-guides/new-user-guides/deploy-apps-across-clusters",
               {
                 "type": "category",
                 "label": "Backup, Restore, and Disaster Recovery",
@@ -475,9 +598,6 @@
                   "id": "pages-for-subheaders/backup-restore-and-disaster-recovery"
                 },
                 "items": [
-                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher",
-                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher",
-                  "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster",
                   "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher",
                   "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher",
                   "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher",
@@ -645,6 +765,8 @@
                           "how-to-guides/advanced-user-guides/manage-clusters/access-clusters/add-users-to-clusters"
                             ]
                    },
+                   "how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd",
+                   "how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd",
                    {
                     "type": "category",
                     "label": "Install Cluster Autoscaler",
@@ -675,7 +797,6 @@
                           "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/about-persistent-storage",
                           "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/set-up-existing-storage",
                           "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/dynamically-provision-new-storage",
-                          "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/use-external-ceph-driver",
                           "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/about-glusterfs-volumes",
                           "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/install-iscsi-volumes"
                                   ]
@@ -733,46 +854,6 @@
                     ]
               },
               {
-                "type": "category",
-                "label": "Monitoring/Alerting Guides",
-                "link": {
-                  "type": "doc",
-                  "id": "pages-for-subheaders/monitoring-alerting-guides"
-                      },
-                "items": [
-                    "how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring",
-                    "how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring",
-                    "how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads",
-                    "how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard",
-                    "how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard",
-                    "how-to-guides/advanced-user-guides/monitoring-alerting-guides/debug-high-memory-usage",
-                    "how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring"
-                ]
-              },
-              {
-              "type": "category",
-              "label": "Monitoring V2 Configuration Guides",
-              "link": {
-                "type": "doc",
-                "id": "pages-for-subheaders/monitoring-v2-configuration-guides"
-                },
-              "items": [
-                  {
-                  "type": "category",
-                  "label": "Advanced Configuration",
-                  "link": {
-                    "type": "doc",
-                    "id": "pages-for-subheaders/advanced-configuration"
-                  },
-                  "items": [
-                      "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager",
-                      "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
-                      "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules"
-                     ]
-                    }
-                  ]
-              },
-              {
               "type": "category",
               "label": "Istio Setup Guide",
               "link": {
@@ -781,7 +862,9 @@
               },
               "items": [
                   "how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster",
+                  "how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster-with-psp",
                   "how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace",
+                  "how-to-guides/advanced-user-guides/istio-setup-guide/node-selectors",
                   "how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar",
                   "how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway",
                   "how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
@@ -863,18 +946,6 @@
                   },
                   "items": [
                     "reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration",
-                    "reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration",
-                    {
-                      "type": "category",
-                      "label": "GKE Cluster Configuration",
-                      "link": {
-                        "type": "doc",
-                        "id": "pages-for-subheaders/gke-cluster-configuration"
-                      },
-                      "items": [
-                        "reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters"
-                      ]
-              },
               {
                   "type": "category",
                   "label": "Use Existing Nodes",
@@ -885,9 +956,7 @@
                   "items": [
                     "reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options"
                    ]
-              },
-                "reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters",
-                "reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference"
+              }
                       ]
                   },
             {
@@ -955,31 +1024,7 @@
             "reference-guides/installation-references/feature-flags"
                   ]
           },
-          {
-            "type": "category",
-            "label": "Amazon EKS Permissions",
-            "link": {
-              "type": "doc",
-              "id": "pages-for-subheaders/amazon-eks-permissions"
-                      },
-              "items": [
-                  "reference-guides/amazon-eks-permissions/minimum-eks-permissions"
-                      ]
-          },
-          {
-            "type": "category",
-            "label": "Backup & Restore Configuration",
-            "link": {
-              "type": "doc",
-              "id": "pages-for-subheaders/backup-restore-configuration"
-            },
-            "items": [
-                  "reference-guides/backup-restore-configuration/backup-configuration",
-                  "reference-guides/backup-restore-configuration/restore-configuration",
-                  "reference-guides/backup-restore-configuration/storage-configuration",
-                  "reference-guides/backup-restore-configuration/examples"
-                  ]
-          },
+          "reference-guides/installation-references/amazon-eks-permissions",
           {
             "type": "category",
             "label": "Configure OpenLDAP",
@@ -992,21 +1037,6 @@
                       ]
           },
               "reference-guides/kubernetes-concepts",
-          {
-            "type": "category",
-            "label": "Monitoring V2 Configuration",
-            "link": {
-              "type": "doc",
-              "id": "pages-for-subheaders/monitoring-v2-configuration"
-            },
-            "items": [
-              "reference-guides/monitoring-v2-configuration/receivers",
-              "reference-guides/monitoring-v2-configuration/routes",
-              "reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors",
-              "reference-guides/monitoring-v2-configuration/helm-chart-options",
-              "reference-guides/monitoring-v2-configuration/examples"
-                    ]
-          },
           {
             "type": "category",
             "label": "User Settings",
@@ -1135,19 +1165,6 @@
                 "reference-guides/rancher-security/rancher-v2.4-hardening-guides/hardening-guide-with-cis-v1.5-benchmark"
               ]
             },
-            {
-              "type": "category",
-              "label": "SELinux RPM",
-              "link": {
-                "type": "doc",
-                "id": "pages-for-subheaders/selinux-rpm"
-              },
-              "items": [
-                "reference-guides/rancher-security/selinux-rpm/about-rancher-selinux",
-                "reference-guides/rancher-security/selinux-rpm/about-rke2-selinux"
-                     ]
-            },
-                "reference-guides/rancher-security/kubernetes-security-best-practices",
                 "reference-guides/rancher-security/security-advisories-and-cves"
                   ]
                 },
@@ -1183,19 +1200,6 @@
             },
             {
             "type": "category",
-            "label": "Fleet - GitOps at Scale",
-            "link": {
-              "type": "doc",
-              "id": "pages-for-subheaders/fleet-gitops-at-scale"
-                  },
-            "items": [
-              "explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture",
-              "explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support",
-              "explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy"
-                  ]
-            },
-            {
-            "type": "category",
             "label": "Istio",
             "link": {
               "type": "doc",
@@ -1205,23 +1209,9 @@
                   "explanations/integrations-in-rancher/istio/cpu-and-memory-allocations",
                   "explanations/integrations-in-rancher/istio/rbac-for-istio",
                   "explanations/integrations-in-rancher/istio/disable-istio",
-                   {
-                    "type": "category",
-                    "label": "Configuration Options",
-                    "link": {
-                      "type": "doc",
-                      "id": "pages-for-subheaders/configuration-options"
-                          },
-                    "items": [
-                          "explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies",
-                          "explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations",
-                          "explanations/integrations-in-rancher/istio/configuration-options/install-istio-on-rke2-cluster",
-                          "explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation"
-                           ]
-                   }
+                  "explanations/integrations-in-rancher/istio/release-notes"
                   ]
             },
-              "explanations/integrations-in-rancher/longhorn",
             {
             "type": "category",
             "label": "Logging",
@@ -1245,7 +1235,7 @@
               "id": "pages-for-subheaders/cluster-alerts"
                   },
             "items": [
-              "explanations/integrations-in-rancher/cluster-alerts/elasticsearch"
+              "explanations/integrations-in-rancher/cluster-alerts/default-alerts"
                   ]
             },
             {
@@ -1264,7 +1254,8 @@
                 "explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics"
                     ]
             },
-              "explanations/integrations-in-rancher/opa-gatekeeper"
+              "explanations/integrations-in-rancher/opa-gatekeeper",
+              "explanations/integrations-in-rancher/notifiers"
                   ]
                 }
               ]
