@@ -3,7 +3,7 @@ title: RKE1 to RKE2 Windows Migration Guidance
 weight: 3
 ---
 
-**Caution:** The contents of this document are not covered under SLA by Rancher Support. Please proceed with caution.**
+**Caution:** The contents of this document are not covered under SLA by Rancher Support. Please proceed with caution.
 
 This document covers how end users can migrate their Windows workloads from RKE1 to RKE2.
 
@@ -26,7 +26,7 @@ This document covers how end users can migrate their Windows workloads from RKE1
 
 ## RKE1 Windows Scheduling
 
-RKE1 Windows Workload scheduling is based on taints and tolerations.
+RKE1 Windows workload scheduling is based on taints and tolerations.
 
 Every Linux node in an RKE1 Windows cluster, regardless of the role assigned to it, will have have a default taint that prevents workloads to be scheduled on it unless the workload has a toleration configured. This is a major design feature for RKE1 Windows clusters which were designed to only run Windows workloads.
 
@@ -100,7 +100,7 @@ Based on feedback and requests for hybrid workload support, RKE2 Windows was des
 
 ### RKE1 to RKE2 Windows Workload
 
-- Pre-Migration RKE1 Windows deployment:
+- Pre-migration RKE1 Windows deployment:
 
 ```yaml
 apiVersion: apps/v1
@@ -149,12 +149,12 @@ spec:
 
 >**Important:** When leveraging node selectors and node affinity, note the following:
 >
->- If both nodeSelector and nodeAffinity are specified, both must be satisfied for the Pod to be scheduled onto a node.
->- If you specify multiple matchExpressions associated with a single nodeSelectorTerms, then the Pod can be scheduled onto a node only if all the matchExpressions are satisfied.
+>- If both `nodeSelector` and `nodeAffinity` are specified, both must be satisfied for the `Pod` to be scheduled onto a node.
+>- If you specify multiple `matchExpressions` associated with a single `nodeSelectorTerms`, then the `Pod` can be scheduled onto a node only if all the `matchExpressions` are satisfied.
 
 <br/>
 
-- Pre-Migration RKE1 Windows cluster Linux-only deployment targeting RKE1 Linux worker nodes:
+- Pre-migration RKE1 Windows cluster Linux-only deployment targeting RKE1 Linux worker nodes:
 
 ```yml
 apiVersion: apps/v1
@@ -302,7 +302,7 @@ Referencing the tables in [Rancher 2.5 vs. Rancher 2.6 Support Matrix for Window
 1. After successful validation tests have occurred, you can opt to upgrade your RKE2 1.22.x cluster to a new minor version such as 1.23 or 1.24.
 
 
-### Migrating Windows Workloads to a new Rancher environment
+### Migrating Windows Workloads to a New Rancher Environment
 
 >**Important:** To perform either of the following options requires Rancher v2.6.5 or above.
 
