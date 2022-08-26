@@ -76,7 +76,10 @@ module.exports = {
             },
             2.5: {
               label: 'v2.5'
-            }
+            },
+            '2.0-2.4': {
+              label: 'v2.0-v2.4'
+            },
           },
         },
         blog: false, // Optional: disable the blog plugin
