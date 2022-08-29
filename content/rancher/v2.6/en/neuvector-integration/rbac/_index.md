@@ -5,7 +5,7 @@ weight: 3
 
 This article is intended for users who need to provide access to the NeuVector app deployed via the Rancher App catalog with the Rancher chart. This will not work on deployments using the Partner chart.
 
-By default, a Rancher cluster admin, and global admin will be automatically mapped to be global admins within NeuVector. In order to map other personas, some access will need to be provided to the Rancher user/group depending on the desired access within NeuVector. Please note that adding the below permissions will not provide access to any kubernetes resources beyond what is already given by existing Rancher roles. With one exception being the neuvector service proxy.
+By default, a Rancher cluster admin and a global admin will automatically be mapped to be global admins within NeuVector. In order to map other personas, some access will need to be provided to the Rancher user/group depending on the desired access within NeuVector. Please note that adding the below permissions will not provide access to any Kubernetes resources beyond what is already given by existing Rancher roles, with one exception: the NeuVector service proxy.
 
 The following table lists the NeuVector role and the k8s RBAC from which it is derived. These rbac mappings need to be created within Rancher RBAC.
 
