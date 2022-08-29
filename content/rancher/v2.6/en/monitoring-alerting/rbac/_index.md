@@ -83,8 +83,7 @@ Admins should use these roles to provide more fine-grained access to users:
 Admins may assign custom roles in the Rancher UI for admin, editing, and viewing monitoring. These "roles" are created by default when the monitoring app is installed. Additionally, these roles are also deployed to the corresponding Kubernetes roles: admin, edit, and view `ClusterRoles`.
 
 >**Important:** The UI will not offer `monitoring-admin`, `monitoring-edit`, and `monitoring-view` options when users are being added to a cluster. These monitoring roles can only be assigned by manually creating a custom role that inherits from Project Owner and Project Monitoring View roles. 
->
->**Note:** Ensure that Monitoring V2 is installed before proceeding.
+
 
   1. Create the custom role:
 
@@ -100,11 +99,11 @@ Admins may assign custom roles in the Rancher UI for admin, editing, and viewing
     
     <br/>
 
-  2. Create a new user as an admin, then do the following:
+  2. Assign the custom role to a new user:
 
     2.1 Click **☰ > Cluster Management > Cluster Explore > Cluster > Cluster Members > Add**.
 
-    2.2 Pick your new user name from **Select Member** dropdown.
+    2.2 Search for your new user name from **Select Member** options displayed.
 
     2.3 Assign the new custom role from **Cluster Permissions** to the new user.
 
