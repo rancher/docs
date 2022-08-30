@@ -279,6 +279,8 @@ We will create a Kubernetes cluster using Rancher Kubernetes Engine (RKE). Befor
 
 Install RKE by following the instructions in the [RKE documentation.]({{<baseurl>}}/rke/latest/en/installation/)
 
+> **Note:** Certified version(s) of RKE based on the Rancher version can be found in the [Rancher Support Matrix.](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/)
+
 ### 2. Create an RKE Config File
 
 From a system that can access ports 22/TCP and 6443/TCP on the Linux host node(s) that you set up in a previous step, use the sample below to create a new file named `rancher-cluster.yml`.
