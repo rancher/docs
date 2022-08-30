@@ -66,7 +66,7 @@ disable-controller-manager: true
 disable-scheduler: true
 cluster-init: true
 ```
-and then start K3s using the curl command without any arguents:
+and then start K3s using the curl command without any arguments:
 
 ```
 curl -fL https://get.k3s.io | sh -
