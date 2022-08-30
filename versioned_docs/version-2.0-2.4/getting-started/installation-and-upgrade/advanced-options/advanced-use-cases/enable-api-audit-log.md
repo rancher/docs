@@ -70,7 +70,7 @@ kubectl -n cattle-system logs -f rancher-84d886bdbb-s4s69 rancher-audit-log
 
 #### Shipping the Audit Log
 
-You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging](cluster-admin/tools/logging) for details.
+You can enable Rancher's built in log collection and shipping for the cluster to ship the audit and other services logs to a supported collection endpoint. See [Rancher Tools - Logging](../../../../pages-for-subheaders/cluster-logging.md) for details.
 
 ## Audit Log Samples
 

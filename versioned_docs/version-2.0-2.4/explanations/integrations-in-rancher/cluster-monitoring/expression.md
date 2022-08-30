@@ -9,9 +9,9 @@ aliases:
   - /rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/expression/
 ---
 
-The PromQL expressions in this doc can be used to configure [alerts.](cluster-admin/tools/alerts/)
+The PromQL expressions in this doc can be used to configure [alerts.](../../../pages-for-subheaders/cluster-alerts.md)
 
-> Before expressions can be used in alerts, monitoring must be enabled. For more information, refer to the documentation on enabling monitoring [at the cluster level](monitoring-alerting/legacy/monitoring/cluster-monitoring/) or [at the project level.](project-admin/tools/monitoring/)
+> Before expressions can be used in alerts, monitoring must be enabled. For more information, refer to the documentation on enabling monitoring [at the cluster level](../../../pages-for-subheaders/cluster-monitoring.md) or [at the project level.](./project-monitoring.md)
 
 For more information about querying Prometheus, refer to the official [Prometheus documentation.](https://prometheus.io/docs/prometheus/latest/querying/basics/)
 

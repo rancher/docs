@@ -19,7 +19,7 @@ Since a Kubernetes Installation requires a Kubernetes cluster, we will create a 
 
 From a system that can access ports 22/tcp and 6443/tcp on your host nodes, use the sample below to create a new file named `rancher-cluster.yml`. This file is a Rancher Kubernetes Engine configuration file (RKE config file), which is a configuration for the cluster you're deploying Rancher to.
 
-Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the [3 nodes](installation/air-gap-high-availability/provision-hosts) you created.
+Replace values in the code sample below with help of the _RKE Options_ table. Use the IP address or DNS names of the [3 nodes](./prepare-nodes.md) you created.
 
 > **Tip:** For more details on the options available, see the RKE [Config Options](https://rancher.com/docs/rke/latest/en/config-options/).
 

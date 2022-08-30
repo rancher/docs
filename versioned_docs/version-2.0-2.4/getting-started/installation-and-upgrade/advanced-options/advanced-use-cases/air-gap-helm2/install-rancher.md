@@ -33,7 +33,7 @@ This section describes installing Rancher in five parts:
 
 From a system that has access to the internet, fetch the latest Helm chart and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
-1. If you haven't already, initialize `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements](installation/options/helm-version) to choose a version of Helm to install Rancher.
+1. If you haven't already, initialize `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements](../../../resources/choose-a-rancher-version.md) to choose a version of Helm to install Rancher.
     ```plain
     helm init -c
     ```
@@ -57,7 +57,7 @@ Rancher Server is designed to be secure by default and requires SSL/TLS configur
 
 When Rancher is installed on an air gapped Kubernetes cluster, there are two recommended options for the source of the certificate.
 
-> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer](installation/options/chart-options/#external-tls-termination).
+> **Note:** If you want terminate SSL/TLS externally, see [TLS termination on an External Load Balancer](../../../../../reference-guides/installation-references/helm-chart-options#external-tls-termination).
 
 | Configuration                              | Chart option                 | Description                                                                                                                                                 | Requires cert-manager |
 | ------------------------------------------ | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
@@ -82,7 +82,7 @@ Based on the choice your made in [B. Choose your SSL Configuration](#b-choose-yo
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
 > **Note:**
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation](installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation](../../../resources/upgrade-cert-manager.md).
 
 1. From a system connected to the internet, add the cert-manager repo to Helm.
     ```plain
@@ -218,15 +218,15 @@ kubectl -n cattle-system apply -R -f ./rancher
 
 ### E. For Rancher versions before v2.3.0, Configure System Charts
 
-If you are installing Rancher versions before v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts](installation/options/local-system-charts/).
+If you are installing Rancher versions before v2.3.0, you will not be able to use the packaged system charts. Since the Rancher system charts are hosted in Github, an air gapped installation will not be able to access these charts. Therefore, you must [configure the Rancher system charts](../../../resources/local-system-charts.md).
 
 ### Additional Resources
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options](installation/options/chart-options/)
+- [Rancher Helm chart options](../../../../../reference-guides/installation-references/helm-chart-options.md)
 - [Adding TLS secrets](../../../resources/add-tls-secrets.md)
-- [Troubleshooting Rancher Kubernetes Installations](installation/options/troubleshooting/)
+- [Troubleshooting Rancher Kubernetes Installations](../../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)
 
 </TabItem>
 <TabItem value="Docker Install">
@@ -242,7 +242,7 @@ For security purposes, SSL (Secure Sockets Layer) is required when using Rancher
 
 > **Do you want to...**
 >
-> - Configure custom CA root certificate to access your services? See [Custom CA root certificate](installation/options/chart-options/#additional-trusted-cas).
+> - Configure custom CA root certificate to access your services? See [Custom CA root certificate](../../../../../reference-guides/installation-references/helm-chart-options#additional-trusted-cas).
 > - Record all transactions with the Rancher API? See [API Auditing](../../../../../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-audit-log).
 
 - For Rancher before v2.3.0, you will need to mirror the `system-charts` repository to a location in your network that Rancher can reach. Then, after Rancher is installed, you will need to configure Rancher to use that repository. For details, refer to the documentation on [setting up the system charts for Rancher before v2.3.0.](installation/options/local-system-charts/)
@@ -259,7 +259,7 @@ Log into your Linux host, and then run the installation command below. When ente
 | Placeholder                      | Description                                                                                                                   |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version](installation/options/server-tags/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version](../../../resources/choose-a-rancher-version.md) that you want to install. |
 
 ```
 docker run -d --restart=unless-stopped \

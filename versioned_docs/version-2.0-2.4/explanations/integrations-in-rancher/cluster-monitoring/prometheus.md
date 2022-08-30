@@ -11,7 +11,7 @@ aliases:
 
 _Available as of v2.2.0_
 
-While configuring monitoring at either the [cluster level](monitoring-alerting/legacy/monitoring/cluster-monitoring/) or [project level](project-admin/tools/monitoring/), there are multiple options that can be configured.
+While configuring monitoring at either the [cluster level](../../../pages-for-subheaders/cluster-monitoring.md) or [project level](./project-monitoring.md), there are multiple options that can be configured.
 
 - [Basic Configuration](#basic-configuration)
 - [Advanced Options](#advanced-options)
@@ -36,7 +36,7 @@ Selector | Ability to select the nodes in which Prometheus and Grafana pods are 
 
 # Advanced Options
 
-Since monitoring is an [application](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) from the [Rancher catalog](catalog/), it can be configured like any other catalog application, by passing in values to Helm.
+Since monitoring is an [application](https://github.com/rancher/system-charts/tree/dev/charts/rancher-monitoring) from the [Rancher catalog](../../../pages-for-subheaders/helm-charts-in-rancher.md), it can be configured like any other catalog application, by passing in values to Helm.
 
 > **Warning:** Any modification to the application without understanding the entire application can lead to catastrophic errors.
 
