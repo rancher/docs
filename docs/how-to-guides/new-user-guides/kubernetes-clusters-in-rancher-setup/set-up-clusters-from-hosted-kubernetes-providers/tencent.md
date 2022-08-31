@@ -60,11 +60,11 @@ When the cluster driver is finished downloading, you will be able to create Tenc
     | Container Network CIDR | Enter the CIDR range of your Kubernetes cluster, you may check the available range of the CIDR in the VPC service of the Tencent Cloud Console. Default to 172.16.0.0/16. |
 
     :::note
-    
-    If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+
+    If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that, cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher)
 
     :::
-    
+
 7. Click `Next: Select Instance Type` to choose the instance type that will use for your TKE cluster.
 
     | Option | Description                                                                                                          |
@@ -89,13 +89,13 @@ When the cluster driver is finished downloading, you will be able to create Tenc
 
 9. Click **Create**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

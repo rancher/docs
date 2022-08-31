@@ -6,7 +6,7 @@ weight: 2
 
 This section describes the expectations for Role-Based Access Control (RBAC) for Prometheus Federator.
 
-As described in the section on [namespaces](monitoring-alerting/prometheus-federator/prometheus-federator#namespaces), Prometheus Federator expects that Project Owners, Project Members, and other users in the cluster with Project-level permissions (e.g. permissions in a certain set of namespaces identified by a single label selector) have minimal permissions in any namespaces except the Project Registration Namespace (which is imported into the project by default) and those that already comprise their projects. Therefore, in order to allow Project Owners to assign specific chart permissions to other users in their Project namespaces, the Helm Project Operator will automatically watch the following bindings:
+As described in the section on [namespaces](../../pages-for-subheaders/prometheus-federator.md#namespaces), Prometheus Federator expects that Project Owners, Project Members, and other users in the cluster with Project-level permissions (e.g. permissions in a certain set of namespaces identified by a single label selector) have minimal permissions in any namespaces except the Project Registration Namespace (which is imported into the project by default) and those that already comprise their projects. Therefore, in order to allow Project Owners to assign specific chart permissions to other users in their Project namespaces, the Helm Project Operator will automatically watch the following bindings:
 
 - ClusterRoleBindings
 - RoleBindings in the Project Release Namespace

@@ -12,7 +12,7 @@ aliases:
 >
 >Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install](../../../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md).
 >
->If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to move to using the helm chart.
 
 This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
@@ -115,8 +115,8 @@ RKE uses a YAML config file to install and configure your Kubernetes cluster. Th
 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
-	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`](installation/options/cluster-yml-templates/3-node-externalssl-certificate)
-	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`](installation/options/cluster-yml-templates/3-node-externalssl-recognizedca)
+	- [Template for self-signed certificate<br/> `3-node-externalssl-certificate.yml`](../cluster-yml-templates/node-externalssl-certificate.md)installation/options/cluster-yml-templates/3-node-externalssl-certificate)
+	- [Template for certificate signed by recognized CA<br/> `3-node-externalssl-recognizedca.yml`](../cluster-yml-templates/node-externalssl-recognizedca.md)
 
 
 
@@ -282,7 +282,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 ## What's Next?
 
-- **Recommended:** Review [Creating Backups—High Availability Back Up and Restoration](backups/backups/ha-backups/) to learn how to backup your Rancher Server in case of a disaster scenario.
+- **Recommended:** Review [Creating Backups—High Availability Back Up and Restoration](../../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md) to learn how to backup your Rancher Server in case of a disaster scenario.
 - Create a Kubernetes cluster: [Creating a Cluster](tasks/clusters/creating-a-cluster/).
 
 <br/>

@@ -304,7 +304,7 @@ timeout: 30
 
 # Notifications
 
-You can enable notifications to any notifiers based on the build status of a pipeline. Before enabling notifications, Rancher recommends [setting up notifiers](monitoring-alerting/legacy/notifiers/) so it will be easy to add recipients immediately.
+You can enable notifications to any notifiers based on the build status of a pipeline. Before enabling notifications, Rancher recommends [setting up notifiers](../monitoring-v2-configuration/receivers.md) so it will be easy to add recipients immediately.
 
 ### Configuring Notifications by UI
 
@@ -641,8 +641,8 @@ If you want to use a version control provider with a certificate from a custom/i
 
 The internal Docker registry and the Minio workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.
 
-For details on setting up persistent storage for pipelines, refer to [this page.](k8s-in-rancher/pipelines/storage)
+For details on setting up persistent storage for pipelines, refer to [this page.](configure-persistent-data.md)
 
 # Example rancher-pipeline.yml
 
-An example pipeline configuration file is on [this page.](k8s-in-rancher/pipelines/example)
+An example pipeline configuration file is on [this page.](example-yaml.md)

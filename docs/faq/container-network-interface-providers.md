@@ -202,4 +202,4 @@ Canal is the default CNI network provider. We recommend it for most use cases. I
 
 ## How can I configure a CNI network provider?
 
-Please see [Cluster Options](cluster-provisioning/rke-clusters/options/) on how to configure a network provider for your cluster. For more advanced configuration options, please see how to configure your cluster using a [Config File](cluster-provisioning/rke-clusters/options/#cluster-config-file) and the options for [Network Plug-ins](https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/).
+Please see [Cluster Options](../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md) on how to configure a network provider for your cluster. For more advanced configuration options, please see how to configure your cluster using a [Config File](../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#rke-cluster-config-file-reference) and the options for [Network Plug-ins](https://rancher.com/docs/rke/latest/en/config-options/add-ons/network-plugins/).

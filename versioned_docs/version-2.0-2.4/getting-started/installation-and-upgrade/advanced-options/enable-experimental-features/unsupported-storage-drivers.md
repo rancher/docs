@@ -7,7 +7,7 @@ aliases:
 
 This feature allows you to use types for storage providers and provisioners that are not enabled by default.
 
-To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.](installation/options/feature-flags/)
+To enable or disable this feature, refer to the instructions on [the main page about enabling experimental features.](../../../../reference-guides/installation-references/feature-flags.md)
 
 Environment Variable Key | Default Value | Description
 ---|---|---

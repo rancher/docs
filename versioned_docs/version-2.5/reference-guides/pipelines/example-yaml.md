@@ -9,7 +9,7 @@ aliases:
 
 Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. `.rancher-pipeline.yml` or `.rancher-pipeline.yaml`.
 
-In the [pipeline configuration reference](k8s-in-rancher/pipelines/config), we provide examples of how to configure each feature using the Rancher UI or using YAML configuration.
+In the [pipeline configuration reference](pipeline-configuration.md), we provide examples of how to configure each feature using the Rancher UI or using YAML configuration.
 
 Below is a full example `rancher-pipeline.yml` for those who want to jump right in.
 
@@ -69,7 +69,7 @@ notification:
     notifier: "c-wdcsr:n-c9pg7"
   - recipient: "test@example.com"
     notifier: "c-wdcsr:n-lkrhd"
-  # Select which statuses you want the notification to be sent  
+  # Select which statuses you want the notification to be sent
   condition: ["Failed", "Success", "Changed"]
   # Ability to override the default message (Optional)
   message: "my-message"

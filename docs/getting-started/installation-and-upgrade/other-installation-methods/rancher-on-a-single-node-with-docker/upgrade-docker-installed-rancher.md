@@ -110,7 +110,7 @@ Pull the image of the Rancher version that you want to upgrade to.
 
 Placeholder | Description
 ------------|-------------
-`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version](installation/resources/chart-options/) that you want to upgrade to.
+`<RANCHER_VERSION_TAG>` | The release tag of the [Rancher version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to upgrade to.
 
 ```
 docker pull rancher/rancher:<RANCHER_VERSION_TAG>

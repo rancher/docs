@@ -26,7 +26,7 @@ Rancher can be installed on any Kubernetes cluster. This cluster can use upstrea
 
 For help setting up a Kubernetes cluster, we provide these tutorials:
 
-- **RKE:** For the tutorial to install an RKE Kubernetes cluster, refer to [this page.](installation/resources/k8s-tutorials/ha-rke/) For help setting up the infrastructure for a high-availability RKE cluster, refer to [this page.](../how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster.md)
+- **RKE:** For the tutorial to install an RKE Kubernetes cluster, refer to [this page.](../how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher.md) For help setting up the infrastructure for a high-availability RKE cluster, refer to [this page.](../how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster.md)
 - **K3s:** For the tutorial to install a K3s Kubernetes cluster, refer to [this page.](../how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher.md) For help setting up the infrastructure for a high-availability K3s cluster, refer to [this page.](../how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster.md)
 - **RKE2:** For the tutorial to install an RKE2 Kubernetes cluster, refer to [this page.](../how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher.md) For help setting up the infrastructure for a high-availability RKE2 cluster, refer to [this page.](../how-to-guides/new-user-guides/infrastructure-setup/ha-rke2-kubernetes-cluster.md)
 - **Amazon EKS:** For details on how to install Rancher on Amazon EKS, including how to install an Ingress controller so that the Rancher server can be accessed, refer to [this page.](../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-amazon-eks.md)
@@ -296,7 +296,7 @@ The Rancher chart configuration has many options for customizing the installatio
 - [Private container image Registry](../reference-guides/installation-references/helm-chart-options.md#private-registry-and-air-gap-installs)
 - [TLS Termination on an External Load Balancer](../reference-guides/installation-references/helm-chart-options.md#external-tls-termination)
 
-See the [Chart Options](installation/resources/chart-options/) for the full list of options.
+See the [Chart Options](../reference-guides/installation-references/helm-chart-options.md) for the full list of options.
 
 
 ### 6. Verify that the Rancher Server is Successfully Deployed
