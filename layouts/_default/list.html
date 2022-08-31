@@ -24,25 +24,26 @@
       {{ $path := split $url.Path "/" }}
       {{ $product := index $path 1 }}
       {{ $version := index $path 2 }}
-      {{ $productVersion := printf "%s/%s" $product $version}}
-      {{ if in .Dir "/v2.x" }}
+      {{ $productVersion := printf "%s/%s" $product $version}} 
+      {{ if or (in .Dir "/v2.0-v2.4") (in .Dir "/v2.5") (in .Dir "/v2.6") }}
       <div class="alert alert-notice">
-          <strong>We are transitioning to versioned documentation.</strong> The v2.x docs will no longer be maintained. <a href="https://rancher.com/docs/rancher/v2.6/en/">Rancher v2.6 docs</a> • <a href="https://rancher.com/docs/rancher/v2.5/en/">Rancher v2.5 docs</a> • <a href="https://rancher.com/docs/rancher/v2.0-v2.4/en/">Rancher v2.0-2.4 docs</a>
+          <strong>You are viewing the documentation in our older website. The Rancher Manager docs have moved to a new website which will be updated at a later time.</strong>
+      .
+        </div>
+      {{end}}
+      {{ if or (in .Dir "k3s/latest") }}
+      <div class="alert alert-notice">
+          <strong>You are viewing the documentation in our older website. The K3s docs have moved to their own website which will be updated at a later time.</strong>
       </div>
       {{end}}
-      {{ if in .Dir "/multi-cluster-apps" }}
+      {{ if or (in .Dir "rke/latest") }}
       <div class="alert alert-notice">
-          <strong>As of Rancher v2.5, multi-cluster apps are deprecated.</strong> We now recommend using <a href="https://rancher.com/docs/rancher/v2.5/en/deploy-across-clusters/fleet/">Fleet</a> for deploying apps across clusters. It is available in the Rancher UI by clicking <b>☰ > Continuous Delivery</b>.
+          <strong>You are viewing the documentation in our older website. The RKE1 docs have moved to their own website which will be updated at a later time.</strong>
       </div>
       {{end}}
-      {{ if in .Dir "os/v1.x" }}
+      {{ if or (in .Dir "os/v1.x") }}
       <div class="alert alert-notice">
-          <strong>RancherOS 1.x is currently in a maintain-only-as-essential mode.</strong> It is no longer being actively maintained at a code level other than addressing critical or security fixes. For more information about the support status of RancherOS, see <a href="https://rancher.com/docs/os/v1.x/en/support/"> this page.</a>
-      </div>
-      {{end}}
-      {{ if or (in .Dir "/v2.0-v2.4") (in .Dir "/v2.5") }}
-      <div class="alert alert-notice">
-          <strong>You are viewing the documentation for an older Rancher release.</strong> If you're looking for the documentation for the latest Rancher release, go to <a href="https://rancher.com/docs/rancher/v2.6/en/"> this page</a> instead.
+          <strong>Note that RancherOS 1.x is currently in a maintain-only-as-essential mode, and it is no longer being actively maintained at a code level other than addressing critical or security fixes.</strong>
       </div>
       {{end}}
 
