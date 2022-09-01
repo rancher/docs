@@ -71,14 +71,15 @@ module.exports = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'v2.6',
-              path: 'docs',
+              label: 'v2.6'
             },
             2.5: {
-              label: 'v2.5'
+              label: 'v2.5',
+              path: 'v2.5'
             },
             '2.0-2.4': {
-              label: 'v2.0-v2.4'
+              label: 'v2.0-v2.4',
+              path: 'v2.0-v2.4'
             },
           },
         },
