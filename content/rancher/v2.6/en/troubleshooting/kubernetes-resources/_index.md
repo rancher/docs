@@ -126,7 +126,7 @@ kubectl -n ingress-nginx describe pods -l app=ingress-nginx
 
 ### Pod container logs
 
-The below command can show the logs of all the pods labeled "app=ingress-nginx", but it will display only 10 lines of log because of the restrictions of `kubectl logs` command. Refer to `--tail` of `kubectl logs -h` for more information.
+The below command can show the logs of all the pods labeled "app=ingress-nginx", but it will display only 10 lines of log because of the restrictions of the `kubectl logs` command. Refer to `--tail` of `kubectl logs -h` for more information.
 
 ```
 kubectl -n ingress-nginx logs -l app=ingress-nginx
