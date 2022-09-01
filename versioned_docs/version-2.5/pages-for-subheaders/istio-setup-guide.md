@@ -29,4 +29,4 @@ The workloads and services that you want to be controlled by Istio must meet [Is
 1. [Add deployments and services that have the Istio sidecar injected.](../how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar.md)
 1. [Set up the Istio gateway. ](../how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway.md)
 1. [Set up Istio's components for traffic management.](../how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management.md)
-1. [Generate traffic and see Istio in action.](istio/v2.5/setup/view-traffic/ )
+1. [Generate traffic and see Istio in action.](../how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic.md)

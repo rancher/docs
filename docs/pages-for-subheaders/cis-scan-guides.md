@@ -44,7 +44,7 @@ The Benchmark version is included in the generated report.
 
 The Benchmark provides recommendations of two types: Automated and Manual. Recommendations marked as Manual in the Benchmark are not included in the generated report.
 
-Some tests are designated as "Not Applicable." These tests will not be run on any CIS scan because of the way that Rancher provisions RKE clusters. For information on how test results can be audited, and why some tests are designated to be not applicable, refer to Rancher's [self-assessment guide](./rancher-security.md#the-cis-benchmark-and-self-assessment) for the corresponding Kubernetes version.</a>
+Some tests are designated as "Not Applicable." These tests will not be run on any CIS scan because of the way that Rancher provisions RKE clusters. For information on how test results can be audited, and why some tests are designated to be not applicable, refer to Rancher's [self-assessment guide](./rancher-security.md#the-cis-benchmark-and-self-assessment) for the corresponding Kubernetes version.
 
 The report contains the following information:
 

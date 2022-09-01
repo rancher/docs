@@ -55,7 +55,7 @@ Rancher can be installed on a single-node Kubernetes cluster. In this case, the 
 
 However, this option is useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path. In the future, you can add nodes to the cluster to get a high-availability Rancher server.
 
-### Docker Install 
+### Docker Install
 
 For test and demonstration purposes, Rancher can be installed with Docker on a single node.
 
@@ -81,7 +81,7 @@ Our [instructions for installing Rancher on Kubernetes](install-upgrade-on-a-kub
 
 When the nodes in your Kubernetes cluster are running and fulfill the [node requirements,](installation-requirements.md) you will use Helm to deploy Rancher onto Kubernetes. Helm uses Rancher's Helm chart to install a replica of Rancher on each node in the Kubernetes cluster. We recommend using a load balancer to direct traffic to each replica of Rancher in the cluster.
 
-For a longer discussion of Rancher architecture, refer to the [architecture overview,](rancher-manager-architecture.md) [recommendations for production-grade architecture,](../reference-guides/rancher-manager-architecture/architecture-recommendations.md) or our [best practices guide.](best-practices/deployment-types)
+For a longer discussion of Rancher architecture, refer to the [architecture overview,](rancher-manager-architecture.md) [recommendations for production-grade architecture,](../reference-guides/rancher-manager-architecture/architecture-recommendations.md) or our [best practices guide.](../reference-guides/best-practices/rancher-server/tips-for-running-rancher.md)
 
 # Prerequisites
 Before installing Rancher, make sure that your nodes fulfill all of the [installation requirements.](installation-requirements.md)
@@ -94,7 +94,7 @@ For more architecture recommendations, refer to [this page.](../reference-guides
 
 ### More Options for Installations on a Kubernetes Cluster
 
-Refer to the [Helm chart options](installation/resources/chart-options/) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
+Refer to the [Helm chart options](../reference-guides/installation-references/helm-chart-options.md) for details on installing Rancher on a Kubernetes cluster with other configurations, including:
 
 - With [API auditing to record all transactions](../reference-guides/installation-references/helm-chart-options.md#api-audit-log)
 - With [TLS termination on a load balancer](../reference-guides/installation-references/helm-chart-options.md#external-tls-termination)
@@ -110,5 +110,5 @@ In the Rancher installation instructions, we recommend using K3s or RKE to set u
 Refer to the [docs about options for Docker installs](rancher-on-a-single-node-with-docker.md) for details about other configurations including:
 
 - With [API auditing to record all transactions](../reference-guides/single-node-rancher-in-docker/advanced-options.md#api-audit-log)
-- With an [external load balancer](installation/options/single-node-install-external-lb/)
+- With an [external load balancer](../getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer.md/)
 - With a [persistent data store](../reference-guides/single-node-rancher-in-docker/advanced-options.md#persistent-data)
