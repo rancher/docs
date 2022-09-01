@@ -27,18 +27,17 @@
       {{ $productVersion := printf "%s/%s" $product $version}} 
       {{ if or (in .Dir "/v2.0-v2.4") (in .Dir "/v2.5") (in .Dir "/v2.6") }}
       <div class="alert alert-notice">
-          <strong>You are viewing the documentation in our older website. The Rancher Manager docs have moved to a new website which will be updated at a later time.</strong>
-      .
+          <strong>You are viewing the documentation in our older website. Rancher Manager docs are in the process of migrating to a new website as we transition from Hugo to the Docusaurus framework. We will update the community with the new site information after it is launched.</strong>
         </div>
       {{end}}
       {{ if or (in .Dir "k3s/latest") }}
       <div class="alert alert-notice">
-          <strong>You are viewing the documentation in our older website. The K3s docs have moved to their own website which will be updated at a later time.</strong>
+          <strong>You are viewing the documentation in our older website. The K3s docs have moved from the Rancher docs website to a separate website. We will update the community with the new site information after it is launched.</strong>
       </div>
       {{end}}
       {{ if or (in .Dir "rke/latest") }}
       <div class="alert alert-notice">
-          <strong>You are viewing the documentation in our older website. The RKE1 docs have moved to their own website which will be updated at a later time.</strong>
+          <strong>You are viewing the documentation in our older website. The RKE1 docs have moved from the Rancher docs website to a separate website. We will update the community with the new site information after it is launched.</strong>
       </div>
       {{end}}
       {{ if or (in .Dir "os/v1.x") }}
