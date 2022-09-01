@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-freeipa",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-freeipa",
+  "title": "Configuring FreeIPA",
+  "description": "Available as of v2.0.5",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-freeipa.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-freeipa",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-freeipa",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-freeipa.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring FreeIPA",
+    "weight": 1114,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/global-configuration/authentication/freeipa/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring Active Directory (AD)",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-active-directory"
+  },
+  "next": {
+    "title": "Configuring Azure AD",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-azure-ad"
+  }
+}

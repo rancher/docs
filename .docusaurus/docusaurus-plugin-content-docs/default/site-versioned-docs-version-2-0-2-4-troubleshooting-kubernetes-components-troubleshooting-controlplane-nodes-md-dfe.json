@@ -1,0 +1,29 @@
+{
+  "unversionedId": "troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes",
+  "id": "version-2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes",
+  "title": "Troubleshooting Controlplane Nodes",
+  "description": "This section applies to nodes with the controlplane role.",
+  "source": "@site/versioned_docs/version-2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes.md",
+  "sourceDirName": "troubleshooting/kubernetes-components",
+  "slug": "/troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes",
+  "permalink": "/2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting Controlplane Nodes",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting etcd Nodes",
+    "permalink": "/2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-etcd-nodes"
+  },
+  "next": {
+    "title": "Troubleshooting nginx-proxy",
+    "permalink": "/2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-nginx-proxy"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/neuvector",
+  "id": "explanations/integrations-in-rancher/neuvector",
+  "title": "NeuVector Integration",
+  "description": "NeuVector Integration in Rancher",
+  "source": "@site/docs/explanations/integrations-in-rancher/neuvector.md",
+  "sourceDirName": "explanations/integrations-in-rancher",
+  "slug": "/explanations/integrations-in-rancher/neuvector",
+  "permalink": "/docs/explanations/integrations-in-rancher/neuvector",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/neuvector.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "NeuVector Integration",
+    "weight": 22
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "PromQL Expression Reference",
+    "permalink": "/docs/explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions"
+  },
+  "next": {
+    "title": "OPA Gatekeeper",
+    "permalink": "/docs/explanations/integrations-in-rancher/opa-gatekeeper"
+  }
+}

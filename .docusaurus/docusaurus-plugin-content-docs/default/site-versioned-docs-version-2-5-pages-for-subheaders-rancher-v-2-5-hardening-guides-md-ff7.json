@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-v2.5-hardening-guides",
+  "id": "version-2.5/pages-for-subheaders/rancher-v2.5-hardening-guides",
+  "title": "Self-Assessment and Hardening Guides for Rancher v2.5",
+  "description": "Rancher v2.5 introduced the capability to deploy Rancher on any Kubernetes cluster. For that reason, we now provide separate security hardening guides for Rancher deployments on each of Rancher's Kubernetes distributions.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/rancher-v2.5-hardening-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-v2.5-hardening-guides",
+  "permalink": "/2.5/pages-for-subheaders/rancher-v2.5-hardening-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/rancher-v2.5-hardening-guides.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Self-Assessment and Hardening Guides for Rancher v2.5",
+    "shortTitle": "Rancher v2.5 Guides",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/2.5/pages-for-subheaders/rancher-security"
+  },
+  "next": {
+    "title": "Hardening Guide with CIS 1.6 Benchmark",
+    "permalink": "/2.5/reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.6-benchmark"
+  }
+}

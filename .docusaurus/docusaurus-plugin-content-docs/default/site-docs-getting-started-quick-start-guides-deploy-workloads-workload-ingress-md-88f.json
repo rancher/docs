@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-workloads/workload-ingress",
+  "id": "getting-started/quick-start-guides/deploy-workloads/workload-ingress",
+  "title": "Workload with Ingress Quick Start",
+  "description": "Prerequisite",
+  "source": "@site/docs/getting-started/quick-start-guides/deploy-workloads/workload-ingress.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-workloads",
+  "slug": "/getting-started/quick-start-guides/deploy-workloads/workload-ingress",
+  "permalink": "/docs/getting-started/quick-start-guides/deploy-workloads/workload-ingress",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/quick-start-guides/deploy-workloads/workload-ingress.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Workload with Ingress Quick Start",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Workloads",
+    "permalink": "/docs/pages-for-subheaders/deploy-rancher-workloads"
+  },
+  "next": {
+    "title": "Workload with NodePort Quick Start",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-workloads/nodeports"
+  }
+}

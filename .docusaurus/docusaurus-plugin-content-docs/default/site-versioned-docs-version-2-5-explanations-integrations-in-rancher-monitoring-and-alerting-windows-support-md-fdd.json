@@ -1,0 +1,30 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/monitoring-and-alerting/windows-support",
+  "id": "version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/windows-support",
+  "title": "Windows Cluster Support for Monitoring V2",
+  "description": "Available as of v2.5.8",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/windows-support.md",
+  "sourceDirName": "explanations/integrations-in-rancher/monitoring-and-alerting",
+  "slug": "/explanations/integrations-in-rancher/monitoring-and-alerting/windows-support",
+  "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/windows-support",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/windows-support.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Windows Cluster Support for Monitoring V2",
+    "shortTitle": "Windows Support",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Built-in Dashboards",
+    "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards"
+  },
+  "next": {
+    "title": "PromQL Expression Reference",
+    "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions"
+  }
+}

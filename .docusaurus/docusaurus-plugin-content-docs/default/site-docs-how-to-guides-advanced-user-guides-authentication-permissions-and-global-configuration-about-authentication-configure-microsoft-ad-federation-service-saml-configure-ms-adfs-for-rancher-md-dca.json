@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher",
+  "id": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher",
+  "title": "1. Configuring Microsoft AD FS for Rancher",
+  "description": "Before configuring Rancher to support AD FS users, you must add Rancher as a relying party trust in AD FS.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Configuring Microsoft AD FS for Rancher",
+    "weight": 1205
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring Microsoft Active Directory Federation Service (SAML)",
+    "permalink": "/docs/pages-for-subheaders/configure-microsoft-ad-federation-service-saml"
+  },
+  "next": {
+    "title": "2. Configuring Rancher for Microsoft AD FS",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-rancher-for-ms-adfs"
+  }
+}

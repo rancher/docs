@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-behind-an-http-proxy",
+  "id": "pages-for-subheaders/rancher-behind-an-http-proxy",
+  "title": "Installing Rancher behind an HTTP Proxy",
+  "description": "In a lot of enterprise environments, servers or VMs running on premise do not have direct Internet access, but must connect to external services through a HTTP(S) proxy for security reasons. This tutorial shows step by step how to set up a highly available Rancher installation in such an environment.",
+  "source": "@site/docs/pages-for-subheaders/rancher-behind-an-http-proxy.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-behind-an-http-proxy",
+  "permalink": "/docs/pages-for-subheaders/rancher-behind-an-http-proxy",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/rancher-behind-an-http-proxy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Rancher behind an HTTP Proxy",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Certificate Troubleshooting",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting"
+  },
+  "next": {
+    "title": "1. Set up Infrastructure",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/set-up-infrastructure"
+  }
+}

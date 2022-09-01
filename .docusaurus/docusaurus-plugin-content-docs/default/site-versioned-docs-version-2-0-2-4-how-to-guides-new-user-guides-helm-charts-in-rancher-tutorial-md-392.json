@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial",
+  "title": "Tutorial: Example Custom Chart Creation",
+  "description": "In this tutorial, you'll learn how to create a Helm chart and deploy it to a  repository. The repository can then be used as a source for a custom catalog in Rancher.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial.md",
+  "sourceDirName": "how-to-guides/new-user-guides/helm-charts-in-rancher",
+  "slug": "/how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tutorial: Example Custom Chart Creation",
+    "weight": 800,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/catalog/tutorial",
+      "/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/tutorial"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Launching Catalog Apps",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps"
+  },
+  "next": {
+    "title": "Global DNS",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/globaldns"
+  }
+}

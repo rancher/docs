@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/monitoring-v2-configuration-guides",
+  "id": "version-2.5/pages-for-subheaders/monitoring-v2-configuration-guides",
+  "title": "Configuration",
+  "description": "This page captures some of the most important options for configuring Monitoring V2 in the Rancher UI.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/monitoring-v2-configuration-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/monitoring-v2-configuration-guides",
+  "permalink": "/2.5/pages-for-subheaders/monitoring-v2-configuration-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/monitoring-v2-configuration-guides.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuration",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.5/en/monitoring-alerting/configuration",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/alertmanager/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migrating to Rancher v2.5 Monitoring",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring"
+  },
+  "next": {
+    "title": "Advanced Configuration",
+    "permalink": "/2.5/pages-for-subheaders/advanced-configuration"
+  }
+}

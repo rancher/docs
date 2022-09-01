@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/new-user-guides",
+  "id": "pages-for-subheaders/new-user-guides",
+  "title": "new-user-guides",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/new-user-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/new-user-guides",
+  "permalink": "/docs/pages-for-subheaders/new-user-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/new-user-guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "how-to-guides",
+    "permalink": "/docs/how-to-guides"
+  },
+  "next": {
+    "title": "Don't have a Kubernetes cluster? Try one of these tutorials.",
+    "permalink": "/docs/pages-for-subheaders/kubernetes-cluster-setup"
+  }
+}

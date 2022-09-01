@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/ingress-configuration",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/ingress-configuration",
+  "title": "Ingress Configuration",
+  "description": "Ingress configuration",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/ingress-configuration.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/ingress-configuration",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/ingress-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/ingress-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Ingress Configuration",
+    "description": "Ingress configuration",
+    "weight": 9999
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Ingresses",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/add-ingresses"
+  },
+  "next": {
+    "title": "Services",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/create-services"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/installation-references/amazon-eks-permissions",
+  "id": "version-2.0-2.4/reference-guides/installation-references/amazon-eks-permissions",
+  "title": "Creating an EKS Cluster",
+  "description": "Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this documentation.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/installation-references/amazon-eks-permissions.md",
+  "sourceDirName": "reference-guides/installation-references",
+  "slug": "/reference-guides/installation-references/amazon-eks-permissions",
+  "permalink": "/2.0-2.4/reference-guides/installation-references/amazon-eks-permissions",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/installation-references/amazon-eks-permissions.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating an EKS Cluster",
+    "shortTitle": "Amazon EKS",
+    "weight": 2110,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/clusters/creating-a-cluster/create-cluster-eks/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "feature-flags",
+    "permalink": "/2.0-2.4/reference-guides/installation-references/feature-flags"
+  },
+  "next": {
+    "title": "Configuring OpenLDAP",
+    "permalink": "/2.0-2.4/pages-for-subheaders/configure-openldap"
+  }
+}

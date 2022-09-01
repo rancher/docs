@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-google-oauth",
+  "id": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-google-oauth",
+  "title": "Configuring Google OAuth",
+  "description": "If your organization uses G Suite for user authentication, you can configure Rancher to allow your users to log in using their G Suite credentials.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-google-oauth.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-google-oauth",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-google-oauth",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-google-oauth.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Google OAuth",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Local Authentication",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/create-local-users"
+  },
+  "next": {
+    "title": "Configuring Active Directory (AD)",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-active-directory"
+  }
+}

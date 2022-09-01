@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/rancher-project-tools",
+  "id": "reference-guides/rancher-project-tools",
+  "title": "Tools for Logging, Monitoring, and Visibility",
+  "description": "Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:",
+  "source": "@site/docs/reference-guides/rancher-project-tools.md",
+  "sourceDirName": "reference-guides",
+  "slug": "/reference-guides/rancher-project-tools",
+  "permalink": "/docs/reference-guides/rancher-project-tools",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rancher-project-tools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tools for Logging, Monitoring, and Visibility",
+    "weight": 2525
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tools for Logging, Monitoring, and Visibility",
+    "permalink": "/docs/reference-guides/rancher-cluster-tools"
+  },
+  "next": {
+    "title": "System Tools",
+    "permalink": "/docs/reference-guides/system-tools"
+  }
+}

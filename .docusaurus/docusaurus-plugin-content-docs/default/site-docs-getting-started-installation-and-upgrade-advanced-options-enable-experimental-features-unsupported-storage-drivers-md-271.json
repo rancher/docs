@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "id": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "title": "Allow Unsupported Storage Drivers",
+  "description": "This feature allows you to use types for storage providers and provisioners that are not enabled by default.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Allow Unsupported Storage Drivers",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Running on ARM64 (Experimental)",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64"
+  },
+  "next": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+  "description": "For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "weight": 252,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/single-node/single-node-install-external-lb/",
+      "/rancher/v2.0-v2.4/en/installation/other-installation-methods/single-node-docker/single-node-install-external-lb",
+      "/rancher/v2.0-v2.4/en/installation/options/single-node-install-external-lb",
+      "/rancher/v2.0-v2.4/en/installation/single-node-install-external-lb"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Template for an RKE Cluster with a Recognized CA Certificate and SSL Termination on Layer 7 Load Balancer",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca"
+  },
+  "next": {
+    "title": "rke-add-on",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rke-add-on"
+  }
+}

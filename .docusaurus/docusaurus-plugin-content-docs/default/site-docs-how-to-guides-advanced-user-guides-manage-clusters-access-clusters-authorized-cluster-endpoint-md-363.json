@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/access-clusters/authorized-cluster-endpoint",
+  "id": "how-to-guides/advanced-user-guides/manage-clusters/access-clusters/authorized-cluster-endpoint",
+  "title": "How the Authorized Cluster Endpoint Works",
+  "description": "This section describes how the kubectl CLI, the kubeconfig file, and the authorized cluster endpoint work together to allow you to access a downstream Kubernetes cluster directly, without authenticating through the Rancher server. It is intended to provide background information and context to the instructions for how to set up kubectl to directly access a cluster.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/authorized-cluster-endpoint.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters/access-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/authorized-cluster-endpoint",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/authorized-cluster-endpoint",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/authorized-cluster-endpoint.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "How the Authorized Cluster Endpoint Works",
+    "weight": 2015
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Access a Cluster with Kubectl and kubeconfig",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig"
+  },
+  "next": {
+    "title": "Adding Users to Clusters",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/add-users-to-clusters"
+  }
+}

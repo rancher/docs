@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-projects/manage-namespaces",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-projects/manage-namespaces",
+  "title": "Namespaces",
+  "description": "Within Rancher, you can further divide projects into different namespaces, which are virtual clusters within a project backed by a physical cluster. Should you require another level of organization beyond projects and the default namespace, you can use multiple namespaces to isolate applications and resources.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-projects/manage-namespaces.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-projects",
+  "slug": "/how-to-guides/advanced-user-guides/manage-projects/manage-namespaces",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/manage-namespaces",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-projects/manage-namespaces.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Namespaces",
+    "weight": 2520,
+    "aliases": [
+      "/rancher/v2.x/en/project-admin/namespaces/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Users to Projects",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects"
+  },
+  "next": {
+    "title": "Rancher's CI/CD Pipelines",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines"
+  }
+}

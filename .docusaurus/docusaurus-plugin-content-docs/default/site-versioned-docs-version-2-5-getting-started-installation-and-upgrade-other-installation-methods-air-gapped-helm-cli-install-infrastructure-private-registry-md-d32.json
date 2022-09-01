@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry",
+  "id": "version-2.5/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry",
+  "title": "1. Set up Infrastructure and Private Registry",
+  "description": "In this section, you will provision the underlying infrastructure for your Rancher management server in an air gapped environment. You will also set up the private Docker registry that must be available to your Rancher node(s).",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Set up Infrastructure and Private Registry",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.5/en/installation/air-gap-single-node/provision-host",
+      "/rancher/v2.x/en/installation/other-installation-methods/air-gap/prepare-nodes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Air Gapped Helm CLI Install",
+    "permalink": "/2.5/pages-for-subheaders/air-gapped-helm-cli-install"
+  },
+  "next": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images"
+  }
+}

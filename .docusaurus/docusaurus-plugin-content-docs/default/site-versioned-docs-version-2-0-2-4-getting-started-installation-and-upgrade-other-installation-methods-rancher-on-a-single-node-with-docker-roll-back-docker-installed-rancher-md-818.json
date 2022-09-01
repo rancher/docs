@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher",
+  "title": "Rolling Back Rancher Installed with Docker",
+  "description": "If a Rancher upgrade does not complete successfully, you'll have to roll back to your Rancher setup that you were using before Docker Upgrade. Rolling back restores:",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rolling Back Rancher Installed with Docker",
+    "weight": 1015,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/single-node-rollbacks",
+      "/rancher/v2.0-v2.4/en/upgrades/rollbacks/single-node-rollbacks"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading Rancher Installed with Docker",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher"
+  },
+  "next": {
+    "title": "Certificate Troubleshooting",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting"
+  }
+}

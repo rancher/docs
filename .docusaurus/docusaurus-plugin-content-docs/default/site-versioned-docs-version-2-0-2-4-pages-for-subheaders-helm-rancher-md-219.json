@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/helm-rancher",
+  "id": "version-2.0-2.4/pages-for-subheaders/helm-rancher",
+  "title": "4.  Install Rancher",
+  "description": "Rancher installation is managed using the Helm package manager for Kubernetes.  Use helm to install the prerequisite and charts to install Rancher.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm-rancher.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm-rancher",
+  "permalink": "/2.0-2.4/pages-for-subheaders/helm-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "4.  Install Rancher",
+    "weight": 200,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/helm-rancher",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/helm-rancher/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/helm-init/troubleshooting"
+  },
+  "next": {
+    "title": "Adding Kubernetes TLS Secrets",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/helm-rancher/tls-secrets"
+  }
+}

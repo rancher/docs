@@ -1,0 +1,32 @@
+{
+  "unversionedId": "faq/telemetry",
+  "id": "version-2.5/faq/telemetry",
+  "title": "Telemetry",
+  "description": "What is Telemetry?",
+  "source": "@site/versioned_docs/version-2.5/faq/telemetry.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/telemetry",
+  "permalink": "/2.5/faq/telemetry",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/faq/telemetry.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Telemetry",
+    "weight": 8008,
+    "aliases": [
+      "/rancher/v2.x/en/faq/telemetry/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/2.5/faq/security"
+  },
+  "next": {
+    "title": "Container Network Interface (CNI) Providers",
+    "permalink": "/2.5/faq/container-network-interface-providers"
+  }
+}

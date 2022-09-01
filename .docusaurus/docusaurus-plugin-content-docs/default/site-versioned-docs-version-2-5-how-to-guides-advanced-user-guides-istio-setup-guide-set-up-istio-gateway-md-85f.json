@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway",
+  "title": "4. Set up the Istio Gateway",
+  "description": "The gateway to each cluster can have its own port or load balancer, which is unrelated to a service mesh. By default, each Rancher-provisioned cluster has one NGINX ingress controller allowing traffic into the cluster.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "4. Set up the Istio Gateway",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.5/en/istio/setup/gateway",
+      "/rancher/v2.5/en/istio/v2.5/setup/gateway",
+      "/rancher/v2.x/en/istio/v2.5/setup/gateway/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3. Add Deployments and Services with the Istio Sidecar",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar"
+  },
+  "next": {
+    "title": "5. Set up Istio's Components for Traffic Management",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "id": "version-2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "title": "Rancher AWS Quick Start Guide",
+  "description": "Read this step by step Rancher AWS guide to quickly deploy a Rancher Server with a single node cluster attached.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/aws.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "permalink": "/2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/aws.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher AWS Quick Start Guide",
+    "description": "Read this step by step Rancher AWS guide to quickly deploy a Rancher Server with a single node cluster attached.",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Rancher Server",
+    "permalink": "/2.0-2.4/pages-for-subheaders/deploy-rancher-manager"
+  },
+  "next": {
+    "title": "Rancher Azure Quick Start Guide",
+    "permalink": "/2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/azure"
+  }
+}

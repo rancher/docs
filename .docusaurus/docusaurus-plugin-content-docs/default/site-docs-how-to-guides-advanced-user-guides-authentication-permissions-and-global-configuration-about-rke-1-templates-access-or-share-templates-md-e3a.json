@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/access-or-share-templates",
+  "id": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/access-or-share-templates",
+  "title": "Access and Sharing",
+  "description": "If you are an RKE template owner, you can share it with users or groups of users, who can then use the template to create clusters.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/access-or-share-templates.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/access-or-share-templates",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/access-or-share-templates",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/access-or-share-templates.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Access and Sharing",
+    "weight": 31
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Template Creator Permissions",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/creator-permissions"
+  },
+  "next": {
+    "title": "Creating and Revising RKE Templates",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/manage-rke1-templates"
+  }
+}

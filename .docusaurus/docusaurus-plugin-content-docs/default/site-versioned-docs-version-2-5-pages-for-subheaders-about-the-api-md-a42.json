@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/about-the-api",
+  "id": "version-2.5/pages-for-subheaders/about-the-api",
+  "title": "API",
+  "description": "How to use the API",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/about-the-api.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/about-the-api",
+  "permalink": "/2.5/pages-for-subheaders/about-the-api",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/about-the-api.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "API",
+    "weight": 24,
+    "aliases": [
+      "/rancher/v2.x/en/api/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "kubectl-utility",
+    "permalink": "/2.5/reference-guides/cli-with-rancher/kubectl-utility"
+  },
+  "next": {
+    "title": "API Tokens",
+    "permalink": "/2.5/reference-guides/about-the-api/api-tokens"
+  }
+}

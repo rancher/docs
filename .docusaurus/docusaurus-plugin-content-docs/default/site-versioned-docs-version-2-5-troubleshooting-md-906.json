@@ -1,0 +1,32 @@
+{
+  "unversionedId": "troubleshooting",
+  "id": "version-2.5/troubleshooting",
+  "title": "Troubleshooting",
+  "description": "This section contains information to help you troubleshoot issues when using Rancher.",
+  "source": "@site/versioned_docs/version-2.5/troubleshooting.md",
+  "sourceDirName": ".",
+  "slug": "/troubleshooting",
+  "permalink": "/2.5/troubleshooting",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/troubleshooting.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting",
+    "weight": 26,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher is No Longer Needed",
+    "permalink": "/2.5/faq/rancher-is-no-longer-needed"
+  },
+  "next": {
+    "title": "Kubernetes Components",
+    "permalink": "/2.5/pages-for-subheaders/kubernetes-components"
+  }
+}

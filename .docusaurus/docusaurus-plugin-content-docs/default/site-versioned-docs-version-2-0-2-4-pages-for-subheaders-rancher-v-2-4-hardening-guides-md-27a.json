@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-v2.4-hardening-guides",
+  "id": "version-2.0-2.4/pages-for-subheaders/rancher-v2.4-hardening-guides",
+  "title": "Rancher v2.4",
+  "description": "Self Assessment Guide",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-v2.4-hardening-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-v2.4-hardening-guides",
+  "permalink": "/2.0-2.4/pages-for-subheaders/rancher-v2.4-hardening-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-v2.4-hardening-guides.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher v2.4",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/security/rancher-2.4/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Hardening Guide v2.3.5",
+    "permalink": "/2.0-2.4/reference-guides/rancher-security/rancher-v2.3-hardening-guides/rancher-v2.3.5-hardening-guide-with-cis-v1.5-benchmark"
+  },
+  "next": {
+    "title": "CIS Benchmark Rancher Self-Assessment Guide - v2.4",
+    "permalink": "/2.0-2.4/reference-guides/rancher-security/rancher-v2.4-hardening-guides/self-assessment-guide-with-cis-v1.5-benchmark"
+  }
+}

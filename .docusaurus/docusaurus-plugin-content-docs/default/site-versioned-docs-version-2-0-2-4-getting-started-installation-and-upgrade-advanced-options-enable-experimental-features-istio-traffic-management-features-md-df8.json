@@ -1,0 +1,32 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "title": "UI for Istio Virtual Services and Destination Rules",
+  "description": "This feature enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/feature-flags/istio-virtual-service-ui"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Allow Unsupported Storage Drivers",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers"
+  },
+  "next": {
+    "title": "Kubernetes Installation Using Helm 2",
+    "permalink": "/2.0-2.4/pages-for-subheaders/helm2"
+  }
+}

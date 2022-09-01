@@ -1,0 +1,47 @@
+{
+  "unversionedId": "pages-for-subheaders/helm-charts-in-rancher",
+  "id": "version-2.5/pages-for-subheaders/helm-charts-in-rancher",
+  "title": "Helm Charts in Rancher",
+  "description": "In this section, you'll learn how to manage Helm chart repositories and applications in Rancher.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/helm-charts-in-rancher.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm-charts-in-rancher",
+  "permalink": "/2.5/pages-for-subheaders/helm-charts-in-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/helm-charts-in-rancher.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Helm Charts in Rancher",
+    "weight": 11,
+    "aliases": [
+      "/rancher/v2.x/en/helm-charts/apps-marketplace",
+      "/rancher/v2.5/en/catalog/",
+      "/rancher/v2.5/en/catalog/apps",
+      "/rancher/v2.5/en/catalog/launching-apps",
+      "/rancher/v2.x/en/helm-charts/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/launching-apps/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/adding-catalogs/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/globaldns/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/built-in/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/creating-apps/",
+      "/rancher/v2.x/en/helm-charts/apps-marketplace/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/tutorial/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/managing-apps/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/catalog-config/",
+      "/rancher/v2.x/en/helm-charts/legacy-catalogs/multi-cluster-apps/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Registry and Docker Registry",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries"
+  },
+  "next": {
+    "title": "Deploying Applications across Clusters",
+    "permalink": "/2.5/pages-for-subheaders/deploy-apps-across-clusters"
+  }
+}

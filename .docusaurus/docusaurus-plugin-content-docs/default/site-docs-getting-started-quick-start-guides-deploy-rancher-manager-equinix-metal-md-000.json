@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal",
+  "id": "getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal",
+  "title": "Rancher Equinix Metal Quick Start",
+  "description": "This tutorial walks you through the following:",
+  "source": "@site/docs/getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal",
+  "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Equinix Metal Quick Start",
+    "weight": 250
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Vagrant Quick Start",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/vagrant"
+  },
+  "next": {
+    "title": "Helm CLI Quick Start",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli"
+  }
+}

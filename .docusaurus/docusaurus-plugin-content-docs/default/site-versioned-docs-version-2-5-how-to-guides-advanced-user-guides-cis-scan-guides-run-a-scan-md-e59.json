@@ -1,0 +1,26 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan",
+  "title": "run-a-scan",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/cis-scan-guides",
+  "slug": "/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "uninstall-rancher-cis-benchmark",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark"
+  },
+  "next": {
+    "title": "run-a-scan-periodically-on-a-schedule",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule"
+  }
+}

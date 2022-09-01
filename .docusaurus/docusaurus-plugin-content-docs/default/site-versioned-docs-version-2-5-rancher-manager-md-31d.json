@@ -1,0 +1,31 @@
+{
+  "unversionedId": "rancher-manager",
+  "id": "version-2.5/rancher-manager",
+  "title": "Rancher 2.5",
+  "description": "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+  "source": "@site/versioned_docs/version-2.5/rancher-manager.md",
+  "sourceDirName": ".",
+  "slug": "/rancher-manager",
+  "permalink": "/2.5/rancher-manager",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/rancher-manager.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher 2.5",
+    "shortTitle": "Rancher 2.5",
+    "description": "Rancher adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+    "metaTitle": "Rancher 2.5 Docs: What is New?",
+    "metaDescription": "Rancher 2 adds significant value on top of Kubernetes: managing hundreds of clusters from one interface, centralizing RBAC, enabling monitoring and alerting. Read more.",
+    "insertOneSix": false,
+    "weight": 2,
+    "ctaBanner": 0
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "getting-started",
+    "permalink": "/2.5/getting-started"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster",
+  "title": "Set up Infrastructure for a High Availability RKE Kubernetes Cluster",
+  "description": "This tutorial is intended to help you create a high-availability RKE cluster that can be used to install a Rancher server.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster.md",
+  "sourceDirName": "how-to-guides/new-user-guides/infrastructure-setup",
+  "slug": "/how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Set up Infrastructure for a High Availability RKE Kubernetes Cluster",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Set up Infrastructure for a High Availability K3s Kubernetes Cluster",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster"
+  },
+  "next": {
+    "title": "Setting up Nodes in Amazon EC2",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads",
+  "id": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads",
+  "title": "Setting up Monitoring for a Workload",
+  "description": "- Display CPU and Memory Metrics for a Workload",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-alerting-guides",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Monitoring for a Workload",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Uninstall Monitoring",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring"
+  },
+  "next": {
+    "title": "Customizing Grafana Dashboards",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64",
+  "id": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64",
+  "title": "Running on ARM64 (Experimental)",
+  "description": "Running on an ARM64 platform is currently an experimental feature and is not yet officially supported in Rancher. Therefore, we do not recommend using ARM64 based nodes in a production environment.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64",
+  "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Running on ARM64 (Experimental)",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enabling Experimental Features",
+    "permalink": "/docs/pages-for-subheaders/enable-experimental-features"
+  },
+  "next": {
+    "title": "Allow Unsupported Storage Drivers",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers"
+  }
+}

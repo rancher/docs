@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/best-practices/rancher-server/rancher-deployment-strategy",
+  "id": "reference-guides/best-practices/rancher-server/rancher-deployment-strategy",
+  "title": "Rancher Deployment Strategy",
+  "description": "There are two recommended deployment strategies for a Rancher server that manages downstream Kubernetes clusters. Each one has its own pros and cons. Read more about which one would fit best for your use case:",
+  "source": "@site/docs/reference-guides/best-practices/rancher-server/rancher-deployment-strategy.md",
+  "sourceDirName": "reference-guides/best-practices/rancher-server",
+  "slug": "/reference-guides/best-practices/rancher-server/rancher-deployment-strategy",
+  "permalink": "/docs/reference-guides/best-practices/rancher-server/rancher-deployment-strategy",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/best-practices/rancher-server/rancher-deployment-strategy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Deployment Strategy",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Rancher in a vSphere Environment",
+    "permalink": "/docs/reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere"
+  },
+  "next": {
+    "title": "Tips for Running Rancher",
+    "permalink": "/docs/reference-guides/best-practices/rancher-server/tips-for-running-rancher"
+  }
+}

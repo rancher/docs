@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace",
+  "title": "2. Enable Istio in a Namespace",
+  "description": "You will need to manually enable Istio in each namespace that you want to be tracked or controlled by Istio. When Istio is enabled in a namespace, the Envoy sidecar proxy will be automatically injected into all new workloads that are deployed in the namespace.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Enable Istio in a Namespace",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/istio/setup/enable-istio-in-namespace",
+      "/rancher/v2.5/en/istio/v2.5/setup/enable-istio-in-namespace",
+      "/rancher/v2.x/en/istio/v2.5/setup/enable-istio-in-namespace/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Enable Istio in the Cluster",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster"
+  },
+  "next": {
+    "title": "3. Add Deployments and Services with the Istio Sidecar",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/infrastructure",
+  "id": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/infrastructure",
+  "title": "RKE Templates and Infrastructure",
+  "description": "In Rancher, RKE templates are used to provision Kubernetes and define Rancher settings, while node templates are used to provision nodes.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/infrastructure.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/infrastructure",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/infrastructure",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/infrastructure.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Templates and Infrastructure",
+    "weight": 90
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Applying Templates",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/apply-templates"
+  },
+  "next": {
+    "title": "Example Scenarios",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/example-use-cases"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard",
+  "title": "Persistent Grafana Dashboards",
+  "description": "To allow the Grafana dashboard to persist after the Grafana instance restarts, add the dashboard configuration JSON into a ConfigMap. ConfigMaps also allow the dashboards to be deployed with a GitOps or CD based approach. This allows the dashboard to be put under version control.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-alerting-guides",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Persistent Grafana Dashboards",
+    "weight": 6,
+    "aliases": [
+      "/rancher/v2.5/en/monitoring-alerting/persist-grafana",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/persist-grafana/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Customizing Grafana Dashboards",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard"
+  },
+  "next": {
+    "title": "Debugging High Memory Usage",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/debug-high-memory-usage"
+  }
+}

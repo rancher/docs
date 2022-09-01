@@ -1,0 +1,36 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/local-system-charts",
+  "id": "version-2.5/getting-started/installation-and-upgrade/resources/local-system-charts",
+  "title": "Setting up Local System Charts for Air Gapped Installations",
+  "description": "The System Charts repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/local-system-charts.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/local-system-charts",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/resources/local-system-charts",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/local-system-charts.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Local System Charts for Air Gapped Installations",
+    "weight": 120,
+    "aliases": [
+      "/rancher/v2.5/en/installation/air-gap-single-node/config-rancher-system-charts/_index.md",
+      "/rancher/v2.5/en/installation/air-gap-high-availability/config-rancher-system-charts/_index.md",
+      "/rancher/v2.5/en/installation/options/local-system-charts",
+      "/rancher/v2.x/en/installation/resources/local-system-charts/",
+      "/rancher/v2.x/en/installation/options/local-system-charts/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Updating the Rancher Certificate",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/update-rancher-certificate"
+  },
+  "next": {
+    "title": "Upgrading and Rolling Back Kubernetes",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes"
+  }
+}

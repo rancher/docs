@@ -1,0 +1,36 @@
+{
+  "unversionedId": "pages-for-subheaders/vsphere",
+  "id": "version-2.5/pages-for-subheaders/vsphere",
+  "title": "Creating a vSphere Cluster",
+  "description": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/vsphere.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/vsphere",
+  "permalink": "/2.5/pages-for-subheaders/vsphere",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/vsphere.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a vSphere Cluster",
+    "shortTitle": "vSphere",
+    "description": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "metaDescription": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "weight": 2225,
+    "aliases": [
+      "/rancher/v2.5/en/tasks/clusters/creating-a-cluster/create-cluster-vsphere/",
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an Azure Cluster",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-azure-cluster"
+  },
+  "next": {
+    "title": "Provisioning Kubernetes Clusters in vSphere",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/vsphere/provision-kubernetes-clusters-in-vsphere"
+  }
+}

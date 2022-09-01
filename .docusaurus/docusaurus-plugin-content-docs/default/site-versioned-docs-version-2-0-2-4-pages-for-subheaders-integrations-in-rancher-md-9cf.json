@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/integrations-in-rancher",
+  "id": "version-2.0-2.4/pages-for-subheaders/integrations-in-rancher",
+  "title": "integrations-in-rancher",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/integrations-in-rancher.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/integrations-in-rancher",
+  "permalink": "/2.0-2.4/pages-for-subheaders/integrations-in-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/integrations-in-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "explanations",
+    "permalink": "/2.0-2.4/explanations"
+  },
+  "next": {
+    "title": "CIS Scans",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cis-scans"
+  }
+}

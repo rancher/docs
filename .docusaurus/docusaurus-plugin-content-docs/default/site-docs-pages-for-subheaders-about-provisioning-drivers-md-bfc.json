@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/about-provisioning-drivers",
+  "id": "pages-for-subheaders/about-provisioning-drivers",
+  "title": "Provisioning Drivers",
+  "description": "Drivers in Rancher allow you to manage which providers can be used to deploy hosted Kubernetes clusters or nodes in an infrastructure provider to allow Rancher to deploy and manage Kubernetes.",
+  "source": "@site/docs/pages-for-subheaders/about-provisioning-drivers.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/about-provisioning-drivers",
+  "permalink": "/docs/pages-for-subheaders/about-provisioning-drivers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/about-provisioning-drivers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Provisioning Drivers",
+    "weight": 70
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Locked Roles",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/locked-roles"
+  },
+  "next": {
+    "title": "Cluster Drivers",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-cluster-drivers"
+  }
+}

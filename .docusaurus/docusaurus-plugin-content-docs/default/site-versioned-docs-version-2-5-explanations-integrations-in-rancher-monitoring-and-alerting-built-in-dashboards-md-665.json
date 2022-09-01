@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards",
+  "id": "version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards",
+  "title": "Built-in Dashboards",
+  "description": "- Grafana UI",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards.md",
+  "sourceDirName": "explanations/integrations-in-rancher/monitoring-and-alerting",
+  "slug": "/explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards",
+  "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Built-in Dashboards",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Role-based Access Control",
+    "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring"
+  },
+  "next": {
+    "title": "Windows Cluster Support for Monitoring V2",
+    "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/windows-support"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "id": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "title": "UI for Istio Virtual Services and Destination Rules",
+  "description": "This feature enables a UI that lets you create, read, update and delete virtual services and destination rules, which are traffic management features of Istio.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Allow Unsupported Storage Drivers",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers"
+  },
+  "next": {
+    "title": "Continuous Delivery",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery"
+  }
+}

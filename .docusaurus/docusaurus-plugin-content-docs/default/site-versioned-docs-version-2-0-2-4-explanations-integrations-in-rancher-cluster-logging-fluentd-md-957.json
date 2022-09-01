@@ -1,0 +1,35 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-logging/fluentd",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/fluentd",
+  "title": "Fluentd",
+  "description": "If your organization uses Fluentd, you can configure Rancher to send it Kubernetes logs.  Afterwards, you can log into your Fluentd server to view logs.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/fluentd.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-logging",
+  "slug": "/explanations/integrations-in-rancher/cluster-logging/fluentd",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/fluentd",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/fluentd.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Fluentd",
+    "weight": 600,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/logging/fluentd",
+      "/rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/fluentd",
+      "/rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/fluentd",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/fluentd/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Elasticsearch",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/elasticsearch"
+  },
+  "next": {
+    "title": "Kafka",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/kafka"
+  }
+}

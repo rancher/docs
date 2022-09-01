@@ -1,0 +1,34 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb",
+  "title": "Amazon ALB Configuration",
+  "description": "#### Important: RKE add-on install is only supported up to Rancher v2.0.8",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Amazon ALB Configuration",
+    "weight": 277,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/ha-server-install-external-lb/alb/",
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/layer-7-lb/alb",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/layer-7-lb/alb/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Install with External Load Balancer (HTTPS/Layer 7)",
+    "permalink": "/2.0-2.4/pages-for-subheaders/helm2-rke-add-on-layer-7-lb"
+  },
+  "next": {
+    "title": "NGINX Configuration",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/nginx"
+  }
+}

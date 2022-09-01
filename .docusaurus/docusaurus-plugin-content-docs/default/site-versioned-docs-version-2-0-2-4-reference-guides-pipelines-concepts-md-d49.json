@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/pipelines/concepts",
+  "id": "version-2.0-2.4/reference-guides/pipelines/concepts",
+  "title": "Concepts",
+  "description": "The purpose of this page is to explain common concepts and terminology related to pipelines.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/pipelines/concepts.md",
+  "sourceDirName": "reference-guides/pipelines",
+  "slug": "/reference-guides/pipelines/concepts",
+  "permalink": "/2.0-2.4/reference-guides/pipelines/concepts",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/pipelines/concepts.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Concepts",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines/concepts"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Pipelines",
+    "permalink": "/2.0-2.4/pages-for-subheaders/pipelines"
+  },
+  "next": {
+    "title": "Pipeline Configuration Reference",
+    "permalink": "/2.0-2.4/reference-guides/pipelines/pipeline-configuration"
+  }
+}

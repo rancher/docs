@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes",
+  "id": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes",
+  "title": "3. Install Kubernetes (Skip for Docker Installs)",
+  "description": "Skip this section if you are installing Rancher on a single node with Docker.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes",
+  "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "3. Install Kubernetes (Skip for Docker Installs)",
+    "weight": 300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images"
+  },
+  "next": {
+    "title": "4. Install Rancher",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha"
+  }
+}

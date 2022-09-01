@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps",
+  "title": "4. Configure Health Checks",
+  "description": "Rancher v1.6 provided TCP and HTTP health checks on your nodes and services using its own health check microservice. These health checks monitored your containers to confirm they're operating as intended. If a container failed a health check, Rancher would destroy the unhealthy container and then replicates a healthy one to replace it.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps.md",
+  "sourceDirName": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x",
+  "slug": "/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "4. Configure Health Checks",
+    "weight": 400,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/monitor-apps/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3. Expose Your Services",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services"
+  },
+  "next": {
+    "title": "5. Schedule Your Services",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services"
+  }
+}

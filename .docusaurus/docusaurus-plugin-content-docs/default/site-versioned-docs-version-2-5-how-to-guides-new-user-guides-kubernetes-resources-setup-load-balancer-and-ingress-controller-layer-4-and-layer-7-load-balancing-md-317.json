@@ -1,0 +1,35 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing",
+  "id": "version-2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing",
+  "title": "Layer 4 and Layer 7 Load Balancing",
+  "description": "Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer-7 Load Balancing. Learn about the support for each way in different deployments",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing",
+  "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Layer 4 and Layer 7 Load Balancing",
+    "description": "Kubernetes supports load balancing in two ways: Layer-4 Load Balancing and Layer-7 Load Balancing. Learn about the support for each way in different deployments",
+    "weight": 3041,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/load-balancing/",
+      "/rancher/v2.5/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers",
+      "/rancher/v2.x/en/k8s-in-rancher/load-balancers-and-ingress/load-balancers/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Set Up Load Balancer and Ingress Controller within Rancher",
+    "permalink": "/2.5/pages-for-subheaders/load-balancer-and-ingress-controller"
+  },
+  "next": {
+    "title": "Adding Ingresses to Your Project",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/add-ingresses"
+  }
+}

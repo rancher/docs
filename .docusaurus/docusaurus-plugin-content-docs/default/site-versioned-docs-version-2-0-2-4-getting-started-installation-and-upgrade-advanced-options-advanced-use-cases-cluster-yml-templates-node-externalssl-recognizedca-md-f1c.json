@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca",
+  "title": "Template for an RKE Cluster with a Recognized CA Certificate and SSL Termination on Layer 7 Load Balancer",
+  "description": "RKE uses a cluster.yml file to install and configure your Kubernetes cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Template for an RKE Cluster with a Recognized CA Certificate and SSL Termination on Layer 7 Load Balancer",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/cluster-yml-templates/3-node-externalssl-recognizedca",
+      "/rancher/v2.x/en/installation/resources/advanced/cluster-yml-templates/3-node-externalssl-recognizedca/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Template for an RKE Cluster with a Self-signed Certificate and SSL Termination on Layer 7 Load Balancer",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate"
+  },
+  "next": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer"
+  }
+}

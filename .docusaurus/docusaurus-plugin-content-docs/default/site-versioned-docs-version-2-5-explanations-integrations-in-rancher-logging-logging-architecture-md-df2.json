@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/logging/logging-architecture",
+  "id": "version-2.5/explanations/integrations-in-rancher/logging/logging-architecture",
+  "title": "Architecture",
+  "description": "This section summarizes the architecture of the Rancher logging application.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/logging-architecture.md",
+  "sourceDirName": "explanations/integrations-in-rancher/logging",
+  "slug": "/explanations/integrations-in-rancher/logging/logging-architecture",
+  "permalink": "/2.5/explanations/integrations-in-rancher/logging/logging-architecture",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/logging-architecture.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Architecture",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Integration with Logging Services",
+    "permalink": "/2.5/pages-for-subheaders/logging"
+  },
+  "next": {
+    "title": "Migrating to Rancher v2.5 Logging",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging"
+  }
+}

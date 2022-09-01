@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/create-services",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/create-services",
+  "title": "Services",
+  "description": "Pod configuration is managed by Deployments, StatefulSets and Daemonsets, whereas services direct traffic to pods using selectors.",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/create-services.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/create-services",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/create-services",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/create-services.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Services",
+    "weight": 3045
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Ingress Configuration",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/ingress-configuration"
+  },
+  "next": {
+    "title": "Encrypting HTTP Communication",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication"
+  }
+}

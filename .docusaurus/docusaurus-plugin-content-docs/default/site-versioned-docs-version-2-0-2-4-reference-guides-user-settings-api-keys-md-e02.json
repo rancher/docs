@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/user-settings/api-keys",
+  "id": "version-2.0-2.4/reference-guides/user-settings/api-keys",
+  "title": "API Keys",
+  "description": "API Keys and User Authentication",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/user-settings/api-keys.md",
+  "sourceDirName": "reference-guides/user-settings",
+  "slug": "/reference-guides/user-settings/api-keys",
+  "permalink": "/2.0-2.4/reference-guides/user-settings/api-keys",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/user-settings/api-keys.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "API Keys",
+    "weight": 7005,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/concepts/api-keys/",
+      "/rancher/v2.0-v2.4/en/tasks/user-settings/api-keys/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "User Settings",
+    "permalink": "/2.0-2.4/pages-for-subheaders/user-settings"
+  },
+  "next": {
+    "title": "Managing Node Templates",
+    "permalink": "/2.0-2.4/reference-guides/user-settings/manage-node-templates"
+  }
+}

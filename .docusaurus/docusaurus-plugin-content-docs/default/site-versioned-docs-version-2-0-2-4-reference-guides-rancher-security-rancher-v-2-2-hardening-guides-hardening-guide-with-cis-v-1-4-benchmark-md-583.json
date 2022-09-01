@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark",
+  "id": "version-2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark",
+  "title": "Hardening Guide v2.2",
+  "description": "This document provides prescriptive guidance for hardening a production installation of Rancher v2.2.x. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark.md",
+  "sourceDirName": "reference-guides/rancher-security/rancher-v2.2-hardening-guides",
+  "slug": "/reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark",
+  "permalink": "/2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Hardening Guide v2.2",
+    "weight": 103,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/security/hardening-2.2",
+      "/rancher/v2.x/en/security/rancher-2.2/hardening-2.2/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CIS Benchmark Rancher Self-Assessment Guide v2.2",
+    "permalink": "/2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark"
+  },
+  "next": {
+    "title": "Rancher v2.3.x",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rancher-v2.3-hardening-guides"
+  }
+}

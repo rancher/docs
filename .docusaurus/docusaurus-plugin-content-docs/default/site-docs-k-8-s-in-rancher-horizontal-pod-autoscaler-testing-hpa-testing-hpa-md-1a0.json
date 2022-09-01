@@ -1,0 +1,20 @@
+{
+  "unversionedId": "k8s-in-rancher/horizontal-pod-autoscaler/testing-hpa/testing-hpa",
+  "id": "k8s-in-rancher/horizontal-pod-autoscaler/testing-hpa/testing-hpa",
+  "title": "Testing HPAs with kubectl",
+  "description": "This document describes how to check the status of your HPAs after scaling them up or down with your load testing tool. For information on how to check the status from the Rancher UI (at least version 2.3.x), refer to Managing HPAs with the Rancher UI.",
+  "source": "@site/docs/k8s-in-rancher/horizontal-pod-autoscaler/testing-hpa/testing-hpa.md",
+  "sourceDirName": "k8s-in-rancher/horizontal-pod-autoscaler/testing-hpa",
+  "slug": "/k8s-in-rancher/horizontal-pod-autoscaler/testing-hpa/",
+  "permalink": "/docs/k8s-in-rancher/horizontal-pod-autoscaler/testing-hpa/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/k8s-in-rancher/horizontal-pod-autoscaler/testing-hpa/testing-hpa.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Testing HPAs with kubectl",
+    "weight": 3031
+  }
+}

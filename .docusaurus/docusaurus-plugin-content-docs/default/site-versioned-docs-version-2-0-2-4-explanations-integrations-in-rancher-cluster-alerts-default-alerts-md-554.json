@@ -1,0 +1,34 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-alerts/default-alerts",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-alerts/default-alerts",
+  "title": "Default Alerts for Cluster Monitoring",
+  "description": "When you create a cluster, some alert rules are predefined. These alerts notify you about signs that the cluster could be unhealthy. You can receive these alerts if you configure a notifier for them.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-alerts/default-alerts.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-alerts",
+  "slug": "/explanations/integrations-in-rancher/cluster-alerts/default-alerts",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-alerts/default-alerts",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-alerts/default-alerts.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Default Alerts for Cluster Monitoring",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/alerts/default-alerts",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/alerts/cluster-alerts/default-alerts",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-alerts/default-alerts"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Alerts",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cluster-alerts"
+  },
+  "next": {
+    "title": "Integrating Rancher and Prometheus for Cluster Monitoring",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cluster-monitoring"
+  }
+}

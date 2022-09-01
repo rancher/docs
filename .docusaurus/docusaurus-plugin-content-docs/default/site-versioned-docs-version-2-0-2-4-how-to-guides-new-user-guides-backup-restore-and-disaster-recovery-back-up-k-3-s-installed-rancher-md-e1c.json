@@ -1,0 +1,39 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher",
+  "title": "Backing up Rancher Installed on a K3s Kubernetes Cluster",
+  "description": "When Rancher is installed on a high-availability Kubernetes cluster, we recommend using an external database to store the cluster data.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher.md",
+  "sourceDirName": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery",
+  "slug": "/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-k3s-installed-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backing up Rancher Installed on a K3s Kubernetes Cluster",
+    "shortTitle": "K3s Installs",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/backups/backups/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/backups/k8s-backups/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/legacy/backup/k8s-backups/k3s-backups/",
+      "/rancher/v2.0-v2.4/en/backups/legacy/backups/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/legacy/backup/k3s-backups",
+      "/rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/backup/k3s-backups",
+      "/rancher/v2.x/en/backups/v2.0.x-v2.4.x/backup/k3s-backups/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restoring Backups—Docker Installs",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher"
+  },
+  "next": {
+    "title": "Restoring Rancher Installed on a K3s Kubernetes Cluster",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-k3s-installed-rancher"
+  }
+}

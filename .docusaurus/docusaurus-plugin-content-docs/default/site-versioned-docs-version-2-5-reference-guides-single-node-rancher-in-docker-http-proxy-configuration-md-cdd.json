@@ -1,0 +1,34 @@
+{
+  "unversionedId": "reference-guides/single-node-rancher-in-docker/http-proxy-configuration",
+  "id": "version-2.5/reference-guides/single-node-rancher-in-docker/http-proxy-configuration",
+  "title": "HTTP Proxy Configuration",
+  "description": "If you operate Rancher behind a proxy and you want to access services through the proxy (such as retrieving catalogs), you must provide Rancher information about your proxy. As Rancher is written in Go, it uses the common proxy environment variables as shown below.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/single-node-rancher-in-docker/http-proxy-configuration.md",
+  "sourceDirName": "reference-guides/single-node-rancher-in-docker",
+  "slug": "/reference-guides/single-node-rancher-in-docker/http-proxy-configuration",
+  "permalink": "/2.5/reference-guides/single-node-rancher-in-docker/http-proxy-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/single-node-rancher-in-docker/http-proxy-configuration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "HTTP Proxy Configuration",
+    "weight": 251,
+    "aliases": [
+      "/rancher/v2.5/en/installation/proxy-configuration/",
+      "/rancher/v2.5/en/installation/single-node/proxy",
+      "/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/proxy/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "single-node-rancher-in-docker",
+    "permalink": "/2.5/pages-for-subheaders/single-node-rancher-in-docker"
+  },
+  "next": {
+    "title": "Advanced Options for Docker Installs",
+    "permalink": "/2.5/reference-guides/single-node-rancher-in-docker/advanced-options"
+  }
+}

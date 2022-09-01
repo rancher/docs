@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "id": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "title": "Restoring a Cluster from Backup",
+  "description": "etcd backup and recovery for Rancher launched Kubernetes clusters can be easily performed. Snapshots of the etcd database are taken and saved either locally onto the etcd nodes or to a S3 compatible target. The advantages of configuring S3 is that if all etcd nodes are lost, your snapshot is saved remotely and can be used to restore the cluster.",
+  "source": "@site/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md",
+  "sourceDirName": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery",
+  "slug": "/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restoring a Cluster from Backup",
+    "weight": 2050
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backing up a Cluster",
+    "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters"
+  },
+  "next": {
+    "title": "advanced-user-guides",
+    "permalink": "/docs/pages-for-subheaders/advanced-user-guides"
+  }
+}

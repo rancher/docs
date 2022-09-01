@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/pipelines/pipeline-configuration",
+  "id": "reference-guides/pipelines/pipeline-configuration",
+  "title": "Pipeline Configuration Reference",
+  "description": "In this section, you'll learn how to configure pipelines.",
+  "source": "@site/docs/reference-guides/pipelines/pipeline-configuration.md",
+  "sourceDirName": "reference-guides/pipelines",
+  "slug": "/reference-guides/pipelines/pipeline-configuration",
+  "permalink": "/docs/reference-guides/pipelines/pipeline-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/pipelines/pipeline-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pipeline Configuration Reference",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Concepts",
+    "permalink": "/docs/reference-guides/pipelines/concepts"
+  },
+  "next": {
+    "title": "Configuring Persistent Data for Pipeline Components",
+    "permalink": "/docs/reference-guides/pipelines/configure-persistent-data"
+  }
+}

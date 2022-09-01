@@ -1,0 +1,30 @@
+{
+  "unversionedId": "faq/container-network-interface-providers",
+  "id": "faq/container-network-interface-providers",
+  "title": "Container Network Interface (CNI) Providers",
+  "description": "Learn about Container Network Interface (CNI), the CNI providers Rancher provides, the features they offer, and how to choose a provider for you",
+  "source": "@site/docs/faq/container-network-interface-providers.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/container-network-interface-providers",
+  "permalink": "/docs/faq/container-network-interface-providers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/faq/container-network-interface-providers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Container Network Interface (CNI) Providers",
+    "description": "Learn about Container Network Interface (CNI), the CNI providers Rancher provides, the features they offer, and how to choose a provider for you",
+    "weight": 2300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Telemetry",
+    "permalink": "/docs/faq/telemetry"
+  },
+  "next": {
+    "title": "Rancher is No Longer Needed",
+    "permalink": "/docs/faq/rancher-is-no-longer-needed"
+  }
+}

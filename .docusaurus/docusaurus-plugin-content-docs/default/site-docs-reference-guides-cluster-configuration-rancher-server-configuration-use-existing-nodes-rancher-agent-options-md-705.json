@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "id": "reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "title": "Rancher Agent Options",
+  "description": "Rancher deploys an agent on each node to communicate with the node. This pages describes the options that can be passed to the agent. To use these options, you will need to create a cluster with custom nodes and add the options to the generated docker run command when adding a node.",
+  "source": "@site/docs/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options.md",
+  "sourceDirName": "reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes",
+  "slug": "/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Agent Options",
+    "weight": 2500
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Launching Kubernetes on Existing Custom Nodes",
+    "permalink": "/docs/pages-for-subheaders/use-existing-nodes"
+  },
+  "next": {
+    "title": "Syncing",
+    "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters"
+  }
+}

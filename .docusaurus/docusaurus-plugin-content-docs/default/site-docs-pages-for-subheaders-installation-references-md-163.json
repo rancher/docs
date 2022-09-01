@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/installation-references",
+  "id": "pages-for-subheaders/installation-references",
+  "title": "installation-references",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/installation-references.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/installation-references",
+  "permalink": "/docs/pages-for-subheaders/installation-references",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/installation-references.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Advanced Options for Docker Installs",
+    "permalink": "/docs/reference-guides/single-node-rancher-in-docker/advanced-options"
+  },
+  "next": {
+    "title": "Rancher Helm Chart Options",
+    "permalink": "/docs/reference-guides/installation-references/helm-chart-options"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "id": "version-2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "title": "Manual Quick Start",
+  "description": "Howdy Partner! This tutorial walks you through:",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "permalink": "/2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Manual Quick Start",
+    "weight": 300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Vagrant Quick Start",
+    "permalink": "/2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/vagrant"
+  },
+  "next": {
+    "title": "Deploying Workloads",
+    "permalink": "/2.0-2.4/pages-for-subheaders/deploy-rancher-workloads"
+  }
+}

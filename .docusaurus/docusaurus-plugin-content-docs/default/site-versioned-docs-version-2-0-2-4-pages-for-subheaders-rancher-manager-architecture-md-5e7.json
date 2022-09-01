@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-manager-architecture",
+  "id": "version-2.0-2.4/pages-for-subheaders/rancher-manager-architecture",
+  "title": "Architecture",
+  "description": "This section focuses on the Rancher server, its components, and how Rancher communicates with downstream Kubernetes clusters.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-manager-architecture.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-manager-architecture",
+  "permalink": "/2.0-2.4/pages-for-subheaders/rancher-manager-architecture",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-manager-architecture.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Architecture",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tips for Scaling, Security and Reliability",
+    "permalink": "/2.0-2.4/reference-guides/best-practices/management"
+  },
+  "next": {
+    "title": "rancher-server-and-components",
+    "permalink": "/2.0-2.4/reference-guides/rancher-manager-architecture/rancher-server-and-components"
+  }
+}

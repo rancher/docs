@@ -1,0 +1,37 @@
+{
+  "unversionedId": "pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "id": "version-2.5/pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "title": "Authentication, Permissions and Global Configuration",
+  "description": "After installation, the system administrator should configure Rancher to configure authentication, authorization, security, default settings, security policies, drivers and global DNS entries.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/authentication-permissions-and-global-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "permalink": "/2.5/pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/authentication-permissions-and-global-configuration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Authentication, Permissions and Global Configuration",
+    "weight": 6,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/global-configuration/",
+      "/rancher/v2.5/en/tasks/global-configuration/",
+      "/rancher/v2.5/en/concepts/global-configuration/server-url/",
+      "/rancher/v2.5/en/tasks/global-configuration/server-url/",
+      "/rancher/v2.5/en/admin-settings/log-in/",
+      "/rancher/v2.x/en/admin-settings/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "advanced-user-guides",
+    "permalink": "/2.5/pages-for-subheaders/advanced-user-guides"
+  },
+  "next": {
+    "title": "Authentication",
+    "permalink": "/2.5/pages-for-subheaders/about-authentication"
+  }
+}

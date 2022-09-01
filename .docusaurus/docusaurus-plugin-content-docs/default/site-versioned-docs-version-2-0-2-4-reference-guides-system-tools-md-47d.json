@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/system-tools",
+  "id": "version-2.0-2.4/reference-guides/system-tools",
+  "title": "System Tools",
+  "description": "System Tools is a tool to perform operational tasks on Rancher Launched Kubernetes clusters or installations of Rancher on an RKE cluster. The tasks include:",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/system-tools.md",
+  "sourceDirName": "reference-guides",
+  "slug": "/reference-guides/system-tools",
+  "permalink": "/2.0-2.4/reference-guides/system-tools",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/system-tools.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "System Tools",
+    "weight": 22
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Project Logging",
+    "permalink": "/2.0-2.4/reference-guides/rancher-project-tools/project-logging"
+  },
+  "next": {
+    "title": "Example YAML",
+    "permalink": "/2.0-2.4/reference-guides/rke1-template-example-yaml"
+  }
+}

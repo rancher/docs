@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "id": "how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "title": "Projects and Kubernetes Namespaces with Rancher",
+  "description": "Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Projects and Kubernetes Namespaces with Rancher",
+    "description": "Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces",
+    "weight": 2032
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "vSphere Storage",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage"
+  },
+  "next": {
+    "title": "Cloning Clusters",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration"
+  }
+}

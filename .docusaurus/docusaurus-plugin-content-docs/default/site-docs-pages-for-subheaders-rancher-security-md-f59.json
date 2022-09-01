@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-security",
+  "id": "pages-for-subheaders/rancher-security",
+  "title": "Security",
+  "description": "Security policy",
+  "source": "@site/docs/pages-for-subheaders/rancher-security.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-security",
+  "permalink": "/docs/pages-for-subheaders/rancher-security",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/rancher-security.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security",
+    "weight": 20,
+    "aliases": [
+      "/rancher/v2.x/en/security/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Example YAML File",
+    "permalink": "/docs/reference-guides/pipelines/example-yaml"
+  },
+  "next": {
+    "title": "Self-Assessment and Hardening Guides for Rancher v2.6",
+    "permalink": "/docs/pages-for-subheaders/rancher-v2.6-hardening-guides"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/configure-openldap/openldap-config-reference",
+  "id": "version-2.0-2.4/reference-guides/configure-openldap/openldap-config-reference",
+  "title": "OpenLDAP Configuration Reference",
+  "description": "This section is intended to be used as a reference when setting up an OpenLDAP authentication provider in Rancher.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/configure-openldap/openldap-config-reference.md",
+  "sourceDirName": "reference-guides/configure-openldap",
+  "slug": "/reference-guides/configure-openldap/openldap-config-reference",
+  "permalink": "/2.0-2.4/reference-guides/configure-openldap/openldap-config-reference",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/configure-openldap/openldap-config-reference.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "OpenLDAP Configuration Reference",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring OpenLDAP",
+    "permalink": "/2.0-2.4/pages-for-subheaders/configure-openldap"
+  },
+  "next": {
+    "title": "Kubernetes Concepts",
+    "permalink": "/2.0-2.4/reference-guides/kubernetes-concepts"
+  }
+}

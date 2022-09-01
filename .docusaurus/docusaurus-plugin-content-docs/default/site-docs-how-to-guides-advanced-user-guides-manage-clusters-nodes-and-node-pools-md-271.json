@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools",
+  "id": "how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools",
+  "title": "Nodes and Node Pools",
+  "description": "After you launch a Kubernetes cluster in Rancher, you can manage individual nodes from the cluster's Node tab. Depending on the option used to provision the cluster, there are different node options available.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Nodes and Node Pools",
+    "weight": 2030
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Certificate Rotation",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates"
+  },
+  "next": {
+    "title": "Removing Kubernetes Components from Nodes",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes"
+  }
+}

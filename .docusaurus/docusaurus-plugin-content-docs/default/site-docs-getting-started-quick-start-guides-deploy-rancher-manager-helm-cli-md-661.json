@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "id": "getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "title": "Helm CLI Quick Start",
+  "description": "These instructions capture a quick way to set up a proof-of-concept Rancher installation.",
+  "source": "@site/docs/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Helm CLI Quick Start",
+    "weight": 300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Equinix Metal Quick Start",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/equinix-metal"
+  },
+  "next": {
+    "title": "Deploying Workloads",
+    "permalink": "/docs/pages-for-subheaders/deploy-rancher-workloads"
+  }
+}

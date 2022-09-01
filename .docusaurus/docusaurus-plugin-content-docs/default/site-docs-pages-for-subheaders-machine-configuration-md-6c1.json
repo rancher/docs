@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/machine-configuration",
+  "id": "pages-for-subheaders/machine-configuration",
+  "title": "machine-configuration",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/machine-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/machine-configuration",
+  "permalink": "/docs/pages-for-subheaders/machine-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/machine-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Nutanix Node Template Configuration",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/nutanix"
+  },
+  "next": {
+    "title": "EC2 Machine Configuration Reference",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/amazon-ec2"
+  }
+}

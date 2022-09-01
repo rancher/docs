@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/install-rancher-on-linux",
+  "id": "version-2.5/pages-for-subheaders/install-rancher-on-linux",
+  "title": "Install/Upgrade Rancher with RancherD",
+  "description": "Note: RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/install-rancher-on-linux.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/install-rancher-on-linux",
+  "permalink": "/2.5/pages-for-subheaders/install-rancher-on-linux",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/install-rancher-on-linux.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Install/Upgrade Rancher with RancherD",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.5/en/installation/install-rancher-on-linux",
+      "/rancher/v2.x/en/installation/install-rancher-on-linux/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3. Install Rancher",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-rancher"
+  },
+  "next": {
+    "title": "Rollbacks",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/roll-back-rancherd"
+  }
+}

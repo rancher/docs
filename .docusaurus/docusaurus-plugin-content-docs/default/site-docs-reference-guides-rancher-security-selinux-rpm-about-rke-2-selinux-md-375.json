@@ -1,0 +1,26 @@
+{
+  "unversionedId": "reference-guides/rancher-security/selinux-rpm/about-rke2-selinux",
+  "id": "reference-guides/rancher-security/selinux-rpm/about-rke2-selinux",
+  "title": "about-rke2-selinux",
+  "description": "",
+  "source": "@site/docs/reference-guides/rancher-security/selinux-rpm/about-rke2-selinux.md",
+  "sourceDirName": "reference-guides/rancher-security/selinux-rpm",
+  "slug": "/reference-guides/rancher-security/selinux-rpm/about-rke2-selinux",
+  "permalink": "/docs/reference-guides/rancher-security/selinux-rpm/about-rke2-selinux",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rancher-security/selinux-rpm/about-rke2-selinux.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "about-rancher-selinux",
+    "permalink": "/docs/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux"
+  },
+  "next": {
+    "title": "Kubernetes Security Best Practices",
+    "permalink": "/docs/reference-guides/rancher-security/kubernetes-security-best-practices"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "id": "version-2.5/getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "title": "Port Requirements",
+  "description": "Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/installation-requirements/port-requirements.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/installation-requirements",
+  "slug": "/getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/installation-requirements/port-requirements.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Port Requirements",
+    "description": "Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes",
+    "weight": 300,
+    "aliases": [
+      "/rancher/v2.x/en/installation/requirements/ports/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Docker",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/installation-requirements/install-docker"
+  },
+  "next": {
+    "title": "Install/Upgrade Rancher on a Kubernetes Cluster",
+    "permalink": "/2.5/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark",
+  "id": "how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark",
+  "title": "uninstall-rancher-cis-benchmark",
+  "description": "",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/cis-scan-guides",
+  "slug": "/how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "install-rancher-cis-benchmark",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/cis-scan-guides/install-rancher-cis-benchmark"
+  },
+  "next": {
+    "title": "run-a-scan",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan"
+  }
+}

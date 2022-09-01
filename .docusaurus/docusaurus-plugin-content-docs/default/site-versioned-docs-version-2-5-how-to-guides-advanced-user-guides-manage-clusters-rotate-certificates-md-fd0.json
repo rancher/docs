@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates",
+  "title": "Certificate Rotation",
+  "description": "Warning: Rotating Kubernetes certificates may result in your cluster being temporarily unavailable as components are restarted. For production environments, it's recommended to perform this action during a maintenance window.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Certificate Rotation",
+    "weight": 2040,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/certificate-rotation/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cloning Clusters",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration"
+  },
+  "next": {
+    "title": "Nodes and Node Pools",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools"
+  }
+}

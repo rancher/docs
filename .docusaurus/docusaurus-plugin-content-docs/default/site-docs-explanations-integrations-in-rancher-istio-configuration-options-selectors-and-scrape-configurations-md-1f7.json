@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations",
+  "id": "explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations",
+  "title": "Selectors and Scrape Configs",
+  "description": "The Monitoring app sets prometheus.prometheusSpec.ignoreNamespaceSelectors=false, which enables monitoring across all namespaces by default.",
+  "source": "@site/docs/explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations.md",
+  "sourceDirName": "explanations/integrations-in-rancher/istio/configuration-options",
+  "slug": "/explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations",
+  "permalink": "/docs/explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Selectors and Scrape Configs",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enable Istio with Pod Security Policies",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies"
+  },
+  "next": {
+    "title": "Additional Steps for Installing Istio on an RKE2 Cluster",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/configuration-options/install-istio-on-rke2-cluster"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services",
+  "title": "6. Service Discovery",
+  "description": "Service discovery is one of the core functionalities of any container-based environment. Once you have packaged and launched your application, the next step is making it discoverable to other containers in your environment or the external world. This document will describe how to use the service discovery support provided by Rancher v2.x so that you can find them by name.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services.md",
+  "sourceDirName": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x",
+  "slug": "/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "6. Service Discovery",
+    "weight": 600,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/discover-services/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "5. Schedule Your Services",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services"
+  },
+  "next": {
+    "title": "7. Load Balancing",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing"
+  }
+}

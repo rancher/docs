@@ -1,0 +1,33 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging",
+  "id": "version-2.5/explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging",
+  "title": "Migrating to Rancher v2.5 Logging",
+  "description": "Starting in v2.5, the logging feature available within Rancher has been completely overhauled. The logging operator from Banzai Cloud has been adopted; Rancher configures this tooling for use when deploying logging.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging.md",
+  "sourceDirName": "explanations/integrations-in-rancher/logging",
+  "slug": "/explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging",
+  "permalink": "/2.5/explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating to Rancher v2.5 Logging",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/logging/v2.5/migrating",
+      "/rancher/v2.x/en/logging/v2.5/migrating/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Architecture",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/logging-architecture"
+  },
+  "next": {
+    "title": "Role-based Access Control for Logging",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/rbac-for-logging"
+  }
+}

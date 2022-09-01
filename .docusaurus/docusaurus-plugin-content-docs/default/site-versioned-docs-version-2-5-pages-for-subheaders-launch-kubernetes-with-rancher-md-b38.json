@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/launch-kubernetes-with-rancher",
+  "id": "version-2.5/pages-for-subheaders/launch-kubernetes-with-rancher",
+  "title": "Launching Kubernetes with Rancher",
+  "description": "You can have Rancher launch a Kubernetes cluster using any nodes you want. When Rancher deploys Kubernetes onto these nodes, it uses Rancher Kubernetes Engine (RKE), which is Rancher's own lightweight Kubernetes installer. It can launch Kubernetes on any computers, including:",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/launch-kubernetes-with-rancher.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/launch-kubernetes-with-rancher",
+  "permalink": "/2.5/pages-for-subheaders/launch-kubernetes-with-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/launch-kubernetes-with-rancher.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes with Rancher",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a Huawei CCE Cluster",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/huawei"
+  },
+  "next": {
+    "title": "Launching Kubernetes on New Nodes in an Infrastructure Provider",
+    "permalink": "/2.5/pages-for-subheaders/use-new-nodes-in-an-infra-provider"
+  }
+}

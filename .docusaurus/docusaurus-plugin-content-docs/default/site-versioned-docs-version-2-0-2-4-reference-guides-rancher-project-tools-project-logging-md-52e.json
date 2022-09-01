@@ -1,0 +1,37 @@
+{
+  "unversionedId": "reference-guides/rancher-project-tools/project-logging",
+  "id": "version-2.0-2.4/reference-guides/rancher-project-tools/project-logging",
+  "title": "Project Logging",
+  "description": "Rancher can integrate with a variety of popular logging services and tools that exist outside of your Kubernetes clusters.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/rancher-project-tools/project-logging.md",
+  "sourceDirName": "reference-guides/rancher-project-tools",
+  "slug": "/reference-guides/rancher-project-tools/project-logging",
+  "permalink": "/2.0-2.4/reference-guides/rancher-project-tools/project-logging",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/rancher-project-tools/project-logging.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Logging",
+    "shortTitle": "Project Logging",
+    "weight": 2527,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/logging",
+      "/rancher/v2.0-v2.4/en/logging/legacy/project-logging",
+      "/rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/project-logging",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/project-logging/",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/project-monitoring/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Project Alerts",
+    "permalink": "/2.0-2.4/reference-guides/rancher-project-tools/project-alerts"
+  },
+  "next": {
+    "title": "System Tools",
+    "permalink": "/2.0-2.4/reference-guides/system-tools"
+  }
+}

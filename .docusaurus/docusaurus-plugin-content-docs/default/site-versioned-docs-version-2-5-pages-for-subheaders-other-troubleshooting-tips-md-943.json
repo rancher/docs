@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/other-troubleshooting-tips",
+  "id": "version-2.5/pages-for-subheaders/other-troubleshooting-tips",
+  "title": "other-troubleshooting-tips",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/other-troubleshooting-tips.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/other-troubleshooting-tips",
+  "permalink": "/2.5/pages-for-subheaders/other-troubleshooting-tips",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/other-troubleshooting-tips.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting Worker Nodes and Generic Components",
+    "permalink": "/2.5/troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components"
+  },
+  "next": {
+    "title": "Kubernetes resources",
+    "permalink": "/2.5/troubleshooting/other-troubleshooting-tips/kubernetes-resources"
+  }
+}

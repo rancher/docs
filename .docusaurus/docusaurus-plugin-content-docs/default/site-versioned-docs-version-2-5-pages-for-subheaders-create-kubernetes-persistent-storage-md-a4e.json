@@ -1,0 +1,35 @@
+{
+  "unversionedId": "pages-for-subheaders/create-kubernetes-persistent-storage",
+  "id": "version-2.5/pages-for-subheaders/create-kubernetes-persistent-storage",
+  "title": "Kubernetes Persistent Storage: Volumes and Storage Classes",
+  "description": "Learn about the two ways with which you can create persistent storage in Kubernetes: persistent volumes and storage classes",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/create-kubernetes-persistent-storage.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/create-kubernetes-persistent-storage",
+  "permalink": "/2.5/pages-for-subheaders/create-kubernetes-persistent-storage",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/create-kubernetes-persistent-storage.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Persistent Storage: Volumes and Storage Classes",
+    "description": "Learn about the two ways with which you can create persistent storage in Kubernetes: persistent volumes and storage classes",
+    "weight": 2031,
+    "aliases": [
+      "/rancher/v2.5/en/tasks/clusters/adding-storage/",
+      "/rancher/v2.5/en/cluster-admin/volumes-and-storage/persistent-volume-claims/",
+      "/rancher/v2.x/en/cluster-admin/volumes-and-storage/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Autoscaler with AWS EC2 Auto Scaling Groups",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups"
+  },
+  "next": {
+    "title": "manage-persistent-storage",
+    "permalink": "/2.5/pages-for-subheaders/manage-persistent-storage"
+  }
+}

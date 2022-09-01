@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps",
+  "id": "version-2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps",
+  "title": "Multi-cluster Apps",
+  "description": "As of Rancher v2.5, we now recommend using Fleet for deploying apps across clusters.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps.md",
+  "sourceDirName": "how-to-guides/new-user-guides/deploy-apps-across-clusters",
+  "slug": "/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps",
+  "permalink": "/2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Multi-cluster Apps",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.x/en/deploy-across-clusters/multi-cluster-apps/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Fleet - GitOps at Scale",
+    "permalink": "/2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet"
+  },
+  "next": {
+    "title": "Backups and Disaster Recovery",
+    "permalink": "/2.5/pages-for-subheaders/backup-restore-and-disaster-recovery"
+  }
+}

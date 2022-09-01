@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "title": "Encrypting HTTP Communication",
+  "description": "Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate to either a project, a namespace, or both, so that you can add it to deployments",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Encrypting HTTP Communication",
+    "description": "Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate to either a project, a namespace, or both, so that you can add it to deployments",
+    "weight": 3060,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/projects/add-ssl-certificates/",
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/certificates"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Service Discovery",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/create-services"
+  },
+  "next": {
+    "title": "ConfigMaps",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps"
+  }
+}

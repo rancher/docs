@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/resources",
+  "id": "version-2.0-2.4/pages-for-subheaders/resources",
+  "title": "Resources",
+  "description": "Docker Installations",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/resources.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/resources",
+  "permalink": "/2.0-2.4/pages-for-subheaders/resources",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/resources.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Resources",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3. Install Rancher",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-behind-an-http-proxy/install-rancher"
+  },
+  "next": {
+    "title": "Choosing a Rancher Version",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/resources/choose-a-rancher-version"
+  }
+}

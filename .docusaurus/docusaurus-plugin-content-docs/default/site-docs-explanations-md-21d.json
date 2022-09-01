@@ -1,0 +1,26 @@
+{
+  "unversionedId": "explanations",
+  "id": "explanations",
+  "title": "explanations",
+  "description": "",
+  "source": "@site/docs/explanations.md",
+  "sourceDirName": ".",
+  "slug": "/explanations",
+  "permalink": "/docs/explanations",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security Advisories and CVEs",
+    "permalink": "/docs/reference-guides/rancher-security/security-advisories-and-cves"
+  },
+  "next": {
+    "title": "integrations-in-rancher",
+    "permalink": "/docs/pages-for-subheaders/integrations-in-rancher"
+  }
+}

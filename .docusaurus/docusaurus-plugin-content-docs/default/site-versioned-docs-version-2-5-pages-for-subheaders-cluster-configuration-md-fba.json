@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/cluster-configuration",
+  "id": "version-2.5/pages-for-subheaders/cluster-configuration",
+  "title": "Cluster Configuration",
+  "description": "After you provision a Kubernetes cluster using Rancher, you can still edit options and settings for the cluster.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/cluster-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cluster-configuration",
+  "permalink": "/2.5/pages-for-subheaders/cluster-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/cluster-configuration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Configuration",
+    "weight": 2025,
+    "aliases": [
+      "/rancher/v2.5/en/k8s-in-rancher/editing-clusters",
+      "/rancher/v2.x/en/cluster-admin/editing-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Architecture Recommendations",
+    "permalink": "/2.5/reference-guides/rancher-manager-architecture/architecture-recommendations"
+  },
+  "next": {
+    "title": "rancher-server-configuration",
+    "permalink": "/2.5/pages-for-subheaders/rancher-server-configuration"
+  }
+}

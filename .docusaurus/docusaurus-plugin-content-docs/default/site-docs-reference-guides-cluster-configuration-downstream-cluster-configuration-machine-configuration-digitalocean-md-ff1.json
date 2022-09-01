@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/digitalocean",
+  "id": "reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/digitalocean",
+  "title": "DigitalOcean Machine Configuration",
+  "description": "For more details about DigitalOcean, Droplets, refer to the official documentation.",
+  "source": "@site/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/digitalocean.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/digitalocean",
+  "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/digitalocean",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/digitalocean.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "DigitalOcean Machine Configuration",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "EC2 Machine Configuration Reference",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/amazon-ec2"
+  },
+  "next": {
+    "title": "Azure Machine Configuration",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure"
+  }
+}

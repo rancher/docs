@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/rke1-template-example-yaml",
+  "id": "reference-guides/rke1-template-example-yaml",
+  "title": "Example YAML",
+  "description": "Below is an example RKE template configuration file for reference.",
+  "source": "@site/docs/reference-guides/rke1-template-example-yaml.md",
+  "sourceDirName": "reference-guides",
+  "slug": "/reference-guides/rke1-template-example-yaml",
+  "permalink": "/docs/reference-guides/rke1-template-example-yaml",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rke1-template-example-yaml.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Example YAML",
+    "weight": 60
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "System Tools",
+    "permalink": "/docs/reference-guides/system-tools"
+  },
+  "next": {
+    "title": "Pipelines",
+    "permalink": "/docs/pages-for-subheaders/pipelines"
+  }
+}

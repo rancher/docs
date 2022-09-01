@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices",
+  "id": "reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices",
+  "title": "Monitoring Best Practices",
+  "description": "Configuring sensible monitoring and alerting rules is vital for running any production workloads securely and reliably. This is not different when using Kubernetes and Rancher. Fortunately the integrated monitoring and alerting functionality makes this whole process a lot easier.",
+  "source": "@site/docs/reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices.md",
+  "sourceDirName": "reference-guides/best-practices/rancher-managed-clusters",
+  "slug": "/reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices",
+  "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Monitoring Best Practices",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Logging Best Practices",
+    "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/logging-best-practices"
+  },
+  "next": {
+    "title": "Tips for Setting Up Containers",
+    "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers"
+  }
+}

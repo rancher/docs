@@ -1,0 +1,32 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/vagrant",
+  "id": "version-2.5/getting-started/quick-start-guides/deploy-rancher-manager/vagrant",
+  "title": "Vagrant Quick Start",
+  "description": "The following steps quickly deploy a Rancher Server with a single node cluster attached.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/quick-start-guides/deploy-rancher-manager/vagrant.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/vagrant",
+  "permalink": "/2.5/getting-started/quick-start-guides/deploy-rancher-manager/vagrant",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/quick-start-guides/deploy-rancher-manager/vagrant.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Vagrant Quick Start",
+    "weight": 200,
+    "aliases": [
+      "/rancher/v2.x/en/quick-start-guide/deployment/quickstart-vagrant/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher GCP Quick Start Guide",
+    "permalink": "/2.5/getting-started/quick-start-guides/deploy-rancher-manager/gcp"
+  },
+  "next": {
+    "title": "Manual Quick Start",
+    "permalink": "/2.5/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean",
+  "id": "version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean",
+  "title": "DigitalOcean Node Template Configuration",
+  "description": "-",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean",
+  "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "DigitalOcean Node Template Configuration",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/digital-ocean/do-node-template-config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "EC2 Node Template Configuration",
+    "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2"
+  },
+  "next": {
+    "title": "Azure Node Template Configuration",
+    "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/azure"
+  }
+}

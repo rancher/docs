@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "id": "explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "title": "Role-based Access Control",
+  "description": "This section describes the permissions required to access Istio features.",
+  "source": "@site/docs/explanations/integrations-in-rancher/istio/rbac-for-istio.md",
+  "sourceDirName": "explanations/integrations-in-rancher/istio",
+  "slug": "/explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "permalink": "/docs/explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/istio/rbac-for-istio.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Role-based Access Control",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CPU and Memory Allocations",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations"
+  },
+  "next": {
+    "title": "Disabling Istio",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/disable-istio"
+  }
+}

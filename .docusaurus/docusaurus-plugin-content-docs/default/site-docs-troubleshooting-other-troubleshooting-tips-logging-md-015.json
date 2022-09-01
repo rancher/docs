@@ -1,0 +1,29 @@
+{
+  "unversionedId": "troubleshooting/other-troubleshooting-tips/logging",
+  "id": "troubleshooting/other-troubleshooting-tips/logging",
+  "title": "Logging",
+  "description": "The following log levels are used in Rancher:",
+  "source": "@site/docs/troubleshooting/other-troubleshooting-tips/logging.md",
+  "sourceDirName": "troubleshooting/other-troubleshooting-tips",
+  "slug": "/troubleshooting/other-troubleshooting-tips/logging",
+  "permalink": "/docs/troubleshooting/other-troubleshooting-tips/logging",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/troubleshooting/other-troubleshooting-tips/logging.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Logging",
+    "weight": 110
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Registered clusters",
+    "permalink": "/docs/troubleshooting/other-troubleshooting-tips/registered-clusters"
+  },
+  "next": {
+    "title": "User ID Tracking in Audit Logs",
+    "permalink": "/docs/troubleshooting/other-troubleshooting-tips/user-id-tracking-in-audit-logs"
+  }
+}

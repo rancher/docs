@@ -1,0 +1,30 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "id": "getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "title": "Rancher AWS Quick Start Guide",
+  "description": "Read this step by step Rancher AWS guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher AWS Quick Start Guide",
+    "description": "Read this step by step Rancher AWS guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Rancher Server",
+    "permalink": "/docs/pages-for-subheaders/deploy-rancher-manager"
+  },
+  "next": {
+    "title": "Rancher AWS Marketplace Quick Start",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace"
+  }
+}

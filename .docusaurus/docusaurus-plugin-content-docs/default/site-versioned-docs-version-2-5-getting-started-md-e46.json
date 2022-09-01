@@ -1,0 +1,26 @@
+{
+  "unversionedId": "getting-started",
+  "id": "version-2.5/getting-started",
+  "title": "getting-started",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/getting-started.md",
+  "sourceDirName": ".",
+  "slug": "/getting-started",
+  "permalink": "/2.5/getting-started",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher 2.5",
+    "permalink": "/2.5/rancher-manager"
+  },
+  "next": {
+    "title": "introduction",
+    "permalink": "/2.5/pages-for-subheaders/introduction"
+  }
+}

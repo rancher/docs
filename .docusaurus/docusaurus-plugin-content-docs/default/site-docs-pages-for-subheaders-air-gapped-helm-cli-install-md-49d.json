@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/air-gapped-helm-cli-install",
+  "id": "pages-for-subheaders/air-gapped-helm-cli-install",
+  "title": "Air-Gapped Helm CLI Install",
+  "description": "This section is about using the Helm CLI to install the Rancher server in an air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy.",
+  "source": "@site/docs/pages-for-subheaders/air-gapped-helm-cli-install.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/air-gapped-helm-cli-install",
+  "permalink": "/docs/pages-for-subheaders/air-gapped-helm-cli-install",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/air-gapped-helm-cli-install.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Air-Gapped Helm CLI Install",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Other Installation Methods",
+    "permalink": "/docs/pages-for-subheaders/other-installation-methods"
+  },
+  "next": {
+    "title": "1. Set up Infrastructure and Private Registry",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry"
+  }
+}

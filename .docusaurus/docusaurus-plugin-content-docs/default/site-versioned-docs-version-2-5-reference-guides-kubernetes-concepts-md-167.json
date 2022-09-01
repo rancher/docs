@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/kubernetes-concepts",
+  "id": "version-2.5/reference-guides/kubernetes-concepts",
+  "title": "Kubernetes Concepts",
+  "description": "This page explains concepts related to Kubernetes that are important for understanding how Rancher works. The descriptions below provide a simplified interview of Kubernetes components. For more details, refer to the official documentation on Kubernetes components.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/kubernetes-concepts.md",
+  "sourceDirName": "reference-guides",
+  "slug": "/reference-guides/kubernetes-concepts",
+  "permalink": "/2.5/reference-guides/kubernetes-concepts",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/kubernetes-concepts.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Concepts",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.x/en/overview/concepts/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "OpenLDAP Configuration Reference",
+    "permalink": "/2.5/reference-guides/configure-openldap/openldap-config-reference"
+  },
+  "next": {
+    "title": "monitoring-v2-configuration",
+    "permalink": "/2.5/pages-for-subheaders/monitoring-v2-configuration"
+  }
+}

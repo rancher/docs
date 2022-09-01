@@ -1,0 +1,34 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/custom-ca-root-certificates",
+  "id": "version-2.5/getting-started/installation-and-upgrade/resources/custom-ca-root-certificates",
+  "title": "About Custom CA Root Certificates",
+  "description": "If you're using Rancher in an internal production environment where you aren't exposing apps publicly, use a certificate from a private certificate authority (CA).",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/custom-ca-root-certificates.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/custom-ca-root-certificates",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/resources/custom-ca-root-certificates",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/custom-ca-root-certificates.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "About Custom CA Root Certificates",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/custom-ca-root-certificate/",
+      "/rancher/v2.5/en/installation/resources/choosing-version/encryption/custom-ca-root-certificate",
+      "/rancher/v2.x/en/installation/resources/custom-ca-root-certificate/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding TLS Secrets",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/add-tls-secrets"
+  },
+  "next": {
+    "title": "Upgrading Cert-Manager",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/upgrade-cert-manager"
+  }
+}

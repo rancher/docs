@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/rancher-manager-architecture/architecture-recommendations",
+  "id": "version-2.0-2.4/reference-guides/rancher-manager-architecture/architecture-recommendations",
+  "title": "Architecture Recommendations",
+  "description": "Kubernetes cluster. If you are installing Rancher on a single node, the main architecture recommendation that applies to your installation is that the cluster running Rancher should be separate from downstream clusters.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/rancher-manager-architecture/architecture-recommendations.md",
+  "sourceDirName": "reference-guides/rancher-manager-architecture",
+  "slug": "/reference-guides/rancher-manager-architecture/architecture-recommendations",
+  "permalink": "/2.0-2.4/reference-guides/rancher-manager-architecture/architecture-recommendations",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/rancher-manager-architecture/architecture-recommendations.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Architecture Recommendations",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "communicating-with-downstream-user-clusters",
+    "permalink": "/2.0-2.4/reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters"
+  },
+  "next": {
+    "title": "Cluster Configuration",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cluster-configuration"
+  }
+}

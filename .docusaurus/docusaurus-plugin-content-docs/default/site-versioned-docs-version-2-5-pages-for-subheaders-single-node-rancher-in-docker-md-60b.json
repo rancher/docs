@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/single-node-rancher-in-docker",
+  "id": "version-2.5/pages-for-subheaders/single-node-rancher-in-docker",
+  "title": "single-node-rancher-in-docker",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/single-node-rancher-in-docker.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/single-node-rancher-in-docker",
+  "permalink": "/2.5/pages-for-subheaders/single-node-rancher-in-docker",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/single-node-rancher-in-docker.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "VSphere Node Template Configuration",
+    "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere"
+  },
+  "next": {
+    "title": "HTTP Proxy Configuration",
+    "permalink": "/2.5/reference-guides/single-node-rancher-in-docker/http-proxy-configuration"
+  }
+}

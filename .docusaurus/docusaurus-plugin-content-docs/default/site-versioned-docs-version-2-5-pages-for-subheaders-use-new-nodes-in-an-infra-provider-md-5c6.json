@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/use-new-nodes-in-an-infra-provider",
+  "id": "version-2.5/pages-for-subheaders/use-new-nodes-in-an-infra-provider",
+  "title": "Launching Kubernetes on New Nodes in an Infrastructure Provider",
+  "description": "Using Rancher, you can create pools of nodes based on a node template. This node template defines the parameters you want to use to launch nodes in your infrastructure providers or cloud providers.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/use-new-nodes-in-an-infra-provider.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/use-new-nodes-in-an-infra-provider",
+  "permalink": "/2.5/pages-for-subheaders/use-new-nodes-in-an-infra-provider",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/use-new-nodes-in-an-infra-provider.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes on New Nodes in an Infrastructure Provider",
+    "weight": 2205,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/global-configuration/node-templates/",
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Launching Kubernetes with Rancher",
+    "permalink": "/2.5/pages-for-subheaders/launch-kubernetes-with-rancher"
+  },
+  "next": {
+    "title": "Creating an Amazon EC2 Cluster",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-amazon-ec2-cluster"
+  }
+}

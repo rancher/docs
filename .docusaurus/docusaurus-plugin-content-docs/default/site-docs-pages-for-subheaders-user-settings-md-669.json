@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/user-settings",
+  "id": "pages-for-subheaders/user-settings",
+  "title": "User Settings",
+  "description": "Within Rancher, each user has a number of settings associated with their login: personal preferences, API keys, etc. You can configure these settings by choosing from the User Settings menu. You can open this menu by clicking your avatar, located within the main menu.",
+  "source": "@site/docs/pages-for-subheaders/user-settings.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/user-settings",
+  "permalink": "/docs/pages-for-subheaders/user-settings",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/user-settings.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "User Settings",
+    "weight": 23
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Role-Based Access Control",
+    "permalink": "/docs/reference-guides/prometheus-federator/rbac"
+  },
+  "next": {
+    "title": "API Keys",
+    "permalink": "/docs/reference-guides/user-settings/api-keys"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "troubleshooting/other-troubleshooting-tips/dns",
+  "id": "version-2.5/troubleshooting/other-troubleshooting-tips/dns",
+  "title": "DNS",
+  "description": "The commands/steps listed on this page can be used to check name resolution issues in your cluster.",
+  "source": "@site/versioned_docs/version-2.5/troubleshooting/other-troubleshooting-tips/dns.md",
+  "sourceDirName": "troubleshooting/other-troubleshooting-tips",
+  "slug": "/troubleshooting/other-troubleshooting-tips/dns",
+  "permalink": "/2.5/troubleshooting/other-troubleshooting-tips/dns",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/troubleshooting/other-troubleshooting-tips/dns.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "DNS",
+    "weight": 103,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/dns/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Networking",
+    "permalink": "/2.5/troubleshooting/other-troubleshooting-tips/networking"
+  },
+  "next": {
+    "title": "Rancher HA",
+    "permalink": "/2.5/troubleshooting/other-troubleshooting-tips/rancher-ha"
+  }
+}

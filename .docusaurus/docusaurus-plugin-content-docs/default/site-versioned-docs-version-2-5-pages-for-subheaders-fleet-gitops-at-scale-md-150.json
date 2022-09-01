@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/fleet-gitops-at-scale",
+  "id": "version-2.5/pages-for-subheaders/fleet-gitops-at-scale",
+  "title": "fleet-gitops-at-scale",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/fleet-gitops-at-scale.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/fleet-gitops-at-scale",
+  "permalink": "/2.5/pages-for-subheaders/fleet-gitops-at-scale",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/fleet-gitops-at-scale.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a Custom Benchmark Version for Running a Cluster Scan",
+    "permalink": "/2.5/explanations/integrations-in-rancher/cis-scans/custom-benchmark"
+  },
+  "next": {
+    "title": "Architecture",
+    "permalink": "/2.5/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture"
+  }
+}

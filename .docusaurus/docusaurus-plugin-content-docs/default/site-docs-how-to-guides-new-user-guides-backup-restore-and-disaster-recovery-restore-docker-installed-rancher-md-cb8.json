@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher",
+  "id": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher",
+  "title": "Restoring Backups—Docker Installs",
+  "description": "If you encounter a disaster scenario, you can restore your Rancher Server to your most recent backup.",
+  "source": "@site/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md",
+  "sourceDirName": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery",
+  "slug": "/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher",
+  "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restoring Backups—Docker Installs",
+    "shortTitle": "Restores",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backing up Rancher Installed with Docker",
+    "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher"
+  },
+  "next": {
+    "title": "Backing up a Cluster",
+    "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters"
+  }
+}

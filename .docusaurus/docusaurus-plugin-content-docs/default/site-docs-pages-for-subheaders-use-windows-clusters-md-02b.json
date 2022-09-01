@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/use-windows-clusters",
+  "id": "pages-for-subheaders/use-windows-clusters",
+  "title": "Launching Kubernetes on Windows Clusters",
+  "description": "When provisioning a custom cluster using Rancher, Rancher uses RKE (the Rancher Kubernetes Engine) to install Kubernetes on your existing nodes.",
+  "source": "@site/docs/pages-for-subheaders/use-windows-clusters.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/use-windows-clusters",
+  "permalink": "/docs/pages-for-subheaders/use-windows-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/use-windows-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes on Windows Clusters",
+    "weight": 2240
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Provisioning Kubernetes Clusters in Nutanix AOS",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/nutanix/provision-kubernetes-clusters-in-aos"
+  },
+  "next": {
+    "title": "Configuration for Storage Classes in Azure",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/azure-storageclass-configuration"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/prior-to-v2.0.4",
+  "id": "version-2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/prior-to-v2.0.4",
+  "title": "vSphere Node Template Configuration in Rancher before v2.0.4",
+  "description": "- Account access",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/prior-to-v2.0.4.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/prior-to-v2.0.4",
+  "permalink": "/2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/prior-to-v2.0.4",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/prior-to-v2.0.4.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "vSphere Node Template Configuration in Rancher before v2.0.4",
+    "shortTitle": "Before v2.0.4",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/prior-to-2.0.4/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "vSphere Node Template Configuration in Rancher v2.0.4",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.0.4"
+  },
+  "next": {
+    "title": "single-node-rancher-in-docker",
+    "permalink": "/2.0-2.4/pages-for-subheaders/single-node-rancher-in-docker"
+  }
+}

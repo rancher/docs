@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/backup-restore-and-disaster-recovery",
+  "id": "version-2.5/pages-for-subheaders/backup-restore-and-disaster-recovery",
+  "title": "Backups and Disaster Recovery",
+  "description": "In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/backup-restore-and-disaster-recovery.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/backup-restore-and-disaster-recovery",
+  "permalink": "/2.5/pages-for-subheaders/backup-restore-and-disaster-recovery",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/backup-restore-and-disaster-recovery.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backups and Disaster Recovery",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.5/en/backups/v2.5",
+      "/rancher/v2.x/en/backups/v2.5/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Multi-cluster Apps",
+    "permalink": "/2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps"
+  },
+  "next": {
+    "title": "Backing up Rancher",
+    "permalink": "/2.5/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher"
+  }
+}

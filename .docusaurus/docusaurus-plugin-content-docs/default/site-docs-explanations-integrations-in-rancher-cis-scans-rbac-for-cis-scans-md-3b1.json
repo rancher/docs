@@ -1,0 +1,30 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans",
+  "id": "explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans",
+  "title": "Roles-based Access Control",
+  "description": "This section describes the permissions required to use the rancher-cis-benchmark App.",
+  "source": "@site/docs/explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cis-scans",
+  "slug": "/explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans",
+  "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Roles-based Access Control",
+    "shortTitle": "RBAC",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuration",
+    "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/configuration-reference"
+  },
+  "next": {
+    "title": "Skipped and Not Applicable Tests",
+    "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests"
+  }
+}

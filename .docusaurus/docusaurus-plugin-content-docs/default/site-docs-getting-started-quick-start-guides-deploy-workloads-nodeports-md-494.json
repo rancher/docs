@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-workloads/nodeports",
+  "id": "getting-started/quick-start-guides/deploy-workloads/nodeports",
+  "title": "Workload with NodePort Quick Start",
+  "description": "Prerequisite",
+  "source": "@site/docs/getting-started/quick-start-guides/deploy-workloads/nodeports.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-workloads",
+  "slug": "/getting-started/quick-start-guides/deploy-workloads/nodeports",
+  "permalink": "/docs/getting-started/quick-start-guides/deploy-workloads/nodeports",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/quick-start-guides/deploy-workloads/nodeports.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Workload with NodePort Quick Start",
+    "weight": 200
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Workload with Ingress Quick Start",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-workloads/workload-ingress"
+  },
+  "next": {
+    "title": "Installing/Upgrading Rancher",
+    "permalink": "/docs/pages-for-subheaders/installation-and-upgrade"
+  }
+}

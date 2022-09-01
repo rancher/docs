@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies",
+  "id": "version-2.5/explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies",
+  "title": "Enable Istio with Pod Security Policies",
+  "description": "If you have restrictive Pod Security Policies enabled, then Istio may not be able to function correctly, because it needs certain permissions in order to install itself and manage pod infrastructure. In this section, we will configure a cluster with PSPs enabled for an Istio install, and also set up the Istio CNI plugin.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies.md",
+  "sourceDirName": "explanations/integrations-in-rancher/istio/configuration-options",
+  "slug": "/explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies",
+  "permalink": "/2.5/explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Enable Istio with Pod Security Policies",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/istio/setup/enable-istio-in-cluster/enable-istio-with-psp",
+      "/rancher/v2.5/en/istio/legacy/setup/enable-istio-in-cluster/enable-istio-with-psp",
+      "/rancher/v2.5/en/istio/v2.5/setup/enable-istio-in-cluster/enable-istio-with-psp",
+      "/rancher/v2.5/en/istio/v2.5/configuration-reference/enable-istio-with-psp",
+      "/rancher/v2.x/en/istio/v2.5/configuration-reference/enable-istio-with-psp/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuration Options",
+    "permalink": "/2.5/pages-for-subheaders/configuration-options"
+  },
+  "next": {
+    "title": "Selectors and Scrape Configs",
+    "permalink": "/2.5/explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations"
+  }
+}

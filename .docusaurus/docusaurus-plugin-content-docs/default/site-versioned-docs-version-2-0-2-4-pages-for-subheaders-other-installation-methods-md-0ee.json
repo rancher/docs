@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/other-installation-methods",
+  "id": "version-2.0-2.4/pages-for-subheaders/other-installation-methods",
+  "title": "Other Installation Methods",
+  "description": "Air Gapped Installations",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/other-installation-methods.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/other-installation-methods",
+  "permalink": "/2.0-2.4/pages-for-subheaders/other-installation-methods",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/other-installation-methods.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Other Installation Methods",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading Rancher Installed on Kubernetes with Helm 2",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2"
+  },
+  "next": {
+    "title": "Air Gapped Helm CLI Install",
+    "permalink": "/2.0-2.4/pages-for-subheaders/air-gapped-helm-cli-install"
+  }
+}

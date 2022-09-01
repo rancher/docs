@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cis-scans/configuration-reference",
+  "id": "explanations/integrations-in-rancher/cis-scans/configuration-reference",
+  "title": "Configuration",
+  "description": "This configuration reference is intended to help you manage the custom resources created by the rancher-cis-benchmark application. These resources are used for performing CIS scans on a cluster, skipping tests, setting the test profile that will be used during a scan, and other customization.",
+  "source": "@site/docs/explanations/integrations-in-rancher/cis-scans/configuration-reference.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cis-scans",
+  "slug": "/explanations/integrations-in-rancher/cis-scans/configuration-reference",
+  "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/configuration-reference",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/cis-scans/configuration-reference.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuration",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "cis-scans",
+    "permalink": "/docs/pages-for-subheaders/cis-scans"
+  },
+  "next": {
+    "title": "Roles-based Access Control",
+    "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans"
+  }
+}

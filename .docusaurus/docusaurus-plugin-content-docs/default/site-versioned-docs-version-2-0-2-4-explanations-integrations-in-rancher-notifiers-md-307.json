@@ -1,0 +1,37 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/notifiers",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/notifiers",
+  "title": "Notifiers",
+  "description": "Notifiers are services that inform you of alert events. You can configure notifiers to send alert notifications to staff best suited to take corrective action.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/notifiers.md",
+  "sourceDirName": "explanations/integrations-in-rancher",
+  "slug": "/explanations/integrations-in-rancher/notifiers",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/notifiers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/notifiers.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Notifiers",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/notifiers",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/notifiers",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/notifiers",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/notifiers",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/notifiers/",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-alerts/default-alerts/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "OPA Gatekeeper",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/opa-gatekeeper"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/2.0-2.4/faq"
+  }
+}

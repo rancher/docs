@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/infrastructure-setup",
+  "id": "pages-for-subheaders/infrastructure-setup",
+  "title": "Don't have infrastructure for your Kubernetes cluster? Try one of these tutorials.",
+  "description": "To set up infrastructure for a high-availability K3s Kubernetes cluster with an external DB, refer to this page.",
+  "source": "@site/docs/pages-for-subheaders/infrastructure-setup.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/infrastructure-setup",
+  "permalink": "/docs/pages-for-subheaders/infrastructure-setup",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/infrastructure-setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Don't have infrastructure for your Kubernetes cluster? Try one of these tutorials.",
+    "shortTitle": "Infrastructure Tutorials",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up a High-availability RKE2 Kubernetes Cluster for Rancher",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher"
+  },
+  "next": {
+    "title": "Set up Infrastructure for a High Availability K3s Kubernetes Cluster",
+    "permalink": "/docs/how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher",
+  "id": "how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher",
+  "title": "Setting up a High-availability RKE2 Kubernetes Cluster for Rancher",
+  "description": "Tested on v2.5.6",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-cluster-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke2-for-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up a High-availability RKE2 Kubernetes Cluster for Rancher",
+    "shortTitle": "Set up RKE2 for Rancher",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up a High-availability RKE Kubernetes Cluster",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher"
+  },
+  "next": {
+    "title": "Don't have infrastructure for your Kubernetes cluster? Try one of these tutorials.",
+    "permalink": "/docs/pages-for-subheaders/infrastructure-setup"
+  }
+}

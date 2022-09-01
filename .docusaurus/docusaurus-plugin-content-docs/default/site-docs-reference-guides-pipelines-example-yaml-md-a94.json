@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/pipelines/example-yaml",
+  "id": "reference-guides/pipelines/example-yaml",
+  "title": "Example YAML File",
+  "description": "Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. .rancher-pipeline.yml or .rancher-pipeline.yaml.",
+  "source": "@site/docs/reference-guides/pipelines/example-yaml.md",
+  "sourceDirName": "reference-guides/pipelines",
+  "slug": "/reference-guides/pipelines/example-yaml",
+  "permalink": "/docs/reference-guides/pipelines/example-yaml",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/pipelines/example-yaml.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Example YAML File",
+    "weight": 501
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Example Repositories",
+    "permalink": "/docs/reference-guides/pipelines/example-repositories"
+  },
+  "next": {
+    "title": "Security",
+    "permalink": "/docs/pages-for-subheaders/rancher-security"
+  }
+}

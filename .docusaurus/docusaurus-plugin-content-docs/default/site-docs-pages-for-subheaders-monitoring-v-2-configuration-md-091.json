@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/monitoring-v2-configuration",
+  "id": "pages-for-subheaders/monitoring-v2-configuration",
+  "title": "monitoring-v2-configuration",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/monitoring-v2-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/monitoring-v2-configuration",
+  "permalink": "/docs/pages-for-subheaders/monitoring-v2-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/monitoring-v2-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Concepts",
+    "permalink": "/docs/reference-guides/kubernetes-concepts"
+  },
+  "next": {
+    "title": "Receiver Configuration",
+    "permalink": "/docs/reference-guides/monitoring-v2-configuration/receivers"
+  }
+}

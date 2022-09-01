@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/logging/taints-and-tolerations",
+  "id": "version-2.5/explanations/integrations-in-rancher/logging/taints-and-tolerations",
+  "title": "Working with Taints and Tolerations",
+  "description": "\"Tainting\" a Kubernetes node causes pods to repel running on that node.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/taints-and-tolerations.md",
+  "sourceDirName": "explanations/integrations-in-rancher/logging",
+  "slug": "/explanations/integrations-in-rancher/logging/taints-and-tolerations",
+  "permalink": "/2.5/explanations/integrations-in-rancher/logging/taints-and-tolerations",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/taints-and-tolerations.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Working with Taints and Tolerations",
+    "weight": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "rancher-logging Helm Chart Options",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/logging-helm-chart-options"
+  },
+  "next": {
+    "title": "Custom Resource Configuration",
+    "permalink": "/2.5/pages-for-subheaders/custom-resource-configuration"
+  }
+}

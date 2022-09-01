@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "id": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+  "description": "For development and testing environments that have a special requirement to terminate TLS/SSL at a load balancer instead of your Rancher Server container, deploy Rancher and configure a load balancer to work with it conjunction.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "weight": 252
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enabling the API Audit Log to Record System Events",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log"
+  },
+  "next": {
+    "title": "how-to-guides",
+    "permalink": "/docs/how-to-guides"
+  }
+}

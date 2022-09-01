@@ -1,0 +1,35 @@
+{
+  "unversionedId": "reference-guides/rancher-project-tools/project-alerts",
+  "id": "version-2.0-2.4/reference-guides/rancher-project-tools/project-alerts",
+  "title": "Project Alerts",
+  "description": "To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. When an event occurs, your alert is triggered, and you are sent a notification. You can then, if necessary, follow up with corrective actions.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/rancher-project-tools/project-alerts.md",
+  "sourceDirName": "reference-guides/rancher-project-tools",
+  "slug": "/reference-guides/rancher-project-tools/project-alerts",
+  "permalink": "/2.0-2.4/reference-guides/rancher-project-tools/project-alerts",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/rancher-project-tools/project-alerts.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Alerts",
+    "weight": 2526,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/alerts",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/alerts/project-alerts",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-alerts/project-alerts",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-alerts/project-alerts/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tools for Logging, Monitoring, and More",
+    "permalink": "/2.0-2.4/pages-for-subheaders/project-tools"
+  },
+  "next": {
+    "title": "Project Logging",
+    "permalink": "/2.0-2.4/reference-guides/rancher-project-tools/project-logging"
+  }
+}

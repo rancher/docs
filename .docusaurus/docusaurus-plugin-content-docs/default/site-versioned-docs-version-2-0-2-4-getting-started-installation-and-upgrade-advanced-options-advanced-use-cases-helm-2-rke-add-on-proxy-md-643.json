@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/proxy",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/proxy",
+  "title": "HTTP Proxy Configuration",
+  "description": "#### Important: RKE add-on install is only supported up to Rancher v2.0.8",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/proxy.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/proxy",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/proxy",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/proxy.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "HTTP Proxy Configuration",
+    "weight": 277,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/proxy",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/proxy/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NGINX Configuration",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/nginx"
+  },
+  "next": {
+    "title": "Enable API Auditing",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/api-auditing"
+  }
+}

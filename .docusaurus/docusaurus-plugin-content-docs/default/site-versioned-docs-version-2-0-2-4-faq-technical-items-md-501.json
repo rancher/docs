@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq/technical-items",
+  "id": "version-2.0-2.4/faq/technical-items",
+  "title": "Technical",
+  "description": "How can I reset the administrator password?",
+  "source": "@site/versioned_docs/version-2.0-2.4/faq/technical-items.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/technical-items",
+  "permalink": "/2.0-2.4/faq/technical-items",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/faq/technical-items.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Technical",
+    "weight": 8006
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing and Configuring kubectl",
+    "permalink": "/2.0-2.4/faq/install-and-configure-kubectl"
+  },
+  "next": {
+    "title": "Security",
+    "permalink": "/2.0-2.4/faq/security"
+  }
+}

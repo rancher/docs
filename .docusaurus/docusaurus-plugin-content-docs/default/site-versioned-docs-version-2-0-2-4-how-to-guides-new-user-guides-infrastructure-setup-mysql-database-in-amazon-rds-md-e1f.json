@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds",
+  "title": "Setting up a MySQL Database in Amazon RDS",
+  "description": "This tutorial describes how to set up a MySQL database in Amazon's RDS.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds.md",
+  "sourceDirName": "how-to-guides/new-user-guides/infrastructure-setup",
+  "slug": "/how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up a MySQL Database in Amazon RDS",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/rds"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Nodes in Amazon EC2",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2"
+  },
+  "next": {
+    "title": "Setting up an NGINX Load Balancer",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer"
+  }
+}

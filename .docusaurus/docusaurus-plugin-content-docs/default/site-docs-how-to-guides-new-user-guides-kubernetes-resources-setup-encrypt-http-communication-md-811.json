@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "title": "Encrypting HTTP Communication",
+  "description": "Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Encrypting HTTP Communication",
+    "description": "Learn how to add an SSL (Secure Sockets Layer) certificate or TLS (Transport Layer Security) certificate",
+    "weight": 3060
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Services",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/create-services"
+  },
+  "next": {
+    "title": "ConfigMaps",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps"
+  }
+}

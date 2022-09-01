@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-server",
+  "id": "pages-for-subheaders/rancher-server",
+  "title": "Best Practices for the Rancher Server",
+  "description": "This guide contains our recommendations for running the Rancher server, and is intended to be used in situations in which Rancher manages downstream Kubernetes clusters.",
+  "source": "@site/docs/pages-for-subheaders/rancher-server.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-server",
+  "permalink": "/docs/pages-for-subheaders/rancher-server",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/rancher-server.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices for the Rancher Server",
+    "shortTitle": "Rancher Server",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Best Practices Guide",
+    "permalink": "/docs/pages-for-subheaders/best-practices"
+  },
+  "next": {
+    "title": "Installing Rancher in a vSphere Environment",
+    "permalink": "/docs/reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere"
+  }
+}

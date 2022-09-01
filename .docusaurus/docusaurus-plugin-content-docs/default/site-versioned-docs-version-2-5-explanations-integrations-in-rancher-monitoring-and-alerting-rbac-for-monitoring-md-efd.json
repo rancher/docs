@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring",
+  "id": "version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring",
+  "title": "Role-based Access Control",
+  "description": "This section describes the expectations for RBAC for Rancher Monitoring.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring.md",
+  "sourceDirName": "explanations/integrations-in-rancher/monitoring-and-alerting",
+  "slug": "/explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring",
+  "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/rbac-for-monitoring.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Role-based Access Control",
+    "shortTitle": "RBAC",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-admin/tools/monitoring/rbac",
+      "/rancher/v2.5/en/monitoring-alerting/rbac",
+      "/rancher/v2.5/en/monitoring-alerting/grafana",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/rbac/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "How Monitoring Works",
+    "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/how-monitoring-works"
+  },
+  "next": {
+    "title": "Built-in Dashboards",
+    "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/built-in-dashboards"
+  }
+}

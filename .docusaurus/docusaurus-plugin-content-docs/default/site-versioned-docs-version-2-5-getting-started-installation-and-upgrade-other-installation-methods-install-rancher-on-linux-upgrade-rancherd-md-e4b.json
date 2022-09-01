@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd",
+  "id": "version-2.5/getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd",
+  "title": "Upgrades",
+  "description": "Note: RancherD was an experimental feature available as part of Rancher v2.5.4 through v2.5.10 but is now deprecated and not available for recent releases.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/upgrade-rancherd.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrades",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/installation/install-rancher-on-linux/upgrades",
+      "/rancher/v2.x/en/installation/install-rancher-on-linux/upgrades/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rollbacks",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/install-rancher-on-linux/roll-back-rancherd"
+  },
+  "next": {
+    "title": "Resources",
+    "permalink": "/2.5/pages-for-subheaders/resources"
+  }
+}

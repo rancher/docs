@@ -1,0 +1,34 @@
+{
+  "unversionedId": "reference-guides/backup-restore-configuration/restore-configuration",
+  "id": "version-2.5/reference-guides/backup-restore-configuration/restore-configuration",
+  "title": "Restore Configuration",
+  "description": "The Restore Create page lets you provide details of the backup to restore from",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/backup-restore-configuration/restore-configuration.md",
+  "sourceDirName": "reference-guides/backup-restore-configuration",
+  "slug": "/reference-guides/backup-restore-configuration/restore-configuration",
+  "permalink": "/2.5/reference-guides/backup-restore-configuration/restore-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/backup-restore-configuration/restore-configuration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restore Configuration",
+    "shortTitle": "Restore",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/backups/v2.5/configuration/restore-config",
+      "/rancher/v2.x/en/backups/v2.5/configuration/restore-config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backup Configuration",
+    "permalink": "/2.5/reference-guides/backup-restore-configuration/backup-configuration"
+  },
+  "next": {
+    "title": "Backup Storage Location Configuration",
+    "permalink": "/2.5/reference-guides/backup-restore-configuration/storage-configuration"
+  }
+}

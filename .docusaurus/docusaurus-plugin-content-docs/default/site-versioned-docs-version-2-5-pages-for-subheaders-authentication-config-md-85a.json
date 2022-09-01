@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/authentication-config",
+  "id": "version-2.5/pages-for-subheaders/authentication-config",
+  "title": "authentication-config",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/authentication-config.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/authentication-config",
+  "permalink": "/2.5/pages-for-subheaders/authentication-config",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/authentication-config.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Authentication",
+    "permalink": "/2.5/pages-for-subheaders/about-authentication"
+  },
+  "next": {
+    "title": "Users and Groups",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/manage-users-and-groups"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers",
+  "id": "version-2.5/pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers",
+  "title": "Setting up Clusters from Hosted Kubernetes Providers",
+  "description": "In this scenario, Rancher does not provision Kubernetes because it is installed by providers such as Google Kubernetes Engine (GKE), Amazon Elastic Container Service for Kubernetes, or Azure Kubernetes Service.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers",
+  "permalink": "/2.5/pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Clusters from Hosted Kubernetes Providers",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/hosted-kubernetes-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Roles for Nodes in Kubernetes",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/checklist-for-production-ready-clusters/roles-for-nodes-in-kubernetes"
+  },
+  "next": {
+    "title": "Managing GKE Clusters",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/set-up-clusters-from-hosted-kubernetes-providers/gke"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/access-clusters",
+  "id": "version-2.5/pages-for-subheaders/access-clusters",
+  "title": "Cluster Access",
+  "description": "This section is about what tools can be used to access clusters managed by Rancher.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/access-clusters.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/access-clusters",
+  "permalink": "/2.5/pages-for-subheaders/access-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/access-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Access",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/cluster-access/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Administration",
+    "permalink": "/2.5/pages-for-subheaders/manage-clusters"
+  },
+  "next": {
+    "title": "Access a Cluster with Kubectl and kubeconfig",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig"
+  }
+}

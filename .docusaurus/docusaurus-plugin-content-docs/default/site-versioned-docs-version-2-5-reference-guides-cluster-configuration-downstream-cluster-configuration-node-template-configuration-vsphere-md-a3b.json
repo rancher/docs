@@ -1,0 +1,34 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "id": "version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "title": "VSphere Node Template Configuration",
+  "description": "The following node template configuration reference applies to Rancher v2.3.3+.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "VSphere Node Template Configuration",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/node-template-reference",
+      "/rancher/v2.5/en/cluster-provisionin/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/enabling-uuids",
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Azure Node Template Configuration",
+    "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/azure"
+  },
+  "next": {
+    "title": "single-node-rancher-in-docker",
+    "permalink": "/2.5/pages-for-subheaders/single-node-rancher-in-docker"
+  }
+}

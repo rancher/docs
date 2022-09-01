@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage",
+  "title": "vSphere Storage",
+  "description": "To provide stateful workloads with vSphere storage, we recommend creating a vSphereVolume StorageClass. This practice dynamically provisions vSphere storage when workloads request volumes through a persistent volume claim.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "vSphere Storage",
+    "weight": 3055,
+    "aliases": [
+      "/rancher/v2.5/en/tasks/clusters/adding-storage/provisioning-storage/vsphere/",
+      "/rancher/v2.x/en/cluster-admin/volumes-and-storage/examples/vsphere/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NFS Storage",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/nfs-storage"
+  },
+  "next": {
+    "title": "Projects and Kubernetes Namespaces with Rancher",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces"
+  }
+}

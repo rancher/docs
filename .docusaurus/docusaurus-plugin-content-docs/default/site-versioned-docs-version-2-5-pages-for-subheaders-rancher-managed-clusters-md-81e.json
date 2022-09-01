@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-managed-clusters",
+  "id": "version-2.5/pages-for-subheaders/rancher-managed-clusters",
+  "title": "Best Practices for Rancher Managed Clusters",
+  "description": "Logging",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/rancher-managed-clusters.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-managed-clusters",
+  "permalink": "/2.5/pages-for-subheaders/rancher-managed-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/rancher-managed-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices for Rancher Managed Clusters",
+    "shortTitle": "Rancher Managed Clusters",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/best-practices/v2.5/rancher-managed",
+      "/rancher/v2.x/en/best-practices/v2.5/rancher-managed/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tips for Running Rancher",
+    "permalink": "/2.5/reference-guides/best-practices/rancher-server/tips-for-running-rancher"
+  },
+  "next": {
+    "title": "Logging Best Practices",
+    "permalink": "/2.5/reference-guides/best-practices/rancher-managed-clusters/logging-best-practices"
+  }
+}

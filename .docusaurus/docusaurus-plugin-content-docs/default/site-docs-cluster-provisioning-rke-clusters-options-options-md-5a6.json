@@ -1,0 +1,20 @@
+{
+  "unversionedId": "cluster-provisioning/rke-clusters/options/options",
+  "id": "cluster-provisioning/rke-clusters/options/options",
+  "title": "RKE Cluster Configuration",
+  "description": "This page has moved here.",
+  "source": "@site/docs/cluster-provisioning/rke-clusters/options/options.md",
+  "sourceDirName": "cluster-provisioning/rke-clusters/options",
+  "slug": "/cluster-provisioning/rke-clusters/options/",
+  "permalink": "/docs/cluster-provisioning/rke-clusters/options/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/cluster-provisioning/rke-clusters/options/options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Cluster Configuration",
+    "weight": 2300
+  }
+}

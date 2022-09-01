@@ -1,0 +1,36 @@
+{
+  "unversionedId": "pages-for-subheaders/cli-with-rancher",
+  "id": "version-2.0-2.4/pages-for-subheaders/cli-with-rancher",
+  "title": "Using the Rancher Command Line Interface",
+  "description": "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/cli-with-rancher.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cli-with-rancher",
+  "permalink": "/2.0-2.4/pages-for-subheaders/cli-with-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/cli-with-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Using the Rancher Command Line Interface",
+    "description": "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI",
+    "metaTitle": "Using the Rancher Command Line Interface ",
+    "metaDescription": "The Rancher CLI is a unified tool that you can use to interact with Rancher. With it, you can operate Rancher using a command line interface rather than the GUI",
+    "weight": 21,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/cluster-access/cli",
+      "/rancher/v2.x/en/cli/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "User Preferences",
+    "permalink": "/2.0-2.4/reference-guides/user-settings/user-preferences"
+  },
+  "next": {
+    "title": "rancher-cli",
+    "permalink": "/2.0-2.4/reference-guides/cli-with-rancher/rancher-cli"
+  }
+}

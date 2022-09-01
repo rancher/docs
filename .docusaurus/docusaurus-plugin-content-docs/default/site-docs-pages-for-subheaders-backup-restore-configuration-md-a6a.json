@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/backup-restore-configuration",
+  "id": "pages-for-subheaders/backup-restore-configuration",
+  "title": "Rancher Backup Configuration Reference",
+  "description": "- Backup configuration",
+  "source": "@site/docs/pages-for-subheaders/backup-restore-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/backup-restore-configuration",
+  "permalink": "/docs/pages-for-subheaders/backup-restore-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/backup-restore-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Backup Configuration Reference",
+    "shortTitle": "Configuration",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Minimum EKS Permissions",
+    "permalink": "/docs/reference-guides/amazon-eks-permissions/minimum-eks-permissions"
+  },
+  "next": {
+    "title": "Backup Configuration",
+    "permalink": "/docs/reference-guides/backup-restore-configuration/backup-configuration"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.5-benchmark",
+  "id": "version-2.5/reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.5-benchmark",
+  "title": "Hardening Guide with CIS 1.5 Benchmark",
+  "description": "This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.5. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.5-benchmark.md",
+  "sourceDirName": "reference-guides/rancher-security/rancher-v2.5-hardening-guides",
+  "slug": "/reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.5-benchmark",
+  "permalink": "/2.5/reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.5-benchmark",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/rancher-security/rancher-v2.5-hardening-guides/hardening-guide-with-cis-v1.5-benchmark.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Hardening Guide with CIS 1.5 Benchmark",
+    "weight": 200,
+    "aliases": [
+      "/rancher/v2.x/en/security/rancher-2.5/1.5-hardening-2.5/"
+    ]
+  }
+}

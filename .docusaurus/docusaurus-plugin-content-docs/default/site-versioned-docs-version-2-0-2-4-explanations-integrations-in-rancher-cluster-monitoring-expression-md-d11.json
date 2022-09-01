@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-monitoring/expression",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/expression",
+  "title": "Prometheus Expressions",
+  "description": "The PromQL expressions in this doc can be used to configure alerts.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/expression.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-monitoring",
+  "slug": "/explanations/integrations-in-rancher/cluster-monitoring/expression",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/expression",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/expression.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Prometheus Expressions",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/monitoring/expression",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/monitoring/expression",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/expression",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/expression",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/expression/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Prometheus Custom Metrics Adapter",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/custom-metrics"
+  },
+  "next": {
+    "title": "Project Monitoring",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/project-monitoring"
+  }
+}

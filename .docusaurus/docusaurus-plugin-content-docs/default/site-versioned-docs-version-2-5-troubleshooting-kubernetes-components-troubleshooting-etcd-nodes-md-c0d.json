@@ -1,0 +1,32 @@
+{
+  "unversionedId": "troubleshooting/kubernetes-components/troubleshooting-etcd-nodes",
+  "id": "version-2.5/troubleshooting/kubernetes-components/troubleshooting-etcd-nodes",
+  "title": "Troubleshooting etcd Nodes",
+  "description": "This section contains commands and tips for troubleshooting nodes with the etcd role.",
+  "source": "@site/versioned_docs/version-2.5/troubleshooting/kubernetes-components/troubleshooting-etcd-nodes.md",
+  "sourceDirName": "troubleshooting/kubernetes-components",
+  "slug": "/troubleshooting/kubernetes-components/troubleshooting-etcd-nodes",
+  "permalink": "/2.5/troubleshooting/kubernetes-components/troubleshooting-etcd-nodes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/troubleshooting/kubernetes-components/troubleshooting-etcd-nodes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting etcd Nodes",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/kubernetes-components/etcd/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Components",
+    "permalink": "/2.5/pages-for-subheaders/kubernetes-components"
+  },
+  "next": {
+    "title": "Troubleshooting Controlplane Nodes",
+    "permalink": "/2.5/troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/kubernetes-cluster-setup",
+  "id": "pages-for-subheaders/kubernetes-cluster-setup",
+  "title": "Don't have a Kubernetes cluster? Try one of these tutorials.",
+  "description": "This section contains information on how to install a Kubernetes cluster that the Rancher server can be installed on.",
+  "source": "@site/docs/pages-for-subheaders/kubernetes-cluster-setup.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/kubernetes-cluster-setup",
+  "permalink": "/docs/pages-for-subheaders/kubernetes-cluster-setup",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/kubernetes-cluster-setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Don't have a Kubernetes cluster? Try one of these tutorials.",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "new-user-guides",
+    "permalink": "/docs/pages-for-subheaders/new-user-guides"
+  },
+  "next": {
+    "title": "About High-availability Installations",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-cluster-setup/high-availability-installs"
+  }
+}

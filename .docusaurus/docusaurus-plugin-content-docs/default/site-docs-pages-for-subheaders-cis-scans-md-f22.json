@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/cis-scans",
+  "id": "pages-for-subheaders/cis-scans",
+  "title": "cis-scans",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/cis-scans.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cis-scans",
+  "permalink": "/docs/pages-for-subheaders/cis-scans",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/cis-scans.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "integrations-in-rancher",
+    "permalink": "/docs/pages-for-subheaders/integrations-in-rancher"
+  },
+  "next": {
+    "title": "Configuration",
+    "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/configuration-reference"
+  }
+}

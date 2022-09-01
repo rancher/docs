@@ -1,0 +1,39 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher",
+  "title": "Backing up Rancher Installed with Docker",
+  "description": "After completing your Docker installation of Rancher, we recommend creating backups of it on a regular basis. Having a recent backup will let you recover quickly from an unexpected disaster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md",
+  "sourceDirName": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery",
+  "slug": "/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backing up Rancher Installed with Docker",
+    "shortTitle": "Docker Installs",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/after-installation/single-node-backup-and-restoration/",
+      "/rancher/v2.0-v2.4/en/installation/after-installation/single-node-backup-and-restoration/",
+      "/rancher/v2.0-v2.4/en/backups/backups/single-node-backups/",
+      "/rancher/v2.0-v2.4/en/backups/legacy/backup/single-node-backups/",
+      "/rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/backup/docker-backups",
+      "/rancher/v2.0-v2.4/en/installation/backups-and-restoration/single-node-backup-and-restoration/",
+      "/rancher/v2.x/en/backups/v2.0.x-v2.4.x/backup/docker-backups/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backups and Disaster Recovery",
+    "permalink": "/2.0-2.4/pages-for-subheaders/backup-restore-and-disaster-recovery"
+  },
+  "next": {
+    "title": "Restoring Backups—Docker Installs",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher"
+  }
+}

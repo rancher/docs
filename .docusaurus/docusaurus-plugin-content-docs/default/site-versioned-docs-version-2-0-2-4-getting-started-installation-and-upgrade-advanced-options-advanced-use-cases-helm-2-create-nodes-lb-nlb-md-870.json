@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb",
+  "title": "Amazon NLB",
+  "description": "Objectives",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Amazon NLB",
+    "weight": 277,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/create-nodes-lb/nlb",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/create-nodes-lb/nlb/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NGINX",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nginx"
+  },
+  "next": {
+    "title": "2. Install Kubernetes with RKE",
+    "permalink": "/2.0-2.4/pages-for-subheaders/helm2-kubernetes-rke"
+  }
+}

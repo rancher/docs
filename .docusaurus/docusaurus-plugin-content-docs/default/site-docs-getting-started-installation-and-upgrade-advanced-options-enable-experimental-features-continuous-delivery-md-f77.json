@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery",
+  "id": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery",
+  "title": "Continuous Delivery",
+  "description": "As of Rancher v2.5, Fleet comes preinstalled in Rancher, and as of Rancher v2.6, Fleet can no longer be fully disabled. However, the Fleet feature for GitOps continuous delivery may be disabled using the continuous-delivery feature flag.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery",
+  "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Continuous Delivery",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features"
+  },
+  "next": {
+    "title": "Opening Ports with firewalld",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld"
+  }
+}

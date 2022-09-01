@@ -1,0 +1,36 @@
+{
+  "unversionedId": "pages-for-subheaders/cluster-alerts",
+  "id": "version-2.0-2.4/pages-for-subheaders/cluster-alerts",
+  "title": "Cluster Alerts",
+  "description": "To keep your clusters and applications healthy and driving your organizational productivity forward, you need to stay informed of events occurring in your clusters and projects, both planned and unplanned. When an event occurs, your alert is triggered, and you are sent a notification. You can then, if necessary, follow up with corrective actions.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-alerts.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cluster-alerts",
+  "permalink": "/2.0-2.4/pages-for-subheaders/cluster-alerts",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-alerts.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Alerts",
+    "shortTitle": "Alerts",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/alerts",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/alerts/cluster-alerts",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-alerts",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-alerts/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Syslog",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/syslog"
+  },
+  "next": {
+    "title": "Default Alerts for Cluster Monitoring",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-alerts/default-alerts"
+  }
+}

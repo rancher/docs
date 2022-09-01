@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy",
+  "id": "explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy",
+  "title": "Using Fleet Behind a Proxy",
+  "description": "In this section, you'll learn how to enable Fleet in a setup that has a Rancher server with a public IP a Kubernetes cluster that has no public IP, but is configured to use a proxy.",
+  "source": "@site/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy.md",
+  "sourceDirName": "explanations/integrations-in-rancher/fleet-gitops-at-scale",
+  "slug": "/explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy",
+  "permalink": "/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Using Fleet Behind a Proxy",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Windows Support",
+    "permalink": "/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support"
+  },
+  "next": {
+    "title": "Harvester Integration",
+    "permalink": "/docs/explanations/integrations-in-rancher/harvester"
+  }
+}

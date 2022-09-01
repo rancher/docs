@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/rke-add-on",
+  "id": "version-2.0-2.4/pages-for-subheaders/rke-add-on",
+  "title": "rke-add-on",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/rke-add-on.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rke-add-on",
+  "permalink": "/2.0-2.4/pages-for-subheaders/rke-add-on",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/rke-add-on.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer"
+  },
+  "next": {
+    "title": "Kubernetes Install with External Load Balancer (TCP/Layer 4)",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb"
+  }
+}

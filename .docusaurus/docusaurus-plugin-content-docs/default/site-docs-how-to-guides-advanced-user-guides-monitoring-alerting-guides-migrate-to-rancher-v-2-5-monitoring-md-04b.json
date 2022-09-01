@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring",
+  "id": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring",
+  "title": "Migrating to Rancher v2.5+ Monitoring",
+  "description": "If you previously enabled Monitoring, Alerting, or Notifiers in Rancher before v2.5, there is no automatic upgrade path for switching to the new monitoring/alerting solution. Before deploying the new monitoring solution via Cluster Explore, you will need to disable and remove all existing custom alerts, notifiers and monitoring installations for the whole cluster and in all projects.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-alerting-guides",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating to Rancher v2.5+ Monitoring",
+    "weight": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Debugging High Memory Usage",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/debug-high-memory-usage"
+  },
+  "next": {
+    "title": "prometheus-federator-guides",
+    "permalink": "/docs/pages-for-subheaders/prometheus-federator-guides"
+  }
+}

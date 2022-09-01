@@ -1,0 +1,44 @@
+{
+  "unversionedId": "pages-for-subheaders/upgrades",
+  "id": "version-2.0-2.4/pages-for-subheaders/upgrades",
+  "title": "Upgrades",
+  "description": "The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/upgrades.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/upgrades",
+  "permalink": "/2.0-2.4/pages-for-subheaders/upgrades",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/upgrades.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrades",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/ha-server-upgrade-helm-airgap",
+      "/rancher/v2.0-v2.4/en/upgrades/air-gap-upgrade/",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/ha",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades/upgrades/ha",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/ha-server-upgrade-helm/",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/ha",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/",
+      "/rancher/v2.0-v2.4/en/upgrades/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting the Rancher Server Kubernetes Cluster",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting"
+  },
+  "next": {
+    "title": "Migrating from a Kubernetes Install with an RKE Add-on",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on"
+  }
+}

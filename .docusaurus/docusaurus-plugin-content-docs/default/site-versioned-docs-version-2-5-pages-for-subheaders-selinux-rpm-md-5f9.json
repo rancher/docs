@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/selinux-rpm",
+  "id": "version-2.5/pages-for-subheaders/selinux-rpm",
+  "title": "SELinux RPM",
+  "description": "Available as of v2.5.8",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/selinux-rpm.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/selinux-rpm",
+  "permalink": "/2.5/pages-for-subheaders/selinux-rpm",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/selinux-rpm.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "SELinux RPM",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CIS 1.6 Benchmark - Self-Assessment Guide - Rancher v2.5.4",
+    "permalink": "/2.5/reference-guides/rancher-security/rancher-v2.5-hardening-guides/self-assessment-guide-with-cis-v1.6-benchmark"
+  },
+  "next": {
+    "title": "about-rancher-selinux",
+    "permalink": "/2.5/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux"
+  }
+}

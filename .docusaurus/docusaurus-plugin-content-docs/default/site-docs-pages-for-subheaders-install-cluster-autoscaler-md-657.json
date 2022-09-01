@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/install-cluster-autoscaler",
+  "id": "pages-for-subheaders/install-cluster-autoscaler",
+  "title": "Cluster Autoscaler",
+  "description": "In this section, you'll learn how to install and use the Kubernetes cluster-autoscaler on Rancher custom clusters using AWS EC2 Auto Scaling Groups.",
+  "source": "@site/docs/pages-for-subheaders/install-cluster-autoscaler.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/install-cluster-autoscaler",
+  "permalink": "/docs/pages-for-subheaders/install-cluster-autoscaler",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/install-cluster-autoscaler.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Autoscaler",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Users to Clusters",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/add-users-to-clusters"
+  },
+  "next": {
+    "title": "Cluster Autoscaler with AWS EC2 Auto Scaling Groups",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups"
+  }
+}

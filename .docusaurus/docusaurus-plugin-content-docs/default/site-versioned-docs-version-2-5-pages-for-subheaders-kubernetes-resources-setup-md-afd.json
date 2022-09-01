@@ -1,0 +1,35 @@
+{
+  "unversionedId": "pages-for-subheaders/kubernetes-resources-setup",
+  "id": "version-2.5/pages-for-subheaders/kubernetes-resources-setup",
+  "title": "Kubernetes Resources",
+  "description": "The Cluster Explorer is a new feature in Rancher v2.5 that allows you to view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI. This section will be updated to reflect the way that Kubernetes resources are handled in Rancher v2.5.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/kubernetes-resources-setup.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/kubernetes-resources-setup",
+  "permalink": "/2.5/pages-for-subheaders/kubernetes-resources-setup",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/kubernetes-resources-setup.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Resources",
+    "weight": 18,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/",
+      "/rancher/v2.5/en/tasks/",
+      "/rancher/v2.5/en/concepts/resources/",
+      "/rancher/v2.x/en/k8s-in-rancher/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Registering Existing Clusters",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters"
+  },
+  "next": {
+    "title": "Kubernetes Workloads and Pods",
+    "permalink": "/2.5/pages-for-subheaders/workloads-and-pods"
+  }
+}

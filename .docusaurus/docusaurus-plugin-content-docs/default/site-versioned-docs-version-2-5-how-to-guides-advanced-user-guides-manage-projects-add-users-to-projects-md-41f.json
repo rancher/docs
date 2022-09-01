@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects",
+  "title": "Adding Users to Projects",
+  "description": "If you want to provide a user with access and permissions to specific projects and resources within a cluster, assign the user a project membership.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-projects",
+  "slug": "/how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Adding Users to Projects",
+    "weight": 2505,
+    "aliases": [
+      "/rancher/v2.5/en/tasks/projects/add-project-members/",
+      "/rancher/v2.5/en/cluster-admin/projects-and-namespaces/project-members",
+      "/rancher/v2.x/en/project-admin/project-members/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Project Administration",
+    "permalink": "/2.5/pages-for-subheaders/manage-projects"
+  },
+  "next": {
+    "title": "Namespaces",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/manage-namespaces"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/introduction/overview",
+  "id": "version-2.0-2.4/getting-started/introduction/overview",
+  "title": "Overview",
+  "description": "Rancher is a container management platform built for organizations that deploy containers in production. Rancher makes it easy to run Kubernetes everywhere, meet IT requirements, and empower DevOps teams.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/introduction/overview.md",
+  "sourceDirName": "getting-started/introduction",
+  "slug": "/getting-started/introduction/overview",
+  "permalink": "/2.0-2.4/getting-started/introduction/overview",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/introduction/overview.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Overview",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "introduction",
+    "permalink": "/2.0-2.4/pages-for-subheaders/introduction"
+  },
+  "next": {
+    "title": "what-are-divio-docs",
+    "permalink": "/2.0-2.4/getting-started/introduction/what-are-divio-docs"
+  }
+}

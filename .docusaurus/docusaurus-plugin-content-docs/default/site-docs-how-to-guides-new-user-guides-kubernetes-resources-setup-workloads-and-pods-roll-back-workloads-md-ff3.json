@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads",
+  "title": "Rolling Back Workloads",
+  "description": "Sometimes there is a need to rollback to the previous version of the application, either for debugging purposes or because an upgrade did not go as planned.",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rolling Back Workloads",
+    "weight": 3027
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Workloads",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads"
+  },
+  "next": {
+    "title": "Upgrading Workloads",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/upgrade-workloads"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "reference-guides/installation-references/tls-settings",
+  "id": "version-2.0-2.4/reference-guides/installation-references/tls-settings",
+  "title": "TLS Settings",
+  "description": "In Rancher v2.1.7, the default TLS configuration changed to only accept TLS 1.2 and secure TLS cipher suites. TLS 1.3 and TLS 1.3 exclusive cipher suites are not supported.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/installation-references/tls-settings.md",
+  "sourceDirName": "reference-guides/installation-references",
+  "slug": "/reference-guides/installation-references/tls-settings",
+  "permalink": "/2.0-2.4/reference-guides/installation-references/tls-settings",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/installation-references/tls-settings.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "TLS Settings",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/tls-settings/",
+      "/rancher/v2.0-v2.4/en/admin-settings/tls-settings",
+      "/rancher/v2.0-v2.4/en/installation/resources/encryption/tls-settings"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Helm Chart Options",
+    "permalink": "/2.0-2.4/reference-guides/installation-references/helm-chart-options"
+  },
+  "next": {
+    "title": "feature-flags",
+    "permalink": "/2.0-2.4/reference-guides/installation-references/feature-flags"
+  }
+}

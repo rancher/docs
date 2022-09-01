@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/cli-with-rancher",
+  "id": "version-2.5/pages-for-subheaders/cli-with-rancher",
+  "title": "CLI with Rancher",
+  "description": "Interact with Rancher using command line interface (CLI) tools from your workstation.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/cli-with-rancher.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cli-with-rancher",
+  "permalink": "/2.5/pages-for-subheaders/cli-with-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/cli-with-rancher.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CLI with Rancher",
+    "description": "Interact with Rancher using command line interface (CLI) tools from your workstation.",
+    "weight": 21
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "User Preferences",
+    "permalink": "/2.5/reference-guides/user-settings/user-preferences"
+  },
+  "next": {
+    "title": "rancher-cli",
+    "permalink": "/2.5/reference-guides/cli-with-rancher/rancher-cli"
+  }
+}

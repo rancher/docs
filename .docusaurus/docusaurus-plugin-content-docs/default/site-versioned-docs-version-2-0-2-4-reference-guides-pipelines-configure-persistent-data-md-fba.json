@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/pipelines/configure-persistent-data",
+  "id": "version-2.0-2.4/reference-guides/pipelines/configure-persistent-data",
+  "title": "Configuring Persistent Data for Pipeline Components",
+  "description": "The pipelines' internal Docker registry and the Minio workloads use ephemeral volumes by default. This default storage works out-of-the-box and makes testing easy, but you lose the build images and build logs if the node running the Docker Registry or Minio fails. In most cases this is fine. If you want build images and logs to survive node failures, you can configure the Docker Registry and Minio to use persistent volumes.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/pipelines/configure-persistent-data.md",
+  "sourceDirName": "reference-guides/pipelines",
+  "slug": "/reference-guides/pipelines/configure-persistent-data",
+  "permalink": "/2.0-2.4/reference-guides/pipelines/configure-persistent-data",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/pipelines/configure-persistent-data.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Persistent Data for Pipeline Components",
+    "weight": 600,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines/storage"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Pipeline Configuration Reference",
+    "permalink": "/2.0-2.4/reference-guides/pipelines/pipeline-configuration"
+  },
+  "next": {
+    "title": "Example Repositories",
+    "permalink": "/2.0-2.4/reference-guides/pipelines/example-repositories"
+  }
+}

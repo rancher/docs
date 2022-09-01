@@ -1,0 +1,29 @@
+{
+  "unversionedId": "troubleshooting/other-troubleshooting-tips/kubernetes-resources",
+  "id": "version-2.0-2.4/troubleshooting/other-troubleshooting-tips/kubernetes-resources",
+  "title": "Kubernetes resources",
+  "description": "The commands/steps listed on this page can be used to check the most important Kubernetes resources and apply to Rancher Launched Kubernetes clusters.",
+  "source": "@site/versioned_docs/version-2.0-2.4/troubleshooting/other-troubleshooting-tips/kubernetes-resources.md",
+  "sourceDirName": "troubleshooting/other-troubleshooting-tips",
+  "slug": "/troubleshooting/other-troubleshooting-tips/kubernetes-resources",
+  "permalink": "/2.0-2.4/troubleshooting/other-troubleshooting-tips/kubernetes-resources",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/troubleshooting/other-troubleshooting-tips/kubernetes-resources.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes resources",
+    "weight": 101
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "other-troubleshooting-tips",
+    "permalink": "/2.0-2.4/pages-for-subheaders/other-troubleshooting-tips"
+  },
+  "next": {
+    "title": "Networking",
+    "permalink": "/2.0-2.4/troubleshooting/other-troubleshooting-tips/networking"
+  }
+}

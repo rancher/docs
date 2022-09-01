@@ -1,0 +1,34 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "id": "version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "title": "Rancher Agent Options",
+  "description": "Rancher deploys an agent on each node to communicate with the node. This pages describes the options that can be passed to the agent. To use these options, you will need to create a cluster with custom nodes and add the options to the generated docker run command when adding a node.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options.md",
+  "sourceDirName": "reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes",
+  "slug": "/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "permalink": "/2.5/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Agent Options",
+    "weight": 2500,
+    "aliases": [
+      "/rancher/v2.5/en/admin-settings/agent-options/",
+      "/rancher/v2.5/en/cluster-provisioning/custom-clusters/agent-options",
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/custom-nodes/agent-options/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Launching Kubernetes on Existing Custom Nodes",
+    "permalink": "/2.5/pages-for-subheaders/use-existing-nodes"
+  },
+  "next": {
+    "title": "Syncing",
+    "permalink": "/2.5/reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters"
+  }
+}

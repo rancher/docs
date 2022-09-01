@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster",
+  "title": "1. Enable Istio in the Cluster",
+  "description": "Prerequisites:",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Enable Istio in the Cluster",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/istio/setup/enable-istio-in-cluster",
+      "/rancher/v2.5/en/istio/v2.5/setup/enable-istio-in-cluster",
+      "/rancher/v2.x/en/istio/v2.5/setup/enable-istio-in-cluster/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setup Guide",
+    "permalink": "/2.5/pages-for-subheaders/istio-setup-guide"
+  },
+  "next": {
+    "title": "2. Enable Istio in a Namespace",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace"
+  }
+}

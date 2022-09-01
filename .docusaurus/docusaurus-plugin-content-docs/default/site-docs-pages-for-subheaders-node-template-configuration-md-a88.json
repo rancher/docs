@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/node-template-configuration",
+  "id": "pages-for-subheaders/node-template-configuration",
+  "title": "node-template-configuration",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/node-template-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/node-template-configuration",
+  "permalink": "/docs/pages-for-subheaders/node-template-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/node-template-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "downstream-cluster-configuration",
+    "permalink": "/docs/pages-for-subheaders/downstream-cluster-configuration"
+  },
+  "next": {
+    "title": "EC2 Node Template Configuration",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2"
+  }
+}

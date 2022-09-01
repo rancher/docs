@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "id": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "title": "Upgrades",
+  "description": "The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air-gapped installs with Helm.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "permalink": "/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrades",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rollbacks",
+    "permalink": "/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks"
+  },
+  "next": {
+    "title": "Rendering the Helm Template in an Air-Gapped Environment",
+    "permalink": "/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/air-gapped-upgrades"
+  }
+}

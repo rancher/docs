@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq",
+  "id": "faq",
+  "title": "FAQ",
+  "description": "This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.x.",
+  "source": "@site/docs/faq.md",
+  "sourceDirName": ".",
+  "slug": "/faq",
+  "permalink": "/docs/faq",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/faq.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "FAQ",
+    "weight": 25
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "OPA Gatekeeper",
+    "permalink": "/docs/explanations/integrations-in-rancher/opa-gatekeeper"
+  },
+  "next": {
+    "title": "Deprecated Features in Rancher",
+    "permalink": "/docs/faq/deprecated-features-in-v2.5"
+  }
+}

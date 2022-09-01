@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq/dockershim",
+  "id": "faq/dockershim",
+  "title": "Dockershim",
+  "description": "The Dockershim is the CRI compliant layer between the Kubelet and the Docker daemon. As part of the Kubernetes 1.20 release, the deprecation of the in-tree Dockershim was announced. Removal is currently scheduled for Kubernetes 1.24. For more information on the deprecation and its timelines, see the Kubernetes Dockershim Deprecation FAQ.",
+  "source": "@site/docs/faq/dockershim.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/dockershim",
+  "permalink": "/docs/faq/dockershim",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/faq/dockershim.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Dockershim",
+    "weight": 300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing and Configuring kubectl",
+    "permalink": "/docs/faq/install-and-configure-kubectl"
+  },
+  "next": {
+    "title": "Technical",
+    "permalink": "/docs/faq/technical-items"
+  }
+}

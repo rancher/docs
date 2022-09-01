@@ -1,0 +1,29 @@
+{
+  "unversionedId": "troubleshooting/other-troubleshooting-tips/logging",
+  "id": "version-2.0-2.4/troubleshooting/other-troubleshooting-tips/logging",
+  "title": "Logging",
+  "description": "The following log levels are used in Rancher:",
+  "source": "@site/versioned_docs/version-2.0-2.4/troubleshooting/other-troubleshooting-tips/logging.md",
+  "sourceDirName": "troubleshooting/other-troubleshooting-tips",
+  "slug": "/troubleshooting/other-troubleshooting-tips/logging",
+  "permalink": "/2.0-2.4/troubleshooting/other-troubleshooting-tips/logging",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/troubleshooting/other-troubleshooting-tips/logging.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Logging",
+    "weight": 110
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Imported clusters",
+    "permalink": "/2.0-2.4/troubleshooting/other-troubleshooting-tips/registered-clusters"
+  },
+  "next": {
+    "title": "Contributing to Rancher",
+    "permalink": "/2.0-2.4/contribute-to-rancher"
+  }
+}

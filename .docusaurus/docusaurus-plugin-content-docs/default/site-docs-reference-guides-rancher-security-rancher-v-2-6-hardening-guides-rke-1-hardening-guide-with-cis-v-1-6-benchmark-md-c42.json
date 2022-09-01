@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-hardening-guide-with-cis-v1.6-benchmark",
+  "id": "reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-hardening-guide-with-cis-v1.6-benchmark",
+  "title": "RKE Hardening Guide with CIS v1.6 Benchmark",
+  "description": "This document provides prescriptive guidance for hardening a production installation of a RKE cluster to be used with Rancher v2.6. It outlines the configurations and controls required to address Kubernetes benchmark controls from the Center for Information Security (CIS).",
+  "source": "@site/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-hardening-guide-with-cis-v1.6-benchmark.md",
+  "sourceDirName": "reference-guides/rancher-security/rancher-v2.6-hardening-guides",
+  "slug": "/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-hardening-guide-with-cis-v1.6-benchmark",
+  "permalink": "/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-hardening-guide-with-cis-v1.6-benchmark",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-hardening-guide-with-cis-v1.6-benchmark.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Hardening Guide with CIS v1.6 Benchmark",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.6/en/security/hardening-guides/1.6-hardening-2.6/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Self-Assessment and Hardening Guides for Rancher v2.6",
+    "permalink": "/docs/pages-for-subheaders/rancher-v2.6-hardening-guides"
+  },
+  "next": {
+    "title": "RKE CIS v1.6 Benchmark - Self-Assessment Guide - Rancher v2.6",
+    "permalink": "/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-self-assessment-guide-with-cis-v1.6-benchmark"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/configure-openldap",
+  "id": "version-2.5/pages-for-subheaders/configure-openldap",
+  "title": "Configuring OpenLDAP",
+  "description": "If your organization uses LDAP for user authentication, you can configure Rancher to communicate with an OpenLDAP server to authenticate users. This allows Rancher admins to control access to clusters and projects based on users and groups managed externally in the organisation's central user repository, while allowing end-users to authenticate with their LDAP credentials when logging in to the Rancher UI.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/configure-openldap.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/configure-openldap",
+  "permalink": "/2.5/pages-for-subheaders/configure-openldap",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/configure-openldap.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring OpenLDAP",
+    "weight": 1113,
+    "aliases": [
+      "/rancher/v2.5/en/tasks/global-configuration/authentication/openldap/",
+      "/rancher/v2.x/en/admin-settings/authentication/openldap/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Examples",
+    "permalink": "/2.5/reference-guides/backup-restore-configuration/examples"
+  },
+  "next": {
+    "title": "OpenLDAP Configuration Reference",
+    "permalink": "/2.5/reference-guides/configure-openldap/openldap-config-reference"
+  }
+}

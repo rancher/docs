@@ -1,0 +1,26 @@
+{
+  "unversionedId": "reference-guides/cli-with-rancher/rancher-cli",
+  "id": "reference-guides/cli-with-rancher/rancher-cli",
+  "title": "rancher-cli",
+  "description": "",
+  "source": "@site/docs/reference-guides/cli-with-rancher/rancher-cli.md",
+  "sourceDirName": "reference-guides/cli-with-rancher",
+  "slug": "/reference-guides/cli-with-rancher/rancher-cli",
+  "permalink": "/docs/reference-guides/cli-with-rancher/rancher-cli",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/cli-with-rancher/rancher-cli.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CLI with Rancher",
+    "permalink": "/docs/pages-for-subheaders/cli-with-rancher"
+  },
+  "next": {
+    "title": "kubectl-utility",
+    "permalink": "/docs/reference-guides/cli-with-rancher/kubectl-utility"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-kubectl",
+  "id": "version-2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-kubectl",
+  "title": "Managing HPAs with kubectl",
+  "description": "This section describes HPA management with kubectl. This document has instructions for how to:",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-kubectl.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-kubectl",
+  "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-kubectl",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-kubectl.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Managing HPAs with kubectl",
+    "weight": 3029,
+    "aliases": [
+      "/rancher/v2.5/en/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-kubectl",
+      "/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/manage-hpa-with-kubectl/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Managing HPAs with the Rancher UI",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/manage-hpas-with-ui"
+  },
+  "next": {
+    "title": "Testing HPAs with kubectl",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/test-hpas-with-kubectl"
+  }
+}

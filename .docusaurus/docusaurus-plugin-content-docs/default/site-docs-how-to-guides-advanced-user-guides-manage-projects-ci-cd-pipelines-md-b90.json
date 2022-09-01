@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines",
+  "id": "how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines",
+  "title": "Rancher's CI/CD Pipelines",
+  "description": "Use Rancher’s CI/CD pipeline to automatically checkout code, run builds or scripts, publish Docker images, and deploy software to users",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-projects",
+  "slug": "/how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher's CI/CD Pipelines",
+    "description": "Use Rancher’s CI/CD pipeline to automatically checkout code, run builds or scripts, publish Docker images, and deploy software to users",
+    "weight": 4000
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Namespaces",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-projects/manage-namespaces"
+  },
+  "next": {
+    "title": "Pod Security Policies",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies"
+  }
+}

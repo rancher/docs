@@ -1,0 +1,32 @@
+{
+  "unversionedId": "troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components",
+  "id": "version-2.5/troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components",
+  "title": "Troubleshooting Worker Nodes and Generic Components",
+  "description": "This section applies to every node as it includes components that run on nodes with any role.",
+  "source": "@site/versioned_docs/version-2.5/troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components.md",
+  "sourceDirName": "troubleshooting/kubernetes-components",
+  "slug": "/troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components",
+  "permalink": "/2.5/troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting Worker Nodes and Generic Components",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/kubernetes-components/worker-and-generic/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting nginx-proxy",
+    "permalink": "/2.5/troubleshooting/kubernetes-components/troubleshooting-nginx-proxy"
+  },
+  "next": {
+    "title": "other-troubleshooting-tips",
+    "permalink": "/2.5/pages-for-subheaders/other-troubleshooting-tips"
+  }
+}

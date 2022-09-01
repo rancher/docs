@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/gke-cluster-configuration",
+  "id": "pages-for-subheaders/gke-cluster-configuration",
+  "title": "GKE Cluster Configuration Reference",
+  "description": "- Support for additional configuration options:",
+  "source": "@site/docs/pages-for-subheaders/gke-cluster-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/gke-cluster-configuration",
+  "permalink": "/docs/pages-for-subheaders/gke-cluster-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/gke-cluster-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "GKE Cluster Configuration Reference",
+    "shortTitle": "GKE Cluster Configuration",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "AKS Cluster Configuration Reference",
+    "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/aks-cluster-configuration"
+  },
+  "next": {
+    "title": "Private Clusters",
+    "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters"
+  }
+}

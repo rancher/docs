@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd",
+  "title": "Restoring a Cluster from Backup",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restoring a Cluster from Backup",
+    "weight": 2050
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backing up a Cluster",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd"
+  },
+  "next": {
+    "title": "Cluster Autoscaler",
+    "permalink": "/2.0-2.4/pages-for-subheaders/install-cluster-autoscaler"
+  }
+}

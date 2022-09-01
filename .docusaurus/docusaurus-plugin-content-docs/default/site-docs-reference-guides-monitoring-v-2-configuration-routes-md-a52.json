@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/monitoring-v2-configuration/routes",
+  "id": "reference-guides/monitoring-v2-configuration/routes",
+  "title": "Route Configuration",
+  "description": "The route configuration is the section of the Alertmanager custom resource that controls how the alerts fired by Prometheus are grouped and filtered before they reach the receiver.",
+  "source": "@site/docs/reference-guides/monitoring-v2-configuration/routes.md",
+  "sourceDirName": "reference-guides/monitoring-v2-configuration",
+  "slug": "/reference-guides/monitoring-v2-configuration/routes",
+  "permalink": "/docs/reference-guides/monitoring-v2-configuration/routes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/monitoring-v2-configuration/routes.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Route Configuration",
+    "shortTitle": "Routes",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Receiver Configuration",
+    "permalink": "/docs/reference-guides/monitoring-v2-configuration/receivers"
+  },
+  "next": {
+    "title": "ServiceMonitor and PodMonitor Configuration",
+    "permalink": "/docs/reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors"
+  }
+}

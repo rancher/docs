@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/nutanix",
+  "id": "pages-for-subheaders/nutanix",
+  "title": "Creating a Nutanix AOS Cluster",
+  "description": "Use Rancher to create a Nutanix AOS (AHV) cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+  "source": "@site/docs/pages-for-subheaders/nutanix.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/nutanix",
+  "permalink": "/docs/pages-for-subheaders/nutanix",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/nutanix.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a Nutanix AOS Cluster",
+    "shortTitle": "Nutanix",
+    "description": "Use Rancher to create a Nutanix AOS (AHV) cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "metaDescription": "Use Rancher to create a Nutanix AOS (AHV) cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "weight": 2225
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating a vSphere Virtual Machine Template",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/vsphere/create-a-vm-template"
+  },
+  "next": {
+    "title": "Provisioning Kubernetes Clusters in Nutanix AOS",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/nutanix/provision-kubernetes-clusters-in-aos"
+  }
+}

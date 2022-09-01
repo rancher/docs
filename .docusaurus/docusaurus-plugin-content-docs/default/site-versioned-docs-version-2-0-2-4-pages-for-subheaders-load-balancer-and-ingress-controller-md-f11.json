@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/load-balancer-and-ingress-controller",
+  "id": "version-2.0-2.4/pages-for-subheaders/load-balancer-and-ingress-controller",
+  "title": "Set Up Load Balancer and Ingress Controller within Rancher",
+  "description": "Learn how you can set up load balancers and ingress controllers to redirect service requests within Rancher, and learn about the limitations of load balancers",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/load-balancer-and-ingress-controller.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/load-balancer-and-ingress-controller",
+  "permalink": "/2.0-2.4/pages-for-subheaders/load-balancer-and-ingress-controller",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/load-balancer-and-ingress-controller.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Set Up Load Balancer and Ingress Controller within Rancher",
+    "description": "Learn how you can set up load balancers and ingress controllers to redirect service requests within Rancher, and learn about the limitations of load balancers",
+    "weight": 3040,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/load-balancers-and-ingress"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Testing HPAs with kubectl",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/test-hpas-with-kubectl"
+  },
+  "next": {
+    "title": "Layer 4 and Layer 7 Load Balancing",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/load-balancer-and-ingress-controller/layer-4-and-layer-7-load-balancing"
+  }
+}

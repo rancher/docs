@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/other-cloud-providers",
+  "id": "pages-for-subheaders/other-cloud-providers",
+  "title": "other-cloud-providers",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/other-cloud-providers.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/other-cloud-providers",
+  "permalink": "/docs/pages-for-subheaders/other-cloud-providers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/other-cloud-providers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Cloud Providers",
+    "permalink": "/docs/pages-for-subheaders/set-up-cloud-providers"
+  },
+  "next": {
+    "title": "Setting up the Amazon Cloud Provider",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/set-up-cloud-providers/other-cloud-providers/amazon"
+  }
+}

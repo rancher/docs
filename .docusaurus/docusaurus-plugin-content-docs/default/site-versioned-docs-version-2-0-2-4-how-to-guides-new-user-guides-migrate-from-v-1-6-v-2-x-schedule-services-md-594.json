@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services",
+  "title": "5. Schedule Your Services",
+  "description": "In v1.6, objects called services were used to schedule containers to your cluster hosts. Services included the Docker image for an application, along with configuration settings for a desired state.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services.md",
+  "sourceDirName": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x",
+  "slug": "/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/schedule-services.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "5. Schedule Your Services",
+    "weight": 500,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/schedule-workloads/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "4. Configure Health Checks",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps"
+  },
+  "next": {
+    "title": "6. Service Discovery",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services"
+  }
+}

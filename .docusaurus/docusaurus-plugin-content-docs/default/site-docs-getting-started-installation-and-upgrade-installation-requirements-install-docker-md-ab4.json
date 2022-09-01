@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/installation-requirements/install-docker",
+  "id": "getting-started/installation-and-upgrade/installation-requirements/install-docker",
+  "title": "Installing Docker",
+  "description": "Docker is required to be installed on nodes where the Rancher server will be installed with Helm or Docker.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/installation-requirements/install-docker.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/installation-requirements",
+  "slug": "/getting-started/installation-and-upgrade/installation-requirements/install-docker",
+  "permalink": "/docs/getting-started/installation-and-upgrade/installation-requirements/install-docker",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/installation-requirements/install-docker.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Docker",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installation Requirements",
+    "permalink": "/docs/pages-for-subheaders/installation-requirements"
+  },
+  "next": {
+    "title": "Dockershim",
+    "permalink": "/docs/getting-started/installation-and-upgrade/installation-requirements/dockershim"
+  }
+}

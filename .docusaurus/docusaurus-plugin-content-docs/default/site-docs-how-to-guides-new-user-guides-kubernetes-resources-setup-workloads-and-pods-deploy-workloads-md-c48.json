@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads",
+  "title": "Deploying Workloads",
+  "description": "Read this step by step guide for deploying workloads. Deploy a workload to run an application in one or more containers.",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Workloads",
+    "description": "Read this step by step guide for deploying workloads. Deploy a workload to run an application in one or more containers.",
+    "weight": 3026
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Workloads and Pods",
+    "permalink": "/docs/pages-for-subheaders/workloads-and-pods"
+  },
+  "next": {
+    "title": "Rolling Back Workloads",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads"
+  }
+}

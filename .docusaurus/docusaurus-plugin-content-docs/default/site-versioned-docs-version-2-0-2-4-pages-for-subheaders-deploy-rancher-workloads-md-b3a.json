@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/deploy-rancher-workloads",
+  "id": "version-2.0-2.4/pages-for-subheaders/deploy-rancher-workloads",
+  "title": "Deploying Workloads",
+  "description": "These guides walk you through the deployment of an application, including how to expose the application for use outside of the cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/deploy-rancher-workloads.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/deploy-rancher-workloads",
+  "permalink": "/2.0-2.4/pages-for-subheaders/deploy-rancher-workloads",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/deploy-rancher-workloads.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Workloads",
+    "weight": 200
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Manual Quick Start",
+    "permalink": "/2.0-2.4/getting-started/quick-start-guides/deploy-rancher-manager/helm-cli"
+  },
+  "next": {
+    "title": "Workload with Ingress Quick Start",
+    "permalink": "/2.0-2.4/getting-started/quick-start-guides/deploy-workloads/workload-ingress"
+  }
+}

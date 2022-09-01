@@ -1,0 +1,32 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "id": "version-2.5/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "title": "Opening Ports with firewalld",
+  "description": "We recommend disabling firewalld. For Kubernetes 1.19.x and higher, firewalld must be turned off.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Opening Ports with firewalld",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/installation/resources/advanced/firewall/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features"
+  },
+  "next": {
+    "title": "Tuning etcd for Large Installations",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs"
+  }
+}

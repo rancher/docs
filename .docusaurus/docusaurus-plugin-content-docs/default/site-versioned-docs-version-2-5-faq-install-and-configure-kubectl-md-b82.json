@@ -1,0 +1,32 @@
+{
+  "unversionedId": "faq/install-and-configure-kubectl",
+  "id": "version-2.5/faq/install-and-configure-kubectl",
+  "title": "Installing and Configuring kubectl",
+  "description": "kubectl is a CLI utility for running commands against Kubernetes clusters. It's required for many maintenance and administrative tasks in Rancher 2.x.",
+  "source": "@site/versioned_docs/version-2.5/faq/install-and-configure-kubectl.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/install-and-configure-kubectl",
+  "permalink": "/2.5/faq/install-and-configure-kubectl",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/faq/install-and-configure-kubectl.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing and Configuring kubectl",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.x/en/faq/kubectl/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deprecated Features in Rancher v2.5",
+    "permalink": "/2.5/faq/deprecated-features-in-v2.5"
+  },
+  "next": {
+    "title": "Technical",
+    "permalink": "/2.5/faq/technical-items"
+  }
+}

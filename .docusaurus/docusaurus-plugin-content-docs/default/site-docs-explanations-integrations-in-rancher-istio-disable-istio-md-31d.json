@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/istio/disable-istio",
+  "id": "explanations/integrations-in-rancher/istio/disable-istio",
+  "title": "Disabling Istio",
+  "description": "This section describes how to uninstall Istio in a cluster or disable a namespace, or workload.",
+  "source": "@site/docs/explanations/integrations-in-rancher/istio/disable-istio.md",
+  "sourceDirName": "explanations/integrations-in-rancher/istio",
+  "slug": "/explanations/integrations-in-rancher/istio/disable-istio",
+  "permalink": "/docs/explanations/integrations-in-rancher/istio/disable-istio",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/istio/disable-istio.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Disabling Istio",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Role-based Access Control",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/rbac-for-istio"
+  },
+  "next": {
+    "title": "Configuration Options",
+    "permalink": "/docs/pages-for-subheaders/configuration-options"
+  }
+}

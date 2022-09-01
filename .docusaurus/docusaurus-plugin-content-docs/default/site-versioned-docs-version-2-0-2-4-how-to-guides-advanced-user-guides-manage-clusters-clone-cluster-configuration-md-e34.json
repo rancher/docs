@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration",
+  "title": "Cloning Clusters",
+  "description": "If you have a cluster in Rancher that you want to use as a template for creating similar clusters, you can use Rancher CLI to clone the cluster's configuration, edit it, and then use it to quickly launch the cloned cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cloning Clusters",
+    "weight": 2035,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-provisioning/cloning-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Projects and Kubernetes Namespaces with Rancher",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces"
+  },
+  "next": {
+    "title": "Certificate Rotation",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing",
+  "title": "7. Load Balancing",
+  "description": "If your applications are public-facing and consume significant traffic, you should place a load balancer in front of your cluster so that users can always access their apps without service interruption. Typically, you can fulfill a high volume of service requests by horizontally scaling your deployment, which spins up additional application containers as traffic ramps up. However, this technique requires routing that distributes traffic across your nodes efficiently. In cases where you need to accommodate public traffic that scales up and down, you'll need a load balancer.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing.md",
+  "sourceDirName": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x",
+  "slug": "/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "7. Load Balancing",
+    "weight": 700,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/load-balancing/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "6. Service Discovery",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/discover-services"
+  },
+  "next": {
+    "title": "advanced-user-guides",
+    "permalink": "/2.0-2.4/pages-for-subheaders/advanced-user-guides"
+  }
+}

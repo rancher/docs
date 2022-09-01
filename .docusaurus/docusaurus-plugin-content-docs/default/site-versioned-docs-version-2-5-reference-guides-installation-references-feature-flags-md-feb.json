@@ -1,0 +1,26 @@
+{
+  "unversionedId": "reference-guides/installation-references/feature-flags",
+  "id": "version-2.5/reference-guides/installation-references/feature-flags",
+  "title": "feature-flags",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/installation-references/feature-flags.md",
+  "sourceDirName": "reference-guides/installation-references",
+  "slug": "/reference-guides/installation-references/feature-flags",
+  "permalink": "/2.5/reference-guides/installation-references/feature-flags",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/installation-references/feature-flags.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "TLS Settings",
+    "permalink": "/2.5/reference-guides/installation-references/tls-settings"
+  },
+  "next": {
+    "title": "Creating an EKS Cluster",
+    "permalink": "/2.5/pages-for-subheaders/amazon-eks-permissions"
+  }
+}

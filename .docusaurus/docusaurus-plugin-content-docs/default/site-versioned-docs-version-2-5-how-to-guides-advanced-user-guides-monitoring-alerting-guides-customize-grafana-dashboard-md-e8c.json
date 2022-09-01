@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard",
+  "title": "Customizing Grafana Dashboards",
+  "description": "In this section, you'll learn how to customize the Grafana dashboard to show metrics that apply to a certain container.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-alerting-guides",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/customize-grafana-dashboard.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Customizing Grafana Dashboards",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Monitoring for a Workload",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads"
+  },
+  "next": {
+    "title": "Persistent Grafana Dashboards",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/create-persistent-grafana-dashboard"
+  }
+}

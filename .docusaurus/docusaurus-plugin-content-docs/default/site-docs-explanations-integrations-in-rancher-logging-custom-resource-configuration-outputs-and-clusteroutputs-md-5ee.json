@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs",
+  "id": "explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs",
+  "title": "Outputs and ClusterOutputs",
+  "description": "For the full details on configuring Outputs and ClusterOutputs, see the Banzai Cloud Logging operator documentation.",
+  "source": "@site/docs/explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs.md",
+  "sourceDirName": "explanations/integrations-in-rancher/logging/custom-resource-configuration",
+  "slug": "/explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs",
+  "permalink": "/docs/explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Outputs and ClusterOutputs",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Flows and ClusterFlows",
+    "permalink": "/docs/explanations/integrations-in-rancher/logging/custom-resource-configuration/flows-and-clusterflows"
+  },
+  "next": {
+    "title": "Monitoring and Alerting",
+    "permalink": "/docs/pages-for-subheaders/monitoring-and-alerting"
+  }
+}

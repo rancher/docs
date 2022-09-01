@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/enable-experimental-features",
+  "id": "version-2.5/pages-for-subheaders/enable-experimental-features",
+  "title": "Enabling Experimental Features",
+  "description": "Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an unsupported storage type outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/enable-experimental-features.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/enable-experimental-features",
+  "permalink": "/2.5/pages-for-subheaders/enable-experimental-features",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/enable-experimental-features.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Enabling Experimental Features",
+    "weight": 17,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/feature-flags/",
+      "/rancher/v2.5/en/admin-settings/feature-flags/",
+      "/rancher/v2.x/en/installation/resources/feature-flags/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Advanced",
+    "permalink": "/2.5/pages-for-subheaders/advanced-options"
+  },
+  "next": {
+    "title": "Running on ARM64 (Experimental)",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64"
+  }
+}

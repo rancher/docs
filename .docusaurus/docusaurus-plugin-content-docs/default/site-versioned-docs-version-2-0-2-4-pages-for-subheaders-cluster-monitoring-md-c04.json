@@ -1,0 +1,39 @@
+{
+  "unversionedId": "pages-for-subheaders/cluster-monitoring",
+  "id": "version-2.0-2.4/pages-for-subheaders/cluster-monitoring",
+  "title": "Integrating Rancher and Prometheus for Cluster Monitoring",
+  "description": "Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-monitoring.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cluster-monitoring",
+  "permalink": "/2.0-2.4/pages-for-subheaders/cluster-monitoring",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-monitoring.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Integrating Rancher and Prometheus for Cluster Monitoring",
+    "shortTitle": "Monitoring",
+    "description": "Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/monitoring",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/monitoring/cluster-monitoring",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/monitoring/cluster-monitoring",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Default Alerts for Cluster Monitoring",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-alerts/default-alerts"
+  },
+  "next": {
+    "title": "Cluster Metrics",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics"
+  }
+}

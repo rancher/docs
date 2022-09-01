@@ -1,0 +1,37 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-v2.6-hardening-guides",
+  "id": "pages-for-subheaders/rancher-v2.6-hardening-guides",
+  "title": "Self-Assessment and Hardening Guides for Rancher v2.6",
+  "description": "Rancher provides specific security hardening guides for each supported Rancher's Kubernetes distributions.",
+  "source": "@site/docs/pages-for-subheaders/rancher-v2.6-hardening-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-v2.6-hardening-guides",
+  "permalink": "/docs/pages-for-subheaders/rancher-v2.6-hardening-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/rancher-v2.6-hardening-guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Self-Assessment and Hardening Guides for Rancher v2.6",
+    "shortTitle": "Rancher v2.6 Hardening Guides",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.6/en/security/rancher-2.5/",
+      "/rancher/v2.6/en/security/rancher-2.5/1.5-hardening-2.5/",
+      "/rancher/v2.6/en/security/rancher-2.5/1.5-benchmark-2.5/",
+      "/rancher/v2.6/en/security/rancher-2.5/1.6-hardening-2.5/",
+      "/rancher/v2.6/en/security/rancher-2.5/1.6-benchmark-2.5/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/docs/pages-for-subheaders/rancher-security"
+  },
+  "next": {
+    "title": "RKE Hardening Guide with CIS v1.6 Benchmark",
+    "permalink": "/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke1-hardening-guide-with-cis-v1.6-benchmark"
+  }
+}

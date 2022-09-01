@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics",
+  "title": "Viewing Metrics",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-monitoring",
+  "slug": "/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/viewing-metrics.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Viewing Metrics",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/monitoring/viewing-metrics",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/monitoring/viewing-metrics",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/viewing-metrics",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/viewing-metrics",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/viewing-metrics/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Prometheus Configuration",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/prometheus"
+  },
+  "next": {
+    "title": "OPA Gatekeeper",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/opa-gatekeeper"
+  }
+}

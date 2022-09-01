@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/configure-microsoft-ad-federation-service-saml",
+  "id": "pages-for-subheaders/configure-microsoft-ad-federation-service-saml",
+  "title": "Configuring Microsoft Active Directory Federation Service (SAML)",
+  "description": "If your organization uses Microsoft Active Directory Federation Services (AD FS) for user authentication, you can configure Rancher to allow your users to log in using their AD FS credentials.",
+  "source": "@site/docs/pages-for-subheaders/configure-microsoft-ad-federation-service-saml.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/configure-microsoft-ad-federation-service-saml",
+  "permalink": "/docs/pages-for-subheaders/configure-microsoft-ad-federation-service-saml",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/configure-microsoft-ad-federation-service-saml.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Microsoft Active Directory Federation Service (SAML)",
+    "weight": 1205
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring Okta (SAML)",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/authentication-config/configure-okta-saml"
+  },
+  "next": {
+    "title": "1. Configuring Microsoft AD FS for Rancher",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-ms-adfs-for-rancher"
+  }
+}

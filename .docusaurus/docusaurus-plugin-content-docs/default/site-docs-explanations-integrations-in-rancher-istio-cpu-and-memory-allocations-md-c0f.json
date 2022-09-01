@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/istio/cpu-and-memory-allocations",
+  "id": "explanations/integrations-in-rancher/istio/cpu-and-memory-allocations",
+  "title": "CPU and Memory Allocations",
+  "description": "This section describes the minimum recommended computing resources for the Istio components in a cluster.",
+  "source": "@site/docs/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations.md",
+  "sourceDirName": "explanations/integrations-in-rancher/istio",
+  "slug": "/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations",
+  "permalink": "/docs/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CPU and Memory Allocations",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Istio",
+    "permalink": "/docs/pages-for-subheaders/istio"
+  },
+  "next": {
+    "title": "Role-based Access Control",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/rbac-for-istio"
+  }
+}

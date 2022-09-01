@@ -1,0 +1,26 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule",
+  "title": "configure-alerts-for-periodic-scan-on-a-schedule",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/cis-scan-guides",
+  "slug": "/how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "enable-alerting-for-rancher-cis-benchmark",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/enable-alerting-for-rancher-cis-benchmark"
+  },
+  "next": {
+    "title": "create-a-custom-benchmark-version-to-run",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/create-a-custom-benchmark-version-to-run"
+  }
+}

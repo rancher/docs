@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/monitoring-v2-configuration/helm-chart-options",
+  "id": "version-2.5/reference-guides/monitoring-v2-configuration/helm-chart-options",
+  "title": "Helm Chart Options",
+  "description": "- Configuring Resource Limits and Requests",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/monitoring-v2-configuration/helm-chart-options.md",
+  "sourceDirName": "reference-guides/monitoring-v2-configuration",
+  "slug": "/reference-guides/monitoring-v2-configuration/helm-chart-options",
+  "permalink": "/2.5/reference-guides/monitoring-v2-configuration/helm-chart-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/monitoring-v2-configuration/helm-chart-options.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Helm Chart Options",
+    "weight": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ServiceMonitor and PodMonitor Configuration",
+    "permalink": "/2.5/reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors"
+  },
+  "next": {
+    "title": "Examples",
+    "permalink": "/2.5/reference-guides/monitoring-v2-configuration/examples"
+  }
+}

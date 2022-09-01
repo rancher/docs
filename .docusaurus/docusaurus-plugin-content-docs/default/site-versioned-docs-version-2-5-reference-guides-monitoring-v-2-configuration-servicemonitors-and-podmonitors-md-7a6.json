@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors",
+  "id": "version-2.5/reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors",
+  "title": "ServiceMonitor and PodMonitor Configuration",
+  "description": "ServiceMonitors and PodMonitors are both pseudo-CRDs that map the scrape configuration of the Prometheus custom resource.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors.md",
+  "sourceDirName": "reference-guides/monitoring-v2-configuration",
+  "slug": "/reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors",
+  "permalink": "/2.5/reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "ServiceMonitor and PodMonitor Configuration",
+    "shortTitle": "ServiceMonitors and PodMonitors",
+    "weight": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Route Configuration",
+    "permalink": "/2.5/reference-guides/monitoring-v2-configuration/routes"
+  },
+  "next": {
+    "title": "Helm Chart Options",
+    "permalink": "/2.5/reference-guides/monitoring-v2-configuration/helm-chart-options"
+  }
+}

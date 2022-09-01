@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies",
+  "title": "Pod Security Policies",
+  "description": "These cluster options are only available for clusters in which Rancher has launched Kubernetes.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-projects",
+  "slug": "/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pod Security Policies",
+    "weight": 5600
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher's CI/CD Pipelines",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines"
+  },
+  "next": {
+    "title": "Project Resource Quotas",
+    "permalink": "/2.0-2.4/pages-for-subheaders/manage-project-resource-quotas"
+  }
+}

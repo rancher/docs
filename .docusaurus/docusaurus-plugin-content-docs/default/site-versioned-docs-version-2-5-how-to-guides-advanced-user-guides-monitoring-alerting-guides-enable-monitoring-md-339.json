@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring",
+  "title": "Enable Monitoring",
+  "description": "As an administrator or cluster owner, you can configure Rancher to deploy Prometheus to monitor your Kubernetes cluster.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-alerting-guides",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Enable Monitoring",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Monitoring Guides",
+    "permalink": "/2.5/pages-for-subheaders/monitoring-alerting-guides"
+  },
+  "next": {
+    "title": "Uninstall Monitoring",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring"
+  }
+}

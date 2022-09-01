@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/helm2",
+  "id": "version-2.0-2.4/pages-for-subheaders/helm2",
+  "title": "Kubernetes Installation Using Helm 2",
+  "description": "After Helm 3 was released, the Rancher installation instructions were updated to use Helm 3.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm2",
+  "permalink": "/2.0-2.4/pages-for-subheaders/helm2",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Installation Using Helm 2",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features"
+  },
+  "next": {
+    "title": "1. Create Nodes and Load Balancer",
+    "permalink": "/2.0-2.4/pages-for-subheaders/helm2-create-nodes-lb"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "unversionedId": "explanations",
+  "id": "version-2.0-2.4/explanations",
+  "title": "explanations",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations.md",
+  "sourceDirName": ".",
+  "slug": "/explanations",
+  "permalink": "/2.0-2.4/explanations",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migration Tools CLI Reference",
+    "permalink": "/2.0-2.4/reference-guides/v1.6-migration/migration-tools-cli-reference"
+  },
+  "next": {
+    "title": "integrations-in-rancher",
+    "permalink": "/2.0-2.4/pages-for-subheaders/integrations-in-rancher"
+  }
+}

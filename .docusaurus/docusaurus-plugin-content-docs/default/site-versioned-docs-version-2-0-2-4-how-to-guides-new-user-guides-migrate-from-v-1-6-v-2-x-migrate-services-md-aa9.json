@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services",
+  "title": "2. Migrate Your Services",
+  "description": "Although your services from v1.6 won't work in Rancher v2.x by default, that doesn't mean you have to start again from square one, manually rebuilding your applications in v2.x. To help with migration from v1.6 to v2.x, Rancher has developed a migration tool. The migration-tools CLI is a utility that helps you recreate your applications in Rancher v2.x. This tool exports your Rancher v1.6 services as Compose files and converts them to a Kubernetes manifest that Rancher v2.x can consume.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services.md",
+  "sourceDirName": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x",
+  "slug": "/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Migrate Your Services",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/run-migration-tool/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Get Started",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/install-and-configure-rancher"
+  },
+  "next": {
+    "title": "3. Expose Your Services",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services"
+  }
+}

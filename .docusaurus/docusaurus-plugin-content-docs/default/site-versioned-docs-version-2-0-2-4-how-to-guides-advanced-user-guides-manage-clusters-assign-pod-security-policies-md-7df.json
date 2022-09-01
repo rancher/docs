@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies",
+  "title": "Assigning Pod Security Policies",
+  "description": "Pod Security Policies are objects that control security-sensitive aspects of pod specification (like root privileges).",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Assigning Pod Security Policies",
+    "weight": 2260
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding a Pod Security Policy",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy"
+  },
+  "next": {
+    "title": "Project Administration",
+    "permalink": "/2.0-2.4/pages-for-subheaders/manage-projects"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/creating-a-vsphere-cluster",
+  "id": "version-2.0-2.4/pages-for-subheaders/creating-a-vsphere-cluster",
+  "title": "VSphere Node Template Configuration",
+  "description": "The vSphere node templates in Rancher were updated in the following Rancher versions. Refer to the newest configuration reference that is less than or equal to your Rancher version:",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/creating-a-vsphere-cluster.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/creating-a-vsphere-cluster",
+  "permalink": "/2.0-2.4/pages-for-subheaders/creating-a-vsphere-cluster",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/creating-a-vsphere-cluster.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "VSphere Node Template Configuration",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-provisioning/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/node-template-reference",
+      "/rancher/v2.0-v2.4/en/cluster-provisionin/rke-clusters/node-pools/vsphere/provisioning-vsphere-clusters/enabling-uuids"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Azure Node Template Configuration",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/azure"
+  },
+  "next": {
+    "title": "vSphere Node Template Configuration in Rancher v2.3.3",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.3.3"
+  }
+}

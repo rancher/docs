@@ -1,0 +1,37 @@
+{
+  "unversionedId": "pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster",
+  "id": "version-2.0-2.4/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster",
+  "title": "Install Rancher on a Kubernetes Cluster",
+  "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster",
+  "permalink": "/2.0-2.4/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Install Rancher on a Kubernetes Cluster",
+    "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/k8s-install/",
+      "/rancher/v2.0-v2.4/en/installation/k8s-install/helm-rancher",
+      "/rancher/v2.0-v2.4/en/installation/k8s-install/kubernetes-rke",
+      "/rancher/v2.0-v2.4/en/installation/ha-server-install",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/install"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Port Requirements",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/installation-requirements/port-requirements"
+  },
+  "next": {
+    "title": "Rollbacks",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks"
+  }
+}

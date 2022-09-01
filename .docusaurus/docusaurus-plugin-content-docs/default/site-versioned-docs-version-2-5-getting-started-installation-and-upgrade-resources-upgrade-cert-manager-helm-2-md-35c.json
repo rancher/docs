@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2",
+  "id": "version-2.5/getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2",
+  "title": "Upgrading Cert-Manager with Helm 2",
+  "description": "Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Cert-Manager with Helm 2",
+    "weight": 2040,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/upgrading-cert-manager/helm-2-instructions",
+      "/rancher/v2.5/en/installation/resources/choosing-version/encryption/upgrading-cert-manager/helm-2-instructions"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading Cert-Manager",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/upgrade-cert-manager"
+  },
+  "next": {
+    "title": "Updating the Rancher Certificate",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/update-rancher-certificate"
+  }
+}

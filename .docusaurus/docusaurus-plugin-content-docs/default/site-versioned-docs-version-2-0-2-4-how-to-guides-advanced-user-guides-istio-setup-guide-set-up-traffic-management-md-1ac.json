@@ -1,0 +1,35 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "title": "6. Set up Istio's Components for Traffic Management",
+  "description": "A central advantage of traffic management in Istio is that it allows dynamic request routing. Some common applications for dynamic request routing include canary deployments and blue/green deployments. The two key resources in Istio traffic management are virtual services and destination rules.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "6. Set up Istio's Components for Traffic Management",
+    "weight": 6,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup/set-up-traffic-management",
+      "/rancher/v2.0-v2.4/en/istio/legacy/setup/set-up-traffic-management",
+      "/rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup/set-up-traffic-management",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/set-up-traffic-management/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "5. Set up the Istio Gateway",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway"
+  },
+  "next": {
+    "title": "7. Generate and View Traffic",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic"
+  }
+}

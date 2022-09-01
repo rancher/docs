@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/introduction",
+  "id": "pages-for-subheaders/introduction",
+  "title": "introduction",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/introduction.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/introduction",
+  "permalink": "/docs/pages-for-subheaders/introduction",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/introduction.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "getting-started",
+    "permalink": "/docs/getting-started"
+  },
+  "next": {
+    "title": "Overview",
+    "permalink": "/docs/getting-started/introduction/overview"
+  }
+}

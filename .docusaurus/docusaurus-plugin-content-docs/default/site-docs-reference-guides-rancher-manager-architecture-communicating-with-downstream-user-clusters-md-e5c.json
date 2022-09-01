@@ -1,0 +1,26 @@
+{
+  "unversionedId": "reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters",
+  "id": "reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters",
+  "title": "communicating-with-downstream-user-clusters",
+  "description": "",
+  "source": "@site/docs/reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md",
+  "sourceDirName": "reference-guides/rancher-manager-architecture",
+  "slug": "/reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters",
+  "permalink": "/docs/reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rancher-manager-architecture/communicating-with-downstream-user-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "rancher-server-and-components",
+    "permalink": "/docs/reference-guides/rancher-manager-architecture/rancher-server-and-components"
+  },
+  "next": {
+    "title": "Architecture Recommendations",
+    "permalink": "/docs/reference-guides/rancher-manager-architecture/architecture-recommendations"
+  }
+}

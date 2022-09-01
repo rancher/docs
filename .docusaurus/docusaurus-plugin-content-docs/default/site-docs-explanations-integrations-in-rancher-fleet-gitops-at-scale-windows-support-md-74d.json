@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support",
+  "id": "explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support",
+  "title": "Windows Support",
+  "description": "Prior to Rancher v2.5.6, the agent did not have native Windows manifests on downstream clusters with Windows nodes. This would result in a failing agent pod for the cluster.",
+  "source": "@site/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support.md",
+  "sourceDirName": "explanations/integrations-in-rancher/fleet-gitops-at-scale",
+  "slug": "/explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support",
+  "permalink": "/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Windows Support",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Architecture",
+    "permalink": "/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture"
+  },
+  "next": {
+    "title": "Using Fleet Behind a Proxy",
+    "permalink": "/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy"
+  }
+}

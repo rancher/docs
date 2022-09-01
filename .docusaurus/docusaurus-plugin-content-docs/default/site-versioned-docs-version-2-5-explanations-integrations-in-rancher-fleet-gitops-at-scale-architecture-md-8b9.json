@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture",
+  "id": "version-2.5/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture",
+  "title": "Architecture",
+  "description": "Fleet can manage deployments from git of raw Kubernetes YAML, Helm charts, or Kustomize or any combination of the three. Regardless of the source, all resources are dynamically turned into Helm charts, and Helm is used as the engine to deploy everything in the cluster. This gives you a high degree of control, consistency, and auditability. Fleet focuses not only on the ability to scale, but to give one a high degree of control and visibility to exactly what is installed on the cluster.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture.md",
+  "sourceDirName": "explanations/integrations-in-rancher/fleet-gitops-at-scale",
+  "slug": "/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture",
+  "permalink": "/2.5/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/fleet-gitops-at-scale/architecture.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Architecture",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "fleet-gitops-at-scale",
+    "permalink": "/2.5/pages-for-subheaders/fleet-gitops-at-scale"
+  },
+  "next": {
+    "title": "Windows Support",
+    "permalink": "/2.5/explanations/integrations-in-rancher/fleet-gitops-at-scale/windows-support"
+  }
+}

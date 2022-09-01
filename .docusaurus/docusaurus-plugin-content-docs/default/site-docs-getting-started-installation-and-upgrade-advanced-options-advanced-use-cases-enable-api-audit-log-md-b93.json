@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log",
+  "id": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log",
+  "title": "Enabling the API Audit Log to Record System Events",
+  "description": "You can enable the API audit log to record the sequence of system events initiated by individual users. You can know what happened, when it happened, who initiated it, and what cluster it affected. When you enable this feature, all requests to the Rancher API and all responses from it are written to a log.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log",
+  "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Enabling the API Audit Log to Record System Events",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tuning etcd for Large Installations",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs"
+  },
+  "next": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer"
+  }
+}

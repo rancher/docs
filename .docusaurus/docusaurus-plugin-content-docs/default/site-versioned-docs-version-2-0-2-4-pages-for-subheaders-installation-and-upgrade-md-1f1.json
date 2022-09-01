@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/installation-and-upgrade",
+  "id": "version-2.0-2.4/pages-for-subheaders/installation-and-upgrade",
+  "title": "Installing/Upgrading Rancher",
+  "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/installation-and-upgrade.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/installation-and-upgrade",
+  "permalink": "/2.0-2.4/pages-for-subheaders/installation-and-upgrade",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/installation-and-upgrade.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing/Upgrading Rancher",
+    "description": "Learn how to install Rancher in development and production environments. Read about single node and high availability installation",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/how-ha-works/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Workload with NodePort Quick Start",
+    "permalink": "/2.0-2.4/getting-started/quick-start-guides/deploy-workloads/nodeports"
+  },
+  "next": {
+    "title": "Installation Requirements",
+    "permalink": "/2.0-2.4/pages-for-subheaders/installation-requirements"
+  }
+}

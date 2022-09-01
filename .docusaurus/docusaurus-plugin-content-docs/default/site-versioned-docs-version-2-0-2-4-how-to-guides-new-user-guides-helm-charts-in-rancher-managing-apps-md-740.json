@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps",
+  "title": "Managing Catalog Apps",
+  "description": "After deploying an application, one of the benefits of using an application versus individual workloads/resources is the ease of being able to manage many workloads/resources applications. Apps can be cloned, upgraded or rolled back.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps.md",
+  "sourceDirName": "how-to-guides/new-user-guides/helm-charts-in-rancher",
+  "slug": "/how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Managing Catalog Apps",
+    "weight": 500,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/catalog/managing-apps",
+      "/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/managing-apps"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating Catalog Apps",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/creating-apps"
+  },
+  "next": {
+    "title": "Multi-Cluster Apps",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps"
+  }
+}

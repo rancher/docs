@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.2.0",
+  "id": "version-2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.2.0",
+  "title": "vSphere Node Template Configuration in Rancher v2.2.0",
+  "description": "- Account Access",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.2.0.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.2.0",
+  "permalink": "/2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.2.0",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.2.0.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "vSphere Node Template Configuration in Rancher v2.2.0",
+    "shortTitle": "v2.2.0",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/vsphere/vsphere-node-template-config/v2.2.0/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "vSphere Node Template Configuration in Rancher v2.3.0",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.3.0"
+  },
+  "next": {
+    "title": "vSphere Node Template Configuration in Rancher v2.0.4",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere/v2.0.4"
+  }
+}

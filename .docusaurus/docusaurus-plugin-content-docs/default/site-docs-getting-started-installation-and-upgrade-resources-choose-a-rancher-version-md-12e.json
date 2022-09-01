@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/choose-a-rancher-version",
+  "id": "getting-started/installation-and-upgrade/resources/choose-a-rancher-version",
+  "title": "Choosing a Rancher Version",
+  "description": "This section describes how to choose a Rancher version.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/resources/choose-a-rancher-version.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/choose-a-rancher-version",
+  "permalink": "/docs/getting-started/installation-and-upgrade/resources/choose-a-rancher-version",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/resources/choose-a-rancher-version.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Choosing a Rancher Version",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Resources",
+    "permalink": "/docs/pages-for-subheaders/resources"
+  },
+  "next": {
+    "title": "Helm Version Requirements",
+    "permalink": "/docs/getting-started/installation-and-upgrade/resources/helm-version-requirements"
+  }
+}

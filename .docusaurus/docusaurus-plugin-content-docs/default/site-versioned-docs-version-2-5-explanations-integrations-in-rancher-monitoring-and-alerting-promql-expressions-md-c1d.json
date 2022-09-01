@@ -1,0 +1,37 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions",
+  "id": "version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions",
+  "title": "PromQL Expression Reference",
+  "description": "The PromQL expressions in this doc can be used to configure alerts.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions.md",
+  "sourceDirName": "explanations/integrations-in-rancher/monitoring-and-alerting",
+  "slug": "/explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions",
+  "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/monitoring-and-alerting/promql-expressions.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "PromQL Expression Reference",
+    "weight": 6,
+    "aliases": [
+      "/rancher/v2.5/en/project-admin/tools/monitoring/expression",
+      "/rancher/v2.5/en/cluster-admin/tools/monitoring/expression",
+      "/rancher/v2.5/en/monitoring-alerting/expression",
+      "/rancher/v2.5/en/monitoring-alerting/configuration/expression",
+      "/rancher/v2.5/en/monitoring/alerting/configuration/expression",
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/expression/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Windows Cluster Support for Monitoring V2",
+    "permalink": "/2.5/explanations/integrations-in-rancher/monitoring-and-alerting/windows-support"
+  },
+  "next": {
+    "title": "OPA Gatekeeper",
+    "permalink": "/2.5/explanations/integrations-in-rancher/opa-gatekeeper"
+  }
+}

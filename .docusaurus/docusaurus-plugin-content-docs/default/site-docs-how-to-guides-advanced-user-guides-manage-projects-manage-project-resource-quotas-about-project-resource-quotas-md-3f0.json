@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas",
+  "id": "how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas",
+  "title": "How Resource Quotas Work in Rancher Projects",
+  "description": "Resource quotas in Rancher include the same functionality as the native version of Kubernetes. However, in Rancher, resource quotas have been extended so that you can apply them to projects.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas",
+  "slug": "/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "How Resource Quotas Work in Rancher Projects",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Project Resource Quotas",
+    "permalink": "/docs/pages-for-subheaders/manage-project-resource-quotas"
+  },
+  "next": {
+    "title": "Overriding the Default Limit for a Namespace",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/override-default-limit-in-namespaces"
+  }
+}

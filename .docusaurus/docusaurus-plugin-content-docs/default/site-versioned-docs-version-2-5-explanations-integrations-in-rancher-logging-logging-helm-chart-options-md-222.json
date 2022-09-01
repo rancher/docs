@@ -1,0 +1,30 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/logging/logging-helm-chart-options",
+  "id": "version-2.5/explanations/integrations-in-rancher/logging/logging-helm-chart-options",
+  "title": "rancher-logging Helm Chart Options",
+  "description": "- Enable/Disable Windows Node Logging",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/logging-helm-chart-options.md",
+  "sourceDirName": "explanations/integrations-in-rancher/logging",
+  "slug": "/explanations/integrations-in-rancher/logging/logging-helm-chart-options",
+  "permalink": "/2.5/explanations/integrations-in-rancher/logging/logging-helm-chart-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/logging-helm-chart-options.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "rancher-logging Helm Chart Options",
+    "shortTitle": "Helm Chart Options",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Role-based Access Control for Logging",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/rbac-for-logging"
+  },
+  "next": {
+    "title": "Working with Taints and Tolerations",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/taints-and-tolerations"
+  }
+}

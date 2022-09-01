@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq/security",
+  "id": "faq/security",
+  "title": "Security",
+  "description": "Is there a Hardening Guide?",
+  "source": "@site/docs/faq/security.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/security",
+  "permalink": "/docs/faq/security",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/faq/security.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security",
+    "weight": 8007
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Technical",
+    "permalink": "/docs/faq/technical-items"
+  },
+  "next": {
+    "title": "Telemetry",
+    "permalink": "/docs/faq/telemetry"
+  }
+}

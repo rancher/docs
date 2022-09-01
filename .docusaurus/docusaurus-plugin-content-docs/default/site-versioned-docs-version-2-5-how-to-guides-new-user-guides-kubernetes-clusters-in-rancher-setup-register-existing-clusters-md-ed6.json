@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters",
+  "id": "version-2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters",
+  "title": "Registering Existing Clusters",
+  "description": "The cluster registration feature replaced the feature to import clusters.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters",
+  "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Registering Existing Clusters",
+    "weight": 6,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-provisioning/imported-clusters",
+      "/rancher/v2.x/en/cluster-provisioning/imported-clusters/",
+      "/rancher/v2.x/en/cluster-provisioning/registered-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Agents",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/about-rancher-agents"
+  },
+  "next": {
+    "title": "Kubernetes Resources",
+    "permalink": "/2.5/pages-for-subheaders/kubernetes-resources-setup"
+  }
+}

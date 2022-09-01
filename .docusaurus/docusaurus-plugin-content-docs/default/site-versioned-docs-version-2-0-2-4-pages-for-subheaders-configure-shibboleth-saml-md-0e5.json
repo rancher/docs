@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/configure-shibboleth-saml",
+  "id": "version-2.0-2.4/pages-for-subheaders/configure-shibboleth-saml",
+  "title": "Configuring Shibboleth (SAML)",
+  "description": "Available as of v2.4.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/configure-shibboleth-saml.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/configure-shibboleth-saml",
+  "permalink": "/2.0-2.4/pages-for-subheaders/configure-shibboleth-saml",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/configure-shibboleth-saml.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Shibboleth (SAML)",
+    "weight": 1210
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Configuring Rancher for Microsoft AD FS",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-rancher-for-ms-adfs"
+  },
+  "next": {
+    "title": "Group Permissions with Shibboleth and OpenLDAP",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-shibboleth-saml/about-group-permissions"
+  }
+}

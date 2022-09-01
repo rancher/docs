@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services",
+  "title": "3. Expose Your Services",
+  "description": "In testing environments, you usually need to route external traffic to your cluster containers by using an unadvertised IP and port number, providing users access to their apps. You can accomplish this goal using port mapping, which exposes a workload (i.e., service) publicly over a specific port, provided you know your node IP address(es). You can either map a port using HostPorts (which exposes a service on a specified port on a single node) or NodePorts (which exposes a service on all nodes on a single port).",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services.md",
+  "sourceDirName": "how-to-guides/new-user-guides/migrate-from-v1.6-v2.x",
+  "slug": "/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/expose-services.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "3. Expose Your Services",
+    "weight": 400,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/expose-services/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Migrate Your Services",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/migrate-services"
+  },
+  "next": {
+    "title": "4. Configure Health Checks",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/monitor-apps"
+  }
+}

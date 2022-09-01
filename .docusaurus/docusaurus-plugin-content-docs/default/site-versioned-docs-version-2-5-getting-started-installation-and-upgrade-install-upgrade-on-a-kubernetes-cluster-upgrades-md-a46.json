@@ -1,0 +1,45 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "id": "version-2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "title": "Upgrades",
+  "description": "The following instructions will guide you through upgrading a Rancher server that was installed on a Kubernetes cluster with Helm. These steps also apply to air gap installs with Helm.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrades",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/upgrades/upgrades",
+      "/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades",
+      "/rancher/v2.5/en/upgrades/upgrades/ha-server-upgrade-helm-airgap",
+      "/rancher/v2.5/en/upgradeinstallation/install-rancher-on-k8s/upgrades/air-gap-upgrade/",
+      "/rancher/v2.5/en/upgrades/upgrades/ha",
+      "/rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades/upgrades/ha",
+      "/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades/",
+      "/rancher/v2.5/en/upgrades/upgrades/ha-server-upgrade-helm/",
+      "/rancher/v2.5/en/installation/upgrades-rollbacks/upgrades/ha",
+      "/rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades",
+      "/rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/ha",
+      "/rancher/v2.5/en/installation/upgrades-rollbacks/",
+      "/rancher/v2.5/en/upgrades/",
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rollbacks",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks"
+  },
+  "next": {
+    "title": "Rendering the Helm Template in an Air Gapped Environment",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/air-gapped-upgrades"
+  }
+}

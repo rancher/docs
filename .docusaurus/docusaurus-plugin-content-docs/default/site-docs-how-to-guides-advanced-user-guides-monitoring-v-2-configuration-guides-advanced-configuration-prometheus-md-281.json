@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "id": "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "title": "Prometheus Configuration",
+  "description": "It is usually not necessary to directly edit the Prometheus custom resource because the monitoring application automatically updates it based on changes to ServiceMonitors and PodMonitors.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Prometheus Configuration",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Alertmanager Configuration",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager"
+  },
+  "next": {
+    "title": "Configuring PrometheusRules",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules"
+  }
+}

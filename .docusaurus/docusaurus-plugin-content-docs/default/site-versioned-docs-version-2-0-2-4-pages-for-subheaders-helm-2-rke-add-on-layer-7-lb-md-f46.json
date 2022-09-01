@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/helm2-rke-add-on-layer-7-lb",
+  "id": "version-2.0-2.4/pages-for-subheaders/helm2-rke-add-on-layer-7-lb",
+  "title": "Kubernetes Install with External Load Balancer (HTTPS/Layer 7)",
+  "description": "#### Important: RKE add-on install is only supported up to Rancher v2.0.8",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-rke-add-on-layer-7-lb.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm2-rke-add-on-layer-7-lb",
+  "permalink": "/2.0-2.4/pages-for-subheaders/helm2-rke-add-on-layer-7-lb",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-rke-add-on-layer-7-lb.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Install with External Load Balancer (HTTPS/Layer 7)",
+    "weight": 276,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/ha-server-install-external-lb/",
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/layer-7-lb",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/layer-7-lb/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Amazon NLB Configuration",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-4-lb/nlb"
+  },
+  "next": {
+    "title": "Amazon ALB Configuration",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/layer-7-lb/alb"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks",
+  "id": "version-2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks",
+  "title": "Rollbacks",
+  "description": "- Rolling Back to Rancher v2.5.0+",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rollbacks",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.x/en/upgrades/rollbacks",
+      "/rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks",
+      "/rancher/v2.x/en/upgrades/ha-server-rollbacks",
+      "/rancher/v2.x/en/upgrades/rollbacks/ha-server-rollbacks",
+      "/rancher/v2.x/en/installation/upgrades-rollbacks/rollbacks/ha-server-rollbacks",
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades-rollbacks/rollbacks",
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/rollbacks/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Install/Upgrade Rancher on a Kubernetes Cluster",
+    "permalink": "/2.5/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster"
+  },
+  "next": {
+    "title": "Upgrades",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades"
+  }
+}

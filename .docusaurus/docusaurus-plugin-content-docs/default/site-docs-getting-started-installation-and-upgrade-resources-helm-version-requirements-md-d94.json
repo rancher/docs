@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/helm-version-requirements",
+  "id": "getting-started/installation-and-upgrade/resources/helm-version-requirements",
+  "title": "Helm Version Requirements",
+  "description": "This section contains the requirements for Helm, which is the tool used to install Rancher on a high-availability Kubernetes cluster.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/resources/helm-version-requirements.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/helm-version-requirements",
+  "permalink": "/docs/getting-started/installation-and-upgrade/resources/helm-version-requirements",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/resources/helm-version-requirements.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Helm Version Requirements",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Choosing a Rancher Version",
+    "permalink": "/docs/getting-started/installation-and-upgrade/resources/choose-a-rancher-version"
+  },
+  "next": {
+    "title": "Adding TLS Secrets",
+    "permalink": "/docs/getting-started/installation-and-upgrade/resources/add-tls-secrets"
+  }
+}

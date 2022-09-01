@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "id": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "title": "Troubleshooting the Rancher Server Kubernetes Cluster",
+  "description": "This section describes how to troubleshoot an installation of Rancher on a Kubernetes cluster.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "permalink": "/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting the Rancher Server Kubernetes Cluster",
+    "weight": 276
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Rancher on a Google Kubernetes Engine Cluster",
+    "permalink": "/docs/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rancher-on-gke"
+  },
+  "next": {
+    "title": "Other Installation Methods",
+    "permalink": "/docs/pages-for-subheaders/other-installation-methods"
+  }
+}

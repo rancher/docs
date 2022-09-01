@@ -1,0 +1,37 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "title": "Projects and Kubernetes Namespaces with Rancher",
+  "description": "Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Projects and Kubernetes Namespaces with Rancher",
+    "description": "Rancher Projects ease the administrative burden of your cluster and support multi-tenancy. Learn to create projects and divide projects into Kubernetes namespaces",
+    "weight": 2032,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/projects/",
+      "/rancher/v2.5/en/tasks/projects/",
+      "/rancher/v2.5/en/tasks/projects/create-project/",
+      "/rancher/v2.5/en/tasks/projects/create-project/",
+      "/rancher/v2.x/en/cluster-admin/projects-and-namespaces/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "vSphere Storage",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/provisioning-storage-examples/vsphere-storage"
+  },
+  "next": {
+    "title": "Cloning Clusters",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration"
+  }
+}

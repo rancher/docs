@@ -1,0 +1,20 @@
+{
+  "unversionedId": "k8s-in-rancher/horizontal-pod-autoscaler/hpa-background/hpa-background",
+  "id": "k8s-in-rancher/horizontal-pod-autoscaler/hpa-background/hpa-background",
+  "title": "Background Information on HPAs",
+  "description": "The Horizontal Pod Autoscaler (HPA) is a Kubernetes feature that allows you to configure your cluster to automatically scale the services it's running up or down. This section provides explanation on how HPA works with Kubernetes.",
+  "source": "@site/docs/k8s-in-rancher/horizontal-pod-autoscaler/hpa-background/hpa-background.md",
+  "sourceDirName": "k8s-in-rancher/horizontal-pod-autoscaler/hpa-background",
+  "slug": "/k8s-in-rancher/horizontal-pod-autoscaler/hpa-background/",
+  "permalink": "/docs/k8s-in-rancher/horizontal-pod-autoscaler/hpa-background/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/k8s-in-rancher/horizontal-pod-autoscaler/hpa-background/hpa-background.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Background Information on HPAs",
+    "weight": 3027
+  }
+}

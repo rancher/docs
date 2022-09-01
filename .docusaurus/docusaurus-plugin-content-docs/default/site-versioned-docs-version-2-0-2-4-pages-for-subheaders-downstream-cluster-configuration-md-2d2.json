@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/downstream-cluster-configuration",
+  "id": "version-2.0-2.4/pages-for-subheaders/downstream-cluster-configuration",
+  "title": "downstream-cluster-configuration",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/downstream-cluster-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/downstream-cluster-configuration",
+  "permalink": "/2.0-2.4/pages-for-subheaders/downstream-cluster-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/downstream-cluster-configuration.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Agent Options",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options"
+  },
+  "next": {
+    "title": "node-template-configuration",
+    "permalink": "/2.0-2.4/pages-for-subheaders/node-template-configuration"
+  }
+}

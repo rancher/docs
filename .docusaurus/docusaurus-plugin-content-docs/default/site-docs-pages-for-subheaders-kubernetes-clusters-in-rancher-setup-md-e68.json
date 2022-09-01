@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/kubernetes-clusters-in-rancher-setup",
+  "id": "pages-for-subheaders/kubernetes-clusters-in-rancher-setup",
+  "title": "Setting up Kubernetes Clusters in Rancher",
+  "description": "Provisioning Kubernetes Clusters",
+  "source": "@site/docs/pages-for-subheaders/kubernetes-clusters-in-rancher-setup.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/kubernetes-clusters-in-rancher-setup",
+  "permalink": "/docs/pages-for-subheaders/kubernetes-clusters-in-rancher-setup",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/kubernetes-clusters-in-rancher-setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Kubernetes Clusters in Rancher",
+    "description": "Provisioning Kubernetes Clusters",
+    "weight": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Amazon ELB Network Load Balancer",
+    "permalink": "/docs/how-to-guides/new-user-guides/infrastructure-setup/amazon-elb-load-balancer"
+  },
+  "next": {
+    "title": "Node Requirements for Rancher Managed Clusters",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters"
+  }
+}

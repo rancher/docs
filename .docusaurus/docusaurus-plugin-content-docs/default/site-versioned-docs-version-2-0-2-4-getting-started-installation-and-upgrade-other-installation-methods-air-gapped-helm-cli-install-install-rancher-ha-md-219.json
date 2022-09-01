@@ -1,0 +1,36 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha",
+  "title": "4. Install Rancher",
+  "description": "This section is about how to deploy Rancher for your air gapped environment. An air gapped environment could be where Rancher server will be installed offline, behind a firewall, or behind a proxy. There are tabs for either a high availability (recommended) or a Docker installation.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-rancher-ha.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "4. Install Rancher",
+    "weight": 400,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/config-rancher-system-charts/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/config-rancher-for-private-reg/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-single-node/install-rancher",
+      "/rancher/v2.0-v2.4/en/installation/air-gap/install-rancher",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/install-rancher/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "3. Install Kubernetes (Skip for Docker Installs)",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes"
+  },
+  "next": {
+    "title": "Installing Rancher on a Single Node Using Docker",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rancher-on-a-single-node-with-docker"
+  }
+}

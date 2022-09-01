@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq/deprecated-features-in-v2.5",
+  "id": "faq/deprecated-features-in-v2.5",
+  "title": "Deprecated Features in Rancher",
+  "description": "What is Rancher's Deprecation policy?",
+  "source": "@site/docs/faq/deprecated-features-in-v2.5.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/deprecated-features-in-v2.5",
+  "permalink": "/docs/faq/deprecated-features-in-v2.5",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/faq/deprecated-features-in-v2.5.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deprecated Features in Rancher",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "FAQ",
+    "permalink": "/docs/faq"
+  },
+  "next": {
+    "title": "Installing and Configuring kubectl",
+    "permalink": "/docs/faq/install-and-configure-kubectl"
+  }
+}

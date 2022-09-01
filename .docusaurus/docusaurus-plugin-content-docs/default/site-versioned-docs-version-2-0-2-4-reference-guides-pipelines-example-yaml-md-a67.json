@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/pipelines/example-yaml",
+  "id": "version-2.0-2.4/reference-guides/pipelines/example-yaml",
+  "title": "Example YAML File",
+  "description": "Pipelines can be configured either through the UI or using a yaml file in the repository, i.e. .rancher-pipeline.yml or .rancher-pipeline.yaml.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/pipelines/example-yaml.md",
+  "sourceDirName": "reference-guides/pipelines",
+  "slug": "/reference-guides/pipelines/example-yaml",
+  "permalink": "/2.0-2.4/reference-guides/pipelines/example-yaml",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/pipelines/example-yaml.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Example YAML File",
+    "weight": 501,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tools/pipelines/reference/",
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines/example"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Example Repositories",
+    "permalink": "/2.0-2.4/reference-guides/pipelines/example-repositories"
+  },
+  "next": {
+    "title": "v2.0.x Pipeline Documentation",
+    "permalink": "/2.0-2.4/reference-guides/pipelines/v2.0.x"
+  }
+}

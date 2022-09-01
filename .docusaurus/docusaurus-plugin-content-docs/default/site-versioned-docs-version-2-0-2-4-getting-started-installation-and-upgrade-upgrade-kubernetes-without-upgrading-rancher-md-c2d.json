@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "title": "Upgrading Kubernetes without Upgrading Rancher",
+  "description": "Available as of v2.3.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher.md",
+  "sourceDirName": "getting-started/installation-and-upgrade",
+  "slug": "/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Kubernetes without Upgrading Rancher",
+    "weight": 1120
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading and Rolling Back Kubernetes",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes"
+  },
+  "next": {
+    "title": "Advanced",
+    "permalink": "/2.0-2.4/pages-for-subheaders/advanced-options"
+  }
+}

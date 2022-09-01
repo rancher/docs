@@ -1,0 +1,35 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/node-selectors",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/node-selectors",
+  "title": "3. Select the Nodes Where Istio Components Will be Deployed",
+  "description": "Prerequisite: Your cluster needs a worker node that can designated for Istio. The worker node should meet the resource requirements.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/node-selectors.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/node-selectors",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/node-selectors",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/node-selectors.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "3. Select the Nodes Where Istio Components Will be Deployed",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup/node-selectors",
+      "/rancher/v2.0-v2.4/en/istio/legacy/setup/node-selectors",
+      "/rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup/node-selectors",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/node-selectors/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Enable Istio in a Namespace",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace"
+  },
+  "next": {
+    "title": "4. Add Deployments and Services with the Istio Sidecar",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "reference-guides/best-practices/deployment-strategies",
+  "id": "version-2.0-2.4/reference-guides/best-practices/deployment-strategies",
+  "title": "Rancher Deployment Strategies",
+  "description": "There are two recommended deployment strategies. Each one has its own pros and cons. Read more about which one would fit best for your use case:",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/best-practices/deployment-strategies.md",
+  "sourceDirName": "reference-guides/best-practices",
+  "slug": "/reference-guides/best-practices/deployment-strategies",
+  "permalink": "/2.0-2.4/reference-guides/best-practices/deployment-strategies",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/best-practices/deployment-strategies.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Deployment Strategies",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/best-practices/deployment-strategies",
+      "/rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/deployment-strategies",
+      "/rancher/v2.x/en/best-practices/v2.0-v2.4/deployment-strategies/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tips for Setting Up Containers",
+    "permalink": "/2.0-2.4/reference-guides/best-practices/containers"
+  },
+  "next": {
+    "title": "Tips for Running Rancher",
+    "permalink": "/2.0-2.4/reference-guides/best-practices/deployment-types"
+  }
+}

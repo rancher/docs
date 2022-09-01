@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark",
+  "id": "version-2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark",
+  "title": "CIS Benchmark Rancher Self-Assessment Guide v2.2",
+  "description": "This document is a companion to the Rancher v2.2 security hardening guide. The hardening guide provides prescriptive guidance for hardening a production installation of Rancher, and this benchmark guide is meant to help you evaluate the level of security of the hardened cluster against each control in the benchmark.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark.md",
+  "sourceDirName": "reference-guides/rancher-security/rancher-v2.2-hardening-guides",
+  "slug": "/reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark",
+  "permalink": "/2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/self-assessment-guide-with-cis-v1.4-benchmark.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CIS Benchmark Rancher Self-Assessment Guide v2.2",
+    "weight": 208,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/security/benchmark-2.2",
+      "/rancher/v2.x/en/security/rancher-2.2/benchmark-2.2/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher v2.2",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rancher-v2.2-hardening-guides"
+  },
+  "next": {
+    "title": "Hardening Guide v2.2",
+    "permalink": "/2.0-2.4/reference-guides/rancher-security/rancher-v2.2-hardening-guides/hardening-guide-with-cis-v1.4-benchmark"
+  }
+}

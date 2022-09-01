@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke2-self-assessment-guide-with-cis-v1.6-benchmark",
+  "id": "reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke2-self-assessment-guide-with-cis-v1.6-benchmark",
+  "title": "RKE2 CIS v1.6 Benchmark - Self-Assessment Guide - Rancher v2.6",
+  "description": "CIS v1.6 Kubernetes Benchmark - Rancher v2.6 RKE2 with Kubernetes v1.21 up to v1.23",
+  "source": "@site/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke2-self-assessment-guide-with-cis-v1.6-benchmark.md",
+  "sourceDirName": "reference-guides/rancher-security/rancher-v2.6-hardening-guides",
+  "slug": "/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke2-self-assessment-guide-with-cis-v1.6-benchmark",
+  "permalink": "/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke2-self-assessment-guide-with-cis-v1.6-benchmark",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke2-self-assessment-guide-with-cis-v1.6-benchmark.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE2 CIS v1.6 Benchmark - Self-Assessment Guide - Rancher v2.6",
+    "weight": 101
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE2 Hardening Guide with CIS v1.6 Benchmark",
+    "permalink": "/docs/reference-guides/rancher-security/rancher-v2.6-hardening-guides/rke2-hardening-guide-with-cis-v1.6-benchmark"
+  },
+  "next": {
+    "title": "SELinux RPM",
+    "permalink": "/docs/pages-for-subheaders/selinux-rpm"
+  }
+}

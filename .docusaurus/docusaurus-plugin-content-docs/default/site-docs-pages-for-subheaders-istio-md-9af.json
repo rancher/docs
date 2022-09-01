@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/istio",
+  "id": "pages-for-subheaders/istio",
+  "title": "Istio",
+  "description": "Istio is an open-source tool that makes it easier for DevOps teams to observe, secure, control, and troubleshoot the traffic within a complex network of microservices.",
+  "source": "@site/docs/pages-for-subheaders/istio.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/istio",
+  "permalink": "/docs/pages-for-subheaders/istio",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/istio.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Istio",
+    "weight": 14
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Harvester Integration",
+    "permalink": "/docs/explanations/integrations-in-rancher/harvester"
+  },
+  "next": {
+    "title": "CPU and Memory Allocations",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations"
+  }
+}

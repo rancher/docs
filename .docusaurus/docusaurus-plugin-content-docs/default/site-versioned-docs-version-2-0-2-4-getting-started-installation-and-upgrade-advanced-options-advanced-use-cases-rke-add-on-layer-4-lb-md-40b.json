@@ -1,0 +1,35 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb",
+  "title": "Kubernetes Install with External Load Balancer (TCP/Layer 4)",
+  "description": "#### Important: RKE add-on install is only supported up to Rancher v2.0.8",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-4-lb.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Install with External Load Balancer (TCP/Layer 4)",
+    "weight": 275,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/ha/rke-add-on/layer-4-lb",
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/layer-4-lb",
+      "/rancher/v2.0-v2.4/en/installation/options/rke-add-on/layer-4-lb",
+      "/rancher/v2.x/en/installation/resources/advanced/rke-add-on/layer-4-lb/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "rke-add-on",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rke-add-on"
+  },
+  "next": {
+    "title": "Kubernetes Install with External Load Balancer (HTTPS/Layer 7)",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/rke-add-on/layer-7-lb"
+  }
+}

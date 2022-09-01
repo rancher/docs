@@ -1,0 +1,32 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "id": "version-2.5/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "title": "Upgrading Kubernetes without Upgrading Rancher",
+  "description": "The RKE metadata feature allows you to provision clusters with new versions of Kubernetes as soon as they are released, without upgrading Rancher. This feature is useful for taking advantage of patch versions of Kubernetes, for example, if you want to upgrade to Kubernetes v1.14.7 when your Rancher server originally supported v1.14.6.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher.md",
+  "sourceDirName": "getting-started/installation-and-upgrade",
+  "slug": "/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Kubernetes without Upgrading Rancher",
+    "weight": 1120,
+    "aliases": [
+      "/rancher/v2.x/en/admin-settings/k8s-metadata/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading and Rolling Back Kubernetes",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes"
+  },
+  "next": {
+    "title": "Advanced",
+    "permalink": "/2.5/pages-for-subheaders/advanced-options"
+  }
+}

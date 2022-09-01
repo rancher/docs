@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation",
+  "id": "explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation",
+  "title": "Additional Steps for Project Network Isolation",
+  "description": "In clusters where:",
+  "source": "@site/docs/explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation.md",
+  "sourceDirName": "explanations/integrations-in-rancher/istio/configuration-options",
+  "slug": "/explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation",
+  "permalink": "/docs/explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Additional Steps for Project Network Isolation",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Additional Steps for Installing Istio on an RKE2 Cluster",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/configuration-options/install-istio-on-rke2-cluster"
+  },
+  "next": {
+    "title": "Longhorn - Cloud native distributed block storage for Kubernetes",
+    "permalink": "/docs/explanations/integrations-in-rancher/longhorn"
+  }
+}

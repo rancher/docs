@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/prometheus-federator/rbac",
+  "id": "reference-guides/prometheus-federator/rbac",
+  "title": "Role-Based Access Control",
+  "description": "This section describes the expectations for Role-Based Access Control (RBAC) for Prometheus Federator.",
+  "source": "@site/docs/reference-guides/prometheus-federator/rbac.md",
+  "sourceDirName": "reference-guides/prometheus-federator",
+  "slug": "/reference-guides/prometheus-federator/rbac",
+  "permalink": "/docs/reference-guides/prometheus-federator/rbac",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/prometheus-federator/rbac.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Role-Based Access Control",
+    "shortTitle": "RBAC",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Prometheus Federator",
+    "permalink": "/docs/pages-for-subheaders/prometheus-federator"
+  },
+  "next": {
+    "title": "User Settings",
+    "permalink": "/docs/pages-for-subheaders/user-settings"
+  }
+}

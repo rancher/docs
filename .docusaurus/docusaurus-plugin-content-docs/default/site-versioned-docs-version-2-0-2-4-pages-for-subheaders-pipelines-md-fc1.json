@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/pipelines",
+  "id": "version-2.0-2.4/pages-for-subheaders/pipelines",
+  "title": "Pipelines",
+  "description": "Rancher's pipeline provides a simple CI/CD experience. Use it to automatically checkout code, run builds or scripts, publish Docker images or catalog applications, and deploy the updated software to users.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/pipelines.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/pipelines",
+  "permalink": "/2.0-2.4/pages-for-subheaders/pipelines",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/pipelines.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pipelines",
+    "weight": 11,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/pipelines"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Example YAML",
+    "permalink": "/2.0-2.4/reference-guides/rke1-template-example-yaml"
+  },
+  "next": {
+    "title": "Concepts",
+    "permalink": "/2.0-2.4/reference-guides/pipelines/concepts"
+  }
+}

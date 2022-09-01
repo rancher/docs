@@ -1,0 +1,29 @@
+{
+  "unversionedId": "troubleshooting/kubernetes-components/troubleshooting-nginx-proxy",
+  "id": "version-2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-nginx-proxy",
+  "title": "Troubleshooting nginx-proxy",
+  "description": "The nginx-proxy container is deployed on every node that does not have the controlplane role. It provides access to all the nodes with the controlplane role by dynamically generating the NGINX configuration based on available nodes with the controlplane role.",
+  "source": "@site/versioned_docs/version-2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-nginx-proxy.md",
+  "sourceDirName": "troubleshooting/kubernetes-components",
+  "slug": "/troubleshooting/kubernetes-components/troubleshooting-nginx-proxy",
+  "permalink": "/2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-nginx-proxy",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-nginx-proxy.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting nginx-proxy",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting Controlplane Nodes",
+    "permalink": "/2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-controlplane-nodes"
+  },
+  "next": {
+    "title": "Troubleshooting Worker Nodes and Generic Components",
+    "permalink": "/2.0-2.4/troubleshooting/kubernetes-components/troubleshooting-worker-nodes-and-generic-components"
+  }
+}

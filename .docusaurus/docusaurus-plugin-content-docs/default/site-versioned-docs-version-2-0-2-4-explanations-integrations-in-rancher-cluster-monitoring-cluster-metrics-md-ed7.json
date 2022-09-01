@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics",
+  "title": "Cluster Metrics",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-monitoring",
+  "slug": "/explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Metrics",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/monitoring/cluster-metrics",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/monitoring/cluster-metrics",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/cluster-metrics",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/cluster-metrics",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/cluster-metrics/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Integrating Rancher and Prometheus for Cluster Monitoring",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cluster-monitoring"
+  },
+  "next": {
+    "title": "Prometheus Custom Metrics Adapter",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/custom-metrics"
+  }
+}

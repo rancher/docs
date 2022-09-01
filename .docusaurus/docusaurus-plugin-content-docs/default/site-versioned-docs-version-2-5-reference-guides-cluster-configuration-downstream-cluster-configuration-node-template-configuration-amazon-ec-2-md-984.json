@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2",
+  "id": "version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2",
+  "title": "EC2 Node Template Configuration",
+  "description": "For more details about EC2, nodes, refer to the official documentation for the EC2 Management Console.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2",
+  "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/amazon-ec2.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "EC2 Node Template Configuration",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/ec2-node-template-config/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "node-template-configuration",
+    "permalink": "/2.5/pages-for-subheaders/node-template-configuration"
+  },
+  "next": {
+    "title": "DigitalOcean Node Template Configuration",
+    "permalink": "/2.5/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/digitalocean"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "troubleshooting/other-troubleshooting-tips/rancher-ha",
+  "id": "troubleshooting/other-troubleshooting-tips/rancher-ha",
+  "title": "Rancher HA",
+  "description": "The commands/steps listed on this page can be used to check your Rancher Kubernetes Installation.",
+  "source": "@site/docs/troubleshooting/other-troubleshooting-tips/rancher-ha.md",
+  "sourceDirName": "troubleshooting/other-troubleshooting-tips",
+  "slug": "/troubleshooting/other-troubleshooting-tips/rancher-ha",
+  "permalink": "/docs/troubleshooting/other-troubleshooting-tips/rancher-ha",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/troubleshooting/other-troubleshooting-tips/rancher-ha.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher HA",
+    "weight": 104
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "DNS",
+    "permalink": "/docs/troubleshooting/other-troubleshooting-tips/dns"
+  },
+  "next": {
+    "title": "Registered clusters",
+    "permalink": "/docs/troubleshooting/other-troubleshooting-tips/registered-clusters"
+  }
+}

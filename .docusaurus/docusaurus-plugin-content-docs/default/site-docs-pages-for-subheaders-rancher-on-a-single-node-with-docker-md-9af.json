@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-on-a-single-node-with-docker",
+  "id": "pages-for-subheaders/rancher-on-a-single-node-with-docker",
+  "title": "Installing Rancher on a Single Node Using Docker",
+  "description": "For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.",
+  "source": "@site/docs/pages-for-subheaders/rancher-on-a-single-node-with-docker.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-on-a-single-node-with-docker",
+  "permalink": "/docs/pages-for-subheaders/rancher-on-a-single-node-with-docker",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/rancher-on-a-single-node-with-docker.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Rancher on a Single Node Using Docker",
+    "description": "For development and testing environments only, use a Docker install. Install Docker on a single Linux host, and deploy Rancher with a single Docker container.",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker Install Commands",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/docker-install-commands"
+  },
+  "next": {
+    "title": "Upgrading Rancher Installed with Docker",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/cli",
+  "id": "version-2.0-2.4/getting-started/quick-start-guides/cli",
+  "title": "CLI with Rancher",
+  "description": "Interact with Rancher using command line interface (CLI) tools from your workstation.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/quick-start-guides/cli.md",
+  "sourceDirName": "getting-started/quick-start-guides",
+  "slug": "/getting-started/quick-start-guides/cli",
+  "permalink": "/2.0-2.4/getting-started/quick-start-guides/cli",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/quick-start-guides/cli.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CLI with Rancher",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Deployment Quick Start Guides",
+    "permalink": "/2.0-2.4/pages-for-subheaders/quick-start-guides"
+  },
+  "next": {
+    "title": "Deploying Rancher Server",
+    "permalink": "/2.0-2.4/pages-for-subheaders/deploy-rancher-manager"
+  }
+}

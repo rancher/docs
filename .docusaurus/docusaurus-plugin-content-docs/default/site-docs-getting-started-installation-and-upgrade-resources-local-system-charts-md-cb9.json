@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/local-system-charts",
+  "id": "getting-started/installation-and-upgrade/resources/local-system-charts",
+  "title": "Setting up Local System Charts for Air Gapped Installations",
+  "description": "The System Charts repository contains all the catalog items required for features such as monitoring, logging, alerting and global DNS.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/resources/local-system-charts.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/local-system-charts",
+  "permalink": "/docs/getting-started/installation-and-upgrade/resources/local-system-charts",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/resources/local-system-charts.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Local System Charts for Air Gapped Installations",
+    "weight": 120
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Bootstrap Password",
+    "permalink": "/docs/getting-started/installation-and-upgrade/resources/bootstrap-password"
+  },
+  "next": {
+    "title": "Upgrading and Rolling Back Kubernetes",
+    "permalink": "/docs/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere",
+  "id": "reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere",
+  "title": "Installing Rancher in a vSphere Environment",
+  "description": "This guide outlines a reference architecture for installing Rancher on an RKE Kubernetes cluster in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.",
+  "source": "@site/docs/reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere.md",
+  "sourceDirName": "reference-guides/best-practices/rancher-server",
+  "slug": "/reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere",
+  "permalink": "/docs/reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/best-practices/rancher-server/on-premises-rancher-in-vsphere.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Rancher in a vSphere Environment",
+    "shortTitle": "On-Premises Rancher in vSphere",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Best Practices for the Rancher Server",
+    "permalink": "/docs/pages-for-subheaders/rancher-server"
+  },
+  "next": {
+    "title": "Rancher Deployment Strategy",
+    "permalink": "/docs/reference-guides/best-practices/rancher-server/rancher-deployment-strategy"
+  }
+}

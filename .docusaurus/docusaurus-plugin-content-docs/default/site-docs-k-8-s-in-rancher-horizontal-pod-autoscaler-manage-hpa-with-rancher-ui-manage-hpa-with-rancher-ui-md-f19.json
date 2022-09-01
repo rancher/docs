@@ -1,0 +1,20 @@
+{
+  "unversionedId": "k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui/manage-hpa-with-rancher-ui",
+  "id": "k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui/manage-hpa-with-rancher-ui",
+  "title": "Managing HPAs with the Rancher UI",
+  "description": "The Rancher UI supports creating, managing, and deleting HPAs. You can configure CPU or memory usage as the metric that the HPA uses to scale.",
+  "source": "@site/docs/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui/manage-hpa-with-rancher-ui.md",
+  "sourceDirName": "k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui",
+  "slug": "/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui/",
+  "permalink": "/docs/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/k8s-in-rancher/horizontal-pod-autoscaler/manage-hpa-with-rancher-ui/manage-hpa-with-rancher-ui.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Managing HPAs with the Rancher UI",
+    "weight": 3028
+  }
+}

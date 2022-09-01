@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "id": "how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "title": "Fleet - GitOps at Scale",
+  "description": "Fleet is GitOps at scale. Fleet is designed to manage up to a million clusters. It's also lightweight enough that it works great for a single cluster too, but it really shines when you get to a large scale. By large scale we mean either a lot of clusters, a lot of deployments, or a lot of teams in a single organization.",
+  "source": "@site/docs/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md",
+  "sourceDirName": "how-to-guides/new-user-guides/deploy-apps-across-clusters",
+  "slug": "/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "permalink": "/docs/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Fleet - GitOps at Scale",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Applications across Clusters",
+    "permalink": "/docs/pages-for-subheaders/deploy-apps-across-clusters"
+  },
+  "next": {
+    "title": "Multi-cluster Apps",
+    "permalink": "/docs/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps"
+  }
+}

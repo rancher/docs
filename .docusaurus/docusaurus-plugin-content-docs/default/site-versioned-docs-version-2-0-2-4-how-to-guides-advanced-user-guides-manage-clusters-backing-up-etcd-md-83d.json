@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd",
+  "title": "Backing up a Cluster",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/backing-up-etcd.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backing up a Cluster",
+    "weight": 2045
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding Users to Clusters",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/access-clusters/add-users-to-clusters"
+  },
+  "next": {
+    "title": "Restoring a Cluster from Backup",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd"
+  }
+}

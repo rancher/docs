@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/v1.6-migration/migration-tools-cli-reference",
+  "id": "version-2.0-2.4/reference-guides/v1.6-migration/migration-tools-cli-reference",
+  "title": "Migration Tools CLI Reference",
+  "description": "The migration-tools CLI includes multiple commands and options to assist your migration from Rancher v1.6 to Rancher v2.x.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/v1.6-migration/migration-tools-cli-reference.md",
+  "sourceDirName": "reference-guides/v1.6-migration",
+  "slug": "/reference-guides/v1.6-migration/migration-tools-cli-reference",
+  "permalink": "/2.0-2.4/reference-guides/v1.6-migration/migration-tools-cli-reference",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/v1.6-migration/migration-tools-cli-reference.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migration Tools CLI Reference",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/run-migration-tool/migration-tools-ref/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher CVEs and Resolutions",
+    "permalink": "/2.0-2.4/reference-guides/rancher-security/security-advisories-and-cves"
+  },
+  "next": {
+    "title": "explanations",
+    "permalink": "/2.0-2.4/explanations"
+  }
+}

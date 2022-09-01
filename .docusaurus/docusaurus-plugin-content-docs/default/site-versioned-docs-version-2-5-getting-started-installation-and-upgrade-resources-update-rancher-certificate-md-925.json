@@ -1,0 +1,32 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/update-rancher-certificate",
+  "id": "version-2.5/getting-started/installation-and-upgrade/resources/update-rancher-certificate",
+  "title": "Updating the Rancher Certificate",
+  "description": "Follow these steps to update the SSL certificate of the ingress in a Rancher high availability Kubernetes installation or to switch from the default self-signed certificate to a custom certificate.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/update-rancher-certificate.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/update-rancher-certificate",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/resources/update-rancher-certificate",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/resources/update-rancher-certificate.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Updating the Rancher Certificate",
+    "weight": 10,
+    "aliases": [
+      "/rancher/v2.x/en/installation/resources/update-ca-cert/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading Cert-Manager with Helm 2",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/upgrade-cert-manager-helm-2"
+  },
+  "next": {
+    "title": "Setting up Local System Charts for Air Gapped Installations",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/local-system-charts"
+  }
+}

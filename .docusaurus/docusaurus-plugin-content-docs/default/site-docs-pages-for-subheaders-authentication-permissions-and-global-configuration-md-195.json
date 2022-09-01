@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "id": "pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "title": "Authentication, Permissions and Global Configuration",
+  "description": "After installation, the system administrator should configure Rancher to configure authentication, authorization, security, default settings, security policies, drivers and global DNS entries.",
+  "source": "@site/docs/pages-for-subheaders/authentication-permissions-and-global-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "permalink": "/docs/pages-for-subheaders/authentication-permissions-and-global-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/authentication-permissions-and-global-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Authentication, Permissions and Global Configuration",
+    "weight": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "advanced-user-guides",
+    "permalink": "/docs/pages-for-subheaders/advanced-user-guides"
+  },
+  "next": {
+    "title": "Authentication",
+    "permalink": "/docs/pages-for-subheaders/about-authentication"
+  }
+}

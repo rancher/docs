@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/manage-persistent-storage",
+  "id": "pages-for-subheaders/manage-persistent-storage",
+  "title": "manage-persistent-storage",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/manage-persistent-storage.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/manage-persistent-storage",
+  "permalink": "/docs/pages-for-subheaders/manage-persistent-storage",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/manage-persistent-storage.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Persistent Storage: Volumes and Storage Classes",
+    "permalink": "/docs/pages-for-subheaders/create-kubernetes-persistent-storage"
+  },
+  "next": {
+    "title": "How Persistent Storage Works",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/create-kubernetes-persistent-storage/manage-persistent-storage/about-persistent-storage"
+  }
+}

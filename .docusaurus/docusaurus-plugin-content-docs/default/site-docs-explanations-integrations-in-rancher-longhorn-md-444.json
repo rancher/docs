@@ -1,0 +1,30 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/longhorn",
+  "id": "explanations/integrations-in-rancher/longhorn",
+  "title": "Longhorn - Cloud native distributed block storage for Kubernetes",
+  "description": "Longhorn is a lightweight, reliable, and easy-to-use distributed block storage system for Kubernetes.",
+  "source": "@site/docs/explanations/integrations-in-rancher/longhorn.md",
+  "sourceDirName": "explanations/integrations-in-rancher",
+  "slug": "/explanations/integrations-in-rancher/longhorn",
+  "permalink": "/docs/explanations/integrations-in-rancher/longhorn",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/longhorn.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Longhorn - Cloud native distributed block storage for Kubernetes",
+    "shortTitle": "Longhorn Storage",
+    "weight": 19
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Additional Steps for Project Network Isolation",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/configuration-options/project-network-isolation"
+  },
+  "next": {
+    "title": "Rancher Integration with Logging Services",
+    "permalink": "/docs/pages-for-subheaders/logging"
+  }
+}

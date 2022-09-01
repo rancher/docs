@@ -1,0 +1,35 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "title": "Role-based Access Control",
+  "description": "This section describes the permissions required to access Istio features and how to configure access to the Kiali and Jaeger visualizations.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/istio/rbac-for-istio.md",
+  "sourceDirName": "explanations/integrations-in-rancher/istio",
+  "slug": "/explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/istio/rbac-for-istio",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/istio/rbac-for-istio.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Role-based Access Control",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/rbac",
+      "/rancher/v2.0-v2.4/en/istio/legacy/rbac",
+      "/rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/rbac",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/rbac/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "CPU and Memory Allocations",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations"
+  },
+  "next": {
+    "title": "Disabling Istio",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/istio/disable-istio"
+  }
+}

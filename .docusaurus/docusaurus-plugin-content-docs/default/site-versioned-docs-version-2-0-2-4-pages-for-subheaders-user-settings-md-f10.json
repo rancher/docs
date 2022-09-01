@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/user-settings",
+  "id": "version-2.0-2.4/pages-for-subheaders/user-settings",
+  "title": "User Settings",
+  "description": "Within Rancher, each user has a number of settings associated with their login: personal preferences, API keys, etc. You can configure these settings by choosing from the User Settings menu. You can open this menu by clicking your avatar, located within the main menu.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/user-settings.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/user-settings",
+  "permalink": "/2.0-2.4/pages-for-subheaders/user-settings",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/user-settings.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "User Settings",
+    "weight": 23,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/user-settings/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Concepts",
+    "permalink": "/2.0-2.4/reference-guides/kubernetes-concepts"
+  },
+  "next": {
+    "title": "API Keys",
+    "permalink": "/2.0-2.4/reference-guides/user-settings/api-keys"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/deploy-apps-across-clusters",
+  "id": "version-2.5/pages-for-subheaders/deploy-apps-across-clusters",
+  "title": "Deploying Applications across Clusters",
+  "description": "Fleet",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/deploy-apps-across-clusters.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/deploy-apps-across-clusters",
+  "permalink": "/2.5/pages-for-subheaders/deploy-apps-across-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/deploy-apps-across-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Applications across Clusters",
+    "weight": 12,
+    "aliases": [
+      "/rancher/v2.x/en/deploy-across-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Helm Charts in Rancher",
+    "permalink": "/2.5/pages-for-subheaders/helm-charts-in-rancher"
+  },
+  "next": {
+    "title": "Fleet - GitOps at Scale",
+    "permalink": "/2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/rancher-security/kubernetes-security-best-practices",
+  "id": "reference-guides/rancher-security/kubernetes-security-best-practices",
+  "title": "Kubernetes Security Best Practices",
+  "description": "Restricting cloud metadata API access",
+  "source": "@site/docs/reference-guides/rancher-security/kubernetes-security-best-practices.md",
+  "sourceDirName": "reference-guides/rancher-security",
+  "slug": "/reference-guides/rancher-security/kubernetes-security-best-practices",
+  "permalink": "/docs/reference-guides/rancher-security/kubernetes-security-best-practices",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rancher-security/kubernetes-security-best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Security Best Practices",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "about-rke2-selinux",
+    "permalink": "/docs/reference-guides/rancher-security/selinux-rpm/about-rke2-selinux"
+  },
+  "next": {
+    "title": "Security Advisories and CVEs",
+    "permalink": "/docs/reference-guides/rancher-security/security-advisories-and-cves"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "title": "Prometheus Configuration",
+  "description": "It is usually not necessary to directly edit the Prometheus custom resource because the monitoring application automatically updates it based on changes to ServiceMonitors and PodMonitors.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Prometheus Configuration",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/monitoring-alerting/configuration/prometheusrules",
+      "/rancher/v2.5/en/monitoring-alerting/configuration/prometheusrules",
+      "/rancher/v2.5/en/monitoring-alerting/configuration/advanced/prometheusrules"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Alertmanager Configuration",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager"
+  },
+  "next": {
+    "title": "Configuring PrometheusRules",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules"
+  }
+}

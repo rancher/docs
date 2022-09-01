@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere",
+  "id": "reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere",
+  "title": "Best Practices for Rancher Managed vSphere Clusters",
+  "description": "This guide outlines a reference architecture for provisioning downstream Rancher clusters in a vSphere environment, in addition to standard vSphere best practices as documented by VMware.",
+  "source": "@site/docs/reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere.md",
+  "sourceDirName": "reference-guides/best-practices/rancher-managed-clusters",
+  "slug": "/reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere",
+  "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices for Rancher Managed vSphere Clusters",
+    "shortTitle": "Rancher Managed Clusters in vSphere"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tips for Setting Up Containers",
+    "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers"
+  },
+  "next": {
+    "title": "Architecture",
+    "permalink": "/docs/pages-for-subheaders/rancher-manager-architecture"
+  }
+}

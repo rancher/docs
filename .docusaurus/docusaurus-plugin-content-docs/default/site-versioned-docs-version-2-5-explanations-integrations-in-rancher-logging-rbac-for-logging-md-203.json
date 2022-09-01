@@ -1,0 +1,30 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/logging/rbac-for-logging",
+  "id": "version-2.5/explanations/integrations-in-rancher/logging/rbac-for-logging",
+  "title": "Role-based Access Control for Logging",
+  "description": "Rancher logging has two roles, logging-admin and logging-view.",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/rbac-for-logging.md",
+  "sourceDirName": "explanations/integrations-in-rancher/logging",
+  "slug": "/explanations/integrations-in-rancher/logging/rbac-for-logging",
+  "permalink": "/2.5/explanations/integrations-in-rancher/logging/rbac-for-logging",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/logging/rbac-for-logging.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "shortTitle": "Role-based Access Control",
+    "title": "Role-based Access Control for Logging",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migrating to Rancher v2.5 Logging",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging"
+  },
+  "next": {
+    "title": "rancher-logging Helm Chart Options",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/logging-helm-chart-options"
+  }
+}

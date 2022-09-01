@@ -1,0 +1,35 @@
+{
+  "unversionedId": "reference-guides/best-practices/management",
+  "id": "version-2.0-2.4/reference-guides/best-practices/management",
+  "title": "Tips for Scaling, Security and Reliability",
+  "description": "Rancher allows you to set up numerous combinations of configurations. Some configurations are more appropriate for development and testing, while there are other best practices for production environments for maximum availability and fault tolerance. The following best practices should be followed for production.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/best-practices/management.md",
+  "sourceDirName": "reference-guides/best-practices",
+  "slug": "/reference-guides/best-practices/management",
+  "permalink": "/2.0-2.4/reference-guides/best-practices/management",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/best-practices/management.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tips for Scaling, Security and Reliability",
+    "weight": 101,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/best-practices/management",
+      "/rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/management",
+      "/rancher/v2.x/en/best-practices/management/",
+      "/rancher/v2.x/en/best-practices/v2.0-v2.4/management/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tips for Running Rancher",
+    "permalink": "/2.0-2.4/reference-guides/best-practices/deployment-types"
+  },
+  "next": {
+    "title": "Architecture",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rancher-manager-architecture"
+  }
+}

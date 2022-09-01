@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images",
+  "id": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images",
+  "title": "2. Collect and Publish Images to your Private Registry",
+  "description": "This section describes how to set up your private registry so that when you install Rancher, Rancher will pull all the required images from this registry.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images",
+  "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/publish-images.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "weight": 200
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Set up Infrastructure and Private Registry",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/infrastructure-private-registry"
+  },
+  "next": {
+    "title": "3. Install Kubernetes (Skip for Docker Installs)",
+    "permalink": "/docs/getting-started/installation-and-upgrade/other-installation-methods/air-gapped-helm-cli-install/install-kubernetes"
+  }
+}

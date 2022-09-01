@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher",
+  "title": "Setting up a High-availability K3s Kubernetes Cluster for Rancher",
+  "description": "This section describes how to install a Kubernetes cluster according to the best practices for the Rancher server environment.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-cluster-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-cluster-setup/k3s-for-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up a High-availability K3s Kubernetes Cluster for Rancher",
+    "shortTitle": "Set up K3s for Rancher",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "About High-availability Installations",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-cluster-setup/high-availability-installs"
+  },
+  "next": {
+    "title": "Setting up a High-availability RKE Kubernetes Cluster",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-cluster-setup/rke1-for-rancher"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes",
+  "title": "Removing Kubernetes Components from Nodes",
+  "description": "Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Removing Kubernetes Components from Nodes",
+    "description": "Learn about cluster cleanup when removing nodes from your Rancher-launched Kubernetes cluster. What is removed, how to do it manually",
+    "weight": 2055,
+    "aliases": [
+      "/rancher/v2.5/en/faq/cleaning-cluster-nodes/",
+      "/rancher/v2.x/en/cluster-admin/cleaning-cluster-nodes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Nodes and Node Pools",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/nodes-and-node-pools"
+  },
+  "next": {
+    "title": "Adding a Pod Security Policy",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy"
+  }
+}

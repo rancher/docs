@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer",
+  "id": "version-2.5/how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer",
+  "title": "Setting up an NGINX Load Balancer",
+  "description": "NGINX will be configured as Layer 4 load balancer (TCP) that forwards connections to one of your Rancher nodes.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer.md",
+  "sourceDirName": "how-to-guides/new-user-guides/infrastructure-setup",
+  "slug": "/how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer",
+  "permalink": "/2.5/how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up an NGINX Load Balancer",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/nginx",
+      "/rancher/v2.x/en/installation/resources/k8s-tutorials/infrastructure-tutorials/nginx/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up a MySQL Database in Amazon RDS",
+    "permalink": "/2.5/how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds"
+  },
+  "next": {
+    "title": "Setting up Amazon ELB Network Load Balancer",
+    "permalink": "/2.5/how-to-guides/new-user-guides/infrastructure-setup/amazon-elb-load-balancer"
+  }
+}

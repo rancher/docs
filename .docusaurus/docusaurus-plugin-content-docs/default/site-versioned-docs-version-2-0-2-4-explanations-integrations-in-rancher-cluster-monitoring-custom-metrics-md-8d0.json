@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-monitoring/custom-metrics",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/custom-metrics",
+  "title": "Prometheus Custom Metrics Adapter",
+  "description": "After you've enabled cluster level monitoring, You can view the metrics data from Rancher. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/custom-metrics.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-monitoring",
+  "slug": "/explanations/integrations-in-rancher/cluster-monitoring/custom-metrics",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/custom-metrics",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/custom-metrics.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Prometheus Custom Metrics Adapter",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/monitoring/custom-metrics",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/legacy/monitoring/cluster-monitoring/custom-metrics",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/monitoring/custom-metrics/",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/custom-metrics",
+      "/rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/custom-metrics/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Metrics",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/cluster-metrics"
+  },
+  "next": {
+    "title": "Prometheus Expressions",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/expression"
+  }
+}

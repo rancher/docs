@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster",
+  "id": "how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster",
+  "title": "Set up Infrastructure for a High Availability K3s Kubernetes Cluster",
+  "description": "This tutorial is intended to help you provision the underlying infrastructure for a Rancher management server.",
+  "source": "@site/docs/how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster.md",
+  "sourceDirName": "how-to-guides/new-user-guides/infrastructure-setup",
+  "slug": "/how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster",
+  "permalink": "/docs/how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/infrastructure-setup/ha-k3s-kubernetes-cluster.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Set up Infrastructure for a High Availability K3s Kubernetes Cluster",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Don't have infrastructure for your Kubernetes cluster? Try one of these tutorials.",
+    "permalink": "/docs/pages-for-subheaders/infrastructure-setup"
+  },
+  "next": {
+    "title": "Set up Infrastructure for a High Availability RKE Kubernetes Cluster",
+    "permalink": "/docs/how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster"
+  }
+}

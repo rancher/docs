@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/helm2-helm-init",
+  "id": "version-2.0-2.4/pages-for-subheaders/helm2-helm-init",
+  "title": "Initialize Helm: Install the Tiller Service",
+  "description": "With Helm, you can create configurable deployments instead of using static files. In order to use Helm, the Tiller service needs to be installed on your cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-helm-init.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm2-helm-init",
+  "permalink": "/2.0-2.4/pages-for-subheaders/helm2-helm-init",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-helm-init.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Initialize Helm: Install the Tiller Service",
+    "description": "With Helm, you can create configurable deployments instead of using static files. In order to use Helm, the Tiller service needs to be installed on your cluster.",
+    "weight": 195,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/helm-init",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/helm-init/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Troubleshooting",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/kubernetes-rke/troubleshooting"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/helm-init/troubleshooting"
+  }
+}

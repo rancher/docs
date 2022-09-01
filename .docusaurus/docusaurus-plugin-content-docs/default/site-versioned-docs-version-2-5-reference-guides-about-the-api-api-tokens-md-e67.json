@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/about-the-api/api-tokens",
+  "id": "version-2.5/reference-guides/about-the-api/api-tokens",
+  "title": "API Tokens",
+  "description": "By default, some cluster-level API tokens are generated with infinite time-to-live (ttl=0). In other words, API tokens with ttl=0 never expire unless you invalidate them. Tokens are not invalidated by changing a password.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/about-the-api/api-tokens.md",
+  "sourceDirName": "reference-guides/about-the-api",
+  "slug": "/reference-guides/about-the-api/api-tokens",
+  "permalink": "/2.5/reference-guides/about-the-api/api-tokens",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/about-the-api/api-tokens.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "API Tokens",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-admin/api/api-tokens/",
+      "/rancher/v2.x/en/api/api-tokens/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "API",
+    "permalink": "/2.5/pages-for-subheaders/about-the-api"
+  },
+  "next": {
+    "title": "Tools for Logging, Monitoring, and Visibility",
+    "permalink": "/2.5/reference-guides/rancher-cluster-tools"
+  }
+}

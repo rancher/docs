@@ -1,0 +1,26 @@
+{
+  "unversionedId": "backups/restore/restore",
+  "id": "version-2.0-2.4/backups/restore/restore",
+  "title": "Restore",
+  "description": "If you lose the data on your Rancher Server, you can restore it if you have backups stored in a safe location.",
+  "source": "@site/versioned_docs/version-2.0-2.4/backups/restore/restore.md",
+  "sourceDirName": "backups/restore",
+  "slug": "/backups/restore/",
+  "permalink": "/2.0-2.4/backups/restore/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/backups/restore/restore.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restore",
+    "weight": 1010,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/backups/restorations",
+      "/rancher/v2.0-v2.4/en/backups/legacy/restore",
+      "/rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/restore",
+      "/rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/"
+    ]
+  }
+}

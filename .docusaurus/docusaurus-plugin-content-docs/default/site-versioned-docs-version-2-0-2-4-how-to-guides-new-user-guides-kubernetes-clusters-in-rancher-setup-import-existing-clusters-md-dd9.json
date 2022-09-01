@@ -1,0 +1,35 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters",
+  "title": "Importing Existing Clusters",
+  "description": "Learn how you can create a cluster in Rancher by importing an existing Kubernetes cluster. Then, you can manage it using Rancher",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/import-existing-clusters.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Importing Existing Clusters",
+    "description": "Learn how you can create a cluster in Rancher by importing an existing Kubernetes cluster. Then, you can manage it using Rancher",
+    "metaTitle": "Kubernetes Cluster Management",
+    "metaDescription": "Learn how you can import an existing Kubernetes cluster and then manage it using Rancher",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/clusters/import-cluster/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Agents",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/about-rancher-agents"
+  },
+  "next": {
+    "title": "Kubernetes Resources",
+    "permalink": "/2.0-2.4/pages-for-subheaders/kubernetes-resources-setup"
+  }
+}

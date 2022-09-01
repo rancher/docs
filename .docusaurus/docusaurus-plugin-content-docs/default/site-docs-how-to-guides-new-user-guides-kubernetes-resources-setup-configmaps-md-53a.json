@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps",
+  "title": "ConfigMaps",
+  "description": "While most types of Kubernetes secrets store sensitive information, ConfigMaps store general configuration information, such as a group of config files. Because ConfigMaps don't store sensitive information, they can be updated automatically, and therefore don't require their containers to be restarted following update (unlike most secret types, which require manual updates and a container restart to take effect).",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/configmaps.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "ConfigMaps",
+    "weight": 3061
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Encrypting HTTP Communication",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/encrypt-http-communication"
+  },
+  "next": {
+    "title": "Secrets",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/secrets"
+  }
+}

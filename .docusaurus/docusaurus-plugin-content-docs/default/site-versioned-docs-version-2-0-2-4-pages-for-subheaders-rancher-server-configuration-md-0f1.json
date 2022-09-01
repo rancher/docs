@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-server-configuration",
+  "id": "version-2.0-2.4/pages-for-subheaders/rancher-server-configuration",
+  "title": "rancher-server-configuration",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-server-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-server-configuration",
+  "permalink": "/2.0-2.4/pages-for-subheaders/rancher-server-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-server-configuration.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Configuration",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cluster-configuration"
+  },
+  "next": {
+    "title": "RKE Cluster Configuration Reference",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration"
+  }
+}

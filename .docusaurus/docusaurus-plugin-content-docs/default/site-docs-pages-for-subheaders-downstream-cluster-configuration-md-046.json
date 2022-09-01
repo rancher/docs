@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/downstream-cluster-configuration",
+  "id": "pages-for-subheaders/downstream-cluster-configuration",
+  "title": "downstream-cluster-configuration",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/downstream-cluster-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/downstream-cluster-configuration",
+  "permalink": "/docs/pages-for-subheaders/downstream-cluster-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/downstream-cluster-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Syncing",
+    "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters"
+  },
+  "next": {
+    "title": "node-template-configuration",
+    "permalink": "/docs/pages-for-subheaders/node-template-configuration"
+  }
+}

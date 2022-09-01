@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure",
+  "id": "reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure",
+  "title": "Azure Machine Configuration",
+  "description": "For more information about Azure, refer to the official Azure documentation.",
+  "source": "@site/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure",
+  "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Azure Machine Configuration",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "DigitalOcean Machine Configuration",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/digitalocean"
+  },
+  "next": {
+    "title": "single-node-rancher-in-docker",
+    "permalink": "/docs/pages-for-subheaders/single-node-rancher-in-docker"
+  }
+}

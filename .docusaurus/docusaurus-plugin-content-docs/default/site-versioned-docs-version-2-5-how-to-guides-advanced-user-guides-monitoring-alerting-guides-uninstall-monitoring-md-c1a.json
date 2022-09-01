@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring",
+  "title": "Uninstall Monitoring",
+  "description": "1. From the Cluster Explorer, click Apps & Marketplace.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-alerting-guides",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/uninstall-monitoring.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Uninstall Monitoring",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enable Monitoring",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring"
+  },
+  "next": {
+    "title": "Setting up Monitoring for a Workload",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/set-up-monitoring-for-workloads"
+  }
+}

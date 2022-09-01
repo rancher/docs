@@ -1,0 +1,35 @@
+{
+  "unversionedId": "pages-for-subheaders/istio-setup-guide",
+  "id": "version-2.0-2.4/pages-for-subheaders/istio-setup-guide",
+  "title": "Setup Guide",
+  "description": "This section describes how to enable Istio and start using it in your projects.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/istio-setup-guide.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/istio-setup-guide",
+  "permalink": "/2.0-2.4/pages-for-subheaders/istio-setup-guide",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/istio-setup-guide.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setup Guide",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/setup",
+      "/rancher/v2.0-v2.4/en/istio/legacy/setup",
+      "/rancher/v2.0-v2.4/en/istio/v2.3.x-v2.4.x/setup",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/setup/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Resource Quota Type Reference",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types"
+  },
+  "next": {
+    "title": "1. Enable Istio in the Cluster",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-cluster"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "unversionedId": "reference-guides/installation-references/helm-chart-options",
+  "id": "version-2.5/reference-guides/installation-references/helm-chart-options",
+  "title": "Rancher Helm Chart Options",
+  "description": "This page is a configuration reference for the Rancher Helm chart.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/installation-references/helm-chart-options.md",
+  "sourceDirName": "reference-guides/installation-references",
+  "slug": "/reference-guides/installation-references/helm-chart-options",
+  "permalink": "/2.5/reference-guides/installation-references/helm-chart-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/installation-references/helm-chart-options.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Helm Chart Options",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/installation/options/",
+      "/rancher/v2.5/en/installation/options/chart-options/",
+      "/rancher/v2.5/en/installation/options/helm2/helm-rancher/chart-options/",
+      "/rancher/v2.5/en/installation/resources/chart-options",
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/chart-options/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "installation-references",
+    "permalink": "/2.5/pages-for-subheaders/installation-references"
+  },
+  "next": {
+    "title": "TLS Settings",
+    "permalink": "/2.5/reference-guides/installation-references/tls-settings"
+  }
+}

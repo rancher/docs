@@ -1,0 +1,34 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "title": "Pod Security Policies",
+  "description": "Pod Security Policies (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges).",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pod Security Policies",
+    "weight": 1135,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/concepts/global-configuration/pod-security-policies/",
+      "/rancher/v2.0-v2.4/en/tasks/global-configuration/pod-security-policies/",
+      "/rancher/v2.0-v2.4/en/tasks/clusters/adding-a-pod-security-policy/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Example Scenarios",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/example-use-cases"
+  },
+  "next": {
+    "title": "Configuring a Global Default Private Registry",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "unversionedId": "security/rancher-2.3.x/rancher-v2.3.5/rancher-v2.3.5",
+  "id": "version-2.0-2.4/security/rancher-2.3.x/rancher-v2.3.5/rancher-v2.3.5",
+  "title": "Rancher v2.3.5",
+  "description": "Self Assessment Guide",
+  "source": "@site/versioned_docs/version-2.0-2.4/security/rancher-2.3.x/rancher-v2.3.5/rancher-v2.3.5.md",
+  "sourceDirName": "security/rancher-2.3.x/rancher-v2.3.5",
+  "slug": "/security/rancher-2.3.x/rancher-v2.3.5/",
+  "permalink": "/2.0-2.4/security/rancher-2.3.x/rancher-v2.3.5/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/security/rancher-2.3.x/rancher-v2.3.5/rancher-v2.3.5.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher v2.3.5",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/security/rancher-2.3.x/rancher-v2.3.5/"
+    ]
+  }
+}

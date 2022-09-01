@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/project-tools",
+  "id": "version-2.0-2.4/pages-for-subheaders/project-tools",
+  "title": "Tools for Logging, Monitoring, and More",
+  "description": "Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/project-tools.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/project-tools",
+  "permalink": "/2.0-2.4/pages-for-subheaders/project-tools",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/project-tools.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tools for Logging, Monitoring, and More",
+    "weight": 2525
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tools for Logging, Monitoring, and More",
+    "permalink": "/2.0-2.4/reference-guides/rancher-cluster-tools"
+  },
+  "next": {
+    "title": "Project Alerts",
+    "permalink": "/2.0-2.4/reference-guides/rancher-project-tools/project-alerts"
+  }
+}

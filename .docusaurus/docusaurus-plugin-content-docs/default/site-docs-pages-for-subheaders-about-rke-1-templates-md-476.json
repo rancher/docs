@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/about-rke1-templates",
+  "id": "pages-for-subheaders/about-rke1-templates",
+  "title": "RKE Templates",
+  "description": "RKE templates are designed to allow DevOps and security teams to standardize and simplify the creation of Kubernetes clusters.",
+  "source": "@site/docs/pages-for-subheaders/about-rke1-templates.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/about-rke1-templates",
+  "permalink": "/docs/pages-for-subheaders/about-rke1-templates",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/about-rke1-templates.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Templates",
+    "weight": 80
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Node Drivers",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers"
+  },
+  "next": {
+    "title": "Template Creator Permissions",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/creator-permissions"
+  }
+}

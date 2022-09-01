@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries",
+  "title": "Kubernetes Registry and Docker Registry",
+  "description": "Learn about the Docker registry and Kubernetes registry, their use cases and how to use a private registry with the Rancher UI",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Registry and Docker Registry",
+    "description": "Learn about the Docker registry and Kubernetes registry, their use cases and how to use a private registry with the Rancher UI",
+    "weight": 3063
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Secrets",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/secrets"
+  },
+  "next": {
+    "title": "Helm Charts in Rancher",
+    "permalink": "/docs/pages-for-subheaders/helm-charts-in-rancher"
+  }
+}

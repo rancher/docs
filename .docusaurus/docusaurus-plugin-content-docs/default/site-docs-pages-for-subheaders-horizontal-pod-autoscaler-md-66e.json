@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/horizontal-pod-autoscaler",
+  "id": "pages-for-subheaders/horizontal-pod-autoscaler",
+  "title": "horizontal-pod-autoscaler",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/horizontal-pod-autoscaler.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/horizontal-pod-autoscaler",
+  "permalink": "/docs/pages-for-subheaders/horizontal-pod-autoscaler",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/horizontal-pod-autoscaler.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adding a Sidecar",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/add-a-sidecar"
+  },
+  "next": {
+    "title": "about-hpas",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/about-hpas"
+  }
+}

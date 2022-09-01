@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/manage-project-resource-quotas",
+  "id": "version-2.5/pages-for-subheaders/manage-project-resource-quotas",
+  "title": "Project Resource Quotas",
+  "description": "In situations where several teams share a cluster, one team may overconsume the resources available: CPU, memory, storage, services, Kubernetes objects like pods or secrets, and so on.  To prevent this overconsumption, you can apply a resource quota, which is a Rancher feature that limits the resources available to a project or namespace.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/manage-project-resource-quotas.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/manage-project-resource-quotas",
+  "permalink": "/2.5/pages-for-subheaders/manage-project-resource-quotas",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/manage-project-resource-quotas.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Resource Quotas",
+    "weight": 2515,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas",
+      "/rancher/v2.x/en/project-admin/resource-quotas/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Pod Security Policies",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/manage-pod-security-policies"
+  },
+  "next": {
+    "title": "How Resource Quotas Work in Rancher Projects",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/about-project-resource-quotas"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/cluster-yml",
+  "id": "version-2.0-2.4/pages-for-subheaders/cluster-yml",
+  "title": "cluster.yml Templates for RKE add-on installs",
+  "description": "These templates are intended to be used for RKE add-on installs, which are only supported up to Rancher v2.0.8. Please use the Rancher Helm chart if you are installing a newer Rancher version.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-yml.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cluster-yml",
+  "permalink": "/2.0-2.4/pages-for-subheaders/cluster-yml",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-yml.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "cluster.yml Templates for RKE add-on installs",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enabling the API Audit Log to Record System Events",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log"
+  },
+  "next": {
+    "title": "Template for an RKE Cluster with a Self-signed Certificate and Layer 4 Load Balancer",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-certificate"
+  }
+}

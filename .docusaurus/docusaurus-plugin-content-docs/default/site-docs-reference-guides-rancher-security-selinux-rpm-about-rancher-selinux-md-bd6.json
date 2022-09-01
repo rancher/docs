@@ -1,0 +1,26 @@
+{
+  "unversionedId": "reference-guides/rancher-security/selinux-rpm/about-rancher-selinux",
+  "id": "reference-guides/rancher-security/selinux-rpm/about-rancher-selinux",
+  "title": "about-rancher-selinux",
+  "description": "",
+  "source": "@site/docs/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux.md",
+  "sourceDirName": "reference-guides/rancher-security/selinux-rpm",
+  "slug": "/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux",
+  "permalink": "/docs/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/rancher-security/selinux-rpm/about-rancher-selinux.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "SELinux RPM",
+    "permalink": "/docs/pages-for-subheaders/selinux-rpm"
+  },
+  "next": {
+    "title": "about-rke2-selinux",
+    "permalink": "/docs/reference-guides/rancher-security/selinux-rpm/about-rke2-selinux"
+  }
+}

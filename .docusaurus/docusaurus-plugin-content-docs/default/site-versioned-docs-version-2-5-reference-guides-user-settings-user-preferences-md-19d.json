@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/user-settings/user-preferences",
+  "id": "version-2.5/reference-guides/user-settings/user-preferences",
+  "title": "User Preferences",
+  "description": "Each user can choose preferences to personalize their Rancher experience. To change preference settings, open the User Settings menu and then select Preferences.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/user-settings/user-preferences.md",
+  "sourceDirName": "reference-guides/user-settings",
+  "slug": "/reference-guides/user-settings/user-preferences",
+  "permalink": "/2.5/reference-guides/user-settings/user-preferences",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/user-settings/user-preferences.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "User Preferences",
+    "weight": 7012,
+    "aliases": [
+      "/rancher/v2.x/en/user-settings/preferences/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Managing Cloud Credentials",
+    "permalink": "/2.5/reference-guides/user-settings/manage-cloud-credentials"
+  },
+  "next": {
+    "title": "CLI with Rancher",
+    "permalink": "/2.5/pages-for-subheaders/cli-with-rancher"
+  }
+}

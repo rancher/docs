@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/prometheus-federator-guides",
+  "id": "pages-for-subheaders/prometheus-federator-guides",
+  "title": "prometheus-federator-guides",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/prometheus-federator-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/prometheus-federator-guides",
+  "permalink": "/docs/pages-for-subheaders/prometheus-federator-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/prometheus-federator-guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migrating to Rancher v2.5+ Monitoring",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/migrate-to-rancher-v2.5+-monitoring"
+  },
+  "next": {
+    "title": "Enable Prometheus Federator",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-alerting-guides/prometheus-federator-guides/enable-prometheus-federator"
+  }
+}

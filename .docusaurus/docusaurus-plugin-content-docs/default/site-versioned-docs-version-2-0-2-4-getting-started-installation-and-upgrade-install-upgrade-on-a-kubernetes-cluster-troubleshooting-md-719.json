@@ -1,0 +1,35 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "title": "Troubleshooting the Rancher Server Kubernetes Cluster",
+  "description": "This section describes how to troubleshoot an installation of Rancher on a Kubernetes cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Troubleshooting the Rancher Server Kubernetes Cluster",
+    "weight": 276,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/k8s-install/helm-rancher/troubleshooting",
+      "/rancher/v2.0-v2.4/en/installation/ha/kubernetes-rke/troubleshooting",
+      "/rancher/v2.0-v2.4/en/installation/k8s-install/kubernetes-rke/troubleshooting",
+      "/rancher/v2.0-v2.4/en/installation/options/troubleshooting"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rollbacks",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks"
+  },
+  "next": {
+    "title": "Upgrades",
+    "permalink": "/2.0-2.4/pages-for-subheaders/upgrades"
+  }
+}

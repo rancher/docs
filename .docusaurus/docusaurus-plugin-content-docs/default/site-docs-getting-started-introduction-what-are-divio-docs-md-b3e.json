@@ -1,0 +1,26 @@
+{
+  "unversionedId": "getting-started/introduction/what-are-divio-docs",
+  "id": "getting-started/introduction/what-are-divio-docs",
+  "title": "what-are-divio-docs",
+  "description": "",
+  "source": "@site/docs/getting-started/introduction/what-are-divio-docs.md",
+  "sourceDirName": "getting-started/introduction",
+  "slug": "/getting-started/introduction/what-are-divio-docs",
+  "permalink": "/docs/getting-started/introduction/what-are-divio-docs",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/introduction/what-are-divio-docs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/docs/getting-started/introduction/overview"
+  },
+  "next": {
+    "title": "Rancher Deployment Quick Start Guides",
+    "permalink": "/docs/pages-for-subheaders/quick-start-guides"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/amazon-eks-permissions/minimum-eks-permissions",
+  "id": "reference-guides/amazon-eks-permissions/minimum-eks-permissions",
+  "title": "Minimum EKS Permissions",
+  "description": "Documented here is a minimum set of permissions necessary to use all functionality of the EKS driver in Rancher. Additional permissions are required for Rancher to provision the Service Role and VPC resources. Optionally these resources can be created before the cluster creation and will be selectable when defining the cluster configuration.",
+  "source": "@site/docs/reference-guides/amazon-eks-permissions/minimum-eks-permissions.md",
+  "sourceDirName": "reference-guides/amazon-eks-permissions",
+  "slug": "/reference-guides/amazon-eks-permissions/minimum-eks-permissions",
+  "permalink": "/docs/reference-guides/amazon-eks-permissions/minimum-eks-permissions",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/amazon-eks-permissions/minimum-eks-permissions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Minimum EKS Permissions",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an EKS Cluster",
+    "permalink": "/docs/pages-for-subheaders/amazon-eks-permissions"
+  },
+  "next": {
+    "title": "Rancher Backup Configuration Reference",
+    "permalink": "/docs/pages-for-subheaders/backup-restore-configuration"
+  }
+}

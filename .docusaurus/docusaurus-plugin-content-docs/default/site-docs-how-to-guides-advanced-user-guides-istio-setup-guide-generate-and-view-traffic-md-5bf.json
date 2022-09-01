@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic",
+  "id": "how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic",
+  "title": "6. Generate and View Traffic",
+  "description": "This section describes how to view the traffic that is being managed by Istio.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "6. Generate and View Traffic",
+    "weight": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "5. Set up Istio's Components for Traffic Management",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management"
+  },
+  "next": {
+    "title": "CIS Scans",
+    "permalink": "/docs/pages-for-subheaders/cis-scan-guides"
+  }
+}

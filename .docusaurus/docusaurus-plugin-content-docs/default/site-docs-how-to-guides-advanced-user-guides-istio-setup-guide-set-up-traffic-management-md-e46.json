@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "id": "how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "title": "5. Set up Istio's Components for Traffic Management",
+  "description": "A central advantage of traffic management in Istio is that it allows dynamic request routing. Some common applications for dynamic request routing include canary deployments and blue/green deployments. The two key resources in Istio traffic management are virtual services and destination rules.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-traffic-management.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "5. Set up Istio's Components for Traffic Management",
+    "weight": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "4. Set up the Istio Gateway",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway"
+  },
+  "next": {
+    "title": "6. Generate and View Traffic",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic"
+  }
+}

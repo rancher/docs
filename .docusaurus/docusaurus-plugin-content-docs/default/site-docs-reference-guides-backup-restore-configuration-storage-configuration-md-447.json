@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/backup-restore-configuration/storage-configuration",
+  "id": "reference-guides/backup-restore-configuration/storage-configuration",
+  "title": "Backup Storage Location Configuration",
+  "description": "Configure a storage location where all backups are saved by default. You will have the option to override this with each backup, but will be limited to using an S3-compatible object store.",
+  "source": "@site/docs/reference-guides/backup-restore-configuration/storage-configuration.md",
+  "sourceDirName": "reference-guides/backup-restore-configuration",
+  "slug": "/reference-guides/backup-restore-configuration/storage-configuration",
+  "permalink": "/docs/reference-guides/backup-restore-configuration/storage-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/backup-restore-configuration/storage-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backup Storage Location Configuration",
+    "shortTitle": "Storage",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restore Configuration",
+    "permalink": "/docs/reference-guides/backup-restore-configuration/restore-configuration"
+  },
+  "next": {
+    "title": "Examples",
+    "permalink": "/docs/reference-guides/backup-restore-configuration/examples"
+  }
+}

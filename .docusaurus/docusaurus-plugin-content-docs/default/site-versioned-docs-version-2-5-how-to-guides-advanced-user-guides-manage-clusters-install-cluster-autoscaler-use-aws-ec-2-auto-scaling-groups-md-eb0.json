@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups",
+  "title": "Cluster Autoscaler with AWS EC2 Auto Scaling Groups",
+  "description": "This guide will show you how to install and use Kubernetes cluster-autoscaler on Rancher custom clusters using AWS EC2 Auto Scaling Groups.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Autoscaler with AWS EC2 Auto Scaling Groups",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/cluster-autoscaler/amazon/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Autoscaler",
+    "permalink": "/2.5/pages-for-subheaders/install-cluster-autoscaler"
+  },
+  "next": {
+    "title": "Kubernetes Persistent Storage: Volumes and Storage Classes",
+    "permalink": "/2.5/pages-for-subheaders/create-kubernetes-persistent-storage"
+  }
+}

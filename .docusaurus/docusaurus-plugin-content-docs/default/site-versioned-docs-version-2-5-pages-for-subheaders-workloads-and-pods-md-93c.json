@@ -1,0 +1,36 @@
+{
+  "unversionedId": "pages-for-subheaders/workloads-and-pods",
+  "id": "version-2.5/pages-for-subheaders/workloads-and-pods",
+  "title": "Kubernetes Workloads and Pods",
+  "description": "Learn about the two constructs with which you can build any complex containerized application in Kubernetes: Kubernetes workloads and pods",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/workloads-and-pods.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/workloads-and-pods",
+  "permalink": "/2.5/pages-for-subheaders/workloads-and-pods",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/workloads-and-pods.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Workloads and Pods",
+    "description": "Learn about the two constructs with which you can build any complex containerized application in Kubernetes: Kubernetes workloads and pods",
+    "weight": 3025,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/workloads/",
+      "/rancher/v2.5/en/tasks/workloads/",
+      "/rancher/v2.5/en/k8s-in-rancher/workloads",
+      "/rancher/v2.x/en/k8s-in-rancher/workloads/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Resources",
+    "permalink": "/2.5/pages-for-subheaders/kubernetes-resources-setup"
+  },
+  "next": {
+    "title": "Deploying Workloads",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads"
+  }
+}

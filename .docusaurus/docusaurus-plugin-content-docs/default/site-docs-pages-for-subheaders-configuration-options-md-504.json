@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/configuration-options",
+  "id": "pages-for-subheaders/configuration-options",
+  "title": "Configuration Options",
+  "description": "- Egress Support",
+  "source": "@site/docs/pages-for-subheaders/configuration-options.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/configuration-options",
+  "permalink": "/docs/pages-for-subheaders/configuration-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/configuration-options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuration Options",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Disabling Istio",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/disable-istio"
+  },
+  "next": {
+    "title": "Enable Istio with Pod Security Policies",
+    "permalink": "/docs/explanations/integrations-in-rancher/istio/configuration-options/pod-security-policies"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "unversionedId": "security/security-scan/security-scan",
+  "id": "version-2.5/security/security-scan/security-scan",
+  "title": "Security Scans",
+  "description": "The documentation about CIS security scans has moved here.",
+  "source": "@site/versioned_docs/version-2.5/security/security-scan/security-scan.md",
+  "sourceDirName": "security/security-scan",
+  "slug": "/security/security-scan/",
+  "permalink": "/2.5/security/security-scan/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/security/security-scan/security-scan.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security Scans",
+    "weight": 299
+  }
+}

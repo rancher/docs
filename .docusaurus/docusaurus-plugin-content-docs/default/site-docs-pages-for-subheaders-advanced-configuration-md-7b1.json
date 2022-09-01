@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/advanced-configuration",
+  "id": "pages-for-subheaders/advanced-configuration",
+  "title": "Advanced Configuration",
+  "description": "Alertmanager",
+  "source": "@site/docs/pages-for-subheaders/advanced-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/advanced-configuration",
+  "permalink": "/docs/pages-for-subheaders/advanced-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/advanced-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Advanced Configuration",
+    "weight": 500
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuration",
+    "permalink": "/docs/pages-for-subheaders/monitoring-v2-configuration-guides"
+  },
+  "next": {
+    "title": "Alertmanager Configuration",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager"
+  }
+}

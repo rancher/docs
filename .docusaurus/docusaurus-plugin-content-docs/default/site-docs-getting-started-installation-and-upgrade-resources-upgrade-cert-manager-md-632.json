@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/resources/upgrade-cert-manager",
+  "id": "getting-started/installation-and-upgrade/resources/upgrade-cert-manager",
+  "title": "Upgrading Cert-Manager",
+  "description": "Rancher uses cert-manager to automatically generate and renew TLS certificates for HA deployments of Rancher. As of Fall 2019, three important changes to cert-manager are set to occur that you need to take action on if you have an HA deployment of Rancher:",
+  "source": "@site/docs/getting-started/installation-and-upgrade/resources/upgrade-cert-manager.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/resources",
+  "slug": "/getting-started/installation-and-upgrade/resources/upgrade-cert-manager",
+  "permalink": "/docs/getting-started/installation-and-upgrade/resources/upgrade-cert-manager",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/resources/upgrade-cert-manager.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Cert-Manager",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "About Custom CA Root Certificates",
+    "permalink": "/docs/getting-started/installation-and-upgrade/resources/custom-ca-root-certificates"
+  },
+  "next": {
+    "title": "Updating the Rancher Certificate",
+    "permalink": "/docs/getting-started/installation-and-upgrade/resources/update-rancher-certificate"
+  }
+}

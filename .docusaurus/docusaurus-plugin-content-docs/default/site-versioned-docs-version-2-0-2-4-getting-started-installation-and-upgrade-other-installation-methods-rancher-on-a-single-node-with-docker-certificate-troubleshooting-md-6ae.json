@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting",
+  "title": "Certificate Troubleshooting",
+  "description": "How Do I Know if My Certificates are in PEM Format?",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/certificate-troubleshooting.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Certificate Troubleshooting",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rolling Back Rancher Installed with Docker",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher"
+  },
+  "next": {
+    "title": "Installing Rancher behind an HTTP Proxy",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rancher-behind-an-http-proxy"
+  }
+}

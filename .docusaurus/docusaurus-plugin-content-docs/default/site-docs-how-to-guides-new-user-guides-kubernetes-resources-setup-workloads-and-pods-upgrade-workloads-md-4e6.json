@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/upgrade-workloads",
+  "id": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/upgrade-workloads",
+  "title": "Upgrading Workloads",
+  "description": "When a new version of an application image is released on Docker Hub, you can upgrade any workloads running a previous version of the application to the new one.",
+  "source": "@site/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/upgrade-workloads.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/upgrade-workloads",
+  "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/upgrade-workloads",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/upgrade-workloads.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Workloads",
+    "weight": 3028
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rolling Back Workloads",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/roll-back-workloads"
+  },
+  "next": {
+    "title": "Adding a Sidecar",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/add-a-sidecar"
+  }
+}

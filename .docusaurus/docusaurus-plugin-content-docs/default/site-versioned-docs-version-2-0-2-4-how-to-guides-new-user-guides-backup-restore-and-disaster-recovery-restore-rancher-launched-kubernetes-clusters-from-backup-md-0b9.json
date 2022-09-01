@@ -1,0 +1,39 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "title": "Restoring Backups—Kubernetes installs",
+  "description": "This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md",
+  "sourceDirName": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery",
+  "slug": "/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restoring Backups—Kubernetes installs",
+    "shortTitle": "RKE Installs",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/after-installation/ha-backup-and-restoration/",
+      "/rancher/v2.0-v2.4/en/backups/restorations/ha-restoration",
+      "/rancher/v2.0-v2.4/en/backups/restorations/k8s-restore/rke-restore",
+      "/rancher/v2.0-v2.4/en/backups/legacy/restore/k8s-restore/rke-restore/",
+      "/rancher/v2.0-v2.4/en/backups/legacy/restore/rke-restore",
+      "/rancher/v2.0-v2.4/en/backups/v2.0.x-v2.4.x/restore/rke-restore",
+      "/rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backing up Rancher Installed on an RKE Kubernetes Cluster",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters"
+  },
+  "next": {
+    "title": "Rolling back to v2.0.0-v2.1.5",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup/roll-back-to-v2.0-v2.1"
+  }
+}

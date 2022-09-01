@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-logging/kafka",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/kafka",
+  "title": "Kafka",
+  "description": "If your organization uses Kafka, you can configure Rancher to send it Kubernetes logs.  Afterwards, you can log into your Kafka server to view logs.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/kafka.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-logging",
+  "slug": "/explanations/integrations-in-rancher/cluster-logging/kafka",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/kafka",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/kafka.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kafka",
+    "weight": 400,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tools/logging/kafka/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/logging/kafka",
+      "/rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/kafka",
+      "/rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/kafka",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/kafka/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Fluentd",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/fluentd"
+  },
+  "next": {
+    "title": "Splunk",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/splunk"
+  }
+}

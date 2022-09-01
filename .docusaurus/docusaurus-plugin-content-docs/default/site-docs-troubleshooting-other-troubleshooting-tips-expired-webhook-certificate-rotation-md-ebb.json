@@ -1,0 +1,29 @@
+{
+  "unversionedId": "troubleshooting/other-troubleshooting-tips/expired-webhook-certificate-rotation",
+  "id": "troubleshooting/other-troubleshooting-tips/expired-webhook-certificate-rotation",
+  "title": "Rotation of Expired Webhook Certificates",
+  "description": "For Rancher versions that have rancher-webhook installed, these certificates will expire after one year. It will be necessary for you to rotate your webhook certificate when this occurs.",
+  "source": "@site/docs/troubleshooting/other-troubleshooting-tips/expired-webhook-certificate-rotation.md",
+  "sourceDirName": "troubleshooting/other-troubleshooting-tips",
+  "slug": "/troubleshooting/other-troubleshooting-tips/expired-webhook-certificate-rotation",
+  "permalink": "/docs/troubleshooting/other-troubleshooting-tips/expired-webhook-certificate-rotation",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/troubleshooting/other-troubleshooting-tips/expired-webhook-certificate-rotation.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rotation of Expired Webhook Certificates",
+    "weight": 120
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "User ID Tracking in Audit Logs",
+    "permalink": "/docs/troubleshooting/other-troubleshooting-tips/user-id-tracking-in-audit-logs"
+  },
+  "next": {
+    "title": "Contributing to Rancher",
+    "permalink": "/docs/contribute-to-rancher"
+  }
+}

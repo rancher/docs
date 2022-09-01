@@ -1,0 +1,35 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration",
+  "title": "Upgrading to v2.0.7+ — Namespace Migration",
+  "description": "This section applies only to Rancher upgrades from v2.0.6 or earlier to v2.0.7 or later. Upgrades from v2.0.7 to later version are unaffected.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading to v2.0.7+ — Namespace Migration",
+    "weight": 1040,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/namespace-migration",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/namespace-migration",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/namespace-migration",
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/namespace-migration/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Migrating from a Kubernetes Install with an RKE Add-on",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on"
+  },
+  "next": {
+    "title": "Upgrading Rancher Installed on Kubernetes with Helm 2",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2"
+  }
+}

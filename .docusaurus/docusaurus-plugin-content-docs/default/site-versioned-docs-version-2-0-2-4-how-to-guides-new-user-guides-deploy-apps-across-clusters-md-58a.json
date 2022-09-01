@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/deploy-apps-across-clusters",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/deploy-apps-across-clusters",
+  "title": "Deploying Applications across Clusters",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/deploy-apps-across-clusters.md",
+  "sourceDirName": "how-to-guides/new-user-guides",
+  "slug": "/how-to-guides/new-user-guides/deploy-apps-across-clusters",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/deploy-apps-across-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/deploy-apps-across-clusters.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Deploying Applications across Clusters",
+    "weight": 13,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/deploy-across-clusters/multi-cluster-apps"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Global DNS",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/globaldns"
+  },
+  "next": {
+    "title": "Backups and Disaster Recovery",
+    "permalink": "/2.0-2.4/pages-for-subheaders/backup-restore-and-disaster-recovery"
+  }
+}

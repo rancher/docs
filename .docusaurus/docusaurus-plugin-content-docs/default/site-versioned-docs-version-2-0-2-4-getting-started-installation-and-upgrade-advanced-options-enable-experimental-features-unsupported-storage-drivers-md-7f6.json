@@ -1,0 +1,32 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "title": "Allow Unsupported Storage Drivers",
+  "description": "This feature allows you to use types for storage providers and provisioners that are not enabled by default.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/enable-experimental-features",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Allow Unsupported Storage Drivers",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/feature-flags/enable-not-default-storage-drivers/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Running on ARM64 (Experimental)",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64"
+  },
+  "next": {
+    "title": "UI for Istio Virtual Services and Destination Rules",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features"
+  }
+}

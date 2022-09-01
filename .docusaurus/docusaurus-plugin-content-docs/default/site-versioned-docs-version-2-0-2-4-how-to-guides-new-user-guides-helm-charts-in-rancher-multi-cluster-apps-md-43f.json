@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps",
+  "title": "Multi-Cluster Apps",
+  "description": "Available as of v2.2.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps.md",
+  "sourceDirName": "how-to-guides/new-user-guides/helm-charts-in-rancher",
+  "slug": "/how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Multi-Cluster Apps",
+    "weight": 600,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/catalog/multi-cluster-apps",
+      "/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/multi-cluster-apps"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Managing Catalog Apps",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/managing-apps"
+  },
+  "next": {
+    "title": "Launching Catalog Apps",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps"
+  }
+}

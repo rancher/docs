@@ -1,0 +1,38 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry",
+  "title": "2. Collect and Publish Images to your Private Registry",
+  "description": "Prerequisites: You must have a private registry available to use.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "weight": 200,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/air-gap-installation/prepare-private-reg/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/prepare-private-registry/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-single-node/prepare-private-registry/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-single-node/config-rancher-for-private-reg/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/config-rancher-for-private-reg/",
+      "/rancher/v2.0-v2.4/en/installation/options/air-gap-helm2/populate-private-registry",
+      "/rancher/v2.x/en/installation/resources/advanced/air-gap-helm2/populate-private-registry/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "1. Prepare your Node(s)",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/prepare-nodes"
+  },
+  "next": {
+    "title": "3. Install Kubernetes with RKE (Kubernetes Installs Only)",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes"
+  }
+}

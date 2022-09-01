@@ -1,0 +1,34 @@
+{
+  "unversionedId": "reference-guides/best-practices/deployment-types",
+  "id": "version-2.0-2.4/reference-guides/best-practices/deployment-types",
+  "title": "Tips for Running Rancher",
+  "description": "A high-availability Kubernetes installation, defined as an installation of Rancher on a Kubernetes cluster with at least three nodes, should be used in any production installation of Rancher, as well as any installation deemed \"important.\" Multiple Rancher instances running on multiple nodes ensure high availability that cannot be accomplished with a single node environment.",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/best-practices/deployment-types.md",
+  "sourceDirName": "reference-guides/best-practices",
+  "slug": "/reference-guides/best-practices/deployment-types",
+  "permalink": "/2.0-2.4/reference-guides/best-practices/deployment-types",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/best-practices/deployment-types.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tips for Running Rancher",
+    "weight": 100,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/best-practices/deployment-types",
+      "/rancher/v2.0-v2.4/en/best-practices/v2.0-v2.4/deployment-types",
+      "/rancher/v2.x/en/best-practices/v2.0-v2.4/deployment-types/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Deployment Strategies",
+    "permalink": "/2.0-2.4/reference-guides/best-practices/deployment-strategies"
+  },
+  "next": {
+    "title": "Tips for Scaling, Security and Reliability",
+    "permalink": "/2.0-2.4/reference-guides/best-practices/management"
+  }
+}

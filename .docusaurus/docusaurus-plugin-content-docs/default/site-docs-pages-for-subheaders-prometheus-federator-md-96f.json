@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/prometheus-federator",
+  "id": "pages-for-subheaders/prometheus-federator",
+  "title": "Prometheus Federator",
+  "description": "Prometheus Federator, also referred to as Project Monitoring v2, deploys a Helm Project Operator (based on the rancher/helm-project-operator), an operator that manages deploying Helm charts each containing a Project Monitoring Stack, where each stack contains:",
+  "source": "@site/docs/pages-for-subheaders/prometheus-federator.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/prometheus-federator",
+  "permalink": "/docs/pages-for-subheaders/prometheus-federator",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/prometheus-federator.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Prometheus Federator",
+    "weight": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Examples",
+    "permalink": "/docs/reference-guides/monitoring-v2-configuration/examples"
+  },
+  "next": {
+    "title": "Role-Based Access Control",
+    "permalink": "/docs/reference-guides/prometheus-federator/rbac"
+  }
+}

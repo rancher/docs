@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar",
+  "id": "how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar",
+  "title": "3. Add Deployments and Services with the Istio Sidecar",
+  "description": "To enable Istio for a workload, the cluster and namespace must have the Istio app installed.",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/istio-setup-guide",
+  "slug": "/how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/istio-setup-guide/use-istio-sidecar.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "3. Add Deployments and Services with the Istio Sidecar",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Enable Istio in a Namespace",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/enable-istio-in-namespace"
+  },
+  "next": {
+    "title": "4. Set up the Istio Gateway",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/set-up-istio-gateway"
+  }
+}

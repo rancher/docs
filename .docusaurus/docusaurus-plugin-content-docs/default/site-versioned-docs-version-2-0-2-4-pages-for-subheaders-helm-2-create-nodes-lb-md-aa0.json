@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/helm2-create-nodes-lb",
+  "id": "version-2.0-2.4/pages-for-subheaders/helm2-create-nodes-lb",
+  "title": "1. Create Nodes and Load Balancer",
+  "description": "Use your provider of choice to provision 3 nodes and a Load Balancer endpoint for your RKE install.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-create-nodes-lb.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm2-create-nodes-lb",
+  "permalink": "/2.0-2.4/pages-for-subheaders/helm2-create-nodes-lb",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-create-nodes-lb.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "1. Create Nodes and Load Balancer",
+    "weight": 185,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/create-nodes-lb",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/create-nodes-lb/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Installation Using Helm 2",
+    "permalink": "/2.0-2.4/pages-for-subheaders/helm2"
+  },
+  "next": {
+    "title": "NGINX",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nginx"
+  }
+}

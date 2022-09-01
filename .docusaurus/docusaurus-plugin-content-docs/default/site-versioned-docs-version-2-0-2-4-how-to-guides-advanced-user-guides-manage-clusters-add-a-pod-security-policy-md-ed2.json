@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy",
+  "title": "Adding a Pod Security Policy",
+  "description": "Prerequisite: The options below are available only for clusters that are launched using RKE.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-clusters",
+  "slug": "/how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/add-a-pod-security-policy.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Adding a Pod Security Policy",
+    "weight": 80
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Removing Kubernetes Components from Nodes",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes"
+  },
+  "next": {
+    "title": "Assigning Pod Security Policies",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies"
+  }
+}

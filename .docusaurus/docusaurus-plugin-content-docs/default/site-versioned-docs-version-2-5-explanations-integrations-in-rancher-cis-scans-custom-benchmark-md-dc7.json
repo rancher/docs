@@ -1,0 +1,33 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cis-scans/custom-benchmark",
+  "id": "version-2.5/explanations/integrations-in-rancher/cis-scans/custom-benchmark",
+  "title": "Creating a Custom Benchmark Version for Running a Cluster Scan",
+  "description": "Available as of v2.5.4",
+  "source": "@site/versioned_docs/version-2.5/explanations/integrations-in-rancher/cis-scans/custom-benchmark.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cis-scans",
+  "slug": "/explanations/integrations-in-rancher/cis-scans/custom-benchmark",
+  "permalink": "/2.5/explanations/integrations-in-rancher/cis-scans/custom-benchmark",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/explanations/integrations-in-rancher/cis-scans/custom-benchmark.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a Custom Benchmark Version for Running a Cluster Scan",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.5/en/cis-scans/v2.5/custom-benchmark",
+      "/rancher/v2.x/en/cis-scans/v2.5/custom-benchmark/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Skipped and Not Applicable Tests",
+    "permalink": "/2.5/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests"
+  },
+  "next": {
+    "title": "fleet-gitops-at-scale",
+    "permalink": "/2.5/pages-for-subheaders/fleet-gitops-at-scale"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "unversionedId": "pages-for-subheaders/use-existing-nodes",
+  "id": "version-2.0-2.4/pages-for-subheaders/use-existing-nodes",
+  "title": "Launching Kubernetes on Existing Custom Nodes",
+  "description": "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/use-existing-nodes.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/use-existing-nodes",
+  "permalink": "/2.0-2.4/pages-for-subheaders/use-existing-nodes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/use-existing-nodes.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Kubernetes on Existing Custom Nodes",
+    "description": "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements",
+    "metaDescription": "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements",
+    "weight": 2225,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/clusters/creating-a-cluster/create-cluster-custom/",
+      "/rancher/v2.0-v2.4/en/cluster-provisioning/custom-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE Cluster Configuration Reference",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration"
+  },
+  "next": {
+    "title": "Rancher Agent Options",
+    "permalink": "/2.0-2.4/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options"
+  }
+}

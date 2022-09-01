@@ -1,0 +1,37 @@
+{
+  "unversionedId": "reference-guides/monitoring-v2-configuration/receivers",
+  "id": "version-2.5/reference-guides/monitoring-v2-configuration/receivers",
+  "title": "Receiver Configuration",
+  "description": "The Alertmanager Config Secret contains the configuration of an Alertmanager instance that sends out notifications based on alerts it receives from Prometheus.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/monitoring-v2-configuration/receivers.md",
+  "sourceDirName": "reference-guides/monitoring-v2-configuration",
+  "slug": "/reference-guides/monitoring-v2-configuration/receivers",
+  "permalink": "/2.5/reference-guides/monitoring-v2-configuration/receivers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/monitoring-v2-configuration/receivers.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Receiver Configuration",
+    "shortTitle": "Receivers",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager",
+      "rancher/v2.5/en/monitoring-alerting/legacy/notifiers/",
+      "/rancher/v2.5/en/cluster-admin/tools/notifiers",
+      "/rancher/v2.5/en/cluster-admin/tools/alerts",
+      "/rancher/v2.5/en/monitoring-alerting/configuration/alertmanager"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "monitoring-v2-configuration",
+    "permalink": "/2.5/pages-for-subheaders/monitoring-v2-configuration"
+  },
+  "next": {
+    "title": "Route Configuration",
+    "permalink": "/2.5/reference-guides/monitoring-v2-configuration/routes"
+  }
+}

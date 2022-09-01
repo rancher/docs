@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/advanced-user-guides",
+  "id": "version-2.0-2.4/pages-for-subheaders/advanced-user-guides",
+  "title": "advanced-user-guides",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/advanced-user-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/advanced-user-guides",
+  "permalink": "/2.0-2.4/pages-for-subheaders/advanced-user-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/advanced-user-guides.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "7. Load Balancing",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/load-balancing"
+  },
+  "next": {
+    "title": "Authentication, Permissions and Global Configuration",
+    "permalink": "/2.0-2.4/pages-for-subheaders/authentication-permissions-and-global-configuration"
+  }
+}

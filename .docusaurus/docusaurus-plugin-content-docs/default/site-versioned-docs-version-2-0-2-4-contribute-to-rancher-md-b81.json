@@ -1,0 +1,28 @@
+{
+  "unversionedId": "contribute-to-rancher",
+  "id": "version-2.0-2.4/contribute-to-rancher",
+  "title": "Contributing to Rancher",
+  "description": "This section explains the repositories used for Rancher, how to build the repositories, and what information to include when you file an issue.",
+  "source": "@site/versioned_docs/version-2.0-2.4/contribute-to-rancher.md",
+  "sourceDirName": ".",
+  "slug": "/contribute-to-rancher",
+  "permalink": "/2.0-2.4/contribute-to-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/contribute-to-rancher.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Contributing to Rancher",
+    "weight": 27,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/faq/contributing/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Logging",
+    "permalink": "/2.0-2.4/troubleshooting/other-troubleshooting-tips/logging"
+  }
+}

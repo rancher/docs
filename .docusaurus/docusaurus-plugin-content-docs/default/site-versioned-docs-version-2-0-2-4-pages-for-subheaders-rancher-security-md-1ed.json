@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/rancher-security",
+  "id": "version-2.0-2.4/pages-for-subheaders/rancher-security",
+  "title": "Security",
+  "description": "Security policy",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-security.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/rancher-security",
+  "permalink": "/2.0-2.4/pages-for-subheaders/rancher-security",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/rancher-security.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security",
+    "weight": 20
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "v2.0.x Pipeline Documentation",
+    "permalink": "/2.0-2.4/reference-guides/pipelines/v2.0.x"
+  },
+  "next": {
+    "title": "Rancher v2.1",
+    "permalink": "/2.0-2.4/pages-for-subheaders/rancher-v2.1-hardening-guides"
+  }
+}

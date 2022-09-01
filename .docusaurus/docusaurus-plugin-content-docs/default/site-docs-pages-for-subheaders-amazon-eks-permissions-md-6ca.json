@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/amazon-eks-permissions",
+  "id": "pages-for-subheaders/amazon-eks-permissions",
+  "title": "Creating an EKS Cluster",
+  "description": "Amazon EKS provides a managed control plane for your Kubernetes cluster. Amazon EKS runs the Kubernetes control plane instances across multiple Availability Zones to ensure high availability. Rancher provides an intuitive user interface for managing and deploying the Kubernetes clusters you run in Amazon EKS. With this guide, you will use Rancher to quickly and easily launch an Amazon EKS Kubernetes cluster in your AWS account. For more information on Amazon EKS, see this documentation.",
+  "source": "@site/docs/pages-for-subheaders/amazon-eks-permissions.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/amazon-eks-permissions",
+  "permalink": "/docs/pages-for-subheaders/amazon-eks-permissions",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/amazon-eks-permissions.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating an EKS Cluster",
+    "shortTitle": "Amazon EKS",
+    "weight": 2110
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "feature-flags",
+    "permalink": "/docs/reference-guides/installation-references/feature-flags"
+  },
+  "next": {
+    "title": "Minimum EKS Permissions",
+    "permalink": "/docs/reference-guides/amazon-eks-permissions/minimum-eks-permissions"
+  }
+}

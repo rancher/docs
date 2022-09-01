@@ -1,0 +1,21 @@
+{
+  "unversionedId": "backups/docker-installs/docker-installs",
+  "id": "backups/docker-installs/docker-installs",
+  "title": "Backup and Restore for Rancher Installed with Docker",
+  "description": "- Backups",
+  "source": "@site/docs/backups/docker-installs/docker-installs.md",
+  "sourceDirName": "backups/docker-installs",
+  "slug": "/backups/docker-installs/",
+  "permalink": "/docs/backups/docker-installs/",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/backups/docker-installs/docker-installs.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backup and Restore for Rancher Installed with Docker",
+    "shortTitle": "Docker Installs",
+    "weight": 10
+  }
+}

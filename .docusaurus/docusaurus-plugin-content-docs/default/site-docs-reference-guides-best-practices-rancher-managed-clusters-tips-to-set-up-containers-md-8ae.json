@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers",
+  "id": "reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers",
+  "title": "Tips for Setting Up Containers",
+  "description": "Running well-built containers can greatly impact the overall performance and security of your environment.",
+  "source": "@site/docs/reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers.md",
+  "sourceDirName": "reference-guides/best-practices/rancher-managed-clusters",
+  "slug": "/reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers",
+  "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/best-practices/rancher-managed-clusters/tips-to-set-up-containers.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tips for Setting Up Containers",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Monitoring Best Practices",
+    "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices"
+  },
+  "next": {
+    "title": "Best Practices for Rancher Managed vSphere Clusters",
+    "permalink": "/docs/reference-guides/best-practices/rancher-managed-clusters/rancher-managed-clusters-in-vsphere"
+  }
+}

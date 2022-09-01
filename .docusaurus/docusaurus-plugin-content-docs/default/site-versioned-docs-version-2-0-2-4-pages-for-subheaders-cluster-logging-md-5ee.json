@@ -1,0 +1,40 @@
+{
+  "unversionedId": "pages-for-subheaders/cluster-logging",
+  "id": "version-2.0-2.4/pages-for-subheaders/cluster-logging",
+  "title": "Cluster Logging",
+  "description": "Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-logging.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cluster-logging",
+  "permalink": "/2.0-2.4/pages-for-subheaders/cluster-logging",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/cluster-logging.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Logging",
+    "shortTitle": "Logging",
+    "description": "Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.",
+    "metaDescription": "Rancher integrates with popular logging services. Learn the requirements and benefits of integrating with logging services, and enable logging on your cluster.",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/logging/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/logging",
+      "/rancher/v2.0-v2.4/en/logging/legacy/cluster-logging",
+      "/rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Release Notes",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/istio/release-notes"
+  },
+  "next": {
+    "title": "Elasticsearch",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/elasticsearch"
+  }
+}

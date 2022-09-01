@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/backup-restore-configuration/examples",
+  "id": "reference-guides/backup-restore-configuration/examples",
+  "title": "Examples",
+  "description": "This section contains examples of Backup and Restore custom resources.",
+  "source": "@site/docs/reference-guides/backup-restore-configuration/examples.md",
+  "sourceDirName": "reference-guides/backup-restore-configuration",
+  "slug": "/reference-guides/backup-restore-configuration/examples",
+  "permalink": "/docs/reference-guides/backup-restore-configuration/examples",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/backup-restore-configuration/examples.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Examples",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backup Storage Location Configuration",
+    "permalink": "/docs/reference-guides/backup-restore-configuration/storage-configuration"
+  },
+  "next": {
+    "title": "Configuring OpenLDAP",
+    "permalink": "/docs/pages-for-subheaders/configure-openldap"
+  }
+}

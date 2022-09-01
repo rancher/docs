@@ -1,0 +1,33 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate",
+  "title": "Template for an RKE Cluster with a Self-signed Certificate and SSL Termination on Layer 7 Load Balancer",
+  "description": "RKE uses a cluster.yml file to install and configure your Kubernetes cluster.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-certificate.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Template for an RKE Cluster with a Self-signed Certificate and SSL Termination on Layer 7 Load Balancer",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/cluster-yml-templates/3-node-externalssl-certificate",
+      "/rancher/v2.x/en/installation/resources/advanced/cluster-yml-templates/3-node-externalssl-certificate/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Template for an RKE Cluster with a Certificate Signed by Recognized CA and a Layer 4 Load Balancer",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-certificate-recognizedca"
+  },
+  "next": {
+    "title": "Template for an RKE Cluster with a Recognized CA Certificate and SSL Termination on Layer 7 Load Balancer",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/cluster-yml-templates/node-externalssl-recognizedca"
+  }
+}

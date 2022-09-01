@@ -1,0 +1,30 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "id": "getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "title": "Port Requirements",
+  "description": "Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes",
+  "source": "@site/docs/getting-started/installation-and-upgrade/installation-requirements/port-requirements.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/installation-requirements",
+  "slug": "/getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "permalink": "/docs/getting-started/installation-and-upgrade/installation-requirements/port-requirements",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/installation-requirements/port-requirements.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Port Requirements",
+    "description": "Read about port requirements needed in order for Rancher to operate properly, both for Rancher nodes and downstream Kubernetes cluster nodes",
+    "weight": 300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Dockershim",
+    "permalink": "/docs/getting-started/installation-and-upgrade/installation-requirements/dockershim"
+  },
+  "next": {
+    "title": "Install/Upgrade Rancher on a Kubernetes Cluster",
+    "permalink": "/docs/pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster"
+  }
+}

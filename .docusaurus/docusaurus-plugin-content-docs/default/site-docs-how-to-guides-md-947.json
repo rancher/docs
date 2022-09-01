@@ -1,0 +1,26 @@
+{
+  "unversionedId": "how-to-guides",
+  "id": "how-to-guides",
+  "title": "how-to-guides",
+  "description": "",
+  "source": "@site/docs/how-to-guides.md",
+  "sourceDirName": ".",
+  "slug": "/how-to-guides",
+  "permalink": "/docs/how-to-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Docker Install with TLS Termination at Layer-7 NGINX Load Balancer",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/configure-layer-7-nginx-load-balancer"
+  },
+  "next": {
+    "title": "new-user-guides",
+    "permalink": "/docs/pages-for-subheaders/new-user-guides"
+  }
+}

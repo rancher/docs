@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/manage-clusters",
+  "id": "version-2.5/pages-for-subheaders/manage-clusters",
+  "title": "Cluster Administration",
+  "description": "After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/manage-clusters.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/manage-clusters",
+  "permalink": "/2.5/pages-for-subheaders/manage-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/manage-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Administration",
+    "weight": 8,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Configuring a Global Default Private Registry",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry"
+  },
+  "next": {
+    "title": "Cluster Access",
+    "permalink": "/2.5/pages-for-subheaders/access-clusters"
+  }
+}

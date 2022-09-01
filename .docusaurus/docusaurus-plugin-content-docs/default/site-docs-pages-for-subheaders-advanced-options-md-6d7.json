@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/advanced-options",
+  "id": "pages-for-subheaders/advanced-options",
+  "title": "Advanced",
+  "description": "The documents in this section contain resources for less common use cases.",
+  "source": "@site/docs/pages-for-subheaders/advanced-options.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/advanced-options",
+  "permalink": "/docs/pages-for-subheaders/advanced-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/advanced-options.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Advanced",
+    "weight": 1000
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading Kubernetes without Upgrading Rancher",
+    "permalink": "/docs/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher"
+  },
+  "next": {
+    "title": "Enabling Experimental Features",
+    "permalink": "/docs/pages-for-subheaders/enable-experimental-features"
+  }
+}

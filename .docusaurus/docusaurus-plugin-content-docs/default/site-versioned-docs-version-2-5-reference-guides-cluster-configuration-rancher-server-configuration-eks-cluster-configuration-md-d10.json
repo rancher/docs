@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration",
+  "id": "version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration",
+  "title": "EKS Cluster Configuration Reference",
+  "description": "Account Access",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration.md",
+  "sourceDirName": "reference-guides/cluster-configuration/rancher-server-configuration",
+  "slug": "/reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration",
+  "permalink": "/2.5/reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "EKS Cluster Configuration Reference",
+    "shortTitle": "EKS Cluster Configuration",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE Cluster Configuration",
+    "permalink": "/2.5/reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration"
+  },
+  "next": {
+    "title": "GKE Cluster Configuration Reference",
+    "permalink": "/2.5/pages-for-subheaders/gke-cluster-configuration"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-monitoring/project-monitoring",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/project-monitoring",
+  "title": "Project Monitoring",
+  "description": "Available as of v2.2.4",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/project-monitoring.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-monitoring",
+  "slug": "/explanations/integrations-in-rancher/cluster-monitoring/project-monitoring",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/project-monitoring",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/project-monitoring.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Monitoring",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/project-admin/tools/monitoring",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/monitoring/project-monitoring",
+      "/rancher/v2.0-v2.4/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/project-monitoring"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Prometheus Expressions",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/expression"
+  },
+  "next": {
+    "title": "Prometheus Configuration",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-monitoring/prometheus"
+  }
+}

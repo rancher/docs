@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/cis-scan-guides",
+  "id": "pages-for-subheaders/cis-scan-guides",
+  "title": "CIS Scans",
+  "description": "Rancher can run a security scan to check whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark. The CIS scans can run on any Kubernetes cluster, including hosted Kubernetes providers such as EKS, AKS, and GKE.",
+  "source": "@site/docs/pages-for-subheaders/cis-scan-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cis-scan-guides",
+  "permalink": "/docs/pages-for-subheaders/cis-scan-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/cis-scan-guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CIS Scans",
+    "weight": 17
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "6. Generate and View Traffic",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/istio-setup-guide/generate-and-view-traffic"
+  },
+  "next": {
+    "title": "install-rancher-cis-benchmark",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/cis-scan-guides/install-rancher-cis-benchmark"
+  }
+}

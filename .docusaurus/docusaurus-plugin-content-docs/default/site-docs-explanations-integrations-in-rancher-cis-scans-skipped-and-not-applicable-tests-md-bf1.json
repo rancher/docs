@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests",
+  "id": "explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests",
+  "title": "Skipped and Not Applicable Tests",
+  "description": "This section lists the tests that are skipped in the permissive test profile for RKE.",
+  "source": "@site/docs/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cis-scans",
+  "slug": "/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests",
+  "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Skipped and Not Applicable Tests",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Roles-based Access Control",
+    "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/rbac-for-cis-scans"
+  },
+  "next": {
+    "title": "Creating a Custom Benchmark Version for Running a Cluster Scan",
+    "permalink": "/docs/explanations/integrations-in-rancher/cis-scans/custom-benchmark"
+  }
+}

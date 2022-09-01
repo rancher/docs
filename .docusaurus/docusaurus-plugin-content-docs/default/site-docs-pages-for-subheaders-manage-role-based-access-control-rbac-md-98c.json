@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/manage-role-based-access-control-rbac",
+  "id": "pages-for-subheaders/manage-role-based-access-control-rbac",
+  "title": "Role-Based Access Control (RBAC)",
+  "description": "Within Rancher, each person authenticates as a user, which is a login that grants you access to Rancher. As mentioned in Authentication, users can either be local or external.",
+  "source": "@site/docs/pages-for-subheaders/manage-role-based-access-control-rbac.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/manage-role-based-access-control-rbac",
+  "permalink": "/docs/pages-for-subheaders/manage-role-based-access-control-rbac",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/manage-role-based-access-control-rbac.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Role-Based Access Control (RBAC)",
+    "weight": 20
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Group Permissions with Shibboleth and OpenLDAP",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-shibboleth-saml/about-group-permissions"
+  },
+  "next": {
+    "title": "Global Permissions",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/global-permissions"
+  }
+}

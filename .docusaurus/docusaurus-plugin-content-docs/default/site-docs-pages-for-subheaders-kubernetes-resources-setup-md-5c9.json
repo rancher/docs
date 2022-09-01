@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/kubernetes-resources-setup",
+  "id": "pages-for-subheaders/kubernetes-resources-setup",
+  "title": "Kubernetes Resources",
+  "description": "You can view and manipulate all of the custom resources and CRDs in a Kubernetes cluster from the Rancher UI.",
+  "source": "@site/docs/pages-for-subheaders/kubernetes-resources-setup.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/kubernetes-resources-setup",
+  "permalink": "/docs/pages-for-subheaders/kubernetes-resources-setup",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/kubernetes-resources-setup.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Resources",
+    "weight": 18
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Registering Existing Clusters",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters"
+  },
+  "next": {
+    "title": "Kubernetes Workloads and Pods",
+    "permalink": "/docs/pages-for-subheaders/workloads-and-pods"
+  }
+}

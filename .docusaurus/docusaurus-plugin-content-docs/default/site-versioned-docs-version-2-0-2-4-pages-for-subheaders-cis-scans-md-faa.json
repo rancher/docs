@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/cis-scans",
+  "id": "version-2.0-2.4/pages-for-subheaders/cis-scans",
+  "title": "CIS Scans",
+  "description": "Available as of v2.4.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/cis-scans.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/cis-scans",
+  "permalink": "/2.0-2.4/pages-for-subheaders/cis-scans",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/cis-scans.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "CIS Scans",
+    "weight": 18,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/cis-scans/legacy",
+      "/rancher/v2.0-v2.4/en/cis-scans",
+      "/rancher/v2.x/en/cis-scans/v2.4/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "integrations-in-rancher",
+    "permalink": "/2.0-2.4/pages-for-subheaders/integrations-in-rancher"
+  },
+  "next": {
+    "title": "Skipped and Not Applicable Tests",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests"
+  }
+}

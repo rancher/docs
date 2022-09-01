@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/backup-restore-configuration/backup-configuration",
+  "id": "reference-guides/backup-restore-configuration/backup-configuration",
+  "title": "Backup Configuration",
+  "description": "The Backup Create page lets you configure a schedule, enable encryption and specify the storage location for your backups.",
+  "source": "@site/docs/reference-guides/backup-restore-configuration/backup-configuration.md",
+  "sourceDirName": "reference-guides/backup-restore-configuration",
+  "slug": "/reference-guides/backup-restore-configuration/backup-configuration",
+  "permalink": "/docs/reference-guides/backup-restore-configuration/backup-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/backup-restore-configuration/backup-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Backup Configuration",
+    "shortTitle": "Backup",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Backup Configuration Reference",
+    "permalink": "/docs/pages-for-subheaders/backup-restore-configuration"
+  },
+  "next": {
+    "title": "Restore Configuration",
+    "permalink": "/docs/reference-guides/backup-restore-configuration/restore-configuration"
+  }
+}

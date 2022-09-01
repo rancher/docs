@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/installation-references/tls-settings",
+  "id": "reference-guides/installation-references/tls-settings",
+  "title": "TLS Settings",
+  "description": "Changing the default TLS settings depends on the chosen installation method.",
+  "source": "@site/docs/reference-guides/installation-references/tls-settings.md",
+  "sourceDirName": "reference-guides/installation-references",
+  "slug": "/reference-guides/installation-references/tls-settings",
+  "permalink": "/docs/reference-guides/installation-references/tls-settings",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/installation-references/tls-settings.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "TLS Settings",
+    "weight": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Helm Chart Options",
+    "permalink": "/docs/reference-guides/installation-references/helm-chart-options"
+  },
+  "next": {
+    "title": "feature-flags",
+    "permalink": "/docs/reference-guides/installation-references/feature-flags"
+  }
+}

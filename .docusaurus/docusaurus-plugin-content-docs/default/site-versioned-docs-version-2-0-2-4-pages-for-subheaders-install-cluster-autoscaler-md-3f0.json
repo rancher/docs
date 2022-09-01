@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/install-cluster-autoscaler",
+  "id": "version-2.0-2.4/pages-for-subheaders/install-cluster-autoscaler",
+  "title": "Cluster Autoscaler",
+  "description": "In this section, you'll learn how to install and use the Kubernetes cluster-autoscaler on Rancher custom clusters using AWS EC2 Auto Scaling Groups.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/install-cluster-autoscaler.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/install-cluster-autoscaler",
+  "permalink": "/2.0-2.4/pages-for-subheaders/install-cluster-autoscaler",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/install-cluster-autoscaler.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Autoscaler",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restoring a Cluster from Backup",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/restoring-etcd"
+  },
+  "next": {
+    "title": "Cluster Autoscaler with AWS EC2 Auto Scaling Groups",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/manage-clusters/install-cluster-autoscaler/use-aws-ec2-auto-scaling-groups"
+  }
+}

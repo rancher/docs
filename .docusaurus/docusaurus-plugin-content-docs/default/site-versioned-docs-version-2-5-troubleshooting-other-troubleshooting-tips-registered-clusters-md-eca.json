@@ -1,0 +1,32 @@
+{
+  "unversionedId": "troubleshooting/other-troubleshooting-tips/registered-clusters",
+  "id": "version-2.5/troubleshooting/other-troubleshooting-tips/registered-clusters",
+  "title": "Registered clusters",
+  "description": "The commands/steps listed on this page can be used to check clusters that you are registering or that are registered in Rancher.",
+  "source": "@site/versioned_docs/version-2.5/troubleshooting/other-troubleshooting-tips/registered-clusters.md",
+  "sourceDirName": "troubleshooting/other-troubleshooting-tips",
+  "slug": "/troubleshooting/other-troubleshooting-tips/registered-clusters",
+  "permalink": "/2.5/troubleshooting/other-troubleshooting-tips/registered-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/troubleshooting/other-troubleshooting-tips/registered-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Registered clusters",
+    "weight": 105,
+    "aliases": [
+      "/rancher/v2.x/en/troubleshooting/imported-clusters/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher HA",
+    "permalink": "/2.5/troubleshooting/other-troubleshooting-tips/rancher-ha"
+  },
+  "next": {
+    "title": "Logging",
+    "permalink": "/2.5/troubleshooting/other-troubleshooting-tips/logging"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "id": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "title": "VSphere Node Template Configuration",
+  "description": "- Account Access",
+  "source": "@site/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere.md",
+  "sourceDirName": "reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration",
+  "slug": "/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/vsphere.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "VSphere Node Template Configuration",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Azure Node Template Configuration",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/azure"
+  },
+  "next": {
+    "title": "Nutanix Node Template Configuration",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/node-template-configuration/nutanix"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/single-node-rancher-in-docker",
+  "id": "pages-for-subheaders/single-node-rancher-in-docker",
+  "title": "single-node-rancher-in-docker",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/single-node-rancher-in-docker.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/single-node-rancher-in-docker",
+  "permalink": "/docs/pages-for-subheaders/single-node-rancher-in-docker",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/single-node-rancher-in-docker.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Azure Machine Configuration",
+    "permalink": "/docs/reference-guides/cluster-configuration/downstream-cluster-configuration/machine-configuration/azure"
+  },
+  "next": {
+    "title": "HTTP Proxy Configuration",
+    "permalink": "/docs/reference-guides/single-node-rancher-in-docker/http-proxy-configuration"
+  }
+}

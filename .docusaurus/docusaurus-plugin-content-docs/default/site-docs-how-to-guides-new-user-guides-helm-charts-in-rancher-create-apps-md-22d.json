@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps",
+  "id": "how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps",
+  "title": "Creating Apps",
+  "description": "Rancher's App Marketplace is based on Helm Repositories and Helm Charts. You can add HTTP based standard Helm Repositories as well as any Git Repository which contains charts.",
+  "source": "@site/docs/how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps.md",
+  "sourceDirName": "how-to-guides/new-user-guides/helm-charts-in-rancher",
+  "slug": "/how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps",
+  "permalink": "/docs/how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating Apps",
+    "weight": 400
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Helm Charts in Rancher",
+    "permalink": "/docs/pages-for-subheaders/helm-charts-in-rancher"
+  },
+  "next": {
+    "title": "Deploying Applications across Clusters",
+    "permalink": "/docs/pages-for-subheaders/deploy-apps-across-clusters"
+  }
+}

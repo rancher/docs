@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq/technical-items",
+  "id": "faq/technical-items",
+  "title": "Technical",
+  "description": "How can I reset the administrator password?",
+  "source": "@site/docs/faq/technical-items.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/technical-items",
+  "permalink": "/docs/faq/technical-items",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/faq/technical-items.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Technical",
+    "weight": 8006
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Dockershim",
+    "permalink": "/docs/faq/dockershim"
+  },
+  "next": {
+    "title": "Security",
+    "permalink": "/docs/faq/security"
+  }
+}

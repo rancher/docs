@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/rancher-cluster-tools",
+  "id": "version-2.0-2.4/reference-guides/rancher-cluster-tools",
+  "title": "Tools for Logging, Monitoring, and More",
+  "description": "Rancher contains a variety of tools that aren't included in Kubernetes to assist in your DevOps operations. Rancher can integrate with external services to help your clusters run more efficiently. Tools are divided into following categories:",
+  "source": "@site/versioned_docs/version-2.0-2.4/reference-guides/rancher-cluster-tools.md",
+  "sourceDirName": "reference-guides",
+  "slug": "/reference-guides/rancher-cluster-tools",
+  "permalink": "/2.0-2.4/reference-guides/rancher-cluster-tools",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/reference-guides/rancher-cluster-tools.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tools for Logging, Monitoring, and More",
+    "weight": 2033,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/toolcluster-admin/tools/notifiers-and-alerts/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "API Tokens",
+    "permalink": "/2.0-2.4/reference-guides/about-the-api/api-tokens"
+  },
+  "next": {
+    "title": "Tools for Logging, Monitoring, and More",
+    "permalink": "/2.0-2.4/pages-for-subheaders/project-tools"
+  }
+}

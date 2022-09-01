@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps",
+  "title": "Launching Catalog Apps",
+  "description": "Within a project, when you want to deploy applications from catalogs, the applications available in your project will be based on the scope of the catalogs.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps.md",
+  "sourceDirName": "how-to-guides/new-user-guides/helm-charts-in-rancher",
+  "slug": "/how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/launching-apps.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Launching Catalog Apps",
+    "weight": 700,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/catalog/launching-apps",
+      "/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/launching-apps"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Multi-Cluster Apps",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/multi-cluster-apps"
+  },
+  "next": {
+    "title": "Tutorial: Example Custom Chart Creation",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/tutorial"
+  }
+}

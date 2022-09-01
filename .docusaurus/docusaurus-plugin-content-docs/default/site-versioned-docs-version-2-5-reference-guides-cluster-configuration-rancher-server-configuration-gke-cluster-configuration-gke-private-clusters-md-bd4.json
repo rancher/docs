@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters",
+  "id": "version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters",
+  "title": "Private Clusters",
+  "description": "Available as of v2.5.8",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters.md",
+  "sourceDirName": "reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration",
+  "slug": "/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters",
+  "permalink": "/2.5/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/cluster-configuration/rancher-server-configuration/gke-cluster-configuration/gke-private-clusters.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Private Clusters",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.5/en/cluster-provisioning/hosted-kubernetes-clusters/gke/private-clusters"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "GKE Cluster Configuration Reference",
+    "permalink": "/2.5/pages-for-subheaders/gke-cluster-configuration"
+  },
+  "next": {
+    "title": "Launching Kubernetes on Existing Custom Nodes",
+    "permalink": "/2.5/pages-for-subheaders/use-existing-nodes"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry",
+  "title": "Configuring a Global Default Private Registry",
+  "description": "You might want to use a private container registry to share your custom base images within your organization. With a private registry, you can keep a private, consistent, and centralized source of truth for the container images that are used in your clusters.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring a Global Default Private Registry",
+    "weight": 400,
+    "aliases": null
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Pod Security Policies",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies"
+  },
+  "next": {
+    "title": "Cluster Administration",
+    "permalink": "/2.0-2.4/pages-for-subheaders/manage-clusters"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/workloads-and-pods",
+  "id": "pages-for-subheaders/workloads-and-pods",
+  "title": "Kubernetes Workloads and Pods",
+  "description": "Learn about the two constructs with which you can build any complex containerized application in Kubernetes: Kubernetes workloads and pods",
+  "source": "@site/docs/pages-for-subheaders/workloads-and-pods.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/workloads-and-pods",
+  "permalink": "/docs/pages-for-subheaders/workloads-and-pods",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/workloads-and-pods.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Kubernetes Workloads and Pods",
+    "description": "Learn about the two constructs with which you can build any complex containerized application in Kubernetes: Kubernetes workloads and pods",
+    "weight": 3025
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Resources",
+    "permalink": "/docs/pages-for-subheaders/kubernetes-resources-setup"
+  },
+  "next": {
+    "title": "Deploying Workloads",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/workloads-and-pods/deploy-workloads"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/istio",
+  "id": "version-2.5/pages-for-subheaders/istio",
+  "title": "Istio",
+  "description": "Istio is an open-source tool that makes it easier for DevOps teams to observe, secure, control, and troubleshoot the traffic within a complex network of microservices.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/istio.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/istio",
+  "permalink": "/2.5/pages-for-subheaders/istio",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/istio.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Istio",
+    "weight": 14,
+    "aliases": [
+      "/rancher/v2.5/en/dashboard/istio",
+      "/rancher/v2.x/en/istio/",
+      "/rancher/v2.x/en/istio/v2.5/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Using Fleet Behind a Proxy",
+    "permalink": "/2.5/explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy"
+  },
+  "next": {
+    "title": "CPU and Memory Allocations",
+    "permalink": "/2.5/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations"
+  }
+}

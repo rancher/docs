@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/manage-projects",
+  "id": "pages-for-subheaders/manage-projects",
+  "title": "Project Administration",
+  "description": "Projects are objects introduced in Rancher that help organize namespaces in your Kubernetes cluster. You can use projects to create multi-tenant clusters, which allows a group of users to share the same underlying resources without interacting with each other's applications.",
+  "source": "@site/docs/pages-for-subheaders/manage-projects.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/manage-projects",
+  "permalink": "/docs/pages-for-subheaders/manage-projects",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/manage-projects.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Project Administration",
+    "weight": 9
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Assigning Pod Security Policies",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-clusters/assign-pod-security-policies"
+  },
+  "next": {
+    "title": "Adding Users to Projects",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/manage-projects/add-users-to-projects"
+  }
+}

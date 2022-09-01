@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/best-practices/rancher-server/tips-for-running-rancher",
+  "id": "reference-guides/best-practices/rancher-server/tips-for-running-rancher",
+  "title": "Tips for Running Rancher",
+  "description": "This guide is geared toward use cases where Rancher is used to manage downstream Kubernetes clusters. The high-availability setup is intended to prevent losing access to downstream clusters if the Rancher server is not available.",
+  "source": "@site/docs/reference-guides/best-practices/rancher-server/tips-for-running-rancher.md",
+  "sourceDirName": "reference-guides/best-practices/rancher-server",
+  "slug": "/reference-guides/best-practices/rancher-server/tips-for-running-rancher",
+  "permalink": "/docs/reference-guides/best-practices/rancher-server/tips-for-running-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/best-practices/rancher-server/tips-for-running-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Tips for Running Rancher",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Deployment Strategy",
+    "permalink": "/docs/reference-guides/best-practices/rancher-server/rancher-deployment-strategy"
+  },
+  "next": {
+    "title": "Best Practices for Rancher Managed Clusters",
+    "permalink": "/docs/pages-for-subheaders/rancher-managed-clusters"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules",
+  "title": "Configuring PrometheusRules",
+  "description": "A PrometheusRule defines a group of Prometheus alerting and/or recording rules.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration",
+  "slug": "/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring PrometheusRules",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.x/en/monitoring-alerting/v2.5/configuration/prometheusrules/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Prometheus Configuration",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus"
+  },
+  "next": {
+    "title": "Setup Guide",
+    "permalink": "/2.5/pages-for-subheaders/istio-setup-guide"
+  }
+}

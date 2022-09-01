@@ -1,0 +1,32 @@
+{
+  "unversionedId": "reference-guides/single-node-rancher-in-docker/advanced-options",
+  "id": "version-2.5/reference-guides/single-node-rancher-in-docker/advanced-options",
+  "title": "Advanced Options for Docker Installs",
+  "description": "When installing Rancher, there are several advanced options that can be enabled:",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/single-node-rancher-in-docker/advanced-options.md",
+  "sourceDirName": "reference-guides/single-node-rancher-in-docker",
+  "slug": "/reference-guides/single-node-rancher-in-docker/advanced-options",
+  "permalink": "/2.5/reference-guides/single-node-rancher-in-docker/advanced-options",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/single-node-rancher-in-docker/advanced-options.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Advanced Options for Docker Installs",
+    "weight": 5,
+    "aliases": [
+      "/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/advanced/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "HTTP Proxy Configuration",
+    "permalink": "/2.5/reference-guides/single-node-rancher-in-docker/http-proxy-configuration"
+  },
+  "next": {
+    "title": "installation-references",
+    "permalink": "/2.5/pages-for-subheaders/installation-references"
+  }
+}

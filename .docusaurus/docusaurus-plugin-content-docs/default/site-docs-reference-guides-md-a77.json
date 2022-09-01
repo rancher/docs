@@ -1,0 +1,26 @@
+{
+  "unversionedId": "reference-guides",
+  "id": "reference-guides",
+  "title": "reference-guides",
+  "description": "",
+  "source": "@site/docs/reference-guides.md",
+  "sourceDirName": ".",
+  "slug": "/reference-guides",
+  "permalink": "/docs/reference-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "create-a-custom-benchmark-version-to-run",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/cis-scan-guides/create-a-custom-benchmark-version-to-run"
+  },
+  "next": {
+    "title": "Best Practices Guide",
+    "permalink": "/docs/pages-for-subheaders/best-practices"
+  }
+}

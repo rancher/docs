@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/custom-resource-configuration",
+  "id": "version-2.5/pages-for-subheaders/custom-resource-configuration",
+  "title": "Custom Resource Configuration",
+  "description": "The following Custom Resource Definitions are used to configure logging:",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/custom-resource-configuration.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/custom-resource-configuration",
+  "permalink": "/2.5/pages-for-subheaders/custom-resource-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/custom-resource-configuration.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Custom Resource Configuration",
+    "weight": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Working with Taints and Tolerations",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/taints-and-tolerations"
+  },
+  "next": {
+    "title": "Flows and ClusterFlows",
+    "permalink": "/2.5/explanations/integrations-in-rancher/logging/custom-resource-configuration/flows-and-clusterflows"
+  }
+}

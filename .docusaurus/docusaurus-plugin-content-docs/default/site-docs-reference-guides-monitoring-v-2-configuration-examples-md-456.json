@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/monitoring-v2-configuration/examples",
+  "id": "reference-guides/monitoring-v2-configuration/examples",
+  "title": "Examples",
+  "description": "ServiceMonitor",
+  "source": "@site/docs/reference-guides/monitoring-v2-configuration/examples.md",
+  "sourceDirName": "reference-guides/monitoring-v2-configuration",
+  "slug": "/reference-guides/monitoring-v2-configuration/examples",
+  "permalink": "/docs/reference-guides/monitoring-v2-configuration/examples",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/monitoring-v2-configuration/examples.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Examples",
+    "weight": 400
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Helm Chart Options",
+    "permalink": "/docs/reference-guides/monitoring-v2-configuration/helm-chart-options"
+  },
+  "next": {
+    "title": "Prometheus Federator",
+    "permalink": "/docs/pages-for-subheaders/prometheus-federator"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/configure-shibboleth-saml",
+  "id": "version-2.5/pages-for-subheaders/configure-shibboleth-saml",
+  "title": "Configuring Shibboleth (SAML)",
+  "description": "If your organization uses Shibboleth Identity Provider (IdP) for user authentication, you can configure Rancher to allow your users to log in to Rancher using their Shibboleth credentials.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/configure-shibboleth-saml.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/configure-shibboleth-saml",
+  "permalink": "/2.5/pages-for-subheaders/configure-shibboleth-saml",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/configure-shibboleth-saml.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring Shibboleth (SAML)",
+    "weight": 1210,
+    "aliases": [
+      "/rancher/v2.x/en/admin-settings/authentication/shibboleth/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Configuring Rancher for Microsoft AD FS",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-microsoft-ad-federation-service-saml/configure-rancher-for-ms-adfs"
+  },
+  "next": {
+    "title": "Group Permissions with Shibboleth and OpenLDAP",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-authentication/configure-shibboleth-saml/about-group-permissions"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/rancher-security/security-advisories-and-cves",
+  "id": "version-2.5/reference-guides/rancher-security/security-advisories-and-cves",
+  "title": "Security Advisories and CVEs",
+  "description": "Rancher is committed to informing the community of security issues in our products. Rancher will publish security advisories and CVEs (Common Vulnerabilities and Exposures) for issues we have resolved. New security advisories are also published in Rancher's GitHub security page.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/rancher-security/security-advisories-and-cves.md",
+  "sourceDirName": "reference-guides/rancher-security",
+  "slug": "/reference-guides/rancher-security/security-advisories-and-cves",
+  "permalink": "/2.5/reference-guides/rancher-security/security-advisories-and-cves",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/rancher-security/security-advisories-and-cves.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Security Advisories and CVEs",
+    "weight": 300
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Security Best Practices",
+    "permalink": "/2.5/reference-guides/rancher-security/kubernetes-security-best-practices"
+  },
+  "next": {
+    "title": "explanations",
+    "permalink": "/2.5/explanations"
+  }
+}

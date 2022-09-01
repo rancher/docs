@@ -1,0 +1,26 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule",
+  "id": "version-2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule",
+  "title": "run-a-scan-periodically-on-a-schedule",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/cis-scan-guides",
+  "slug": "/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule",
+  "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "run-a-scan",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan"
+  },
+  "next": {
+    "title": "skip-tests",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/cis-scan-guides/skip-tests"
+  }
+}

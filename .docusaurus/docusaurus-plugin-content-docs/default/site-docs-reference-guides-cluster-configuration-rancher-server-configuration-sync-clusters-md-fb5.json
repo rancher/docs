@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters",
+  "id": "reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters",
+  "title": "Syncing",
+  "description": "Syncing is the feature for EKS and GKE clusters that causes Rancher to update the clusters' values so they are up to date with their corresponding cluster object in the hosted Kubernetes provider. This enables Rancher to not be the sole owner of a hosted cluster’s state. Its largest limitation is that processing an update from Rancher and another source at the same time or within 5 minutes of one finishing may cause the state from one source to completely overwrite the other.",
+  "source": "@site/docs/reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md",
+  "sourceDirName": "reference-guides/cluster-configuration/rancher-server-configuration",
+  "slug": "/reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters",
+  "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/cluster-configuration/rancher-server-configuration/sync-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Syncing",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher Agent Options",
+    "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options"
+  },
+  "next": {
+    "title": "downstream-cluster-configuration",
+    "permalink": "/docs/pages-for-subheaders/downstream-cluster-configuration"
+  }
+}

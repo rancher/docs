@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "id": "version-2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "title": "Fleet - GitOps at Scale",
+  "description": "Available as of Rancher v2.5",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md",
+  "sourceDirName": "how-to-guides/new-user-guides/deploy-apps-across-clusters",
+  "slug": "/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "permalink": "/2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Fleet - GitOps at Scale",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/deploy-across-clusters/fleet/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Deploying Applications across Clusters",
+    "permalink": "/2.5/pages-for-subheaders/deploy-apps-across-clusters"
+  },
+  "next": {
+    "title": "Multi-cluster Apps",
+    "permalink": "/2.5/how-to-guides/new-user-guides/deploy-apps-across-clusters/multi-cluster-apps"
+  }
+}

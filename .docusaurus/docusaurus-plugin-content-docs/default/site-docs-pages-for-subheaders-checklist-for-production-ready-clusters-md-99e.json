@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/checklist-for-production-ready-clusters",
+  "id": "pages-for-subheaders/checklist-for-production-ready-clusters",
+  "title": "Checklist for Production-Ready Clusters",
+  "description": "In this section, we recommend best practices for creating the production-ready Kubernetes clusters that will run your apps and services.",
+  "source": "@site/docs/pages-for-subheaders/checklist-for-production-ready-clusters.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/checklist-for-production-ready-clusters",
+  "permalink": "/docs/pages-for-subheaders/checklist-for-production-ready-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/checklist-for-production-ready-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Checklist for Production-Ready Clusters",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Node Requirements for Rancher Managed Clusters",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters"
+  },
+  "next": {
+    "title": "Recommended Cluster Architecture",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/checklist-for-production-ready-clusters/recommended-cluster-architecture"
+  }
+}

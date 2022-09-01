@@ -1,0 +1,37 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2",
+  "title": "Upgrading Rancher Installed on Kubernetes with Helm 2",
+  "description": "Helm 3 has been released.  If you are using Helm 2, we recommend migrating to Helm 3 because it is simpler to use and more secure than Helm 2.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Rancher Installed on Kubernetes with Helm 2",
+    "weight": 1050,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/ha/helm2",
+      "/rancher/v2.0-v2.4/en/upgrades/helm2",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/helm2",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/ha/helm2",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/helm2",
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/helm2/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrading to v2.0.7+ — Namespace Migration",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration"
+  },
+  "next": {
+    "title": "Other Installation Methods",
+    "permalink": "/2.0-2.4/pages-for-subheaders/other-installation-methods"
+  }
+}

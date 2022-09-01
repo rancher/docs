@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/manage-clusters",
+  "id": "pages-for-subheaders/manage-clusters",
+  "title": "Cluster Administration",
+  "description": "After you provision a cluster in Rancher, you can begin using powerful Kubernetes features to deploy and scale your containerized applications in development, testing, or production environments.",
+  "source": "@site/docs/pages-for-subheaders/manage-clusters.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/manage-clusters",
+  "permalink": "/docs/pages-for-subheaders/manage-clusters",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/manage-clusters.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Cluster Administration",
+    "weight": 8
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Custom Branding",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/custom-branding"
+  },
+  "next": {
+    "title": "Cluster Access",
+    "permalink": "/docs/pages-for-subheaders/access-clusters"
+  }
+}

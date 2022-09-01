@@ -1,0 +1,37 @@
+{
+  "unversionedId": "pages-for-subheaders/istio",
+  "id": "version-2.0-2.4/pages-for-subheaders/istio",
+  "title": "Istio",
+  "description": "Available as of v2.3.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/istio.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/istio",
+  "permalink": "/2.0-2.4/pages-for-subheaders/istio",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/istio.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Istio",
+    "weight": 15,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/dashboard/istio",
+      "/rancher/v2.0-v2.4/en/project-admin/istio/configuring-resource-allocations/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/istio/",
+      "/rancher/v2.0-v2.4/en/project-admin/istio",
+      "/rancher/v2.0-v2.4/en/istio/legacy/cluster-istio",
+      "/rancher/v2.x/en/istio/v2.3.x-v2.4.x/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Skipped and Not Applicable Tests",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cis-scans/skipped-and-not-applicable-tests"
+  },
+  "next": {
+    "title": "CPU and Memory Allocations",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/istio/cpu-and-memory-allocations"
+  }
+}

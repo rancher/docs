@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/migrate-from-v1.6-v2.x",
+  "id": "version-2.0-2.4/pages-for-subheaders/migrate-from-v1.6-v2.x",
+  "title": "Migrating from v1.6 to v2.x",
+  "description": "Rancher v2.x has been rearchitected and rewritten with the goal of providing a complete management solution for Kubernetes and Docker.  Due to these extensive changes, there is no direct upgrade path from v1.6 to v2.x, but rather a migration of your v1.6 services into v2.x as Kubernetes workloads.  In v1.6, the most common orchestration used was Rancher's own engine called Cattle. The following guide explains and educates our Cattle users on running workloads in a Kubernetes environment.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/migrate-from-v1.6-v2.x.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/migrate-from-v1.6-v2.x",
+  "permalink": "/2.0-2.4/pages-for-subheaders/migrate-from-v1.6-v2.x",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/migrate-from-v1.6-v2.x.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating from v1.6 to v2.x",
+    "weight": 28,
+    "aliases": [
+      "/rancher/v2.x/en/v1.6-migration/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rolling back to v2.0.0-v2.1.5",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup/roll-back-to-v2.0-v2.1"
+  },
+  "next": {
+    "title": "Kubernetes Introduction",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/migrate-from-v1.6-v2.x/kubernetes-introduction"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/configure-openldap",
+  "id": "version-2.0-2.4/pages-for-subheaders/configure-openldap",
+  "title": "Configuring OpenLDAP",
+  "description": "Available as of v2.0.5",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/configure-openldap.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/configure-openldap",
+  "permalink": "/2.0-2.4/pages-for-subheaders/configure-openldap",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/configure-openldap.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Configuring OpenLDAP",
+    "weight": 1113,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/global-configuration/authentication/openldap/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an EKS Cluster",
+    "permalink": "/2.0-2.4/reference-guides/installation-references/amazon-eks-permissions"
+  },
+  "next": {
+    "title": "OpenLDAP Configuration Reference",
+    "permalink": "/2.0-2.4/reference-guides/configure-openldap/openldap-config-reference"
+  }
+}

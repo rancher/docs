@@ -1,0 +1,34 @@
+{
+  "unversionedId": "pages-for-subheaders/set-up-cloud-providers",
+  "id": "version-2.5/pages-for-subheaders/set-up-cloud-providers",
+  "title": "Setting up Cloud Providers",
+  "description": "A cloud provider is a module in Kubernetes that provides an interface for managing nodes, load balancers, and networking routes.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/set-up-cloud-providers.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/set-up-cloud-providers",
+  "permalink": "/2.5/pages-for-subheaders/set-up-cloud-providers",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/set-up-cloud-providers.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Cloud Providers",
+    "weight": 2300,
+    "aliases": [
+      "/rancher/v2.5/en/concepts/clusters/cloud-providers/",
+      "/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers",
+      "/rancher/v2.x/en/cluster-provisioning/rke-clusters/cloud-providers/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Networking Requirements for Host Gateway (L2bridge)",
+    "permalink": "/2.5/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-windows-clusters/network-requirements-for-host-gateway"
+  },
+  "next": {
+    "title": "other-cloud-providers",
+    "permalink": "/2.5/pages-for-subheaders/other-cloud-providers"
+  }
+}

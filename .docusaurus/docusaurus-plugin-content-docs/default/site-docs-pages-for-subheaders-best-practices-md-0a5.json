@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/best-practices",
+  "id": "pages-for-subheaders/best-practices",
+  "title": "Best Practices Guide",
+  "description": "The purpose of this section is to consolidate best practices for Rancher implementations. This also includes recommendations for related technologies, such as Kubernetes, Docker, containers, and more. The objective is to improve the outcome of a Rancher implementation using the operational experience of Rancher and its customers.",
+  "source": "@site/docs/pages-for-subheaders/best-practices.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/best-practices",
+  "permalink": "/docs/pages-for-subheaders/best-practices",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/best-practices.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Best Practices Guide",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "reference-guides",
+    "permalink": "/docs/reference-guides"
+  },
+  "next": {
+    "title": "Best Practices for the Rancher Server",
+    "permalink": "/docs/pages-for-subheaders/rancher-server"
+  }
+}

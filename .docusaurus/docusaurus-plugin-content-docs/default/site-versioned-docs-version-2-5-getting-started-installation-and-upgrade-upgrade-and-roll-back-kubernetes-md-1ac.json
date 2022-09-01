@@ -1,0 +1,32 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes",
+  "id": "version-2.5/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes",
+  "title": "Upgrading and Rolling Back Kubernetes",
+  "description": "Following an upgrade to the latest version of Rancher, downstream Kubernetes clusters can be upgraded to use the latest supported version of Kubernetes.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md",
+  "sourceDirName": "getting-started/installation-and-upgrade",
+  "slug": "/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading and Rolling Back Kubernetes",
+    "weight": 70,
+    "aliases": [
+      "/rancher/v2.x/en/cluster-admin/upgrading-kubernetes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting up Local System Charts for Air Gapped Installations",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/resources/local-system-charts"
+  },
+  "next": {
+    "title": "Upgrading Kubernetes without Upgrading Rancher",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/upgrade-kubernetes-without-upgrading-rancher"
+  }
+}

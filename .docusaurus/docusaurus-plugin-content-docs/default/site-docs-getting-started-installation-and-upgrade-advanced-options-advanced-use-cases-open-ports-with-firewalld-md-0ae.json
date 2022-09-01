@@ -1,0 +1,29 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "id": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "title": "Opening Ports with firewalld",
+  "description": "We recommend disabling firewalld. For Kubernetes 1.19.x and higher, firewalld must be turned off.",
+  "source": "@site/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/open-ports-with-firewalld.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Opening Ports with firewalld",
+    "weight": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Continuous Delivery",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/continuous-delivery"
+  },
+  "next": {
+    "title": "Tuning etcd for Large Installations",
+    "permalink": "/docs/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs"
+  }
+}

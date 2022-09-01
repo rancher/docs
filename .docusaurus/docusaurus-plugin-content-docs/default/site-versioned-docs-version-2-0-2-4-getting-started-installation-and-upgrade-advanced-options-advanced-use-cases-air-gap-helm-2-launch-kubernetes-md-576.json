@@ -1,0 +1,34 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes",
+  "title": "3. Install Kubernetes with RKE (Kubernetes Installs Only)",
+  "description": "This section is about how to prepare to launch a Kubernetes cluster which is used to deploy Rancher server for your air gapped environment.",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/launch-kubernetes.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "3. Install Kubernetes with RKE (Kubernetes Installs Only)",
+    "weight": 300,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/install-kube",
+      "/rancher/v2.0-v2.4/en/installation/options/air-gap-helm2/launch-kubernetes",
+      "/rancher/v2.x/en/installation/resources/advanced/air-gap-helm2/launch-kubernetes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "2. Collect and Publish Images to your Private Registry",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/populate-private-registry"
+  },
+  "next": {
+    "title": "4. Install Rancher",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/install-rancher"
+  }
+}

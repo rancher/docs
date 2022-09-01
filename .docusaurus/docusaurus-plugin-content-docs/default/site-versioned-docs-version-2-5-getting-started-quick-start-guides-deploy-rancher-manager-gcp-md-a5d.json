@@ -1,0 +1,30 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/gcp",
+  "id": "version-2.5/getting-started/quick-start-guides/deploy-rancher-manager/gcp",
+  "title": "Rancher GCP Quick Start Guide",
+  "description": "Read this step by step Rancher GCP guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/quick-start-guides/deploy-rancher-manager/gcp.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/gcp",
+  "permalink": "/2.5/getting-started/quick-start-guides/deploy-rancher-manager/gcp",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/quick-start-guides/deploy-rancher-manager/gcp.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher GCP Quick Start Guide",
+    "description": "Read this step by step Rancher GCP guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 100
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher DigitalOcean Quick Start Guide",
+    "permalink": "/2.5/getting-started/quick-start-guides/deploy-rancher-manager/digitalocean"
+  },
+  "next": {
+    "title": "Vagrant Quick Start",
+    "permalink": "/2.5/getting-started/quick-start-guides/deploy-rancher-manager/vagrant"
+  }
+}

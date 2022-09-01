@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/helm2-kubernetes-rke",
+  "id": "version-2.0-2.4/pages-for-subheaders/helm2-kubernetes-rke",
+  "title": "2. Install Kubernetes with RKE",
+  "description": "Use RKE to install Kubernetes with a high availability etcd configuration.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-kubernetes-rke.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm2-kubernetes-rke",
+  "permalink": "/2.0-2.4/pages-for-subheaders/helm2-kubernetes-rke",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/helm2-kubernetes-rke.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "2. Install Kubernetes with RKE",
+    "weight": 190,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/kubernetes-rke",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/kubernetes-rke/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Amazon NLB",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/create-nodes-lb/nlb"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/kubernetes-rke/troubleshooting"
+  }
+}

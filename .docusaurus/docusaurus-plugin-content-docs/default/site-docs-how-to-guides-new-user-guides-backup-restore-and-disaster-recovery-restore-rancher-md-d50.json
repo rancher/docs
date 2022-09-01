@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher",
+  "id": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher",
+  "title": "Restoring Rancher",
+  "description": "This page outlines how to perform a restore with Rancher.",
+  "source": "@site/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher.md",
+  "sourceDirName": "how-to-guides/new-user-guides/backup-restore-and-disaster-recovery",
+  "slug": "/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher",
+  "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Restoring Rancher",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backing up Rancher",
+    "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher"
+  },
+  "next": {
+    "title": "Migrating Rancher to a New Cluster",
+    "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/migrate-rancher-to-new-cluster"
+  }
+}

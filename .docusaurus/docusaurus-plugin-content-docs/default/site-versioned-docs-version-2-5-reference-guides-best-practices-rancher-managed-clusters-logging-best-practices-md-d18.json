@@ -1,0 +1,33 @@
+{
+  "unversionedId": "reference-guides/best-practices/rancher-managed-clusters/logging-best-practices",
+  "id": "version-2.5/reference-guides/best-practices/rancher-managed-clusters/logging-best-practices",
+  "title": "Logging Best Practices",
+  "description": "In this guide, we recommend best practices for cluster-level logging and application logging.",
+  "source": "@site/versioned_docs/version-2.5/reference-guides/best-practices/rancher-managed-clusters/logging-best-practices.md",
+  "sourceDirName": "reference-guides/best-practices/rancher-managed-clusters",
+  "slug": "/reference-guides/best-practices/rancher-managed-clusters/logging-best-practices",
+  "permalink": "/2.5/reference-guides/best-practices/rancher-managed-clusters/logging-best-practices",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/reference-guides/best-practices/rancher-managed-clusters/logging-best-practices.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Logging Best Practices",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.5/en/best-practices/v2.5/rancher-managed/logging",
+      "/rancher/v2.x/en/best-practices/v2.5/rancher-managed/logging/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Best Practices for Rancher Managed Clusters",
+    "permalink": "/2.5/pages-for-subheaders/rancher-managed-clusters"
+  },
+  "next": {
+    "title": "Monitoring Best Practices",
+    "permalink": "/2.5/reference-guides/best-practices/rancher-managed-clusters/monitoring-best-practices"
+  }
+}

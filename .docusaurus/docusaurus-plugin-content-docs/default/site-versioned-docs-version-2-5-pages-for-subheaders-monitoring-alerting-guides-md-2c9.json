@@ -1,0 +1,30 @@
+{
+  "unversionedId": "pages-for-subheaders/monitoring-alerting-guides",
+  "id": "version-2.5/pages-for-subheaders/monitoring-alerting-guides",
+  "title": "Monitoring Guides",
+  "description": "- Enable monitoring",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/monitoring-alerting-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/monitoring-alerting-guides",
+  "permalink": "/2.5/pages-for-subheaders/monitoring-alerting-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/monitoring-alerting-guides.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Monitoring Guides",
+    "shortTitle": "Guides",
+    "weight": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Resource Quota Type Reference",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types"
+  },
+  "next": {
+    "title": "Enable Monitoring",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/monitoring-alerting-guides/enable-monitoring"
+  }
+}

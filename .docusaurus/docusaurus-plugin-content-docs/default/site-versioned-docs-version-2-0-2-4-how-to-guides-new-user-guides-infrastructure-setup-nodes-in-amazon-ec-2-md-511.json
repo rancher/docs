@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2",
+  "title": "Setting up Nodes in Amazon EC2",
+  "description": "In this tutorial, you will learn one way to set up Linux nodes for the Rancher management server. These nodes will fulfill the node requirements for OS, Docker, hardware, and networking.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2.md",
+  "sourceDirName": "how-to-guides/new-user-guides/infrastructure-setup",
+  "slug": "/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Setting up Nodes in Amazon EC2",
+    "weight": 3,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/options/ec2-node"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Set up Infrastructure for a High Availability RKE Kubernetes Cluster",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/ha-rke1-kubernetes-cluster"
+  },
+  "next": {
+    "title": "Setting up a MySQL Database in Amazon RDS",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/infrastructure-setup/mysql-database-in-amazon-rds"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "unversionedId": "pages-for-subheaders/quick-start-guides",
+  "id": "version-2.5/pages-for-subheaders/quick-start-guides",
+  "title": "Rancher Deployment Quick Start Guides",
+  "description": "Note: The intent of these guides is to quickly launch a sandbox that you can use to evaluate Rancher. These guides are not intended for production environments. For comprehensive setup instructions, see Installation.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/quick-start-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/quick-start-guides",
+  "permalink": "/2.5/pages-for-subheaders/quick-start-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/quick-start-guides.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Deployment Quick Start Guides",
+    "metaDescription": "Use this section to jump start your Rancher deployment and testing. It contains instructions for a simple Rancher setup and some common use cases.",
+    "short title": "Use this section to jump start your Rancher deployment and testing. It contains instructions for a simple Rancher setup and some common use cases.",
+    "weight": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "what-are-divio-docs",
+    "permalink": "/2.5/getting-started/introduction/what-are-divio-docs"
+  },
+  "next": {
+    "title": "Deploying Rancher Server",
+    "permalink": "/2.5/pages-for-subheaders/deploy-rancher-manager"
+  }
+}

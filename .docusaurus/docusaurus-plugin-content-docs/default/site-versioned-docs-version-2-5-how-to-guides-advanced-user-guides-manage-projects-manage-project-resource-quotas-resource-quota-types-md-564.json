@@ -1,0 +1,32 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types",
+  "title": "Resource Quota Type Reference",
+  "description": "When you create a resource quota, you are configuring the pool of resources available to the project. You can set the following resource limits for the following resource types.",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas",
+  "slug": "/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/resource-quota-types.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Resource Quota Type Reference",
+    "weight": 4,
+    "aliases": [
+      "/rancher/v2.x/en/project-admin/resource-quotas/quota-type-reference/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Setting Container Default Resource Limits",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/manage-projects/manage-project-resource-quotas/set-container-default-resource-limits"
+  },
+  "next": {
+    "title": "Monitoring Guides",
+    "permalink": "/2.5/pages-for-subheaders/monitoring-alerting-guides"
+  }
+}

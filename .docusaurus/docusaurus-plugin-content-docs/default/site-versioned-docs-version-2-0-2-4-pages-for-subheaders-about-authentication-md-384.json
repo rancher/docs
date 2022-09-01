@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/about-authentication",
+  "id": "version-2.0-2.4/pages-for-subheaders/about-authentication",
+  "title": "Authentication",
+  "description": "One of the key features that Rancher adds to Kubernetes is centralized user authentication. This feature allows your users to use one set of credentials to authenticate with any of your Kubernetes clusters.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/about-authentication.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/about-authentication",
+  "permalink": "/2.0-2.4/pages-for-subheaders/about-authentication",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/about-authentication.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Authentication",
+    "weight": 1115,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/concepts/global-configuration/authentication/",
+      "/rancher/v2.0-v2.4/en/tasks/global-configuration/authentication/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Authentication, Permissions and Global Configuration",
+    "permalink": "/2.0-2.4/pages-for-subheaders/authentication-permissions-and-global-configuration"
+  },
+  "next": {
+    "title": "authentication-config",
+    "permalink": "/2.0-2.4/pages-for-subheaders/authentication-config"
+  }
+}

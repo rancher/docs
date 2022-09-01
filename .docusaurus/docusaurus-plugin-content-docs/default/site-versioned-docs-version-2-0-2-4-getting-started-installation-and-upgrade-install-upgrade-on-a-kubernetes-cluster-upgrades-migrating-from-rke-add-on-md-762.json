@@ -1,0 +1,37 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on",
+  "title": "Migrating from a Kubernetes Install with an RKE Add-on",
+  "description": "Important: RKE add-on install is only supported up to Rancher v2.0.8",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades",
+  "slug": "/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Migrating from a Kubernetes Install with an RKE Add-on",
+    "weight": 1030,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/upgrades/ha-server-upgrade/",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/ha-server-upgrade/",
+      "/rancher/v2.0-v2.4/en/upgrades/upgrades/migrating-from-rke-add-on",
+      "/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/migrating-from-rke-add-on",
+      "/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/upgrades-rollbacks/upgrades/migrating-from-rke-add-on",
+      "/rancher/v2.x/en/installation/install-rancher-on-k8s/upgrades/migrating-from-rke-add-on/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Upgrades",
+    "permalink": "/2.0-2.4/pages-for-subheaders/upgrades"
+  },
+  "next": {
+    "title": "Upgrading to v2.0.7+ — Namespace Migration",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/namespace-migration"
+  }
+}

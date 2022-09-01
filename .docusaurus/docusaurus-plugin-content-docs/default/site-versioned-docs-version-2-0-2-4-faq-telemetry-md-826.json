@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq/telemetry",
+  "id": "version-2.0-2.4/faq/telemetry",
+  "title": "Telemetry",
+  "description": "What is Telemetry?",
+  "source": "@site/versioned_docs/version-2.0-2.4/faq/telemetry.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/telemetry",
+  "permalink": "/2.0-2.4/faq/telemetry",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/faq/telemetry.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Telemetry",
+    "weight": 8008
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Security",
+    "permalink": "/2.0-2.4/faq/security"
+  },
+  "next": {
+    "title": "Questions about Upgrading to Rancher v2.x",
+    "permalink": "/2.0-2.4/faq/upgrades-to-2x"
+  }
+}

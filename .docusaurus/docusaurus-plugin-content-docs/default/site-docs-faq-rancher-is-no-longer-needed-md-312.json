@@ -1,0 +1,29 @@
+{
+  "unversionedId": "faq/rancher-is-no-longer-needed",
+  "id": "faq/rancher-is-no-longer-needed",
+  "title": "Rancher is No Longer Needed",
+  "description": "This page is intended to answer questions about what happens if you don't want Rancher anymore, if you don't want a cluster to be managed by Rancher anymore, or if the Rancher server is deleted.",
+  "source": "@site/docs/faq/rancher-is-no-longer-needed.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/rancher-is-no-longer-needed",
+  "permalink": "/docs/faq/rancher-is-no-longer-needed",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/faq/rancher-is-no-longer-needed.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher is No Longer Needed",
+    "weight": 8010
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Container Network Interface (CNI) Providers",
+    "permalink": "/docs/faq/container-network-interface-providers"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/docs/troubleshooting"
+  }
+}

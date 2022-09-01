@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-logging/syslog",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/syslog",
+  "title": "Syslog",
+  "description": "If your organization uses Syslog, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Syslog server to view logs.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/syslog.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-logging",
+  "slug": "/explanations/integrations-in-rancher/cluster-logging/syslog",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/syslog",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/syslog.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Syslog",
+    "weight": 500,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tools/logging/syslog/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/logging/syslog",
+      "/rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/syslog",
+      "/rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/syslog",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/syslog/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Splunk",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/splunk"
+  },
+  "next": {
+    "title": "Cluster Alerts",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cluster-alerts"
+  }
+}

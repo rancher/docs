@@ -1,0 +1,31 @@
+{
+  "unversionedId": "pages-for-subheaders/monitoring-and-alerting",
+  "id": "pages-for-subheaders/monitoring-and-alerting",
+  "title": "Monitoring and Alerting",
+  "description": "Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring",
+  "source": "@site/docs/pages-for-subheaders/monitoring-and-alerting.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/monitoring-and-alerting",
+  "permalink": "/docs/pages-for-subheaders/monitoring-and-alerting",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/monitoring-and-alerting.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Monitoring and Alerting",
+    "shortTitle": "Monitoring/Alerting",
+    "description": "Prometheus lets you view metrics from your different Rancher and Kubernetes objects. Learn about the scope of monitoring and how to enable cluster monitoring",
+    "weight": 13
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Outputs and ClusterOutputs",
+    "permalink": "/docs/explanations/integrations-in-rancher/logging/custom-resource-configuration/outputs-and-clusteroutputs"
+  },
+  "next": {
+    "title": "How Monitoring Works",
+    "permalink": "/docs/explanations/integrations-in-rancher/monitoring-and-alerting/how-monitoring-works"
+  }
+}

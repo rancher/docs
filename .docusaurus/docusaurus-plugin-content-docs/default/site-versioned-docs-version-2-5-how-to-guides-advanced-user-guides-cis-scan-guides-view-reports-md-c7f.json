@@ -1,0 +1,26 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/cis-scan-guides/view-reports",
+  "id": "version-2.5/how-to-guides/advanced-user-guides/cis-scan-guides/view-reports",
+  "title": "view-reports",
+  "description": "",
+  "source": "@site/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/cis-scan-guides/view-reports.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/cis-scan-guides",
+  "slug": "/how-to-guides/advanced-user-guides/cis-scan-guides/view-reports",
+  "permalink": "/2.5/how-to-guides/advanced-user-guides/cis-scan-guides/view-reports",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/how-to-guides/advanced-user-guides/cis-scan-guides/view-reports.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "skip-tests",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/cis-scan-guides/skip-tests"
+  },
+  "next": {
+    "title": "enable-alerting-for-rancher-cis-benchmark",
+    "permalink": "/2.5/how-to-guides/advanced-user-guides/cis-scan-guides/enable-alerting-for-rancher-cis-benchmark"
+  }
+}

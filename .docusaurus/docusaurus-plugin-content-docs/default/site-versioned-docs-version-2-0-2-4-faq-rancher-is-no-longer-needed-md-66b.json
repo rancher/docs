@@ -1,0 +1,35 @@
+{
+  "unversionedId": "faq/rancher-is-no-longer-needed",
+  "id": "version-2.0-2.4/faq/rancher-is-no-longer-needed",
+  "title": "Rancher is No Longer Needed",
+  "description": "This page is intended to answer questions about what happens if you don't want Rancher anymore, if you don't want a cluster to be managed by Rancher anymore, or if the Rancher server is deleted.",
+  "source": "@site/versioned_docs/version-2.0-2.4/faq/rancher-is-no-longer-needed.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/rancher-is-no-longer-needed",
+  "permalink": "/2.0-2.4/faq/rancher-is-no-longer-needed",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/faq/rancher-is-no-longer-needed.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher is No Longer Needed",
+    "weight": 8010,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/removing-rancher/cleaning-cluster-nodes/",
+      "/rancher/v2.0-v2.4/en/installation/removing-rancher/",
+      "/rancher/v2.0-v2.4/en/admin-settings/removing-rancher/",
+      "/rancher/v2.0-v2.4/en/admin-settings/removing-rancher/rancher-cluster-nodes/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Container Network Interface (CNI) Providers",
+    "permalink": "/2.0-2.4/faq/container-network-interface-providers"
+  },
+  "next": {
+    "title": "Troubleshooting",
+    "permalink": "/2.0-2.4/troubleshooting"
+  }
+}

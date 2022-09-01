@@ -1,0 +1,36 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-logging/elasticsearch",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/elasticsearch",
+  "title": "Elasticsearch",
+  "description": "If your organization uses Elasticsearch, either on premise or in the cloud, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Elasticsearch deployment to view logs.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/elasticsearch.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-logging",
+  "slug": "/explanations/integrations-in-rancher/cluster-logging/elasticsearch",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/elasticsearch",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/elasticsearch.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Elasticsearch",
+    "weight": 200,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tools/logging/elasticsearch/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/logging/elasticsearch",
+      "/rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/elasticsearch",
+      "/rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/elasticsearch",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/elasticsearch/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Logging",
+    "permalink": "/2.0-2.4/pages-for-subheaders/cluster-logging"
+  },
+  "next": {
+    "title": "Fluentd",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/fluentd"
+  }
+}

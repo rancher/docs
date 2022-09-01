@@ -1,0 +1,32 @@
+{
+  "unversionedId": "faq",
+  "id": "version-2.0-2.4/faq",
+  "title": "FAQ",
+  "description": "This FAQ is a work in progress designed to answers the questions our users most frequently ask about Rancher v2.x.",
+  "source": "@site/versioned_docs/version-2.0-2.4/faq.md",
+  "sourceDirName": ".",
+  "slug": "/faq",
+  "permalink": "/2.0-2.4/faq",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/faq.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "FAQ",
+    "weight": 25,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/about/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Notifiers",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/notifiers"
+  },
+  "next": {
+    "title": "Installing and Configuring kubectl",
+    "permalink": "/2.0-2.4/faq/install-and-configure-kubectl"
+  }
+}

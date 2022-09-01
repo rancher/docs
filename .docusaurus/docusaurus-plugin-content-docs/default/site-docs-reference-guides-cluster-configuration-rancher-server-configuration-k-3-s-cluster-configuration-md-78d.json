@@ -1,0 +1,30 @@
+{
+  "unversionedId": "reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration",
+  "id": "reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration",
+  "title": "K3s Cluster Configuration Reference",
+  "description": "This section covers the configuration options that are available in Rancher for a new or existing K3s Kubernetes cluster.",
+  "source": "@site/docs/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration.md",
+  "sourceDirName": "reference-guides/cluster-configuration/rancher-server-configuration",
+  "slug": "/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration",
+  "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/cluster-configuration/rancher-server-configuration/k3s-cluster-configuration.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "K3s Cluster Configuration Reference",
+    "shortTitle": "K3s Cluster Configuration",
+    "weight": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "RKE2 Cluster Configuration Reference",
+    "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration"
+  },
+  "next": {
+    "title": "EKS Cluster Configuration Reference",
+    "permalink": "/docs/reference-guides/cluster-configuration/rancher-server-configuration/eks-cluster-configuration"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/helm-charts-in-rancher",
+  "id": "pages-for-subheaders/helm-charts-in-rancher",
+  "title": "Helm Charts in Rancher",
+  "description": "In this section, you'll learn how to manage Helm chart repositories and applications in Rancher. Helm chart repositories are managed using Apps & Marketplace. It uses a catalog-like system to import bundles of charts from repositories and then uses those charts to either deploy custom Helm applications or Rancher's tools such as Monitoring or Istio. Rancher tools come as pre-loaded repositories which deploy as standalone Helm charts. Any additional repositories are only added to the current cluster.",
+  "source": "@site/docs/pages-for-subheaders/helm-charts-in-rancher.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/helm-charts-in-rancher",
+  "permalink": "/docs/pages-for-subheaders/helm-charts-in-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/helm-charts-in-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Helm Charts in Rancher",
+    "weight": 11
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes Registry and Docker Registry",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-resources-setup/kubernetes-and-docker-registries"
+  },
+  "next": {
+    "title": "Creating Apps",
+    "permalink": "/docs/how-to-guides/new-user-guides/helm-charts-in-rancher/create-apps"
+  }
+}

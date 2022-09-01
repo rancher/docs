@@ -1,0 +1,29 @@
+{
+  "unversionedId": "reference-guides/system-tools",
+  "id": "reference-guides/system-tools",
+  "title": "System Tools",
+  "description": "System Tools has been deprecated since June 2022.",
+  "source": "@site/docs/reference-guides/system-tools.md",
+  "sourceDirName": "reference-guides",
+  "slug": "/reference-guides/system-tools",
+  "permalink": "/docs/reference-guides/system-tools",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/reference-guides/system-tools.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "System Tools",
+    "weight": 22
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tools for Logging, Monitoring, and Visibility",
+    "permalink": "/docs/reference-guides/rancher-project-tools"
+  },
+  "next": {
+    "title": "Example YAML",
+    "permalink": "/docs/reference-guides/rke1-template-example-yaml"
+  }
+}

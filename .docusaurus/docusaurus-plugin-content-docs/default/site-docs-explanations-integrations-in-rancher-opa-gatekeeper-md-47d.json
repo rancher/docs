@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/opa-gatekeeper",
+  "id": "explanations/integrations-in-rancher/opa-gatekeeper",
+  "title": "OPA Gatekeeper",
+  "description": "To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. OPA (Open Policy Agent) is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates.",
+  "source": "@site/docs/explanations/integrations-in-rancher/opa-gatekeeper.md",
+  "sourceDirName": "explanations/integrations-in-rancher",
+  "slug": "/explanations/integrations-in-rancher/opa-gatekeeper",
+  "permalink": "/docs/explanations/integrations-in-rancher/opa-gatekeeper",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/opa-gatekeeper.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "OPA Gatekeeper",
+    "weight": 16
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "NeuVector Integration",
+    "permalink": "/docs/explanations/integrations-in-rancher/neuvector"
+  },
+  "next": {
+    "title": "FAQ",
+    "permalink": "/docs/faq"
+  }
+}

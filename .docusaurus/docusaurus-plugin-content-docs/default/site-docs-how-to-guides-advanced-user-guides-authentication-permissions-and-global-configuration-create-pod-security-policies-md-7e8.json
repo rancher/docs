@@ -1,0 +1,29 @@
+{
+  "unversionedId": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "id": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "title": "Pod Security Policies",
+  "description": "Pod Security Policies (or PSPs) are objects that control security-sensitive aspects of pod specification (like root privileges).",
+  "source": "@site/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md",
+  "sourceDirName": "how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration",
+  "slug": "/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/create-pod-security-policies.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pod Security Policies",
+    "weight": 60
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Cluster Templates",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-cluster-templates"
+  },
+  "next": {
+    "title": "Configuring a Global Default Private Registry",
+    "permalink": "/docs/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/global-default-private-registry"
+  }
+}

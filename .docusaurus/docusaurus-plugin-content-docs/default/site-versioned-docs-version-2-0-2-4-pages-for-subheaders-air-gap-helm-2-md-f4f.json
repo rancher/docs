@@ -1,0 +1,36 @@
+{
+  "unversionedId": "pages-for-subheaders/air-gap-helm2",
+  "id": "version-2.0-2.4/pages-for-subheaders/air-gap-helm2",
+  "title": "Installing Rancher in an Air Gapped Environment with Helm 2",
+  "description": "After Helm 3 was released, the Rancher installation instructions were updated to use Helm 3.",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/air-gap-helm2.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/air-gap-helm2",
+  "permalink": "/2.0-2.4/pages-for-subheaders/air-gap-helm2",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/air-gap-helm2.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Installing Rancher in an Air Gapped Environment with Helm 2",
+    "weight": 2,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/air-gap-installation/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-high-availability/",
+      "/rancher/v2.0-v2.4/en/installation/air-gap-single-node/",
+      "/rancher/v2.0-v2.4/en/installation/options/air-gap-helm2",
+      "/rancher/v2.x/en/installation/resources/advanced/air-gap-helm2/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "404 - default backend",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/default-backend"
+  },
+  "next": {
+    "title": "1. Prepare your Node(s)",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/air-gap-helm2/prepare-nodes"
+  }
+}

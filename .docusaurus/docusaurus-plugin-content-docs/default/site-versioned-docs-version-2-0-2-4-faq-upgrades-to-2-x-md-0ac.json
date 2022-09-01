@@ -1,0 +1,32 @@
+{
+  "unversionedId": "faq/upgrades-to-2x",
+  "id": "version-2.0-2.4/faq/upgrades-to-2x",
+  "title": "Questions about Upgrading to Rancher v2.x",
+  "description": "This page contains frequently asked questions about the changes between Rancher v1.x and v2.x, and how to upgrade from Rancher v1.x to v2.x.",
+  "source": "@site/versioned_docs/version-2.0-2.4/faq/upgrades-to-2x.md",
+  "sourceDirName": "faq",
+  "slug": "/faq/upgrades-to-2x",
+  "permalink": "/2.0-2.4/faq/upgrades-to-2x",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/faq/upgrades-to-2x.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Questions about Upgrading to Rancher v2.x",
+    "weight": 1,
+    "aliases": [
+      "/rancher/v2.x/en/faq/upgrades-to-2x/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Telemetry",
+    "permalink": "/2.0-2.4/faq/telemetry"
+  },
+  "next": {
+    "title": "Networking",
+    "permalink": "/2.0-2.4/faq/networking"
+  }
+}

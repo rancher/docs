@@ -1,0 +1,32 @@
+{
+  "unversionedId": "pages-for-subheaders/vsphere",
+  "id": "pages-for-subheaders/vsphere",
+  "title": "Creating a vSphere Cluster",
+  "description": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+  "source": "@site/docs/pages-for-subheaders/vsphere.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/vsphere",
+  "permalink": "/docs/pages-for-subheaders/vsphere",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/vsphere.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating a vSphere Cluster",
+    "shortTitle": "vSphere",
+    "description": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "metaDescription": "Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.",
+    "weight": 2225
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Creating an Azure Cluster",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/create-an-azure-cluster"
+  },
+  "next": {
+    "title": "Provisioning Kubernetes Clusters in vSphere",
+    "permalink": "/docs/how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/launch-kubernetes-with-rancher/use-new-nodes-in-an-infra-provider/vsphere/provision-kubernetes-clusters-in-vsphere"
+  }
+}

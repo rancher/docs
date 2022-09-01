@@ -1,0 +1,33 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/hpa-for-rancher-before-2.0.7",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/hpa-for-rancher-before-2.0.7",
+  "title": "Manual HPA Installation for Clusters Created Before Rancher v2.0.7",
+  "description": "This section describes how to manually install HPAs for clusters created with Rancher before v2.0.7. This section also describes how to configure your HPA to scale up or down, and how to assign roles to your HPA.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/hpa-for-rancher-before-2.0.7.md",
+  "sourceDirName": "how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler",
+  "slug": "/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/hpa-for-rancher-before-2.0.7",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/hpa-for-rancher-before-2.0.7",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/hpa-for-rancher-before-2.0.7.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Manual HPA Installation for Clusters Created Before Rancher v2.0.7",
+    "weight": 3050,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/k8s-in-rancher/horizontal-pod-autoscaler/hpa-for-rancher-before-2_0_7",
+      "/rancher/v2.x/en/k8s-in-rancher/horitzontal-pod-autoscaler/hpa-for-rancher-before-2_0_7/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "The Horizontal Pod Autoscaler",
+    "permalink": "/2.0-2.4/pages-for-subheaders/horizontal-pod-autoscaler"
+  },
+  "next": {
+    "title": "Background Information on HPAs",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/kubernetes-resources-setup/horizontal-pod-autoscaler/about-hpas"
+  }
+}

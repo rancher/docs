@@ -1,0 +1,36 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/default-backend",
+  "id": "version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/default-backend",
+  "title": "404 - default backend",
+  "description": "#### Important: RKE add-on install is only supported up to Rancher v2.0.8",
+  "source": "@site/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/404-default-backend.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting",
+  "slug": "/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/default-backend",
+  "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/default-backend",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/404-default-backend.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "sidebarPosition": 404,
+  "frontMatter": {
+    "title": "404 - default backend",
+    "weight": 30,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/installation/troubleshooting-ha/404-default-backend/",
+      "/rancher/v2.0-v2.4/en/installation/options/helm2/rke-add-on/troubleshooting/404-default-backend",
+      "/404-default-backend/",
+      "/rancher/v2.x/en/installation/resources/advanced/helm2/rke-add-on/troubleshooting/404-default-backend/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Failed to get job complete status",
+    "permalink": "/2.0-2.4/getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/helm2/rke-add-on/troubleshooting/job-complete-status"
+  },
+  "next": {
+    "title": "Installing Rancher in an Air Gapped Environment with Helm 2",
+    "permalink": "/2.0-2.4/pages-for-subheaders/air-gap-helm2"
+  }
+}

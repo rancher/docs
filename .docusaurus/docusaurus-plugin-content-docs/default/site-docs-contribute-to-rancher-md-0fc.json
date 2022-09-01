@@ -1,0 +1,25 @@
+{
+  "unversionedId": "contribute-to-rancher",
+  "id": "contribute-to-rancher",
+  "title": "Contributing to Rancher",
+  "description": "This section explains the repositories used for Rancher, how to build the repositories, and what information to include when you file an issue.",
+  "source": "@site/docs/contribute-to-rancher.md",
+  "sourceDirName": ".",
+  "slug": "/contribute-to-rancher",
+  "permalink": "/docs/contribute-to-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/contribute-to-rancher.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Contributing to Rancher",
+    "weight": 27
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rotation of Expired Webhook Certificates",
+    "permalink": "/docs/troubleshooting/other-troubleshooting-tips/expired-webhook-certificate-rotation"
+  }
+}

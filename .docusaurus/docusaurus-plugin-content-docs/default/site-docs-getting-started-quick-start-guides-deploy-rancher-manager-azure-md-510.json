@@ -1,0 +1,30 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/azure",
+  "id": "getting-started/quick-start-guides/deploy-rancher-manager/azure",
+  "title": "Rancher Azure Quick Start Guide",
+  "description": "Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+  "source": "@site/docs/getting-started/quick-start-guides/deploy-rancher-manager/azure.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/azure",
+  "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/azure",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/quick-start-guides/deploy-rancher-manager/azure.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher Azure Quick Start Guide",
+    "description": "Read this step by step Rancher Azure guide to quickly deploy a Rancher server with a single-node downstream Kubernetes cluster attached.",
+    "weight": 115
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher AWS Marketplace Quick Start",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace"
+  },
+  "next": {
+    "title": "Rancher DigitalOcean Quick Start Guide",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/digitalocean"
+  }
+}

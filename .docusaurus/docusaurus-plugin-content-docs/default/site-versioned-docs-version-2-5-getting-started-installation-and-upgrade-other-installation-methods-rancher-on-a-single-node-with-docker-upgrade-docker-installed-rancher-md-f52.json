@@ -1,0 +1,37 @@
+{
+  "unversionedId": "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher",
+  "id": "version-2.5/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher",
+  "title": "Upgrading Rancher Installed with Docker",
+  "description": "The following instructions will guide you through upgrading a Rancher server that was installed with Docker.",
+  "source": "@site/versioned_docs/version-2.5/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md",
+  "sourceDirName": "getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker",
+  "slug": "/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher",
+  "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/upgrade-docker-installed-rancher.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Upgrading Rancher Installed with Docker",
+    "weight": 1010,
+    "aliases": [
+      "/rancher/v2.5/en/upgrades/single-node-upgrade/",
+      "/rancher/v2.5/en/upgrades/upgrades/single-node-air-gap-upgrade",
+      "/rancher/v2.5/en/upgrades/upgrades/single-node",
+      "/rancher/v2.5/en/upgrades/upgrades/single-node-upgrade/",
+      "/rancher/v2.5/en/installation/install-rancher-on-k8s/upgrades/upgrades/single-node/",
+      "/rancher/v2.x/en/installation/other-installation-methods/single-node-docker/single-node-upgrades/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Installing Rancher on a Single Node Using Docker",
+    "permalink": "/2.5/pages-for-subheaders/rancher-on-a-single-node-with-docker"
+  },
+  "next": {
+    "title": "Rolling Back Rancher Installed with Docker",
+    "permalink": "/2.5/getting-started/installation-and-upgrade/other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/cluster-logging/splunk",
+  "id": "version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/splunk",
+  "title": "Splunk",
+  "description": "If your organization uses Splunk, you can configure Rancher to send it Kubernetes logs. Afterwards, you can log into your Splunk server to view logs.",
+  "source": "@site/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/splunk.md",
+  "sourceDirName": "explanations/integrations-in-rancher/cluster-logging",
+  "slug": "/explanations/integrations-in-rancher/cluster-logging/splunk",
+  "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/splunk",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/explanations/integrations-in-rancher/cluster-logging/splunk.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Splunk",
+    "weight": 300,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/logging/splunk/",
+      "/rancher/v2.0-v2.4/en/tools/logging/splunk/",
+      "/rancher/v2.0-v2.4/en/cluster-admin/tools/logging/splunk",
+      "/rancher/v2.0-v2.4/en/logging/legacy/cluster-logging/splunk",
+      "/rancher/v2.0-v2.4/en/logging/v2.0.x-v2.4.x/cluster-logging/splunk",
+      "/rancher/v2.x/en/logging/v2.0.x-v2.4.x/cluster-logging/splunk/",
+      "/rancher/v2.x/en/cluster-admin/tools/logging/splunk"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kafka",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/kafka"
+  },
+  "next": {
+    "title": "Syslog",
+    "permalink": "/2.0-2.4/explanations/integrations-in-rancher/cluster-logging/syslog"
+  }
+}

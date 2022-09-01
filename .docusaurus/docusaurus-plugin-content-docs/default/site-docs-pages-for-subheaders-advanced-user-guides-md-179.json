@@ -1,0 +1,26 @@
+{
+  "unversionedId": "pages-for-subheaders/advanced-user-guides",
+  "id": "pages-for-subheaders/advanced-user-guides",
+  "title": "advanced-user-guides",
+  "description": "",
+  "source": "@site/docs/pages-for-subheaders/advanced-user-guides.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/advanced-user-guides",
+  "permalink": "/docs/pages-for-subheaders/advanced-user-guides",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/pages-for-subheaders/advanced-user-guides.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Restoring a Cluster from Backup",
+    "permalink": "/docs/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup"
+  },
+  "next": {
+    "title": "Authentication, Permissions and Global Configuration",
+    "permalink": "/docs/pages-for-subheaders/authentication-permissions-and-global-configuration"
+  }
+}

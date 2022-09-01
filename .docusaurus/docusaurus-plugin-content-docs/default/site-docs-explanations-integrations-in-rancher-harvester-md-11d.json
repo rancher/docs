@@ -1,0 +1,29 @@
+{
+  "unversionedId": "explanations/integrations-in-rancher/harvester",
+  "id": "explanations/integrations-in-rancher/harvester",
+  "title": "Harvester Integration",
+  "description": "Introduced in Rancher v2.6.1, Harvester is an open-source hyper-converged infrastructure (HCI) software built on Kubernetes. Harvester installs on bare metal servers and provides integrated virtualization and distributed storage capabilities. Although Harvester operates using Kubernetes, it does not require users to know Kubernetes concepts, making it a more user-friendly application.",
+  "source": "@site/docs/explanations/integrations-in-rancher/harvester.md",
+  "sourceDirName": "explanations/integrations-in-rancher",
+  "slug": "/explanations/integrations-in-rancher/harvester",
+  "permalink": "/docs/explanations/integrations-in-rancher/harvester",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/explanations/integrations-in-rancher/harvester.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Harvester Integration",
+    "weight": 10
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Using Fleet Behind a Proxy",
+    "permalink": "/docs/explanations/integrations-in-rancher/fleet-gitops-at-scale/use-fleet-behind-a-proxy"
+  },
+  "next": {
+    "title": "Istio",
+    "permalink": "/docs/pages-for-subheaders/istio"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "unversionedId": "getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace",
+  "id": "getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace",
+  "title": "Rancher AWS Marketplace Quick Start",
+  "description": "Use Amazon EKS to deploy Rancher server.",
+  "source": "@site/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace.md",
+  "sourceDirName": "getting-started/quick-start-guides/deploy-rancher-manager",
+  "slug": "/getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace",
+  "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws-marketplace.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Rancher AWS Marketplace Quick Start",
+    "description": "Use Amazon EKS to deploy Rancher server.",
+    "weight": 110
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Rancher AWS Quick Start Guide",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/aws"
+  },
+  "next": {
+    "title": "Rancher Azure Quick Start Guide",
+    "permalink": "/docs/getting-started/quick-start-guides/deploy-rancher-manager/azure"
+  }
+}

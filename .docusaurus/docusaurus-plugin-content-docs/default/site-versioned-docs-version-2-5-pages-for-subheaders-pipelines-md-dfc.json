@@ -1,0 +1,33 @@
+{
+  "unversionedId": "pages-for-subheaders/pipelines",
+  "id": "version-2.5/pages-for-subheaders/pipelines",
+  "title": "Pipelines",
+  "description": "As of Rancher v2.5, Git-based deployment pipelines are now deprecated. We recommend handling pipelines with Rancher Continuous Delivery powered by Fleet, available in Cluster Explorer.",
+  "source": "@site/versioned_docs/version-2.5/pages-for-subheaders/pipelines.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/pipelines",
+  "permalink": "/2.5/pages-for-subheaders/pipelines",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.5/pages-for-subheaders/pipelines.md",
+  "tags": [],
+  "version": "2.5",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Pipelines",
+    "weight": 10,
+    "aliases": [
+      "/rancher/v2.5/en/k8s-in-rancher/pipelines",
+      "/rancher/v2.x/en/pipelines/"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Example YAML",
+    "permalink": "/2.5/reference-guides/rke1-template-example-yaml"
+  },
+  "next": {
+    "title": "Concepts",
+    "permalink": "/2.5/reference-guides/pipelines/concepts"
+  }
+}

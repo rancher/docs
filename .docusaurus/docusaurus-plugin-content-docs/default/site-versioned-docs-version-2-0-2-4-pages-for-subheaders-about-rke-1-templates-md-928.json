@@ -1,0 +1,29 @@
+{
+  "unversionedId": "pages-for-subheaders/about-rke1-templates",
+  "id": "version-2.0-2.4/pages-for-subheaders/about-rke1-templates",
+  "title": "RKE Templates",
+  "description": "Available as of Rancher v2.3.0",
+  "source": "@site/versioned_docs/version-2.0-2.4/pages-for-subheaders/about-rke1-templates.md",
+  "sourceDirName": "pages-for-subheaders",
+  "slug": "/pages-for-subheaders/about-rke1-templates",
+  "permalink": "/2.0-2.4/pages-for-subheaders/about-rke1-templates",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/pages-for-subheaders/about-rke1-templates.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "RKE Templates",
+    "weight": 7010
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Node Drivers",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-provisioning-drivers/manage-node-drivers"
+  },
+  "next": {
+    "title": "Template Creator Permissions",
+    "permalink": "/2.0-2.4/how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/about-rke1-templates/creator-permissions"
+  }
+}

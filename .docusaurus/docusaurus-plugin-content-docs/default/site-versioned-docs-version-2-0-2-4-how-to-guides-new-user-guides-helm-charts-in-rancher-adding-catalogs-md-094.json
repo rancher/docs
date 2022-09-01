@@ -1,0 +1,36 @@
+{
+  "unversionedId": "how-to-guides/new-user-guides/helm-charts-in-rancher/adding-catalogs",
+  "id": "version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/adding-catalogs",
+  "title": "Creating Custom Catalogs",
+  "description": "Custom catalogs can be added into Rancher at a global scope, cluster scope, or project scope.",
+  "source": "@site/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/adding-catalogs.md",
+  "sourceDirName": "how-to-guides/new-user-guides/helm-charts-in-rancher",
+  "slug": "/how-to-guides/new-user-guides/helm-charts-in-rancher/adding-catalogs",
+  "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/adding-catalogs",
+  "draft": false,
+  "editUrl": "https://github.com/rancher/docs/edit/master/versioned_docs/version-2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/adding-catalogs.md",
+  "tags": [],
+  "version": "2.0-2.4",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "title": "Creating Custom Catalogs",
+    "weight": 200,
+    "aliases": [
+      "/rancher/v2.0-v2.4/en/tasks/global-configuration/catalog/adding-custom-catalogs/",
+      "/rancher/v2.0-v2.4/en/catalog/custom/adding",
+      "/rancher/v2.0-v2.4/en/catalog/adding-catalogs",
+      "/rancher/v2.0-v2.4/en/catalog/custom/",
+      "/rancher/v2.0-v2.4/en/helm-charts/legacy-catalogs/adding-catalogs"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Enabling and Disabling Built-in Global Catalogs",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/built-in"
+  },
+  "next": {
+    "title": "Custom Catalog Configuration Reference",
+    "permalink": "/2.0-2.4/how-to-guides/new-user-guides/helm-charts-in-rancher/catalog-config"
+  }
+}
