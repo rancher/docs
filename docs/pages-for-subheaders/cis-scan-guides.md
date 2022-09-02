@@ -109,5 +109,6 @@ For information about permissions, refer to [this page](../explanations/integrat
 
 For more information about configuring the custom resources for the scans, profiles, and benchmark versions, refer to [this page](../explanations/integrations-in-rancher/cis-scans/configuration-reference.md).
 
-_**Tutorials**_
+_**Tutorials:**_
+
 Refer to the following tutorials to learn how to [install `rancher-cis-benchmark`](../how-to-guides/advanced-user-guides/cis-scan-guides/install-rancher-cis-benchmark.md), [uninstall `rancher-cis-benchmark`](../how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark.md), [run a scan](../how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan.md), [run a scan periodically on a schedule](../how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule.md), [skip tests](../how-to-guides/advanced-user-guides/cis-scan-guides/skip-tests.md), [view reports](../how-to-guides/advanced-user-guides/cis-scan-guides/view-reports.md), [enable alerting for `rancher-cis-benchmark`](../how-to-guides/advanced-user-guides/cis-scan-guides/enable-alerting-for-rancher-cis-benchmark.md), [configure alerts for a periodic scan on a schedule](../how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule.md), and how to [create a custom benchmark version to run a cluster scan](../how-to-guides/advanced-user-guides/cis-scan-guides/create-a-custom-benchmark-version-to-run.md).
