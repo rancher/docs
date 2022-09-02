@@ -1,5 +1,5 @@
 ---
-title: Configuring GitHub
+title: Configure GitHub
 weight: 1116
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-weight: 26
+weight: 600
 ---
 
 This section contains information to help you troubleshoot issues when using Rancher.

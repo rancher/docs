@@ -1,6 +1,6 @@
 ---
 title: Contributing to Rancher
-weight: 27
+weight: 700
 ---
 
 This section explains the repositories used for Rancher, how to build the repositories, and what information to include when you file an issue.

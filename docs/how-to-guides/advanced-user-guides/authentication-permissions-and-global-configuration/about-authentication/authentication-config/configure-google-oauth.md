@@ -1,5 +1,5 @@
 ---
-title: Configuring Google OAuth
+title: Configure Google OAuth
 weight: 10
 ---
 
