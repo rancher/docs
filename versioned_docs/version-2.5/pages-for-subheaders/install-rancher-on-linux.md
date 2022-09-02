@@ -31,7 +31,7 @@ Configuration and upgrading are also simplified with RancherD. When you upgrade 
 
 In Part I of these instructions, you'll learn how to launch RancherD on a single node. The result of following the steps in Part I is a single-node [RKE2](https://docs.rke2.io/) Kubernetes cluster with the Rancher server installed. This cluster can easily become high availability later. If Rancher only needs to manage the local Kubernetes cluster, the installation is complete.
 
-Part II explains how to convert the single-node Rancher installation into a high-availability installation. If the Rancher server will manage downstream Kubernetes clusters, it is important to follow these steps. A discussion of recommended architecture for highly available Rancher deployments can be found in our [Best Practices Guide.](best-practices/v2.5/rancher-server)
+Part II explains how to convert the single-node Rancher installation into a high-availability installation. If the Rancher server will manage downstream Kubernetes clusters, it is important to follow these steps. A discussion of recommended architecture for highly available Rancher deployments can be found in our [Best Practices Guide.](./rancher-server.md)
 
 # Prerequisites
 
@@ -98,9 +98,9 @@ If you do not specify a pre-shared secret, RancherD will generate one and place 
 
 To specify your own pre-shared secret as the token, set the `token` argument on startup.
 
-Installing Rancher this way will use Rancher-generated certificates. To use your own self-signed or trusted certificates, refer to the [configuration guide.](installation/install-rancher-on-linuinstallation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/#certificates-for-the-rancher-server)
+Installing Rancher this way will use Rancher-generated certificates. To use your own self-signed or trusted certificates, refer to the [configuration guide.](../reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference.md#certificates-for-the-rancher-server)
 
-For information on customizing the RancherD Helm chart values.yaml, refer to [this section.](installation/install-rancher-on-linuinstallation/other-installation-methods/install-rancher-on-linux/rancherd-configuration/#customizing-the-rancherd-helm-chart)
+For information on customizing the RancherD Helm chart values.yaml, refer to [this section.](../reference-guides/cluster-configuration/rancher-server-configuration/rancherd-configuration-reference.md#customizing-the-rancherd-helm-chart)
 
 ### 2. Launch the first server node
 
@@ -196,7 +196,7 @@ tls-san:
   - another-kubernetes-domain.com
 ```
 
-### 2. Launch an additional server node 
+### 2. Launch an additional server node
 
 Run the installer on the new node:
 

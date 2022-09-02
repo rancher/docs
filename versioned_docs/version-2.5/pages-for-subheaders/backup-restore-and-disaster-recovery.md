@@ -6,7 +6,7 @@ aliases:
   - /rancher/v2.x/en/backups/v2.5/
 ---
 
-In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster. 
+In this section, you'll learn how to create backups of Rancher, how to restore Rancher from backup, and how to migrate Rancher to a new Kubernetes cluster.
 
 As of Rancher v2.5, the `rancher-backup` operator is used to backup and restore Rancher. The `rancher-backup` Helm chart is [here.](https://github.com/rancher/charts/tree/release-v2.5/charts/rancher-backup)
 
@@ -31,7 +31,7 @@ The backup-restore operator needs to be installed in the local cluster, and only
 
 The new `rancher-backup` operator allows Rancher to be backed up and restored on any Kubernetes cluster. This application is a Helm chart, and it can be deployed through the Rancher **Apps & Marketplace** page, or by using the Helm CLI.
 
-Previously, the way that cluster data was backed up depended on the type of Kubernetes cluster that was used. 
+Previously, the way that cluster data was backed up depended on the type of Kubernetes cluster that was used.
 
 In Rancher v2.4, it was only supported to install Rancher on two types of Kubernetes clusters: an RKE cluster, or a K3s cluster with an external database. If Rancher was installed on an RKE cluster, RKE would be used to take a snapshot of the etcd database and restore the cluster. If Rancher was installed on a K3s cluster with an external database, the database would need to be backed up and restored using the upstream documentation for the database.
 
@@ -63,7 +63,7 @@ The Backup and Restore custom resources can be created in the Rancher UI, or by 
 
 The `rancher-backup` operator can be installed from the Rancher UI, or with the Helm CLI. In both cases, the `rancher-backup` Helm chart is installed on the Kubernetes cluster running the Rancher server. It is a cluster-admin only feature and available only for the **local** cluster.  (*If you do not see `rancher-backup` in the Rancher UI, you may have selected the wrong cluster.*)
 
->**NOTE:** There are two known issues in Fleet that occur after performing a restoration using the backup-restore-operator: Fleet agents are inoperable and clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.5/en/deploy-across-clusters/fleet/#troubleshooting) for workarounds.
+>**NOTE:** There are two known issues in Fleet that occur after performing a restoration using the backup-restore-operator: Fleet agents are inoperable and clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here](../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md#troubleshooting) for workarounds.
 
 ### Installing rancher-backup with the Rancher UI
 
@@ -119,4 +119,4 @@ For information on configuring these options, refer to [this page.](../reference
 
 ### Example values.yaml for the rancher-backup Helm Chart
 
-The example [values.yaml file](backupbackups/configuration/storage-config/#example-values-yaml-for-the-rancher-backup-helm-chart) can be used to configure the `rancher-backup` operator when the Helm CLI is used to install it.
+The example [values.yaml file](../reference-guides/backup-restore-configuration/storage-configuration.md#example-values-yaml-for-the-rancher-backup-helm-chart) can be used to configure the `rancher-backup` operator when the Helm CLI is used to install it.

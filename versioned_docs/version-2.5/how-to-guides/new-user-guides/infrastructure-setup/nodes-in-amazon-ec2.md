@@ -16,7 +16,7 @@ If the Rancher server is installed in a single Docker container, you only need o
 
 ### 1. Optional Preparation
 
-- **Create IAM role:** To allow Rancher to manipulate AWS resources, such as provisioning new storage or new nodes, you will need to configure Amazon as a cloud provider. There are several things you'll need to do to set up the cloud provider on EC2, but part of this process is setting up an IAM role for the Rancher server nodes. For the full details on setting up the cloud provider, refer to this [page.](cluster-provisioning/rke-clusters/options/cloud-providers/)
+- **Create IAM role:** To allow Rancher to manipulate AWS resources, such as provisioning new storage or new nodes, you will need to configure Amazon as a cloud provider. There are several things you'll need to do to set up the cloud provider on EC2, but part of this process is setting up an IAM role for the Rancher server nodes. For the full details on setting up the cloud provider, refer to this [page.](../../../pages-for-subheaders/set-up-cloud-providers.md)
 - **Create security group:** We also recommend setting up a security group for the Rancher nodes that complies with the [port requirements for Rancher nodes.](../../../pages-for-subheaders/installation-requirements.md#port-requirements)
 
 ### 2. Provision Instances

@@ -27,7 +27,7 @@ For details on which OS and Docker versions were tested with each Rancher versio
 
 All supported operating systems are 64-bit x86.
 
-If you plan to use ARM64, see [Running on ARM64 (Experimental).](installation/options/arm64-platform/)
+If you plan to use ARM64, see [Running on ARM64 (Experimental).](../../../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64.md)
 
 For information on how to install Docker, refer to the official [Docker documentation.](https://docs.docker.com/)
 

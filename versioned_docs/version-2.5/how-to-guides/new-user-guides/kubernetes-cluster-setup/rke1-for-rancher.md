@@ -12,7 +12,7 @@ This section describes how to install a Kubernetes cluster. This cluster should 
 
 > As of Rancher v2.5, Rancher can run on any Kubernetes cluster, included hosted Kubernetes solutions such as Amazon EKS. The below instructions represent only one possible way to install Kubernetes.
 
-For systems without direct internet access, refer to [Air Gap: Kubernetes install.](installation/air-gap-high-availability/)
+For systems without direct internet access, refer to [Air Gap: Kubernetes install.](../../../pages-for-subheaders/air-gapped-helm-cli-install.md)
 
 > **Single-node Installation Tip:**
 > In a single-node Kubernetes cluster, the Rancher server does not have high availability, which is important for running Rancher in production. However, installing Rancher on a single-node cluster can be useful if you want to save resources by using a single node in the short term, while preserving a high-availability migration path.
@@ -81,8 +81,8 @@ ingress:
 > **Advanced Configurations:** RKE has many configuration options for customizing the install to suit your specific environment.
 >
 > Please see the [RKE Documentation](https://rancher.com/docs/rke/latest/en/config-options/) for the full list of options and capabilities.
-> 
-> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide](installation/options/etcd/).
+>
+> For tuning your etcd cluster for larger Rancher installations, see the [etcd settings guide](../../../getting-started/installation-and-upgrade/advanced-options/advanced-use-cases/tune-etcd-for-large-installs.md).
 
 ### 2. Run RKE
 
@@ -163,8 +163,8 @@ Save a copy of the following files in a secure location:
 
 ### Issues or errors?
 
-See the [Troubleshooting](installation/options/troubleshooting/) page.
+See the [Troubleshooting](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
 
-### [Next: Install Rancher](installation/k8s-install/helm-rancher/)
+### [Next: Install Rancher](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md)
 
