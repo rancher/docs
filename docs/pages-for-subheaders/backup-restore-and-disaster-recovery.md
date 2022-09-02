@@ -55,7 +55,7 @@ The `rancher-backup` operator can be installed from the Rancher UI, or with the 
 
 :::note
 
-There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here]({{<baseurl>}}rancher/v2.6/en/deploy-across-clusters/fleet/#troubleshooting) for a workaround.
+There is a known issue in Fleet that occurs after performing a restoration using the backup-restore-operator: Secrets used for clientSecretName and helmSecretName are not included in Fleet gitrepos. Refer [here](./fleet-gitops-at-scale.md#troubleshooting) for a workaround.
 
 :::
 
@@ -104,4 +104,4 @@ For information on configuring these options, refer to [this page.](../reference
 
 ### Example values.yaml for the rancher-backup Helm Chart
 
-The example [values.yaml file](backupbackups/configuration/storage-config/#example-values-yaml-for-the-rancher-backup-helm-chart) can be used to configure the `rancher-backup` operator when the Helm CLI is used to install it.
+The example [values.yaml file](../reference-guides/backup-restore-configuration/storage-configuration.md#example-values-yaml-for-the-rancher-backup-helm-chart) can be used to configure the `rancher-backup` operator when the Helm CLI is used to install it.

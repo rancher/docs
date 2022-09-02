@@ -9,7 +9,7 @@ aliases:
   - /rancher/v2.x/en/monitoring-alerting/v2.0.x-v2.4.x/cluster-monitoring/custom-metrics/
 ---
 
-After you've enabled [cluster level monitoring](monitoring-alerting/legacy/monitoring/cluster-monitoring/), You can view the metrics data from Rancher. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.
+After you've enabled [cluster level monitoring](../../../pages-for-subheaders/cluster-monitoring.md), You can view the metrics data from Rancher. You can also deploy the Prometheus custom metrics adapter then you can use the HPA with metrics stored in cluster monitoring.
 
 ## Deploy Prometheus Custom Metrics Adapter
 
@@ -17,7 +17,7 @@ We are going to use the [Prometheus custom metrics adapter](https://github.com/D
 
 - Get the service account of the cluster monitoring is using. It should be configured in the workload ID: `statefulset:cattle-prometheus:prometheus-cluster-monitoring`. And if you didn't customize anything, the service account name should be `cluster-monitoring`.
 
-- Grant permission to that service account. You will need two kinds of permission. 
+- Grant permission to that service account. You will need two kinds of permission.
 One role is `extension-apiserver-authentication-reader` in `kube-system`, so you will need to create a `Rolebinding` to in `kube-system`. This permission is to get api aggregation configuration from config map in `kube-system`.
 
 ```yaml
@@ -161,7 +161,7 @@ data:
 ```bash
 openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out serving.crt -keyout serving.key -subj "/C=CN/CN=custom-metrics-apiserver.cattle-prometheus.svc.cluster.local"
 # And you will find serving.crt and serving.key in your path. And then you are going to create a secret in cattle-prometheus namespace.
-kubectl create secret generic -n cattle-prometheus cm-adapter-serving-certs --from-file=serving.key=./serving.key --from-file=serving.crt=./serving.crt 
+kubectl create secret generic -n cattle-prometheus cm-adapter-serving-certs --from-file=serving.key=./serving.key --from-file=serving.crt=./serving.crt
 ```
 
 - Then you can create the prometheus custom metrics adapter. And you will need a service for this deployment too. Creating it via Import YAML or Rancher would do. Please create those resources in `cattle-prometheus` namespaces.

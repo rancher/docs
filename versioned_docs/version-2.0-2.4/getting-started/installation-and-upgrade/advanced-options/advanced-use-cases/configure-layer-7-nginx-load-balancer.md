@@ -15,7 +15,7 @@ A layer-7 load balancer can be beneficial if you want to centralize your TLS ter
 This install procedure walks you through deployment of Rancher using a single container, and then provides a sample configuration for a layer-7 NGINX load balancer.
 
 > **Want to skip the external load balancer?**
-> See [Docker Installation](installation/single-node) instead.
+> See [Docker Installation](../../../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md) instead.
 
 ## Requirements for OS, Docker, Hardware, and Networking
 
@@ -169,7 +169,7 @@ http {
 
 ## What's Next?
 
-- **Recommended:** Review [Single Node Backup and Restore](installation/backups-and-restoration/single-node-backup-and-restoration/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- **Recommended:** Review [Single Node Backup and Restore](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters](../../../../pages-for-subheaders/kubernetes-clusters-in-rancher-setup.md).
 
 <br/>
@@ -182,7 +182,7 @@ For help troubleshooting certificates, see [this section.](../../other-installat
 
 ### API Auditing
 
-If you want to record all transactions with the Rancher API, enable the [API Auditing](installation/api-auditing) feature by adding the flags below into your install command.
+If you want to record all transactions with the Rancher API, enable the [API Auditing](../../../installation-and-upgrade/advanced-options/advanced-use-cases/enable-api-audit-log.md) feature by adding the flags below into your install command.
 
     -e AUDIT_LEVEL=1 \
     -e AUDIT_LOG_PATH=/var/log/auditlog/rancher-api-audit.log \
@@ -192,7 +192,7 @@ If you want to record all transactions with the Rancher API, enable the [API Aud
 
 ### Air Gap
 
-If you are visiting this page to complete an [Air Gap Installation](installation/air-gap-installation/), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
+If you are visiting this page to complete an [Air Gap Installation](../../../../pages-for-subheaders/air-gap-helm2.md), you must pre-pend your private registry URL to the server tag when running the installation command in the option that you choose. Add `<REGISTRY.DOMAIN.COM:PORT>` with your private registry URL in front of `rancher/rancher:latest`.
 
 **Example:**
 

@@ -120,7 +120,7 @@ _Available as of v2.2.0_
 | Name |  Enter a **Name** for the notifier. |
 | Corporation ID |    Enter the "EnterpriseID" of your corporation. You can get it fro the [Profile page](https://work.weixin.qq.com/wework_admin/frame#profile). |
 | Application Agent ID | From Enterprise WeChat, create an application in the [Application page](https://work.weixin.qq.com/wework_admin/frame#apps), and then enter the "AgentId" of this application. You will also need to enter the application secret. |
-| Application Secret |   The secret that corresponds to the Application Agent ID. | 
+| Application Secret |   The secret that corresponds to the Application Agent ID. |
 | Recipient Type |  Party, tag, or user.   |
 | Default Recipient |  The default recipient ID should correspond to the recipient type. It should be the party ID, tag ID or user account that you want to receive the notification. You could get contact information from [Contacts page](https://work.weixin.qq.com/wework_admin/frame#contacts).  |
 | Proxy URL |  If you are using a proxy, enter the proxy URL.   |
@@ -203,5 +203,5 @@ After you set up notifiers, you can manage them. From the **Global** view, open 
 
 After creating a notifier, set up alerts to receive notifications of Rancher system events.
 
-- [Cluster owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) can set up alerts at the [cluster level](cluster-admin/tools/alerts/).
-- [Project owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) can set up alerts at the [project level](project-admin/tools/alerts/).
+- [Cluster owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#cluster-roles) can set up alerts at the [cluster level](../../pages-for-subheaders/cluster-alerts.md).
+- [Project owners](../../how-to-guides/advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-roles) can set up alerts at the [project level](../../reference-guides/rancher-project-tools/project-alerts.md).

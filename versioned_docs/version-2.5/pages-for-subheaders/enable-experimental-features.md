@@ -10,7 +10,7 @@ aliases:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type](installation/options/feature-flags/enable-not-default-storage-drivers) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
+Rancher includes some features that are experimental and disabled by default. You might want to enable these features, for example, if you decide that the benefits of using an [unsupported storage type](../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md) outweighs the risk of using an untested feature. Feature flags were introduced to allow you to try these features that are not enabled by default.
 
 The features can be enabled in three ways:
 
@@ -34,8 +34,8 @@ For example, if you install Rancher, then set a feature flag to true with the Ra
 The following is a list of the feature flags available in Rancher:
 
 - `fleet`: Rancher comes with [Fleet](../how-to-guides/new-user-guides/deploy-apps-across-clusters/fleet.md) preinstalled in v2.5+.
-- `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules](installation/options/feature-flags/istio-virtual-service-ui), which are traffic management features of Istio.
-- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.](installation/options/feature-flags/enable-not-default-storage-drivers) In other words, it enables types for storage providers and provisioners that are not enabled by default.
+- `istio-virtual-service-ui`: This feature enables a [UI to create, read, update, and delete Istio virtual services and destination rules](../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/istio-traffic-management-features.md), which are traffic management features of Istio.
+- `unsupported-storage-drivers`: This feature [allows unsupported storage drivers.](../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md) In other words, it enables types for storage providers and provisioners that are not enabled by default.
 
 The below table shows the availability and default value for feature flags in Rancher:
 

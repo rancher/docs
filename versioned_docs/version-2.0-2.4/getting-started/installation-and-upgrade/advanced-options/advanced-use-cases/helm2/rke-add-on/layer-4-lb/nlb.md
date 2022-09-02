@@ -9,9 +9,9 @@ aliases:
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ](installation/options/helm2/).
+>Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/helm-version-requirements.md).
 >
->If you are currently using the RKE add-on install method, see [Migrating from a High-availability Kubernetes install with an RKE add-on](upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from a High-availability Kubernetes install with an RKE add-on](../../../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to move to using the helm chart.
 
 ## Objectives
 

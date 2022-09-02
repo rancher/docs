@@ -11,7 +11,7 @@ You will need to manually enable Istio in each namespace that you want to be tra
 
 This namespace setting will only affect new workloads in the namespace. Any preexisting workloads will need to be re-deployed to leverage the sidecar auto injection.
 
-> **Prerequisite:** To enable Istio in a namespace, the cluster must have Istio installed.  
+> **Prerequisite:** To enable Istio in a namespace, the cluster must have Istio installed.
 
 1. In the Rancher **Cluster Explorer,** open the kubectl shell.
 1. Then run `kubectl label namespace <namespace> istio-injection=enabled`
@@ -39,7 +39,7 @@ To add the annotation to a workload,
 
 **Result:** The Istio sidecar will not be injected into the workload.
 
-> **NOTE:** If you are having issues with a Job you deployed not completing, you will need to add this annotation to your pod using the provided steps. Since Istio Sidecars run indefinitely, a Job cannot be considered complete even after its task has completed. 
+> **NOTE:** If you are having issues with a Job you deployed not completing, you will need to add this annotation to your pod using the provided steps. Since Istio Sidecars run indefinitely, a Job cannot be considered complete even after its task has completed.
 
 
-### [Next: Select the Nodes ](istio/setup/node-selectors)
+### [Next: Select the Nodes ](../../../explanations/integrations-in-rancher/istio/configuration-options/selectors-and-scrape-configurations.md)

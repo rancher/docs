@@ -37,7 +37,7 @@ Log into your Linux host, and then run the installation command below. When ente
 | Placeholder                      | Description                                                                                                                   |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `<REGISTRY.YOURDOMAIN.COM:PORT>` | Your private registry URL and port.                                                                                           |
-| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version](installation/resources/chart-options/) that you want to install. |
+| `<RANCHER_VERSION_TAG>`          | The release tag of the [Rancher version](../../../../reference-guides/installation-references/helm-chart-options.md) that you want to install. |
 
 Privileged access is [required.](#privileged-access-for-rancher)
 

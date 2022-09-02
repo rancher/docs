@@ -4,7 +4,7 @@ weight: 18
 aliases:
   - /rancher/v2.5/en/concepts/
   - /rancher/v2.5/en/tasks/
-  - /rancher/v2.5/en/concepts/resources/  
+  - /rancher/v2.5/en/concepts/resources/
   - /rancher/v2.x/en/k8s-in-rancher/
 ---
 
@@ -57,13 +57,13 @@ For more information, see [Service Discovery](../how-to-guides/new-user-guides/k
 
 After your project has been [configured to a version control provider](../how-to-guides/advanced-user-guides/manage-projects/ci-cd-pipelines.md#1-configure-version-control-providers), you can add the repositories and start configuring a pipeline for each repository.
 
-For more information, see [Pipelines](k8s-in-rancher/pipelines/).
+For more information, see [Pipelines](./pipelines.md).
 
 ## Applications
 
 Besides launching individual components of an application, you can use the Rancher catalog to start launching applications, which are Helm charts.
 
-For more information, see [Applications in a Project](catalog/apps/).
+For more information, see [Applications in a Project](./helm-charts-in-rancher.md).
 
 ## Kubernetes Resources
 

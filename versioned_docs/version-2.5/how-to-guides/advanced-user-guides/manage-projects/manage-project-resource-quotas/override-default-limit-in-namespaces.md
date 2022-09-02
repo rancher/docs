@@ -16,7 +16,7 @@ How to: [Editing Namespace Resource Quotas](../../manage-clusters/projects-and-n
 
 ### Editing Namespace Resource Quotas
 
-If there is a [resource quota](cluster-admin/projects-and-namespaces/resource-quotas) configured for a project, you can override the namespace default limit to provide a specific namespace with access to more (or less) project resources.
+If there is a [resource quota](../../../../pages-for-subheaders/manage-project-resource-quotas.md) configured for a project, you can override the namespace default limit to provide a specific namespace with access to more (or less) project resources.
 
 1. From the **Global** view, open the cluster that contains the namespace for which you want to edit the resource quota.
 
@@ -26,7 +26,7 @@ If there is a [resource quota](cluster-admin/projects-and-namespaces/resource-qu
 
 1. Edit the Resource Quota **Limits**.  These limits determine the resources available to the namespace. The limits must be set within the configured project limits.
 
-    For more information about each **Resource Type**, see [Resource Quotas](cluster-admin/projects-and-namespaces/resource-quotas/).
+    For more information about each **Resource Type**, see [Resource Quotas](../../../../pages-for-subheaders/manage-project-resource-quotas.md).
 
     >**Note:**
     >

@@ -43,7 +43,7 @@ After you download the tools, complete the following actions:
 
 # Logs
 
-The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters](../pages-for-subheaders/launch-kubernetes-with-rancher.md) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.](../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md). See [Troubleshooting]({{<baseurl>}}//rancher/v2.5/en/troubleshooting/) for a list of core Kubernetes cluster components.
+The logs subcommand will collect log files of core Kubernetes cluster components from nodes in [Rancher-launched Kubernetes clusters](../pages-for-subheaders/launch-kubernetes-with-rancher.md) or nodes on an [RKE Kubernetes cluster that Rancher is installed on.](../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md). See [Troubleshooting](../troubleshooting.md) for a list of core Kubernetes cluster components.
 
 System Tools will use the provided kubeconfig file to deploy a DaemonSet, that will copy all the logfiles from the core Kubernetes cluster components and add them to a single tar file (`cluster-logs.tar` by default). If you only want to collect logging from a single node, you can specify the node by using `--node NODENAME` or `-n NODENAME`.
 

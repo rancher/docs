@@ -21,7 +21,7 @@ To install the Rancher management server on a high-availability RKE2 cluster, we
 
 Make sure that your nodes fulfill the general installation requirements for [OS, container runtime, hardware, and networking.](../../../pages-for-subheaders/installation-requirements.md)
 
-For an example of one way to set up Linux nodes, refer to this [tutorial](installation/options/ec2-node) for setting up nodes as instances in Amazon EC2.
+For an example of one way to set up Linux nodes, refer to this [tutorial](../../../how-to-guides/new-user-guides/infrastructure-setup/nodes-in-amazon-ec2.md) for setting up nodes as instances in Amazon EC2.
 
 ### 2. Set up the Load Balancer
 
@@ -34,11 +34,11 @@ When Rancher is installed (also in a later step), the Rancher system creates an 
 For your implementation, consider if you want or need to use a Layer-4 or Layer-7 load balancer:
 
 - **A layer-4 load balancer** is the simpler of the two choices, in which you are forwarding TCP traffic to your nodes. We recommend configuring your load balancer as a Layer 4 balancer, forwarding traffic to ports TCP/80 and TCP/443 to the Rancher management cluster nodes. The Ingress controller on the cluster will redirect HTTP traffic to HTTPS and terminate SSL/TLS on port TCP/443. The Ingress controller will forward traffic to port TCP/80 to the Ingress pod in the Rancher deployment.
-- **A layer-7 load balancer** is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to Rancher doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing Rancher in a later step. For more information, refer to the [Rancher Helm chart options.](installation/options/chart-options/#external-tls-termination)
+- **A layer-7 load balancer** is a bit more complicated but can offer features that you may want. For instance, a layer-7 load balancer is capable of handling TLS termination at the load balancer, as opposed to Rancher doing TLS termination itself. This can be beneficial if you want to centralize your TLS termination in your infrastructure. Layer-7 load balancing also offers the capability for your load balancer to make decisions based on HTTP attributes such as cookies, etc. that a layer-4 load balancer is not able to concern itself with. If you decide to terminate the SSL/TLS traffic on a layer-7 load balancer, you will need to use the `--set tls=external` option when installing Rancher in a later step. For more information, refer to the [Rancher Helm chart options.](../../../reference-guides/installation-references/helm-chart-options.md#external-tls-termination)
 
-For an example showing how to set up an NGINX load balancer, refer to [this page.](installation/options/nginx/)
+For an example showing how to set up an NGINX load balancer, refer to [this page.](../../../how-to-guides/new-user-guides/infrastructure-setup/nginx-load-balancer.md)
 
-For a how-to guide for setting up an Amazon ELB Network Load Balancer, refer to [this page.](installation/options/nlb/)
+For a how-to guide for setting up an Amazon ELB Network Load Balancer, refer to [this page.](../../../how-to-guides/new-user-guides/infrastructure-setup/amazon-elb-load-balancer.md)
 
 > **Important:**
 > Do not use this load balancer (i.e, the `local` cluster Ingress) to load balance applications other than Rancher following installation. Sharing this Ingress with other applications may result in websocket errors to Rancher following Ingress configuration reloads for other apps. We recommend dedicating the `local` cluster to Rancher and no other applications.

@@ -8,7 +8,7 @@
 | [Managing Projects, Namespaces and Workloads](../how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md) | ✓ | ✓ | ✓ | ✓ |
 | [Using App Catalogs](../pages-for-subheaders/helm-charts-in-rancher.md) | ✓ | ✓ | ✓ | ✓ |
 | Configuring Tools ([Alerts, Notifiers, Monitoring](../pages-for-subheaders/monitoring-and-alerting.md), [Logging](../pages-for-subheaders/logging.md), [Istio](../pages-for-subheaders/istio.md)) | ✓ | ✓ | ✓ | ✓ |
-| [Running Security Scans](security/security-scan/) | ✓ | ✓ | ✓ | ✓ |
+| [Running Security Scans](../pages-for-subheaders/cis-scan-guides.md) | ✓ | ✓ | ✓ | ✓ |
 | [Use existing configuration to create additional clusters](../how-to-guides/advanced-user-guides/manage-clusters/clone-cluster-configuration.md)| ✓ | ✓ | ✓ | |
 | [Ability to rotate certificates](../how-to-guides/advanced-user-guides/manage-clusters/rotate-certificates.md) | ✓ | ✓  |  | |
 | Ability to [backup](../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md) and [restore](../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md) Rancher-launched clusters | ✓ | ✓ |  | ✓<sup>4</sup> |

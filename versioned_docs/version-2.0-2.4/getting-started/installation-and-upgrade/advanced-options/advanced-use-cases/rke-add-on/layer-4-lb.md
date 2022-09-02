@@ -12,7 +12,7 @@ aliases:
 >
 >Please use the Rancher helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install](../../../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md).
 >
->If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to move to using the helm chart.
 
 This procedure walks you through setting up a 3-node cluster using the Rancher Kubernetes Engine (RKE). The cluster's sole purpose is running pods for Rancher. The setup is based on:
 
@@ -167,8 +167,8 @@ RKE uses a `.yml` config file to install and configure your Kubernetes cluster. 
 
 1. Download one of following templates, depending on the SSL certificate you're using.
 
-	- [Template for self-signed certificate<br/>](installation/options/cluster-yml-templates/3-node-certificate)
-	- [Template for certificate signed by recognized CA<br/> ](installation/options/cluster-yml-templates/3-node-certificate-recognizedca)
+	- [Template for self-signed certificate<br/>](../cluster-yml-templates/node-certificate.md)
+	- [Template for certificate signed by recognized CA<br/> ](../cluster-yml-templates/node-certificate-recognizedca.md)
 
 
 
@@ -391,7 +391,7 @@ During installation, RKE automatically generates a config file named `kube_confi
 
 You have a couple of options:
 
-- Create a backup of your Rancher Server in case of a disaster scenario: [High Availability Back Up and Restore](installation/backups-and-restoration/ha-backup-and-restoration).
+- Create a backup of your Rancher Server in case of a disaster scenario: [High Availability Back Up and Restore](../../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md).
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters](../../../../../pages-for-subheaders/kubernetes-clusters-in-rancher-setup.md).
 
 <br/>

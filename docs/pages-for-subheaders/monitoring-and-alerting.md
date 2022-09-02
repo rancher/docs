@@ -55,7 +55,7 @@ The monitoring application deploys some alerts by default. To see the default al
 
 ### Components Exposed in the Rancher UI
 
-For a list of monitoring components exposed in the Rancher UI, along with common use cases for editing them, see [this section.](monitoring-alertinmonitoring-alerting/how-monitoring-works/#components-exposed-in-the-rancher-ui)
+For a list of monitoring components exposed in the Rancher UI, along with common use cases for editing them, see [this section.](../explanations/integrations-in-rancher/monitoring-and-alerting/how-monitoring-works.md#components-exposed-in-the-rancher-ui)
 
 # Role-based Access Control
 
@@ -80,7 +80,7 @@ For information on configuring access to monitoring, see [this page.](../explana
 - [ServiceMonitor and PodMonitor](../reference-guides/monitoring-v2-configuration/servicemonitors-and-podmonitors.md)
 - [Receiver](../reference-guides/monitoring-v2-configuration/receivers.md)
 - [Route](../reference-guides/monitoring-v2-configuration/routes.md)
-- [PrometheusRule](monitoring-alertinmonitoring-alerting/configuration/advanced/prometheusrules)
+- [PrometheusRule](../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheusrules.md)
 - [Prometheus](../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/prometheus.md)
 - [Alertmanager](../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md)
 

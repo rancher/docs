@@ -12,6 +12,29 @@ module.exports = {
   projectName: 'rancher-docs', // Usually your repo name.
   trailingSlash: false,
   themeConfig: {
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'YOUR_APP_ID',
+
+      // Public API key: it is safe to commit it
+      apiKey: 'YOUR_SEARCH_API_KEY',
+
+      indexName: 'YOUR_INDEX_NAME',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      //... other Algolia params
+    },
     colorMode: {
       // "light" | "dark"
       defaultMode: "light",
@@ -71,14 +94,15 @@ module.exports = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: 'v2.6',
-              path: 'docs',
+              label: 'v2.6'
             },
             2.5: {
-              label: 'v2.5'
+              label: 'v2.5',
+              path: 'v2.5'
             },
             '2.0-2.4': {
-              label: 'v2.0-v2.4'
+              label: 'v2.0-v2.4',
+              path: 'v2.0-v2.4'
             },
           },
         },

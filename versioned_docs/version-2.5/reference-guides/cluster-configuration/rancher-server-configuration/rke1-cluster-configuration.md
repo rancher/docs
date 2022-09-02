@@ -15,7 +15,7 @@ To edit your cluster, open the **Global** view, make sure the **Clusters** tab i
 
 Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the RKE cluster configuration file in YAML. For the complete reference of configurable options for RKE Kubernetes clusters in YAML, see the [RKE documentation.](https://rancher.com/docs/rke/latest/en/config-options/)
 
-### Kubernetes Version 
+### Kubernetes Version
 
 The version of Kubernetes installed on each cluster node. For more detail, see [Upgrading Kubernetes](../../../getting-started/installation-and-upgrade/upgrade-and-roll-back-kubernetes.md).
 
@@ -25,9 +25,9 @@ The \container networking interface (CNI) that powers networking for your cluste
 
 ### Project Network Isolation
 
-If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication. 
+If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication.
 
-Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE. 
+Before Rancher v2.5.8, project network isolation is only available if you are using the Canal network plugin for RKE.
 
 In v2.5.8+, project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 
@@ -35,7 +35,7 @@ In v2.5.8+, project network isolation is available if you are using any RKE netw
 
 If you want to publish your applications in a high-availability configuration, and you're hosting your nodes with a cloud-provider that doesn't have a native load-balancing feature, enable this option to use Nginx ingress within the cluster.
 
-### Metrics Server Monitoring 
+### Metrics Server Monitoring
 
 Each cloud provider capable of launching a cluster using RKE can collect metrics and monitor for your cluster nodes. Enable this option to view your node metrics from your cloud provider's portal.
 
@@ -57,7 +57,7 @@ If you enable **Pod Security Policy Support**, use this drop-down to choose the 
 
 ### Cloud Provider
 
-If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option](cluster-provisioning/rke-clusters/options/cloud-providers/) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.
+If you're using a cloud provider to host cluster nodes launched by RKE, enable [this option](../../../pages-for-subheaders/set-up-cloud-providers.md) so that you can use the cloud provider's native features. If you want to store persistent data for your cloud-hosted cluster, this option is required.
 
 # Editing Clusters with YAML
 

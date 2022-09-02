@@ -28,7 +28,7 @@ When installing the integrated monitoring stack, Rancher allows to configure sev
 
 ### Storage and Data Retention
 
-The amount of storage needed for Prometheus directly correlates to the amount of time series and labels that you store and the data retention you have configured. It is important to note that Prometheus is not meant to be used as a long-term metrics storage. Data retention time is usually only a couple of days and not weeks or months. The reason for this is that Prometheus does not perform any aggregation on its stored metrics. This is great because aggregation can dilute data, but it also means that the needed storage grows linearly over time without retention. 
+The amount of storage needed for Prometheus directly correlates to the amount of time series and labels that you store and the data retention you have configured. It is important to note that Prometheus is not meant to be used as a long-term metrics storage. Data retention time is usually only a couple of days and not weeks or months. The reason for this is that Prometheus does not perform any aggregation on its stored metrics. This is great because aggregation can dilute data, but it also means that the needed storage grows linearly over time without retention.
 
 One way to calculate the necessary storage is to look at the average size of a storage chunk in Prometheus with this query
 
@@ -106,7 +106,7 @@ Monitoring the availability and performance of all your internal workloads is vi
 
 # Security Monitoring
 
-In addition to monitoring workloads to detect performance, availability or scalability problems, the cluster and the workloads running into it should also be monitored for potential security problems. A good starting point is to frequently run and alert on [CIS Scans](cis-scans/v2.5/) which check if the cluster is configured according to security best practices.
+In addition to monitoring workloads to detect performance, availability or scalability problems, the cluster and the workloads running into it should also be monitored for potential security problems. A good starting point is to frequently run and alert on [CIS Scans](../../../pages-for-subheaders/cis-scans.md) which check if the cluster is configured according to security best practices.
 
 For the workloads, you can have a look at Kubernetes and Container security solutions like [Falco](https://falco.org/), [Aqua Kubernetes Security](https://www.aquasec.com/solutions/kubernetes-container-security/), [SysDig](https://sysdig.com/).
 

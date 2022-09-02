@@ -72,7 +72,7 @@ The following commands are available for use in Rancher CLI.
 | Command  | Result  |
 |---|---|
 | `apps, [app]`  | Performs operations on catalog applications (i.e., individual [Helm charts](https://docs.helm.sh/developing_charts/)) or Rancher charts.  |
-| `catalog`  | Performs operations on [catalogs]({{<baseurl>}}/rancher/v2.5/helm-charts).  |
+| `catalog`  | Performs operations on [catalogs](./helm-charts-in-rancher.md).  |
 | `clusters, [cluster]`  | Performs operations on your [clusters](kubernetes-clusters-in-rancher-setup.md).  |
 | `context`  | Switches between Rancher [projects](../how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md). For an example, see [Project Selection](#project-selection).  |
 | `inspect [OPTIONS] [RESOURCEID RESOURCENAME]`  | Displays details about [Kubernetes resources](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#resource-types) or Rancher resources (i.e.: [projects](../how-to-guides/advanced-user-guides/manage-clusters/projects-and-namespaces.md) and [workloads](workloads-and-pods.md)). Specify resources by name or ID.  |

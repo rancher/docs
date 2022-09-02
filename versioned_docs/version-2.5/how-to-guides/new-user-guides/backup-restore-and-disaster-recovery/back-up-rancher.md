@@ -7,7 +7,7 @@ aliases:
   - /rancher/v2.x/en/backups/v2.5/back-up-rancher/
 ---
 
-In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer to the instructions for [single node backups](backups/v2.5/docker-installs/docker-backups).
+In this section, you'll learn how to back up Rancher running on any Kubernetes cluster. To backup Rancher installed with Docker, refer to the instructions for [single node backups](./back-up-docker-installed-rancher.md).
 
 The backup-restore operator needs to be installed in the local cluster, and only backs up the Rancher app. The backup and restore operations are performed only in the local Kubernetes cluster.
 
@@ -64,7 +64,7 @@ To perform a backup, a custom resource of type Backup must be created.
 
     > **Note:** When creating the Backup resource using YAML editor, the `resourceSetName` must be set to `rancher-resource-set`
 
-    For help configuring the Backup, refer to the [configuration reference](../../../reference-guides/backup-restore-configuration/backup-configuration.md) and to the [examples.](../../../reference-guides/backup-restore-configuration/examples.md#backup)    
+    For help configuring the Backup, refer to the [configuration reference](../../../reference-guides/backup-restore-configuration/backup-configuration.md) and to the [examples.](../../../reference-guides/backup-restore-configuration/examples.md#backup)
 
     > **Important:** The `rancher-backup` operator doesn't save the EncryptionConfiguration file. The contents of the EncryptionConfiguration file must be saved when an encrypted backup is created, and the same file must be used when restoring from this backup.
 1. Click **Create.**

@@ -2,7 +2,7 @@
 title: Project Resource Quotas
 weight: 2515
 aliases:
-  - /rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas 
+  - /rancher/v2.5/en/cluster-admin/projects-and-namespaces/resource-quotas
   - /rancher/v2.x/en/project-admin/resource-quotas/
 ---
 
@@ -16,7 +16,7 @@ Resource quotas in Rancher include the same functionality as the [native version
 
 ### Applying Resource Quotas to Existing Projects
 
-Edit [resource quotas](cluster-admin/projects-and-namespaces/resource-quotas) when:
+Edit [resource quotas](./manage-project-resource-quotas.md) when:
 
 - You want to limit the resources that a project and its namespaces can use.
 - You want to scale the resources available to a project up or down when a research quota is already in effect.

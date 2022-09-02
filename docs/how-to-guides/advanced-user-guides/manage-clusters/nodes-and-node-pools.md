@@ -44,11 +44,11 @@ The following table lists which node options are available for each type of clus
 | [Download Keys](#ssh-into-a-node-hosted-by-an-infrastructure-provider) | ✓                          |                  |                     |                     |                    | Download SSH key in order to SSH into the node.                     |
 | [Node Scaling](#scaling-nodes)                   | ✓                                                |                  |                     | ✓                   |                    | Scale the number of nodes in the node pool up or down.               |
 
-[1]: cluster-provisioning/rke-clusters/node-pools/
-[2]: cluster-provisioning/rke-clusters/custom-nodes/
-[3]: cluster-provisioning/hosted-kubernetes-clusters/
-[4]: cluster-provisioning/registered-clusters/
-[5]: cluster-provisioning/registered-clusters/
+[1]: ../../../pages-for-subheaders/use-new-nodes-in-an-infra-provider.md
+[2]: ../../../pages-for-subheaders/use-existing-nodes.md
+[3]: ../../../pages-for-subheaders/set-up-clusters-from-hosted-kubernetes-providers.md
+[4]: ../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md
+[5]: ../../../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/register-existing-clusters.md
 
 \* Delete option accessible via View API
 
@@ -197,7 +197,7 @@ cattle.rancher.io/node-status: ignore
 
 **Result:** If you add the node to a cluster, Rancher will not attempt to sync with this node. The node can still be part of the cluster and can be listed with `kubectl`.
 
-If the label is added before the node is added to the cluster, the node will not be shown in the Rancher UI. 
+If the label is added before the node is added to the cluster, the node will not be shown in the Rancher UI.
 
 If the label is added after the node is added to a Rancher cluster, the node will not be removed from the UI.
 
