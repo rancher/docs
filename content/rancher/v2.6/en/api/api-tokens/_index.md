@@ -83,5 +83,4 @@ Maximum Time to Live (TTL) in minutes allowed for auth tokens. If a user attempt
 **Changed in version 2.6.6: Applies to all kubeconfig tokens and api tokens.**
 
 #### kubeconfig-generate-token
-When true, kubeconfigs requested through the UI will contain a valid token. When false, the kubeconfig will contain a command that uses the Rancher CLI to prompt the user to log-in. [The CLI then will retrieve and cache a token for the user.]({{<baseurl>}}/rancher/v2.6/en/cli/#authentication-with-kubectl-and-kubeconfig-tokens-with-ttl)
-authentication-with-kubectl-and-kubeconfig-tokens-with-ttl
+When true, kubeconfigs requested through the UI will contain a valid token. When false, the kubeconfig will contain a command that uses the Rancher CLI to prompt the user to log in. [The CLI then will retrieve and cache a token for the user]({{<baseurl>}}/rancher/v2.6/en/cli/#authentication-with-kubectl-and-kubeconfig-tokens-with-ttl).

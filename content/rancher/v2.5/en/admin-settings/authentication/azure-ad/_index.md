@@ -116,6 +116,8 @@ From the Azure portal, create a client secret. Rancher will use this key to auth
 
 Next, set API permissions for Rancher within Azure.
 
+>**Warning:** Ensure that you set the permissions of type Application and NOT Delegated. Otherwise, you may not be able to login to Azure AD. This issue will persist even after you disable/re-enable Azure AD and will require an hour wait, or manual deletion of a cache value to resolve.
+
 1. From the navigation pane on left, select **API permissions**.
 
     ![Open Required Permissions]({{<baseurl>}}/img/rancher/select-req-permissions.png)
@@ -240,6 +242,9 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
 >**Important:** Admins should create a [backup]({{<baseurl>}}/rancher/v2.5/en/backups/back-up-rancher/) right before they commit to the endpoint migration in Step 4 below.
 
+1. Update the permissions of your Azure AD app registration as described [here](#3-set-required-permissions-for-rancher).
+**This is critical.**
+
 1. Log into Rancher.
 
 1. In the Rancher UI homepage, make note of the banner at the top of screen that advises users to update their Azure AD authentication. Click on the link provided to do so.
@@ -248,7 +253,7 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
 1. To complete the move to the new Microsoft Graph API, click **Update Endpoint**, then click **Save**.
 
-    **Note:** Ensure that your Azure app has a [new set of permissions](#3-set-required-permissions-for-rancher) before agreeing to commit to the endpoint update, as the old permissions would no longer be needed.
+    **Note:** Ensure that your Azure app has a [new set of permissions](#3-set-required-permissions-for-rancher) before starting the update.
 
     ![Update Endpoint]({{<baseurl>}}/img/rancher/rancher-button-to-update2.png)
 

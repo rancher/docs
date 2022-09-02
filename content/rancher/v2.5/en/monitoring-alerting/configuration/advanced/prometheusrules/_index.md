@@ -17,7 +17,7 @@ _Available as of v2.5.4_
 
 To create rule groups in the Rancher UI,
 
-1. Click **Cluster Explorer > Monitoring** and click **Prometheus Rules.** 
+1. Click **Cluster Explorer > Monitoring > Advanced** and click **Prometheus Rules.** 
 1. Click **Create.**
 1. Enter a **Group Name.**
 1. Configure the rules. In Rancher's UI, we expect a rule group to contain either alert rules or recording rules, but not both. For help filling out the forms, refer to the configuration options below.

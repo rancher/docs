@@ -11,7 +11,7 @@ NeuVector can be enabled through a Helm chart that may be installed either throu
 
 ### Installing NeuVector with Rancher
 
-The Harvester Helm Chart is used to manage access to the NeuVector UI in Rancher where users can navigate directly to deploy and manage their NeuVector clusters. 
+The NeuVector Helm Chart is used to manage access to the NeuVector UI in Rancher where users can navigate directly to deploy and manage their NeuVector clusters. 
 
 **To navigate to and install the NeuVector chart through Apps & Marketplace:**
 
