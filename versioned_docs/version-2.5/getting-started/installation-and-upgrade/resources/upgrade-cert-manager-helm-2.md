@@ -26,7 +26,7 @@ To address these changes, this guide will do two things:
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart](installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section.
+> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart](../install-upgrade-on-a-kubernetes-cluster/upgrades.md) under the upgrade Rancher section.
 
 ## Upgrade Cert-Manager Only
 
@@ -85,7 +85,7 @@ In order to upgrade cert-manager, follow these instructions:
 
 Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
 
-1. Follow the guide to [Prepare your Private Registry](installation/air-gap-installation/prepare-private-reg/) with the images needed for the upgrade.
+1. Follow the guide to [Prepare your Private Registry](../other-installation-methods/air-gapped-helm-cli-install/publish-images.md) with the images needed for the upgrade.
 
 1. From a system connected to the internet, add the cert-manager repo to Helm
 

@@ -39,7 +39,7 @@ This section describes installing Rancher:
 
 From a system that has access to the internet, fetch the latest Helm chart and copy the resulting manifests to a system that has access to the Rancher server cluster.
 
-1. If you haven't already, install `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements](installation/options/helm-version) to choose a version of Helm to install Rancher.
+1. If you haven't already, install `helm` locally on a workstation that has internet access. Note: Refer to the [Helm version requirements](../../resources/helm-version-requirements.md) to choose a version of Helm to install Rancher.
 
 2. Use `helm repo add` command to add the Helm chart repository that contains charts to install Rancher. For more information about the repository choices and which is best for your use case, see [Choosing a Version of Rancher](../../../../reference-guides/installation-references/helm-chart-options.md#helm-chart-repositories).
   {{< release-channel >}}
@@ -90,7 +90,7 @@ Based on the choice your made in [2. Choose your SSL Configuration](#2-choose-yo
 By default, Rancher generates a CA and uses cert-manager to issue the certificate for access to the Rancher server interface.
 
 > **Note:**
-> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation](installation/options/upgrading-cert-manager/).
+> Recent changes to cert-manager require an upgrade. If you are upgrading Rancher and using a version of cert-manager older than v0.11.0, please see our [upgrade cert-manager documentation](../../resources/upgrade-cert-manager.md/).
 
 ### 1. Add the cert-manager repo
 
@@ -224,7 +224,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
-Then refer to [Adding TLS Secrets](installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Then refer to [Adding TLS Secrets](../../resources/add-tls-secrets.md/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 </TabItem>
 <TabItem value="Rancher before v2.5.8">
@@ -255,7 +255,7 @@ If you are using a Private CA signed cert, add `--set privateCA=true` following 
 
 **Optional**: To install a specific Rancher version, set the `rancherImageTag` value, example: `--set rancherImageTag=v2.3.6`
 
-Then refer to [Adding TLS Secrets](installation/resources/encryption/tls-secrets/) to publish the certificate files so Rancher and the ingress controller can use them.
+Then refer to [Adding TLS Secrets](../../resources/add-tls-secrets.md/) to publish the certificate files so Rancher and the ingress controller can use them.
 
 </TabItem>
 </Tabs>
@@ -311,6 +311,6 @@ The installation is complete.
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options](installation/resources/chart-options/)
-- [Adding TLS secrets](installation/resources/encryption/tls-secrets/)
-- [Troubleshooting Rancher Kubernetes Installations](installation/options/troubleshooting/)
+- [Rancher Helm chart options](../../../../reference-guides/installation-references/helm-chart-options.md/)
+- [Adding TLS secrets](../../resources/add-tls-secrets.md)
+- [Troubleshooting Rancher Kubernetes Installations](../../install-upgrade-on-a-kubernetes-cluster/upgrades.md)

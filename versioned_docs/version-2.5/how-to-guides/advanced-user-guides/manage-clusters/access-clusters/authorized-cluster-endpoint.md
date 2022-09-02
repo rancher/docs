@@ -15,7 +15,7 @@ This kubeconfig file and its contents are specific to the cluster you are viewin
 
 After you download the kubeconfig file, you will be able to use the kubeconfig file and its Kubernetes [contexts](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-context-and-configuration) to access your downstream cluster.
 
-If admins have [enforced TTL on kubeconfig tokens](../../../../reference-guides/about-the-api/api-tokens.md#setting-ttl-on-kubeconfig-tokens), the kubeconfig file requires [rancher cli](cluster-admin/cluster-access/cli) to be present in your PATH. 
+If admins have [enforced TTL on kubeconfig tokens](../../../../reference-guides/about-the-api/api-tokens.md#setting-ttl-on-kubeconfig-tokens), the kubeconfig file requires [rancher cli](../../../../pages-for-subheaders/cli-with-rancher.md) to be present in your PATH.
 
 
 ### Two Authentication Methods for RKE Clusters

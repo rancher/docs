@@ -5,7 +5,7 @@ aliases:
   - /rancher/v2.x/en/installation/other-installation-methods/behind-proxy/install-rancher/
 ---
 
-Now that you have a running RKE cluster, you can install Rancher in it. For security reasons all traffic to Rancher must be encrypted with TLS. For this tutorial you are going to automatically issue a self-signed certificate through [cert-manager](https://cert-manager.io/). In a real-world use-case you will likely use Let's Encrypt or provide your own certificate. 
+Now that you have a running RKE cluster, you can install Rancher in it. For security reasons all traffic to Rancher must be encrypted with TLS. For this tutorial you are going to automatically issue a self-signed certificate through [cert-manager](https://cert-manager.io/). In a real-world use-case you will likely use Let's Encrypt or provide your own certificate.
 
 > **Note:** These installation instructions assume you are using Helm 3.
 
@@ -60,7 +60,7 @@ Create a namespace:
 kubectl create namespace cattle-system
 ```
 
-And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata. 
+And install Rancher with Helm. Rancher also needs a proxy configuration so that it can communicate with external application catalogs or retrieve Kubernetes version update metadata.
 
 Note that `rancher.cattle-system` must be added to the noProxy list (as shown below) so that Fleet can communicate directly to Rancher with Kubernetes service DNS using service discovery.
 
@@ -86,6 +86,6 @@ You can now navigate to `https://rancher.example.com` and start using Rancher.
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options](installation/resources/chart-options/)
-- [Adding TLS secrets](installation/resources/encryption/tls-secrets/)
-- [Troubleshooting Rancher Kubernetes Installations](installation/options/troubleshooting/)
+- [Rancher Helm chart options](../../../../reference-guides/installation-references/helm-chart-options.md)
+- [Adding TLS secrets](../../resources/add-tls-secrets.md)
+- [Troubleshooting Rancher Kubernetes Installations](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)

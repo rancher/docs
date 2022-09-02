@@ -11,7 +11,7 @@ To avoid setting these limits on each and every container during workload creati
 
 ### Editing the Container Default Resource Limit
 
-Edit [container default resource limit](cluster-admin/projects-and-namespaces/resource-quotas/) when:
+Edit [container default resource limit](../../../../pages-for-subheaders/manage-project-resource-quotas.md) when:
 
 - You have a CPU or Memory resource quota set on a project, and want to supply the corresponding default values for a container.
 - You want to edit the default container resource limit.
@@ -25,7 +25,7 @@ Edit [container default resource limit](cluster-admin/projects-and-namespaces/re
 
 When the default container resource limit is set at a project level, the parameter will be propagated to any namespace created in the project after the limit has been set. For any existing namespace in a project, this limit will not be automatically propagated. You will need to manually set the default container resource limit for any existing namespaces in the project in order for it to be used when creating any containers.
 
-You can set a default container resource limit on a project and launch any catalog applications.  
+You can set a default container resource limit on a project and launch any catalog applications.
 
 Once a container default resource limit is configured on a namespace, the default will be pre-populated for any containers created in that namespace. These limits/reservations can always be overridden during workload creation.
 

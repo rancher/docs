@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 This section describes how to choose a Rancher version.
 
-For a high-availability installation of Rancher, which is recommended for production, the Rancher server is installed using a **Helm chart** on a Kubernetes cluster. Refer to the [Helm version requirements](installation/options/helm-version) to choose a version of Helm to install Rancher.
+For a high-availability installation of Rancher, which is recommended for production, the Rancher server is installed using a **Helm chart** on a Kubernetes cluster. Refer to the [Helm version requirements](./helm-version-requirements.md) to choose a version of Helm to install Rancher.
 
 For Docker installations of Rancher, which is used for development and testing, you will install Rancher as a **Docker image.**
 
@@ -24,7 +24,7 @@ The Helm chart version also applies to RancherD installs because RancherD instal
 
 When installing, upgrading, or rolling back Rancher Server when it is [installed on a Kubernetes cluster](../../../pages-for-subheaders/install-upgrade-on-a-kubernetes-cluster.md), Rancher server is installed using a Helm chart on a Kubernetes cluster. Therefore, as you prepare to install or upgrade a high availability Rancher configuration, you must add a Helm chart repository that contains the charts for installing Rancher.
 
-Refer to the [Helm version requirements](installation/options/helm-version) to choose a version of Helm to install Rancher.
+Refer to the [Helm version requirements](./helm-version-requirements.md) to choose a version of Helm to install Rancher.
 
 ### Helm Chart Repositories
 
@@ -82,12 +82,12 @@ After installing Rancher, if you want to change which Helm chart repository to i
     helm repo add rancher-<CHART_REPO> https://releases.rancher.com/server-charts/<CHART_REPO>
     ```
 
-4. Continue to follow the steps to [upgrade Rancher](installation/upgrades-rollbacks/upgrades/ha) from the new Helm chart repository.
+4. Continue to follow the steps to [upgrade Rancher](../install-upgrade-on-a-kubernetes-cluster/upgrades.md) from the new Helm chart repository.
 
 </TabItem>
 <TabItem value="Docker Images">
 
-When performing [Docker installs](installation/single-node), upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
+When performing [Docker installs](../../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md), upgrades, or rollbacks, you can use _tags_ to install a specific version of Rancher.
 
 ### Server Tags
 

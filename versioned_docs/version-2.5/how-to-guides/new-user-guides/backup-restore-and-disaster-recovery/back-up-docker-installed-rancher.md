@@ -76,4 +76,4 @@ This procedure creates a backup that you can restore if Rancher encounters a dis
     docker start <RANCHER_CONTAINER_NAME>
     ```
 
-**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs](backups/restorations/single-node-restoration) if you need to restore backup data.
+**Result:** A backup tarball of your Rancher Server data is created. See [Restoring Backups: Docker Installs](./restore-docker-installed-rancher.md) if you need to restore backup data.

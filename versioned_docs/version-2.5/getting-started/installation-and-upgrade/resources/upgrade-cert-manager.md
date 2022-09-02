@@ -28,13 +28,13 @@ To address these changes, this guide will do two things:
 
 > The reason is that when Helm upgrades Rancher, it will reject the upgrade and show error messages if the running Rancher app does not match the chart template used to install it. Because cert-manager changed its API group and we cannot modify released charts for Rancher, there will always be a mismatch on the cert-manager's API version, therefore the upgrade will be rejected.
 
-> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart](installation/upgrades-rollbacks/upgrades/ha/) under the upgrade Rancher section.
+> For reinstalling Rancher with Helm, please check [Option B: Reinstalling Rancher Chart](../install-upgrade-on-a-kubernetes-cluster/upgrades.md) under the upgrade Rancher section.
 
 # Upgrade Cert-Manager
 
 The namespace used in these instructions depends on the namespace cert-manager is currently installed in. If it is in kube-system use that in the instructions below. You can verify by running `kubectl get pods --all-namespaces` and checking which namespace the cert-manager-\* pods are listed in. Do not change the namespace cert-manager is running in or this can cause issues.
 
-> These instructions have been updated for Helm 3. If you are still using Helm 2, refer to [these instructions.](installation/options/upgrading-cert-manager/helm-2-instructions)
+> These instructions have been updated for Helm 3. If you are still using Helm 2, refer to [these instructions.](./upgrade-cert-manager-helm-2.md)
 
 In order to upgrade cert-manager, follow these instructions:
 
@@ -118,7 +118,7 @@ In order to upgrade cert-manager, follow these instructions:
 
 Before you can perform the upgrade, you must prepare your air gapped environment by adding the necessary container images to your private registry and downloading or rendering the required Kubernetes manifest files.
 
-1. Follow the guide to [Prepare your Private Registry](installation/air-gap-installation/prepare-private-reg/) with the images needed for the upgrade.
+1. Follow the guide to [Prepare your Private Registry](../other-installation-methods/air-gapped-helm-cli-install/publish-images.md) with the images needed for the upgrade.
 
 1. From a system connected to the internet, add the cert-manager repo to Helm
 

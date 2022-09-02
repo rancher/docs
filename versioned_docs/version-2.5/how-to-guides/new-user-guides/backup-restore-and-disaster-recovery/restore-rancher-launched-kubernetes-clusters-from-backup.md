@@ -1,5 +1,5 @@
 ---
-title: Restoring a Cluster from Backup 
+title: Restoring a Cluster from Backup
 weight: 2050
 aliases:
   - /rancher/v2.x/en/cluster-admin/restoring-etcd/
@@ -80,7 +80,7 @@ If the group of etcd nodes loses quorum, the Kubernetes cluster will report a fa
 
 5. Run the revised command.
 
-6. After the single nodes is up and running, Rancher recommends adding additional etcd nodes to your cluster. If you have a [custom cluster](../../../pages-for-subheaders/use-existing-nodes.md) and you want to reuse an old node, you are required to [clean up the nodes](faq/cleaning-cluster-nodes/) before attempting to add them back into a cluster.  
+6. After the single nodes is up and running, Rancher recommends adding additional etcd nodes to your cluster. If you have a [custom cluster](../../../pages-for-subheaders/use-existing-nodes.md) and you want to reuse an old node, you are required to [clean up the nodes](../../advanced-user-guides/manage-clusters/clean-cluster-nodes.md) before attempting to add them back into a cluster.
 
 # Enabling Snapshot Features for Clusters Created Before Rancher v2.2.0
 
