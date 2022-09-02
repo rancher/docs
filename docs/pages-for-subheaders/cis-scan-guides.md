@@ -2,14 +2,4 @@
 title: CIS Scan Guides
 ---
 
-The following tutorials will guide you through: 
-
-- Installing `rancher-cis-benchmark`
-- Uninstalling `rancher-cis-benchmark`
-- Running a scan
-- Running a scan periodically on a schedule
-- Skilling tests
-- Viewing reports
-- Enabling alerting for `rancher-cis-benchmark`
-- Configuring alerts for a periodic scan on a schedule
-- Creating a custom benchmark version for running a cluster scan
+In the following tutorials, you will learn how to [install `rancher-cis-benchmark`](../how-to-guides/advanced-user-guides/cis-scan-guides/install-rancher-cis-benchmark.md), [uninstall `rancher-cis-benchmark`](../how-to-guides/advanced-user-guides/cis-scan-guides/uninstall-rancher-cis-benchmark.md), [run a scan](../how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan.md), [run a scan periodically on a schedule](../how-to-guides/advanced-user-guides/cis-scan-guides/run-a-scan-periodically-on-a-schedule.md), [skip tests](../how-to-guides/advanced-user-guides/cis-scan-guides/skip-tests.md), [view reports](../how-to-guides/advanced-user-guides/cis-scan-guides/view-reports.md), [enable alerting for `rancher-cis-benchmark`](../how-to-guides/advanced-user-guides/cis-scan-guides/enable-alerting-for-rancher-cis-benchmark.md), [configure alerts for a periodic scan on a schedule](../how-to-guides/advanced-user-guides/cis-scan-guides/configure-alerts-for-periodic-scan-on-a-schedule.md), and how to [create a custom benchmark version to run a cluster scan](../how-to-guides/advanced-user-guides/cis-scan-guides/create-a-custom-benchmark-version-to-run.md).
