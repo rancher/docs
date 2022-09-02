@@ -11,15 +11,14 @@ Alerts are supported only for a scan that runs on a schedule.
 
 The CIS Benchmark application supports two types of alerts:
 
-- Alert on scan completion: This alert is sent out when the scan run finishes. The alert includes details including the ClusterScan’s name and the ClusterScanProfile name.
+- Alert on scan completion: This alert is sent out when the scan run finishes. The alert includes details including the ClusterScan's name and the ClusterScanProfile name.
+- Alert on scan failure: This alert is sent out if there are some test failures in the scan run or if the scan is in a `Fail` state.
 
-- Alert on scan failure: This alert is sent out if there are some test failures in the scan run or if the scan is in a Fail state.
+:::note Prerequisite
 
-:::note Prerequisite:
+Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see [this section.](monitoring-alertincis-scans/configuration)
 
-Before enabling alerts for `rancher-cis-benchmark`, make sure to install the `rancher-monitoring` application and configure the Receivers and Routes. For more information, see this [section](https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/configuration/).
-
-While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here](https://rancher.com/docs/rancher/v2.6/en/monitoring-alerting/configuration/receiver/#example-route-config-for-cis-scan-alerts).
+While configuring the routes for `rancher-cis-benchmark` alerts, you can specify the matching using the key-value pair `job: rancher-cis-scan`. An example route configuration is [here.](monitoring-alertincis-scans/configuration/receiver/#example-route-config-for-cis-scan-alerts)
 
 :::
 
