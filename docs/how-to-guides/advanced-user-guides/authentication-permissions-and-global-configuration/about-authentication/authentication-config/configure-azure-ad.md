@@ -1,5 +1,5 @@
 ---
-title: Configuring Azure AD
+title: Configure Azure AD
 weight: 1115
 ---
 

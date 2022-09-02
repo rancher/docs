@@ -1,5 +1,5 @@
 ---
-title: Configuring Active Directory (AD)
+title: Configure Active Directory (AD)
 weight: 1112
 ---
 

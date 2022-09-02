@@ -1,5 +1,5 @@
 ---
-title: Configuring FreeIPA
+title: Configure FreeIPA
 weight: 1114
 ---
 

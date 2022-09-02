@@ -1,5 +1,5 @@
 ---
-title: Configuring PingIdentity (SAML)
+title: Configure PingIdentity (SAML)
 weight: 1200
 ---
 

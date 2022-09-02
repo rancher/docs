@@ -1,5 +1,5 @@
 ---
-title: Configuring Keycloak (OIDC)
+title: Configure Keycloak (OIDC)
 description: Create a Keycloak OpenID Connect (OIDC) client and configure Rancher to work with Keycloak. By the end your users will be able to sign into Rancher using their Keycloak logins
 weight: 1200
 ---

@@ -1,5 +1,5 @@
 ---
-title: Configuring Okta (SAML)
+title: Configure Okta (SAML)
 weight: 1210
 ---
 
