@@ -15,7 +15,7 @@ In order to dynamically provision storage in vSphere, the vSphere provider must 
 
 ### Prerequisites
 
-In order to provision vSphere volumes in a cluster created with the [Rancher Kubernetes Engine (RKE)](../../../../../pages-for-subheaders/launch-kubernetes-with-rancher.md), the [vSphere cloud provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere) must be explicitly enabled in the [cluster options](cluster-provisioning/rke-clusters/options/).
+In order to provision vSphere volumes in a cluster created with the [Rancher Kubernetes Engine (RKE)](../../../../../pages-for-subheaders/launch-kubernetes-with-rancher.md), the [vSphere cloud provider](https://rancher.com/docs/rke/latest/en/config-options/cloud-providers/vsphere) must be explicitly enabled in the [cluster options](../../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md).
 
 ### Creating a StorageClass
 

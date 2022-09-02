@@ -258,6 +258,6 @@ If you don't intend to send telemetry data, opt out [telemetry](../../../../faq/
 
 These resources could be helpful when installing Rancher:
 
-- [Rancher Helm chart options](installation/resources/chart-options/)
+- [Rancher Helm chart options](../../../../reference-guides/installation-references/helm-chart-options.md)
 - [Adding TLS secrets](../../resources/add-tls-secrets.md)
 - [Troubleshooting Rancher Kubernetes Installations](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md)

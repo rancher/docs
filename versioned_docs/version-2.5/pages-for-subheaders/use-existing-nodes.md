@@ -1,6 +1,6 @@
 ---
 title: Launching Kubernetes on Existing Custom Nodes
-description: To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements 
+description: To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements
 metaDescription: "To create a cluster with custom nodes, you’ll need to access servers in your cluster and provision them according to Rancher requirements"
 weight: 2225
 aliases:
@@ -37,7 +37,7 @@ Begin creation of a custom cluster by provisioning a Linux host. Your host can b
 - An on-prem VM
 - A bare-metal server
 
-If you want to reuse a node from a previous custom cluster, [clean the node](admin-settings/removing-rancher/rancher-cluster-nodes/) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
+If you want to reuse a node from a previous custom cluster, [clean the node](../how-to-guides/advanced-user-guides/manage-clusters/clean-cluster-nodes.md) before using it in a cluster again. If you reuse a node that hasn't been cleaned, cluster provisioning may fail.
 
 Provision the host according to the [installation requirements](../how-to-guides/new-user-guides/kubernetes-clusters-in-rancher-setup/node-requirements-for-rancher-managed-clusters.md) and the [checklist for production-ready clusters.](checklist-for-production-ready-clusters.md)
 
@@ -78,13 +78,13 @@ Clusters won't begin provisioning until all three node roles (worker, etcd and c
 
 11. When you finish running the command(s) on your Linux host(s), click **Done**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

@@ -8,7 +8,7 @@ weight: 15
 
 The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
 
-For an overview of the changes in v2.5, see [this section.](logginlogging/architecture/#changes-in-rancher-v2-5) For information about migrating from Logging V1, see [this page.](../explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging.md)
+For an overview of the changes in v2.5, see [this section.](../explanations/integrations-in-rancher/logging/logging-architecture.md#changes-in-rancher-v2-5) For information about migrating from Logging V1, see [this page.](../explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging.md)
 
 - [Enabling Logging](#enabling-logging)
 - [Uninstall Logging](#uninstall-logging)
@@ -57,7 +57,7 @@ Rancher logging has two roles, `logging-admin` and `logging-view`. For more info
 
 # Configuring Logging Custom Resources
 
-To manage `Flows,` `ClusterFlows`, `Outputs`, and `ClusterOutputs`, 
+To manage `Flows,` `ClusterFlows`, `Outputs`, and `ClusterOutputs`,
 
 1. In the upper left corner, click **☰ > Cluster Management**.
 1. On the **Clusters** page, go to the cluster where you want to configure logging custom resources and click **Explore**.
@@ -79,11 +79,11 @@ For a list of options that can be configured when the logging application is ins
 
 Logging support for Windows clusters is available and logs can be collected from Windows nodes.
 
-For details on how to enable or disable Windows node logging, see [this section.](logginlogging/helm-chart-options/#enable-disable-windows-node-logging)
+For details on how to enable or disable Windows node logging, see [this section.](../explanations/integrations-in-rancher/logging/logging-helm-chart-options.md#enable-disable-windows-node-logging)
 
 ### Working with a Custom Docker Root Directory
 
-For details on using a custom Docker root directory, see [this section.](logginlogging/helm-chart-options/#working-with-a-custom-docker-root-directory)
+For details on using a custom Docker root directory, see [this section.](../explanations/integrations-in-rancher/logging/logging-helm-chart-options.md#working-with-a-custom-docker-root-directory)
 
 
 ### Working with Taints and Tolerations
@@ -93,7 +93,7 @@ For information on how to use taints and tolerations with the logging applicatio
 
 ### Logging V2 with SELinux
 
-For information on enabling the logging application for SELinux-enabled nodes, see [this section.](logginlogging/helm-chart-options/#enabling-the-logging-application-to-work-with-selinux)
+For information on enabling the logging application for SELinux-enabled nodes, see [this section.](../explanations/integrations-in-rancher/logging/logging-helm-chart-options.md#enabling-the-logging-application-to-work-with-selinux)
 
 ### Additional Logging Sources
 

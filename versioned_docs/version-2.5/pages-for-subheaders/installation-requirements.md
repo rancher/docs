@@ -34,7 +34,7 @@ Make sure the node(s) for the Rancher server fulfill the following requirements:
     - [Port Requirements](#port-requirements)
 - [RancherD on SELinux Enforcing CentOS 8 or RHEL 8 Nodes](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes)
 
-For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.](best-practices/deployment-types/)
+For a list of best practices that we recommend for running the Rancher server in production, refer to the [best practices section.](../reference-guides/best-practices/rancher-server/tips-for-running-rancher.md)
 
 The Rancher UI works best in Firefox or Chrome.
 
@@ -56,7 +56,7 @@ Some distributions of Linux may have default firewall rules that block communica
 
 > If you don't feel comfortable doing so you might check suggestions in the [respective issue](https://github.com/rancher/rancher/issues/28840). Some users were successful [creating a separate firewalld zone with a policy of ACCEPT for the Pod CIDR](https://github.com/rancher/rancher/issues/28840#issuecomment-787404822).
 
-If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).](installation/options/arm64-platform/)
+If you plan to run Rancher on ARM64, see [Running on ARM64 (Experimental).](../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/rancher-on-arm64.md)
 
 ### RKE Specific Requirements
 
@@ -72,7 +72,7 @@ net.bridge.bridge-nf-call-iptables=1
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script. 
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps](https://rancher.com/docs/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
@@ -84,7 +84,7 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 
 At this time, only Linux OSes that leverage systemd are supported.
 
-To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.	
+To install RancherD on SELinux Enforcing CentOS 8 or RHEL 8 nodes, some [additional steps](#rancherd-on-selinux-enforcing-centos-8-or-rhel-8-nodes) are required.
 
 Docker is not required for RancherD installs.
 

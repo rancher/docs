@@ -104,10 +104,10 @@ With that said, it is safe to use all three roles on three nodes when setting up
 
 Because no additional workloads will be deployed on the Rancher server cluster, in most cases it is not necessary to use the same architecture that we recommend for the scalability and reliability of downstream clusters.
 
-For more best practices for downstream clusters, refer to the [production checklist](../../pages-for-subheaders/checklist-for-production-ready-clusters.md) or our [best practices guide.](best-practices/v2.5/)
+For more best practices for downstream clusters, refer to the [production checklist](../../pages-for-subheaders/checklist-for-production-ready-clusters.md) or our [best practices guide.](../../pages-for-subheaders/best-practices.md)
 
-# Architecture for an Authorized Cluster Endpoint 
+# Architecture for an Authorized Cluster Endpoint
 
 If you are using an [authorized cluster endpoint,](../../pages-for-subheaders/rancher-manager-architecture.md#4-authorized-cluster-endpoint) we recommend creating an FQDN pointing to a load balancer which balances traffic across your nodes with the `controlplane` role.
 
-If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files](k8s-in-rancher/kubeconfig/) and [API keys](../user-settings/api-keys.md#creating-an-api-key) for more information.
+If you are using private CA signed certificates on the load balancer, you have to supply the CA certificate, which will be included in the generated kubeconfig file to validate the certificate chain. See the documentation on [kubeconfig files](../../how-to-guides/advanced-user-guides/manage-clusters/access-clusters/use-kubectl-and-kubeconfig.md) and [API keys](../user-settings/api-keys.md#creating-an-api-key) for more information.

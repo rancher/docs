@@ -8,7 +8,7 @@ aliases:
 ---
 _Available as of v2.4.0_
 
-To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. [OPA (Open Policy Agent)](https://www.openpolicyagent.org/) is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates. 
+To ensure consistency and compliance, every organization needs the ability to define and enforce policies in its environment in an automated way. [OPA (Open Policy Agent)](https://www.openpolicyagent.org/) is a policy engine that facilitates policy-based control for cloud native environments. Rancher provides the ability to enable OPA Gatekeeper in Kubernetes clusters, and also installs a couple of built-in policy definitions, which are also called constraint templates.
 
 OPA provides a high-level declarative language that lets you specify policy as code and ability to extend simple APIs to offload policy decision-making.
 
@@ -29,10 +29,10 @@ OPA Gatekeeper is made available via Rancher's Helm system chart, and it is inst
 
 # Enabling OPA Gatekeeper in a Cluster
 
-> **Prerequisites:** 
-> 
+> **Prerequisites:**
+>
 > - Only administrators and cluster owners can enable OPA Gatekeeper.
-> - The dashboard needs to be enabled using the `dashboard` feature flag. For more information, refer to the [section on enabling experimental features.](installation/options/feature-flags/)
+> - The dashboard needs to be enabled using the `dashboard` feature flag. For more information, refer to the [section on enabling experimental features.](../../pages-for-subheaders/enable-experimental-features.md)
 
 1. Navigate to the cluster's **Dashboard** view.
 1. On the left side menu, expand the cluster menu and click on **OPA Gatekeeper.**
@@ -48,7 +48,7 @@ When OPA Gatekeeper is enabled, Rancher installs some templates by default.
 To list the constraint templates installed in the cluster, go to the left side menu under OPA Gatekeeper and click on **Templates.**
 
 Rancher also provides the ability to create your own constraint templates by importing YAML definitions.
-   
+
 # Creating and Configuring Constraints
 
 [Constraints](https://github.com/open-policy-agent/gatekeeper#constraints) are Kubernetes custom resources that define the scope of objects to which a specific constraint template applies to. The complete policy is defined by constraint templates and constraints together.
@@ -70,14 +70,14 @@ When a constraint is created, ensure that it does not apply to any Rancher or Ku
 To limit the scope of the constraint only to user namespaces, always specify these namespaces under the **Match** field of the constraint.
 
 Also, the constraint may interfere with other Rancher functionality and deny system workloads from being deployed. To avoid this, exclude all Rancher-specific namespaces from your constraints.
-   
+
 # Enforcing Constraints in your Cluster
 
 When the **Enforcement Action** is **Deny,** the constraint is immediately enabled and will deny any requests that violate the policy defined. By default, the enforcement value is **Deny.**
 
 When the **Enforcement Action** is **Dryrun,** then any resources that violate the policy are only recorded under the constraint's status field.
 
-To enforce constraints, create a constraint using the form. In the **Enforcement Action** field, choose **Deny.** 
+To enforce constraints, create a constraint using the form. In the **Enforcement Action** field, choose **Deny.**
 
 # Audit and Violations in your Cluster
 

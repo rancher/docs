@@ -6,18 +6,18 @@ aliases:
 ---
 
 <table width="100%">
-<tr style="vertical-align: top;">
-<td width="30%" style="border: none;">
+<tr style={{verticalAlign: 'top'}}>
+<td width="30%" style={{border: 'none'}}>
 <h4>Security policy</h4>
-<p style="padding: 8px">Rancher Labs supports responsible disclosure, and endeavours to resolve all issues in a reasonable time frame. </p>
+<p style={{padding: '8px'}}>Rancher Labs supports responsible disclosure, and endeavours to resolve all issues in a reasonable time frame. </p>
 </td>
-<td width="30%" style="border: none;">
+<td width="30%" style={{border: 'none'}}>
 <h4>Reporting process</h4>
-<p style="padding: 8px">Please submit possible security issues by emailing <a href="mailto:security-rancher@suse.com">security-rancher@suse.com</a> .</p>
+<p style={{padding: '8px'}}>Please submit possible security issues by emailing <a href="mailto:security-rancher@suse.com">security-rancher@suse.com</a> .</p>
 </td>
-<td width="30%" style="border: none;">
+<td width="30%" style={{border: 'none'}}>
 <h4>Announcements</h4>
-<p style="padding: 8px">Subscribe to the <a href="https://forums.rancher.com/c/announcements">Rancher announcements forum</a> for release updates.</p>
+<p style={{padding:'8px'}}>Subscribe to the <a href="https://forums.rancher.com/c/announcements">Rancher announcements forum</a> for release updates.</p>
 </td>
 </tr>
 </table>

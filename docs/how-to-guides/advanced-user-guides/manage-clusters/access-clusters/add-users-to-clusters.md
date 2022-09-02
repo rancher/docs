@@ -7,7 +7,7 @@ If you want to provide a user with access and permissions to _all_ projects, nod
 
 :::tip
 
-Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members](cluster-admin/projects-and-namespaces/project-members/) instead.
+Want to provide a user with access to a _specific_ project within a cluster? See [Adding Project Members](../../manage-projects/add-users-to-projects.md) instead.
 
 :::
 
@@ -43,19 +43,19 @@ Cluster administrators can edit the membership for a cluster, controlling which 
 	- A drop-down allows you to add groups instead of individual users. The drop-down only lists groups that you, the logged in user, are part of.
 
 		:::note
-		
+
 		If you are logged in as a local user, external users do not display in your search results. For more information, see [External Authentication Configuration and Principal Users](../../../../pages-for-subheaders/about-authentication.md#external-authentication-configuration-and-principal-users).
 
 		:::
 
-1. Assign the user or group **Cluster** roles.  
+1. Assign the user or group **Cluster** roles.
 
 	[What are Cluster Roles?](../../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md)
 
 	:::tip
-	
+
 	For Custom Roles, you can modify the list of individual roles available for assignment.
-	
+
 	- To add roles to the list, [Add a Custom Role](../../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/custom-roles.md).
 	- To remove roles from the list, [Lock/Unlock Roles](../../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/locked-roles.md).
 

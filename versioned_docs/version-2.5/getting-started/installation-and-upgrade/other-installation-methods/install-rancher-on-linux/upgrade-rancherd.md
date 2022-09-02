@@ -19,8 +19,8 @@ When Rancher is installed with RancherD, the underlying Kubernetes cluster can't
 To upgrade Rancher without upgrading the underlying Kubernetes cluster, follow these steps.
 
 > Before upgrading, we recommend that you should:
-> 
-> - Create a backup of the Rancher server using the [backup application.](backups/v2.5/back-up-rancher/)
+>
+> - Create a backup of the Rancher server using the [backup application.](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md)
 > - Review the known issues for the Rancher version you are upgrading to. The known issues are listed in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 
 1. Uninstall the chart with Helm:
@@ -29,7 +29,7 @@ To upgrade Rancher without upgrading the underlying Kubernetes cluster, follow t
     helm uninstall rancher
     ```
 
-2. Reinstall the Rancher chart with Helm. To install a specific Rancher version, use the `--version` flag. For example: 
+2. Reinstall the Rancher chart with Helm. To install a specific Rancher version, use the `--version` flag. For example:
 
     ```
     helm install rancher rancher-latest/rancher \
@@ -47,8 +47,8 @@ If necessary, restore Rancher from backup by following [these steps.](../../../.
 Upgrade both RancherD and the underlying Kubernetes cluster by re-running the RancherD installation script.
 
 > Before upgrading, we recommend that you should:
-> 
-> - Create a backup of the Rancher server using the [backup application.](backups/v2.5/back-up-rancher/)
+>
+> - Create a backup of the Rancher server using the [backup application.](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher.md)
 > - Review the known issues for the Rancher version you are upgrading to. The known issues are listed in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 
 ```

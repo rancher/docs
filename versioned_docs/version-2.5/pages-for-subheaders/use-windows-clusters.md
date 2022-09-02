@@ -141,7 +141,7 @@ Windows requires that containers must be built on the same Windows Server versio
 
 ### Cloud Provider Specific Requirements
 
-If you set a Kubernetes cloud provider in your cluster, some additional steps are required. You might want to set a cloud provider if you want to want to leverage a cloud provider's capabilities, for example, to automatically provision storage, load balancers, or other infrastructure for your cluster. Refer to [this page](cluster-provisioning/rke-clusters/options/cloud-providers/) for details on how to configure a cloud provider cluster of nodes that meet the prerequisites.
+If you set a Kubernetes cloud provider in your cluster, some additional steps are required. You might want to set a cloud provider if you want to want to leverage a cloud provider's capabilities, for example, to automatically provision storage, load balancers, or other infrastructure for your cluster. Refer to [this page](./set-up-cloud-providers.md) for details on how to configure a cloud provider cluster of nodes that meet the prerequisites.
 
 If you are using the GCE (Google Compute Engine) cloud provider, you must do the following:
 
@@ -215,7 +215,7 @@ The first node in your cluster should be a Linux host has both the **Control Pla
 
 1. In the **Node Operating System** section, click **Linux**.
 1. In the **Node Role** section, choose at least **etcd** and **Control Plane**. We recommend selecting all three.
-1. Optional: If you click **Show advanced options,** you can customize the settings for the [Rancher agent](admin-settings/agent-options/) and [node labels.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+1. Optional: If you click **Show advanced options,** you can customize the settings for the [Rancher agent](../reference-guides/cluster-configuration/rancher-server-configuration/use-existing-nodes/rancher-agent-options.md) and [node labels.](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
 1. Copy the command displayed on the screen to your clipboard.
 1. SSH into your Linux host and run the command that you copied to your clipboard.
 1. When you are finished provisioning your Linux node(s), select **Done**.

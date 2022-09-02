@@ -148,6 +148,6 @@ Save a copy of the following files in a secure location:
 
 ### Issues or errors?
 
-See the [Troubleshooting](installation/options/troubleshooting/) page.
+See the [Troubleshooting](../../install-upgrade-on-a-kubernetes-cluster/troubleshooting.md) page.
 
 ### [Next: Install Rancher](install-rancher.md)

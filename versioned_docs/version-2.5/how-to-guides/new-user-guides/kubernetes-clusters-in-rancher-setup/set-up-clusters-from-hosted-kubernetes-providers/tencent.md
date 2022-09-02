@@ -74,13 +74,13 @@ You can use Rancher to create a cluster hosted in Tencent Kubernetes Engine (TKE
 
 9. Click **Create**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

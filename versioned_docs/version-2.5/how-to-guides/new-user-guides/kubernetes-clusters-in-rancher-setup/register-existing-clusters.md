@@ -173,7 +173,7 @@ After registering a cluster, the cluster owner can:
 
 - [Manage cluster access](../../advanced-user-guides/authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md) through role-based access control
 - Enable [monitoring, alerts and notifiers](../../../pages-for-subheaders/monitoring-and-alerting.md)
-- Enable [logging](logging/v2.5/)
+- Enable [logging](../../../pages-for-subheaders/logging.md)
 - Enable [Istio](../../../pages-for-subheaders/istio.md)
 - Use [pipelines](../../advanced-user-guides/manage-projects/ci-cd-pipelines.md)
 - Manage projects and workloads

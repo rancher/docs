@@ -58,13 +58,13 @@ We deploy kube-state-metrics and node-exporter with monitoring v2. Node exporter
 
 We also deploy grafana which is not managed by prometheus.
 
-If you look at what the helm chart is doing like in kube-state-metrics, there are plenty more values that you can set that aren’t exposed in the top level chart. 
+If you look at what the helm chart is doing like in kube-state-metrics, there are plenty more values that you can set that aren’t exposed in the top level chart.
 
 But in the top level chart you can add values that override values that exist in the sub chart.
 
 ### Increase the Replicas of Alertmanager
 
-As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster. The replicas can all be managed using the same underlying Alertmanager Config Secret. For more information on the Alertmanager Config Secret, refer to [this section]({{<baseurl>}}/monitoring-alerting/configuration/advanced/alertmanager/#multiple-alertmanager-replicas)
+As part of the chart deployment options, you can opt to increase the number of replicas of the Alertmanager deployed onto your cluster. The replicas can all be managed using the same underlying Alertmanager Config Secret. For more information on the Alertmanager Config Secret, refer to [this section](../../how-to-guides/advanced-user-guides/monitoring-v2-configuration-guides/advanced-configuration/alertmanager.md#multiple-alertmanager-replicas)
 
 ### Configuring the Namespace for a Persistent Grafana Dashboard
 

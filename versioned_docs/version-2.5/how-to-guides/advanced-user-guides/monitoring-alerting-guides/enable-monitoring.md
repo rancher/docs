@@ -61,7 +61,7 @@ For more information about the default limits, see [this page.](../../../referen
 
 **Result:** The monitoring app is deployed in the `cattle-monitoring-system` namespace.
 
-When [creating a receiver,](monitoring-alerting/configuration/alertmanager/#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.
+When [creating a receiver,](../../../reference-guides/monitoring-v2-configuration/receivers.md#creating-receivers-in-the-rancher-ui) SSL-enabled receivers such as email or webhook will have a **SSL** section with fields for **CA File Path**, **Cert File Path**, and **Key File Path**. Fill in these fields with the paths to each of `ca`, `cert`, and `key`. The path will be of the form `/etc/alertmanager/secrets/name-of-file-in-secret`.
 
 For example, if you created a secret with these key-value pairs:
 

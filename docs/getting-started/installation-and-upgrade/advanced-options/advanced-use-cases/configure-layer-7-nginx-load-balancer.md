@@ -173,7 +173,7 @@ http {
 
 ## What's Next?
 
-- **Recommended:** Review [Single Node Backup and Restore](backups/docker-installs/). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
+- **Recommended:** Review Single Node [Backup](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher.md) and [Restore](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-docker-installed-rancher.md). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
 - Create a Kubernetes cluster: [Provisioning Kubernetes Clusters](../../../../pages-for-subheaders/kubernetes-clusters-in-rancher-setup.md).
 
 <br/>

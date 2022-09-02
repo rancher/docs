@@ -21,7 +21,7 @@ Make sure `NO_PROXY` contains the network addresses, network address ranges and 
 
 ## Docker Installation
 
-Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Docker Installation](installation/single-node-install/) are:
+Passing environment variables to the Rancher container can be done using `-e KEY=VALUE` or `--env KEY=VALUE`. Required values for `NO_PROXY` in a [Docker Installation](../../pages-for-subheaders/rancher-on-a-single-node-with-docker.md) are:
 
 - `localhost`
 - `127.0.0.1`

@@ -12,7 +12,7 @@ aliases:
 
 ### Rolling Back to Rancher v2.2-v2.4
 
-For Rancher installed on Kubernetes, follow the procedure detailed here: [Restoring Backups for Kubernetes installs.](backups/restorations/ha-restoration) Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
+For Rancher installed on Kubernetes, follow the procedure detailed here: [Restoring Backups for Kubernetes installs.](../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher-launched-kubernetes-clusters-from-backup.md) Restoring a snapshot of the Rancher Server cluster will revert Rancher to the version and state at the time of the snapshot.
 
 For information on how to roll back Rancher installed with Docker, refer to [this page.](../other-installation-methods/rancher-on-a-single-node-with-docker/roll-back-docker-installed-rancher.md)
 
@@ -23,7 +23,7 @@ For information on how to roll back Rancher installed with Docker, refer to [thi
 If you are rolling back to versions in either of these scenarios, you must follow some extra instructions in order to get your clusters working.
 
 - Rolling back from v2.1.6+ to any version between v2.1.0 - v2.1.5 or v2.0.0 - v2.0.10.
-- Rolling back from v2.0.11+ to any version between v2.0.0 - v2.0.10.  
+- Rolling back from v2.0.11+ to any version between v2.0.0 - v2.0.10.
 
 Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20321), special steps are necessary if the user wants to roll back to a previous version of Rancher where this vulnerability exists. The steps are as follows:
 
@@ -41,7 +41,7 @@ Because of the changes necessary to address [CVE-2018-20321](https://cve.mitre.o
 
 2. After executing the command a `tokens.json` file will be created.  Important! Back up this file in a safe place.** You will need it to restore functionality to your clusters after rolling back Rancher.  **If you lose this file, you may lose access to your clusters.**
 
-3. Rollback Rancher following the [normal instructions](upgrades/rollbacks/).
+3. Rollback Rancher following the [normal instructions](../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/rollbacks.md).
 
 4. Once Rancher comes back up, every cluster managed by Rancher (except for Imported clusters) will be in an `Unavailable` state.
 

@@ -23,7 +23,7 @@ To provision new storage for your workloads, follow these steps:
 
 - To set up persistent storage, the `Manage Volumes` [role](../../../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md#project-role-reference) is required.
 - If you are provisioning storage for a cluster hosted in the cloud, the storage and cluster hosts must have the same cloud provider.
-- The cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.](cluster-provisioning/rke-clusters/options/cloud-providers/)
+- The cloud provider must be enabled. For details on enabling cloud providers, refer to [this page.](../../../../../pages-for-subheaders/set-up-cloud-providers.md/)
 - Make sure your storage provisioner is available to be enabled.
 
 The following storage provisioners are enabled by default:
@@ -40,7 +40,7 @@ Local | `local`
 Network File System | `nfs`
 hostPath | `host-path`
 
-To use a storage provisioner that is not on the above list, you will need to use a [feature flag to enable unsupported storage drivers.](installation/options/feature-flags/enable-not-default-storage-drivers/)
+To use a storage provisioner that is not on the above list, you will need to use a [feature flag to enable unsupported storage drivers.](../../../../../getting-started/installation-and-upgrade/advanced-options/enable-experimental-features/unsupported-storage-drivers.md)
 
 ### 1. Add a storage class and configure it to use your storage
 

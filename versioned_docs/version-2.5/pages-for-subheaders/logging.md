@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 The [Banzai Cloud Logging operator](https://banzaicloud.com/docs/one-eye/logging-operator/) now powers Rancher's logging solution in place of the former, in-house solution.
 
-For an overview of the changes in v2.5, see [this section.](logginlogging/architecture/#changes-in-rancher-v2-5) For information about migrating from Logging V1, see [this page.](../explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging.md)
+For an overview of the changes in v2.5, see [this section.](../explanations/integrations-in-rancher/logging/logging-architecture.md#changes-in-rancher-v25) For information about migrating from Logging V1, see [this page.](../explanations/integrations-in-rancher/logging/migrate-to-rancher-v2.5+-logging.md)
 
 - [Enabling Logging](#enabling-logging)
 - [Uninstall Logging](#uninstall-logging)
@@ -88,7 +88,7 @@ For a list of options that can be configured when the logging application is ins
 
 As of Rancher v2.5.8, logging support for Windows clusters has been added and logs can be collected from Windows nodes.
 
-For details on how to enable or disable Windows node logging, see [this section.](logginlogging/helm-chart-options/#enable-disable-windows-node-logging)
+For details on how to enable or disable Windows node logging, see [this section.](../explanations/integrations-in-rancher/logging/logging-helm-chart-options.md#enabledisable-windows-node-logging)
 
 
 </TabItem>
@@ -97,7 +97,7 @@ For details on how to enable or disable Windows node logging, see [this section.
 Clusters with Windows workers support exporting logs from Linux nodes, but Windows node logs are currently unable to be exported.
 Only Linux node logs are able to be exported.
 
-To allow the logging pods to be scheduled on Linux nodes, tolerations must be added to the pods. Refer to the [Working with Taints and Tolerations](logginlogging/taints-tolerations/) section for details and an example.
+To allow the logging pods to be scheduled on Linux nodes, tolerations must be added to the pods. Refer to the [Working with Taints and Tolerations](../explanations/integrations-in-rancher/logging/taints-and-tolerations.md) section for details and an example.
 
 </TabItem>
 </Tabs>
@@ -105,7 +105,7 @@ To allow the logging pods to be scheduled on Linux nodes, tolerations must be ad
 
 ### Working with a Custom Docker Root Directory
 
-For details on using a custom Docker root directory, see [this section.](logginlogging/helm-chart-options/#working-with-a-custom-docker-root-directory)
+For details on using a custom Docker root directory, see [this section.](../explanations/integrations-in-rancher/logging/logging-helm-chart-options.md#working-with-a-custom-docker-root-directory)
 
 
 ### Working with Taints and Tolerations
@@ -117,7 +117,7 @@ For information on how to use taints and tolerations with the logging applicatio
 
 _Available as of v2.5.8_
 
-For information on enabling the logging application for SELinux-enabled nodes, see [this section.](logginlogging/helm-chart-options/#enabling-the-logging-application-to-work-with-selinux)
+For information on enabling the logging application for SELinux-enabled nodes, see [this section.](../explanations/integrations-in-rancher/logging/logging-helm-chart-options.md#enabling-the-logging-application-to-work-with-selinux)
 
 ### Additional Logging Sources
 

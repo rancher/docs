@@ -42,13 +42,13 @@ Huawei CCE service doesn't support the ability to create clusters with public ac
 1. Fill the following node configuration of the cluster. For help filling out the form, refer to [Node Configuration.](#node-configuration)
 1. Click **Create** to create the CCE cluster.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning**. Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active**.
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces
@@ -72,7 +72,7 @@ You can access your cluster after its state is updated to **Active**.
 
 :::note
 
-If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure.](cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+If you are editing the cluster in the `cluster.yml` instead of the Rancher UI, note that cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure.](../../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher)
 
 :::
 

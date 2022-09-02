@@ -55,14 +55,14 @@ Use your favorite text editor to modify the cluster configuration in `cluster-te
 
 :::note
 
-Cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](cluster-provisioning/rke-clusters/options/#config-file-structure-in-rancher-v2-3-0)
+Cluster configuration directives must be nested under the `rancher_kubernetes_engine_config` directive in `cluster.yml`. For more information, refer to the section on [the config file structure in Rancher v2.3.0+.](../../../reference-guides/cluster-configuration/rancher-server-configuration/rke1-cluster-configuration.md#config-file-structure-in-rancher)
 
 :::
 
 1. Open `cluster-template.yml` (or whatever you named your config) in your favorite text editor.
 
     :::caution
-    
+
     Only edit the cluster config values explicitly called out below. Many of the values listed in this file are used to provision your cloned cluster, and editing their values may break the provisioning process.
 
     :::

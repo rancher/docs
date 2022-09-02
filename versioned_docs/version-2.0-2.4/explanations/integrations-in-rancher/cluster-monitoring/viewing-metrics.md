@@ -11,7 +11,7 @@ aliases:
 
 _Available as of v2.2.0_
 
-After you've enabled monitoring at either the [cluster level](monitoring-alerting/legacy/monitoring/cluster-monitoring/) or [project level](project-admin/tools/monitoring/), you will want to be start viewing the data being collected. There are multiple ways to view this data.
+After you've enabled monitoring at either the [cluster level](../../../pages-for-subheaders/cluster-monitoring.md) or [project level](./project-monitoring.md), you will want to be start viewing the data being collected. There are multiple ways to view this data.
 
 ## Rancher Dashboard
 

@@ -9,7 +9,7 @@ aliases:
 
 When you create a cluster, some alert rules are predefined. These alerts notify you about signs that the cluster could be unhealthy. You can receive these alerts if you configure a [notifier](../notifiers.md) for them.
 
-Several of the alerts use Prometheus expressions as the metric that triggers the alert. For more information on how expressions work, you can refer to the Rancher [documentation about Prometheus expressions](monitoring-alerting/legacy/monitoring/cluster-monitoring/expression/) or the Prometheus [documentation about querying metrics](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+Several of the alerts use Prometheus expressions as the metric that triggers the alert. For more information on how expressions work, you can refer to the Rancher [documentation about Prometheus expressions](../cluster-monitoring/expression.md) or the Prometheus [documentation about querying metrics](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 # Alerts for etcd
 Etcd is the key-value store that contains the state of the Kubernetes cluster. Rancher provides default alerts if the built-in monitoring detects a potential problem with etcd. You don't have to enable monitoring to receive these alerts.
@@ -57,4 +57,4 @@ Alerts can be triggered based on node metrics. Each computing resource in a Kube
 | Node disk is running full within 24 hours | A critical alert is triggered if the disk space on the node is expected to run out in the next 24 hours based on the disk growth over the last 6 hours. |
 
 # Project-level Alerts
-When you enable monitoring for the project, some project-level alerts are provided. For details, refer to the [section on project-level alerts.](project-admin/tools/alerts/)
+When you enable monitoring for the project, some project-level alerts are provided. For details, refer to the [section on project-level alerts.](../../../reference-guides/rancher-project-tools/project-alerts.md)

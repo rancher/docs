@@ -11,7 +11,7 @@ If you want to provide a user with access and permissions to _specific_ projects
 
 You can add members to a project as it is created, or add them to an existing project.
 
->**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members](cluster-provisioning/cluster-members/) instead.
+>**Tip:** Want to provide a user with access to _all_ projects within a cluster? See [Adding Cluster Members](../manage-clusters/access-clusters/add-users-to-clusters.md) instead.
 
 ### Adding Members to a New Project
 
@@ -29,13 +29,13 @@ Following project creation, you can add users as project members so that they ca
 
  	If external authentication is configured:
 
-	-  Rancher returns users from your external authentication source as you type.  
+	-  Rancher returns users from your external authentication source as you type.
 
 	- A drop-down allows you to add groups instead of individual users. The dropdown only lists groups that you, the logged in user, are included in.
 
 	>**Note:** If you are logged in as a local user, external users do not display in your search results.
 
-1. Assign the user or group **Project** roles.  
+1. Assign the user or group **Project** roles.
 
 	[What are Project Roles?](../authentication-permissions-and-global-configuration/manage-role-based-access-control-rbac/cluster-and-project-roles.md)
 
@@ -43,7 +43,7 @@ Following project creation, you can add users as project members so that they ca
     >
     >- Users assigned the `Owner` or `Member` role for a project automatically inherit the `namespace creation` role. However, this role is a [Kubernetes ClusterRole](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole), meaning its scope extends to all projects in the cluster. Therefore, users explicitly assigned the `Owner` or `Member` role for a project can create namespaces in other projects they're assigned to, even with only the `Read Only` role assigned.
     >
-    >- By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.  
+    >- By default, the Rancher role of `project-member` inherits from the `Kubernetes-edit` role, and the `project-owner` role inherits from the `Kubernetes-admin` role. As such, both `project-member` and `project-owner` roles will allow for namespace management, including the ability to create and delete namespaces.
     >
     >- For `Custom` roles, you can modify the list of individual roles available for assignment.
     >

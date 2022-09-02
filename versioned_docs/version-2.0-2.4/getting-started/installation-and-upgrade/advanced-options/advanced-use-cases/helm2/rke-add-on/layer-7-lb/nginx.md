@@ -9,9 +9,9 @@ aliases:
 
 > #### **Important: RKE add-on install is only supported up to Rancher v2.0.8**
 >
->Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ](installation/options/helm2/).
+>Please use the Rancher Helm chart to install Rancher on a Kubernetes cluster. For details, see the [Kubernetes Install ](../../../../../resources/choose-a-rancher-version.md).
 >
->If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](upgrades/upgrades/migrating-from-rke-add-on/) for details on how to move to using the helm chart.
+>If you are currently using the RKE add-on install method, see [Migrating from a Kubernetes Install with an RKE Add-on](../../../../../install-upgrade-on-a-kubernetes-cluster/upgrades/migrating-from-rke-add-on.md) for details on how to move to using the helm chart.
 
 ## Install NGINX
 
@@ -21,7 +21,7 @@ For help installing NGINX, refer to their [install documentation](https://www.ng
 
 ## Create NGINX Configuration
 
-See [Example NGINX config](installation/options/helm2/helm-rancher/chart-options/#example-nginx-config).
+See [Example NGINX config](../../helm-rancher/chart-options.md#example-nginx-config).
 
 ## Run NGINX
 

@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 > Helm 3 has been released.  If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.
 >
-> The [current instructions for Upgrading Rancher Installed on Kubernetes](https://rancher.com/docs/rancher/v2.0-v2.4/en/upgrades/upgrades/ha/) use Helm 3.
+> The [current instructions for Upgrading Rancher Installed on Kubernetes](../../../../pages-for-subheaders/upgrades.md) use Helm 3.
 >
 > This section provides a copy of the older instructions for upgrading Rancher with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
@@ -23,17 +23,17 @@ The following instructions will guide you through using Helm to upgrade a Ranche
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services](https://rancher.com/docs/rke/latest/en/config-options/services/) or [add-ons](https://rancher.com/docs/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE](https://rancher.com/docs/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 
-If you installed Rancher using the RKE Add-on yaml, follow the directions to [migrate or upgrade](upgrades/upgrades/migrating-from-rke-add-on).
+If you installed Rancher using the RKE Add-on yaml, follow the directions to [migrate or upgrade](./migrating-from-rke-add-on.md).
 
 >**Notes:**
 >
-> - [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.](installation/options/upgrading-cert-manager)
+> - [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.](../../resources/upgrade-cert-manager.md)
 > - If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.](../../../../reference-guides/installation-references/helm-chart-options.md#configuring-ingress-for-external-tls-when-using-nginx-v0-25)
-> - The upgrade instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section](installation/upgrades-rollbacks/upgrades/ha/helm2) provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
+> - The upgrade instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section](../../../../getting-started/installation-and-upgrade/install-upgrade-on-a-kubernetes-cluster/upgrades/helm2.md) provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
 # Prerequisites
 
-- **Review the [known upgrade issues](upgrades/upgrades)** in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
+- **Review the [known upgrade issues](../../../../pages-for-subheaders/upgrades.md)** in the Rancher documentation for the most noteworthy issues to consider when upgrading Rancher. A more complete list of known issues for each Rancher version can be found in the release notes on [GitHub](https://github.com/rancher/rancher/releases) and on the [Rancher forums.](https://forums.rancher.com/c/announcements/12)
 - **For [air gap installs only,](../../../../pages-for-subheaders/air-gapped-helm-cli-install.md) collect and populate images for the new Rancher server version.** Follow the guide to [populate your private registry](../../other-installation-methods/air-gapped-helm-cli-install/publish-images.md) with the images for the Rancher version that you want to upgrade to.
 
 # Upgrade Outline
@@ -47,7 +47,7 @@ Follow the steps to upgrade Rancher server:
 
 ### A. Back up Your Kubernetes Cluster that is Running Rancher Server
 
-[Take a one-time snapshot](backups/v2.0.x-v2.4.x/backup/rke-backups/#option-b-one-time-snapshots)
+[Take a one-time snapshot](../../../../how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher-launched-kubernetes-clusters.md#option-b-one-time-snapshots)
 of your Kubernetes cluster running Rancher server. You'll use the snapshot as a restore point if something goes wrong during upgrade.
 
 ### B. Update the Helm chart repository
@@ -128,7 +128,7 @@ If you are currently running the cert-manager whose version is older than v0.11,
     ```
     In case this results in an error that the release "rancher" was not found, make sure you are using the correct deployment name. Use `helm list` to list the helm-deployed releases.
 
-2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager](installation/options/upgrading-cert-manager/helm-2-instructions) page.
+2. Uninstall and reinstall `cert-manager` according to the instructions on the [Upgrading Cert-Manager](../../resources/upgrade-cert-manager-helm-2.md) page.
 
 3. Reinstall Rancher to the latest version with all your settings. Take all the values from the step 1 and append them to the command using `--set key=value`. Note: There will be many more options from the step 1 that need to be appended.
 
@@ -221,4 +221,4 @@ Log into Rancher to confirm that the upgrade succeeded.
 
 ## Rolling Back
 
-Should something go wrong, follow the [roll back](upgrades/rollbacks/ha-server-rollbacks/) instructions to restore the snapshot you took before you preformed the upgrade.
+Should something go wrong, follow the [roll back](../rollbacks.md) instructions to restore the snapshot you took before you preformed the upgrade.
