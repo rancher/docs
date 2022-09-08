@@ -8,7 +8,7 @@ This section provides an overview of the architecture options of installing Ranc
 
 # Terminology
 
-In this section,
+In this section, we discuss:
 
 - **The Rancher server** manages and provisions Kubernetes clusters. You can interact with downstream Kubernetes clusters through the Rancher server's user interface. The Rancher management server can be installed on any Kubernetes cluster, including hosted clusters, such as Amazon EKS clusters.
 - **RKE (Rancher Kubernetes Engine)** is a certified Kubernetes distribution and CLI/library which creates and manages a Kubernetes cluster.
