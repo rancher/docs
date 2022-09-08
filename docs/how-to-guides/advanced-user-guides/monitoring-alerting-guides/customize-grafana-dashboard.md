@@ -29,9 +29,8 @@ For this example, we would like to get the CPU usage for the Alertmanager contai
 The **Data** tab shows the underlying data as a time series, with the time in first column and the PromQL query result in the second column. Copy the PromQL query.
     
     ```
-	(1 - (avg(irate({__name__=~"node_cpu_seconds_total|windows_cpu_time_total",mode="idle"}[5m])))) * 100
-
-	```
+    (1 - (avg(irate({__name__=~"node_cpu_seconds_total|windows_cpu_time_total",mode="idle"}[5m])))) * 100
+    ```
 
 You can then modify the query in the Grafana panel or create a new Grafana panel using the query. 
 

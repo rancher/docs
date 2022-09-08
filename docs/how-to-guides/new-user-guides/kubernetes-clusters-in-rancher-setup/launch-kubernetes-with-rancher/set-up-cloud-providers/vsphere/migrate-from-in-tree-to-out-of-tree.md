@@ -90,10 +90,10 @@ kubectl describe nodes | grep "ProviderID"
 1. While editing the cluster, if the Kubernetes version is less than 1.19, select Kubernetes version 1.19 or higher from the **Kubernetes Version** dropdown.
 2. For enabling feature flags, click on "Edit as YAML", and add the following under kube-controller and kubelet:
 
-	```yaml
-	  extra_args:
-	    feature-gates: "CSIMigration=true,CSIMigrationvSphere=true" 
-	```
+    ```yaml
+      extra_args:
+        feature-gates: "CSIMigration=true,CSIMigrationvSphere=true" 
+    ```
 
 ### 4. Drain worker nodes
 

@@ -130,7 +130,7 @@ Note that the RBAC roles exposed by the Monitoring chart to add Grafana Dashboar
     data:
       <dashboard-name>.json: |-
         <copied-json>
-	```
+    ```
 
 **Result:** After the ConfigMap is created, it should show up on the Grafana UI and be persisted even if the Grafana pod is restarted.
 

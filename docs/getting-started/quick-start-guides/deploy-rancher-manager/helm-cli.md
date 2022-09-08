@@ -129,7 +129,6 @@ helm install rancher rancher-latest/rancher `
   --set replicas=1 `
   --set bootstrapPassword=<PASSWORD_FOR_RANCHER_ADMIN>
 ```
-```
 
 Now if you navigate to `<IP_OF_LINUX_NODE>.sslip.io` in a web browser, you should see the Rancher UI.
 

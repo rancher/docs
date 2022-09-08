@@ -100,9 +100,9 @@ The steps to enable recurring snapshots differ based on the version of RKE.
 4. Save and close `rancher-cluster.yml`.
 5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 6. Run the following command:
-	```
-	rke up --config rancher-cluster.yml
-	```
+    ```
+    rke up --config rancher-cluster.yml
+    ```
 
 **Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved locally to the following directory: `/opt/rke/etcd-snapshots/`. If configured, the snapshots are also uploaded to your S3 compatible backend.
 
@@ -122,9 +122,9 @@ The steps to enable recurring snapshots differ based on the version of RKE.
 4. Save and close `rancher-cluster.yml`.
 5. Open **Terminal** and change directory to the location of the RKE binary. Your `rancher-cluster.yml` file must reside in the same directory.
 6. Run the following command:
-	```
-	rke up --config rancher-cluster.yml
-	```
+    ```
+    rke up --config rancher-cluster.yml
+    ```
 
 **Result:** RKE is configured to take recurring snapshots of `etcd` on all nodes running the `etcd` role. Snapshots are saved locally to the following directory: `/opt/rke/etcd-snapshots/`.
 
@@ -142,11 +142,11 @@ When you're about to upgrade Rancher or restore it to a previous snapshot, you s
 
 2. Enter the following command. Replace `<SNAPSHOT.db>` with any name that you want to use for the snapshot (e.g. `upgrade.db`).
 
-	```
-	rke etcd snapshot-save \
+    ```
+    rke etcd snapshot-save \
     --name <SNAPSHOT.db> \
     --config rancher-cluster.yml
-	```
+    ```
 
 **Result:** RKE takes a snapshot of `etcd` running on each `etcd` node. The file is saved to `/opt/rke/etcd-snapshots`.
 

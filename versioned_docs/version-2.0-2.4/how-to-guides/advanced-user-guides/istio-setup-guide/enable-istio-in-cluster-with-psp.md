@@ -30,9 +30,9 @@ The Istio CNI plugin removes the need for each application pod to have a privile
 1. Select the **Project: System** project.
 1. Choose **Tools > Catalogs** in the navigation bar.
 1. Add a catalog with the following:
-	1. Name: istio-cni
-	1. Catalog URL: https://github.com/istio/cni
-	1. Branch: The branch that matches your current release, for example: `release-1.4`.
+    1. Name: istio-cni
+    1. Catalog URL: https://github.com/istio/cni
+    1. Branch: The branch that matches your current release, for example: `release-1.4`.
 1. From the main menu select **Apps**
 1. Click Launch and select istio-cni
 1. Update the namespace to be "kube-system"

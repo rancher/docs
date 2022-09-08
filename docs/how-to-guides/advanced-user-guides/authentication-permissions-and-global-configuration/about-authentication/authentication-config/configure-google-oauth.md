@@ -87,9 +87,9 @@ Using the Unique ID of the service account key, register it as an Oauth Client u
 1. Go to the [**Domain-wide Delegation** page.](https://admin.google.com/ac/owl/domainwidedelegation)
 1. Add the Unique ID obtained in the previous step in the **Client Name** field.
 1. In the **One or More API Scopes** field, add the following scopes:
-	```
-	openid,profile,email,https://www.googleapis.com/auth/admin.directory.user.readonly,https://www.googleapis.com/auth/admin.directory.group.readonly
-	```
+    ```
+    openid,profile,email,https://www.googleapis.com/auth/admin.directory.user.readonly,https://www.googleapis.com/auth/admin.directory.group.readonly
+    ```
 1. Click **Authorize**.
 
 **Result:** The service account is registered as an OAuth client in your G Suite account.
@@ -100,12 +100,12 @@ Using the Unique ID of the service account key, register it as an Oauth Client u
 1.	In the top left corner, click **☰ > Users & Authentication**.
 1. In the left navigation menu, click **Auth Provider**.
 1. Click **Google**. The instructions in the UI cover the steps to set up authentication with Google OAuth.
-	1. Admin Email: Provide the email of an administrator account from your GSuite setup. In order to perform user and group lookups, google apis require an administrator's email in conjunction with the service account key.
-	1. Domain: Provide the domain on which you have configured GSuite. Provide the exact domain and not any aliases.
-	1. Nested Group Membership: Check this box to enable nested group memberships. Rancher admins can disable this at any time after configuring auth.
-   - **Step One** is about adding Rancher as an authorized domain, which we already covered in [this section.](#1-adding-rancher-as-an-authorized-domain)
-   - For **Step Two,** provide the OAuth credentials JSON that you downloaded after completing [this section.](#2-creating-oauth2-credentials-for-the-rancher-server) You can upload the file or paste the contents into the **OAuth Credentials** field.
-   - For **Step Three,** provide the service account credentials JSON that downloaded at the end of [this section.](#3-creating-service-account-credentials) The credentials will only work if you successfully [registered the service account key](#4-register-the-service-account-key-as-an-oauth-client) as an OAuth client in your G Suite account.
+    1. Admin Email: Provide the email of an administrator account from your GSuite setup. In order to perform user and group lookups, google apis require an administrator's email in conjunction with the service account key.
+    1. Domain: Provide the domain on which you have configured GSuite. Provide the exact domain and not any aliases.
+    1. Nested Group Membership: Check this box to enable nested group memberships. Rancher admins can disable this at any time after configuring auth.
+    - **Step One** is about adding Rancher as an authorized domain, which we already covered in [this section.](#1-adding-rancher-as-an-authorized-domain)
+    - For **Step Two,** provide the OAuth credentials JSON that you downloaded after completing [this section.](#2-creating-oauth2-credentials-for-the-rancher-server) You can upload the file or paste the contents into the **OAuth Credentials** field.
+    - For **Step Three,** provide the service account credentials JSON that downloaded at the end of [this section.](#3-creating-service-account-credentials) The credentials will only work if you successfully [registered the service account key](#4-register-the-service-account-key-as-an-oauth-client) as an OAuth client in your G Suite account.
 1.	Click **Authenticate with Google**.
 1.	Click **Enable**.
 

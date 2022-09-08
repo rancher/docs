@@ -93,7 +93,7 @@ $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided.
 
-::caution
+:::caution
 
 Even a small difference between the current EKS cluster and a user-provided config could have unexpected results.
 

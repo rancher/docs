@@ -23,7 +23,7 @@ Note that these URLs will not return valid data until the authentication configu
 
     1. **Display Name Field**: Enter the AD attribute that contains the display name of users (example: `displayName`).
 
-	1. **User Name Field**: Enter the AD attribute that contains the user name/given name (example: `givenName`).
+    1. **User Name Field**: Enter the AD attribute that contains the user name/given name (example: `givenName`).
 
     1. **UID Field**: Enter an AD attribute that is unique to every user (example: `sAMAccountName`, `distinguishedName`).
 
@@ -33,7 +33,7 @@ Note that these URLs will not return valid data until the authentication configu
 
     1. **Rancher API Host**: Enter the URL for your Rancher Server.
 
-	1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your IdP.
+    1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your IdP.
 
         You can generate one using an openssl command. For example:
 

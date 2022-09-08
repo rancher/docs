@@ -45,7 +45,7 @@ If your organization uses Shibboleth for user authentication, you can configure 
 
     1. **Display Name Field**: Enter the AD attribute that contains the display name of users (example: `displayName`).
 
-	1. **User Name Field**: Enter the AD attribute that contains the user name/given name (example: `givenName`).
+    1. **User Name Field**: Enter the AD attribute that contains the user name/given name (example: `givenName`).
 
     1. **UID Field**: Enter an AD attribute that is unique to every user (example: `sAMAccountName`, `distinguishedName`).
 
@@ -53,7 +53,7 @@ If your organization uses Shibboleth for user authentication, you can configure 
 
     1. **Rancher API Host**: Enter the URL for your Rancher Server.
 
-	1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your IdP.
+    1. **Private Key** and **Certificate**: This is a key-certificate pair to create a secure shell between Rancher and your IdP.
 
         You can generate one using an openssl command. For example:
 
@@ -67,7 +67,9 @@ If your organization uses Shibboleth for user authentication, you can configure 
 
     Rancher redirects you to the IdP login page. Enter credentials that authenticate with Shibboleth IdP to validate your Rancher Shibboleth configuration.
 
-    >**Note:** You may have to disable your popup blocker to see the IdP login page.
+:::note
+You may have to disable your popup blocker to see the IdP login page.
+:::
 
 **Result:** Rancher is configured to work with Shibboleth. Your users can now sign into Rancher using their Shibboleth logins.
 

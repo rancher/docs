@@ -62,9 +62,9 @@ To install Rancher on your Equinix Metal host, connect to it and then use a shel
 
 2.  From your shell, enter the following command:
 
-	```
+    ```
     sudo docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
-  ```
+    ```
 
 **Result:** Rancher is installed.
 
@@ -88,7 +88,7 @@ Welcome to Rancher! You are now able to create your first Kubernetes cluster.
 
 In this task, you can use the versatile **Custom** option. This option lets you add _any_ Linux host (cloud-hosted VM, on-prem VM, or bare-metal) to be used in a cluster.
 
-1.  Click **☰ > Cluster Management**.
+1. Click **☰ > Cluster Management**.
 1. From the **Clusters** page, click **Create**.
 2. Choose **Custom**.
 
