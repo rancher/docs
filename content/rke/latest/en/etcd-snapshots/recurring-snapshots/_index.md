@@ -10,7 +10,7 @@ Recurring snapshots are handled differently based on your version of RKE.
 
 To schedule automatic recurring etcd snapshots, you can enable the `etcd-snapshot` service with [extra configuration options](#options-for-the-etcd-snapshot-service). `etcd-snapshot` runs in a service container alongside the `etcd` container. By default, the `etcd-snapshot` service takes a snapshot for every node that has the `etcd` role and stores them to local disk in `/opt/rke/etcd-snapshots`.
 
-If you set up the [options for S3](#options-for-the-etcd-snapshot-service), the snapshot will also be uploaded to the S3 backend.
+If you set up the [options for S3](#options-for-the-etcd-snapshot-service) in your RKE cluster yaml, the snapshot will also be uploaded to the S3 backend.
 
 ### Snapshot Service Logging
 
