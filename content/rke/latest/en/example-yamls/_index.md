@@ -148,6 +148,21 @@ system_images:
 
 services:
     etcd:
+      backup_config:
+        interval_hours: 12
+        retention: 6
+        s3backupconfig:
+          access_key: S3_ACCESS_KEY
+          secret_key: S3_SECRET_KEY
+          bucket_name: s3-bucket-name
+          region: ""
+          folder: "" # Optional - Available as of v0.3.0
+          endpoint: s3.amazonaws.com
+          custom_ca: |-
+            -----BEGIN CERTIFICATE-----
+            $CERTIFICATE
+            -----END CERTIFICATE-----
+          
       # Custom uid/guid for etcd directory and files
       uid: 52034
       gid: 52034
