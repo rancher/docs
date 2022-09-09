@@ -27,7 +27,7 @@
       {{ $productVersion := printf "%s/%s" $product $version}} 
       {{ if or (in .Dir "/v2.0-v2.4") (in .Dir "/v2.5") (in .Dir "/v2.6") }}
       <div class="alert alert-notice">
-          <strong>Rancher Manager docs are in the process of migrating to a new website as we transition to a new documentation structure, <a href="https://documentation.divio.com/"> Divio</a>. We will update the community with the new site information after it is launched.</strong>
+          <strong>Rancher Manager docs have migrated to a <a href="https://docs.ranchermanager.rancher.io/"> new website</a> as we transitioned to a new framework and a new docs structure. For more information about the new documentation structure, please see the <a href="https://documentation.divio.com/"> Divio docs</a>.</strong>
         </div>
       {{end}}
       {{ if or (in .Dir "k3s/latest") }}
