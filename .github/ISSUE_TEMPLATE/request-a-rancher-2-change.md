@@ -7,8 +7,7 @@ assignees: ''
 
 ---
 
-**Request Summary:**
-<!-- Briefly describe what you would like to change in Rancher 2.x documentation below this line. This can include any type of change such as deleting something from a section, a whole page, or adding a new section or page, or any updates/additions. -->
+The Rancher Manager* documentation is moving. Please file any issues or pull requests at https://github.com/rancher/rancher-docs instead.
 
-**Details:**
-<!-- If you have specific content you want changed, please indicate this below this line. -->
+* = content/rancher
+
