@@ -14,7 +14,7 @@ ctaBanner: true
         <div class="col-4"></div>
       </div>
 <div class="row max-sized cards-container">
-  <h2>Rancher Products</h2>
+  <h2>Products</h2>
   <div class="col-12 cards-wrap">
     <div class="row card-items-wrap">
       <div class="
@@ -41,34 +41,7 @@ ctaBanner: true
                   </div>
                   </div>
                   </div>
-            <div class="
-                                                                                                                                                                col-xl-4
-                                                                                                                                                                col-lg-4
-                    col-md-4
-                    col-sm-12
-                    col-xs-12
-                    col-12
-                    card-item">
-              <div class="card-wrap">
-                <div class="image-container">
-                  <img class="image limited-height" alt="Longhorn Logo" src="docs/longhorn-logo.svg">
-                </div>
-
-                <hr />
-
-                <p class="description-label">Longhorn is a lightweight, reliable, and powerful distributed block storage
-                  system for
-                  Kubernetes.</p>
-                
-                <div class="buttons-container">
-                  <a href="https://longhorn.io/docs/latest" target="_blank">
-                    <button class="button text">
-                      <span>Read the docs</span>
-                    </button>
-                  </a>
-                </div>
-                </div>
-                </div>
+            
                 <div class="
                                                                                                                                                                                                                                                     col-xl-4
                                                                                                                                                                                                                                                     col-lg-4
@@ -126,7 +99,7 @@ ctaBanner: true
           </div>
       </div>
       <div class="row max-sized cards-container">
-        <h2>Rancher Distributions</h2>
+        <h2>Kubernetes Distributions</h2>
         <div class="col-12 cards-wrap">
           <div class="row card-items-wrap">
             <div class="
@@ -141,6 +114,7 @@ ctaBanner: true
                 <div class="image-container ">
                   <img class="image limited-height" alt="K3s Logo" src="docs/k3s-logo.svg">
                 </div>
+                <div class="badge">CNCF</div>
                 <hr />
 
                 <p class="description-label">A lightweight Kubernetes distribution, easy to use and ideal for IoT and
@@ -211,7 +185,7 @@ ctaBanner: true
               </div>
               </div>
               <div class="row max-sized cards-container">
-                <h2>Rancher Projects</h2>
+                <h2>Projects</h2>
                 <div class="col-12 cards-wrap">
                   <div class="row card-items-wrap">
                     <div class="
@@ -250,6 +224,7 @@ ctaBanner: true
                 <div class="image-container">
                   <img class="image limited-height" alt="Kubewarden Logo" src="docs/kubewarden-logo.png">
                 </div>
+                <div class="badge">CNCF</div>
                 <hr />
 
                 <p class="description-label">Kubewarden is a Kubernetes Dynamic Admission Controller that validates
@@ -312,6 +287,36 @@ ctaBanner: true
 
                 <div class="buttons-container">
                   <a href="https://opni.io/latest/">
+                    <button class="button text">
+                      <span>Read the docs</span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              class="
+                                                                                                                                                                                                                                                                                                                                                                                                                            col-xl-4
+                                                                                                                                                                                                                                                                                                                                                                                                                            col-lg-4
+                                                                                                                                                                                                                                                                                col-md-4
+                                                                                                                                                                                                                                                                                col-sm-12
+                                                                                                                                                                                                                                                                                col-xs-12
+                                                                                                                                                                                                                                                                                col-12
+                                                                                                                                                                                                                                                                                card-item">
+              <div class="card-wrap">
+                <div class="image-container">
+                  <img class="image limited-height" alt="Longhorn Logo" src="docs/longhorn-logo.svg">
+                </div>
+                <div class="badge">CNCF</div>
+            
+                <hr />
+            
+                <p class="description-label">Longhorn is a lightweight, reliable, and powerful distributed block storage
+                  system for
+                  Kubernetes.</p>
+            
+                <div class="buttons-container">
+                  <a href="https://longhorn.io/docs/latest" target="_blank">
                     <button class="button text">
                       <span>Read the docs</span>
                     </button>
@@ -401,6 +406,19 @@ ctaBanner: true
     });
 </script>
   <style>
+    .badge {
+      position: absolute;
+      right: 1.7rem;
+      top: 0.8rem;
+      border-radius: 1.5rem;
+      background-color: #2f66e3;
+      text-transform: uppercase;
+      font-size: .825rem;
+      font-weight: 500;
+      letter-spacing: .075rem;
+      padding: 0.2rem 0.67rem;
+      color: #fff;
+    }
     .docs-screen2 {
       margin-top: 7rem;
     }
@@ -424,6 +442,7 @@ ctaBanner: true
     }
 
     .limited-height {
-      max-height: 70px;
+      margin-top: 10px;
+      max-height: 65px;
     }
   </style>
