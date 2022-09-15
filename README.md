@@ -15,14 +15,6 @@ The K3s* documentation is moving. Please file any issues or pull requests at htt
 
 * = content/k3s
 
-### Rancher documentation
-
-We have transitioned to versioned documentation for Rancher (files within `content/rancher`).
-
-New contributions should be made to the applicable versioned directories (e.g., `content/rancher/v2.5` and `content/rancher/v2.0-v2.4`).
-
-Contents under the `content/rancher/v2.x` directory are no longer maintained after v2.5.6.
-
 ## Running for development/editing
 
 The `rancher/docs:dev` docker image runs a live-updating server.  To run on your workstation, run:
