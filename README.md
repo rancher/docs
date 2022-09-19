@@ -3,17 +3,17 @@ Rancher Docs
 
 ## Contributing
 
+### Rancher Manager update
+
+The Rancher Manager* documentation is moving. Please file any issues or pull requests at https://github.com/rancher/rancher-docs instead.
+
+* = content/rancher
+
 ### K3s update
 
-The K3s documentation is moving. Please file any issues or pull requests at https://github.com/k3s-io/docs instead.
+The K3s* documentation is moving. Please file any issues or pull requests at https://github.com/k3s-io/docs instead.
 
-### Rancher documentation
-
-We have transitioned to versioned documentation for Rancher (files within `content/rancher`).
-
-New contributions should be made to the applicable versioned directories (e.g., `content/rancher/v2.5` and `content/rancher/v2.0-v2.4`).
-
-Contents under the `content/rancher/v2.x` directory are no longer maintained after v2.5.6.
+* = content/k3s
 
 ## Running for development/editing
 
@@ -48,7 +48,7 @@ Windows
 
 License
 =======
-Copyright (c) 2014-2019 [Rancher Labs, Inc.](https://rancher.com)
+Copyright (c) 2014-2022 [Rancher Labs, Inc.](https://rancher.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

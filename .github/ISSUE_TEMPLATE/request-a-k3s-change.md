@@ -7,4 +7,6 @@ assignees: ''
 
 ---
 
-The K3s documentation is moving. Please file any issues or pull requests at https://github.com/k3s-io/docs instead.
+The K3s* documentation is moving. Please file any issues or pull requests at https://github.com/k3s-io/docs instead.
+
+* = content/k3s

@@ -22,7 +22,7 @@ This message indicates that you do not have enough entitlements for the amount o
 Keep in mind the following limitations:
 
 - Each entitlement is valid for a certain number of nodes.
-- Every node currently managed by Rancher counts toward your usage total, even nodes in the cluster Rancher is installed on.
+- Every node currently managed by Rancher counts toward your usage total (with exception of nodes in the cluster rancher is installed on).
 - Each entitlement can be used by at most one Rancher instance. For example, if you have two running Rancher instances in your account (each installed on a separate EKS cluster), then you will need at least two entitlements.
 
 You may also have recently uninstalled/re-installed the adapter. If the adapter loses track of the licenses that it is currently managing, it can take up to an hour to resolve the actual state of the licenses.

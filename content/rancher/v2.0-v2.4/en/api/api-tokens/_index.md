@@ -37,7 +37,7 @@ _**Available as of v2.4.6**_
 
 Starting Rancher v2.4.6, admins can set a global TTL on Kubeconfig tokens. Once the token expires the kubectl command will require the user to authenticate to Rancher.
 
-_**Note:**_:
+_**Note:**_
 
 Existing kubeconfig tokens won't be updated with the new TTL. Admins can [delete old kubeconfig tokens](#deleting-tokens).
 
