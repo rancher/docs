@@ -8,9 +8,9 @@ Recurring snapshots are handled differently based on your version of RKE.
 {{% tabs %}}
 {{% tab "RKE v0.2.0+"%}}
 
-To schedule automatic recurring etcd snapshots, you can enable the `etcd-snapshot` service with [extra configuration options](#options-for-the-etcd-snapshot-service). `etcd-snapshot` runs in a service container alongside the `etcd` container. By default, the `etcd-snapshot` service takes a snapshot for every node that has the `etcd` role and stores them to local disk in `/opt/rke/etcd-snapshots`.
+To schedule automatic recurring etcd snapshots, you can enable the `etcd-snapshot` service with [extra configuration options](#options-for-the-etcd-snapshot-service) in your cluster yaml. `etcd-snapshot` runs in a service container alongside the `etcd` container. By default, the `etcd-snapshot` service takes a snapshot for every node that has the `etcd` role and stores them to local disk in `/opt/rke/etcd-snapshots`.
 
-If you set up the [options for S3](#options-for-the-etcd-snapshot-service), the snapshot will also be uploaded to the S3 backend.
+If you set up the [options for S3](#options-for-the-etcd-snapshot-service) in your RKE cluster yaml, the snapshot will also be uploaded to the S3 backend.
 
 ### Snapshot Service Logging
 
@@ -120,7 +120,7 @@ time="2018-05-04T18:43:16Z" level=info msg="Created backup" name="2018-05-04T18:
 
 |Option|Description|
 |---|---|
-|**Snapshot**|By default, the recurring snapshot service is disabled. To enable the service, you need to define it as part of `etcd` and set it to `true`.|
+|**Snapshot**|By default, the recurring snapshot service is disabled. To enable the service, you need to define it as part of `etcd` in your cluster yaml manifest and set it to `true`.|
 |**Creation**|By default, the snapshot service will take snapshots every 5 minutes (`5m0s`). You can change the time between snapshots as part of the `creation` directive for the `etcd` service.|
 |**Retention**|By default, all snapshots are saved for 24 hours (`24h`) before being deleted and purged. You can change how long to store a snapshot as part of the `retention` directive for the `etcd` service.|
 
