@@ -59,7 +59,7 @@ In this section, you'll learn how to configure the K3s server.
 
 | Flag | Environment Variable | Description |
 |------|----------------------|-------------|
-|  `--token value, -t` value  | `K3S_TOKEN`      | Shared secret used to join a server or agent to a cluster |
+|  `--token` value, `-t` value  | `K3S_TOKEN`      | Shared secret used to join a server or agent to a cluster |
 |  `--token-file` value    |  `K3S_TOKEN_FILE`   | File containing the cluster-secret/token      |
 
 ### Client Options
@@ -102,7 +102,7 @@ the agent options are there because the server has the agent process embedded wi
 
 | Flag | Environment Variable | Description |
 |------|----------------------|-------------|
-|   `--node-ip value, -i` value  | N/A         | IP address to advertise for node     |
+|   `--node-ip` value, `-i` value  | N/A         | IP address to advertise for node     |
 |   `--node-external-ip` value   |  N/A        | External IP address to advertise for node    | 
 |   `--resolv-conf` value   |  `K3S_RESOLV_CONF`    | Kubelet resolv.conf file        |
 |   `--flannel-iface` value    |  N/A         | Override default flannel interface   | 
@@ -117,7 +117,7 @@ the agent options are there because the server has the agent process embedded wi
 | `--debug` | N/A | Turn on debug logs |
 | `-v` value | 0  |  Number for the log level verbosity |
 | `--vmodule` value | N/A | Comma-separated list of pattern=N settings for file-filtered logging |
-| `--log value, -l` value  | N/A | Log to file |
+| `--log` value, `-l` value  | N/A | Log to file |
 | `--alsologtostderr` | N/A | Log to standard error as well as file (if set) |
 
 
@@ -135,7 +135,7 @@ the agent options are there because the server has the agent process embedded wi
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--data-dir value, -d` value  | `/var/lib/rancher/k3s` or `${HOME}/.rancher/k3s` if not root | Folder to hold state |
+| `--data-dir` value, `-d` value  | `/var/lib/rancher/k3s` or `${HOME}/.rancher/k3s` if not root | Folder to hold state |
 
 ### Networking
 
@@ -188,7 +188,7 @@ the agent options are there because the server has the agent process embedded wi
 |   `--rootless`   |  N/A           |  Run rootless           |    (experimental) 
 |   `--agent-token` value      | `K3S_AGENT_TOKEN`      |  Shared secret used to join agents to the cluster, but not servers      |
 |   `--agent-token-file` value | `K3S_AGENT_TOKEN_FILE`       | File containing the agent secret       |
-|   `--server value, -s` value | `K3S_URL`          |  Server to connect to, used to join a cluster    |
+|   `--server value`, `-s` value | `K3S_URL`          |  Server to connect to, used to join a cluster    |
 |   `--cluster-init`   |  `K3S_CLUSTER_INIT`            |   Initialize new cluster master      |
 |   `--cluster-reset`   |  `K3S_CLUSTER_RESET`            | Forget all peers and become a single cluster new cluster master        |
 |   `--secrets-encryption`   |   N/A        |  Enable Secret encryption at rest     |
