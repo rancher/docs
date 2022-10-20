@@ -1,0 +1,150 @@
+---
+name: Release Docs
+on: push
+
+jobs:
+    publish-dev:
+        if: ${{ github.ref == 'refs/heads/master' }}
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout Docs
+            uses: actions/checkout@v3
+          - name: Login ghcr.io
+            uses: docker/login-action@v2
+            with:
+              registry: ghcr.io
+              username: ${{ github.repository_owner }}
+              password: ${{ github.token }}
+
+          # when push to master
+          - name: Build Dev Container
+            uses: docker/build-push-action@v3
+            with:
+              push: true
+              file: Dockerfile.dev
+              tags: |
+                ghcr.io/${{ github.repository }}:dev
+              context: .
+              build-args: |
+                RANCHER_DOCS_PACKAGE=ghcr.io/${{ github.repository }}
+
+    publish-build:
+        if: ${{ github.ref == 'refs/heads/master' }}
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout Docs
+            uses: actions/checkout@v3
+          - name: Login ghcr.io
+            uses: docker/login-action@v2
+            with:
+              registry: ghcr.io
+              username: ${{ github.repository_owner }}
+              password: ${{ github.token }}
+          # when push to staging
+          - name: Build Staging
+            uses: docker/build-push-action@v3
+            with:
+              push: true
+              file: Dockerfile.build
+              context: .
+              tags: |
+                ghcr.io/${{ github.repository }}:build
+              build-args: |
+                RANCHER_DOCS_PACKAGE=ghcr.io/${{ github.repository }}
+
+    publish-staging:
+        if: ${{ github.ref == 'refs/heads/staging' }}
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout Docs
+            uses: actions/checkout@v3
+          - name: Login ghcr.io
+            uses: docker/login-action@v2
+            with:
+              registry: ghcr.io
+              username: ${{ github.repository_owner }}
+              password: ${{ github.token }}
+          # when push to staging
+          - name: Build Staging
+            uses: docker/build-push-action@v3
+            with:
+              push: true
+              file: Dockerfile.staging
+              context: .
+              tags: |
+                ghcr.io/${{ github.repository }}:staging
+              build-args: |
+                RANCHER_DOCS_PACKAGE=ghcr.io/${{ github.repository }}
+
+    publish-latest:
+      if: ${{ github.ref == 'refs/heads/master' }}
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout Docs
+            uses: actions/checkout@v3
+          - name: Login ghcr.io
+            uses: docker/login-action@v2
+            with:
+              registry: ghcr.io
+              username: ${{ github.repository_owner }}
+              password: ${{ github.token }}
+          # when push to master
+          - name: Build and Publish Latest
+            uses: docker/build-push-action@v3
+            with:
+              push: true
+              file: Dockerfile.prod
+              context: .
+              tags: |
+                ghcr.io/${{ github.repository }}:latest
+              build-args: |
+                RANCHER_DOCS_PACKAGE=ghcr.io/${{ github.repository }}
+ 
+    publish-algolia:
+      if: ${{ github.ref == 'refs/heads/master' }}
+      runs-on: ubuntu-latest
+      needs:
+        - publish-latest
+      steps:
+          - name: Checkout Docs
+            uses: actions/checkout@v3
+          - name: Login ghcr.io
+            uses: docker/login-action@v2
+            with:
+              registry: ghcr.io
+              username: ${{ github.repository_owner }}
+              password: ${{ github.token }}
+          # when push to master
+          - name: Build and Publish algolia
+            uses: docker/build-push-action@v3
+            with:
+              push: true
+              file: Dockerfile.algolia
+              context: .
+              tags: |
+                ghcr.io/${{ github.repository }}:algolia
+              build-args: |
+                RANCHER_DOCS_PACKAGE=ghcr.io/${{ github.repository }}
+    test-prod:
+      if: ${{ github.event_name == 'pull_request' }}
+      runs-on: ubuntu-latest
+      steps:
+          - name: Checkout Docs
+            uses: actions/checkout@v3
+          - name: Login ghcr.io
+            uses: docker/login-action@v2
+            with:
+              registry: ghcr.io
+              username: ${{ github.repository_owner }}
+              password: ${{ github.token }}
+          - name: Test Build
+            uses: docker/build-push-action@v3
+            with:
+              file: Dockerfile.prod
+              context: .
+              tags: |
+                ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+              build-args: |
+                RANCHER_DOCS_PACKAGE=ghcr.io/${{ github.repository }}
+
+
