@@ -1,4 +1,5 @@
-FROM rancher/docs:build
+ARG RANCHER_DOCS_PACKAGE=rancher/docs
+FROM $RANCHER_DOCS_PACKAGE:build
 ENV HUGO_ENV dev
 
 VOLUME ["/run/archetypes", "/run/assets", "/run/content", "/run/data", "/run/layouts", "/run/scripts", "/run/static", "/run/.git"]

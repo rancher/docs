@@ -1,4 +1,5 @@
-FROM rancher/docs:build as build
+ARG RANCHER_DOCS_PACKAGE=rancher/docs
+FROM $RANCHER_DOCS_PACKAGE:build as build
 ENV HUGO_ENV production
 
 WORKDIR /run
