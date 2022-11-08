@@ -142,11 +142,11 @@ kube-api:
         apiVersion: apiserver.config.k8s.io/v1
         kind: EncryptionConfiguration
         resources:
-        - Providers:
-            - AESCBC:
-                Keys:
-                    - Name: key1
-                    Secret: <BASE 64 ENCODED SECRET>
+        - providers:
+            - aescbc:
+                keys:
+                    - name: key1
+                    secret: <BASE 64 ENCODED SECRET>
               resources:
                 - secrets
             - identity: {}
