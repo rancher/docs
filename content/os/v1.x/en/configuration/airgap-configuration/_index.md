@@ -8,7 +8,7 @@ aliases:
 In the air gap environment, the Docker registry, RancherOS repositories URL, and the RancherOS upgrade URL should be configured to ensure the OS can pull images, update OS services, and upgrade the OS.
 
 
-# Configuring a Private Docker Registry
+## Configuring a Private Docker Registry
 
 You should use a private Docker registry so that `user-docker` and `system-docker` can pull images.
 
@@ -19,7 +19,7 @@ You should use a private Docker registry so that `user-docker` and `system-docke
   - To set the private registry certificates after RancherOS starts, append your private registry certs to the `/etc/ssl/certs/ca-certificates.crt.rancher` file. Then reboot to make the certs fully take effect.
 4. The images used by RancherOS should be pushed to your private registry.
 
-# Set Custom Certs in ISO
+## Set Custom Certs in ISO
 
 RancherOS provides a [script](https://github.com/rancher/os/blob/master/scripts/tools/flush_crt_iso.sh) to set your custom certs for an ISO. The following commands show how to use the script:
 
@@ -36,11 +36,11 @@ $ exit
 $ ls ./build/
 ```
 
-# Configuring RancherOS Repositories and Upgrade URL
+## Configuring RancherOS Repositories and Upgrade URL
 
 The following steps show how to configure RancherOS to update from private repositories.
 
-By default, RancherOS will update the `engine`, `console`, and `service` list from `https://raw.githubusercontent.com/rancher/os-services` and update the `os` list from `https://releases.rancher.com/os/releases.yml`. So in the air gap environment, you need to change the repository URL and upgrade URL to your own URLs. 
+By default, RancherOS will update the `engine`, `console`, and `service` list from `https://raw.githubusercontent.com/rancher/os-services` and update the `os` list from `https://releases.rancher.com/os/releases.yml`. So in the air gap environment, you need to change the repository URL and upgrade URL to your own URLs.
 
 ### 1. Clone os-services files
 
@@ -58,7 +58,7 @@ Download the `releases.yml` from `https://releases.rancher.com/os/releases.yml`.
 
 ### 3. Serve these files by HTTP
 
-Use a HTTP server to serve the cloned `os-services` directory and download `releases.yml`.   
+Use a HTTP server to serve the cloned `os-services` directory and download `releases.yml`.
 Make sure you can access all the files in `os-services` and `releases.yml` by URL.
 
 ### 4. Set the URLs
@@ -81,7 +81,7 @@ $ sudo ros config set rancher.repositories.core.url https://foo.bar.com/os-servi
 $ sudo ros config set rancher.upgrade.url https://foo.bar.com/os/releases.yml
 ```
 
-# Example Cloud-config
+## Example Cloud-config
 
 
 Here is a total cloud-config example for using RancherOS in an air gap environment.
