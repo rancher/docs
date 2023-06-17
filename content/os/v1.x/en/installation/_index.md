@@ -9,7 +9,7 @@ RancherOS runs on virtualization platforms, cloud providers and bare metal serve
 
 To start running RancherOS as quickly as possible, follow our [Quick Start Guide]({{< baseurl >}}/os/v1.x/en/quick-start-guide/).
 
-# Platforms
+## Platforms
 Refer to the below resources for more information on installing Rancher on your platform.
 
 ### Workstation
