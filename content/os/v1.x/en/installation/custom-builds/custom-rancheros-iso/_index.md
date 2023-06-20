@@ -11,8 +11,8 @@ Create a clone of the main [RancherOS repository](https://github.com/rancher/os)
 $ git clone https://github.com/rancher/os.git
 ```
 
-In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{<baseurl>}}/os/v1.x/en/installation/custom-builds/custom-kernels). 
-After you've saved your edits, run `make` in the root directory. After the build has completed, a `./dist/artifacts` directory will be created with the custom built RancherOS release files. 
+In the root of the repository, the "General Configuration" section of `Dockerfile.dapper` can be updated to use [custom kernels]({{<baseurl>}}/os/v1.x/en/installation/custom-builds/custom-kernels).
+After you've saved your edits, run `make` in the root directory. After the build has completed, a `./dist/artifacts` directory will be created with the custom built RancherOS release files.
 Build Requirements: `bash`, `make`, `docker` (Docker version >= 1.10.3)
 
 ```
@@ -29,7 +29,7 @@ If you need a compressed ISO, you can run this command:
 $ make release
 ```
 
-The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation//boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/workstation//docker-machine).
+The `rancheros.iso` is ready to be used to [boot RancherOS from ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation/boot-from-iso/) or [launch RancherOS using Docker Machine]({{< baseurl >}}/os/v1.x/en/installation/workstation//docker-machine).
 
 ## Creating a GCE Image Archive
 
@@ -39,7 +39,7 @@ Create a clone of the main [RancherOS repository](https://github.com/rancher/os)
 $ git clone https://github.com/rancher/os-packer.git
 ```
 
-GCE supports KVM virtualization, and we use `packer` to build KVM images. Before building, you need to verify that the host can support KVM. 
+GCE supports KVM virtualization, and we use `packer` to build KVM images. Before building, you need to verify that the host can support KVM.
 If you want to build GCE image based on RancherOS v1.4.0, you can run this command:
 
 ```
@@ -52,7 +52,7 @@ RANCHEROS_VERSION=v1.4.0 make build-gce
 
 With changes to the kernel and built Docker, RancherOS booting requires more memory. For details, please refer to the [memory requirements]({{<baseurl>}}/os/v1.x/en/#hardware-requirements).
 
-By customizing the ISO, you can reduce the memory usage on boot. The easiest way is to downgrade the built-in Docker version, because Docker takes up a lot of space. 
+By customizing the ISO, you can reduce the memory usage on boot. The easiest way is to downgrade the built-in Docker version, because Docker takes up a lot of space.
 This can effectively reduce the memory required to decompress the `initrd` on boot. Using docker 17.03 is a good choice:
 
 ```
@@ -64,9 +64,9 @@ $ USER_DOCKER_VERSION=17.03.2 make release
 
 _Available as of v1.5.0_
 
-When building RancherOS, you have the ability to automatically start in a supported console instead of booting into the default console and switching to your desired one. 
+When building RancherOS, you have the ability to automatically start in a supported console instead of booting into the default console and switching to your desired one.
 
-Here is an example of building RancherOS and having the `alpine` console enabled: 
+Here is an example of building RancherOS and having the `alpine` console enabled:
 
 ```
 $ OS_CONSOLE=alpine make release

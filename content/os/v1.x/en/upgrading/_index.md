@@ -9,7 +9,7 @@ Since RancherOS is a kernel and initrd, the upgrade process is downloading a new
 
 Before upgrading to any version, please review the release notes on our [releases page](https://github.com/rancher/os/releases) in GitHub to review any updates in the release.
 
-> **Note:** If you are using [`docker-machine`]({{< baseurl >}}/os/v1.x/en/installation/workstation//docker-machine/) then you will not be able to upgrade your RancherOS version. You need to delete and re-create the machine.
+> **Note:** If you are using [`docker-machine`]({{< baseurl >}}/os/v1.x/en/installation/workstation/docker-machine/) then you will not be able to upgrade your RancherOS version. You need to delete and re-create the machine.
 
 
 ### Version Control
@@ -140,7 +140,7 @@ rancher:
 
 If you are upgrading to v1.4.0+, please review these notes that could alter your RancherOS settings.
 
-Due to changes in the location of user-docker's data-root, after upgrading to v1.4.0+, you must move or copy the files of user-docker's data-root. If you do not do this, your data will *NOT* be available. 
+Due to changes in the location of user-docker's data-root, after upgrading to v1.4.0+, you must move or copy the files of user-docker's data-root. If you do not do this, your data will *NOT* be available.
 
 ```
 #!/bin/bash
@@ -153,7 +153,7 @@ cp -a $old_docker_root/* $new_docker_root
 system-docker start docker
 ```
 
-If you had another bridge IP set for system-docker, you may need to explicitly set it again depending on your upgrade path. Before re-setting it, you can confirm if it's set. 
+If you had another bridge IP set for system-docker, you may need to explicitly set it again depending on your upgrade path. Before re-setting it, you can confirm if it's set.
 
 ```
 # Check to see if docker bridge IP is set
