@@ -60,6 +60,9 @@
     <meta name="description" content="{{ with .Params.metaDescription }}{{ . }}{{ else }}{{ .Description }}{{ end }}"/>
   {{ end }}
 
+  <!-- Canonical link -->
+  <link rel="canonical" href="{{ $permalink }}"/>
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:description" content="{{ with .Params.metaDescription }}{{ . }}{{ else }}{{ .Description }}{{ end }}" />
