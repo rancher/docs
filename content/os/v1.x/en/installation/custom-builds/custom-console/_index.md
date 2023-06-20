@@ -3,7 +3,7 @@ title: Custom Console
 weight: 180
 ---
 
-When [booting from the ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation//boot-from-iso/), RancherOS starts with the default console, which is based on busybox.
+When [booting from the ISO]({{< baseurl >}}/os/v1.x/en/installation/workstation/boot-from-iso/), RancherOS starts with the default console, which is based on busybox.
 
 You can select which console you want RancherOS to start with using the [cloud-config]({{< baseurl >}}/os/v1.x/en/configuration/#cloud-config).
 
