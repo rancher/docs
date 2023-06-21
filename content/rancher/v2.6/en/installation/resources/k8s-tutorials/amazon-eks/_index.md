@@ -2,6 +2,8 @@
 title: Installing Rancher on Amazon EKS
 shortTitle: Amazon EKS
 weight: 3
+aliases:
+  - /rancher/v2.6/en/installation/install-rancher-on-k8s/amazon-eks
 ---
 
 This page covers two ways to install Rancher on EKS.
@@ -143,9 +145,9 @@ kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 The result should look similar to the following:
 
 ```
-NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP                                                              PORT(S)                     
+NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP                                                              PORT(S)
  AGE
-ingress-nginx-controller   LoadBalancer   10.100.90.18   a904a952c73bf4f668a17c46ac7c56ab-962521486.us-west-2.elb.amazonaws.com   80:31229/TCP,443:31050/TCP  
+ingress-nginx-controller   LoadBalancer   10.100.90.18   a904a952c73bf4f668a17c46ac7c56ab-962521486.us-west-2.elb.amazonaws.com   80:31229/TCP,443:31050/TCP
  27m
 ```
 

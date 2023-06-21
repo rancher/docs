@@ -2,6 +2,8 @@
 title: Installing Rancher on a Google Kubernetes Engine Cluster
 shortTitle: GKE
 weight: 3
+aliases:
+  - /rancher/v2.6/en/installation/install-rancher-on-k8s/gke
 ---
 
 In this section, you'll learn how to install Rancher using Google Kubernetes Engine.
@@ -59,8 +61,8 @@ To install `gcloud` and `kubectl`, perform the following steps:
     ```
     source ~/.bash_profile
     ```
-    
-   
+
+
 
 # 3. Configure the gcloud CLI
 
