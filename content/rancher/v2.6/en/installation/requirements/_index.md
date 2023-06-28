@@ -38,9 +38,9 @@ Rancher should work with any modern Linux distribution.
 
 Docker is required for nodes that will run RKE Kubernetes clusters. It is not required for Kubernetes installs.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/)
 
-For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+For details on which OS and Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/)
 
 All supported operating systems are 64-bit x86.
 
@@ -66,7 +66,7 @@ net.bridge.bridge-nf-call-iptables=1
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
@@ -76,7 +76,7 @@ If you are installing Rancher on a K3s cluster with Alpine Linux, follow [these 
 
 ### RKE2 Specific Requirements
 
-For details on which OS versions were tested with RKE2, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+For details on which OS versions were tested with RKE2, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/)
 
 Docker is not required for RKE2 installs.
 
@@ -106,7 +106,7 @@ These requirements apply to RKE Kubernetes clusters, as well as to hosted Kubern
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB   |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
-Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
+Every use case and environment is different. Please [contact Rancher](https://www.rancher.com/contact/) to review yours.
 
 ### K3s Kubernetes
 
@@ -120,7 +120,7 @@ These CPU and memory requirements apply to each host in a [K3s Kubernetes cluste
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB    | 2 cores, 4 GB + 1000 IOPS |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
-Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
+Every use case and environment is different. Please [contact Rancher](https://www.rancher.com/contact/) to review yours.
 
 
 ### RKE2 Kubernetes

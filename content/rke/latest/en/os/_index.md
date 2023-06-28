@@ -5,7 +5,7 @@ weight: 5
 
 > Firewalld conflicts with RKE1 when PNI is enabled. To avoid unexpected behavior, firewalld should be disabled on systems running RKE1.
 
-**In this section:** 
+**In this section:**
 
 <!-- TOC -->
 - [Operating System](#operating-system)
@@ -33,7 +33,7 @@ weight: 5
 - [Hardware](#hardware)
   - [Worker Role](#worker-role)
   - [Large Kubernetes Clusters](#large-kubernetes-clusters)
-  - [Etcd clusters](#etcd-clusters)  
+  - [Etcd clusters](#etcd-clusters)
 - [Ports](#ports)
   - [Opening port TCP/6443 using `iptables`](#opening-port-tcp-6443-using-iptables)
 - [SSH Server Configuration](#ssh-server-configuration)
@@ -44,15 +44,15 @@ weight: 5
 
 ### General Linux Requirements
 
-RKE runs on almost any Linux OS with Docker installed. For details on which OS and Docker versions were tested with each version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/).
+RKE runs on almost any Linux OS with Docker installed. For details on which OS and Docker versions were tested with each version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/).
 
 - [SSH user]({{<baseurl>}}/rke/latest/en/config-options/nodes/#ssh-user) - The SSH user used for node access must be a member of the `docker` group on the node:
 
    ```
    usermod -aG docker <user_name>
    ```
-   
-> **Note:** Users added to the `docker` group are granted effective root permissions on the host by means of the Docker API. Only choose a user that is intended for this purpose and has its credentials and access properly secured. 
+
+> **Note:** Users added to the `docker` group are granted effective root permissions on the host by means of the Docker API. Only choose a user that is intended for this purpose and has its credentials and access properly secured.
 
    See [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) to see how you can configure access to Docker without using the `root` user.
 
@@ -74,9 +74,9 @@ net.bridge.bridge-nf-call-iptables=1
 
 ### SUSE Linux Enterprise Server (SLES) / openSUSE
 
-If you are using SUSE Linux Enterprise Server or openSUSE follow the instructions below.  
+If you are using SUSE Linux Enterprise Server or openSUSE follow the instructions below.
 
-#### Using upstream Docker  
+#### Using upstream Docker
 If you are using upstream Docker, the package name is `docker-ce` or `docker-ee`. You can check the installed package by executing:
 
 ```
@@ -85,18 +85,18 @@ rpm -q docker-ce
 
 When using the upstream Docker packages, please follow [Manage Docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
-#### Using SUSE/openSUSE packaged docker 
+#### Using SUSE/openSUSE packaged docker
 If you are using the Docker package supplied by SUSE/openSUSE, the package name is `docker`. You can check the installed package by executing:
 
 ```
 rpm -q docker
 ```
 
-#### Adding the Software repository for docker 
-In SUSE Linux Enterprise Server 15 SP2 docker is found in the Containers module.  
-This module will need to be added before istalling docker.  
+#### Adding the Software repository for docker
+In SUSE Linux Enterprise Server 15 SP2 docker is found in the Containers module.
+This module will need to be added before istalling docker.
 
-To list available modules you can run SUSEConnect to list the extensions and the activation command  
+To list available modules you can run SUSEConnect to list the extensions and the activation command
 ```
 node:~ # SUSEConnect --list-extensions
 AVAILABLE EXTENSIONS AND MODULES
@@ -135,23 +135,23 @@ user@node:~> docker ps
 CONTAINER ID        IMAGE       COMMAND             CREATED             STATUS              PORTS               NAMES
 user@node:~>
 ```
-### openSUSE MicroOS/Kubic (Atomic)  
-Consult the project pages for openSUSE MicroOS and Kubic for installation  
-#### openSUSE MicroOS  
-Designed to host container workloads with automated administration & patching. Installing openSUSE MicroOS you get a quick, small environment for deploying Containers, or any other workload that benefits from Transactional Updates. As rolling release distribution the software is always up-to-date.  
-https://microos.opensuse.org  
+### openSUSE MicroOS/Kubic (Atomic)
+Consult the project pages for openSUSE MicroOS and Kubic for installation
+#### openSUSE MicroOS
+Designed to host container workloads with automated administration & patching. Installing openSUSE MicroOS you get a quick, small environment for deploying Containers, or any other workload that benefits from Transactional Updates. As rolling release distribution the software is always up-to-date.
+https://microos.opensuse.org
 #### openSUSE Kubic
-Based on openSUSE MicroOS, designed with the same things in mind but is focused on being a Certified Kubernetes Distribution.   
-https://kubic.opensuse.org  
-Installation instructions:  
-https://kubic.opensuse.org/blog/2021-02-08-MicroOS-Kubic-Rancher-RKE/  
+Based on openSUSE MicroOS, designed with the same things in mind but is focused on being a Certified Kubernetes Distribution.
+https://kubic.opensuse.org
+Installation instructions:
+https://kubic.opensuse.org/blog/2021-02-08-MicroOS-Kubic-Rancher-RKE/
 
 ### Red Hat Enterprise Linux (RHEL) / Oracle Linux (OL) / CentOS
 
 If using Red Hat Enterprise Linux, Oracle Linux or CentOS, you cannot use the `root` user as [SSH user]({{<baseurl>}}/rke/latest/en/config-options/nodes/#ssh-user) due to [Bugzilla 1527565](https://bugzilla.redhat.com/show_bug.cgi?id=1527565). Please follow the instructions below how to setup Docker correctly, based on the way you installed Docker on the node.
 
 >**Note:** In RHEL 8.4, two extra services are included on the NetworkManager: `nm-cloud-setup.service` and `nm-cloud-setup.timer`. These services add a routing table that interferes with the CNI plugin's configuration. If these services are enabled, you must disable them using the command below, and then reboot the node to restore connectivity:
->  
+>
 >  ```
    systemctl disable nm-cloud-setup.service nm-cloud-setup.timer
    reboot
@@ -236,7 +236,7 @@ rancher_kubernetes_engine_config:
     kube-controller:
       extra_args:
         flex-volume-plugin-dir: /opt/kubernetes/kubelet-plugins/volume/exec/
-``` 
+```
 {{% /tab %}}
 
 {{% tab "Calico"%}}
@@ -293,7 +293,7 @@ This section describes the hardware requirements for the worker role, large Kube
 
 ### Worker Role
 
-The hardware requirements for nodes with the `worker` role mostly depend on your workloads. The minimum to run the Kubernetes node components is 1 CPU (core) and 1GB of memory. 
+The hardware requirements for nodes with the `worker` role mostly depend on your workloads. The minimum to run the Kubernetes node components is 1 CPU (core) and 1GB of memory.
 
 Regarding CPU and memory, it is recommended that the different planes of Kubernetes clusters (etcd, controlplane, and workers) should be hosted on different nodes so that they can scale separately from each other.
 

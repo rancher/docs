@@ -15,7 +15,7 @@ The steps in this section differ depending on whether or not you are planning to
 >
 > You must have a [private registry](https://docs.docker.com/registry/deploying/#run-an-externally-accessible-registry) available to use.
 >
-> If the registry has certs, follow [this K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/) about adding a private registry. The certs and registry configuration files need to be mounted into the Rancher container.
+> If the registry has certs, follow [this K3s documentation](https://www.rancher.com/docs/k3s/latest/en/installation/private-registry/) about adding a private registry. The certs and registry configuration files need to be mounted into the Rancher container.
 
 {{% tabs %}}
 {{% tab "Linux Only Clusters" %}}

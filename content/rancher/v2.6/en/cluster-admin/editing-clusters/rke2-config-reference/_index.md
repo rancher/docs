@@ -157,7 +157,7 @@ Additional Kubernetes manifests, managed as an [Add-on](https://kubernetes.io/do
 
 ### Agent Environment Vars
 
-Option to set environment variables for [Rancher agents](https://rancher.com/docs/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. Refer to the [RKE2 documentation](https://docs.rke2.io/install/install_options/linux_agent_config/) for more details.
+Option to set environment variables for [Rancher agents](https://www.rancher.com/docs/rancher/v2.6/en/cluster-provisioning/rke-clusters/rancher-agents/). The environment variables can be set using key value pairs. Refer to the [RKE2 documentation](https://docs.rke2.io/install/install_options/linux_agent_config/) for more details.
 
 ### etcd
 

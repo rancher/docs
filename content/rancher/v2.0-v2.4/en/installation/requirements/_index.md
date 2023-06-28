@@ -27,7 +27,7 @@ The Rancher UI works best in Firefox or Chrome.
 
 Rancher should work with any modern Linux distribution.
 
-For details on which OS, Docker, and Kubernetes versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+For details on which OS, Docker, and Kubernetes versions were tested with each Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/)
 
 All supported operating systems are 64-bit x86.
 
@@ -45,7 +45,7 @@ For the container runtime, RKE should work with any modern Docker version.
 
 For the container runtime, K3s should work with any modern version of Docker or containerd.
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 
 If you are installing Rancher on a K3s cluster with **Raspbian Buster**, follow [these steps]({{<baseurl>}}/k3s/latest/en/advanced/#enabling-legacy-iptables-on-raspbian-buster) to switch to legacy iptables.
 
@@ -78,7 +78,7 @@ Performance increased in Rancher v2.4.0. For the requirements of Rancher before 
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB   |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB  |
 
-Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
+Every use case and environment is different. Please [contact Rancher](https://www.rancher.com/contact/) to review yours.
 
 {{% /tab %}}
 
@@ -94,7 +94,7 @@ These requirements apply to each host in a [K3s Kubernetes cluster where the Ran
 | X-Large         | Up to 1000 | Up to 10,000 | 16     | 64 GB    | 2 cores, 4 GB + 1000 IOPS |
 | XX-Large        | Up to 2000 | Up to 20,000 | 32     | 128 GB   | 2 cores, 4 GB + 1000 IOPS |
 
-Every use case and environment is different. Please [contact Rancher](https://rancher.com/contact/) to review yours.
+Every use case and environment is different. Please [contact Rancher](https://www.rancher.com/contact/) to review yours.
 
 {{% /tab %}}
 
@@ -121,7 +121,7 @@ These requirements apply to installing Rancher on an RKE Kubernetes cluster befo
 | Medium          | Up to 15  | Up to 200  | 4                                               | 16 GB                                           |
 | Large           | Up to 50  | Up to 500  | 8                                               | 32 GB                                           |
 | X-Large         | Up to 100 | Up to 1000 | 32                                              | 128 GB                                          |
-| XX-Large        | 100+      | 1000+      | [Contact Rancher](https://rancher.com/contact/) | [Contact Rancher](https://rancher.com/contact/) |
+| XX-Large        | 100+      | 1000+      | [Contact Rancher](https://www.rancher.com/contact/) | [Contact Rancher](https://www.rancher.com/contact/) |
 {{% /accordion %}}
 
 ### Disks

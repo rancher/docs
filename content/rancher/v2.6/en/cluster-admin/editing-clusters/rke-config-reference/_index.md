@@ -79,7 +79,7 @@ To edit an RKE config file directly from the Rancher UI,
 
 > Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the RKE cluster configuration file in YAML. For the complete reference of configurable options for RKE Kubernetes clusters in YAML, see the [RKE documentation.]({{<baseurl>}}/rke/latest/en/config-options/)
 
-### Kubernetes Version 
+### Kubernetes Version
 
 The version of Kubernetes installed on your cluster nodes. Rancher packages its own version of Kubernetes based on [hyperkube](https://github.com/rancher/hyperkube).
 
@@ -104,7 +104,7 @@ When Weave is selected as network provider, Rancher will automatically enable en
 
 ### Project Network Isolation
 
-If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication. 
+If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication.
 
 Project network isolation is available if you are using any RKE network plugin that supports the enforcement of Kubernetes network policies, such as Canal or the Cisco ACI plugin.
 
@@ -127,7 +127,7 @@ The private registry configuration option tells Rancher where to pull the [syste
 - **System images** are components needed to maintain the Kubernetes cluster.
 - **Add-ons** are used to deploy several cluster components, including network plug-ins, the ingress controller, the DNS provider, or the metrics server.
 
-For more information on setting up a private registry for components applied during the provisioning of the cluster, see the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/). 
+For more information on setting up a private registry for components applied during the provisioning of the cluster, see the [RKE documentation on private registries]({{<baseurl>}}/rke/latest/en/config-options/private-registries/).
 
 Rancher v2.6 introduced the ability to configure [ECR registries for RKE clusters]({{<baseurl>}}/rke/latest/en/config-options/private-registries/#amazon-elastic-container-registry-ecr-private-registry-setup).
 
@@ -151,7 +151,7 @@ For information on using the Rancher UI to set up node pools in an RKE cluster, 
 
 If you want to publish your applications in a high-availability configuration, and you're hosting your nodes with a cloud-provider that doesn't have a native load-balancing feature, enable this option to use NGINX Ingress within the cluster.
 
-### Metrics Server Monitoring 
+### Metrics Server Monitoring
 
 Option to enable or disable [Metrics Server]({{<baseurl>}}/rke/latest/en/config-options/add-ons/metrics-server/).
 
@@ -165,11 +165,11 @@ You must have an existing Pod Security Policy configured before you can use this
 
 ### Docker Version on Nodes
 
-Configures whether nodes are allowed to run versions of Docker that Rancher doesn't officially support. 
+Configures whether nodes are allowed to run versions of Docker that Rancher doesn't officially support.
 
 If you choose to require a supported Docker version, Rancher will stop pods from running on nodes that don't have a supported Docker version installed.
 
-For details on which Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/)
+For details on which Docker versions were tested with each Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/)
 
 ### Docker Root Directory
 

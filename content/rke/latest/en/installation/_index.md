@@ -96,7 +96,7 @@ $ port upgrade rke
 
 The Kubernetes cluster components are launched using Docker on a Linux distro. You can use any Linux you want, as long as you can install Docker on it.
 
-> For information on which Docker versions were tested with your version of RKE, refer to the [terms of service](https://rancher.com/support-maintenance-terms) for installing Rancher on RKE.
+> For information on which Docker versions were tested with your version of RKE, refer to the [terms of service](https://www.rancher.com/support-maintenance-terms) for installing Rancher on RKE.
 
 Review the [OS requirements]({{<baseurl>}}/rke/latest/en/installation/os/) and configure each node appropriately.
 
@@ -181,7 +181,7 @@ The Kubernetes cluster state, which consists of the cluster configuration file `
 
 As of v0.2.0, RKE creates a `.rkestate` file in the same directory that has the cluster configuration file `cluster.yml`. The `.rkestate` file contains the current state of the cluster including the RKE configuration and the certificates. It is required to keep this file in order to update the cluster or perform any operation on it through RKE.
 
-Before v0.2.0, RKE saved the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates/changes the state and saves a new secret.   
+Before v0.2.0, RKE saved the Kubernetes cluster state as a secret. When updating the state, RKE pulls the secret, updates/changes the state and saves a new secret.
 
 ## Interacting with your Kubernetes cluster
 

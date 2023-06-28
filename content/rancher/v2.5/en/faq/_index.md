@@ -40,7 +40,7 @@ Furthermore, Istio is implemented in our micro-PaaS "Rio", which works on Ranche
 
 **Will Rancher v2.x support Hashicorp's Vault for storing secrets?**
 
-There is no built-in integration of Rancher and Hashicorp's Vault. Rancher manages Kubernetes and integrates with secrets via the Kubernetes API. Thus in any downstream (managed) cluster, you can use a secret vault of your choice provided it integrates with Kubernetes, including [Vault](https://www.vaultproject.io/docs/platform/k8s). 
+There is no built-in integration of Rancher and Hashicorp's Vault. Rancher manages Kubernetes and integrates with secrets via the Kubernetes API. Thus in any downstream (managed) cluster, you can use a secret vault of your choice provided it integrates with Kubernetes, including [Vault](https://www.vaultproject.io/docs/platform/k8s).
 
 <br>
 
@@ -52,7 +52,7 @@ At this time, we only support Docker.
 
 **Does Rancher v2.x support Calico, Contiv, Contrail, Flannel, Weave net, etc., for embedded and registered Kubernetes?**
 
-Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave.  Always refer to the [Rancher Support Matrix](https://rancher.com/support-maintenance-terms/) for details about what is officially supported.
+Out-of-the-box, Rancher provides the following CNI network providers for Kubernetes clusters: Canal, Flannel, Calico and Weave.  Always refer to the [Rancher Support Matrix](https://www.rancher.com/support-maintenance-terms/) for details about what is officially supported.
 
 <br>
 

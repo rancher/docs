@@ -155,11 +155,11 @@ The reference `cluster.yml` is used by the RKE CLI that provides the configurati
 ```yaml
 # If you intend to deploy Kubernetes in an air-gapped environment,
 # please consult the documentation on how to configure custom RKE images.
-# https://rancher.com/docs/rke/latest/en/installation/ .
+# https://www.rancher.com/docs/rke/latest/en/installation/ .
 
 # The nodes directive is required and will vary depending on your environment.
 # Documentation for node configuration can be found here:
-# https://rancher.com/docs/rke/latest/en/config-options/nodes/
+# https://www.rancher.com/docs/rke/latest/en/config-options/nodes/
 nodes: []
 services:
   etcd:
