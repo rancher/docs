@@ -434,7 +434,7 @@ etcd is a highly-available key-value store used by Kubernetes deployments for pe
 
 On a etcd server node, get the etcd data directory, passed as an argument `--data-dir`, from the below command:
 
-``` bash 
+``` bash
 ps -ef | grep etcd
 ```
 
@@ -1024,7 +1024,7 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.0-v2.4/en/installation/resources/chart-options/>
+- <https://www.rancher.com/docs/rancher/v2.0-v2.4/en/installation/resources/chart-options/>
 
 ## 3.2 - Rancher Management Control Plane Authentication
 
@@ -1081,7 +1081,7 @@ Configure the appropriate authentication provider for your Rancher installation 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.0-v2.4/en/admin-settings/authentication/>
+- <https://www.rancher.com/docs/rancher/v2.0-v2.4/en/admin-settings/authentication/>
 
 ## 3.3 - Rancher Management Control Plane RBAC
 

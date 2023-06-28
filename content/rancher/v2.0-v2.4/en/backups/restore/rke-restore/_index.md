@@ -12,7 +12,7 @@ aliases:
   - /rancher/v2.x/en/backups/v2.0.x-v2.4.x/restore/rke-restore/
 ---
 
-This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster. 
+This procedure describes how to use RKE to restore a snapshot of the Rancher Kubernetes cluster.
 This will restore the Kubernetes configuration and the Rancher database and state.
 
 > **Note:** This document covers clusters set up with RKE >= v0.2.x, for older RKE versions refer to the [RKE Documentation]({{<baseurl>}}/rke/latest/en/etcd-snapshots/restoring-from-backup).
@@ -32,7 +32,7 @@ This will restore the Kubernetes configuration and the Rancher database and stat
 
 It is advised that you run the restore from your local host or a jump box/bastion where your cluster yaml, rke statefile, and kubeconfig are stored.  You will need [RKE]({{<baseurl>}}/rke/latest/en/installation/) and [kubectl]({{<baseurl>}}/rancher/v2.0-v2.4/en/faq/kubectl/) CLI utilities installed locally.
 
-Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  We recommend that you start with fresh nodes and a clean state. For clarification on the requirements, review the [Installation Requirements](https://rancher.com/docs/rancher/v2.0-v2.4/en/installation/requirements/).  
+Prepare by creating 3 new nodes to be the target for the restored Rancher instance.  We recommend that you start with fresh nodes and a clean state. For clarification on the requirements, review the [Installation Requirements](https://www.rancher.com/docs/rancher/v2.0-v2.4/en/installation/requirements/).
 
 Alternatively you can re-use the existing nodes after clearing Kubernetes and Rancher configurations. This will destroy the data on these nodes. See [Node Cleanup]({{<baseurl>}}/rancher/v2.0-v2.4/en/faq/cleaning-cluster-nodes/) for the procedure.
 
@@ -137,5 +137,5 @@ kube-system     tiller-deploy-56c4cf647b-j4whh          1/1       Running   1   
 
 #### Finishing Up
 
-Rancher should now be running and available to manage your Kubernetes clusters. 
+Rancher should now be running and available to manage your Kubernetes clusters.
 > **IMPORTANT:** Remember to save your updated RKE config (`rancher-cluster.yml`) state file (`rancher-cluster.rkestate`) and `kubectl` credentials (`kube_config_rancher-cluster.yml`) files in a safe place for future maintenance for example in a version control system.

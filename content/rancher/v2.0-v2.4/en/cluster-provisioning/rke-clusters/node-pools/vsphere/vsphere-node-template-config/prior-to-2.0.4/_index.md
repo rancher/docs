@@ -26,7 +26,7 @@ In the **Account Access** section, enter the vCenter FQDN or IP address and the 
 
 # Scheduling
 
-Choose what hypervisor the virtual machine will be scheduled to. 
+Choose what hypervisor the virtual machine will be scheduled to.
 
 | Parameter                | Required | Description |
 |:------------------------|:--------:|:------------------------------------------------------------|
@@ -81,10 +81,10 @@ Optionally, you can:
 - Assign labels to the VMs that can be used as a base for scheduling rules in the cluster.
 - Customize the configuration of the Docker daemon on the VMs that will be created.
 
-> **Note:** Custom attributes are a legacy feature that will eventually be removed from vSphere. 
+> **Note:** Custom attributes are a legacy feature that will eventually be removed from vSphere.
 
 # Cloud Init
 
 [Cloud-init](https://cloudinit.readthedocs.io/en/latest/) allows you to initialize your nodes by applying configuration on the first boot. This may involve things such as creating users, authorizing SSH keys or setting up the network.
 
-You may specify the URL of a RancherOS cloud-config.yaml file in the the **Cloud Init** field. Refer to the [RancherOS Documentation](https://rancher.com/docs/os/v1.x/en/configuration/#cloud-config) for details on the supported configuration directives. Note that the URL must be network accessible from the VMs created by the template.
+You may specify the URL of a RancherOS cloud-config.yaml file in the the **Cloud Init** field. Refer to the [RancherOS Documentation](https://www.rancher.com/docs/os/v1.x/en/configuration/#cloud-config) for details on the supported configuration directives. Note that the URL must be network accessible from the VMs created by the template.

@@ -4,7 +4,7 @@ shortTitle: Amazon EC2
 description: Learn the prerequisites and steps required in order for you to create an Amazon EC2 cluster using Rancher
 weight: 2210
 ---
-In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
+In this section, you'll learn how to use Rancher to install an [RKE](https://www.rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
 
 First, you will set up your EC2 cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in EC2.
 

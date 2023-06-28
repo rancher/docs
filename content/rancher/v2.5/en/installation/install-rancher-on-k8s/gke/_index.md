@@ -59,8 +59,8 @@ To install `gcloud` and `kubectl`, perform the following steps:
     ```
     source ~/.bash_profile
     ```
-    
-   
+
+
 
 # 3. Configure the gcloud CLI
 
@@ -117,7 +117,7 @@ The following command creates a three-node cluster.
 
 Replace `cluster-name` with the name of your new cluster.
 
-When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
+When choosing a Kubernetes version, be sure to first consult the [support matrix](https://www.rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```
 gcloud container clusters create cluster-name --num-nodes=3 --cluster-version=1.20.10-gke.301

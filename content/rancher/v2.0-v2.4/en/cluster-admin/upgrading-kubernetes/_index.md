@@ -33,7 +33,7 @@ As of Rancher v2.4.0,
 
 # Tested Kubernetes Versions
 
-Before a new version of Rancher is released, it's tested with the latest minor versions of Kubernetes to ensure compatibility. For details on which versions of Kubernetes were tested on each Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.4.17/)
+Before a new version of Rancher is released, it's tested with the latest minor versions of Kubernetes to ensure compatibility. For details on which versions of Kubernetes were tested on each Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.4.17/)
 
 # How Upgrades Work
 

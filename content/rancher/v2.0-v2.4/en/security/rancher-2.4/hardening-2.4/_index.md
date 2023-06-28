@@ -67,7 +67,7 @@ services:
 ```
 
 #### Set `automountServiceAccountToken` to `false` for `default` service accounts
-Kubernetes provides a default service account which is used by cluster workloads where no specific service account is assigned to the pod. Where access to the Kubernetes API from a pod is required, a specific service account should be created for that pod, and rights granted to that service account. The default service account should be configured such that it does not provide a service account token and does not have any explicit rights assignments.  
+Kubernetes provides a default service account which is used by cluster workloads where no specific service account is assigned to the pod. Where access to the Kubernetes API from a pod is required, a specific service account should be created for that pod, and rights granted to that service account. The default service account should be configured such that it does not provide a service account token and does not have any explicit rights assignments.
 
 For each namespace including **default** and **kube-system** on a standard RKE install the **default** service account must include this value:
 
@@ -87,7 +87,7 @@ automountServiceAccountToken: false
 
 Create a bash script file called `account_update.sh`. Be sure to `chmod +x account_update.sh` so the script has execute permissions.
 
-``` 
+```
 #!/bin/bash -e
 
 for namespace in $(kubectl get namespaces -A -o json | jq -r '.items[].metadata.name'); do
@@ -109,7 +109,7 @@ policies in a namespace all traffic will be allowed into and out of the pods in 
 namespace. To enforce network policies, a CNI (container network interface) plugin must be enabled.
 This guide uses [canal](https://github.com/projectcalico/canal) to provide the policy enforcement.
 Additional information about CNI providers can be found
-[here](https://rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)
+[here](https://www.rancher.com/blog/2019/2019-03-21-comparing-kubernetes-cni-providers-flannel-calico-canal-and-weave/)
 
 Once a CNI provider is enabled on a cluster a default network policy can be applied. For reference purposes a
 **permissive** example is provide below. If you want to allow all traffic to all pods in a namespace
@@ -151,8 +151,8 @@ Execute this script to apply the `default-allow-all.yaml` the **permissive** `Ne
 
 ### Reference Hardened RKE `cluster.yml` configuration
 The reference `cluster.yml` is used by the RKE CLI that provides the configuration needed to achieve a hardened install
-of Rancher Kubernetes Engine (RKE). Install [documentation](https://rancher.com/docs/rke/latest/en/installation/) is
-provided with additional details about the configuration items. This reference `cluster.yml` does not include the required **nodes** directive which will vary depending on your environment. Documentation for node configuration can be found here: https://rancher.com/docs/rke/latest/en/config-options/nodes
+of Rancher Kubernetes Engine (RKE). Install [documentation](https://www.rancher.com/docs/rke/latest/en/installation/) is
+provided with additional details about the configuration items. This reference `cluster.yml` does not include the required **nodes** directive which will vary depending on your environment. Documentation for node configuration can be found here: https://www.rancher.com/docs/rke/latest/en/config-options/nodes
 
 
 ``` yaml
@@ -163,7 +163,7 @@ enable_network_policy: true
 default_pod_security_policy_template_id: "restricted"
 # the nodes directive is required and will vary depending on your environment
 # documentation for node configuration can be found here:
-#  https://rancher.com/docs/rke/latest/en/config-options/nodes
+#  https://www.rancher.com/docs/rke/latest/en/config-options/nodes
 nodes:
 services:
   etcd:
@@ -362,7 +362,7 @@ addons: |
   - kind: ServiceAccount
     name: tiller
     namespace: kube-system
-  
+
 addons_include: []
 system_images:
   etcd: ""
@@ -433,24 +433,24 @@ restore:
 dns: null
 ```
 
-### Reference Hardened RKE Template configuration 
+### Reference Hardened RKE Template configuration
 
 The reference RKE Template provides the configuration needed to achieve a hardened install of Kubenetes.
 RKE Templates are used to provision Kubernetes and define Rancher settings. Follow the Rancher
-[documentaion](https://rancher.com/docs/rancher/v2.0-v2.4/en/installation) for additional installation and RKE Template details.
+[documentaion](https://www.rancher.com/docs/rancher/v2.0-v2.4/en/installation) for additional installation and RKE Template details.
 
 ``` yaml
-# 
+#
 # Cluster Config
-# 
+#
 default_pod_security_policy_template_id: restricted
 docker_root_dir: /var/lib/docker
 enable_cluster_alerting: false
 enable_cluster_monitoring: false
 enable_network_policy: true
-# 
+#
 # Rancher Config
-# 
+#
 rancher_kubernetes_engine_config:
   addon_job_timeout: 30
   addons: |-
@@ -605,32 +605,32 @@ rancher_kubernetes_engine_config:
       namespace: kube-system
   ignore_docker_version: true
   kubernetes_version: v1.15.9-rancher1-1
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
   network:
     mtu: 0
     plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -640,7 +640,7 @@ rancher_kubernetes_engine_config:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
   services:
     etcd:
       backup_config:

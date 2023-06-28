@@ -119,7 +119,7 @@ The following command creates a three-node cluster.
 
 Replace `cluster-name` with the name of your new cluster.
 
-When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
+When choosing a Kubernetes version, be sure to first consult the [support matrix](https://www.rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 **Note:** If the version of Kubernetes is updated to v1.22 or later, the version of ingress-nginx would also need to be [updated](https://kubernetes.github.io/ingress-nginx/#faq-migration-to-apiversion-networkingk8siov1).
 

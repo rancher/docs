@@ -16,9 +16,9 @@ Use the navigation bar on the left to find the current best practices for managi
 For more guidance on best practices, you can consult these resources:
 
 - [Security]({{<baseurl>}}/rancher/v2.5/en/security/)
-- [Rancher Blog](https://rancher.com/blog/)
-    - [Articles about best practices on the Rancher blog](https://rancher.com/tags/best-practices/)
-    - [101 More Security Best Practices for Kubernetes](https://rancher.com/blog/2019/2019-01-17-101-more-kubernetes-security-best-practices/)
+- [Rancher Blog](https://www.rancher.com/blog/)
+    - [Articles about best practices on the Rancher blog](https://www.rancher.com/tags/best-practices/)
+    - [101 More Security Best Practices for Kubernetes](https://www.rancher.com/blog/2019/2019-01-17-101-more-kubernetes-security-best-practices/)
 - [Rancher Forum](https://forums.rancher.com/)
 - [Rancher Users Slack](https://slack.rancher.io/)
 - [Rancher Labs YouTube Channel - Online Meetups, Demos, Training, and Webinars](https://www.youtube.com/channel/UCh5Xtp82q8wjijP8npkVTBA/featured)

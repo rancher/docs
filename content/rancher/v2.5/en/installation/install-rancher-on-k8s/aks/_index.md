@@ -45,7 +45,7 @@ az group create --name rancher-rg --location eastus
 
 # 3. Create the AKS Cluster
 
-To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
+To create an AKS cluster, run the following command. Use a VM size that applies to your use case. Refer to [this article](https://docs.microsoft.com/en-us/azure/virtual-machines/sizes) for available sizes and options. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://www.rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```
 az aks create \
@@ -96,9 +96,9 @@ kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 The result should look similar to the following:
 
 ```
-NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                     
+NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)
  AGE
-ingress-nginx-controller   LoadBalancer   10.0.116.18    40.31.180.83   80:31229/TCP,443:31050/TCP  
+ingress-nginx-controller   LoadBalancer   10.0.116.18    40.31.180.83   80:31229/TCP,443:31050/TCP
  67s
 ```
 

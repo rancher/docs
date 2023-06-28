@@ -14,7 +14,7 @@ Several of the alerts use Prometheus expressions as the metric that triggers the
 # Alerts for etcd
 Etcd is the key-value store that contains the state of the Kubernetes cluster. Rancher provides default alerts if the built-in monitoring detects a potential problem with etcd. You don't have to enable monitoring to receive these alerts.
 
-A leader is the node that handles all client requests that need cluster consensus. For more information, you can refer to this [explanation of how etcd works.](https://rancher.com/blog/2019/2019-01-29-what-is-etcd/#how-does-etcd-work)
+A leader is the node that handles all client requests that need cluster consensus. For more information, you can refer to this [explanation of how etcd works.](https://www.rancher.com/blog/2019/2019-01-29-what-is-etcd/#how-does-etcd-work)
 
 The leader of the cluster can change in response to certain events. It is normal for the leader to change, but too many changes can indicate a problem with the network or a high CPU load. With longer latencies, the default etcd configuration may cause frequent heartbeat timeouts, which trigger a new leader election.
 

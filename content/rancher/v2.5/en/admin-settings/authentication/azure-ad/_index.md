@@ -6,7 +6,7 @@ weight: 1115
 {{% tabs %}}
 {{% tab "Rancher v2.5.16+" %}}
 
-## Microsoft Graph API 
+## Microsoft Graph API
 
 Microsoft Graph API is now the flow through which you will set up Azure AD. The below sections will assist [new users](#new-user-setup) in configuring Azure AD with a new instance as well as assist existing Azure app owners in [migrating to the new flow](#migrating-from-azure-ad-graph-api-to-microsoft-graph-api).
 
@@ -106,7 +106,7 @@ Next, set API permissions for Rancher within Azure.
 
 1. Click **Add a permission**.
 
-1. From the **Microsoft Graph**, select the following **Application Permissions**: 
+1. From the **Microsoft Graph**, select the following **Application Permissions**:
     - `Group.Read.All`
     - `User.Read.All`
 
@@ -153,13 +153,13 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
     - Click **Enable**
 
 ![Standard Endpoint Options]({{<baseurl>}}/img/rancher/tenant-application-id-secret2.png)
-    
 
->**For Custom Endpoints:** 
+
+>**For Custom Endpoints:**
 >
 >**Warning:** Custom Endpoints are not supported nor fully tested by Rancher.
 >
-> You will need to also manually enter the Graph, Token, and Auth Endpoints. 
+> You will need to also manually enter the Graph, Token, and Auth Endpoints.
 >
 >- From <b>App registrations</b>, click <b>Endpoints</b>:
 >
@@ -170,7 +170,7 @@ As your final step in Azure, copy the data that you'll use to configure Rancher 
 >   - **Microsoft Graph API endpoint** (Graph Endpoint)
 >   - **OAuth 2.0 token endpoint (v1)** (Token Endpoint)
 >   - **OAuth 2.0 authorization endpoint (v1)** (Auth Endpoint)
-        
+
 
 #### 5. Configure Azure AD in Rancher
 
@@ -195,9 +195,9 @@ Enter the values that you copied to your [text file](#tip).
     | Application ID     | Application ID                        |
     | Application Secret | Key Value                             |
     | Endpoint           | https://login.microsoftonline.com/    |
-    
 
-    >**For Custom Endpoints:** 
+
+    >**For Custom Endpoints:**
     ><br/>
     >The following table maps the custom config values you copied in the Azure portal to the fields in Rancher:
     >
@@ -239,7 +239,7 @@ Since [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-
 
     ![Update Endpoint]({{<baseurl>}}/img/rancher/rancher-button-to-update2.png)
 
-1. When you receive the pop-up warning message, click **Update**. 
+1. When you receive the pop-up warning message, click **Update**.
 
     ![Azure Update Pop-up]({{<baseurl>}}/img/rancher/azure-update-popup2.png)
 
@@ -260,18 +260,18 @@ If you need to roll back your migration, please note the following:
 1. **Caution:** If admins upgrade to Rancher v2.5.16 with an existing Azure AD setup and choose to disable the auth provider, they won't be able to restore the previous setup and also will not be able to set up Azure AD anew using the old flow. Admins will then need to register again with the new auth flow. Rancher now uses the new Graph API and, therefore, users need set up the [proper permissions in the Azure portal](#3-set-required-permissions-for-rancher).
 
 #### Global:
-   
-Rancher Field    | Deprecated Endpoints               
+
+Rancher Field    | Deprecated Endpoints
 ---------------- | -------------------------------------------------------------
 Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/authorize
-Endpoint         | https://login.microsoftonline.com/ 
-Graph Endpoint   | https://graph.windows.net/    
-Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/token   
+Endpoint         | https://login.microsoftonline.com/
+Graph Endpoint   | https://graph.windows.net/
+Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/token
 ---
 
 Rancher Field    | New Endpoints
----------------- | ------------------------------------------------------------------ 
-Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize 
+---------------- | ------------------------------------------------------------------
+Auth Endpoint    | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/authorize
 Endpoint         | https://login.microsoftonline.com/
 Graph Endpoint   | https://graph.microsoft.com
 Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/token
@@ -280,31 +280,31 @@ Token Endpoint   | https://login.microsoftonline.com/{tenantID}/oauth2/v2.0/toke
 
 Rancher Field    | Deprecated Endpoints
 ---------------- | ----------------------------------------------------------
-Auth Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize 
+Auth Endpoint    | https://login.chinacloudapi.cn/{tenantID}/oauth2/authorize
 Endpoint         | https://login.chinacloudapi.cn/
 Graph Endpoint   | https://graph.chinacloudapi.cn/
-Token Endpoint   | https://login.chinacloudapi.cn/{tenantID}/oauth2/token 
+Token Endpoint   | https://login.chinacloudapi.cn/{tenantID}/oauth2/token
 ---
 
-Rancher Field    | New Endpoints  
+Rancher Field    | New Endpoints
 ---------------- | -------------------------------------------------------------------------
-Auth Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize 
+Auth Endpoint    | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/authorize
 Endpoint         | https://login.partner.microsoftonline.cn/
 Graph Endpoint   | https://microsoftgraph.chinacloudapi.cn
-Token Endpoint   | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/token 
+Token Endpoint   | https://login.partner.microsoftonline.cn/{tenantID}/oauth2/v2.0/token
 
 
 {{% /tab %}}
 {{% tab "Rancher v2.5.0 - v2.5.15" %}}
 
-## Azure AD Graph API 
+## Azure AD Graph API
 
->**Important:** 
+>**Important:**
 >
 >- The [Azure AD Graph API](https://docs.microsoft.com/en-us/graph/migrate-azure-ad-graph-overview) was deprecated in June 2022 and will be retired at the end of 2022. We will update our docs to advise the community when it is retired. Rancher now uses the [Microsoft Graph API](https://docs.microsoft.com/en-us/graph/use-the-api) as the new flow to set up Azure AD as the external auth provider.
 >
 >
->- For new users, or existing users who wish to migrate, refer to the new flow instructions on the <a href="https://rancher.com/docs/rancher/v2.5/en/admin-settings/authentication/azure-ad/#microsoft-graph-api/" target="_blank">Rancher v2.5.16+</a> tab.
+>- For new users, or existing users who wish to migrate, refer to the new flow instructions on the <a href="https://www.rancher.com/docs/rancher/v2.5/en/admin-settings/authentication/azure-ad/#microsoft-graph-api/" target="_blank">Rancher v2.5.16+</a> tab.
 >
 >
 >- For existing users who do not wish to upgrade to v2.5.16+ after the Azure AD Graph API is retired, they will need to either:

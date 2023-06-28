@@ -11,11 +11,11 @@ This section covers the configuration options that are available in Rancher for 
 You can configure the Kubernetes options one of two ways:
 
 - [Rancher UI](#configuration-options-in-the-rancher-ui): Use the Rancher UI to select options that are commonly customized when setting up a Kubernetes cluster.
-- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a K3s config file. Using a config file allows you to set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
+- [Cluster Config File](#cluster-config-file): Instead of using the Rancher UI to choose Kubernetes options for the cluster, advanced users can create a K3s config file. Using a config file allows you to set any of the [options](https://www.rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
 
 # Configuration Options in the Rancher UI
 
-> Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the K3s cluster configuration file in YAML. For the complete reference of configurable options for K3s clusters in YAML, see the [K3s documentation.](https://rancher.com/docs/k3s/latest/en/installation/install-options/)
+> Some advanced configuration options are not exposed in the Rancher UI forms, but they can be enabled by editing the K3s cluster configuration file in YAML. For the complete reference of configurable options for K3s clusters in YAML, see the [K3s documentation.](https://www.rancher.com/docs/k3s/latest/en/installation/install-options/)
 
 ### Basics
 #### Kubernetes Version
@@ -26,31 +26,31 @@ For more detail, see [Upgrading Kubernetes]({{<baseurl>}}/rancher/v2.6/en/cluste
 
 #### Encrypt Secrets
 
-Option to enable or disable secrets encryption. When enabled, secrets will be encrypted using a AES-CBC key. If disabled, any previously secrets will not be readable until encryption is enabled again. Refer to the [K3s documentation](https://rancher.com/docs/k3s/latest/en/advanced/#secrets-encryption-config-experimental) for details.
+Option to enable or disable secrets encryption. When enabled, secrets will be encrypted using a AES-CBC key. If disabled, any previously secrets will not be readable until encryption is enabled again. Refer to the [K3s documentation](https://www.rancher.com/docs/k3s/latest/en/advanced/#secrets-encryption-config-experimental) for details.
 
 #### Project Network Isolation
 
-If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication. 
+If your network provider allows project network isolation, you can choose whether to enable or disable inter-project communication.
 
 #### SELinux
 
-Option to enable or disable [SELinux](https://rancher.com/docs/k3s/latest/en/advanced/#selinux-support) support.
+Option to enable or disable [SELinux](https://www.rancher.com/docs/k3s/latest/en/advanced/#selinux-support) support.
 
 #### CoreDNS
 
-By default, [CoreDNS](https://coredns.io/) is installed as the default DNS provider. If CoreDNS is not installed, an alternate DNS provider must be installed yourself. Refer to the [K3s documentation](https://rancher.com/docs/k3s/latest/en/networking/#coredns) for details..
+By default, [CoreDNS](https://coredns.io/) is installed as the default DNS provider. If CoreDNS is not installed, an alternate DNS provider must be installed yourself. Refer to the [K3s documentation](https://www.rancher.com/docs/k3s/latest/en/networking/#coredns) for details..
 
 #### Klipper Service LB
 
-Option to enable or disable the [Klipper](https://github.com/rancher/klipper-lb) service load balancer. Refer to the [K3s documentation](https://rancher.com/docs/k3s/latest/en/networking/#service-load-balancer) for details.
+Option to enable or disable the [Klipper](https://github.com/rancher/klipper-lb) service load balancer. Refer to the [K3s documentation](https://www.rancher.com/docs/k3s/latest/en/networking/#service-load-balancer) for details.
 
 #### Traefik Ingress
 
-Option to enable or disable the [Traefik](https://traefik.io/) HTTP reverse proxy and load balancer. For more details and configuration options, see the [K3s documentation](https://rancher.com/docs/k3s/latest/en/networking/#traefik-ingress-controller).
+Option to enable or disable the [Traefik](https://traefik.io/) HTTP reverse proxy and load balancer. For more details and configuration options, see the [K3s documentation](https://www.rancher.com/docs/k3s/latest/en/networking/#traefik-ingress-controller).
 
 #### Local Storage
 
-Option to enable or disable [local storage](https://rancher.com/docs/k3s/latest/en/storage/) on the node(s).
+Option to enable or disable [local storage](https://www.rancher.com/docs/k3s/latest/en/storage/) on the node(s).
 
 #### Metrics Server
 
@@ -58,17 +58,17 @@ Option to enable or disable the [metrics server](https://github.com/kubernetes-i
 
 ### Add-On Config
 
-Additional Kubernetes manifests, managed as a [Add-on](https://kubernetes.io/docs/concepts/cluster-administration/addons/), to apply to the cluster on startup. Refer to the [K3s documentation](https://rancher.com/docs/k3s/latest/en/helm/#automatically-deploying-manifests-and-helm-charts) for details.
+Additional Kubernetes manifests, managed as a [Add-on](https://kubernetes.io/docs/concepts/cluster-administration/addons/), to apply to the cluster on startup. Refer to the [K3s documentation](https://www.rancher.com/docs/k3s/latest/en/helm/#automatically-deploying-manifests-and-helm-charts) for details.
 
 ### Agent Environment Vars
 
-Option to set environment variables for [K3s agents](https://rancher.com/docs/k3s/latest/en/architecture/). The environment variables can be set using key value pairs. Refer to the [K3 documentation](https://rancher.com/docs/k3s/latest/en/installation/install-options/agent-config/) for more details.
+Option to set environment variables for [K3s agents](https://www.rancher.com/docs/k3s/latest/en/architecture/). The environment variables can be set using key value pairs. Refer to the [K3 documentation](https://www.rancher.com/docs/k3s/latest/en/installation/install-options/agent-config/) for more details.
 
 ### etcd
 
 #### Automatic Snapshots
 
-Option to enable or disable recurring etcd snapshots. If enabled, users have the option to configure the frequency of snapshots. For details, refer to the [K3s documentation](https://rancher.com/docs/k3s/latest/en/backup-restore/#creating-snapshots).
+Option to enable or disable recurring etcd snapshots. If enabled, users have the option to configure the frequency of snapshots. For details, refer to the [K3s documentation](https://www.rancher.com/docs/k3s/latest/en/backup-restore/#creating-snapshots).
 
 #### Metrics
 
@@ -110,7 +110,7 @@ We recommend using a load balancer with the authorized cluster endpoint. For det
 
 ### Registries
 
-Select the image repository to pull Rancher images from. For more details and configuration options, see the [K3s documentation](https://rancher.com/docs/k3s/latest/en/installation/private-registry/).
+Select the image repository to pull Rancher images from. For more details and configuration options, see the [K3s documentation](https://www.rancher.com/docs/k3s/latest/en/installation/private-registry/).
 
 ### Upgrade Strategy
 
@@ -136,7 +136,7 @@ Option to set kubelet options for different nodes. For available options, refer 
 
 # Cluster Config File
 
-Instead of using the Rancher UI forms to choose Kubernetes options for the cluster, advanced users can create an K3s config file. Using a config file allows you to set any of the [options](https://rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
+Instead of using the Rancher UI forms to choose Kubernetes options for the cluster, advanced users can create an K3s config file. Using a config file allows you to set any of the [options](https://www.rancher.com/docs/k3s/latest/en/installation/install-options/) available in an K3s installation.
 
 To edit an K3s config file directly from the Rancher UI, click **Edit as YAML**.
 

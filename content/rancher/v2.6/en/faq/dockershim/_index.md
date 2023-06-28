@@ -19,13 +19,13 @@ For users looking to use another container runtime, Rancher has the edge-focused
 
 <br>
 
-Q. Do I have to upgrade Rancher to get Rancher’s support of the upstream Dockershim?  
+Q. Do I have to upgrade Rancher to get Rancher’s support of the upstream Dockershim?
 
-The upstream support of Dockershim begins for RKE in Kubernetes 1.21. You will need to be on Rancher 2.6 or above to have support for RKE with Kubernetes 1.21. See our [support matrix](https://rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.6.0/) for details.
+The upstream support of Dockershim begins for RKE in Kubernetes 1.21. You will need to be on Rancher 2.6 or above to have support for RKE with Kubernetes 1.21. See our [support matrix](https://www.rancher.com/support-maintenance-terms/all-supported-versions/rancher-v2.6.0/) for details.
 
-<br> 
+<br>
 
-Q. I am currently on RKE with Kubernetes 1.20. Do I need to upgrade to RKE with Kubernetes 1.21 sooner to avoid being out of support for Dockershim?   
+Q. I am currently on RKE with Kubernetes 1.20. Do I need to upgrade to RKE with Kubernetes 1.21 sooner to avoid being out of support for Dockershim?
 
 A. The version of Dockershim in RKE with Kubernetes 1.20 will continue to work and is not scheduled for removal upstream until Kubernetes 1.24. It will only emit a warning of its future deprecation, which Rancher has mitigated in RKE with Kubernetes 1.21. You can plan your upgrade to Kubernetes 1.21 as you would normally, but should consider enabling the external Dockershim by Kubernetes 1.22. The external Dockershim will need to be enabled before upgrading to Kubernetes 1.24, at which point the existing implementation will be removed.
 
@@ -33,14 +33,14 @@ For more information on the deprecation and its timeline, see the [Kubernetes Do
 
 <br>
 
-Q: What are my other options if I don’t want to depend on the Dockershim? 
+Q: What are my other options if I don’t want to depend on the Dockershim?
 
 A: You can use a runtime like containerd with Kubernetes that does not require Dockershim support. RKE2 or K3s are two options for doing this.
 
 <br>
 
-Q: If I am already using RKE1 and want to switch to RKE2, what are my migration options?  
+Q: If I am already using RKE1 and want to switch to RKE2, what are my migration options?
 
-A: Rancher is exploring the possibility of an in-place upgrade path. Alternatively you can always migrate workloads from one cluster to another using kubectl. 
+A: Rancher is exploring the possibility of an in-place upgrade path. Alternatively you can always migrate workloads from one cluster to another using kubectl.
 
 <br>

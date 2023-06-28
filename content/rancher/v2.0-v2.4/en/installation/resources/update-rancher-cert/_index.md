@@ -76,7 +76,7 @@ Also get the version string of the currently deployed Rancher chart:
 $ helm ls -A
 ```
 
-Upgrade the Helm application instance using the original configuration values and making sure to specify `ingress.tls.source=secret` as well as the current chart version to prevent an application upgrade.    
+Upgrade the Helm application instance using the original configuration values and making sure to specify `ingress.tls.source=secret` as well as the current chart version to prevent an application upgrade.
 
 If the certificate was signed by a private CA, add the `set privateCA=true` argument as well. Also make sure to read the documentation describing the initial installation using custom certificates.
 
@@ -106,7 +106,7 @@ When Rancher is configured with a certificate signed by a private CA, the CA cer
 
 Method 1 is the easiest one but requires all clusters to be connected to Rancher after the certificates have been rotated. This is usually the case if the process is performed right after updating the Rancher deployment (Step 3).
 
-If the clusters have lost connection to Rancher but you have [Authorized Cluster Endpoints](https://rancher.com/docs/rancher/v2.0-v2.4/en/cluster-admin/cluster-access/ace/) enabled, then go with method 2.
+If the clusters have lost connection to Rancher but you have [Authorized Cluster Endpoints](https://www.rancher.com/docs/rancher/v2.0-v2.4/en/cluster-admin/cluster-access/ace/) enabled, then go with method 2.
 
 Method 3 can be used as a fallback if method 1 and 2 are unfeasible.
 
@@ -189,7 +189,7 @@ kubectl -n cattle-system delete secret tls-ca
 
 ## 3. Reconfigure the Rancher deployment
 
-> Before proceeding, [generate an API token in the Rancher UI](https://rancher.com/docs/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
+> Before proceeding, [generate an API token in the Rancher UI](https://www.rancher.com/docs/rancher/v2.6/en/user-settings/api-keys/#creating-an-api-key) (<b>User > API & Keys</b>) and save the Bearer Token which you might need in step 4.
 
 This step is required if Rancher was initially installed with self-signed certificates (`ingress.tls.source=rancher`) or with a Let's Encrypt issued certificate (`ingress.tls.source=letsEncrypt`).
 
@@ -207,7 +207,7 @@ Also get the version string of the currently deployed Rancher chart:
 $ helm ls -A
 ```
 
-Upgrade the Helm application instance using the original configuration values and making sure to specify the current chart version to prevent an application upgrade.    
+Upgrade the Helm application instance using the original configuration values and making sure to specify the current chart version to prevent an application upgrade.
 
 Also make sure to read the documentation describing the initial installation using custom certificates.
 
@@ -219,9 +219,9 @@ helm upgrade rancher rancher-stable/rancher \
   --set ...
 ```
 
-On upgrade, you can either 
+On upgrade, you can either
 
-- remove `--set ingress.tls.source=secret \` from the Helm upgrade command, as shown above, or 
+- remove `--set ingress.tls.source=secret \` from the Helm upgrade command, as shown above, or
 
 - remove the `privateCA` parameter or set it to `false` because the CA is valid:
 

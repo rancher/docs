@@ -6,9 +6,9 @@ weight: 2210
 aliases:
   - /rancher/v2.x/en/cluster-provisioning/rke-clusters/node-pools/ec2/
 ---
-In this section, you'll learn how to use Rancher to install an [RKE](https://rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
+In this section, you'll learn how to use Rancher to install an [RKE](https://www.rancher.com/docs/rke/latest/en/) Kubernetes cluster in Amazon EC2.
 
-First, you will set up your EC2 cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in EC2. 
+First, you will set up your EC2 cloud credentials in Rancher. Then you will use your cloud credentials to create a node template, which Rancher will use to provision new nodes in EC2.
 
 Then you will create an EC2 cluster in Rancher, and when configuring the new cluster, you will define node pools for it. Each node pool will have a Kubernetes role of etcd, controlplane, or worker. Rancher will install RKE Kubernetes on the new nodes, and it will set up each node with the Kubernetes role defined by the node pool.
 
@@ -39,7 +39,7 @@ The steps to create a cluster differ based on your Rancher version.
 1. Enter your AWS EC2 **Access Key** and **Secret Key.**
 1. Click **Create.**
 
-**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters. 
+**Result:** You have created the cloud credentials that will be used to provision nodes in your cluster. You can reuse these credentials for other node templates, or in other clusters.
 
 ### 2. Create a node template with your cloud credentials and information from EC2
 
@@ -58,18 +58,18 @@ Clusters won't begin provisioning until all three node roles (worker, etcd and c
 1. From the **Clusters** page, click **Add Cluster**.
 1. Choose **Amazon EC2**.
 1. Enter a **Cluster Name**.
-1. Create a node pool for each Kubernetes role. For each node pool, choose a node template that you created. For more information about node pools, including best practices for assigning Kubernetes roles to them, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools) 
+1. Create a node pool for each Kubernetes role. For each node pool, choose a node template that you created. For more information about node pools, including best practices for assigning Kubernetes roles to them, see [this section.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/node-pools)
 1. Click **Add Member** to add users that can access the cluster. Use the **Role** drop-down to set permissions for each user.
 1. Use **Cluster Options** to choose the version of Kubernetes that will be installed, what network provider will be used and if you want to enable project network isolation. Refer to [Selecting Cloud Providers]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options/cloud-providers/) to configure the Kubernetes Cloud Provider. For help configuring the cluster, refer to the [RKE cluster configuration reference.]({{<baseurl>}}/rancher/v2.5/en/cluster-provisioning/rke-clusters/options)
 1. Click **Create**.
 
-**Result:** 
+**Result:**
 
 Your cluster is created and assigned a state of **Provisioning.** Rancher is standing up your cluster.
 
 You can access your cluster after its state is updated to **Active.**
 
-**Active** clusters are assigned two Projects: 
+**Active** clusters are assigned two Projects:
 
 - `Default`, containing the `default` namespace
 - `System`, containing the `cattle-system`, `ingress-nginx`, `kube-public`, and `kube-system` namespaces

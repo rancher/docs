@@ -12,18 +12,18 @@ aliases:
 
 > Helm 3 has been released.  If you are using Helm 2, we recommend [migrating to Helm 3](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) because it is simpler to use and more secure than Helm 2.
 >
-> The [current instructions for Upgrading Rancher Installed on Kubernetes](https://rancher.com/docs/rancher/v2.0-v2.4/en/upgrades/upgrades/ha/) use Helm 3.
+> The [current instructions for Upgrading Rancher Installed on Kubernetes](https://www.rancher.com/docs/rancher/v2.0-v2.4/en/upgrades/upgrades/ha/) use Helm 3.
 >
 > This section provides a copy of the older instructions for upgrading Rancher with Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
 
-The following instructions will guide you through using Helm to upgrade a Rancher server that is installed on a Kubernetes cluster. 
+The following instructions will guide you through using Helm to upgrade a Rancher server that is installed on a Kubernetes cluster.
 
 To upgrade the components in your Kubernetes cluster, or the definition of the [Kubernetes services]({{<baseurl>}}/rke/latest/en/config-options/services/) or [add-ons]({{<baseurl>}}/rke/latest/en/config-options/add-ons/), refer to the [upgrade documentation for RKE]({{<baseurl>}}/rke/latest/en/upgrades/), the Rancher Kubernetes Engine.
 
 If you installed Rancher using the RKE Add-on yaml, follow the directions to [migrate or upgrade]({{<baseurl>}}/rancher/v2.0-v2.4/en/upgrades/upgrades/migrating-from-rke-add-on).
 
 >**Notes:**
-> 
+>
 > - [Let's Encrypt will be blocking cert-manager instances older than 0.8.0 starting November 1st 2019.](https://community.letsencrypt.org/t/blocking-old-cert-manager-versions/98753) Upgrade cert-manager to the latest version by following [these instructions.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/options/upgrading-cert-manager)
 > - If you are upgrading Rancher from v2.x to v2.3+, and you are using external TLS termination, you will need to edit the cluster.yml to [enable using forwarded host headers.]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/install-rancher-on-k8s/chart-options/#configuring-ingress-for-external-tls-when-using-nginx-v0-25)
 > - The upgrade instructions assume you are using Helm 3. For migration of installs started with Helm 2, refer to the official [Helm 2 to 3 migration docs.](https://helm.sh/blog/migrate-from-helm-v2-to-helm-v3/) This [section]({{<baseurl>}}/rancher/v2.0-v2.4/en/installation/upgrades-rollbacks/upgrades/ha/helm2) provides a copy of the older upgrade instructions that used Helm 2, and it is intended to be used if upgrading to Helm 3 is not feasible.
@@ -114,7 +114,7 @@ helm upgrade --install rancher rancher-<CHART_REPO>/rancher \
 
 {{% accordion label="Option B: Reinstalling Rancher chart" %}}
 
-If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11. 
+If you are currently running the cert-manager whose version is older than v0.11, and want to upgrade both Rancher and cert-manager to a newer version, then you need to reinstall both Rancher and cert-manager due to the API change in cert-manager v0.11.
 
 1. Uninstall Rancher
 

@@ -11,18 +11,18 @@ Running well-built containers can greatly impact the overall performance and sec
 
 Below are a few tips for setting up your containers.
 
-For a more detailed discussion of security for containers, you can also refer to Rancher's [Guide to Container Security.](https://rancher.com/complete-guide-container-security)
+For a more detailed discussion of security for containers, you can also refer to Rancher's [Guide to Container Security.](https://www.rancher.com/complete-guide-container-security)
 
 ### Use a Common Container OS
 
-When possible, you should try to standardize on a common container base OS. 
+When possible, you should try to standardize on a common container base OS.
 
 Smaller distributions such as Alpine and BusyBox reduce container image size and generally have a smaller attack/vulnerability surface.
 
 Popular distributions such as Ubuntu, Fedora, and CentOS are more field-tested and offer more functionality.
 
 ### Start with a FROM scratch container
-If your microservice is a standalone static binary, you should use a FROM scratch container. 
+If your microservice is a standalone static binary, you should use a FROM scratch container.
 
 The FROM scratch container is an [official Docker image](https://hub.docker.com/_/scratch) that is empty so that you can use it to design minimal images.
 

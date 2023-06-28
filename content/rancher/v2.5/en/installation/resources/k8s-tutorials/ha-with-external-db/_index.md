@@ -19,7 +19,7 @@ For systems without direct internet access, refer to the air gap installation in
 
 These instructions assume you have set up two nodes, a load balancer, a DNS record, and an external MySQL database as described in [this section.]({{<baseurl>}}/rancher/v2.5/en/installation/resources/k8s-tutorials/infrastructure-tutorials/infra-for-ha-with-external-db/)
 
-Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
+Rancher needs to be installed on a supported Kubernetes version. To find out which versions of Kubernetes are supported for your Rancher version, refer to the [support maintenance terms.](https://www.rancher.com/support-maintenance-terms/) To specify the K3s version, use the INSTALL_K3S_VERSION environment variable when running the K3s installation script.
 # Installing Kubernetes
 
 ### 1. Install Kubernetes and Set up the K3s Server
@@ -53,7 +53,7 @@ Then you should see two nodes with the master role:
 ubuntu@ip-172-31-60-194:~$ sudo k3s kubectl get nodes
 NAME               STATUS   ROLES    AGE    VERSION
 ip-172-31-60-194   Ready    master   44m    v1.17.2+k3s1
-ip-172-31-63-88    Ready    master   6m8s   v1.17.2+k3s1  
+ip-172-31-63-88    Ready    master   6m8s   v1.17.2+k3s1
 ```
 
 Then test the health of the cluster pods:
@@ -67,7 +67,7 @@ sudo k3s kubectl get pods --all-namespaces
 
 When you installed K3s on each Rancher server node, a `kubeconfig` file was created on the node at `/etc/rancher/k3s/k3s.yaml`. This file contains credentials for full access to the cluster, and you should save this file in a secure location.
 
-To use this `kubeconfig` file, 
+To use this `kubeconfig` file,
 
 1. Install [kubectl,](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl) a Kubernetes command-line tool.
 2. Copy the file at `/etc/rancher/k3s/k3s.yaml` and save it to the directory `~/.kube/config` on your local machine.

@@ -28,7 +28,7 @@ When installing the integrated monitoring stack, Rancher allows to configure sev
 
 ### Storage and Data Retention
 
-The amount of storage needed for Prometheus directly correlates to the amount of time series and labels that you store and the data retention you have configured. It is important to note that Prometheus is not meant to be used as a long-term metrics storage. Data retention time is usually only a couple of days and not weeks or months. The reason for this is that Prometheus does not perform any aggregation on its stored metrics. This is great because aggregation can dilute data, but it also means that the needed storage grows linearly over time without retention. 
+The amount of storage needed for Prometheus directly correlates to the amount of time series and labels that you store and the data retention you have configured. It is important to note that Prometheus is not meant to be used as a long-term metrics storage. Data retention time is usually only a couple of days and not weeks or months. The reason for this is that Prometheus does not perform any aggregation on its stored metrics. This is great because aggregation can dilute data, but it also means that the needed storage grows linearly over time without retention.
 
 One way to calculate the necessary storage is to look at the average size of a storage chunk in Prometheus with this query
 
@@ -64,7 +64,7 @@ The amount of necessary CPUs correlate with the amount of queries you are perfor
 
 Prometheus is not meant to store metrics for a long amount of time, but should only be used for short term storage.
 
-In order to store some, or all metrics for a long time, you can leverage Prometheus' [remote read/write](https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations) capabilities to connect it to storage systems like [Thanos](https://thanos.io/), [InfluxDB](https://www.influxdata.com/), [M3DB](https://www.m3db.io/), or others. You can find an example setup in this [blog post](https://rancher.com/blog/2020/prometheus-metric-federation).
+In order to store some, or all metrics for a long time, you can leverage Prometheus' [remote read/write](https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations) capabilities to connect it to storage systems like [Thanos](https://thanos.io/), [InfluxDB](https://www.influxdata.com/), [M3DB](https://www.m3db.io/), or others. You can find an example setup in this [blog post](https://www.rancher.com/blog/2020/prometheus-metric-federation).
 
 # Scraping Custom Workloads
 

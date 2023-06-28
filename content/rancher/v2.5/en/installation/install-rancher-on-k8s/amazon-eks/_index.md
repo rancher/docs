@@ -81,7 +81,7 @@ Then enter the following values:
 
 ### 3. Create the EKS Cluster
 
-To create an EKS cluster, run the following command. Use the AWS region that applies to your use case. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
+To create an EKS cluster, run the following command. Use the AWS region that applies to your use case. When choosing a Kubernetes version, be sure to first consult the [support matrix](https://www.rancher.com/support-matrix/) to find the highest version of Kubernetes that has been validated for your Rancher version.
 
 ```
 eksctl create cluster \
@@ -143,9 +143,9 @@ kubectl get service ingress-nginx-controller --namespace=ingress-nginx
 The result should look similar to the following:
 
 ```
-NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP                                                              PORT(S)                     
+NAME                       TYPE           CLUSTER-IP     EXTERNAL-IP                                                              PORT(S)
  AGE
-ingress-nginx-controller   LoadBalancer   10.100.90.18   a904a952c73bf4f668a17c46ac7c56ab-962521486.us-west-2.elb.amazonaws.com   80:31229/TCP,443:31050/TCP  
+ingress-nginx-controller   LoadBalancer   10.100.90.18   a904a952c73bf4f668a17c46ac7c56ab-962521486.us-west-2.elb.amazonaws.com   80:31229/TCP,443:31050/TCP
  27m
 ```
 

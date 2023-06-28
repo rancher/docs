@@ -36,7 +36,7 @@ Run chaoskube or a similar mechanism to randomly kill pods in your test environm
 ### Deploy Complicated Clusters with Terraform
 Rancher's "Add Cluster" UI is preferable for getting started with Kubernetes cluster orchestration or for simple use cases. However, for more complex or demanding use cases, it is recommended to use a CLI/API driven approach. [Terraform](https://www.terraform.io/) is recommended as the tooling to implement this. When you use Terraform with version control and a CI/CD environment, you can have high assurances of consistency and reliability when deploying Kubernetes clusters. This approach also gives you the most customization options.
 
-Rancher [maintains a Terraform provider](https://rancher.com/blog/2019/rancher-2-terraform-provider/) for working with Rancher 2.0 Kubernetes. It is called the [Rancher2 Provider.](https://www.terraform.io/docs/providers/rancher2/index.html)
+Rancher [maintains a Terraform provider](https://www.rancher.com/blog/2019/rancher-2-terraform-provider/) for working with Rancher 2.0 Kubernetes. It is called the [Rancher2 Provider.](https://www.terraform.io/docs/providers/rancher2/index.html)
 
 ### Upgrade Rancher in a Staging Environment
 All upgrades, both patch and feature upgrades, should be first tested on a staging environment before production is upgraded. The more closely the staging environment mirrors production, the higher chance your production upgrade will be successful.
@@ -63,7 +63,7 @@ Make sure the feature version you are upgrading to is considered "stable" as det
 
 Keep in mind that Rancher does End of Life support for old versions, so you will eventually want to upgrade if you want to continue to receive patches.
 
-For more detail on what happens during the Rancher product lifecycle, refer to the [Support Maintenance Terms](https://rancher.com/support-maintenance-terms/).
+For more detail on what happens during the Rancher product lifecycle, refer to the [Support Maintenance Terms](https://www.rancher.com/support-maintenance-terms/).
 
 # Network Topology
 These tips can help Rancher work more smoothly with your network.
@@ -98,7 +98,7 @@ Closely monitor and scale your nodes as needed. You should [enable cluster monit
 Below are some basic tips for increasing security in Rancher. For more detailed information about securing your cluster, you can refer to these resources:
 
 - Rancher's [security documentation and Kubernetes cluster hardening guide]({{<baseurl>}}/rancher/v2.0-v2.4/en/security/)
-- [101 More Security Best Practices for Kubernetes](https://rancher.com/blog/2019/2019-01-17-101-more-kubernetes-security-best-practices/)
+- [101 More Security Best Practices for Kubernetes](https://www.rancher.com/blog/2019/2019-01-17-101-more-kubernetes-security-best-practices/)
 
 ### Update Rancher with Security Patches
 Keep your Rancher installation up to date with the latest patches. Patch updates have important software fixes and sometimes have security fixes. When patches with security fixes are released, customers with Rancher licenses are notified by e-mail. These updates are also posted on Rancher's [forum](https://forums.rancher.com/).

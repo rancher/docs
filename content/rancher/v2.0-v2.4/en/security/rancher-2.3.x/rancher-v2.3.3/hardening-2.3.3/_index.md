@@ -172,7 +172,7 @@ etcd is a highly-available key-value store used by Kubernetes deployments for pe
 
 On a etcd server node, get the etcd data directory, passed as an argument `--data-dir`, from the below command:
 
-``` bash 
+``` bash
 ps -ef | grep etcd
 ```
 
@@ -764,7 +764,7 @@ Upgrade the Rancher server installation using Helm, and configure the audit log 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.0-v2.4/en/installation/resources/chart-options/>
+- <https://www.rancher.com/docs/rancher/v2.0-v2.4/en/installation/resources/chart-options/>
 
 ## 3.2 - Rancher Management Control Plane Authentication
 
@@ -821,7 +821,7 @@ Configure the appropriate authentication provider for your Rancher installation 
 
 #### Reference
 
-- <https://rancher.com/docs/rancher/v2.0-v2.4/en/admin-settings/authentication/>
+- <https://www.rancher.com/docs/rancher/v2.0-v2.4/en/admin-settings/authentication/>
 
 ## 3.3 - Rancher Management Control Plane RBAC
 
@@ -1295,48 +1295,48 @@ bastion_host:
   ssh_agent_auth: false
 cloud_provider: {}
 ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
 ingress:
   provider: nginx
 kubernetes_version: v1.14.9-rancher1-1
 monitoring:
   provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
 network:
   options:
     flannel_backend_type: vxlan
   plugin: canal
 restore:
   restore: false
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -1346,7 +1346,7 @@ restore:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
 services:
   etcd:
     backup_config:
@@ -1423,46 +1423,46 @@ addon_job_timeout: 30
 authentication:
   strategy: x509
 ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
 ingress:
   provider: nginx
 kubernetes_version: v1.15.6-rancher1-2
 monitoring:
   provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
 network:
   options:
     flannel_backend_type: vxlan
   plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -1472,7 +1472,7 @@ network:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
 services:
   etcd:
     backup_config:
@@ -1547,46 +1547,46 @@ addon_job_timeout: 30
 authentication:
   strategy: x509
 ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
 ingress:
   provider: nginx
 kubernetes_version: v1.16.3-rancher1-1
 monitoring:
   provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
 network:
   options:
     flannel_backend_type: vxlan
   plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -1596,7 +1596,7 @@ network:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
 services:
   etcd:
     backup_config:
@@ -1653,15 +1653,15 @@ ssh_agent_auth: false
 
 ## Appendix C - Complete RKE Template Example
 
-Before apply, replace `rancher_kubernetes_engine_config.services.etcd.gid` and `rancher_kubernetes_engine_config.services.etcd.uid` with the proper etcd group and user ids that were created on etcd nodes. 
+Before apply, replace `rancher_kubernetes_engine_config.services.etcd.gid` and `rancher_kubernetes_engine_config.services.etcd.uid` with the proper etcd group and user ids that were created on etcd nodes.
 
 
 {{% accordion id="k8s-1.14" label="RKE template for k8s 1.14" %}}
 
 ``` yaml
-# 
+#
 # Cluster Config
-# 
+#
 answers: {}
 default_pod_security_policy_template_id: restricted
 docker_root_dir: /var/lib/docker
@@ -1671,9 +1671,9 @@ enable_network_policy: false
 local_cluster_auth_endpoint:
   enabled: false
 name: test-35378
-# 
+#
 # Rancher Config
-# 
+#
 rancher_kubernetes_engine_config:
   addon_job_timeout: 30
   authentication:
@@ -1683,48 +1683,48 @@ rancher_kubernetes_engine_config:
     ssh_agent_auth: false
   cloud_provider: {}
   ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
   ingress:
     provider: nginx
   kubernetes_version: v1.14.9-rancher1-1
   monitoring:
     provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
   network:
     options:
       flannel_backend_type: vxlan
     plugin: canal
   restore:
     restore: false
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -1734,7 +1734,7 @@ rancher_kubernetes_engine_config:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
   services:
     etcd:
       backup_config:
@@ -1795,9 +1795,9 @@ windows_prefered_cluster: false
 {{% accordion id="k8s-1.15" label="RKE template for k8s 1.15" %}}
 
 ``` yaml
-# 
+#
 # Cluster Config
-# 
+#
 default_pod_security_policy_template_id: restricted
 docker_root_dir: /var/lib/docker
 enable_cluster_alerting: false
@@ -1805,54 +1805,54 @@ enable_cluster_monitoring: false
 enable_network_policy: false
 local_cluster_auth_endpoint:
   enabled: true
-# 
+#
 # Rancher Config
-# 
+#
 rancher_kubernetes_engine_config:
   addon_job_timeout: 30
   authentication:
     strategy: x509
   ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
   ingress:
     provider: nginx
   kubernetes_version: v1.15.6-rancher1-2
   monitoring:
     provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
   network:
     options:
       flannel_backend_type: vxlan
     plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -1862,7 +1862,7 @@ rancher_kubernetes_engine_config:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
   services:
     etcd:
       backup_config:
@@ -1921,9 +1921,9 @@ windows_prefered_cluster: false
 {{% accordion id="k8s-1.16" label="RKE template for k8s 1.16" %}}
 
 ``` yaml
-# 
+#
 # Cluster Config
-# 
+#
 default_pod_security_policy_template_id: restricted
 docker_root_dir: /var/lib/docker
 enable_cluster_alerting: false
@@ -1931,54 +1931,54 @@ enable_cluster_monitoring: false
 enable_network_policy: false
 local_cluster_auth_endpoint:
   enabled: true
-# 
+#
 # Rancher Config
-# 
+#
 rancher_kubernetes_engine_config:
   addon_job_timeout: 30
   authentication:
     strategy: x509
   ignore_docker_version: true
-# 
+#
 # # Currently only nginx ingress provider is supported.
 # # To disable ingress controller, set `provider: none`
 # # To enable ingress on specific nodes, use the node_selector, eg:
 #    provider: nginx
 #    node_selector:
 #      app: ingress
-# 
+#
   ingress:
     provider: nginx
   kubernetes_version: v1.16.3-rancher1-1
   monitoring:
     provider: metrics-server
-# 
+#
 #   If you are using calico on AWS
-# 
+#
 #    network:
 #      plugin: calico
 #      calico_network_provider:
 #        cloud_provider: aws
-# 
+#
 # # To specify flannel interface
-# 
+#
 #    network:
 #      plugin: flannel
 #      flannel_network_provider:
 #      iface: eth1
-# 
+#
 # # To specify flannel interface for canal plugin
-# 
+#
 #    network:
 #      plugin: canal
 #      canal_network_provider:
 #        iface: eth1
-# 
+#
   network:
     options:
       flannel_backend_type: vxlan
     plugin: canal
-# 
+#
 #    services:
 #      kube-api:
 #        service_cluster_ip_range: 10.43.0.0/16
@@ -1988,7 +1988,7 @@ rancher_kubernetes_engine_config:
 #      kubelet:
 #        cluster_domain: cluster.local
 #        cluster_dns_server: 10.43.0.10
-# 
+#
   services:
     etcd:
       backup_config:

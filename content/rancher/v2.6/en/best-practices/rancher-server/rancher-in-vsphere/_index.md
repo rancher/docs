@@ -32,7 +32,7 @@ In the event of a Disaster Recovery activity, availability of the Load balancer 
 
 Configure the Load balancer to automatically mark nodes as unavailable if a health check is failed. For example, NGINX can facilitate this with:
 
-`max_fails=3 fail_timeout=5s` 
+`max_fails=3 fail_timeout=5s`
 
 ### Leverage an External Load Balancer
 
@@ -46,7 +46,7 @@ Configure appropriate Firewall / ACL rules to only expose access to Rancher
 
 ### Size the VM's According to Rancher Documentation
 
-https://rancher.com/docs/rancher/v2.6/en/installation/requirements/
+https://www.rancher.com/docs/rancher/v2.6/en/installation/requirements/
 
 ### Leverage VM Templates to Construct the Environment
 
@@ -64,7 +64,7 @@ Doing so will ensure node VM's are spread across multiple datastores - preventin
 
 It’s important to follow K8s and etcd best practices when deploying your nodes, including disabling swap, double-checking you have full network connectivity between all machines in the cluster, using unique hostnames, MAC addresses, and product_uuids for every node.
 
-# 3. Network Considerations 
+# 3. Network Considerations
 
 ### Leverage Low Latency, High Bandwidth Connectivity Between ETCD Nodes
 
@@ -78,7 +78,7 @@ Each node used should have a static IP configured. In the case of DHCP, each nod
 
 ### Leverage SSD Drives for ETCD Nodes
 
-ETCD is very sensitive to write latency. Therefore, leverage SSD disks where possible. 
+ETCD is very sensitive to write latency. Therefore, leverage SSD disks where possible.
 
 # 5. Backups and Disaster Recovery
 
