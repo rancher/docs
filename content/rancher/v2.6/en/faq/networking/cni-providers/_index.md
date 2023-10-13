@@ -186,7 +186,7 @@ The following table summarizes different GitHub metrics to give you an idea of e
 | Flannel | https://github.com/flannel-io/flannel | 7k | 2.5k | 185 |
 | Calico | https://github.com/projectcalico/calico | 3.1k | 741 | 224 |
 | Weave | https://github.com/weaveworks/weave/ | 6.2k | 635 | 84 |
-| Cilium | https://github.com/cilium/cilium | 10.6k | 1.3k | 352 |
+| Cilium | https://github.com/cilium/cilium | 16.7k | 2.4k | 651 |
 
 <br/>
 
