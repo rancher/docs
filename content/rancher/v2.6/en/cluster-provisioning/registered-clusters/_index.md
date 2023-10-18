@@ -3,7 +3,7 @@ title: Registering Existing Clusters
 weight: 6
 ---
 
-The cluster registration feature replaced the feature to import clusters.
+Along with importing clusters, as of v2.5, Rancher allows you to tie in closer with cloud APIs and manage your cluster by registering existing clusters.
 
 The control that Rancher has to manage a registered cluster depends on the type of cluster. For details, see [Management Capabilities for Registered Clusters.](#management-capabilities-for-registered-clusters)
 
