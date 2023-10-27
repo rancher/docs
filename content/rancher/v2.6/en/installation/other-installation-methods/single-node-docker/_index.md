@@ -186,6 +186,20 @@ Refer to [this page](./advanced) for details.
 
 Refer to [this page](./troubleshooting) for frequently asked questions and troubleshooting tips.
 
+### Known Issues
+
+Newer operating systems have switched to [cgroups v2](https://docs.kernel.org/admin-guide/cgroup-v2.html) which will make the rancher/rancher container crash.
+
+To see whether your system is affected, check for the existence of the cgroup.controller:
+
+```bash
+$ cat /sys/fs/cgroup/cgroup.controllers
+
+cpuset cpu io memory hugetlb pids rdma
+```
+
+In this case, it is recommend to use a local single node K3s Kubernetes cluster ([K3s](https://rancher.com/docs/k3s/latest/en/installation/install-options/) + [Helm](https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/)).
+
 ## What's Next?
 
 - **Recommended:** Review [Single Node Backup and Restore]({{<baseurl>}}/rancher/v2.6/en/backups/docker-installs). Although you don't have any data you need to back up right now, we recommend creating backups after regular Rancher use.
