@@ -130,6 +130,10 @@ Cilium enables networking and network policies (L3, L4, and L7) in Kubernetes. B
 
 Cilium recommends kernel versions greater than 5.2 to be able to leverage the full potential of eBPF. Kubernetes workers should open TCP port `8472` for VXLAN and TCP port `4240` for health checks. In addition, ICMP 8/0 must be enabled for health checks. For more information, check [Cilium System Requirements](https://docs.cilium.io/en/latest/operations/system_requirements/#firewall-requirements).
 
+#### Installing Cilium in RKE
+
+This [guide] (https://docs.cilium.io/en/latest/installation/k8s-install-helm/) walks you through installation of Cilium on Rancher Desktop, an open-source desktop application for Mac, Windows and Linux.
+
 ##### Ingress Routing Across Nodes in Cilium
 <br>
 By default, Cilium does not allow pods to contact pods on other nodes. To work around this, enable the ingress controller to route requests across nodes with a `CiliumNetworkPolicy`.
