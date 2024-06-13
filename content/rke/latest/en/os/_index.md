@@ -299,7 +299,17 @@ Regarding CPU and memory, it is recommended that the different planes of Kuberne
 
 ### Large Kubernetes Clusters
 
-For hardware recommendations for large Kubernetes clusters, refer to the official Kubernetes documentation on [building large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
+Kubernetes is engineered around the concept of horizontal scaling for redundancy, so scaling vertically with large servers can be problematic if the proper minimum/maximum requirements aren’t followed. The following are tips and recommendations for large Kubernetes clusters:
+
+- If you must use servers larger than 24 CPU, use virtualization tooling, such as what [Harvester](https://docs.harvesterhci.io/v1.0/rancher/virtualization-management/) provides, to subdivide the servers.
+
+- Kubernetes, kernel, and network limitations prevent having too many pods per server. You should maintain a maximum of roughly 24 cores per server and a maximum of the recommended 110 pods per server.
+
+- If you are deploying an application or system that specifically requires a large number of pods, you may increase the pod limit. Please note, however, that going above 254 pods per server is not supported by default pod CIDR settings unless the pods are using host networking.
+
+- Even when deploying small workloads, it is recommended that you use a virtualization layer to facilitate less downtime and shorter reboots during upgrades and failures.
+
+For additional hardware recommendations for large Kubernetes clusters and nodes, refer to the official Kubernetes documentation on [building large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
 
 ### Etcd Clusters
 
