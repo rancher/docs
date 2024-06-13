@@ -80,16 +80,18 @@ Each vCenter is defined by adding a new entry under the `virtual_center` directi
 |:----------------------:|:--------:|:---------:|:-----------|
 | user                   | string	  |   *       | vCenter/ESXi user used to authenticate with this server. |
 | password               | string	  |   *       | User's password. |
+| secret-name            | string   |   *       | Name of secret resource containing credential key/value pairs. Can be specified in lieu of user/password parameters. |
+| secret-namespace       | string   |   *       | Namespace in which the secret resource was created in. Can be specified in lieu of user/password parameters. |
 | port                   | string	  |           | Port to use to connect to this server. Defaults to 443.  |
-| datacenters            | string	  |   *       | Comma-separated list of all datacenters in which cluster nodes are running in. |
+| datacenters            | string	  |   ✓       | Comma-separated list of all datacenters in which cluster nodes are running in. |
 | soap-roundtrip-count   | uint     |           | Round tripper count for API requests to the vCenter (num retries = value - 1). |
+
+\* Either `secret-name` and `secret-namespace` OR `user` and `password` are required; `secret-name` and `secret-namespace` will take precedence if all are set.
 
 > The following additional options (introduced in Kubernetes v1.11) are not yet supported in RKE.
 
 | virtual_center Options |  Type    | Required  | Description |
 |:----------------------:|:--------:|:---------:|:-------|
-| secret-name            | string   |           | Name of secret resource containing credential key/value pairs. Can be specified in lieu of user/password parameters.|
-| secret-namespace       | string   |           | Namespace in which the secret resource was created in. |
 | ca-file                | string   |           | Path to CA cert file used to verify the vCenter certificate. |
 
 **Example:**
@@ -111,9 +113,9 @@ The following configuration options are available:
 
 | workspace Options      |  Type    | Required  | Description |
 |:----------------------:|:--------:|:---------:|:---------|
-| server                 | string   |   *       | IP or FQDN of the vCenter/ESXi that should be used for creating the volumes. Must match one of the vCenters defined under the `virtual_center` directive.|
-| datacenter             | string   |   *       | Name of the datacenter that should be used for creating volumes. For ESXi enter *ha-datacenter*.|
-| folder                 | string   |   *       | Path of folder in which to create dummy VMs used for volume provisioning (relative from the root folder in vCenter), e.g. "vm/kubernetes".|
+| server                 | string   |   ✓       | IP or FQDN of the vCenter/ESXi that should be used for creating the volumes. Must match one of the vCenters defined under the `virtual_center` directive.|
+| datacenter             | string   |   ✓       | Name of the datacenter that should be used for creating volumes. For ESXi enter *ha-datacenter*.|
+| folder                 | string   |   ✓       | Path of folder in which to create dummy VMs used for volume provisioning (relative from the root folder in vCenter), e.g. "vm/kubernetes".|
 | default-datastore      | string   |           | Name of default datastore to place VMDKs if neither datastore or storage policy are specified in the volume options of a PVC. If datastore is located in a storage folder or is a member of a datastore cluster, specify the full path. |
 | resourcepool-path      | string   |           | Absolute or relative path to the resource pool where the dummy VMs for [Storage policy based provisioning](https://vmware.github.io/vsphere-storage-for-kubernetes/documentation/policy-based-mgmt.html) should be created. If a relative path is specified, it is resolved with respect to the datacenter's *host* folder. Examples: `/<dataCenter>/host/<hostOrClusterName>/Resources/<poolName>`, `Resources/<poolName>`. For standalone ESXi specify `Resources`. |
 
