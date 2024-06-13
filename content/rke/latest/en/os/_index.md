@@ -329,3 +329,12 @@ Your SSH server system-wide configuration file, located at `/etc/ssh/sshd_config
 ```
 AllowTcpForwarding yes
 ```
+  
+In some cases (e.g., RHEL 8), you also need to set below parameters:
+
+```
+AllowStreamLocalForwarding yes
+DisableForwarding no
+```
+
+
