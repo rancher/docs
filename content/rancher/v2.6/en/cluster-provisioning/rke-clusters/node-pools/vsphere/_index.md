@@ -1,8 +1,8 @@
 ---
 title: Creating a vSphere Cluster
 shortTitle: vSphere
-description: Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes. 
-metaDescription: Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes. 
+description: Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.
+metaDescription: Use Rancher to create a vSphere cluster. It may consist of groups of VMs with distinct properties which allow for fine-grained control over the sizing of nodes.
 weight: 2225
 ---
 
@@ -45,7 +45,7 @@ In this YouTube video, we demonstrate how to set up a node template with the new
 
 # Creating a vSphere Cluster
 
-In [this section,](./provisioning-vsphere-clusters) you'll learn how to use Rancher to install an [RKE]({{<baseurl>}}/rke/latest/en/) Kubernetes cluster in vSphere.
+In [this section,](./provisioning-vsphere-clusters) you'll learn how to use Rancher to install an [RKE]({{<baseurl>}}/rke/latest/en/) or [RKE2](https://docs.rke2.io/) Kubernetes cluster in vSphere.
 
 # Provisioning Storage
 
