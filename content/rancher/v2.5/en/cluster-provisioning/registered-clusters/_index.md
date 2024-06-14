@@ -7,7 +7,7 @@ aliases:
   - /rancher/v2.x/en/cluster-provisioning/registered-clusters/
 ---
 
-The cluster registration feature replaced the feature to import clusters.
+Along with importing clusters, as of v2.5, Rancher allows you to tie in closer with cloud APIs and manage your cluster by registering existing clusters.
 
 The control that Rancher has to manage a registered cluster depends on the type of cluster. For details, see [Management Capabilities for Registered Clusters.](#management-capabilities-for-registered-clusters)
 
@@ -121,7 +121,7 @@ $ curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE="644" sh -s -
 
 ### Configuring an Imported EKS Cluster with Terraform
 
-You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided. 
+You should define **only** the minimum fields that Rancher requires when importing an EKS cluster with Terraform. This is important as Rancher will overwrite what was in the EKS cluster with any config that the user has provided.
 
 >**Warning:** Even a small difference between the current EKS cluster and a user-provided config could have unexpected results.
 
@@ -256,7 +256,7 @@ Also in the K3s documentation, nodes with the worker role are called agent nodes
 
 # Debug Logging and Troubleshooting for Registered K3s Clusters
 
-Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes. 
+Nodes are upgraded by the system upgrade controller running in the downstream cluster. Based on the cluster configuration, Rancher deploys two [plans](https://github.com/rancher/system-upgrade-controller#example-upgrade-plan) to upgrade K3s nodes: one for controlplane nodes and one for workers. The system upgrade controller follows the plans and upgrades the nodes.
 
 To enable debug logging on the system upgrade controller deployment, edit the [configmap](https://github.com/rancher/system-upgrade-controller/blob/50a4c8975543d75f1d76a8290001d87dc298bdb4/manifests/system-upgrade-controller.yaml#L32) to set the debug environment variable to true. Then restart the `system-upgrade-controller` pod.
 
@@ -326,4 +326,3 @@ To annotate a registered cluster,
 1. Click **Save.**
 
 **Result:** The annotation does not give the capabilities to the cluster, but it does indicate to Rancher that the cluster has those capabilities.
-
