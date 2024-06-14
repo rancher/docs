@@ -44,7 +44,7 @@ After you complete [Configuring Microsoft AD FS for Rancher]({{<baseurl>}}/ranch
 | UID Field                 | An AD attribute that is unique to every user. <br/><br/>Example: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn`                                                                                   |
 | Groups Field              | Make entries for managing group memberships. <br/><br/>Example: `http://schemas.xmlsoap.org/claims/Group`                                                                                                      |
 | Rancher API Host          | The URL for your Rancher Server.                                                                                                                                                                               |
-| Private Key / Certificate | This is a key-certificate pair to create a secure shell between Rancher and your AD FS. Ensure you set the Common Name (CN) to your Rancher Server URL.<br/><br/>[Certificate creation command](#cert-command) |
+| Private Key / Certificate | This is a key-certificate pair used for SAML assertion encryption, if enabled in your Relying Party Trust configuration. Ensure that you import the public certificate into your Relying Party Trust configuration and that you set the Common Name (CN) to your Rancher Server URL.<br/><br/>[Certificate creation command](#cert-command) |
 | Metadata XML              | The `federationmetadata.xml` file exported from your AD FS server. <br/><br/>You can find this file at `https://<AD_SERVER>/federationmetadata/2007-06/federationmetadata.xml`.                                |
 
 
