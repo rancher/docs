@@ -28,7 +28,16 @@ rancher:
     ECS_AVAILABLE_LOGGING_DRIVERS: |-
       ["json-file","awslogs"]
 # If you have selected a RancherOS AMI that does not have ECS enabled by default,
-# you'll need to enable the system service for the ECS agent.
+# you'll need to enable the system service for the ECS agent, and configure the 
+# iptables rules.
+  sysctl:
+    net.ipv4.conf.all.route_localnet: 1
+  network:
+    post_cmds:
+      - iptables -t nat -A PREROUTING -p tcp -d 169.254.170.2 --dport 80 -j DNAT --to-destination 127.0.0.1:51679
+      - iptables -t nat -A OUTPUT -d 169.254.170.2 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 51679
+      - iptables --insert DOCKER-USER 1 --in-interface docker+ --destination 169.254.169.254/32 --jump DROP
+      - iptables --insert DOCKER-USER 1 --in-interface docker-sys --destination 169.254.169.254/32 --jump ACCEPT
   services_include:
     amazon-ecs-agent: true
 ```
@@ -47,7 +56,16 @@ rancher:
     # Note: You will need to make sure to include the colon in front of the version.
     ECS_AGENT_VERSION: :v1.9.0
     # If you have selected a RancherOS AMI that does not have ECS enabled by default,
-    # you'll need to enable the system service for the ECS agent.
+    # you'll need to enable the system service for the ECS agent and configure the 
+    # iptables rules.
+  sysctl:
+    net.ipv4.conf.all.route_localnet: 1
+  network:
+    post_cmds:
+      - iptables -t nat -A PREROUTING -p tcp -d 169.254.170.2 --dport 80 -j DNAT --to-destination 127.0.0.1:51679
+      - iptables -t nat -A OUTPUT -d 169.254.170.2 -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 51679
+      - iptables --insert DOCKER-USER 1 --in-interface docker+ --destination 169.254.169.254/32 --jump DROP
+      - iptables --insert DOCKER-USER 1 --in-interface docker-sys --destination 169.254.169.254/32 --jump ACCEPT
   services_include:
     amazon-ecs-agent: true
 ```
