@@ -14,6 +14,7 @@ This section covers the following topics:
 
 <!-- TOC -->
 
+- [User Personas associated with a Kubernetes installation](#user-personas-associated-with-a-kubernetes-installation)
 - [Cluster Management Capabilities by Cluster Type](#cluster-management-capabilities-by-cluster-type)
 - [Setting up clusters in a hosted Kubernetes provider](#setting-up-clusters-in-a-hosted-kubernetes-provider)
 - [Launching Kubernetes with Rancher](#launching-kubernetes-with-rancher)
@@ -23,6 +24,14 @@ This section covers the following topics:
 - [Programmatically Creating Clusters](#programmatically-creating-clusters)
 
   <!-- /TOC -->
+
+### User Personas associated with a Kubernetes installation
+
+Before we dive deep into the specifics of cluster management capabilities, it is essential to take a step back and understand the various personas associated with a Kubernetes installation based on the type of interaction. 
+
+The first persona is that of the administrator. With a focus on managing the overall health of the Kubernetes installation, typical administrative workloads may also include performing configuration and setup tasks.
+
+Developer personas are end users of Kubernetes installations. By defining application resources and using core primitives to build, monitor, and troubleshoot scalable applications and tools, their workloads are typically aimed at exposing cloud native applications by using Kubernetes.
 
 ### Cluster Management Capabilities by Cluster Type
 
