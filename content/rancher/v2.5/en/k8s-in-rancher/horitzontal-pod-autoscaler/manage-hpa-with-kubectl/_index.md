@@ -124,26 +124,9 @@ For this example, we are going to use [Prometheus](https://prometheus.io/). We a
 
 Prometheus is available for deployment in the Rancher v2.0 catalog. Deploy it from Rancher catalog if it isn't already running in your cluster.
 
-For HPA to use custom metrics from Prometheus, package [k8s-prometheus-adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) is required in the `kube-system` namespace of your cluster. To install `k8s-prometheus-adapter`, we are using the Helm chart available at [banzai-charts](https://github.com/banzaicloud/banzai-charts).
+For HPA to use custom metrics from Prometheus, package [k8s-prometheus-adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter) is required in the `kube-system` namespace of your cluster. As of v2.5, the `prometheus-adapter` is installed out-of-the box and does not require manual setup. 
 
-1. Initialize Helm in your cluster.
-  ```
-  # kubectl -n kube-system create serviceaccount tiller
-  kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
-  helm init --service-account tiller
-  ```
-
-1. Clone the `banzai-charts` repo from GitHub:
-  ```
-  # git clone https://github.com/banzaicloud/banzai-charts
-  ```
-
-1. Install the `prometheus-adapter` chart, specifying the Prometheus URL and port number.
-  ```
-  # helm install --name prometheus-adapter banzai-charts/prometheus-adapter --set prometheus.url="http://prometheus.mycompany.io",prometheus.port="80" --namespace kube-system
-  ```
-
-1. Check that `prometheus-adapter` is running properly. Check the service pod and logs in the `kube-system` namespace.
+1. Verify if `prometheus-adapter` is running properly. Check the service pod and logs in the `kube-system` namespace.
 
   1. Check that the service pod is `Running`. Enter the following command.
     ```
